@@ -214,9 +214,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title','listing-description-meta','listing-date','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-author','listing-format','listing-title','listing-description-meta','listing-date','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title","listing-description-meta","listing-date","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-author","listing-format","listing-title","listing-description-meta","listing-date","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-image"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -348,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="death rates">death rates <span class="quarto-category-count">(1)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -409,7 +409,30 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-5">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list blog">
-    <div class="blog-entry" data-index="0" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671355427415" data-listing-reading-time-sort="0.99">
+    <div class="blog-entry" data-index="0" data-categories="r,hmd,death rates" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1671364912790" data-listing-reading-time-sort="4.44">
+        <div class="metadata">          
+            <p class="date listing-date">February 5, 2017</p>
+        </div>
+        <div class="body">
+            <p class="title listing-title"><a href="./2017/hmd-all-sex-ratio/index.html">Sex ratios in all countries from Human Mortality Database</a></p>
+            <div class="post-categories listing-categories">
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
+                    r
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
+                    hmd
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('death rates'); return false;">
+                    death rates
+                </div>
+            </div>
+            <p class="description listing-description">Sex ratios reflect the two basic regularities of…<sup></sup></p>
+        </div>
+        <div class="thumbnail">
+            <img src="./2017/hmd-all-sex-ratio/hmd-sex-ratios.png" alt="Sex ratios in all countries from Human Mortality Database" title="Sex ratios in all countries from Human Mortality Database">
+        </div>
+    </div>
+    <div class="blog-entry" data-index="1" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671355427415" data-listing-reading-time-sort="0.99">
         <div class="metadata">          
             <p class="date listing-date">January 29, 2017</p>
         </div>

@@ -3,12 +3,14 @@
     "listing": "/atom.html",
     "items": [
       "/2017/hello-r-world/index.html",
+      "/2017/hmd-all-sex-ratio/index.html",
       "/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/2017/hmd-all-sex-ratio/index.html",
       "/2017/hello-r-world/index.html"
     ]
   }
