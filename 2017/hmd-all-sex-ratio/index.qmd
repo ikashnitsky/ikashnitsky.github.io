@@ -92,7 +92,8 @@ There is quite a variety in the sex ratio profiles. If the initial prevalence of
 
 What happened in Taiwan?
 
-*This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7).*
+<button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7).</button>
+
 
 ***
 

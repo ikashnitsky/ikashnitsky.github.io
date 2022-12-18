@@ -2,14 +2,24 @@
   {
     "listing": "/atom.html",
     "items": [
+      "/2017/dd-journals-frequency/index.html",
+      "/2017/gender-gap-in-swedish-mortality/index.html",
       "/2017/hello-r-world/index.html",
+      "/2017/hmd-male-mortality-rus-jpn/index.html",
+      "/2017/denmark-nuts-reconstruction/index.html",
       "/2017/hmd-all-sex-ratio/index.html",
+      "/2017/who-is-old/index.html",
       "/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/2017/who-is-old/index.html",
+      "/2017/denmark-nuts-reconstruction/index.html",
+      "/2017/gender-gap-in-swedish-mortality/index.html",
+      "/2017/dd-journals-frequency/index.html",
+      "/2017/hmd-male-mortality-rus-jpn/index.html",
       "/2017/hmd-all-sex-ratio/index.html",
       "/2017/hello-r-world/index.html"
     ]

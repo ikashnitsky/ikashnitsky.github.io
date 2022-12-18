@@ -9,8 +9,8 @@ published-title: CV last updated
 date: 2022-12-18
 ---
 
+<!-- <button class="btn btn-lg btn-success" type="button"><a href="https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf" style="color:#ffffff;">Download current CV</a></button> -->
 
-
-<button type="button" class="btn btn-success">
-<a href="https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf" style="color:#ffffff;">Download current CV</a>
+<button class="btn btn-lg btn-secondary" type="button">
+[{{< fa file-lines >}} Download current CV](https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf)
 </button>

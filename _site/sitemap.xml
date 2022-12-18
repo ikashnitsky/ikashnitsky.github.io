@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ikashnitsky.github.io/2017/dd-journals-frequency/index.html</loc>
+    <lastmod>2022-12-18T21:00:03.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/index.html</loc>
+    <lastmod>2022-12-18T21:00:12.035Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2017/gender-gap-in-swedish-mortality/index.html</loc>
+    <lastmod>2022-12-18T21:00:15.385Z</lastmod>
+  </url>
+  <url>
     <loc>https://ikashnitsky.github.io/2017/hello-r-world/index.html</loc>
-    <lastmod>2022-12-18T12:01:59.901Z</lastmod>
+    <lastmod>2022-12-18T21:00:16.646Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/index.html</loc>
-    <lastmod>2022-12-18T12:02:06.692Z</lastmod>
+    <lastmod>2022-12-18T21:00:20.778Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/index.html</loc>
+    <lastmod>2022-12-18T21:00:24.229Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2017/who-is-old/index.html</loc>
+    <lastmod>2022-12-18T21:00:30.994Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/about.html</loc>
-    <lastmod>2022-12-18T12:02:07.702Z</lastmod>
+    <lastmod>2022-12-18T21:00:31.970Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/atom.html</loc>
-    <lastmod>2022-12-18T12:02:08.221Z</lastmod>
+    <lastmod>2022-12-18T21:00:32.578Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/cv.html</loc>
-    <lastmod>2022-12-18T12:02:08.612Z</lastmod>
+    <lastmod>2022-12-18T21:00:33.002Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/dd.html</loc>
-    <lastmod>2022-12-18T12:02:09.195Z</lastmod>
+    <lastmod>2022-12-18T21:00:33.439Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/index.html</loc>
-    <lastmod>2022-12-18T12:02:09.755Z</lastmod>
+    <lastmod>2022-12-18T21:00:34.003Z</lastmod>
   </url>
 </urlset>
