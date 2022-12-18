@@ -12,7 +12,7 @@ format:
       giscus:
         repo: ikashnitsky/ikashnitsky.github.io
         category: General
-        category-id: DIC_kwDOIow4Ac4CTIis
+        category-id: DIC_kwDOIoyPxc4CTIoh
         mapping: pathname
     quarto-template-params:
       banner-header-class: "blog-post"
