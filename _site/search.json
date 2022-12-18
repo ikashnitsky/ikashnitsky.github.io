@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "2017/hello-r-world/index.html",
+    "href": "2017/hello-r-world/index.html",
+    "title": "Hello R world post",
+    "section": "",
+    "text": "Welcome to my blog!\nMy name is Ilya, I am a demographer. Here I plan to post some research related stuff. As I am crazy about R, my post will touch upon this tool/environment – I will share some tricks and cool visualizations. Eventually, I hope to contribute to the amazing R-bloggers project. First, I am going to post older bits – to gain momentum.\n\nJust to start with, let me show you a small and handy self-written R function.\nQuite often, visualizing data in R, we compose color palettes manually. It is nice to have a function that shows the actual colors of a vector with color values. Here it is.\n\nglimpse_colors <- function(colors_string){\n        n <- length(colors_string)\n        hist(1:n, breaks = 0:n, col = colors_string)\n}\n\nThe function takes a vector of colors as input and produces a basic uniform histogram with one bar for each color, filled accordingly. Let’s try it out. First, we create some colors, and then visualize them.\n\nlibrary(RColorBrewer)\npal <- brewer.pal(n = 9, name = 'BrBG')\nglimpse_colors(pal)\n\n\n\n\nEnjoy!\nP.S. If something similar exists in one of the well known packages, please tell me."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": ".",
+    "section": "",
+    "text": "CV"
+  },
+  {
+    "objectID": "about.html#bio",
+    "href": "about.html#bio",
+    "title": ".",
+    "section": "BIO",
+    "text": "BIO\nI was born in Israel, grew up in Moscow, during my PhD years lived in The Hague, and now live in Odense. Married and have two daughters. I got a bachelors in geography from Moscow State University in 2012, masters in demography from the National Research University Higher School of Economics (Moscow) in 2014, and PhD from University of Groningen in 2020.\n\n\nFeel free to contact me via email\nilya.kashnitsky at gmail dot com\nIlya"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Academic CV",
+    "section": "",
+    "text": "Download current CV"
+  },
+  {
+    "objectID": "dd.html",
+    "href": "dd.html",
+    "title": ".",
+    "section": "",
+    "text": "Demographic Digest is a regular column at Demoscope Weekly which publishes (in Russian) brief summaries of fresh demographic papers from the best academic journals.\n\nДемографический Дайджест – регулярная рубрика журнала Демоскоп Weekly, в которой приводятся краткие обзоры демографических статей, публикуемых в ведущих зарубежных журналах.\n\n\n[PROJECT WEBSITE]\n\n\n\n[ARCHIVE]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "demographeR’s notes",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html#section-1",
+    "href": "index.html#section-1",
+    "title": "demographeR’s notes",
+    "section": "2021",
+    "text": "2021\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#section-2",
+    "href": "index.html#section-2",
+    "title": "demographeR’s notes",
+    "section": "2020",
+    "text": "2020\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#section-3",
+    "href": "index.html#section-3",
+    "title": "demographeR’s notes",
+    "section": "2019",
+    "text": "2019\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#section-4",
+    "href": "index.html#section-4",
+    "title": "demographeR’s notes",
+    "section": "2018",
+    "text": "2018\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#section-5",
+    "href": "index.html#section-5",
+    "title": "demographeR’s notes",
+    "section": "2017",
+    "text": "2017\n\n\n    \n                  \n            January 29, 2017\n        \n        \n            Hello R world post\n            \n                \n                    r\n                \n            \n            \n        \n    \n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  }
+]

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Ilya Kashnitsky</title>
+<link>https://ikashnitsky.github.io/atom.html</link>
+<atom:link href="https://ikashnitsky.github.io/atom.xml" rel="self" type="application/rss+xml"/>
+<description>Dr. Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.</description>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Fri, 16 Dec 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Post With Code</title>
+  <dc:creator>Harlow Malloc</dc:creator>
+  <link>https://ikashnitsky.github.io/posts/post-with-code/index.html</link>
+  <description><![CDATA[ <p>This is a post with executable code.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl" style="color: #AD0000;">1</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="fl" style="color: #AD0000;">1</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <guid>https://ikashnitsky.github.io/posts/post-with-code/index.html</guid>
+  <pubDate>Fri, 16 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <link>https://ikashnitsky.github.io/posts/welcome/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="https://ikashnitsky.github.io/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post <a href="https://ikashnitsky.github.io/dem-digest/about-ru">doesn’t specify</a> an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+
+
+
+ ]]></description>
+  <category>r</category>
+  <guid>https://ikashnitsky.github.io/posts/welcome/index.html</guid>
+  <pubDate>Wed, 14 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/posts/welcome/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Hello R world post</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.github.io/2017/hello-r-world/index.html</link>
+  <description><![CDATA[ <p>Welcome to my blog!</p>
+<p>My name is Ilya, I am a demographer. Here I plan to post some research related stuff. As I am crazy about <a href="https://www.r-project.org">R</a>, my post will touch upon this tool/environment – I will share some tricks and cool visualizations. Eventually, I hope to contribute to the amazing <a href="https://www.r-bloggers.com">R-bloggers</a> project. First, I am going to post older bits – to gain momentum.</p>
+<hr>
+<p>Just to start with, let me show you a small and handy self-written R function.<br>
+Quite often, visualizing data in R, we compose color palettes manually. It is nice to have a function that shows the actual colors of a vector with color values. Here it is.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">glimpse_colors</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="kw" style="color: #003B4F;">function</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">colors_string</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">{</span></span>
+<span>        <span class="va" style="color: #111111;">n</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">colors_string</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span>        <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">:</span><span class="va" style="color: #111111;">n</span>, breaks <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">:</span><span class="va" style="color: #111111;">n</span>, col <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">colors_string</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+</div>
+<p>The function takes a vector of colors as input and produces a basic uniform histogram with one bar for each color, filled accordingly. Let’s try it out. First, we create some colors, and then visualize them.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">RColorBrewer</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="va" style="color: #111111;">pal</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op" style="color: #5E5E5E;">(</span>n <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">9</span>, name <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'BrBG'</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="fu" style="color: #4758AB;">glimpse_colors</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">pal</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2017/hello-r-world/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Enjoy!</p>
+<p>P.S. If something similar exists in one of the well known packages, please tell me.</p>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>r</category>
+  <guid>https://ikashnitsky.github.io/2017/hello-r-world/index.html</guid>
+  <pubDate>Sat, 28 Jan 2017 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>demographeR’s notes</title>
+  <link>https://ikashnitsky.github.io/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2022</h2>
+<div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2021</h2>
+<div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2020</h2>
+<div id="listing-posts_2020" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">2019</h2>
+<div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">2018</h2>
+<div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">2017</h2>
+<div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
+<div class="list blog">
+    <div class="blog-entry" data-index="0" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671355427415" data-listing-reading-time-sort="0.99">
+        <div class="metadata">          
+            <p class="date listing-date">January 29, 2017</p>
+        </div>
+        <div class="body">
+            <p class="title listing-title"><a href="./2017/hello-r-world/index.html">Hello R world post</a></p>
+            <div class="post-categories listing-categories">
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
+                    r
+                </div>
+            </div>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/hello-r-world/index.html --></p>
+        </div>
+    </div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+
+
+
+</section>
+
+ ]]></description>
+  <guid>https://ikashnitsky.github.io/index.html</guid>
+  <pubDate>Sun, 18 Dec 2022 10:14:31 GMT</pubDate>
+</item>
+</channel>
+</rss>

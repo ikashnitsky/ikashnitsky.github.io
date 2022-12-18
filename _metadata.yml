@@ -1,0 +1,37 @@
+# Date format
+date-format: "dddd, MMMM D, YYYY"
+
+# Enable banner style title blocks
+title-block-banner: "#002F2F"
+
+# Add blog-post class to the banner header area
+format:
+  html:
+    code-tools: true
+    comments:
+      giscus:
+        repo: ikashnitsky/ikashnitsky.github.io
+        category: General
+        category-id: DIC_kwDOIow4Ac4CTIis
+        mapping: pathname
+    quarto-template-params:
+      banner-header-class: "blog-post"
+
+# Default for table of contents
+toc: true
+toc-title: Contents
+toc-location: left
+
+freeze: true
+
+# Default knitr options
+execute:
+  echo: true
+  message: true
+  warning: true
+
+# # Default author
+# author:
+#   - name: Ilya Kashnitsky
+#     url: https://ikashnitsky.github.io
+#     orcid: 0000-0003-1835-8687

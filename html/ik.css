@@ -1,0 +1,375 @@
+/*-- scss:defaults --*/
+
+$theme: "ik" !default;
+
+
+//
+// Color system
+//
+
+$white:    #ffffff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #373a3c !default;
+$gray-900: #212529 !default;
+$black:    #000000 !default;
+
+$blue:    #2780e3 !default;
+$indigo:  #6610f2 !default;
+$purple:  #170C3A !default;
+$pink:    #A52C60 !default;
+$red:     #CF4446 !default;
+$orange:  #EE6A24 !default;
+$light-orange:  #FB9E07 !default;
+$yellow:  #F6D645 !default;
+$green:   #118230 !default;
+$teal:    #20c997 !default;
+$cyan:    #3093CF !default;
+
+$primary:   #269292 !default;
+$secondary: #DFFF00 !default;
+$success:   #025757 !default;
+$info:      #6cc3d5 !default;
+$warning:   #ffce67 !default;
+$danger:    #ff7851 !default;
+$light:     $gray-400 !default;
+$dark:      $black !default;
+
+$p-darker-1:   #048484 !default;
+$p-darker-2:   #0C7474 !default;
+$p-darker-3:   #066666 !default;
+$p-darker-4:   #025757 !default;
+$p-darker-5:   #074949 !default;
+$p-darker-6:   #033C3C !default;
+$p-darker-7:   #002F2F !default;
+$p-darker-8:   #002222 !default;
+$p-darker-9:   #021515 !default;
+$p-lighter-1:   #3A9E9E !default;
+$p-lighter-2:   #4BA9A9 !default;
+$p-lighter-3:   #5AB5B5 !default;
+$p-lighter-4:   #69C2C2 !default;
+$p-lighter-5:   #77CECE !default;
+$p-lighter-6:   #85DADA !default;
+$p-lighter-7:   #93E7E7 !default;
+$p-lighter-8:   #A1F4F4 !default;
+$p-lighter-9:   #B7FFFF !default;
+
+
+// $min-contrast-ratio: 2.6 !default;
+
+// Fonts
+
+
+$font-family-sans-serif: "Atkinson Hyperlegible" !default;
+$font-family-base: "Atkinson Hyperlegible" !default;
+
+$headings-font-family: "Atkinson Hyperlegible" !default;
+$headings-font-weight: 700 !default;
+
+
+$navbar-font-family: "Atkinson Hyperlegible" !default;
+$toc-font-family: "Atkinson Hyperlegible" !default;
+$footer-font-family: "Atkinson Hyperlegible" !default;
+
+$font-size-base: 1.2rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm: $font-size-base * .875 !default;
+
+
+// Body
+$body-color: $gray-800 !default;
+
+// Links
+$link-color: $primary !default;
+$link-decoration: none !default;
+$link-hover-color: "#066666" !default;
+$link-hover-decoration: underline !default;
+
+// Inline code
+$code-bg: $gray-200 !default;
+$code-color: $gray-900 !default;
+
+// Code copy
+$btn-code-copy-color-active: $yellow !default;
+
+// TOC
+$toc-color: $primary;
+$toc-font-size: 1em;
+
+// Navbar
+$navbar-bg: $primary !default;
+$navbar-fg: $white !default;
+$navbar-hl: $p-lighter-3 !default;
+
+// Footer
+$footer-bg: $p-darker-7 !default;
+$footer-fg: $p-lighter-3 !default;
+
+
+/*-- scss:rules --*/
+
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@400;700&display=swap);
+
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+
+.home {
+    .quarto-title-banner {
+        margin-bottom: 0;
+    }
+}
+
+#title-block-header {
+    &.home {
+        margin-block-end: 0.5rem;
+    }
+}
+
+.home {
+    .quarto-title-banner {
+        margin-bottom: 0;
+    }
+
+    #title-block-header {
+        margin-block-end: 0;
+    }
+}
+
+// Shrink blocks of code
+pre.text, pre.sourceCode, .cell-output pre {
+    font-size: 0.775em;
+}
+
+.navbar {
+    font-family: $navbar-font-family;
+}
+
+// Put all the icons in a single row in the hamburger menu
+.navbar-nav.navbar-nav-scroll.ms-auto {
+    flex-direction: row;
+}
+
+#TOC {
+    font-family: $toc-font-family;
+    padding-bottom: 0.1em;
+
+    .active {
+        font-weight: 400;
+    }
+
+    #toc-title {
+        font-weight: 700;
+    }
+}
+
+.sidebar nav[role="doc-toc"]>ul li a {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+#quarto-margin-sidebar {
+    .quarto-listing-category-title {
+        margin-left: 0.5em;
+    }
+
+    .quarto-listing-category {
+        font-family: $toc-font-family;
+        font-weight: 300;
+        font-size: 1em;
+        line-height: 1.1;
+        padding-left: 0.6rem;
+        margin-left: 0.5em;
+        border-left: 1px solid $gray-200;
+
+        .category {
+            padding-bottom: 0.5rem;
+        }
+
+        .active {
+            font-weight: 400;
+            color: $orange;
+        }
+
+        .quarto-category-count {
+            font-weight: 200;
+            font-size: 0.8em;
+            color: $gray-600;
+        }
+    }
+}
+
+.nav-footer {
+    align-items: flex-start;  // Align all flex items to the top
+    flex-wrap: wrap;
+    border: 0 !important;
+    min-height: 3em;
+    font-family: $footer-font-family;
+
+    a {
+        color: $p-lighter-3;
+    }
+
+    .faux-block {
+        display: block;
+        padding-bottom: 0.4em;
+    }
+
+    .fingerprint {
+        font-family: $font-family-monospace;
+        font-size: 0.8em;
+    }
+
+    // In the default Quarto template, .nav-footer-center has position: absolute
+    // turned on, which makes the div not be a flex item
+    // This changes that so that it *is* a flex item
+    .nav-footer-center {
+        text-align: center;
+        position: inherit;
+        margin-top: 0;
+
+        @media (max-width: map-get($grid-breakpoints, md)) {
+            margin-top: 0.5em;
+            margin-bottom: 1.5em;
+        }
+    }
+
+    // When the screen is medium or smaller, make each footer chunk be 100% width
+    // and centered; otherwise make them be 33% width and left/right/centerd
+    .nav-footer-left,
+    .nav-footer-right,
+    .nav-footer-center {
+        text-align: center;
+        width: 100%;
+        min-height: 2em;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        .nav-footer-left {
+            text-align: left;
+        }
+
+        .nav-footer-right {
+            text-align: right;
+        }
+
+        .nav-footer-left,
+        .nav-footer-right,
+        .nav-footer-center {
+            flex: 1 1 33%;
+        }
+    }
+}
+
+#title-block-header {
+    .quarto-title-banner {
+        font-family: $headings-font-family;
+
+        .description {
+            font-size: 1.1em;
+            margin-top: 1em !important;
+        }
+    }
+}
+
+// Blog
+.blog {
+    .blog-entry {
+        display: flex;
+        flex-direction: row;
+        font-family: $headings-font-family;
+        line-height: 1.3;
+        margin-bottom: 1.5em;
+        column-gap: 1em;
+
+        .metadata {
+            flex: 0 0 8%;
+        }
+
+        .body {
+            flex: 1 1 auto;
+        }
+
+        .thumbnail {
+            flex: 0 0 25%;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                max-height: 120px;
+            }
+        }
+
+        .title {
+            font-weight: 500;
+            font-size: 1.7em;
+            margin-bottom: 0.2em;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-weight: 300;
+            font-size: 1em;
+            margin-bottom: 0.3em;
+        }
+
+        .date {
+            font-weight: 300;
+            font-size: 0.85em;
+            margin-top: 0.3em;
+            text-align: right;
+        }
+
+        .post-categories {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 0.4em;
+            column-gap: 0.4em;
+            margin: 0.5em 0;
+
+            .post-category {
+                color: $gray-600;
+                border: 1px solid $gray-500;
+                border-radius: 0.25rem;
+                text-transform: uppercase;
+                font-size: 0.65em;
+                padding: 0.15em 0.5em;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.blog-post {
+    .quarto-title .quarto-categories {
+        margin-top: 1.5em;
+
+        .quarto-category {
+            background-color: shift-color($purple, -25%);
+            border-color: shift-color($purple, -45%);
+            color: $white;
+            font-size: 1em;
+            opacity: 1;
+        }
+    }
+}
+
+
+.code-tools-button {
+    position: relative;
+    left: 5em;
+
+    @media (max-width: map-get($grid-breakpoints, md)) {
+        left: 0;
+    }
+}

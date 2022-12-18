@@ -1,0 +1,34 @@
+---
+title: "."
+description-meta: "{{< meta website.description >}}"
+comments: false
+title-block-banner: "img/dd-banner.png"
+toc: false
+toc-location: right
+---
+
+
+
+***
+
+*Demographic Digest*  is a regular column at [Demoscope Weekly][1] which publishes (in Russian) brief summaries of fresh demographic papers from the best academic journals.
+
+***
+
+*Демографический Дайджест* – регулярная рубрика журнала [Демоскоп Weekly][1], в которой приводятся краткие обзоры демографических статей, публикуемых в ведущих зарубежных журналах.
+
+***
+
+### [[PROJECT WEBSITE]][2]
+
+***
+
+### [[ARCHIVE]][1]
+
+[1]: http://demoscope.ru/weekly/arc/arcdigest.php
+[2]: https://ikashnitsky.github.io/dem-digest
+
+***
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ikashnitsky" data-color="#269292" data-emoji="" data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+

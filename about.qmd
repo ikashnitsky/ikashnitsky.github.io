@@ -1,0 +1,89 @@
+---
+title: "."
+description-meta: "{{< meta website.description >}}"
+image: img/ik.jpg
+title-block-banner: "img/bubbles.png"
+comments: false
+toc: false
+toc-location: right
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/ikashnitsky
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/ikashnitsky
+    - icon: mastodon
+      text: Mastodon
+      href: https://fosstodon.org/@ikashnitsky
+---
+
+
+<button type="button" class="btn btn-danger">
+<a href="https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
+</button>
+
+<button type="button" class="btn btn-success">
+<a href="https://orcid.org/0000-0003-1835-8687" style="color:#fff;"> {{< fa brands orcid >}} ORCID</a>
+</button>
+
+<button type="button" class="btn btn-info">
+<a href="https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en" style="color:#fff;"> {{< ai google-scholar >}} Google Scholar</a>
+</button>
+
+<button type="button" class="btn btn-warning">
+<a href="https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/about_the_centre/our_people/cpop_dem/ilya_kashnitsky" style="color:#fff;"> {{< ai preregistered >}} CPop SDU</a>
+</button>
+
+
+# Welcome to my website!
+
+I am a demographer.
+
+This site gives an overview of my academic activities.
+
+I am an Assistant Professor at [Interdisciplinary Centre on Population Dynamics][cpop], University of Southern Denmark, Odense, Denmark. The main projects that I am currently involved in are on [the sustainability of pension systems under the changing mortality][indexation] and [the analysis of excess deaths due to the COVID-19 pandemic][excess].
+
+I did [my PhD project][phd] at the [University of Groningen][rug] and [Netherlands Interdisciplinary Demographic Institute][nidi] with the scientific supervision by Leo van Wissen and Joop de Beer. The focus of [the thesis][thesis] is on regional variations in aging across Europe, the demographic processes shaping them, their dynamics and possible implications for economies and societies. My interests include most topics relating to demography, population geography, spatial analysis and data visualization.
+
+I am an avid [R](https://cran.r-project.org) user with deep interest in GIS, spatial analysis, and efficient data visualization, which I [teach often and with great pleasure](/tea). I am happy that [my blog](/) is included in the brilliant [R-bloggers](https://www.r-bloggers.com) project. 
+
+My main interest is demography. For three years, 2015--2017, I was systematically following the state-of-the-art research in the field and writing brief summaries (in Russian) of selected demographic papers in my [Demographic Digest](/dd). 
+
+***
+
+## BIO 
+
+I was born in Israel, grew up in Moscow, during my PhD years lived in The Hague, and now live in Odense. Married and have two daughters. I got a bachelors in geography from Moscow State University in 2012, masters in demography from the National Research University Higher School of Economics (Moscow) in 2014, and PhD from University of Groningen in 2020. 
+
+![](img/our-photo-x4.jpg)
+
+***
+Feel free to contact me via email  
+[ilya.kashnitsky at gmail dot com][mailto]  
+  
+Ilya  
+
+***
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ikashnitsky" data-color="#269292" data-emoji="" data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+
+
+
+[rug]: http://www.rug.nl
+[nidi]: http://nidi.nl/en
+[phd]: https://osf.io/d4hjx/
+[lvw]: https://nidi.nl/en/employees/leo-van-wissen
+[jdb]: https://twitter.com/BeerJoop
+[6]: https://sites.google.com/site/ikashnitsky/home
+[thesis]: https://doi.org/10.33612/diss.134195227
+[indexation]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/research/method_development_for_ageing_research/pension_age
+[excess]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/excessdeath
+[orcid]: https://orcid.org/0000-0003-1835-8687
+[gs]: https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en
+[cv]: https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf
+[cpop]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop
+[cpop-me]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/about_the_centre/our_people/cpop_dem/ilya_kashnitsky
+[mailto]: mailto:ilya.kashnitsky@gmail.com  

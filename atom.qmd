@@ -1,0 +1,10 @@
+---
+title: "demographerR's notes"
+description-meta: "{{< meta website.description >}}"
+search: false
+listing:
+  feed: true
+  contents:
+    - "/**/index.qmd"
+    - "/**/index.qmd"
+---

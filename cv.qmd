@@ -1,0 +1,16 @@
+---
+title: "Academic CV"
+description-meta: "{{< meta website.description >}}"
+comments: false
+toc: false
+toc-location: right
+title-block-banner: "#002F2F"
+published-title: CV last updated
+date: 2022-12-18
+---
+
+
+
+<button type="button" class="btn btn-success">
+<a href="https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf" style="color:#ffffff;">Download current CV</a>
+</button>
