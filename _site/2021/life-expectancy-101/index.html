@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <div class="quarto-categories">
     <div class="quarto-category">r</div>
     <div class="quarto-category">tw</div>
-    <div class="quarto-category">demography-101</div>
+    <div class="quarto-category">101</div>
     <div class="quarto-category">life expectancy</div>
   </div>
   </div>
@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>How can we learn what’s happening now? Well, for that we need a mathematical model. We cannot observe the unfulfilled lifespans directly but we can construct/imagine an artificial population to help us understand the current mortality. The idea is simple: let’s take those dying now and divide them by the size of their age groups. This yields age-specific death rates – the key input for the life table needed to calculate life expectancy. Now, let’s take an imaginary cohort and see how long would they live on average if they experience these observed age-specific death rates. The imaginary population is know as a <strong>synthetic cohort</strong>. And here comes the main assumption of the life table: The model assumes that the observed age-specific death rates stay unchanged throughout the hypothetical lives of the hypothetical people in the synthetic cohort.</p>
 <p>This big assumption of unchanging age profile of death rates almost never holds in real life. Mortality in human populations keeps improving beyond the most optimistic expectations. For decades the best demographers were systematically underestimating the progress in mortality reduction (Oeppen and Vaupel, 2002)</p>
 <p><img src="oeppen-vaupel.jpg" class="img-fluid"></p>
-<p><em>The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)</em></p>
+<p><strong>The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)</strong></p>
 <p>Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely <a href="https://twitter.com/therealrchung/status/1365091610766155778">illustrated by Dr.&nbsp;Robert Chung</a>: “I have a car that can display”driving range” given its estimate of fuel level and how I’m driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That’s what period e(x) is like.”</p>
 <p>But if life expectancy talk about now and not the future, why is it called “expectancy” in the first place? This rather unfortunate and confusing <a href="https://twitter.com/therealrchung/status/1365313760416526340">naming comes from statistics</a>, where “expected value” is a standard term for the mean of a distribution. The connotation crossing is rather unfortunate and as it strongly nudges the common future oriented misinterpretation of life expectancy.</p>
 <p>The most popular error in public perception of period life expectancy forgets about the heavy assumption of the synthetic cohort (constant age-specific death rates throughout their hypothetic lives anchored in current year) and talks about the future of kids being born now. In normal years this large interpretation error is somewhat masked by the gradual and often close to linear improvements in mortality. A rule of thumb is to simply add ~6 years to period life expectancy to obtain a reasonable cohort estimate (Goldstein and Wachter, 2006). Mortality shocks like 2020 are a different story though. Here the “forward looking” (mis)interpretation of period life expectancy projects the <strong>shock levels of mortality</strong> into the future. Of course this doesn’t happen. Shocks are called shocks because they are temporal.</p>
@@ -274,11 +274,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <strong>296</strong>: 1029–1031 <a href="https://doi.org/10.1126/science.1069675">DOI</a>: 10.1126/science.1069675</li>
 </ul>
 <hr>
-<center>
-<button class="btn btn-lg btn-secondary" type="button">
-This post is based on my previous <a href="https://twitter.com/ikashnitsky/status/1367856010476613632">Twitter thread</a>.
-</button>
-</center>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+This post is based on my previous <a href="https://twitter.com/ikashnitsky/status/1367856010476613632">Twitter thread</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 
 
 <!-- -->
@@ -477,7 +485,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2021-03-05"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, tw, demography-101, life expectancy]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, tw, 101, life expectancy]</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>***</span>
@@ -495,7 +503,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="al">![](oeppen-vaupel.jpg)</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>*The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)*</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>**The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)**</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely <span class="co">[</span><span class="ot">illustrated by Dr. Robert Chung</span><span class="co">][robert-1]</span>: “I have a car that can display "driving range" given its estimate of fuel level and how I'm driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That's what period e(x) is like.”</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
@@ -524,13 +532,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">"btn btn-lg btn-secondary"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"button"</span><span class="kw">&gt;</span>This post is based on my previous <span class="co">[</span><span class="ot">Twitter thread</span><span class="co">](https://twitter.com/ikashnitsky/status/1367856010476613632)</span>.<span class="kw">&lt;/button&gt;&lt;/center&gt;</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is based on my previous [Twitter thread][thread]</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ot">[robert-1]: https://twitter.com/therealrchung/status/1365091610766155778</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ot">[robert-2]: https://twitter.com/therealrchung/status/1365313760416526340</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmd]: https://www.mortality.org/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ot">[robert-1]: https://twitter.com/therealrchung/status/1365091610766155778</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ot">[robert-2]: https://twitter.com/therealrchung/status/1365313760416526340</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmd]: https://www.mortality.org/</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ot">[thread]: https://twitter.com/ikashnitsky/status/1367856010476613632</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

@@ -967,10 +967,13 @@ gg_month_dec <- ggplot(df_month_dec, aes(x = factor(month)))+
 **Figure 9. The distribution of ice hockey players by month of birth -- separately by decades of birth**
 
 
-# Reproducibility
-The full R script can be downloaded [here][code].  
 
 ***
+
+::: {.callout-tip}
+# The full R script can be downloaded [here][code]
+:::
+
 
 
 [habr]: https://habrahabr.ru/post/301340/

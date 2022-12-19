@@ -97,7 +97,10 @@ What happened in Taiwan?
 
 ***
 
-<button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7).</button>
+::: {.callout-tip}
+# This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7)
+:::
+
 
 
 

@@ -234,20 +234,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
 <p>NUTS stands for the <a href="http://ec.europa.eu/eurostat/web/nuts/overview"><em>Nomenclature of Territorial Units For Statistics</em></a>. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.</p>
-<p><img src="fig-01-nuts.png" class="img-fluid"><em>Figure 1. Illustration of the principle of NUTS hierarchical system</em></p>
+<p><img src="fig-01-nuts.png" class="img-fluid"><strong>Figure 1. Illustration of the principle of NUTS hierarchical system</strong></p>
 <p>One of the objectives of NUTS was to provide more or less comparable administrative divisions for all countries of Europe. Nevertheless, in 2013, population figures for single NUTS-2 regions ranged from 28.5 thousands in <em>Aland island</em> (Finland) to almost 12 million in <em>Ile-de-France</em> (Paris and surroundings, France).</p>
-<section id="the-broken-time-series" class="level2"><h2 class="anchored" data-anchor-id="the-broken-time-series">The broken time series</h2>
+<section id="the-broken-time-series" class="level1"><h1>The broken time series</h1>
 <p>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat <a href="http://ec.europa.eu/eurostat/web/nuts/history">tracks all modifications</a> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2).</p>
-<p><img src="fig-02-nuts-changes.png" class="img-fluid"><em>Figure 2. Changes in NUTS between versions 2006 and 2010</em></p>
+<p><img src="fig-02-nuts-changes.png" class="img-fluid"><strong>Figure 2. Changes in NUTS between versions 2006 and 2010</strong></p>
 <p>Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past.</p>
 <p>To make thing even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In <a href="http://nidi.nl/en/research/al/270rdc">my PhD project</a> I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection <a href="http://ec.europa.eu/eurostat/web/population-demography-migration-projections/population-projections-data">EUROPOP2013</a> is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on <a href="https://doi.org/10.6084/m9.figshare.3084394">population age structures</a> and <a href="https://doi.org/10.6084/m9.figshare.3084418">deaths</a>, as downloaded in 2015, to <a href="https://figshare.com/">figshare</a>.</p>
-</section><section id="denmark" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="denmark">Denmark</h2>
+</section><section id="denmark" class="level1 page-columns page-full"><h1>Denmark</h1>
 <p>Some countries had to perform major changes in their systems of territorial division to fit the NUTS standards. <a href="http://www.tandfonline.com/doi/abs/10.1080/03003930903560562">The most significant reform happened in Denmark in 2007</a>, where the former 271 municipalities were transformed into the new 98 municipalities. At the same time, NUTS was introduced, so that 98 municipalities were allocated to 11 NUTS-3 regions, which aggregate to 5 NUTS-2 regions. Typically, for a small country, there is only one NUTS-1 region in Denmark, which is the whole country.</p>
 <p>As far as I know, there was no official attempt of Eurostat to reconstruct the time series for Denmark before 2007. The typical map of Eurostat for the pre-2007 period shows Denmark as “no data available” country (figure 3).</p>
-<p><img src="fig-03-nuts-2-life-exp.png" class="img-fluid"><em>Figure 3. Life expectancy at birth in European NUTS-2 regions, 2006; a screenshot from the Eurostat’s <a href="http://ec.europa.eu/eurostat/cache/RCI">interactive data exploratory tool</a></em></p>
+<p><img src="fig-03-nuts-2-life-exp.png" class="img-fluid"><strong>Figure 3. Life expectancy at birth in European NUTS-2 regions, 2006; a screenshot from the Eurostat’s <a href="http://ec.europa.eu/eurostat/cache/RCI">interactive data exploratory tool</a></strong></p>
 <div class="page-columns page-full"><p>Such a data loss is somewhat surprising for a country such as Denmark. It might be quite difficult to match the old and new municipal systems; but it should be relatively easy to re-aggregate the old municipalities into the new (higher level) NUTS regions. That is precisely what I did during my data preparation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and what I now want to share in this post.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;I have spent quite some time searching if someone else did the job before me and failed to find.</p></li></div></div>
 <p>The task is basically to identify which of the old 271 municipalities are located within the modern 11 NUTS-3 regions and to aggregate the municipal data. Then, NUTS-3 data is easily aggregated for the NUTS-2 level. Such a task could have meant working late into the night, but luckily we live in the GIS era. I used GIS to match the old municipalities with the NUTS-3 regions. Here I want to show (with code) how the task can be performed using the amazing and opensource <a href="https://cran.r-project.org">R</a>. Below I show the process of matching old municipalities to the NUTS regions and the process that I used to aggregate population data.</p>
-</section><section id="data" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="data">Data</h2>
+</section><section id="data" class="level1 page-columns page-full"><h1>Data</h1>
 <p>The data on the population age structures for the old 271 municipalities of Denmark was downloaded from the <a href="www.statbank.dk/BEF1A">official website of Statistics Denmark</a>. The system only allows you to grab up to 10K cells for unregistered users and up to 100K for registered users. So the process of downloading the data involves some tedious manual manipulations. For the purpose of my phd project, I downloaded the data for the period 2001-2006; but, if needed, the data is available since 1979. The data, downloaded in 2015 and ‘tidied up’ can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/BEF1A.csv.gz">here</a>.</p>
 <div class="page-columns page-full"><p>I have spent a lot of time trying to find geodata with the boundaries of the old municipalities. Now, coming back to the topic more than 1.5 year later, I failed to identify the original source of the shapefile, though I am pretty sure that it came from <a href="http://www.geodatabiblioteket.dk/index.php">here</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The copy of the shapefile that I used can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006utf8.tgz">here</a>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.</p></li></div></div>
 <p>Finally, we need a shapefile of NUTS-3 regions. It can be easily downloaded from <a href="http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">Eurostat geodata repository</a>. The shapefile that I used is “NUTS_2010_20M_SH.zip”. The selection of the 11 Danish regions can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz">here</a>.</p>
@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="va">mun_coord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/coordinates.html">coordinates</a></span><span class="op">(</span><span class="va">sp_mun</span><span class="op">)</span><span class="op">)</span>, <span class="va">sp_mun</span><span class="op">@</span><span class="va">data</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>long <span class="op">=</span> <span class="va">V1</span>, lat <span class="op">=</span> <span class="va">V2</span>, <span class="va">enhedid</span>, <span class="va">objectid</span>, name <span class="op">=</span> <span class="va">navn</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="spatial-matching" class="level2"><h2 class="anchored" data-anchor-id="spatial-matching">Spatial matching</h2>
+</section><section id="spatial-matching" class="level1"><h1>Spatial matching</h1>
 <p>Let’s first have a look at the map.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
@@ -316,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>                   color <span class="op">=</span> <span class="va">brbg</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-04-ref-map.png" class="img-fluid"><em>Figure 4. Reference map of the old municipalities and NUTS-3 regions of Denmark</em></p>
+<p><img src="fig-04-ref-map.png" class="img-fluid"><strong>Figure 4. Reference map of the old municipalities and NUTS-3 regions of Denmark</strong></p>
 <p>We can easily see that the boundaries of the municipalities (light blue) are much more precise than that of the NUTS-3 regions (orange/brown). This is not a problem as long as all the centroids of the municipalities fall within the boundaries of the NUTS-3 regions, which seems to be true for all municipalities except for the easternmost one. A quick check reveals that this is <a href="https://en.wikipedia.org/wiki/Ertholmene">Christiansø</a>, a tiny fortified island, whose <a href="http://www.christiansoe.dk/historien">history</a> goes back to the Middle Ages. It has a special status and <a href="http://www.dst.dk/da/Statistik/dokumentation/Nomenklaturer/NUTS">is not included</a> into the NUTS system. For further manipulations, Christiansø can safely merge it with the close-by Bornholm.</p>
 <p>To identify which municipalities fall into which NUTS regions, I use the spatial overlap function (<code>over</code>) from <code>sp</code> package. Here I should thank <a href="https://www.nhh.no/en/employees/faculty/roger-bivand/">Roger Bivand</a>, a person who made it possible to do any spatial analysis in R.</p>
 <div class="cell">
@@ -343,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-05-map-match.png" class="img-fluid"><em>Figure 5. Checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark</em></p>
+<p><img src="fig-05-map-match.png" class="img-fluid"><strong>Figure 5. Checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark</strong></p>
 <p>Not bad. But there is an “NA” category that represents all the cases where the spatial match failed. How many such cases do we have?</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># how many failed cases do we have</span></span>
@@ -382,9 +382,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-06-map-check.png" class="img-fluid"><em>Figure 6. Re-checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark</em></p>
+<p><img src="fig-06-map-check.png" class="img-fluid"><strong>Figure 6. Re-checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark</strong></p>
 <p>Now everything seems okay.</p>
-</section><section id="joining-spatial-and-statistical-data-fuzzy-join" class="level2"><h2 class="anchored" data-anchor-id="joining-spatial-and-statistical-data-fuzzy-join">Joining spatial and statistical data (fuzzy join)</h2>
+</section><section id="joining-spatial-and-statistical-data-fuzzy-join" class="level1"><h1>Joining spatial and statistical data (fuzzy join)</h1>
 <p>The next task is to join the spatial data and statistical data together. The spatial layer for municipalities does not contain the codes that are used by Statistics Denmark, so I have to match municipalities in the two datasets by their names. This is quite a difficult task. Names can be written slightly differently, there are some special characters in Danish alphabet, and some municipalities may have experienced a change of name. To solve the task most efficiently, I used the ‘Fuzzy String Matching’ approach which is implemented in the <a href="https://github.com/dgrtwo/fuzzyjoin"><code>fuzzyjoin</code></a> package by <a href="http://varianceexplained.org/about/">David Robinson</a>.</p>
 <p>First, I simplify the names in both datasets turning them into lowercase, replacing the character “å” with “aa”, and removing the “Kommune” word in the spatial dataset names. Please note that I downloaded (separately) a small selection from Statistics Denmark to have a <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-names-codes.csv.gz">lightweight dataframe</a> with municipal codes and names.</p>
 <div class="cell">
@@ -471,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># finally, attach the NUTS info to matched table</span></span>
 <span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">fuz_joined_2</span>, <span class="va">fixed</span>, <span class="st">"objectid"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="aggregate-old-municipal-data-to-nuts-levels" class="level2"><h2 class="anchored" data-anchor-id="aggregate-old-municipal-data-to-nuts-levels">Aggregate old municipal data to NUTS levels</h2>
+</section><section id="aggregate-old-municipal-data-to-nuts-levels" class="level1"><h1>Aggregate old municipal data to NUTS levels</h1>
 <p>The previous manipulations yielded a dataframe that links statistical codes of the old municipalities with the corresponding NUTS regions. The last thing that has to be done is aggregation. I will attach the “key” dataset to a statistical dataset and aggregate the data at NUTS-3 and NUTS-2 levels.</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># finally, we only need to aggregate the old stat data</span></span>
@@ -520,14 +520,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-07-map-sw.png" class="img-fluid"><em>Figure 7. The share of working age (15-64) population by NUTS-3 regions of Denmark in 2001</em></p>
+<p><img src="fig-07-map-sw.png" class="img-fluid"><strong>Figure 7. The share of working age (15-64) population by NUTS-3 regions of Denmark in 2001</strong></p>
 <p>The result (thankfully!) looks realistic, with higher shares of the working-age population in the capital region, and in other regions that have relatively big cities.</p>
 <hr>
-<center>
-<button class="btn btn-lg btn-secondary" type="button">
-<a href="https://demotrends.wordpress.com/2017/03/16/working-with-spatial-data-to-generate-a-consistent-demographic-time-series/">This post is written for Demotrends</a>.
-</button>
-</center>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<a href="https://demotrends.wordpress.com/2017/03/16/working-with-spatial-data-to-generate-a-consistent-demographic-time-series/">This post is written for Demotrends</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 
 
 <!-- -->
@@ -1119,42 +1127,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb23-400"><a href="#cb23-400" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-401"><a href="#cb23-401" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb23-402"><a href="#cb23-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-403"><a href="#cb23-403" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">"btn btn-lg btn-secondary"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"button"</span><span class="kw">&gt;</span><span class="co">[</span><span class="ot">This post is written for Demotrends</span><span class="co">][demotrends]</span>.<span class="kw">&lt;/button&gt;&lt;/center&gt;</span></span>
-<span id="cb23-404"><a href="#cb23-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-405"><a href="#cb23-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-403"><a href="#cb23-403" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb23-404"><a href="#cb23-404" aria-hidden="true" tabindex="-1"></a><span class="fu"># [This post is written for Demotrends][demotrends]</span></span>
+<span id="cb23-405"><a href="#cb23-405" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb23-406"><a href="#cb23-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-407"><a href="#cb23-407" aria-hidden="true" tabindex="-1"></a><span class="ot">[nuts-overview]: http://ec.europa.eu/eurostat/web/nuts/overview</span></span>
-<span id="cb23-408"><a href="#cb23-408" aria-hidden="true" tabindex="-1"></a><span class="ot">[nuts-hist]: http://ec.europa.eu/eurostat/web/nuts/history</span></span>
-<span id="cb23-409"><a href="#cb23-409" aria-hidden="true" tabindex="-1"></a><span class="ot">[phd]: http://nidi.nl/en/research/al/270rdc</span></span>
-<span id="cb23-410"><a href="#cb23-410" aria-hidden="true" tabindex="-1"></a><span class="ot">[proj]: http://ec.europa.eu/eurostat/web/population-demography-migration-projections/population-projections-data</span></span>
-<span id="cb23-411"><a href="#cb23-411" aria-hidden="true" tabindex="-1"></a><span class="ot">[pop]: https://doi.org/10.6084/m9.figshare.3084394</span></span>
-<span id="cb23-412"><a href="#cb23-412" aria-hidden="true" tabindex="-1"></a><span class="ot">[deaths]: https://doi.org/10.6084/m9.figshare.3084418</span></span>
-<span id="cb23-413"><a href="#cb23-413" aria-hidden="true" tabindex="-1"></a><span class="ot">[eurostat-map]: http://ec.europa.eu/eurostat/cache/RCI</span></span>
-<span id="cb23-414"><a href="#cb23-414" aria-hidden="true" tabindex="-1"></a><span class="ot">[cran]: https://cran.r-project.org</span></span>
-<span id="cb23-415"><a href="#cb23-415" aria-hidden="true" tabindex="-1"></a><span class="ot">[stat-den]: </span>www.statbank.dk/BEF1A</span>
-<span id="cb23-416"><a href="#cb23-416" aria-hidden="true" tabindex="-1"></a><span class="ot">[data-mun-pop]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/BEF1A.csv.gz</span></span>
-<span id="cb23-417"><a href="#cb23-417" aria-hidden="true" tabindex="-1"></a><span class="ot">[aalborg]: http://www.geodatabiblioteket.dk/index.php</span></span>
-<span id="cb23-418"><a href="#cb23-418" aria-hidden="true" tabindex="-1"></a><span class="ot">[geo-old]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006utf8.tgz</span></span>
-<span id="cb23-419"><a href="#cb23-419" aria-hidden="true" tabindex="-1"></a><span class="ot">[eur-geo]: http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts</span></span>
-<span id="cb23-420"><a href="#cb23-420" aria-hidden="true" tabindex="-1"></a><span class="ot">[geo-dk]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz</span></span>
-<span id="cb23-421"><a href="#cb23-421" aria-hidden="true" tabindex="-1"></a><span class="ot">[dk-prj]: https://epsg.io/3044</span></span>
-<span id="cb23-422"><a href="#cb23-422" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch]: https://en.wikipedia.org/wiki/Ertholmene</span></span>
-<span id="cb23-423"><a href="#cb23-423" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch-hist]: http://www.christiansoe.dk/historien</span></span>
-<span id="cb23-424"><a href="#cb23-424" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch-stat-dk]: http://www.dst.dk/da/Statistik/dokumentation/Nomenklaturer/NUTS</span></span>
-<span id="cb23-425"><a href="#cb23-425" aria-hidden="true" tabindex="-1"></a><span class="ot">[fuz]: https://github.com/dgrtwo/fuzzyjoin</span></span>
-<span id="cb23-426"><a href="#cb23-426" aria-hidden="true" tabindex="-1"></a><span class="ot">[drob]: http://varianceexplained.org/about/</span></span>
-<span id="cb23-427"><a href="#cb23-427" aria-hidden="true" tabindex="-1"></a><span class="ot">[stat-names]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-names-codes.csv.gz</span></span>
-<span id="cb23-428"><a href="#cb23-428" aria-hidden="true" tabindex="-1"></a><span class="ot">[herst]: http://albertslund.lokalavisen.dk/fra-herstederne-til-albertslund-/20131017/artikler/710179831</span></span>
-<span id="cb23-429"><a href="#cb23-429" aria-hidden="true" tabindex="-1"></a><span class="ot">[biv]: https://www.nhh.no/en/employees/faculty/roger-bivand/</span></span>
-<span id="cb23-430"><a href="#cb23-430" aria-hidden="true" tabindex="-1"></a><span class="ot">[figshare]: https://figshare.com/</span></span>
-<span id="cb23-431"><a href="#cb23-431" aria-hidden="true" tabindex="-1"></a><span class="ot">[reform]: http://www.tandfonline.com/doi/abs/10.1080/03003930903560562</span></span>
-<span id="cb23-432"><a href="#cb23-432" aria-hidden="true" tabindex="-1"></a><span class="ot">[demotrends]: https://demotrends.wordpress.com/2017/03/16/working-with-spatial-data-to-generate-a-consistent-demographic-time-series/</span></span>
-<span id="cb23-433"><a href="#cb23-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-434"><a href="#cb23-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-407"><a href="#cb23-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-408"><a href="#cb23-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-409"><a href="#cb23-409" aria-hidden="true" tabindex="-1"></a><span class="ot">[nuts-overview]: http://ec.europa.eu/eurostat/web/nuts/overview</span></span>
+<span id="cb23-410"><a href="#cb23-410" aria-hidden="true" tabindex="-1"></a><span class="ot">[nuts-hist]: http://ec.europa.eu/eurostat/web/nuts/history</span></span>
+<span id="cb23-411"><a href="#cb23-411" aria-hidden="true" tabindex="-1"></a><span class="ot">[phd]: http://nidi.nl/en/research/al/270rdc</span></span>
+<span id="cb23-412"><a href="#cb23-412" aria-hidden="true" tabindex="-1"></a><span class="ot">[proj]: http://ec.europa.eu/eurostat/web/population-demography-migration-projections/population-projections-data</span></span>
+<span id="cb23-413"><a href="#cb23-413" aria-hidden="true" tabindex="-1"></a><span class="ot">[pop]: https://doi.org/10.6084/m9.figshare.3084394</span></span>
+<span id="cb23-414"><a href="#cb23-414" aria-hidden="true" tabindex="-1"></a><span class="ot">[deaths]: https://doi.org/10.6084/m9.figshare.3084418</span></span>
+<span id="cb23-415"><a href="#cb23-415" aria-hidden="true" tabindex="-1"></a><span class="ot">[eurostat-map]: http://ec.europa.eu/eurostat/cache/RCI</span></span>
+<span id="cb23-416"><a href="#cb23-416" aria-hidden="true" tabindex="-1"></a><span class="ot">[cran]: https://cran.r-project.org</span></span>
+<span id="cb23-417"><a href="#cb23-417" aria-hidden="true" tabindex="-1"></a><span class="ot">[stat-den]: </span>www.statbank.dk/BEF1A</span>
+<span id="cb23-418"><a href="#cb23-418" aria-hidden="true" tabindex="-1"></a><span class="ot">[data-mun-pop]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/BEF1A.csv.gz</span></span>
+<span id="cb23-419"><a href="#cb23-419" aria-hidden="true" tabindex="-1"></a><span class="ot">[aalborg]: http://www.geodatabiblioteket.dk/index.php</span></span>
+<span id="cb23-420"><a href="#cb23-420" aria-hidden="true" tabindex="-1"></a><span class="ot">[geo-old]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006utf8.tgz</span></span>
+<span id="cb23-421"><a href="#cb23-421" aria-hidden="true" tabindex="-1"></a><span class="ot">[eur-geo]: http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts</span></span>
+<span id="cb23-422"><a href="#cb23-422" aria-hidden="true" tabindex="-1"></a><span class="ot">[geo-dk]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz</span></span>
+<span id="cb23-423"><a href="#cb23-423" aria-hidden="true" tabindex="-1"></a><span class="ot">[dk-prj]: https://epsg.io/3044</span></span>
+<span id="cb23-424"><a href="#cb23-424" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch]: https://en.wikipedia.org/wiki/Ertholmene</span></span>
+<span id="cb23-425"><a href="#cb23-425" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch-hist]: http://www.christiansoe.dk/historien</span></span>
+<span id="cb23-426"><a href="#cb23-426" aria-hidden="true" tabindex="-1"></a><span class="ot">[ch-stat-dk]: http://www.dst.dk/da/Statistik/dokumentation/Nomenklaturer/NUTS</span></span>
+<span id="cb23-427"><a href="#cb23-427" aria-hidden="true" tabindex="-1"></a><span class="ot">[fuz]: https://github.com/dgrtwo/fuzzyjoin</span></span>
+<span id="cb23-428"><a href="#cb23-428" aria-hidden="true" tabindex="-1"></a><span class="ot">[drob]: http://varianceexplained.org/about/</span></span>
+<span id="cb23-429"><a href="#cb23-429" aria-hidden="true" tabindex="-1"></a><span class="ot">[stat-names]: https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-names-codes.csv.gz</span></span>
+<span id="cb23-430"><a href="#cb23-430" aria-hidden="true" tabindex="-1"></a><span class="ot">[herst]: http://albertslund.lokalavisen.dk/fra-herstederne-til-albertslund-/20131017/artikler/710179831</span></span>
+<span id="cb23-431"><a href="#cb23-431" aria-hidden="true" tabindex="-1"></a><span class="ot">[biv]: https://www.nhh.no/en/employees/faculty/roger-bivand/</span></span>
+<span id="cb23-432"><a href="#cb23-432" aria-hidden="true" tabindex="-1"></a><span class="ot">[figshare]: https://figshare.com/</span></span>
+<span id="cb23-433"><a href="#cb23-433" aria-hidden="true" tabindex="-1"></a><span class="ot">[reform]: http://www.tandfonline.com/doi/abs/10.1080/03003930903560562</span></span>
+<span id="cb23-434"><a href="#cb23-434" aria-hidden="true" tabindex="-1"></a><span class="ot">[demotrends]: https://demotrends.wordpress.com/2017/03/16/working-with-spatial-data-to-generate-a-consistent-demographic-time-series/</span></span>
 <span id="cb23-435"><a href="#cb23-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-436"><a href="#cb23-436" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Vrangbæk, K. (2010). Structural Reform in Denmark, 2007–09: Central Reform Processes in a Decentralised Environment. Local Government Studies, 36(2), 205–221. https://doi.org/10.1080/03003930903560562</span>
-<span id="cb23-437"><a href="#cb23-437" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>I have spent quite some time searching if someone else did the job before me and failed to find.</span>
-<span id="cb23-438"><a href="#cb23-438" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-436"><a href="#cb23-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-437"><a href="#cb23-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-438"><a href="#cb23-438" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Vrangbæk, K. (2010). Structural Reform in Denmark, 2007–09: Central Reform Processes in a Decentralised Environment. Local Government Studies, 36(2), 205–221. https://doi.org/10.1080/03003930903560562</span>
+<span id="cb23-439"><a href="#cb23-439" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>I have spent quite some time searching if someone else did the job before me and failed to find.</span>
+<span id="cb23-440"><a href="#cb23-440" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

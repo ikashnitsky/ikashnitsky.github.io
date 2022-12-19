@@ -3,7 +3,7 @@ title: "What is life expectancy? And, even more important, what it isn't"
 description-meta: "{{< meta website.description >}}"
 date: "2021-03-05"
 image: teaser.png
-categories: [r, tw, demography-101, life expectancy]
+categories: [r, tw, 101, life expectancy]
 ---
 
 ***
@@ -21,7 +21,7 @@ This big assumption of unchanging age profile of death rates almost never holds 
 
 ![](oeppen-vaupel.jpg)
  
-*The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)*
+**The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)**
 
 Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely [illustrated by Dr. Robert Chung][robert-1]: “I have a car that can display "driving range" given its estimate of fuel level and how I'm driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That's what period e(x) is like.”
 
@@ -50,11 +50,13 @@ At age 34 remaining life expectancy was the same as at birth. Only, it applied t
 
 ***
 
-<center><button class="btn btn-lg btn-secondary" type="button">This post is based on my previous [Twitter thread](https://twitter.com/ikashnitsky/status/1367856010476613632).</button></center>
-
+::: {.callout-tip}
+# This post is based on my previous [Twitter thread][thread]
+:::
 
 
 [robert-1]: https://twitter.com/therealrchung/status/1365091610766155778
 [robert-2]: https://twitter.com/therealrchung/status/1365313760416526340
 [hmd]: https://www.mortality.org/
+[thread]: https://twitter.com/ikashnitsky/status/1367856010476613632
 

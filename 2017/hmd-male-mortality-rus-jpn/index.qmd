@@ -65,8 +65,9 @@ In the middle ages, male mortality in Russian is up to 10 times higher than in J
 
 ***
 
-<button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/792305556132331520) and [gist](https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2).</button>
-
+::: {.callout-tip}
+# This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/792305556132331520) and [gist](https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2)
+:::
 
 
 

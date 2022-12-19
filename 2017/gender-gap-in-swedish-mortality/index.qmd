@@ -60,8 +60,9 @@ Today it is common knowledge that male mortality is always higher than female. T
 
 ***
 
-<center><button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/802310186560081920) and [gist](https://gist.github.com/ikashnitsky/872d3a97390a60d26eeb64f0f5600067).</button></center>
-
+::: {.callout-tip}
+# This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/802310186560081920) and [gist](https://gist.github.com/ikashnitsky/872d3a97390a60d26eeb64f0f5600067)
+:::
 
 
 [^1]: By using this data, I agree to the [user agreement][lic]

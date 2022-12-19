@@ -1,0 +1,84 @@
+---
+title: "sjrdata: all SCImago Journal & Country Rank data, ready for R"
+description-meta: "{{< meta website.description >}}"
+date: "2018-09-23"
+image: teaser.png
+categories: [r, package, sjr, bibliometrics]
+---
+
+***
+
+![](sjrdata-logo.png)
+
+
+SCImago Journal & Country Rank provides valuable estimates of academic journals' prestige. The data is freely available at [the project website][site] and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled them together, ready to be used in R. 
+
+Basically, all the package gives you three easily accessible data frames: `sjr_journals` (Journal Rank), `sjr_countries` (Country Rank, year-by-year), and `sjr_countries_1996_2017` (Country Rank, all years together).
+
+The whole process of data acquisition can be found in the [github repo][repo] (`dev` directory) or this [gist][gist]. 
+
+
+# How to use `sjrdata`
+
+Install the package from github, load it and use the data. 
+
+The installation will take a while since the main dataset `sjr_journals` is pretty heavy (15.7MB compressed).
+
+```{r, eval=FALSE}
+# install
+devtools::install_github("ikashnitsky/sjrdata")
+
+# load
+library(sjrdata)
+
+# use
+View(sjr_countries)
+```
+
+
+# A couple of examples
+
+Let's compare _Nature_ and _Science_.
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(sjrdata)
+
+sjr_journals %>%
+    filter(title %in% c("Nature", "Science")) %>%
+    ggplot(aes(cites_doc_2years, sjr, color = title))+
+    geom_path(size = 1, alpha = .5)+
+    geom_label(aes(label = year %>% str_sub(3, 4)),
+              size = 3, label.padding = unit(.15, "line"))
+```
+
+![](nature-science.png)
+
+
+Several demographic journals.
+
+```{r, eval=FALSE}
+sjr_journals %>%
+    filter(title %in% c(
+        "Demography",
+        "Population and Development Review",
+        "European Journal of Population",
+        "Population Studies",
+        "Demographic Research",
+        "Genus"
+    )) %>%
+    ggplot(aes(cites_doc_2years, sjr, color = title))+
+    geom_point()+
+    stat_ellipse()+
+    scale_color_brewer(palette = "Dark2")+
+    coord_cartesian(expand = F)
+```
+
+![](demographic-journals.png)
+
+
+***
+
+[site]: https://www.scimagojr.com
+[repo]: https://github.com/ikashnitsky/sjrdata 
+[gist]: https://gist.github.com/ikashnitsky/3133422ef85ff3f3d65be9926d6bd990

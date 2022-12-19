@@ -1,0 +1,14 @@
+{
+  "hash": "b6ea2a6cd6a5e3b48f176e4cf801b291",
+  "result": {
+    "markdown": "---\ntitle: \"sjrdata: all SCImago Journal & Country Rank data, ready for R\"\ndescription-meta: \"{{< meta website.description >}}\"\ndate: \"2018-09-23\"\nimage: teaser.png\ncategories: [r, package, sjr, bibliometrics]\n---\n\n\n***\n\n![](sjrdata-logo.png)\n\n\nSCImago Journal & Country Rank provides valuable estimates of academic journals' prestige. The data is freely available at [the project website][site] and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled them together, ready to be used in R. \n\nBasically, all the package gives you three easily accessible data frames: `sjr_journals` (Journal Rank), `sjr_countries` (Country Rank, year-by-year), and `sjr_countries_1996_2017` (Country Rank, all years together).\n\nThe whole process of data acquisition can be found in the [github repo][repo] (`dev` directory) or this [gist][gist]. \n\n\n# How to use `sjrdata`\n\nInstall the package from github, load it and use the data. \n\nThe installation will take a while since the main dataset `sjr_journals` is pretty heavy (15.7MB compressed).\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# install\ndevtools::install_github(\"ikashnitsky/sjrdata\")\n\n# load\nlibrary(sjrdata)\n\n# use\nView(sjr_countries)\n```\n:::\n\n\n\n# A couple of examples\n\nLet's compare _Nature_ and _Science_.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(sjrdata)\n\nsjr_journals %>%\n    filter(title %in% c(\"Nature\", \"Science\")) %>%\n    ggplot(aes(cites_doc_2years, sjr, color = title))+\n    geom_path(size = 1, alpha = .5)+\n    geom_label(aes(label = year %>% str_sub(3, 4)),\n              size = 3, label.padding = unit(.15, \"line\"))\n```\n:::\n\n\n![](nature-science.png)\n\n\nSeveral demographic journals.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsjr_journals %>%\n    filter(title %in% c(\n        \"Demography\",\n        \"Population and Development Review\",\n        \"European Journal of Population\",\n        \"Population Studies\",\n        \"Demographic Research\",\n        \"Genus\"\n    )) %>%\n    ggplot(aes(cites_doc_2years, sjr, color = title))+\n    geom_point()+\n    stat_ellipse()+\n    scale_color_brewer(palette = \"Dark2\")+\n    coord_cartesian(expand = F)\n```\n:::\n\n\n![](demographic-journals.png)\n\n\n***\n\n[site]: https://www.scimagojr.com\n[repo]: https://github.com/ikashnitsky/sjrdata \n[gist]: https://gist.github.com/ikashnitsky/3133422ef85ff3f3d65be9926d6bd990\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
