@@ -5,6 +5,7 @@ date: "2017-01-29"
 categories: [r]
 ---
 
+***
 
 Welcome to my blog!
 
@@ -35,3 +36,4 @@ Enjoy!
 
 P.S. If something similar exists in one of the well known packages, please tell me.
 
+***s

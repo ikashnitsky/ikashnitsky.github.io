@@ -31,7 +31,7 @@ website:
   site-url: "https://ikashnitsky.github.io"
   repo-url: "https://github.com/ikashnitsky/ikashnitsky.github.io"
 
-#  google-analytics: "UA-527449-5"
+  # google-analytics: "UA-93349619-1"
 
   open-graph:
     image: "/img/card-tw.png"
@@ -47,13 +47,15 @@ website:
   navbar:
     pinned: true
 
-    right:
+    left:
       - text: "About"
         href: "about.qmd"
       - text: "CV"
         href: "cv.qmd"
       - text: "Demographic Digest"
         file: "dd.qmd"
+
+    right:
       - icon: github
         aria-label: github
         href: https://github.com/ikashnitsky
@@ -70,6 +72,9 @@ website:
         aria-label: rss
         href: atom.xml
 
+  body-header: |
+    <script defer data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script>
+
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Ilya Kashnitsky</span>
@@ -77,7 +82,6 @@ website:
     center: |
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
       <span class="faux-block"><a rel="me" href="https://fosstodon.org/@ikashnitsky"> {{< fa brands mastodon >}} <strong>Mastodon</strong></a></span>
-      <script defer data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script>
 
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>

@@ -5,6 +5,7 @@ date: "2017-02-14"
 categories: [r, demography, bibliometrics]
 ---
 
+***
 
 This week, the 30-th issue of my Demographic Digest [was published](http://demoscope.ru/weekly/2017/0715/digest01.php).   
 
@@ -94,7 +95,7 @@ treemap(dtf = df_sjr,
 
 Note that the lion's share of Population Studies is mainly explained by [the first issue of Demographic Digest](http://demoscope.ru/weekly/2015/0661/digest01.php), in which I covered all the papers from the brilliant special issue [Population — The long view](http://www.tandfonline.com/toc/rpst20/69/sup1).  
 
-
+***
 
 [^1]: I finish each issue of Demographic Digest with a bonus, in which I cover fun papers, discuss some academia related issues, or just provide link to cool visualizations and projects.
 [^2]: I also tried `portfolio` and `treemapify`, but liked the output from `treemap` most. 

@@ -2,8 +2,10 @@
 title: "Sex ratios in all countries from Human Mortality Database"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-05"
-categories: [r, hmd, death rates]
+categories: [r, tw, hmd, death rates]
 ---
+
+***
 
 Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their life-course. The sex ratio at birth does not vary dramatically[^1] and is more or less constant at the level of 105-106 boys per 100 girls. Hence, differences in the sex ratio profiles of countries mainly reflect gender gap in mortality. In this post I will compare sex ratios age profiles in all countries included in [Human Mortality Database](http://www.mortality.org).
 
@@ -92,10 +94,10 @@ There is quite a variety in the sex ratio profiles. If the initial prevalence of
 
 What happened in Taiwan?
 
+***
+
 <button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7).</button>
 
-
-***
 
 
 [^1]: There are cases of big deviations from this natural constant. The most well known one is the skewed sex ratio in China, where decades of One Child Policy together with strong traditional son preference resulted in selective abortions. Read more: Frejka et. al ([2010](http://dx.doi.org/10.1111/j.1728-4457.2010.00347.x)); Wang ([2011](http://dx.doi.org/10.1111/j.1728-4457.2011.00383.x)); Basten and Verropoulou ([2013](http://dx.doi.org/10.1080/00324728.2013.826372)). 

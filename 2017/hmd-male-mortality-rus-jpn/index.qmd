@@ -2,8 +2,10 @@
 title: "Male mortality in Russia and Japan"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-06"
-categories: [r, hmd, death rates, russia]
+categories: [r, tw, hmd, death rates, russia]
 ---
+
+***
 
 Russia is sadly notorious for its ridiculously high adult male mortality. According to [Human Mortality Database data (2010)](http://www.mortality.org), the probability for a Russian men to survive from 20 to 60 was just 0.64 [^1]. For women the probability is 0.87. This huge gender disproportion in mortality results in a peculiar sex ratio profile (see [my old DemoTrends post](https://demotrends.wordpress.com/2015/01/14/the-land-of-babushka/) and [the previous blog post](https://ikashnitsky.github.io/2017/hmd-sex-all-ratio)).  
 
@@ -60,11 +62,12 @@ gg <- ggplot(df, aes(age, ru_rate)) +
 
 In the middle ages, male mortality in Russian is up to 10 times higher than in Japan!
 
+***
 
 <button class="btn btn-lg btn-secondary" type="button">This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/792305556132331520) and [gist](https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2).</button>
 
 
-***
+
 
 
 [^1]: To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91). 

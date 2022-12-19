@@ -5,10 +5,12 @@ date: "2017-03-31"
 categories: [r, animaion, pyramid, sweden, prospective ageing]
 ---
 
-![](swe-animated.gif)
 
 
 ***
+
+![](swe-animated.gif)
+
   
 This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This visualization was created in collaboration with my colleague [Michael Boissonneault][mic]: (mostly) his idea and (mostly) my implementation. The animated visualization builds upon Michael's viz prepared for the submission to the highly anticipated event at the end June 2017 -- [Rostock Retreat Visualization][rrviz]. My visualization of the [provided Swedish dataset][data] can be found in [the previous post][prev-post].  
 

@@ -16,3 +16,9 @@ format:
         mapping: pathname
     quarto-template-params:
       banner-header-class: "blog-post"
+
+# Enable banner style title blocks
+# title-block-banner: "#85DADA"
+
+# # Turn on to rebuild all pages
+# freeze: false

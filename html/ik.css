@@ -58,6 +58,7 @@ $p-lighter-6:   #85DADA !default;
 $p-lighter-7:   #93E7E7 !default;
 $p-lighter-8:   #A1F4F4 !default;
 $p-lighter-9:   #B7FFFF !default;
+$p-lighter-x:   #EEFFFF !default;
 
 
 // $min-contrast-ratio: 2.6 !default;
@@ -76,17 +77,18 @@ $navbar-font-family: "Atkinson Hyperlegible" !default;
 $toc-font-family: "Atkinson Hyperlegible" !default;
 $footer-font-family: "Atkinson Hyperlegible" !default;
 
-$font-size-base: 1.2rem !default; // Assumes the browser default, typically `16px`
+$font-size-base: 1.07rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * .875 !default;
 
 
 // Body
 $body-color: $gray-800 !default;
+$body-bg: $p-lighter-x !default;
 
 // Links
 $link-color: $primary !default;
 $link-decoration: none !default;
-$link-hover-color: "#066666" !default;
+$link-hover-color: $p-darker-7 !default;
 $link-hover-decoration: underline !default;
 
 // Inline code

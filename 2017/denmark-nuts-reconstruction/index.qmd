@@ -6,7 +6,7 @@ categories: [r, rspatial, denmark, nuts]
 ---
 
 
-## NUTS
+***
 
 NUTS stands for the [*Nomenclature of Territorial Units For Statistics*][nuts-overview]. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.
 
@@ -397,9 +397,11 @@ ggplot()+
 
 The result (thankfully!) looks realistic, with higher shares of the working-age population in the capital region, and in other regions that have relatively big cities.
 
+***
+
 <center><button class="btn btn-lg btn-secondary" type="button">[This post is written for Demotrends][demotrends].</button></center>
 
-***
+
 
 [nuts-overview]: http://ec.europa.eu/eurostat/web/nuts/overview
 [nuts-hist]: http://ec.europa.eu/eurostat/web/nuts/history

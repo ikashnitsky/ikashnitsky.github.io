@@ -2,7 +2,7 @@
 title: "."
 description-meta: "{{< meta website.description >}}"
 image: img/ik.jpg
-title-block-banner: "img/bubbles.png"
+title-block-banner: img/bubbles-banner.jpg
 comments: false
 toc: false
 toc-location: right
@@ -46,7 +46,7 @@ This site gives an overview of my academic activities.
 
 I am an Assistant Professor at [Interdisciplinary Centre on Population Dynamics][cpop], University of Southern Denmark, Odense, Denmark. The main projects that I am currently involved in are on [the sustainability of pension systems under the changing mortality][indexation] and [the analysis of excess deaths due to the COVID-19 pandemic][excess].
 
-I did [my PhD project][phd] at the [University of Groningen][rug] and [Netherlands Interdisciplinary Demographic Institute][nidi] with the scientific supervision by Leo van Wissen and Joop de Beer. The focus of [the thesis][thesis] is on regional variations in aging across Europe, the demographic processes shaping them, their dynamics and possible implications for economies and societies. My interests include most topics relating to demography, population geography, spatial analysis and data visualization.
+I did [my PhD project][phd] at the [University of Groningen][rug] and [Netherlands Interdisciplinary Demographic Institute][nidi] with the scientific supervision by [Leo van Wissen][lvw] and [Joop de Beer][jdb]. The focus of [the thesis][thesis] is on regional variations in aging across Europe, the demographic processes shaping them, their dynamics and possible implications for economies and societies. My interests include most topics relating to demography, population geography, spatial analysis and data visualization.
 
 I am an avid [R](https://cran.r-project.org) user with deep interest in GIS, spatial analysis, and efficient data visualization, which I [teach often and with great pleasure](/tea). I am happy that [my blog](/) is included in the brilliant [R-bloggers](https://www.r-bloggers.com) project. 
 
@@ -75,8 +75,8 @@ Ilya
 [rug]: http://www.rug.nl
 [nidi]: http://nidi.nl/en
 [phd]: https://osf.io/d4hjx/
-[lvw]: https://nidi.nl/en/employees/leo-van-wissen
-[jdb]: https://twitter.com/BeerJoop
+[lvw]: https://nidi.nl/en/employees/leo-van-wissen/
+[jdb]: https://nidi.nl/en/employees/joop-de-beer/
 [6]: https://sites.google.com/site/ikashnitsky/home
 [thesis]: https://doi.org/10.33612/diss.134195227
 [indexation]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/research/method_development_for_ageing_research/pension_age

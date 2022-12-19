@@ -15,8 +15,8 @@
   <title>Who is old? Visualizing the concept of prospective ageing with animated population pyramids</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/who-is-old/index.html</link>
-  <description><![CDATA[ <p><img src="https://ikashnitsky.github.io/2017/who-is-old/swe-animated.gif" class="img-fluid"></p>
-<hr>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<p><img src="https://ikashnitsky.github.io/2017/who-is-old/swe-animated.gif" class="img-fluid"></p>
 <p>This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This visualization was created in collaboration with my colleague <a href="http://nidi.nl/en/staff/overview/boissonneault">Michael Boissonneault</a>: (mostly) his idea and (mostly) my implementation. The animated visualization builds upon Michael’s viz prepared for the submission to the highly anticipated event at the end June 2017 – <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a>. My visualization of the <a href="http://www.rostock-retreat.org/files/application2017/SWE.csv">provided Swedish dataset</a> can be found in <a href="../../2017/gender-gap-in-swedish-mortality/">the previous post</a>.</p>
 <section id="prospective-ageing" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="prospective-ageing">Prospective ageing</h2>
 <p>Over the past decades the alarmist views of the upcoming population ageing disaster became widely spread. True, with the growing number of countries approaching the ending of the Demographic Transition, the average/median age of their population increases rapidly, which is something unprecedented in the documented human history. But does that imply an unbearable burden of elderly population in the nearest future? Not necessarily.</p>
@@ -176,11 +176,11 @@
   <title>R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/index.html</link>
-  <description><![CDATA[ <section id="nuts" class="level2"><h2 class="anchored" data-anchor-id="nuts">NUTS</h2>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
 <p>NUTS stands for the <a href="http://ec.europa.eu/eurostat/web/nuts/overview"><em>Nomenclature of Territorial Units For Statistics</em></a>. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.</p>
 <p><img src="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/fig-01-nuts.png" class="img-fluid"><em>Figure 1. Illustration of the principle of NUTS hierarchical system</em></p>
 <p>One of the objectives of NUTS was to provide more or less comparable administrative divisions for all countries of Europe. Nevertheless, in 2013, population figures for single NUTS-2 regions ranged from 28.5 thousands in <em>Aland island</em> (Finland) to almost 12 million in <em>Ile-de-France</em> (Paris and surroundings, France).</p>
-</section><section id="the-broken-time-series" class="level2"><h2 class="anchored" data-anchor-id="the-broken-time-series">The broken time series</h2>
+<section id="the-broken-time-series" class="level2"><h2 class="anchored" data-anchor-id="the-broken-time-series">The broken time series</h2>
 <p>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat <a href="http://ec.europa.eu/eurostat/web/nuts/history">tracks all modifications</a> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2).</p>
 <p><img src="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/fig-02-nuts-changes.png" class="img-fluid"><em>Figure 2. Changes in NUTS between versions 2006 and 2010</em></p>
 <p>Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past.</p>
@@ -466,12 +466,12 @@
 </div>
 <p><img src="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/fig-07-map-sw.png" class="img-fluid"><em>Figure 7. The share of working age (15-64) population by NUTS-3 regions of Denmark in 2001</em></p>
 <p>The result (thankfully!) looks realistic, with higher shares of the working-age population in the capital region, and in other regions that have relatively big cities.</p>
+<hr>
 <center>
 <button class="btn btn-lg btn-secondary" type="button">
 <a href="https://demotrends.wordpress.com/2017/03/16/working-with-spatial-data-to-generate-a-consistent-demographic-time-series/">This post is written for Demotrends</a>.
 </button>
 </center>
-<hr>
 
 
 <!-- -->
@@ -489,9 +489,9 @@
   <title>Gender gap in Swedish mortality</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/gender-gap-in-swedish-mortality/index.html</link>
-  <description><![CDATA[ <section id="why-sweden" class="level2"><h2 class="anchored" data-anchor-id="why-sweden">Why Sweden?</h2>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
 <p>Sweden, with its high quality statistical record since 1748, is the natural choice for any demographic study that aims to cover population dynamics during a long period of time.</p>
-</section><section id="data" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="data" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="data">Data</h2>
 <div class="page-columns page-full"><p>The data used for this visualization comes from <a href="http://www.mortality.org">Human Mortality Database</a>. It can be easily accessed from an R session using <a href="https://cran.r-project.org/web/packages/HMDHFDplus/index.html"><code>HMDHFDplus</code></a> package by <a href="https://sites.google.com/site/timriffepersonal/about-me">Tim Riffe</a> (for examples see my previous posts - <a href="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/">one</a> and <a href="https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/">two</a>). For this exercise, I will use the dataset for Sweden that was provided for an application task for <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a><sup>1</sup>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;By using this data, I agree to the <a href="http://www.mortality.org/Public/UserAgreement.php">user agreement</a></p></li></div></div>
 <div class="cell">
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
@@ -529,19 +529,19 @@
 <p><img src="https://ikashnitsky.github.io/2017/gender-gap-in-swedish-mortality/sweden.png" class="img-fluid"></p>
 </section><section id="comment" class="level2"><h2 class="anchored" data-anchor-id="comment">Comment</h2>
 <p>Today it is common knowledge that male mortality is always higher than female. There are more males being born, then eventually the sex ratio levels due to higher male mortality (see <a href="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/">my previous post</a>). Though, male mortality was not always much higher. Back in the days, when infant mortality was much higher and women used to have much higher fertility, there was almost no gender gap in age-specific mortality levels. Constant pregnancy and frequent childbirths had a strong negative impact on female health and survival statistics. We can see that only in the second half of the 20-th century gender gap in mortality became substantial in Sweden.</p>
+<hr>
 <center>
 <button class="btn btn-lg btn-secondary" type="button">
 This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status/802310186560081920">tweet</a> and <a href="https://gist.github.com/ikashnitsky/872d3a97390a60d26eeb64f0f5600067">gist</a>.
 </button>
 </center>
-<hr>
 
 
 <!-- -->
 
 </section> ]]></description>
   <category>r</category>
-  <category>hmd</category>
+  <category>tw</category>
   <category>death rates</category>
   <category>sweden</category>
   <category>sex gap</category>
@@ -553,7 +553,8 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
   <title>30 issues of Demographic Digest - the most frequent journals</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/dd-journals-frequency/index.html</link>
-  <description><![CDATA[ <p>This week, the 30-th issue of my Demographic Digest <a href="http://demoscope.ru/weekly/2017/0715/digest01.php">was published</a>.</p>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<p>This week, the 30-th issue of my Demographic Digest <a href="http://demoscope.ru/weekly/2017/0715/digest01.php">was published</a>.</p>
 <p><a href="../../dd">Demographic Digest</a> is my project that started in November 2015. Twice a month I select fresh demographic papers and write brief summaries of them in Russian to be published in <a href="http://demoscope.ru">Demoscope Weekly</a>, the most popular Russian journal/website in social sciences. If you read Russian, you may want to browse <a href="http://demoscope.ru/weekly/arc/arcdigest.php">the archive</a> or visit <a href="https://ikashnitsky.github.io/dem-digest/">the website</a> of the project (which is still to be filled).</p>
 <p>The project is in the transitional phase now. Since 2016 Demographic Digest welcomes contributions from from external authors. In February 2017 I launched the <a href="https://www.hse.ru/org/hse/pfair/199751652.html">first iteration of a project</a> for the students of National Research University Higher School of Economics.</p>
 <div class="page-columns page-full"><p>To draw a line after the first phase of the project, I analysed what journals supplied Demographic Digest most frequently. Also, my desire was to try visualizing data with treemaps, which I mentioned in the bonus part<sup>1</sup> of <a href="http://demoscope.ru/weekly/2017/0715/digest03.php">the latest digest issue</a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;I finish each issue of Demographic Digest with a bonus, in which I cover fun papers, discuss some academia related issues, or just provide link to cool visualizations and projects.</p></li></div></div>
@@ -625,6 +626,7 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
 <section id="here-is-how-the-output-looks" class="level2"><h2 class="anchored" data-anchor-id="here-is-how-the-output-looks">Here is how the output looks</h2>
 <p><img src="https://ikashnitsky.github.io/2017/dd-journals-frequency/treemap-dd-stats.png" class="img-fluid"></p>
 <p>Note that the lion’s share of Population Studies is mainly explained by <a href="http://demoscope.ru/weekly/2015/0661/digest01.php">the first issue of Demographic Digest</a>, in which I covered all the papers from the brilliant special issue <a href="http://www.tandfonline.com/toc/rpst20/69/sup1">Population — The long view</a>.</p>
+<hr>
 
 
 <!-- -->
@@ -641,7 +643,8 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
   <title>Male mortality in Russia and Japan</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/index.html</link>
-  <description><![CDATA[ <div class="page-columns page-full"><p>Russia is sadly notorious for its ridiculously high adult male mortality. According to <a href="http://www.mortality.org">Human Mortality Database data (2010)</a>, the probability for a Russian men to survive from 20 to 60 was just 0.64 <sup>1</sup>. For women the probability is 0.87. This huge gender disproportion in mortality results in a peculiar sex ratio profile (see <a href="https://demotrends.wordpress.com/2015/01/14/the-land-of-babushka/">my old DemoTrends post</a> and <a href="https://ikashnitsky.github.io/2017/hmd-sex-all-ratio">the previous blog post</a>).</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91).</p></li></div></div>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<div class="page-columns page-full"><p>Russia is sadly notorious for its ridiculously high adult male mortality. According to <a href="http://www.mortality.org">Human Mortality Database data (2010)</a>, the probability for a Russian men to survive from 20 to 60 was just 0.64 <sup>1</sup>. For women the probability is 0.87. This huge gender disproportion in mortality results in a peculiar sex ratio profile (see <a href="https://demotrends.wordpress.com/2015/01/14/the-land-of-babushka/">my old DemoTrends post</a> and <a href="https://ikashnitsky.github.io/2017/hmd-sex-all-ratio">the previous blog post</a>).</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91).</p></li></div></div>
 <div class="page-columns page-full"><p>Now let’s compare age-specific mortality rates of Russian men to that of the Japanese. For years and years Japan performs best in reducing mortality. It became standard to compare mortality schedules of other countries to the Japanese one <sup>2</sup>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;See for example the recent <a href="http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf">NIDI working paper of Balachandran et. al (2017)</a>.</p></li></div></div>
 <p>First, I need to get HMD data for both Russian and Japanese males. Again, I am using the amazing <code>R</code> package <code>HMDHFDplus</code> of <a href="https://sites.google.com/site/timriffepersonal/">Tim Riffe</a> to download HMD data with just a couple of lines of <code>R</code> code.</p>
 <div class="cell">
@@ -682,16 +685,17 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
 </div>
 <p><img src="https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/male-mortality-compare.png" class="img-fluid"></p>
 <p>In the middle ages, male mortality in Russian is up to 10 times higher than in Japan!</p>
+<hr>
 <button class="btn btn-lg btn-secondary" type="button">
 This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status/792305556132331520">tweet</a> and <a href="https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2">gist</a>.
 </button>
-<hr>
 
 
 <!-- -->
 
  ]]></description>
   <category>r</category>
+  <category>tw</category>
   <category>hmd</category>
   <category>death rates</category>
   <category>russia</category>
@@ -703,7 +707,8 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
   <title>Sex ratios in all countries from Human Mortality Database</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/index.html</link>
-  <description><![CDATA[ <div class="page-columns page-full"><p>Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their life-course. The sex ratio at birth does not vary dramatically<sup>1</sup> and is more or less constant at the level of 105-106 boys per 100 girls. Hence, differences in the sex ratio profiles of countries mainly reflect gender gap in mortality. In this post I will compare sex ratios age profiles in all countries included in <a href="http://www.mortality.org">Human Mortality Database</a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;There are cases of big deviations from this natural constant. The most well known one is the skewed sex ratio in China, where decades of One Child Policy together with strong traditional son preference resulted in selective abortions. Read more: Frejka et. al (<a href="http://dx.doi.org/10.1111/j.1728-4457.2010.00347.x">2010</a>); Wang (<a href="http://dx.doi.org/10.1111/j.1728-4457.2011.00383.x">2011</a>); Basten and Verropoulou (<a href="http://dx.doi.org/10.1080/00324728.2013.826372">2013</a>).</p></li></div></div>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<div class="page-columns page-full"><p>Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their life-course. The sex ratio at birth does not vary dramatically<sup>1</sup> and is more or less constant at the level of 105-106 boys per 100 girls. Hence, differences in the sex ratio profiles of countries mainly reflect gender gap in mortality. In this post I will compare sex ratios age profiles in all countries included in <a href="http://www.mortality.org">Human Mortality Database</a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;There are cases of big deviations from this natural constant. The most well known one is the skewed sex ratio in China, where decades of One Child Policy together with strong traditional son preference resulted in selective abortions. Read more: Frejka et. al (<a href="http://dx.doi.org/10.1111/j.1728-4457.2010.00347.x">2010</a>); Wang (<a href="http://dx.doi.org/10.1111/j.1728-4457.2011.00383.x">2011</a>); Basten and Verropoulou (<a href="http://dx.doi.org/10.1080/00324728.2013.826372">2013</a>).</p></li></div></div>
 <p><code>R</code> gives amazing opportunities to grab data fast and easy. Thanks to <a href="https://sites.google.com/site/timriffepersonal/">Tim Riffe’s</a> <code>HMDHFDplus</code> package, one can now download HMD data with just a couple of lines of <code>R</code> code.</p>
 <p>There is a handy function in <code>HMDHFDplus</code> package – <code><a href="https://rdrr.io/pkg/HMDHFDplus/man/getHMDcountries.html">getHMDcountries()</a></code>. It lists the codes for all countries in HMD. So it becomes really easy to loop through the database and download data for all countries.</p>
 <div class="cell">
@@ -775,16 +780,17 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
 <p><img src="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/hmd-sex-ratios.png" class="img-fluid"></p>
 <p>There is quite a variety in the sex ratio profiles. If the initial prevalence of males equalizes in Japan, Sweden, or Norway at around 60, in Russia, Belarus, and Ukraine this happens at around 30 due to very high male mortality. In many countries there are pronounced bumps in the sex ratio at ages 20-30, that are likely to be caused by international migration. For example, Scotland, Northern Ireland, Portugal, and New Zealand are experiencing substantial outflow of young men.</p>
 <p>What happened in Taiwan?</p>
+<hr>
 <button class="btn btn-lg btn-secondary" type="button">
 This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status/785973218775478273">tweet</a> and <a href="https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7">gist</a>.
 </button>
-<hr>
 
 
 <!-- -->
 
  ]]></description>
   <category>r</category>
+  <category>tw</category>
   <category>hmd</category>
   <category>death rates</category>
   <guid>https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/index.html</guid>
@@ -795,7 +801,8 @@ This post is based on my earlier <a href="https://twitter.com/ikashnitsky/status
   <title>Hello R world post</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/hello-r-world/index.html</link>
-  <description><![CDATA[ <p>Welcome to my blog!</p>
+  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<p>Welcome to my blog!</p>
 <p>My name is Ilya, I am a demographer. Here I plan to post some research related stuff. As I am crazy about <a href="https://www.r-project.org">R</a>, my post will touch upon this tool/environment – I will share some tricks and cool visualizations. Eventually, I hope to contribute to the amazing <a href="https://www.r-bloggers.com">R-bloggers</a> project. First, I am going to post older bits – to gain momentum.</p>
 <hr>
 <p>Just to start with, let me show you a small and handy self-written R function.<br>
@@ -817,6 +824,7 @@ Quite often, visualizing data in R, we compose color palettes manually. It is ni
 </div>
 <p>Enjoy!</p>
 <p>P.S. If something similar exists in one of the well known packages, please tell me.</p>
+<p>***s</p>
 
 
 <!-- -->
@@ -834,7 +842,7 @@ Quite often, visualizing data in R, we compose color palettes manually. It is ni
 
 
 
-
+<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">2022</h2>
 <div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
@@ -889,7 +897,7 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-5">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list blog">
-    <div class="blog-entry" data-index="0" data-categories="r,animaion,pyramid,sweden,prospective ageing" data-listing-date-sort="1490911200000" data-listing-file-modified-sort="1671397180771" data-listing-reading-time-sort="13.345">
+    <div class="blog-entry" data-index="0" data-categories="r,animaion,pyramid,sweden,prospective ageing" data-listing-date-sort="1490911200000" data-listing-file-modified-sort="1671427062625" data-listing-reading-time-sort="13.345">
         <div class="metadata">          
             <p class="date listing-date">March 31, 2017</p>
         </div>
@@ -918,7 +926,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/who-is-old/swe-animated.gif" alt="Who is old? Visualizing the concept of prospective ageing with animated population pyramids" title="Who is old? Visualizing the concept of prospective ageing with animated population pyramids">
         </div>
     </div>
-    <div class="blog-entry" data-index="1" data-categories="r,rspatial,denmark,nuts" data-listing-date-sort="1489618800000" data-listing-file-modified-sort="1671396671557" data-listing-reading-time-sort="18.01">
+    <div class="blog-entry" data-index="1" data-categories="r,rspatial,denmark,nuts" data-listing-date-sort="1489618800000" data-listing-file-modified-sort="1671427183599" data-listing-reading-time-sort="17.99">
         <div class="metadata">          
             <p class="date listing-date">March 16, 2017</p>
         </div>
@@ -944,7 +952,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/fig-01-nuts.png" alt="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark" title="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark">
         </div>
     </div>
-    <div class="blog-entry" data-index="2" data-categories="r,hmd,death rates,sweden,sex gap" data-listing-date-sort="1487977200000" data-listing-file-modified-sort="1671396117970" data-listing-reading-time-sort="2.575">
+    <div class="blog-entry" data-index="2" data-categories="r,tw,death rates,sweden,sex gap" data-listing-date-sort="1487977200000" data-listing-file-modified-sort="1671428041616" data-listing-reading-time-sort="2.57">
         <div class="metadata">          
             <p class="date listing-date">February 25, 2017</p>
         </div>
@@ -954,8 +962,8 @@ No matching items
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
-                    hmd
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('tw'); return false;">
+                    tw
                 </div>
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('death rates'); return false;">
                     death rates
@@ -973,7 +981,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/gender-gap-in-swedish-mortality/sweden.png" alt="Gender gap in Swedish mortality" title="Gender gap in Swedish mortality">
         </div>
     </div>
-    <div class="blog-entry" data-index="3" data-categories="r,demography,bibliometrics" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1671394437828" data-listing-reading-time-sort="4.59">
+    <div class="blog-entry" data-index="3" data-categories="r,demography,bibliometrics" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1671427207318" data-listing-reading-time-sort="4.59">
         <div class="metadata">          
             <p class="date listing-date">February 14, 2017</p>
         </div>
@@ -996,7 +1004,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/dd-journals-frequency/treemap-dd-stats.png" alt="30 issues of Demographic Digest - the most frequent journals" title="30 issues of Demographic Digest - the most frequent journals">
         </div>
     </div>
-    <div class="blog-entry" data-index="4" data-categories="r,hmd,death rates,russia" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1671393503523" data-listing-reading-time-sort="2.74">
+    <div class="blog-entry" data-index="4" data-categories="r,tw,hmd,death rates,russia" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1671427087671" data-listing-reading-time-sort="2.74">
         <div class="metadata">          
             <p class="date listing-date">February 6, 2017</p>
         </div>
@@ -1005,6 +1013,9 @@ No matching items
             <div class="post-categories listing-categories">
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('tw'); return false;">
+                    tw
                 </div>
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
                     hmd
@@ -1022,7 +1033,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/male-mortality-compare.png" alt="Male mortality in Russia and Japan" title="Male mortality in Russia and Japan">
         </div>
     </div>
-    <div class="blog-entry" data-index="5" data-categories="r,hmd,death rates" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1671395958184" data-listing-reading-time-sort="4.46">
+    <div class="blog-entry" data-index="5" data-categories="r,tw,hmd,death rates" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1671427121372" data-listing-reading-time-sort="4.46">
         <div class="metadata">          
             <p class="date listing-date">February 5, 2017</p>
         </div>
@@ -1031,6 +1042,9 @@ No matching items
             <div class="post-categories listing-categories">
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('tw'); return false;">
+                    tw
                 </div>
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
                     hmd
@@ -1045,7 +1059,7 @@ No matching items
             <img src="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/hmd-sex-ratios.png" alt="Sex ratios in all countries from Human Mortality Database" title="Sex ratios in all countries from Human Mortality Database">
         </div>
     </div>
-    <div class="blog-entry" data-index="6" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671355427415" data-listing-reading-time-sort="0.99">
+    <div class="blog-entry" data-index="6" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671427143579" data-listing-reading-time-sort="0.99">
         <div class="metadata">          
             <p class="date listing-date">January 29, 2017</p>
         </div>
@@ -1071,7 +1085,7 @@ No matching items
 
  ]]></description>
   <guid>https://ikashnitsky.github.io/index.html</guid>
-  <pubDate>Sun, 18 Dec 2022 21:00:32 GMT</pubDate>
+  <pubDate>Mon, 19 Dec 2022 05:35:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
