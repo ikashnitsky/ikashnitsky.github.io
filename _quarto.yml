@@ -48,8 +48,8 @@ website:
     pinned: true
 
     left:
-      - text: "About"
-        href: "about.qmd"
+      - text: "About me"
+        href: "me.qmd"
       - text: "CV"
         href: "cv.qmd"
       - text: "Demographic Digest"
