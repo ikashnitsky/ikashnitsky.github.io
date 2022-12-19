@@ -71,6 +71,7 @@ $font-family-base: "Atkinson Hyperlegible" !default;
 
 $headings-font-family: "Atkinson Hyperlegible" !default;
 $headings-font-weight: 700 !default;
+$headings-font-size: 0.97rem !default;
 
 
 $navbar-font-family: "Atkinson Hyperlegible" !default;
@@ -199,8 +200,8 @@ pre.text, pre.sourceCode, .cell-output pre {
         }
 
         .active {
-            font-weight: 400;
-            color: $orange;
+            font-weight: 700;
+            color: $primary;
         }
 
         .quarto-category-count {
@@ -278,7 +279,7 @@ pre.text, pre.sourceCode, .cell-output pre {
         font-family: $headings-font-family;
 
         .description {
-            font-size: 1.1em;
+            font-size: 1em;
             margin-top: 1em !important;
         }
     }
@@ -290,7 +291,7 @@ pre.text, pre.sourceCode, .cell-output pre {
         display: flex;
         flex-direction: row;
         font-family: $headings-font-family;
-        line-height: 1.3;
+        line-height: 1.15;
         margin-bottom: 1.5em;
         column-gap: 1em;
 
@@ -313,10 +314,10 @@ pre.text, pre.sourceCode, .cell-output pre {
         }
 
         .title {
-            font-weight: 500;
-            font-size: 1.7em;
+            font-weight: 700;
+            font-size: 1.25em;
             margin-bottom: 0.2em;
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         .description {

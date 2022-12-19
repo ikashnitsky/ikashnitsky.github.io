@@ -122,14 +122,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <meta property="og:title" content="Subplots in maps with ggplot2 | Ilya Kashnitsky">
-<meta property="og:description" content="Following the surprising success of my latest post, I decided to show yet another use case of the handy ggplot2::annotation_custom().">
+<meta property="og:description" content="Following the surprising success of my latest post, I decided to show yet another use case of the handy annotation_custom().">
 <meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
 <meta property="og:site-name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
 <meta name="twitter:title" content="Subplots in maps with ggplot2 | Ilya Kashnitsky">
-<meta name="twitter:description" content="Following the surprising success of my latest post, I decided to show yet another use case of the handy ggplot2::annotation_custom().">
+<meta name="twitter:description" content="Following the surprising success of my latest post, I decided to show yet another use case of the handy annotation_custom().">
 <meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
 <meta name="twitter:creator" content="@ikashnitsky">
 <meta name="twitter:site" content="@ikashnitsky">
@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 
 </header><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
-<p>Following the <a href="https://ikashnitsky.github.io/images/170525/prev-post-success.png">surprising success</a> of <a href="https://ikashnitsky.github.io/2017/align-six-maps/">my latest post</a>, I decided to show yet another use case of the handy <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">ggplot2::annotation_custom()</a></code>. Here I will show how to add small graphical information to maps – just like putting a stamp on an envelope.</p>
+<p>Following the <a href="https://ikashnitsky.github.io/images/170525/prev-post-success.png">surprising success</a> of <a href="https://ikashnitsky.github.io/2017/align-six-maps/">my latest post</a>, I decided to show yet another use case of the handy <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom()</a></code>. Here I will show how to add small graphical information to maps – just like putting a stamp on an envelope.</p>
 <p>The example comes from my current work on a paper, in which I study the effect of urban/rural differences on the relative differences in population ageing (I plan to tell a bit more in one of the next posts). Let’s have a look at the map we are going to reproduce in this post:</p>
 <p><img src="map.png" class="img-fluid"></p>
 <p>So, with this map I want to show the location of more and less urbanized NUTS-2 regions of Europe. But I also want to show – with subplots – how I defined the three subregions of Europe (Eastern, Southern, and Western) and what is the relative frequency of the three categories of regions (Predominantly Rural, Intermediate, and Predominantly Rural) within each of the subregions. The logic of actions is simple: first prepare all the components, then assemble them in a composite plot. Let’s go!</p>
@@ -604,7 +604,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>Following the <span class="co">[</span><span class="ot">surprising success</span><span class="co">][tw]</span> of <span class="co">[</span><span class="ot">my latest post</span><span class="co">][post]</span>, I decided to show yet another use case of the handy <span class="in">`ggplot2::annotation_custom()`</span>. Here I will show how to add small graphical information to maps -- just like putting a stamp on an envelope.  </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>Following the <span class="co">[</span><span class="ot">surprising success</span><span class="co">][tw]</span> of <span class="co">[</span><span class="ot">my latest post</span><span class="co">][post]</span>, I decided to show yet another use case of the handy <span class="in">`annotation_custom()`</span>. Here I will show how to add small graphical information to maps -- just like putting a stamp on an envelope.  </span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>The example comes from my current work on a paper, in which I study the effect of urban/rural differences on the relative differences in population ageing (I plan to tell a bit more in one of the next posts). Let's have a look at the map we are going to reproduce in this post:</span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
