@@ -2,6 +2,7 @@
 title: "Hello R world post"
 description-meta: "{{< meta website.description >}}"
 date: "2017-01-29"
+image: teaser.png
 categories: [r]
 ---
 

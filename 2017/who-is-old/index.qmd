@@ -2,6 +2,7 @@
 title: "Who is old? Visualizing the concept of prospective ageing with animated population pyramids"
 description-meta: "{{< meta website.description >}}"
 date: "2017-03-31"
+image: teaser.png
 categories: [r, animaion, pyramid, sweden, prospective ageing]
 ---
 
@@ -22,13 +23,13 @@ The demographic prospects depend a lot on how we define ageing. Quite recently [
 
 Of course, the choice of the new ageing threshold is a rather arbitrary question [^4]. It became usual to define this threshold at the remaining life expectancy of 15 years.
 
-## Population pyramids for Sweden
+# Population pyramids for Sweden
 
 Population pyramid is a simple and nice way to represent population composition and to compare changes in the age structure of a given population over time. We show the difference between conventional and prospective approach to the definition of the elderly population using Swedish data for the last half a century. Sweden is a natural choice for demographers aiming to play with rich and reliable data. 
 
 The data used for this visualization comes from [Human Mortality Database][hmd]. It can be easily accessed from an R session using [`HMDHFDplus`][hmdhfd] package by [Tim Riffe][tim] (for examples see my previous posts - [one][post1] and [two][post2]). For this exercise, I will use the dataset for Sweden that was provided for an application task for [Rostock Retreat Visualization][rrviz] [^5]. 
 
-## Data preparation
+# Data preparation
 
 ```{r, eval=FALSE}
 # load packages
@@ -63,7 +64,7 @@ df_old <- df %>% filter(old == T) %>%
 ```
 
 
-## Visualization
+# Visualization
 
 Let's first have a look at the pyramids in 1965, 1990, and 2014 (the latest available year).
 
@@ -113,7 +114,7 @@ gg_three <- ggplot(df %>% filter(year %in% c(1965, 1990, 2014))) +
 ![](three-years.png)
 
 
-## Animated pyramid
+# Animated pyramid
 
 To get an animated pyramid I simply saved all the separate plots and then use the very convenient free online tool to make an animated image - [GIFCreator][gif] [^6].
 

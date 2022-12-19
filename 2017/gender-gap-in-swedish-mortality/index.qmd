@@ -2,6 +2,7 @@
 title: "Gender gap in Swedish mortality"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-25"
+image: teaser.png
 categories: [r, tw, death rates, sweden, sex gap]
 ---
 
@@ -10,7 +11,7 @@ categories: [r, tw, death rates, sweden, sex gap]
 Sweden, with its high quality statistical record since 1748, is the natural choice for any demographic study that aims to cover population dynamics during a long period of time. 
 
 
-## Data
+# Data
 
 The data used for this visualization comes from [Human Mortality Database][hmd]. It can be easily accessed from an R session using [`HMDHFDplus`][hmdhfd] package by [Tim Riffe][tim] (for examples see my previous posts - [one][post1] and [two][post2]). For this exercise, I will use the dataset for Sweden that was provided for an application task for [Rostock Retreat Visualization][retr][^1]. 
 
@@ -33,7 +34,7 @@ df_selected <- df_swe %>% select(Year, Sex, Age, mx) %>%
         transmute(year = Year, age = Age, value = m / f)
 ```
 
-## Visualization
+# Visualization
 
 ```{r, eval=FALSE}
 ggplot(df_selected)+
@@ -53,7 +54,7 @@ ggplot(df_selected)+
 
 ![](sweden.png)
 
-## Comment
+# Comment
 
 Today it is common knowledge that male mortality is always higher than female. There are more males being born, then eventually the sex ratio levels due to higher male mortality (see [my previous post][post1]). Though, male mortality was not always much higher. Back in the days, when infant mortality was much higher and women used to have much higher fertility, there was almost no gender gap in age-specific mortality levels. Constant pregnancy and frequent childbirths had a strong negative impact on female health and survival statistics. We can see that only in the second half of the 20-th century gender gap in mortality became substantial in Sweden.  
 

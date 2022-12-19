@@ -2,6 +2,7 @@
 title: "R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark"
 description-meta: "{{< meta website.description >}}"
 date: "2017-03-16"
+image: teaser.png
 categories: [r, rspatial, denmark, nuts]
 ---
 
@@ -11,38 +12,38 @@ categories: [r, rspatial, denmark, nuts]
 NUTS stands for the [*Nomenclature of Territorial Units For Statistics*][nuts-overview]. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.
 
 ![](fig-01-nuts.png) 
-*Figure 1. Illustration of the principle of NUTS hierarchical system*
+**Figure 1. Illustration of the principle of NUTS hierarchical system**
 
 One of the objectives of NUTS was to provide more or less comparable administrative divisions for all countries of Europe. Nevertheless, in 2013, population figures for single NUTS-2 regions ranged from 28.5 thousands in *Aland island* (Finland) to almost 12 million in *Ile-de-France* (Paris and surroundings, France).   
 
 
-## The broken time series
+# The broken time series
 
 Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat [tracks all modifications][nuts-hist] providing detailed explanations of all the changes that happen between versions of NUTS (figure 2). 
 
 ![](fig-02-nuts-changes.png) 
-*Figure 2. Changes in NUTS between versions 2006 and 2010*
+**Figure 2. Changes in NUTS between versions 2006 and 2010**
 
 Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past. 
 
 To make thing even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In [my PhD project][phd] I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection [EUROPOP2013][proj] is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on [population age structures][pop] and [deaths][deaths], as downloaded in 2015, to [figshare][figshare].  
 
 
-## Denmark
+# Denmark
 
 Some countries had to perform major changes in their systems of territorial division to fit the NUTS standards. [The most significant reform happened in Denmark in 2007][reform], where the former 271 municipalities were transformed into the new 98 municipalities. At the same time, NUTS was introduced, so that 98 municipalities were allocated to 11 NUTS-3 regions, which aggregate to 5 NUTS-2 regions. Typically, for a small country, there is only one NUTS-1 region in Denmark, which is the whole country.
 
 As far as I know, there was no official attempt of Eurostat to reconstruct the time series for Denmark before 2007. The typical map of Eurostat for the pre-2007 period shows Denmark as “no data available” country (figure 3). 
 
 ![](fig-03-nuts-2-life-exp.png)
-*Figure 3. Life expectancy at birth in European NUTS-2 regions,  2006; a screenshot from the Eurostat's [interactive data exploratory tool][eurostat-map]*
+**Figure 3. Life expectancy at birth in European NUTS-2 regions,  2006; a screenshot from the Eurostat's [interactive data exploratory tool][eurostat-map]**
 
 Such a data loss is somewhat surprising for a country such as Denmark. It might be quite difficult to match the old and new municipal systems; but it should be relatively easy to re-aggregate the old municipalities into the new (higher level) NUTS regions. That is precisely what I did during my data preparation[^2] and what I now want to share in this post.
 
 The task is basically to identify which of the old 271 municipalities are located within the modern 11 NUTS-3 regions and to aggregate the municipal data. Then, NUTS-3 data is easily aggregated for the NUTS-2 level. Such a task could have meant working late into the night, but luckily we live in the GIS era. I used GIS to match the old municipalities with the NUTS-3 regions. Here I want to show (with code) how the task can be performed using the amazing and opensource [R][cran]. Below I show the process of matching old municipalities to the NUTS regions and the process that I used to aggregate population data.
 
 
-## Data
+# Data
 
 The data on the population age structures for the old 271 municipalities of Denmark was downloaded from the [official website of Statistics Denmark][stat-den]. The system only allows you to grab up to 10K cells for unregistered users and up to 100K for registered users. So the process of downloading the data involves some tedious manual manipulations. For the purpose of my phd project, I downloaded the data for the period 2001-2006; but, if needed, the data is available since 1979. The data, downloaded in 2015 and ‘tidied up’ can be found [here][data-mun-pop].
 
@@ -110,7 +111,7 @@ mun_coord <- bind_cols(as.data.frame(coordinates(sp_mun)), sp_mun@data[,1:3]) %>
 ```
   
 
-## Spatial matching
+# Spatial matching
 
 Let's first have a look at the map.
 
@@ -125,7 +126,7 @@ ggplot()+
 ```
 
 ![](fig-04-ref-map.png)
-*Figure 4. Reference map of the old municipalities and NUTS-3 regions of Denmark*
+**Figure 4. Reference map of the old municipalities and NUTS-3 regions of Denmark**
 
 We can easily see that the boundaries of the municipalities (light blue) are much more precise than that of the NUTS-3 regions (orange/brown). This is not a problem as long as all the centroids of the municipalities fall within the boundaries of the NUTS-3 regions, which seems to be true for all municipalities except for the easternmost one. A quick check reveals that this is [Christiansø][ch], a tiny fortified island, whose [history][ch-hist] goes back to the Middle Ages. It has a special status and [is not included][ch-stat-dk] into the NUTS system. For further manipulations, Christiansø can safely merge it with the close-by Bornholm.
 
@@ -161,7 +162,7 @@ ggplot()+
 ```
 
 ![](fig-05-map-match.png)
-*Figure 5. Checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark*
+**Figure 5. Checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark**
 
 Not bad. But there is an "NA" category that represents all the cases where the spatial match failed. How many such cases do we have?
 
@@ -214,12 +215,12 @@ ggplot()+
 ```
 
 ![](fig-06-map-check.png)
-*Figure 6. Re-checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark*
+**Figure 6. Re-checking the spatial intersection between the old municipalities and NUTS-3 regions of Denmark**
 
 Now everything seems okay. 
 
 
-## Joining spatial and statistical data (fuzzy join)
+# Joining spatial and statistical data (fuzzy join)
 
 The next task is to join the spatial data and statistical data together. The spatial layer for municipalities does not contain the codes that are used by Statistics Denmark, so I have to match municipalities in the two datasets by their names. This is quite a difficult task. Names can be written slightly differently, there are some special characters in Danish alphabet, and some municipalities may have experienced a change of name. To solve the task most efficiently, I used the ‘Fuzzy String Matching’ approach which is implemented in the  [`fuzzyjoin`][fuz] package by [David Robinson][drob].
 
@@ -334,7 +335,7 @@ key <- left_join(fuz_joined_2, fixed, "objectid")
 ```
 
 
-## Aggregate old municipal data to NUTS levels
+# Aggregate old municipal data to NUTS levels
 
 The previous manipulations yielded a dataframe that links statistical codes of the old municipalities with the corresponding NUTS regions. The last thing that has to be done is aggregation. I will attach the “key” dataset to a statistical dataset and aggregate the data at NUTS-3 and NUTS-2 levels.
 
@@ -393,7 +394,7 @@ ggplot()+
 ```
 
 ![](fig-07-map-sw.png)
-*Figure 7. The share of working age (15-64) population by NUTS-3 regions of Denmark in 2001*
+**Figure 7. The share of working age (15-64) population by NUTS-3 regions of Denmark in 2001**
 
 The result (thankfully!) looks realistic, with higher shares of the working-age population in the capital region, and in other regions that have relatively big cities.
 

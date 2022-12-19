@@ -472,76 +472,77 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Male mortality in Russia and Japan"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2017-02-06"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, tw, hmd, death rates, russia]</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>Russia is sadly notorious for its ridiculously high adult male mortality. According to <span class="co">[</span><span class="ot">Human Mortality Database data (2010)</span><span class="co">](http://www.mortality.org)</span>, the probability for a Russian men to survive from 20 to 60 was just 0.64 <span class="ot">[^1]</span>. For women the probability is 0.87. This huge gender disproportion in mortality results in a peculiar sex ratio profile (see <span class="co">[</span><span class="ot">my old DemoTrends post</span><span class="co">](https://demotrends.wordpress.com/2015/01/14/the-land-of-babushka/)</span> and <span class="co">[</span><span class="ot">the previous blog post</span><span class="co">](https://ikashnitsky.github.io/2017/hmd-sex-all-ratio)</span>).  </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Now let's compare age-specific mortality rates of Russian men to that of the Japanese. For years and years Japan performs best in reducing mortality. It became standard to compare mortality schedules of other countries to the Japanese one <span class="ot">[^2]</span>. </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>First, I need to get HMD data for both Russian and Japanese males. Again, I am using the amazing <span class="in">`R`</span> package <span class="in">`HMDHFDplus`</span> of <span class="co">[</span><span class="ot">Tim Riffe</span><span class="co">](https://sites.google.com/site/timriffepersonal/)</span> to download HMD data with just a couple of lines of <span class="in">`R`</span> code. </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, tw, hmd, death rates, russia]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>Russia is sadly notorious for its ridiculously high adult male mortality. According to <span class="co">[</span><span class="ot">Human Mortality Database data (2010)</span><span class="co">](http://www.mortality.org)</span>, the probability for a Russian men to survive from 20 to 60 was just 0.64 <span class="ot">[^1]</span>. For women the probability is 0.87. This huge gender disproportion in mortality results in a peculiar sex ratio profile (see <span class="co">[</span><span class="ot">my old DemoTrends post</span><span class="co">](https://demotrends.wordpress.com/2015/01/14/the-land-of-babushka/)</span> and <span class="co">[</span><span class="ot">the previous blog post</span><span class="co">](https://ikashnitsky.github.io/2017/hmd-sex-all-ratio)</span>).  </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>Now let's compare age-specific mortality rates of Russian men to that of the Japanese. For years and years Japan performs best in reducing mortality. It became standard to compare mortality schedules of other countries to the Japanese one <span class="ot">[^2]</span>. </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>First, I need to get HMD data for both Russian and Japanese males. Again, I am using the amazing <span class="in">`R`</span> package <span class="in">`HMDHFDplus`</span> of <span class="co">[</span><span class="ot">Tim Riffe</span><span class="co">](https://sites.google.com/site/timriffepersonal/)</span> to download HMD data with just a couple of lines of <span class="in">`R`</span> code. </span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># load required packages</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># version 1.0.0</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HMDHFDplus) <span class="co"># version 1.1.8</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># load life tables for men, RUS and JPN</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>rus <span class="ot">&lt;-</span> <span class="fu">readHMDweb</span>(<span class="st">'RUS'</span>, <span class="st">"mltper_1x1"</span>, ik_user_hmd, ik_pass_hmd)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>jpn <span class="ot">&lt;-</span> <span class="fu">readHMDweb</span>(<span class="st">'JPN'</span>, <span class="st">"mltper_1x1"</span>, ik_user_hmd, ik_pass_hmd)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>*Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credidantials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at http://www.mortality.org/ and provide his own credidantials to the `readHMDweb()` function.*</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>Next, I select the most recent year for comparison, 2014, and compute the rate ratio of age specific mortality rates. </span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># compare mortality rates for 2014</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>ru <span class="ot">&lt;-</span> rus <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">rus =</span> mx)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>jp <span class="ot">&lt;-</span> jpn <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">jpn =</span> mx)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(jp, ru, <span class="st">'age'</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ru_rate =</span> rus <span class="sc">/</span> jpn)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting rate ratio of male mortality in Russia and Japan.</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># get nice font</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(age, ru_rate)) <span class="sc">+</span> </span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">'red'</span>) <span class="sc">+</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="st">'mortality rate ratio'</span>,</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                           <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">labels =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>,<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">1.75</span>,<span class="dv">5</span>), </span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="fu">c</span>(<span class="st">'red'</span>,<span class="st">'black'</span>), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">7</span>,</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'Japan'</span>,<span class="st">'Russia'</span>), <span class="at">family =</span> myfont) <span class="sc">+</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">'Compare age-specific mortality of males'</span>,</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                <span class="at">subtitle =</span> <span class="st">"Russia and Japan, 2014, HMD"</span>)<span class="sc">+</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> myfont)</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="al">![](male-mortality-compare.png)</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># load required packages</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># version 1.0.0</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HMDHFDplus) <span class="co"># version 1.1.8</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># load life tables for men, RUS and JPN</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>rus <span class="ot">&lt;-</span> <span class="fu">readHMDweb</span>(<span class="st">'RUS'</span>, <span class="st">"mltper_1x1"</span>, ik_user_hmd, ik_pass_hmd)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>jpn <span class="ot">&lt;-</span> <span class="fu">readHMDweb</span>(<span class="st">'JPN'</span>, <span class="st">"mltper_1x1"</span>, ik_user_hmd, ik_pass_hmd)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>*Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credidantials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at http://www.mortality.org/ and provide his own credidantials to the `readHMDweb()` function.*</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>Next, I select the most recent year for comparison, 2014, and compute the rate ratio of age specific mortality rates. </span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># compare mortality rates for 2014</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>ru <span class="ot">&lt;-</span> rus <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">rus =</span> mx)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>jp <span class="ot">&lt;-</span> jpn <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">jpn =</span> mx)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(jp, ru, <span class="st">'age'</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ru_rate =</span> rus <span class="sc">/</span> jpn)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting rate ratio of male mortality in Russia and Japan.</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># get nice font</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(age, ru_rate)) <span class="sc">+</span> </span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span><span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="st">'mortality rate ratio'</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                           <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">labels =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>,<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">55</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">1.75</span>,<span class="dv">5</span>), </span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="fu">c</span>(<span class="st">'red'</span>,<span class="st">'black'</span>), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">7</span>,</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'Japan'</span>,<span class="st">'Russia'</span>), <span class="at">family =</span> myfont) <span class="sc">+</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggtitle</span>(<span class="st">'Compare age-specific mortality of males'</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                <span class="at">subtitle =</span> <span class="st">"Russia and Japan, 2014, HMD"</span>)<span class="sc">+</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> myfont)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="al">![](male-mortality-compare.png)</span></span>
 <span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>In the middle ages, male mortality in Russian is up to 10 times higher than in Japan!</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">"btn btn-lg btn-secondary"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"button"</span><span class="kw">&gt;</span>This post is based on my earlier <span class="co">[</span><span class="ot">tweet</span><span class="co">](https://twitter.com/ikashnitsky/status/792305556132331520)</span> and <span class="co">[</span><span class="ot">gist</span><span class="co">](https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2)</span>.<span class="kw">&lt;/button&gt;</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>In the middle ages, male mortality in Russian is up to 10 times higher than in Japan!</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;button</span> <span class="er">class</span><span class="ot">=</span><span class="st">"btn btn-lg btn-secondary"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"button"</span><span class="kw">&gt;</span>This post is based on my earlier <span class="co">[</span><span class="ot">tweet</span><span class="co">](https://twitter.com/ikashnitsky/status/792305556132331520)</span> and <span class="co">[</span><span class="ot">gist</span><span class="co">](https://gist.github.com/ikashnitsky/8df43c9a5dcd1798116ba09b336cdcf2)</span>.<span class="kw">&lt;/button&gt;</span></span>
 <span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91). </span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>See for example the recent <span class="co">[</span><span class="ot">NIDI working paper of Balachandran et. al (2017)</span><span class="co">](http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91). </span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>See for example the recent <span class="co">[</span><span class="ot">NIDI working paper of Balachandran et. al (2017)</span><span class="co">](http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

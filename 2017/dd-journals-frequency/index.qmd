@@ -2,6 +2,7 @@
 title: "30 issues of Demographic Digest - the most frequent journals"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-14"
+image: teaser.png
 categories: [r, demography, bibliometrics]
 ---
 
@@ -89,7 +90,7 @@ treemap(dtf = df_sjr,
         drop.unused.levels = T)
 ```
 
-## Here is how the output looks
+# Here is how the output looks
 
 ![](treemap-dd-stats.png)
 
