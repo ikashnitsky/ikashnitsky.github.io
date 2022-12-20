@@ -16,3 +16,4 @@ format:
         mapping: pathname
     quarto-template-params:
       banner-header-class: "blog-post"
+
