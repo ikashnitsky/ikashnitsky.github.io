@@ -93,8 +93,8 @@ $link-hover-color: $p-darker-7 !default;
 $link-hover-decoration: underline !default;
 
 // Inline code
-$code-bg: $gray-200 !default;
-$code-color: $gray-900 !default;
+$code-bg: $p-lighter-8 !default;
+$code-color: $p-darker-8 !default;
 
 // Code copy
 $btn-code-copy-color-active: $yellow !default;

@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+About thi tutorial
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -552,180 +552,181 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Here is a bit refreshed translation of <span class="co">[</span><span class="ot">my 2015 blog post</span><span class="co">][post]</span>, initially published on Russian blog platform <span class="co">[</span><span class="ot">habr.com</span><span class="co">][habr]</span>. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times myself and many many more times referred my friends to it, even non-Russian speakers who had to use Google Translator and infer the rest from screenshots. Finally, I decided to translate it adding some basic information on how to use Zotero with rmarkdown. </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="al">![](teaser.png)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># A brief (and hopefully unnecessary for you) intro of bibliographic managers</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Bibliographic manager is a life saver in everyday academic life. I suffer almost physical pain just thinking about colleagues who for some reason never started using one -- all those excel spreadsheets with favorite citations, messy folders with PDFs, constant hours lost for the joy-killing task of manual reference list formatting. Once you start using a reference manager this all becomes a happily forgotten nightmare. </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>I tend to think of bibliographic metadata as LEGO. </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="al">![](lego.jpg)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>For each paper (book chapter / pre-print / R package) we have a number of metadata pieces -- title, authors, date published, etc. These are the LEGO blocks. For different bibliographic styles we just need to re-shuffle those blocks inserting various commas, semicolons, and quotation marks. </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Bibliographic manager keeps track of all the LEGO blocks and knows (learns easily) how to compose proper citation styles out of them. All we need is to <span class="co">[</span><span class="ot">download a specific journal's citation style</span><span class="co">][csl]</span>. There are more than six thousand bibliographic styles! <span class="co">[</span><span class="ot">This is my #1 argument against the conspiracy ideas of some centralized power that rules our world .)</span><span class="co">]</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># About thi tutorial</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Here is a bit refreshed translation of <span class="co">[</span><span class="ot">my 2015 blog post</span><span class="co">][post]</span>, initially published on Russian blog platform <span class="co">[</span><span class="ot">habr.com</span><span class="co">][habr]</span>. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times myself and many many more times referred my friends to it, even non-Russian speakers who had to use Google Translator and infer the rest from screenshots. Finally, I decided to translate it adding some basic information on how to use Zotero with rmarkdown. </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="al">![](teaser.png)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># A brief (and hopefully unnecessary for you) intro of bibliographic managers</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Bibliographic manager is a life saver in everyday academic life. I suffer almost physical pain just thinking about colleagues who for some reason never started using one -- all those excel spreadsheets with favorite citations, messy folders with PDFs, constant hours lost for the joy-killing task of manual reference list formatting. Once you start using a reference manager this all becomes a happily forgotten nightmare. </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>I tend to think of bibliographic metadata as LEGO. </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="al">![](lego.jpg)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>For each paper (book chapter / pre-print / R package) we have a number of metadata pieces -- title, authors, date published, etc. These are the LEGO blocks. For different bibliographic styles we just need to re-shuffle those blocks inserting various commas, semicolons, and quotation marks. </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>Bibliographic manager keeps track of all the LEGO blocks and knows (learns easily) how to compose proper citation styles out of them. All we need is to <span class="co">[</span><span class="ot">download a specific journal's citation style</span><span class="co">][csl]</span>. There are more than six thousand bibliographic styles! <span class="co">[</span><span class="ot">This is my #1 argument against the conspiracy ideas of some centralized power that rules our world .)</span><span class="co">]</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why Zotero?</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>There are dozens of bibliographic managers out there (<span class="co">[</span><span class="ot">see a comparative table</span><span class="co">][wiki]</span>). Some of them are free, the others require paid subscriptions. Probably, the most popular two are <span class="co">[</span><span class="ot">Zotero</span><span class="co">][zotero]</span> and <span class="co">[</span><span class="ot">Mendeley</span><span class="co">][mendeley]</span>. Both are free to use and make money by offering cloud storage to sync PDFs of the papers. Yet, both give some limited storage for free -- Zotero gives 300MB, and Mendeley gives 2GB. </span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Why do I choose and recommend Zotero then? Because it's fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one's choice (I use Google Drive). **It's the main set-up hack that I'm showing in this blog post**. There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage. </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Another consideration in favor of Zotero is that it's an open-source program with strong community and outspoken commitment to stay free forever, while Mendeley is an Elsevier for-profit product. Academic community knows a lot about Elsevier in particular and for-profit products in general. Here the story of Academia.edu is very indicative. Have a look at <span class="co">[</span><span class="ot">this Forbes piece</span><span class="co">][forbes]</span>. As a career-long decision I'm confident in choosing Zotero. And the project keeps developing nicely -- just look at the recent Zotero blog entries on the new features such as <span class="co">[</span><span class="ot">Google Docs integration</span><span class="co">][gdocs]</span>, <span class="co">[</span><span class="ot">Unpaywall integration</span><span class="co">][unp]</span> and <span class="co">[</span><span class="ot">a new web service for quick citations</span><span class="co">][zbib]</span>.  </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Why Zotero?</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>There are dozens of bibliographic managers out there (<span class="co">[</span><span class="ot">see a comparative table</span><span class="co">][wiki]</span>). Some of them are free, the others require paid subscriptions. Probably, the most popular two are <span class="co">[</span><span class="ot">Zotero</span><span class="co">][zotero]</span> and <span class="co">[</span><span class="ot">Mendeley</span><span class="co">][mendeley]</span>. Both are free to use and make money by offering cloud storage to sync PDFs of the papers. Yet, both give some limited storage for free -- Zotero gives 300MB, and Mendeley gives 2GB. </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Why do I choose and recommend Zotero then? Because it's fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one's choice (I use Google Drive). **It's the main set-up hack that I'm showing in this blog post**. There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage. </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Another consideration in favor of Zotero is that it's an open-source program with strong community and outspoken commitment to stay free forever, while Mendeley is an Elsevier for-profit product. Academic community knows a lot about Elsevier in particular and for-profit products in general. Here the story of Academia.edu is very indicative. Have a look at <span class="co">[</span><span class="ot">this Forbes piece</span><span class="co">][forbes]</span>. As a career-long decision I'm confident in choosing Zotero. And the project keeps developing nicely -- just look at the recent Zotero blog entries on the new features such as <span class="co">[</span><span class="ot">Google Docs integration</span><span class="co">][gdocs]</span>, <span class="co">[</span><span class="ot">Unpaywall integration</span><span class="co">][unp]</span> and <span class="co">[</span><span class="ot">a new web service for quick citations</span><span class="co">][zbib]</span>.  </span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Finally, an example of how strong Zotero community is. Once I figured out there the style repository does not have a style for Demographic Research, one of the best journals in demography. I've opened <span class="co">[</span><span class="ot">a request on Zotero forum</span><span class="co">][req]</span> and in two days the style was created.</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>Finally, an example of how strong Zotero community is. Once I figured out there the style repository does not have a style for Demographic Research, one of the best journals in demography. I've opened <span class="co">[</span><span class="ot">a request on Zotero forum</span><span class="co">][req]</span> and in two days the style was created.</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prerequisites</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Download and install Zotero</span><span class="co">][down]</span>. It's cross-platform and works smoothly with various systems, even when the same database is sycned in parallel on machines with different operation systems. I've used win+linux and win+mac -- no sync problems ever. </span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>From the same <span class="co">[</span><span class="ot">download page</span><span class="co">][down]</span> go to install Zotero Connector, a browser extension that helps to retrieve bibliographic metadata.</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create an <span class="co">[</span><span class="ot">account on Zotero website</span><span class="co">][reg]</span>. It will be used later on to sync the database of bibliographic metadata. </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Download and install the two plugins we'll need -- <span class="co">[</span><span class="ot">ZotFile</span><span class="co">][zot]</span> (organizes the database of PDFs) and <span class="co">[</span><span class="ot">Better BibTeX</span><span class="co">][bbt]</span> (exports the library to .bib, we'll use it later with rmarkdown). The plugins for Zotero are .xpi archives. To install the plugins open Zotero and click <span class="in">`Tools --&gt; Add-ons`</span>. A separate window for <span class="in">`Add-ons manager`</span> will pop-up. </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="al">![](plugin.png)</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>There we need to click the options gear button and select <span class="in">`Install Add-on From File`</span> option. Finally navigate to the .xpi file and install. Zotero will ask to restart, please do. </span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>We are ready to go through the setup step-by-step. </span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prerequisites</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">Download and install Zotero</span><span class="co">][down]</span>. It's cross-platform and works smoothly with various systems, even when the same database is sycned in parallel on machines with different operation systems. I've used win+linux and win+mac -- no sync problems ever. </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>From the same <span class="co">[</span><span class="ot">download page</span><span class="co">][down]</span> go to install Zotero Connector, a browser extension that helps to retrieve bibliographic metadata.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create an <span class="co">[</span><span class="ot">account on Zotero website</span><span class="co">][reg]</span>. It will be used later on to sync the database of bibliographic metadata. </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Download and install the two plugins we'll need -- <span class="co">[</span><span class="ot">ZotFile</span><span class="co">][zot]</span> (organizes the database of PDFs) and <span class="co">[</span><span class="ot">Better BibTeX</span><span class="co">][bbt]</span> (exports the library to .bib, we'll use it later with rmarkdown). The plugins for Zotero are .xpi archives. To install the plugins open Zotero and click <span class="in">`Tools --&gt; Add-ons`</span>. A separate window for <span class="in">`Add-ons manager`</span> will pop-up. </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="al">![](plugin.png)</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>There we need to click the options gear button and select <span class="in">`Install Add-on From File`</span> option. Finally navigate to the .xpi file and install. Zotero will ask to restart, please do. </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>We are ready to go through the setup step-by-step. </span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># Zotero preferences</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>First, let's walk though Zotero Preferences. To edit them click <span class="in">`Edit --&gt; Preferences`</span>. A window with several tabs pops up. </span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>**General**. I only uncheck the option to create automatic web page snapshots which I find not so useful compared with all the cluttering effect of all those multiple small files needed to replicate an html page locally.  </span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-general.png)</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>**Sync**. Here we need to specify the account details to sync our database. It is important to uncheck the option of full-text sync otherwise the 300MB storage will quickly get filled. We'll have the solution for full text a bit later.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-sync.png)</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>**Search**. Defines the database for internal search engine. Defaults are reasonable. </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>**Export**. Choose the style for quick export using <span class="in">`Shift+Ctrl+C`</span> shortcut.</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>**Cite**. Citation styles stored locally. One nice feature here is the <span class="in">`Get additional styles`</span> link which brings an integrated selection from the whole <span class="co">[</span><span class="ot">Zotero Styles Database</span><span class="co">][csl]</span>. Styles can also be installed from local .csl files, for that press the <span class="in">`+`</span> button. Don't miss the <span class="in">`Word Processors`</span> sub-tab. There we can get the plugins that integrate Zotero to Microsoft Word and Libre Office. </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-cite.png)</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>**Advanced**. Here we are most interested in the sub-tab <span class="in">`Files and Folders`</span>. This is the most important step to separate the storage of metadata and files.</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-files.png)</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>The *first* path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The *second* path leads to the system files of Zotero, I call it <span class="in">`zotero-system`</span>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. </span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>**Better BibTeX**. This tab appears after we install the Better BibTeX extension. The extension is needed to export the whole bibliographic library (or some of its parts) as a plain .bib text file. This step is needed to use Zotero in RStudio while writing academic papers with <span class="in">`rmarkdown`</span>. </span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-bbt.png)</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>The most important option here is to define the rules for creating citation keys. There are almost infinite number of ways one can define these keys (<span class="co">[</span><span class="ot">check the manual</span><span class="co">][keys]</span>). My personal choice is <span class="in">`[auth:lower][year][journal:lower:abbr]`</span>, which means that a key consists of the first author's name, publication year, and the first letters abbreviation of the journal's title, everything in lower case. Thus the key for my <span class="co">[</span><span class="ot">most recent paper</span><span class="co">][tesg]</span> published in *Tijdschrift voor economische en sociale geografie* is <span class="in">`kashnitsky2019tveesg`</span>. </span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="fu"># ZotFile Preferences</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>Next we need to setup ZotFile. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. To open the setup window click <span class="in">`Tools --&gt; ZotFile Preferences`</span>. Again, the window has several tabs. </span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>**General**. Here we define two paths. The *first* is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The *second* path leads to the local directory created for the full-text PDFs, the one that I named <span class="in">`zotero-library`</span> and which is synced with an external cloud solution of our choice.</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-general.png)</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>To navigate easier in this database of PDFs check the option <span class="in">`Use subfolder defined by`</span>. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the info icon to learn the options. I choose to simply have a separate folder for each first author. </span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>**Tablet Settings**. Apparently, this menu allows to setup an exchange of PDFs with a tablet. I've never used it, thus omit. </span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>**Renaming Rules**. Here it's important to make sure that ZotFile is responsible for renaming. Then we define how to rename the PDFs based on the bibliographic metadata available. Again, here we have many many options. My choice is {% raw %}<span class="in">`{%a_}{%y_}{%t}`</span>{% endraw %} which yields file names like <span class="in">`kashnitsky_2018_russian_periphery_is_dying_in_movement.pdf`</span> (again an example for <span class="co">[</span><span class="ot">my recent paper</span><span class="co">][geoj]</span> in *GeoJournal*). </span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-renaming.png)</span>  </span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>**Advanced Settings**. I only checked the option to replace all the non-standard symbols with plain ASCII. </span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**A very important note on ZotFile!**. </span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>If you parse the metadata manually from a PDF, make sure to rename the file using ZotFile. For that right-click the metadata record <span class="in">`Manage Attachments --&gt; Rename Attachments`</span>. This action explicitly tells to use ZotFile for renaming and will move the renamed PDF to a proper sub-directory.  The attachment in Zotero should not look like a PDF file... </span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="al">![](att-pdf.png)</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>... but rather should be a link to the renamed file.</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="al">![](att-link.png)</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>In these screenshot I also show the location of the actual PDFs in both cases (right-click the metadata record <span class="in">`Show File`</span>). As you can see, in the first case the PDF is located in a meaninglessly named folder somewhere in the <span class="in">`zotero-system`</span> directory. In contrast, the renamed by ZotFile PDF is located in a properly named sub-directory in <span class="in">`zotero-library`</span>. Thus, in the latter case the PDF is synced to my Google Drive and can be accessed from anywhere. </span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="al">![](gdrive.png)</span></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>More importantly, when I need to restore my whole database of academic papers on another machine, I just need to go through these steps. As long as the system metadata data base is synced by Zotero and I provide Zotero the link to a PDFs storage, it will recognize all the relative paths to the files, and the whole library is restored. This setup also makes it possible to have the same continuously synced library on multiple machines. The hack is in ZotFile which adds a <span class="in">`file`</span> path line to the metadata of the papers. </span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-bib.png)</span></span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>As long as I keep the settings unchanged, everything will be synced fine across multiple devices. In the end, I enjoy the unlimited storage of my PDFs with the very nice and reliable native sync of metadata form Zotero. </span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>**Final remark on Zotero**. Feel free to clean from time to time all the clutter from <span class="in">`zotero-system/storage`</span>. </span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu"># Zotero preferences</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>First, let's walk though Zotero Preferences. To edit them click <span class="in">`Edit --&gt; Preferences`</span>. A window with several tabs pops up. </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**General**. I only uncheck the option to create automatic web page snapshots which I find not so useful compared with all the cluttering effect of all those multiple small files needed to replicate an html page locally.  </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-general.png)</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**Sync**. Here we need to specify the account details to sync our database. It is important to uncheck the option of full-text sync otherwise the 300MB storage will quickly get filled. We'll have the solution for full text a bit later.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-sync.png)</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>**Search**. Defines the database for internal search engine. Defaults are reasonable. </span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>**Export**. Choose the style for quick export using <span class="in">`Shift+Ctrl+C`</span> shortcut.</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>**Cite**. Citation styles stored locally. One nice feature here is the <span class="in">`Get additional styles`</span> link which brings an integrated selection from the whole <span class="co">[</span><span class="ot">Zotero Styles Database</span><span class="co">][csl]</span>. Styles can also be installed from local .csl files, for that press the <span class="in">`+`</span> button. Don't miss the <span class="in">`Word Processors`</span> sub-tab. There we can get the plugins that integrate Zotero to Microsoft Word and Libre Office. </span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-cite.png)</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>**Advanced**. Here we are most interested in the sub-tab <span class="in">`Files and Folders`</span>. This is the most important step to separate the storage of metadata and files.</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-files.png)</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>The *first* path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The *second* path leads to the system files of Zotero, I call it <span class="in">`zotero-system`</span>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. </span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>**Better BibTeX**. This tab appears after we install the Better BibTeX extension. The extension is needed to export the whole bibliographic library (or some of its parts) as a plain .bib text file. This step is needed to use Zotero in RStudio while writing academic papers with <span class="in">`rmarkdown`</span>. </span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-bbt.png)</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>The most important option here is to define the rules for creating citation keys. There are almost infinite number of ways one can define these keys (<span class="co">[</span><span class="ot">check the manual</span><span class="co">][keys]</span>). My personal choice is <span class="in">`[auth:lower][year][journal:lower:abbr]`</span>, which means that a key consists of the first author's name, publication year, and the first letters abbreviation of the journal's title, everything in lower case. Thus the key for my <span class="co">[</span><span class="ot">most recent paper</span><span class="co">][tesg]</span> published in *Tijdschrift voor economische en sociale geografie* is <span class="in">`kashnitsky2019tveesg`</span>. </span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu"># ZotFile Preferences</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>Next we need to setup ZotFile. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. To open the setup window click <span class="in">`Tools --&gt; ZotFile Preferences`</span>. Again, the window has several tabs. </span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>**General**. Here we define two paths. The *first* is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The *second* path leads to the local directory created for the full-text PDFs, the one that I named <span class="in">`zotero-library`</span> and which is synced with an external cloud solution of our choice.</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-general.png)</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>To navigate easier in this database of PDFs check the option <span class="in">`Use subfolder defined by`</span>. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the info icon to learn the options. I choose to simply have a separate folder for each first author. </span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>**Tablet Settings**. Apparently, this menu allows to setup an exchange of PDFs with a tablet. I've never used it, thus omit. </span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>**Renaming Rules**. Here it's important to make sure that ZotFile is responsible for renaming. Then we define how to rename the PDFs based on the bibliographic metadata available. Again, here we have many many options. My choice is {% raw %}<span class="in">`{%a_}{%y_}{%t}`</span>{% endraw %} which yields file names like <span class="in">`kashnitsky_2018_russian_periphery_is_dying_in_movement.pdf`</span> (again an example for <span class="co">[</span><span class="ot">my recent paper</span><span class="co">][geoj]</span> in *GeoJournal*). </span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-renaming.png)</span>  </span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>**Advanced Settings**. I only checked the option to replace all the non-standard symbols with plain ASCII. </span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>**A very important note on ZotFile!**. </span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>If you parse the metadata manually from a PDF, make sure to rename the file using ZotFile. For that right-click the metadata record <span class="in">`Manage Attachments --&gt; Rename Attachments`</span>. This action explicitly tells to use ZotFile for renaming and will move the renamed PDF to a proper sub-directory.  The attachment in Zotero should not look like a PDF file... </span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="al">![](att-pdf.png)</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>... but rather should be a link to the renamed file.</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="al">![](att-link.png)</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>In these screenshot I also show the location of the actual PDFs in both cases (right-click the metadata record <span class="in">`Show File`</span>). As you can see, in the first case the PDF is located in a meaninglessly named folder somewhere in the <span class="in">`zotero-system`</span> directory. In contrast, the renamed by ZotFile PDF is located in a properly named sub-directory in <span class="in">`zotero-library`</span>. Thus, in the latter case the PDF is synced to my Google Drive and can be accessed from anywhere. </span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="al">![](gdrive.png)</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>More importantly, when I need to restore my whole database of academic papers on another machine, I just need to go through these steps. As long as the system metadata data base is synced by Zotero and I provide Zotero the link to a PDFs storage, it will recognize all the relative paths to the files, and the whole library is restored. This setup also makes it possible to have the same continuously synced library on multiple machines. The hack is in ZotFile which adds a <span class="in">`file`</span> path line to the metadata of the papers. </span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-bib.png)</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>As long as I keep the settings unchanged, everything will be synced fine across multiple devices. In the end, I enjoy the unlimited storage of my PDFs with the very nice and reliable native sync of metadata form Zotero. </span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>**Final remark on Zotero**. Feel free to clean from time to time all the clutter from <span class="in">`zotero-system/storage`</span>. </span>
 <span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="fu"># Use Zotero library in RStudio with `rmarkdown`</span></span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>Zotero has a very nice built-in integration with Microsoft Word and Libre Office. A bit of magic is needed if one wants to use it with LaTeX or (like me) with <span class="in">`rmarkdown`</span>. The magic part is the Better BibTeX plugin, which we've installed and set up earlier.</span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>Better BibTeX offers an easy way to export bibliographic records from Zotero as plain .bib text and keep the file updated once the records are changed. Just right-click on the collection in Zotero and choose <span class="in">`Export Collection`</span>. </span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="al">![](bbt-export.png)</span> </span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>Then in the next window choose to export as Better BibTeX and check the option to <span class="in">`Keep updated`</span>. </span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="al">![](bbt-menu.png)</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>The output .bib file should be placed in the directory from which we are going to knit the .rmd file. The name of the .bib is specified in YAML header of the .rmd. Here is an example from my <span class="co">[</span><span class="ot">running project</span><span class="co">][gf]</span> with <span class="co">[</span><span class="ot">@jm_aburto</span><span class="co">][jm]</span>.</span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="al">![](yaml.png)</span></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>Note that the exact YAML functions may vary depending on the <span class="in">`rmarkdown`</span> template package. In this case I'm using <span class="in">`bookdown`</span>, which also allows to specify the desired bibliographic style, .csl file should also be copied to the knit directory. </span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>Then, everything is ready to use the citation keys to generate citations throughout the text. For details on <span class="in">`rmarkdown`</span> citation syntax, it's better to refer to <span class="co">[</span><span class="ot">RStudio's manual</span><span class="co">][rmd]</span> (see below) or <span class="co">[</span><span class="ot">the relevant chapter</span><span class="co">][bookd]</span> of <span class="co">[</span><span class="ot">@xieyihui</span><span class="co">][xie]</span>'s book on <span class="in">`bookdown`</span>.</span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">width</span><span class="ot">=</span><span class="st">"100%"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"500px"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"background: #FFFFFF;"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="fu"># Use Zotero library in RStudio with `rmarkdown`</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>Zotero has a very nice built-in integration with Microsoft Word and Libre Office. A bit of magic is needed if one wants to use it with LaTeX or (like me) with <span class="in">`rmarkdown`</span>. The magic part is the Better BibTeX plugin, which we've installed and set up earlier.</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>Better BibTeX offers an easy way to export bibliographic records from Zotero as plain .bib text and keep the file updated once the records are changed. Just right-click on the collection in Zotero and choose <span class="in">`Export Collection`</span>. </span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="al">![](bbt-export.png)</span> </span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>Then in the next window choose to export as Better BibTeX and check the option to <span class="in">`Keep updated`</span>. </span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="al">![](bbt-menu.png)</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>The output .bib file should be placed in the directory from which we are going to knit the .rmd file. The name of the .bib is specified in YAML header of the .rmd. Here is an example from my <span class="co">[</span><span class="ot">running project</span><span class="co">][gf]</span> with <span class="co">[</span><span class="ot">@jm_aburto</span><span class="co">][jm]</span>.</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="al">![](yaml.png)</span></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>Note that the exact YAML functions may vary depending on the <span class="in">`rmarkdown`</span> template package. In this case I'm using <span class="in">`bookdown`</span>, which also allows to specify the desired bibliographic style, .csl file should also be copied to the knit directory. </span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>Then, everything is ready to use the citation keys to generate citations throughout the text. For details on <span class="in">`rmarkdown`</span> citation syntax, it's better to refer to <span class="co">[</span><span class="ot">RStudio's manual</span><span class="co">][rmd]</span> (see below) or <span class="co">[</span><span class="ot">the relevant chapter</span><span class="co">][bookd]</span> of <span class="co">[</span><span class="ot">@xieyihui</span><span class="co">][xie]</span>'s book on <span class="in">`bookdown`</span>.</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">width</span><span class="ot">=</span><span class="st">"100%"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"500px"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"background: #FFFFFF;"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span>
 <span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>The final hint here is to use <span class="in">`citr`</span> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <span class="in">`Insert citation`</span> appears which executes the <span class="in">`citr:::insert_citation()`</span> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <span class="co">[</span><span class="ot">github repo</span><span class="co">][citr]</span>.</span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="fu"># Happy paper writing with Zotero and RStudio!</span></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://habr.com/en/post/271045/</span></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="ot">[habr]: https://habr.com/en/top/</span></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="ot">[csl]: https://www.zotero.org/styles</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="ot">[wiki]: https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="ot">[zotero]: https://www.zotero.org</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[mendeley]: https://www.mendeley.com/download-desktop/</span></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="ot">[gdocs]: https://www.zotero.org/blog/google-docs-integration/</span></span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="ot">[unp]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="ot">[zbib]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[forbes]: https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[req]: https://forums.zotero.org/discussion/57130/style-request-demographic-research</span></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[down]: https://www.zotero.org/download/</span></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="ot">[reg]: https://www.zotero.org/user/register/</span></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[zot]: http://zotfile.com</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[bbt]: https://retorque.re/zotero-better-bibtex/</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ot">[keys]: https://retorque.re/zotero-better-bibtex/citation-keys/</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ot">[tesg]: https://doi.org/10.1111/tesg.12357</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[geoj]: https://doi.org/10.1007/s10708-018-9953-5</span></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[gf]: https://doi.org/10.31219/osf.io/f49n6</span></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[jm]: https://twitter.com/jm_aburto</span></span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[xie]: https://twitter.com/xieyihui</span></span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="ot">[bookd]: https://bookdown.org/yihui/bookdown/citations.html</span></span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</span></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ot">[citr]: https://github.com/crsh/citr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>The final hint here is to use <span class="in">`citr`</span> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <span class="in">`Insert citation`</span> appears which executes the <span class="in">`citr:::insert_citation()`</span> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <span class="co">[</span><span class="ot">github repo</span><span class="co">][citr]</span>.</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="fu"># Happy paper writing with Zotero and RStudio!</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://habr.com/en/post/271045/</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="ot">[habr]: https://habr.com/en/top/</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="ot">[csl]: https://www.zotero.org/styles</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="ot">[wiki]: https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[zotero]: https://www.zotero.org</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="ot">[mendeley]: https://www.mendeley.com/download-desktop/</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="ot">[gdocs]: https://www.zotero.org/blog/google-docs-integration/</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="ot">[unp]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[zbib]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[forbes]: https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[req]: https://forums.zotero.org/discussion/57130/style-request-demographic-research</span></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="ot">[down]: https://www.zotero.org/download/</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[reg]: https://www.zotero.org/user/register/</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[zot]: http://zotfile.com</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ot">[bbt]: https://retorque.re/zotero-better-bibtex/</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ot">[keys]: https://retorque.re/zotero-better-bibtex/citation-keys/</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[tesg]: https://doi.org/10.1111/tesg.12357</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[geoj]: https://doi.org/10.1007/s10708-018-9953-5</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[gf]: https://doi.org/10.31219/osf.io/f49n6</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[jm]: https://twitter.com/jm_aburto</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="ot">[xie]: https://twitter.com/xieyihui</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[bookd]: https://bookdown.org/yihui/bookdown/citations.html</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ot">[rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="ot">[citr]: https://github.com/crsh/citr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

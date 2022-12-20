@@ -1,0 +1,23 @@
+---
+title: "Thank you! You are now signed up! "
+description-meta: "{{< meta website.description >}}"
+title-block-banner: "#DFFF00"
+# image: img/ik.jpg
+comments: false
+toc: false
+toc-location: right
+about:
+  template: jolla
+---
+
+
+Thanks for your interest in **demographeR’s notes** =)  
+
+I promise not to burden you with unnecessary emails, only new posts notifications.
+
+Cordially, Ilya 
+
+<button class="btn btn-lg btn-secondary" type="button">
+<a href="/">{{< fa house >}} GO BACK HOME</a>
+</button>
+

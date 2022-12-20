@@ -1,131 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ikashnitsky.github.io/2019/zotero/index.html</loc>
+    <lastmod>2022-12-20T18:10:50.873Z</lastmod>
+  </url>
+  <url>
     <loc>https://ikashnitsky.github.io/2017/align-six-maps/index.html</loc>
-    <lastmod>2022-12-20T14:31:00.419Z</lastmod>
+    <lastmod>2022-12-20T18:08:37.820Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/colorcoded-map/index.html</loc>
-    <lastmod>2022-12-20T14:31:01.056Z</lastmod>
+    <lastmod>2022-12-20T18:08:38.375Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/data-acquisition-one/index.html</loc>
-    <lastmod>2022-12-20T14:31:42.418Z</lastmod>
+    <lastmod>2022-12-20T18:08:50.303Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/data-acquisition-three/index.html</loc>
-    <lastmod>2022-12-20T14:32:20.553Z</lastmod>
+    <lastmod>2022-12-20T18:09:08.051Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/data-acquisition-two/index.html</loc>
-    <lastmod>2022-12-20T14:32:56.758Z</lastmod>
+    <lastmod>2022-12-20T18:09:22.209Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/dd-journals-frequency/index.html</loc>
-    <lastmod>2022-12-20T14:33:01.914Z</lastmod>
+    <lastmod>2022-12-20T18:09:27.924Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/index.html</loc>
-    <lastmod>2022-12-20T14:33:11.443Z</lastmod>
+    <lastmod>2022-12-20T18:09:36.819Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/gender-gap-in-swedish-mortality/index.html</loc>
-    <lastmod>2022-12-20T14:33:15.403Z</lastmod>
+    <lastmod>2022-12-20T18:09:40.298Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/index.html</loc>
-    <lastmod>2022-12-20T14:33:19.988Z</lastmod>
+    <lastmod>2022-12-20T18:09:45.021Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/index.html</loc>
-    <lastmod>2022-12-20T14:33:20.447Z</lastmod>
+    <lastmod>2022-12-20T18:09:45.467Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/hello-r-world/index.html</loc>
-    <lastmod>2022-12-20T14:33:21.799Z</lastmod>
+    <lastmod>2022-12-20T18:09:46.808Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/index.html</loc>
-    <lastmod>2022-12-20T14:33:28.125Z</lastmod>
+    <lastmod>2022-12-20T18:09:50.733Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/index.html</loc>
-    <lastmod>2022-12-20T14:33:31.993Z</lastmod>
+    <lastmod>2022-12-20T18:09:55.239Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/ice-hockey-players-height/index.html</loc>
-    <lastmod>2022-12-20T14:33:42.830Z</lastmod>
+    <lastmod>2022-12-20T18:10:09.603Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/map-hacking/index.html</loc>
-    <lastmod>2022-12-20T14:33:51.093Z</lastmod>
+    <lastmod>2022-12-20T18:10:15.556Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/neet-in-europe/index.html</loc>
-    <lastmod>2022-12-20T14:33:59.197Z</lastmod>
+    <lastmod>2022-12-20T18:10:21.374Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/subplots-in-maps/index.html</loc>
-    <lastmod>2022-12-20T14:34:11.135Z</lastmod>
+    <lastmod>2022-12-20T18:10:26.207Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2017/who-is-old/index.html</loc>
-    <lastmod>2022-12-20T14:34:24.448Z</lastmod>
+    <lastmod>2022-12-20T18:10:32.134Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2018/ddd-poster/index.html</loc>
-    <lastmod>2022-12-20T14:34:24.988Z</lastmod>
+    <lastmod>2022-12-20T18:10:32.620Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2018/deep-catalan-roots/index.html</loc>
-    <lastmod>2022-12-20T14:34:25.659Z</lastmod>
+    <lastmod>2022-12-20T18:10:33.236Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2018/perfect-rstudio-layout/index.html</loc>
-    <lastmod>2022-12-20T14:34:26.152Z</lastmod>
+    <lastmod>2022-12-20T18:10:33.722Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2018/sjrdata-package/index.html</loc>
-    <lastmod>2022-12-20T14:34:31.813Z</lastmod>
+    <lastmod>2022-12-20T18:10:38.274Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2018/the-lancet-paper/index.html</loc>
-    <lastmod>2022-12-20T14:34:34.009Z</lastmod>
+    <lastmod>2022-12-20T18:10:40.437Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2019/barcelona-summer-school-of-demography/index.html</loc>
-    <lastmod>2022-12-20T14:34:34.492Z</lastmod>
+    <lastmod>2022-12-20T18:10:40.886Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2019/dotplot/index.html</loc>
-    <lastmod>2022-12-20T14:34:35.049Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.github.io/2019/zotero/index.html</loc>
-    <lastmod>2022-12-20T14:34:36.068Z</lastmod>
+    <lastmod>2022-12-20T18:10:41.471Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/2021/life-expectancy-101/index.html</loc>
-    <lastmod>2022-12-20T14:34:36.834Z</lastmod>
+    <lastmod>2022-12-20T18:10:42.222Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/atom.html</loc>
-    <lastmod>2022-12-20T14:44:08.492Z</lastmod>
+    <lastmod>2022-12-20T18:10:43.598Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/cv.html</loc>
-    <lastmod>2022-12-20T14:34:38.638Z</lastmod>
+    <lastmod>2022-12-20T18:10:44.000Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/dd.html</loc>
-    <lastmod>2022-12-20T14:34:39.098Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.github.io/index.html</loc>
-    <lastmod>2022-12-20T14:44:12.025Z</lastmod>
+    <lastmod>2022-12-20T18:10:44.429Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/me.html</loc>
-    <lastmod>2022-12-20T14:34:40.413Z</lastmod>
+    <lastmod>2022-12-20T18:10:44.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/subscribe.html</loc>
+    <lastmod>2022-12-20T18:10:45.521Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/thank-you.html</loc>
+    <lastmod>2022-12-20T18:10:45.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/index.html</loc>
+    <lastmod>2022-12-20T18:11:00.396Z</lastmod>
   </url>
 </urlset>

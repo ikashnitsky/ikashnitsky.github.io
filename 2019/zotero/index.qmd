@@ -9,6 +9,7 @@ categories: [r, tutorial, zotero]
 ***
 
 ::: {.callout-note}
+# About thi tutorial
 Here is a bit refreshed translation of [my 2015 blog post][post], initially published on Russian blog platform [habr.com][habr]. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times myself and many many more times referred my friends to it, even non-Russian speakers who had to use Google Translator and infer the rest from screenshots. Finally, I decided to translate it adding some basic information on how to use Zotero with rmarkdown. 
 :::
 
