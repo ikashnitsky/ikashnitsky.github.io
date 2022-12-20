@@ -337,7 +337,61 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
+
+
+ <style>
+@media only screen and (max-width: 40em) {
+        thead th:not(:first-child) {
+            display: none;
+        }
+
+        td, th {
+            display: block;
+        }
+
+        td[data-th]:before  {
+            content: attr(data-th);
+            }
+        }
+
+
+         body {font-family:  $font-family-base;
+          line-height:1.15;}
+
+         input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 3px solid #DFFF00;
+            border-radius: 4px;
+            box-sizing: border-box;}
+
+         input[type=submit] {
+            width: 70%;
+            background-color: #269292;
+            color: white;
+            padding: 10px 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;}
+    </style>
+
+
+<div class="container" style="text-align:center;  width: 100%">
+        <form action="https://ikashnitsky.pythonanywhere.com/ikashnitsky_signup" method="POST">
+          e-mail sign up:
+               <input type="email" name="email_address">
+               <input type="hidden" name="signup_page" value="http://ikashnitsky.github.io/"> <!--value="http://ikashnitsky.github.io/"-->
+               <input type="submit" value="Subscribe">
+           </form>
+    </div>
+
+
+
+</div></div>
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Year</h2>
    
@@ -614,7 +668,7 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-3">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list blog">
-    <div class="blog-entry" data-index="0" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1671441268475" data-listing-reading-time-sort="11.395">
+    <div class="blog-entry" data-index="0" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1671543010837" data-listing-reading-time-sort="10.97">
         <div class="metadata">          
             <p class="date listing-date">December 10, 2017</p>
         </div>
@@ -631,13 +685,13 @@ No matching items
                     data acquisition
                 </div>
             </div>
-            <p class="description listing-description">R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every…</p>
+            <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
         </div>
         <div class="thumbnail">
             <img src="./2017/data-acquisition-three/teaser.png" alt="Data acquisition in R (3/4)" title="Data acquisition in R (3/4)">
         </div>
     </div>
-    <div class="blog-entry" data-index="1" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1510009200000" data-listing-file-modified-sort="1671441055350" data-listing-reading-time-sort="7.01">
+    <div class="blog-entry" data-index="1" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1510009200000" data-listing-file-modified-sort="1671542977277" data-listing-reading-time-sort="6.61">
         <div class="metadata">          
             <p class="date listing-date">November 7, 2017</p>
         </div>
@@ -660,7 +714,7 @@ No matching items
             <img src="./2017/data-acquisition-two/teaser.png" alt="Data acquisition in R (2/4)" title="Data acquisition in R (2/4)">
         </div>
     </div>
-    <div class="blog-entry" data-index="2" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1508191200000" data-listing-file-modified-sort="1671440773774" data-listing-reading-time-sort="5.425">
+    <div class="blog-entry" data-index="2" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1508191200000" data-listing-file-modified-sort="1671542958656" data-listing-reading-time-sort="5.035">
         <div class="metadata">          
             <p class="date listing-date">October 17, 2017</p>
         </div>
@@ -677,7 +731,7 @@ No matching items
                     data acquisition
                 </div>
             </div>
-            <p class="description listing-description">R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every…</p>
+            <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
         </div>
         <div class="thumbnail">
             <img src="./2017/data-acquisition-one/teaser.png" alt="Data acquisition in R (1/4)" title="Data acquisition in R (1/4)">

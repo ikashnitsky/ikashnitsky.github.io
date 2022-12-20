@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+ <style>
+@media only screen and (max-width: 40em) {
+        thead th:not(:first-child) {
+            display: none;
+        }
+
+        td, th {
+            display: block;
+        }
+
+        td[data-th]:before  {
+            content: attr(data-th);
+            }
+        }
+
+
+         body {font-family:  $font-family-base;
+          line-height:1.15;}
+
+         input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 3px solid #DFFF00;
+            border-radius: 4px;
+            box-sizing: border-box;}
+
+         input[type=submit] {
+            width: 70%;
+            background-color: #269292;
+            color: white;
+            padding: 10px 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;}
+    </style>
+</head>
+<body>
+<div class="container" style="text-align:center;  width: 100%">
+        <form action="https://ikashnitsky.pythonanywhere.com/ikashnitsky_signup" method="POST">
+          e-mail sign up:
+               <input type="email" name="email_address">
+               <input type="hidden" name="signup_page" value="http://ikashnitsky.github.io/" /> <!--value="http://ikashnitsky.github.io/"-->
+               <input type="submit" value="Subscribe">
+           </form>
+    </div>
+</body>
+</html>

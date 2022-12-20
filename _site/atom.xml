@@ -615,8 +615,24 @@ Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/data-acquisition-three/index.html</link>
   <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
-<p>R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every step in a fully reproducible way. There are numerous data acquisition options for R users. Of course, I do not attempt to show all the data possibilities and tend to focus mostly on demographic data. If your prime interest lies outside human population statistics, it’s worth checking the amazing <a href="https://github.com/ropensci/opendata">Open Data Task View</a>.</p>
-<p>The series consists of four posts: - <a href="https://ikashnitsky.github.io/2017/data-acquisition-one/">Loading prepared datasets</a> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a> - <strong>Demographic data sources</strong> - Getting spatial data</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The series consists of four posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://ikashnitsky.github.io/2017/data-acquisition-one/">Loading prepared datasets</a></li>
+<li><a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a></li>
+<li><strong>Demographic data sources</strong></li>
+<li>Getting spatial data</li>
+</ul>
+</div>
+</div>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
 <section id="human-mortality-database" class="level1"><h1>Human Mortality Database</h1>
 <p>When it comes to testing the big questions of human population dynamics, there is no more reliable data source than <a href="http://www.mortality.org">Human Mortality Database</a>. This database is run by demographers who use state-of-the-art methodology to overcome issues in the data. As the result, the estimates are as precise as possible. Their <a href="http://www.mortality.org/Public/Docs/MethodsProtocol.pdf">methods protocol</a> is a masterpiece of demographic data processing. On the down side, the data of decent enough quality is available for only a bunch of countries. To explore the data I highly recommend [Human Mortality Database Explorer][exp] by <a href="https://twitter.com/jschoeley">Jonas Schöley</a>.</p>
@@ -1036,8 +1052,31 @@ All the code chunks together can be found in <a href="https://gist.github.com/ik
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/data-acquisition-one/index.html</link>
   <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
-<p>R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every step in a fully reproducible way. There are numerous data acquisition options for R users. Of course, I do not attempt to show all the data possibilities and tend to focus mostly on demographic data. If your prime interest lies outside human population statistics, it’s worth checking the amazing <a href="https://github.com/ropensci/opendata">Open Data Task View</a>.</p>
-<p>The series consists of four posts: - <strong>Loading prepared datasets</strong> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a> - Getting spatial data</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The series consists of four posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<strong>Loading prepared datasets</strong><br>
+</li>
+<li>
+<a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a><br>
+</li>
+<li>
+<a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a><br>
+</li>
+<li>Getting spatial data<br>
+</li>
+</ul>
+</div>
+</div>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
 <section id="built-in-datasets" class="level1"><h1>Built-in datasets</h1>
 <p>For illustration purposes, many R packages include data samples. Base R comes with a <code>datasets</code> package that offers a wide range of simple, sometimes very famous, datasets. Quite a detailed list of built-in datasets from various packages is <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">maintained by Vincent Arel-Bundock</a>.</p>

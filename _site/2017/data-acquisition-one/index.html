@@ -122,14 +122,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 <meta property="og:title" content="Data acquisition in R (1/4) | Ilya Kashnitsky">
-<meta property="og:description" content="R is an incredible tool for reproducible research.">
+<meta property="og:description" content="For each of the data acquisition options I provide a small visualization use case.">
 <meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
 <meta property="og:site-name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
 <meta name="twitter:title" content="Data acquisition in R (1/4) | Ilya Kashnitsky">
-<meta name="twitter:description" content="R is an incredible tool for reproducible research.">
+<meta name="twitter:description" content="For each of the data acquisition options I provide a small visualization use case.">
 <meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
 <meta name="twitter:creator" content="@ikashnitsky">
 <meta name="twitter:site" content="@ikashnitsky">
@@ -231,8 +231,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 
 </header><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
-<p>R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every step in a fully reproducible way. There are numerous data acquisition options for R users. Of course, I do not attempt to show all the data possibilities and tend to focus mostly on demographic data. If your prime interest lies outside human population statistics, it’s worth checking the amazing <a href="https://github.com/ropensci/opendata">Open Data Task View</a>.</p>
-<p>The series consists of four posts: - <strong>Loading prepared datasets</strong> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a> - Getting spatial data</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+The series consists of four posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>
+<strong>Loading prepared datasets</strong><br>
+</li>
+<li>
+<a href="https://ikashnitsky.github.io/2017/data-acquisition-two">Accessing popular statistical databases</a><br>
+</li>
+<li>
+<a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a><br>
+</li>
+<li>Getting spatial data<br>
+</li>
+</ul>
+</div>
+</div>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
 <section id="built-in-datasets" class="level1"><h1>Built-in datasets</h1>
 <p>For illustration purposes, many R packages include data samples. Base R comes with a <code>datasets</code> package that offers a wide range of simple, sometimes very famous, datasets. Quite a detailed list of built-in datasets from various packages is <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">maintained by Vincent Arel-Bundock</a>.</p>
@@ -553,13 +576,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every step in a fully reproducible way. There are numerous data acquisition options for R users. Of course, I do not attempt to show all the data possibilities and tend to focus mostly on demographic data. If your prime interest lies outside human population statistics, it's worth checking the amazing <span class="co">[</span><span class="ot">Open Data Task View</span><span class="co">][odata]</span>. </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>The series consists of four posts:</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>**Loading prepared datasets**</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Accessing popular statistical databases</span><span class="co">][two]</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Demographic data sources</span><span class="co">][three]</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>Getting spatial data</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># The series consists of four posts:</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>**Loading prepared datasets**  </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Accessing popular statistical databases</span><span class="co">][two]</span>  </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Demographic data sources</span><span class="co">][three]</span>  </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>Getting spatial data  </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>For each of the data acquisition options I provide a small visualization use case.</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
