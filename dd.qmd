@@ -2,7 +2,8 @@
 title: "."
 description-meta: "{{< meta website.description >}}"
 comments: false
-title-block-banner: "img/dd-banner.png"
+title-block-banner: img/dd-banner.png
+code-tools: false
 toc: false
 toc-location: right
 ---

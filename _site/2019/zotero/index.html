@@ -126,6 +126,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Submit"
   }
 }</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #025757;
+    }
+    </style>
 
 
 <meta property="og:title" content="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown | Ilya Kashnitsky">
@@ -138,8 +143,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:title" content="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown | Ilya Kashnitsky">
 <meta name="twitter:description" content="Bibliographic manager is a life saver in everyday academic life.">
 <meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta name="twitter:creator" content="@ikashnitsky">
-<meta name="twitter:site" content="@ikashnitsky">
+<meta name="twitter:creator" content="ikashnitsky">
+<meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="1000">
 <meta name="twitter:image-width" content="1910">
@@ -191,12 +196,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../atom.xml"><i class="bi bi-rss" role="img" aria-label="rss">
+    <a class="nav-link" href="../../atom.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -207,46 +212,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Zotero hacks: unlimited synced storage and its smooth use with rmarkdown</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">r</div>
+                <div class="quarto-category">tutorial</div>
+                <div class="quarto-category">zotero</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 14, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Zotero hacks: unlimited synced storage and its smooth use with rmarkdown</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-  <div class="quarto-categories">
-    <div class="quarto-category">r</div>
-    <div class="quarto-category">tutorial</div>
-    <div class="quarto-category">zotero</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 14, 2019</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
 
 <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -255,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-About thi tutorial
+About this tutorial
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -303,7 +310,7 @@ About thi tutorial
 <p><img src="pref-cite.png" class="img-fluid"></p>
 <p><strong>Advanced</strong>. Here we are most interested in the sub-tab <code>Files and Folders</code>. This is the most important step to separate the storage of metadata and files.</p>
 <p><img src="pref-files.png" class="img-fluid"></p>
-<p>The <em>first</em> path should lead to a directory which stores the full-text PDFs, I call it <code>zotero-library</code>. This directory should be somewhere in the part of the local file system that is synced. In my case it’s the directory named <code>ikashnitsky</code>, which I sync with Google Drive. The <em>second</em> path leads to the system files of Zotero, I call it <code>zotero-system</code>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it’s better if those system files are not overwritten by any external sync software.</p>
+<p>The <strong>first</strong> path should lead to a directory which stores the full-text PDFs, I call it <code>zotero-library</code>. This directory should be somewhere in the part of the local file system that is synced. In my case it’s the directory named <code>ikashnitsky</code>, which I sync with Google Drive. The <strong>second</strong> path leads to the system files of Zotero, I call it <code>zotero-system</code>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it’s better if those system files are not overwritten by any external sync software.</p>
 <p><strong>Better BibTeX</strong>. This tab appears after we install the Better BibTeX extension. The extension is needed to export the whole bibliographic library (or some of its parts) as a plain .bib text file. This step is needed to use Zotero in RStudio while writing academic papers with <code>rmarkdown</code>.</p>
 <p><img src="pref-bbt.png" class="img-fluid"></p>
 <p>The most important option here is to define the rules for creating citation keys. There are almost infinite number of ways one can define these keys (<a href="https://retorque.re/zotero-better-bibtex/citation-keys/">check the manual</a>). My personal choice is <code>[auth:lower][year][journal:lower:abbr]</code>, which means that a key consists of the first author’s name, publication year, and the first letters abbreviation of the journal’s title, everything in lower case. Thus the key for my <a href="https://doi.org/10.1111/tesg.12357">most recent paper</a> published in <em>Tijdschrift voor economische en sociale geografie</em> is <code>kashnitsky2019tveesg</code>.</p>
@@ -311,7 +318,7 @@ About thi tutorial
 <section id="zotfile-preferences" class="level1">
 <h1>ZotFile Preferences</h1>
 <p>Next we need to setup ZotFile. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. To open the setup window click <code>Tools --&gt; ZotFile Preferences</code>. Again, the window has several tabs.</p>
-<p><strong>General</strong>. Here we define two paths. The <em>first</em> is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher’s website (recall that earlier we installed Zotero Connector). The <em>second</em> path leads to the local directory created for the full-text PDFs, the one that I named <code>zotero-library</code> and which is synced with an external cloud solution of our choice.</p>
+<p><strong>General</strong>. Here we define two paths. The <strong>first</strong> is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher’s website (recall that earlier we installed Zotero Connector). The <strong>second</strong> path leads to the local directory created for the full-text PDFs, the one that I named <code>zotero-library</code> and which is synced with an external cloud solution of our choice.</p>
 <p><img src="zf-general.png" class="img-fluid"></p>
 <p>To navigate easier in this database of PDFs check the option <code>Use subfolder defined by</code>. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the info icon to learn the options. I choose to simply have a separate folder for each first author.</p>
 <p><strong>Tablet Settings</strong>. Apparently, this menu allows to setup an exchange of PDFs with a tablet. I’ve never used it, thus omit.</p>
@@ -344,9 +351,19 @@ About thi tutorial
 <iframe width="100%" height="500px" style="background: #FFFFFF;" src="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">
 </iframe>
 <p>The final hint here is to use <code>citr</code> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <code>Insert citation</code> appears which executes the <code>citr:::insert_citation()</code> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <a href="https://github.com/crsh/citr">github repo</a>.</p>
-</section>
-<section id="happy-paper-writing-with-zotero-and-rstudio" class="level1">
-<h1>Happy paper writing with Zotero and RStudio!</h1>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Happy paper writing with Zotero and RStudio!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 <hr>
 
 
@@ -552,7 +569,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># About thi tutorial</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># About this tutorial</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Here is a bit refreshed translation of <span class="co">[</span><span class="ot">my 2015 blog post</span><span class="co">][post]</span>, initially published on Russian blog platform <span class="co">[</span><span class="ot">habr.com</span><span class="co">][habr]</span>. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times myself and many many more times referred my friends to it, even non-Russian speakers who had to use Google Translator and infer the rest from screenshots. Finally, I decided to translate it adding some basic information on how to use Zotero with rmarkdown. </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -624,7 +641,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="al">![](pref-files.png)</span></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>The *first* path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The *second* path leads to the system files of Zotero, I call it <span class="in">`zotero-system`</span>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. </span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>The **first** path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The **second** path leads to the system files of Zotero, I call it <span class="in">`zotero-system`</span>. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. </span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>**Better BibTeX**. This tab appears after we install the Better BibTeX extension. The extension is needed to export the whole bibliographic library (or some of its parts) as a plain .bib text file. This step is needed to use Zotero in RStudio while writing academic papers with <span class="in">`rmarkdown`</span>. </span>
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
@@ -636,7 +653,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>Next we need to setup ZotFile. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. To open the setup window click <span class="in">`Tools --&gt; ZotFile Preferences`</span>. Again, the window has several tabs. </span>
 <span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>**General**. Here we define two paths. The *first* is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The *second* path leads to the local directory created for the full-text PDFs, the one that I named <span class="in">`zotero-library`</span> and which is synced with an external cloud solution of our choice.</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>**General**. Here we define two paths. The **first** is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The **second** path leads to the local directory created for the full-text PDFs, the one that I named <span class="in">`zotero-library`</span> and which is synced with an external cloud solution of our choice.</span>
 <span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="al">![](zf-general.png)</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
@@ -698,35 +715,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>The final hint here is to use <span class="in">`citr`</span> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <span class="in">`Insert citation`</span> appears which executes the <span class="in">`citr:::insert_citation()`</span> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <span class="co">[</span><span class="ot">github repo</span><span class="co">][citr]</span>.</span>
 <span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="fu"># Happy paper writing with Zotero and RStudio!</span></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="fu"># Happy paper writing with Zotero and RStudio!</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://habr.com/en/post/271045/</span></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="ot">[habr]: https://habr.com/en/top/</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="ot">[csl]: https://www.zotero.org/styles</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="ot">[wiki]: https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[zotero]: https://www.zotero.org</span></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="ot">[mendeley]: https://www.mendeley.com/download-desktop/</span></span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="ot">[gdocs]: https://www.zotero.org/blog/google-docs-integration/</span></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="ot">[unp]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[zbib]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[forbes]: https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/</span></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[req]: https://forums.zotero.org/discussion/57130/style-request-demographic-research</span></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="ot">[down]: https://www.zotero.org/download/</span></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[reg]: https://www.zotero.org/user/register/</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[zot]: http://zotfile.com</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ot">[bbt]: https://retorque.re/zotero-better-bibtex/</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ot">[keys]: https://retorque.re/zotero-better-bibtex/citation-keys/</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[tesg]: https://doi.org/10.1111/tesg.12357</span></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[geoj]: https://doi.org/10.1007/s10708-018-9953-5</span></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[gf]: https://doi.org/10.31219/osf.io/f49n6</span></span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[jm]: https://twitter.com/jm_aburto</span></span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="ot">[xie]: https://twitter.com/xieyihui</span></span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[bookd]: https://bookdown.org/yihui/bookdown/citations.html</span></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ot">[rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</span></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="ot">[citr]: https://github.com/crsh/citr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://habr.com/en/post/271045/</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="ot">[habr]: https://habr.com/en/top/</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="ot">[csl]: https://www.zotero.org/styles</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="ot">[wiki]: https://en.wikipedia.org/wiki/Comparison_of_reference_management_software</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[zotero]: https://www.zotero.org</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[mendeley]: https://www.mendeley.com/download-desktop/</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[gdocs]: https://www.zotero.org/blog/google-docs-integration/</span></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="ot">[unp]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[zbib]: https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[forbes]: https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ot">[req]: https://forums.zotero.org/discussion/57130/style-request-demographic-research</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ot">[down]: https://www.zotero.org/download/</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[reg]: https://www.zotero.org/user/register/</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[zot]: http://zotfile.com</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[bbt]: https://retorque.re/zotero-better-bibtex/</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[keys]: https://retorque.re/zotero-better-bibtex/citation-keys/</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="ot">[tesg]: https://doi.org/10.1111/tesg.12357</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[geoj]: https://doi.org/10.1007/s10708-018-9953-5</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ot">[gf]: https://doi.org/10.31219/osf.io/f49n6</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="ot">[jm]: https://twitter.com/jm_aburto</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="ot">[xie]: https://twitter.com/xieyihui</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="ot">[bookd]: https://bookdown.org/yihui/bookdown/citations.html</span></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="ot">[rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</span></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="ot">[citr]: https://github.com/crsh/citr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

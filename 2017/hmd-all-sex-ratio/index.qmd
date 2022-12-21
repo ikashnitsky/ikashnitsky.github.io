@@ -10,6 +10,8 @@ categories: [r, tw, hmd, death rates]
 
 Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their life-course. The sex ratio at birth does not vary dramatically[^1] and is more or less constant at the level of 105-106 boys per 100 girls. Hence, differences in the sex ratio profiles of countries mainly reflect gender gap in mortality. In this post I will compare sex ratios age profiles in all countries included in [Human Mortality Database](http://www.mortality.org).
 
+[^1]: There are cases of big deviations from this natural constant. The most well known one is the skewed sex ratio in China, where decades of One Child Policy together with strong traditional son preference resulted in selective abortions. Read more: @frejka2010pdr; @feng2011pdr; @basten2013ps. 
+
  `R` gives amazing opportunities to grab data fast and easy. Thanks to [Tim Riffe's](https://sites.google.com/site/timriffepersonal/) `HMDHFDplus` package, one can now download HMD data with just a couple of lines of `R` code. 
  
 There is a handy function in `HMDHFDplus` package -- `getHMDcountries()`. It lists the codes for all countries in HMD. So it becomes really easy to loop through the database and download data for all countries.
@@ -33,7 +35,11 @@ for (i in 1: length(country)) {
 }
 ```
 
-*Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credidantials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at http://www.mortality.org/ and provide his own credidantials to the `readHMDweb()` function.*
+
+::: {.callout-important}
+# Use own credentials 
+Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credentials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at [www.mortality.org](https://www.mortality.org/) and provide his own credentials to the `readHMDweb()` function.
+:::
 
 Next, I select 2012 for comparison -- it is quite recent, and for most of the HMD countries there are data for 2012. The loop goes through each of the countries' dataframe in `exposures` list, selects data for 2012 and calculates sex ratio at each age. I also remove data for several populations (like East and West Germany separately). 
 
@@ -95,6 +101,7 @@ There is quite a variety in the sex ratio profiles. If the initial prevalence of
 
 What happened in Taiwan?
 
+
 ***
 
 ::: {.callout-tip}
@@ -104,4 +111,4 @@ What happened in Taiwan?
 
 
 
-[^1]: There are cases of big deviations from this natural constant. The most well known one is the skewed sex ratio in China, where decades of One Child Policy together with strong traditional son preference resulted in selective abortions. Read more: Frejka et. al ([2010](http://dx.doi.org/10.1111/j.1728-4457.2010.00347.x)); Wang ([2011](http://dx.doi.org/10.1111/j.1728-4457.2011.00383.x)); Basten and Verropoulou ([2013](http://dx.doi.org/10.1080/00324728.2013.826372)). 
+

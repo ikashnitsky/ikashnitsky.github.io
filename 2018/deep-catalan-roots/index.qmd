@@ -22,7 +22,8 @@ This academic year I am participating in [European Doctoral School of Demography
 
 Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), [Francisco Villavichencio][pancho] gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in [one of his PhD papers][paper], in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs their of parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:
 
-> Villavicencio, F., Jordà, J. P., & Pujadas-Mora, J. M. (2015). Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In _Population reconstruction_ (pp. 199–216). Springer.
+> Villavicencio F, Jordà JP, Pujadas-Mora JM. 2015. Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In *Population Reconstruction*, 199–216. Springer.
+
 
 
 Our assignment was to play with a sample of the dataset and link daughters, who got married in 1597--1629, to their possible parents, who got married in 1573--1617, using string distance metrics. But that's not what I am about to show you.

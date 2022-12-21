@@ -2,6 +2,7 @@
 title: "Thank you! You are now signed up! "
 description-meta: "{{< meta website.description >}}"
 title-block-banner: "#DFFF00"
+code-tools: false
 # image: img/ik.jpg
 comments: false
 toc: false
@@ -18,6 +19,6 @@ I promise not to burden you with unnecessary emails, only new posts notification
 Cordially, Ilya 
 
 <button class="btn btn-lg btn-secondary" type="button">
-<a href="/">{{< fa house >}} GO BACK HOME</a>
+<a href="/">{{< fa house >}} back to blog</a>
 </button>
 

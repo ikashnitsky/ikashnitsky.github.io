@@ -9,7 +9,7 @@ categories: [r, tutorial, zotero]
 ***
 
 ::: {.callout-note}
-# About thi tutorial
+# About this tutorial
 Here is a bit refreshed translation of [my 2015 blog post][post], initially published on Russian blog platform [habr.com][habr]. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times myself and many many more times referred my friends to it, even non-Russian speakers who had to use Google Translator and infer the rest from screenshots. Finally, I decided to translate it adding some basic information on how to use Zotero with rmarkdown. 
 :::
 
@@ -81,7 +81,7 @@ First, let's walk though Zotero Preferences. To edit them click `Edit --> Prefer
 
 ![](pref-files.png)
 
-The *first* path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The *second* path leads to the system files of Zotero, I call it `zotero-system`. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. 
+The **first** path should lead to a directory which stores the full-text PDFs, I call it `zotero-library`. This directory should be somewhere in the part of the local file system that is synced. In my case it's the directory named `ikashnitsky`, which I sync with Google Drive. The **second** path leads to the system files of Zotero, I call it `zotero-system`. This directory should be placed somewhere in the non-synced part of the local file system. It will be updated by the native Zotero sync, and it's better if those system files are not overwritten by any external sync software. 
 
 **Better BibTeX**. This tab appears after we install the Better BibTeX extension. The extension is needed to export the whole bibliographic library (or some of its parts) as a plain .bib text file. This step is needed to use Zotero in RStudio while writing academic papers with `rmarkdown`. 
 
@@ -93,7 +93,7 @@ The most important option here is to define the rules for creating citation keys
 
 Next we need to setup ZotFile. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. To open the setup window click `Tools --> ZotFile Preferences`. Again, the window has several tabs. 
 
-**General**. Here we define two paths. The *first* is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The *second* path leads to the local directory created for the full-text PDFs, the one that I named `zotero-library` and which is synced with an external cloud solution of our choice.
+**General**. Here we define two paths. The **first** is the default location of the files downloaded by your browser. This option tells ZotFile where to look for the PDFs to process when you import a paper from the publisher's website (recall that earlier we installed Zotero Connector). The **second** path leads to the local directory created for the full-text PDFs, the one that I named `zotero-library` and which is synced with an external cloud solution of our choice.
 
 ![](zf-general.png)
 
@@ -155,7 +155,11 @@ Then, everything is ready to use the citation keys to generate citations through
 
 The final hint here is to use `citr` package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin `Insert citation` appears which executes the `citr:::insert_citation()` command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the [github repo][citr].
 
+::: {.callout-tip}
 # Happy paper writing with Zotero and RStudio!
+:::
+
+
 
 ***
   

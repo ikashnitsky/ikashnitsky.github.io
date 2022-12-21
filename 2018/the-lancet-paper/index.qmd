@@ -12,7 +12,7 @@ categories: [r, paper, dataviz, tricolore]
 
 I am happy to announce that our paper is [published today in _The Lancet_][doi]. 
 
-> Kashnitsky, I., & Schöley, J. (2018). Regional population structures at a glance. _The Lancet_, 392(10143), 209–210. [https://doi.org/10.1016/S0140-6736(18)31194-2][doi]
+> Kashnitsky I, Schöley J. 2018. Regional population structures at a glance. *The Lancet* **392**: 209–210. [https://doi.org/10.1016/S0140-6736(18)31194-2][doi]
 
 # At a glance
 
@@ -46,7 +46,7 @@ DemoTricolore()
 
 
 ::: {.callout-note}
-# SEE ALSO
+# See also
  - [**My PhD project -- Regional demographic convergence in Europe**][proj]
  - [Blog post on the first version of the map presented at Rostock Retreat Visualization in June 2017][post]
  - [Paper (Schöley & Willekens 2017) with the initial ideas for tricolore package][dr17]

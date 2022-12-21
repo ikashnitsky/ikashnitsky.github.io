@@ -93,7 +93,7 @@ $link-hover-color: $p-darker-7 !default;
 $link-hover-decoration: underline !default;
 
 // Inline code
-$code-bg: $p-lighter-8 !default;
+$code-bg: #ddffff !default;
 $code-color: $p-darker-8 !default;
 
 // Code copy
@@ -188,9 +188,9 @@ pre.text, pre.sourceCode, .cell-output pre {
 
     .quarto-listing-category {
         font-family: $toc-font-family;
-        font-weight: 300;
-        font-size: 1em;
-        line-height: 1.1;
+        font-weight: 700;
+        font-size: 0.8em;
+        line-height: 0.7;
         padding-left: 0.6rem;
         margin-left: 0.5em;
         border-left: 1px solid $gray-200;
@@ -206,7 +206,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         .quarto-category-count {
             font-weight: 200;
-            font-size: 0.8em;
+            font-size: 0.7em;
             color: $gray-600;
         }
     }
@@ -216,7 +216,7 @@ pre.text, pre.sourceCode, .cell-output pre {
     align-items: flex-start;  // Align all flex items to the top
     flex-wrap: wrap;
     border: 0 !important;
-    min-height: 3em;
+    min-height: 2em;
     font-family: $footer-font-family;
 
     a {
@@ -225,7 +225,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
     .faux-block {
         display: block;
-        padding-bottom: 0.4em;
+        padding-bottom: 0.3em;
     }
 
     .fingerprint {
@@ -243,7 +243,7 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         @media (max-width: map-get($grid-breakpoints, md)) {
             margin-top: 0.5em;
-            margin-bottom: 1.5em;
+            margin-bottom: 0.5em;
         }
     }
 
@@ -293,7 +293,7 @@ pre.text, pre.sourceCode, .cell-output pre {
         font-family: $headings-font-family;
         line-height: 1.15;
         margin-bottom: 1.5em;
-        column-gap: 1em;
+        column-gap: 1.5em;
 
         .metadata {
             flex: 0 0 8%;
@@ -309,27 +309,26 @@ pre.text, pre.sourceCode, .cell-output pre {
             img {
                 width: 100%;
                 object-fit: cover;
-                max-height: 120px;
+                max-height: 250px;
             }
         }
 
         .title {
-            font-weight: 700;
-            font-size: 1.25em;
+            font-weight: 900;
+            font-size: 1.1em;
             margin-bottom: 0.2em;
             line-height: 1.15;
         }
 
         .description {
             font-weight: 300;
-            font-size: 1em;
+            font-size: 0.95em;
             margin-bottom: 0.3em;
         }
 
         .date {
             font-weight: 300;
             font-size: 0.85em;
-            margin-top: 0.3em;
             text-align: right;
         }
 
@@ -337,15 +336,16 @@ pre.text, pre.sourceCode, .cell-output pre {
             display: flex;
             flex-wrap: wrap;
             row-gap: 0.4em;
-            column-gap: 0.4em;
+            column-gap: 0.25em;
             margin: 0.5em 0;
 
             .post-category {
-                color: $gray-600;
-                border: 1px solid $gray-500;
-                border-radius: 0.25rem;
-                text-transform: uppercase;
-                font-size: 0.65em;
+                color: $p-lighter-5;
+                border: 1px solid $p-lighter-7;
+                border-radius: 0.15rem;
+                text-transform: lowercase;
+                font-size: 0.7em;
+                font-weight: 700;
                 padding: 0.15em 0.5em;
                 cursor: pointer;
             }
@@ -358,10 +358,12 @@ pre.text, pre.sourceCode, .cell-output pre {
         margin-top: 1.5em;
 
         .quarto-category {
-            background-color: shift-color($purple, -25%);
-            border-color: shift-color($purple, -45%);
-            color: $white;
-            font-size: 1em;
+            background-color: $p-darker-5;
+            border-color: $p-darker-7;
+            color: $gray-100;
+            text-transform: lowercase;
+            font-size: 0.7em;
+            font-weight: 700;
             opacity: 1;
         }
     }

@@ -17,8 +17,7 @@ format:
     quarto-template-params:
       banner-header-class: "blog-post"
 
-# Enable banner style title blocks
-# title-block-banner: "#85DADA"
+# title block banner
+title-block-banner: "#025757"
 
-# # Turn on to rebuild all pages
-# freeze: false
+

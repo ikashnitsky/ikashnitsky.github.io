@@ -9,9 +9,10 @@ categories: [r, rspatial, denmark, nuts]
 
 ***
 
-NUTS stands for the [*Nomenclature of Territorial Units For Statistics*][nuts-overview]. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.
+NUTS stands for the [Nomenclature of Territorial Units For Statistics][nuts-overview]. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.
 
-![](fig-01-nuts.png) 
+![](fig-01-nuts.png){width="60%"}  
+
 **Figure 1. Illustration of the principle of NUTS hierarchical system**
 
 One of the objectives of NUTS was to provide more or less comparable administrative divisions for all countries of Europe. Nevertheless, in 2013, population figures for single NUTS-2 regions ranged from 28.5 thousands in *Aland island* (Finland) to almost 12 million in *Ile-de-France* (Paris and surroundings, France).   

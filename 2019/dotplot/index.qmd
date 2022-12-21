@@ -1,5 +1,5 @@
 ---
-title: "Dotplot – the single most useful yet largely neglected dataviz typ"
+title: "Dotplot – the single most useful yet largely neglected dataviz type"
 description-meta: "{{< meta website.description >}}"
 date: "2019-07-19"
 image: teaser.jpeg

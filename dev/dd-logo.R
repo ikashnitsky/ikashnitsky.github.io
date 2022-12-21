@@ -11,7 +11,6 @@ library(extrafont)
 ah <- "Atkinson Hyperlegible"
 
 
-
 # teaser ------------------------------------------------------------------
 
 

@@ -8,6 +8,8 @@ categories: [r, tw, death rates, sweden, sex gap]
 
 ***
 
+# Swedish context
+
 Sweden, with its high quality statistical record since 1748, is the natural choice for any demographic study that aims to cover population dynamics during a long period of time. 
 
 

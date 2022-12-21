@@ -25,7 +25,11 @@ rus <- readHMDweb('RUS', "mltper_1x1", ik_user_hmd, ik_pass_hmd)
 jpn <- readHMDweb('JPN', "mltper_1x1", ik_user_hmd, ik_pass_hmd)
 ```
 
-*Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credidantials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at http://www.mortality.org/ and provide his own credidantials to the `readHMDweb()` function.*
+::: {.callout-important}
+# Use own credentials 
+Please note, the arguments `ik_user_hmd` and `ik_pass_hmd` are my login credentials at the website of [Human Mortality Database](http://www.mortality.org), which are stored locally at my computer. In order to access the data, one needs to create an account at [www.mortality.org](https://www.mortality.org/) and provide his own credentials to the `readHMDweb()` function.
+:::
+
 
 Next, I select the most recent year for comparison, 2014, and compute the rate ratio of age specific mortality rates. 
 

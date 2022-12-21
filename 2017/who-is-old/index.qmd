@@ -176,9 +176,9 @@ for (i in 1:length(years)){
   
 ***
 
-[^1]: Sanderson, W. C., & Scherbov, S. (2005). Average remaining lifetimes can increase as human populations age. Nature, 435(7043), 811–813. Retrieved from http://www.nature.com/nature/journal/v435/n7043/abs/nature03593.html
-[^2]: Sanderson, W. C., & Scherbov, S. (2010). Remeasuring Aging. Science, 329(5997), 1287–1288. https://doi.org/10.1126/science.1193647
-[^3]: Sanderson, W. C., & Scherbov, S. (2015). Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. PLoS ONE, 10(4), e0121922. http://doi.org/10.1371/journal.pone.0121922
+[^1]: Sanderson W, Scherbov S. 2005. Average remaining lifetimes can increase as human populations age. *Nature* **435**: 811–813 [DOI](https://doi.org/10.1038/nature03593): 10.1038/nature03593
+[^2]: Sanderson W, Scherbov S. 2010. Remeasuring Aging. *Science* **329**: 1287–1288 [DOI](https://doi.org/10.1126/science.1193647): 10.1126/science.1193647 
+[^3]: Sanderson WC, Scherbov S. 2015. Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. *PLoS ONE* **10**: e0121922 [DOI](http://doi.org/10.1371/journal.pone.0121922): 10.1371/journal.pone.0121922 
 [^4]: See the [working paper](http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf) of my colleagues devoted to this question
 [^5]: By using this data, I agree to the [user agreement][lic]
 [^6]: I did try to play with the package `gganimate`, though it produced a strange output.

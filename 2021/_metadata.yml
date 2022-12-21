@@ -17,3 +17,7 @@ format:
     quarto-template-params:
       banner-header-class: "blog-post"
 
+# title block banner
+title-block-banner: "#025757"
+
+

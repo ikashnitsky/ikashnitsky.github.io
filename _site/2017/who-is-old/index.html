@@ -120,7 +120,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><style>
+    .quarto-title-block .quarto-title-banner {
+      background: #025757;
+    }
+    </style>
 <meta property="og:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | Ilya Kashnitsky">
 <meta property="og:description" content="This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing.">
 <meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
@@ -131,8 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <meta name="twitter:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | Ilya Kashnitsky">
 <meta name="twitter:description" content="This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing.">
 <meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta name="twitter:creator" content="@ikashnitsky">
-<meta name="twitter:site" content="@ikashnitsky">
+<meta name="twitter:creator" content="ikashnitsky">
+<meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="1000">
 <meta name="twitter:image-width" content="1910">
@@ -181,12 +185,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../atom.xml"><i class="bi bi-rss" role="img" aria-label="rss">
+    <a class="nav-link" href="../../atom.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -194,51 +198,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Who is old? Visualizing the concept of prospective ageing with animated population pyramids</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">r</div>
+                <div class="quarto-category">animaion</div>
+                <div class="quarto-category">pyramid</div>
+                <div class="quarto-category">sweden</div>
+                <div class="quarto-category">prospective ageing</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 31, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Who is old? Visualizing the concept of prospective ageing with animated population pyramids</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-  <div class="quarto-categories">
-    <div class="quarto-category">r</div>
-    <div class="quarto-category">animaion</div>
-    <div class="quarto-category">pyramid</div>
-    <div class="quarto-category">sweden</div>
-    <div class="quarto-category">prospective ageing</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 31, 2017</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
 <p><img src="swe-animated.gif" class="img-fluid"></p>
 <p>This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This visualization was created in collaboration with my colleague <a href="http://nidi.nl/en/staff/overview/boissonneault">Michael Boissonneault</a>: (mostly) his idea and (mostly) my implementation. The animated visualization builds upon Michael’s viz prepared for the submission to the highly anticipated event at the end June 2017 – <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a>. My visualization of the <a href="http://www.rostock-retreat.org/files/application2017/SWE.csv">provided Swedish dataset</a> can be found in <a href="../../2017/gender-gap-in-swedish-mortality/">the previous post</a>.</p>
 <section id="prospective-ageing" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="prospective-ageing">Prospective ageing</h2>
 <p>Over the past decades the alarmist views of the upcoming population ageing disaster became widely spread. True, with the growing number of countries approaching the ending of the Demographic Transition, the average/median age of their population increases rapidly, which is something unprecedented in the documented human history. But does that imply an unbearable burden of elderly population in the nearest future? Not necessarily.</p>
-<div class="page-columns page-full"><p>The demographic prospects depend a lot on how we define ageing. Quite recently <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Warren_Sanderson.html">Waren Sanderson</a> and <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Serguei-Scherbov.en.html">Sergei Scherbov</a> proposed <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple – age is not static: a person aged 65 (the conventional border deliminating elderly population) today is in many aspects not the same as a person ages 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one the latest papers of Sanderson and Scherbov <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> summarizes the phenomenon nicely: <em>Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging</em>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Sanderson, W. C., &amp; Scherbov, S. (2005). Average remaining lifetimes can increase as human populations age. Nature, 435(7043), 811–813. Retrieved from http://www.nature.com/nature/journal/v435/n7043/abs/nature03593.html</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Sanderson, W. C., &amp; Scherbov, S. (2010). Remeasuring Aging. Science, 329(5997), 1287–1288. https://doi.org/10.1126/science.1193647</p></li><li id="fn3"><p><sup>3</sup>&nbsp;Sanderson, W. C., &amp; Scherbov, S. (2015). Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. PLoS ONE, 10(4), e0121922. http://doi.org/10.1371/journal.pone.0121922</p></li></div></div>
+<div class="page-columns page-full"><p>The demographic prospects depend a lot on how we define ageing. Quite recently <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Warren_Sanderson.html">Waren Sanderson</a> and <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Serguei-Scherbov.en.html">Sergei Scherbov</a> proposed <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple – age is not static: a person aged 65 (the conventional border deliminating elderly population) today is in many aspects not the same as a person ages 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one the latest papers of Sanderson and Scherbov <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> summarizes the phenomenon nicely: <em>Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging</em>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Sanderson W, Scherbov S. 2005. Average remaining lifetimes can increase as human populations age. <em>Nature</em> <strong>435</strong>: 811–813 <a href="https://doi.org/10.1038/nature03593">DOI</a>: 10.1038/nature03593</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Sanderson W, Scherbov S. 2010. Remeasuring Aging. <em>Science</em> <strong>329</strong>: 1287–1288 <a href="https://doi.org/10.1126/science.1193647">DOI</a>: 10.1126/science.1193647</p></li><li id="fn3"><p><sup>3</sup>&nbsp;Sanderson WC, Scherbov S. 2015. Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. <em>PLoS ONE</em> <strong>10</strong>: e0121922 <a href="http://doi.org/10.1371/journal.pone.0121922">DOI</a>: 10.1371/journal.pone.0121922</p></li></div></div>
 <div class="page-columns page-full"><p>Of course, the choice of the new ageing threshold is a rather arbitrary question <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. It became usual to define this threshold at the remaining life expectancy of 15 years.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;See the <a href="http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf">working paper</a> of my colleagues devoted to this question</p></li></div></div>
 </section><section id="population-pyramids-for-sweden" class="level1 page-columns page-full"><h1>Population pyramids for Sweden</h1>
 <p>Population pyramid is a simple and nice way to represent population composition and to compare changes in the age structure of a given population over time. We show the difference between conventional and prospective approach to the definition of the elderly population using Swedish data for the last half a century. Sweden is a natural choice for demographers aiming to play with rich and reliable data.</p>
@@ -743,9 +748,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Sanderson, W. C., &amp; Scherbov, S. (2005). Average remaining lifetimes can increase as human populations age. Nature, 435(7043), 811–813. Retrieved from http://www.nature.com/nature/journal/v435/n7043/abs/nature03593.html</span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Sanderson, W. C., &amp; Scherbov, S. (2010). Remeasuring Aging. Science, 329(5997), 1287–1288. https://doi.org/10.1126/science.1193647</span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>Sanderson, W. C., &amp; Scherbov, S. (2015). Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. PLoS ONE, 10(4), e0121922. http://doi.org/10.1371/journal.pone.0121922</span>
+<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Sanderson W, Scherbov S. 2005. Average remaining lifetimes can increase as human populations age. *Nature* **435**: 811–813 <span class="co">[</span><span class="ot">DOI</span><span class="co">](https://doi.org/10.1038/nature03593)</span>: 10.1038/nature03593</span>
+<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>Sanderson W, Scherbov S. 2010. Remeasuring Aging. *Science* **329**: 1287–1288 <span class="co">[</span><span class="ot">DOI</span><span class="co">](https://doi.org/10.1126/science.1193647)</span>: 10.1126/science.1193647 </span>
+<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>Sanderson WC, Scherbov S. 2015. Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. *PLoS ONE* **10**: e0121922 <span class="co">[</span><span class="ot">DOI</span><span class="co">](http://doi.org/10.1371/journal.pone.0121922)</span>: 10.1371/journal.pone.0121922 </span>
 <span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>See the <span class="co">[</span><span class="ot">working paper</span><span class="co">](http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf)</span> of my colleagues devoted to this question</span>
 <span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a><span class="ot">[^5]: </span>By using this data, I agree to the <span class="co">[</span><span class="ot">user agreement</span><span class="co">][lic]</span></span>
 <span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="ot">[^6]: </span>I did try to play with the package <span class="in">`gganimate`</span>, though it produced a strange output.</span>

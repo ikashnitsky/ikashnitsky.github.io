@@ -5,6 +5,7 @@ comments: false
 toc: false
 toc-location: right
 title-block-banner: "#002F2F"
+code-tools: false
 published-title: CV last updated
 date: 2022-12-18
 ---

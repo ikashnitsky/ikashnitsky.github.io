@@ -16,7 +16,7 @@ project:
 
 freeze: true
 
-bibliography: bib/references.bib
+bibliography: bib/cited-in-blog.bib
 csl: bib/population-space-and-place.csl
 
 # Metadata stuff
@@ -40,8 +40,8 @@ website:
   twitter-card:
     image: "/img/card-tw.png"
     card-style: summary_large_image
-    creator: "@ikashnitsky"
-    site: "@ikashnitsky"
+    creator: "ikashnitsky"
+    site: "ikashnitsky"
 
 
   navbar:
@@ -49,9 +49,9 @@ website:
 
     left:
       - text: "About me"
-        href: "me.qmd"
+        file: "me.qmd"
       - text: "CV"
-        href: "cv.qmd"
+        file: "cv.qmd"
       - text: "Demographic Digest"
         file: "dd.qmd"
 
@@ -65,17 +65,17 @@ website:
       - icon: mastodon
         aria-label: mastodon
         href: https://fosstodon.org/@ikashnitsky
-      - icon: envelope
+      - icon: envelope-fill
         aria-label: email
         href: "mailto:ilya.kashnitsky@gmail.com"
-      - icon: rss
+      - icon: rss-fill
         aria-label: rss
         href: atom.xml
+
 
   body-header: |
     <script defer data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script>
 
-  # margin-header: html/subscribe-button.html
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Ilya Kashnitsky</span>
