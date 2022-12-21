@@ -1,10 +1,10 @@
 ---
-title: "Subscribe to e-mail updates"
+title: "Subscribe for e-mail updates"
 description-meta: "{{< meta website.description >}}"
 title-block-banner: "#DFFF00"
 comments: false
+code-tools: false
 toc: false
-# wwbody: 
 margin-header: html/subscribe.html
 ---
 
