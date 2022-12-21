@@ -20,7 +20,7 @@
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life expectancy. Unlike many statistics and quantities of general use that are being monitored and reported regularly, life expectancy is not observed directly. It’s an output of a <strong>mathematical model</strong> called <strong>life table</strong>. And as any model it comes with a certain load of assumptions and limitations, which are easily forgotten and omitted in the everyday interpretations and misinterpretations of the indicator.</p>
 <p>So, why do we need any mathematical modelling in the first place? Consider a seemingly simple task: you want to know how long people live. What can be easier? Let’s just see how many years lived those who died recently. Why not? Such a metric would be massively driven by population age structure. For the most of the recent history human populations were rapidly growing, which means that each next generation was bigger than the previous one. Relative differences in the size of generations affect the age composition of those dying.</p>
 <p>Okay. Then why don’t we simply take a group of people born in the same year and see how long on average they live? We could (demographers call such groups cohorts). But it takes remarkably long to wait until the last person in the cohort dies. And we want to know what’s happening <strong>now</strong>.</p>
@@ -82,7 +82,7 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -130,7 +130,7 @@ Important
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -263,7 +263,7 @@ Happy paper writing with Zotero and RStudio!
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p><img src="https://ikashnitsky.github.io/2019/barcelona-summer-school-of-demography/tutors-bg.png" class="img-fluid"></p>
 <p>Have you been feeling lately that you are missing out the coolest skill-set in academia?</p>
 <iframe src="https://gifer.com/embed/fxTM" width="480" height="269.011" frameborder="0" allowfullscreen="">
@@ -296,7 +296,7 @@ Happy paper writing with Zotero and RStudio!
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>On 28 November 2018 I presented a poster at <a href="http://www.nvdemografie.nl/en/activities/dutch-demography-day/dutch-demography-day-2018">Dutch Demography Day</a> in Utrecht. Here it is:</p>
 <p><img src="https://ikashnitsky.github.io/2018/ddd-poster/compare-poster.png" class="img-fluid"></p>
 <p>The poster compares population age structures, represented as ternary compositions in three broad age groups, of European NUTS-3 regions and the United States counties. I used ternary color-coding, a dataviz approach that <a href="https://twitter.com/jschoeley">Jonas Schöley</a> and me recently brought to R in <a href="https://cran.r-project.org/web/packages/tricolore/index.html">tricolore</a> package.</p>
@@ -355,7 +355,7 @@ See also
   <title>sjrdata: all SCImago Journal &amp; Country Rank data, ready for R</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2018/sjrdata-package/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p><img src="https://ikashnitsky.github.io/2018/sjrdata-package/sjrdata-logo.png" class="img-fluid"></p>
 <p>SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at <a href="https://www.scimagojr.com">the project website</a> and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled them together, ready to be used in R.</p>
 <p>Basically, all the package gives you three easily accessible data frames: <code>sjr_journals</code> (Journal Rank), <code>sjr_countries</code> (Country Rank, year-by-year), and <code>sjr_countries_1996_2017</code> (Country Rank, all years together).</p>
@@ -424,7 +424,7 @@ See also
   <title>Regional population structures at a glance</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2018/the-lancet-paper/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p><img src="https://ikashnitsky.github.io/2018/the-lancet-paper/full-text.png" class="img-fluid"></p>
 <p>I am happy to announce that our paper is <a href="https://doi.org/10.1016/S0140-6736(18)31194-2">published today in <em>The Lancet</em></a>.</p>
 <blockquote class="blockquote">
@@ -510,7 +510,7 @@ See also
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <section id="preambule" class="level1">
 <h1>Preambule</h1>
 <p>This academic year I am participating in <a href="https://www.demogr.mpg.de/en/education_career/european_doctoral_school_of_demography_1913/default.htm">European Doctoral School of Demography</a>. It is a unique one-year-long training for PhD students in demography. It keeps migrating across European research centers; this year Jim Vaupel’s research group in Odense hosts the program. Best demographers visit us to give us various one-week-long courses. Here we are, the EDSD cohort 2017/18:</p>
@@ -603,7 +603,7 @@ Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>Tiny things can separate life into “before” and “after”. Here is one. For almost a year I’ve been daily sending mental “thank you” to <a href="https://sciences.social/@ugobas">Ugo</a> who showed me how to re-organize panes in RStudio. Since then I’ve been spreading this tiny improvement so many times that I thought the tiny advise deserved a separate tiny post. Please note, below is an opinionated view of a comfortable UI improvement; feel free to ignore it if you don’t like. This advise is <strong>highly subjective</strong>, though, I really believe it is useful.</p>
 <p>I find the default 4-pane layout of RStudio is not perfect. One needs more space for the “Source” pane. Especially when RStudio is used as the main text editor, i.e.&nbsp;<strong>the</strong> program to write code, papers, blog posts, prepare presentations… Thus, the perfect solution is to move “Console” to the top-right position, leave least useful “History” in the bottom-left corner and collapse it, and move everything else to the bottom-right corner (see the screenshot).</p>
 <p><img src="https://ikashnitsky.github.io/2018/perfect-rstudio-layout/layout-annotated.png" class="img-fluid"></p>
@@ -631,7 +631,7 @@ Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots
   <title>Data acquisition in R (3/4)</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/data-acquisition-three/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -877,7 +877,7 @@ Tip
   <title>Data acquisition in R (2/4)</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/data-acquisition-two/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>R is an incredible tool for reproducible research. In the present series of blog posts I want to show how one can easily acquire data within an R session, documenting every step in a fully reproducible way. There are numerous data acquisition options for R users. Of course, I do not attempt to show all the data possibilities and tend to focus mostly on demographic data. If your prime interest lies outside human population statistics, it’s worth checking the amazing <a href="https://github.com/ropensci/opendata">Open Data Task View</a>.</p>
 <p>The series consists of four posts: - <a href="https://ikashnitsky.github.io/2017/data-acquisition-one/">Loading prepared datasets</a> - <strong>Accessing popular statistical databases</strong> - <a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a> - Getting spatial data</p>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
@@ -1068,7 +1068,7 @@ All the code chunks together can be found in <a href="https://gist.github.com/ik
   <title>Data acquisition in R (1/4)</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/data-acquisition-one/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1230,7 +1230,7 @@ All the code chunks can be found in <a href="https://gist.github.com/ikashnitsky
   <title>Young people neither in employment nor in education and training in Europe, 2000-2016</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/neet-in-europe/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>As an example of Eurostat data usage I chose to show the dynamics of NEET (Young people neither in employment nor in education and training) in European countries. The example is using the brilliant <code>geofact</code> package.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
@@ -1315,7 +1315,7 @@ The whole code may be downloaded from <a href="https://gist.github.com/ikashnits
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>In the modern history, the world has seen unprecedented decrease in human mortality – the result of the Demographic Transition. Initially, the improvements occurred only in the most developed societies, and by the mid XX century the world population was roughly divided in two parts according to mortality patterns (see the bi-modal distribution). After the 2nd World War, the developing countries started to catch up, and there was a clear convergence in life expectancy at birth, the most common summary measure of mortality.</p>
 <p><img src="https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/e0-convergence.png" class="img-fluid"></p>
 <hr>
@@ -1350,7 +1350,7 @@ To reproduce the plot from the scratch please see <a href="https://gist.github.c
   <title>Accelerating ggplot2: use a canvas to speed up plots creation</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1547,7 +1547,7 @@ For the full script to reproduce the results check out this <a href="https://gis
 
 
 
-<script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my recent multidimensional dataviz prepared for <a href="https://twitter.com/RostockRetreat">Rostock Retreat Visualization</a>, an event that gathered demographers for an amazing “three days long coffebreak”.</p>
 <p>European population is rapidly ageing. But the process is not happening uniformly in all parts of Europe (see <a href="https://doi.org/10.1186/s41118-017-0018-2">my recent paper</a> for more info). Regions differ quite a lot: Eastern Europe still undergoes demographic dividend; Southern European regions form a cluster of lowest-low fertility; Western Europe experiences the greying of the baby boomers; urban regions attract young professionals and force out young parents; peripheral rural regions lose their youths forever… How can we grasp all the differences at a glance?</p>
 <p>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly populating (aged 65+), population at working ages (15-64), and kids (0-14).</p>
@@ -1589,7 +1589,7 @@ To reproduce the map from the scratch please see <a href="https://gist.github.co
   <title>Evolution of ice hockey players’ height: IIHF world championships 2001-2016</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/ice-hockey-players-height/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>The 2017 Ice Hockey World Championship has started. Thus I want to share a small research on the height of ice hockey players that I did almost a year ago and <a href="https://habrahabr.ru/post/301340/">published in Russian</a>.</p>
 <p>When the TV camera shows the players returning to the changing rooms, it is difficult not to notice just how huge the players are compared to the surrounding people – fans, journalists, coaches, or the ice arena workers. For example, here are the rising stars of the Finnish hockey – Patrik Laine and Aleksander Barkov – with the two fans in between.</p>
 <p><img src="https://ikashnitsky.github.io/2017/ice-hockey-players-height/fig-00-laine-barkov.jpg" class="img-fluid"><em><a href="https://www.instagram.com/p/BFjNdn7zORh">Source</a></em></p>
@@ -3179,7 +3179,7 @@ The full R script can be downloaded <a href="https://dx.doi.org/10.6084/m9.figsh
   <title>Subplots in maps with ggplot2</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/subplots-in-maps/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>Following the <a href="https://ikashnitsky.github.io/images/170525/prev-post-success.png">surprising success</a> of <a href="https://ikashnitsky.github.io/2017/align-six-maps/">my latest post</a>, I decided to show yet another use case of the handy annotation custom function. Here I will show how to add small graphical information to maps – just like putting a stamp on an envelope.</p>
 <p>The example comes from my current work on a paper, in which I study the effect of urban/rural differences on the relative differences in population ageing (I plan to tell a bit more in one of the next posts). Let’s have a look at the map we are going to reproduce in this post:</p>
 <p><img src="https://ikashnitsky.github.io/2017/subplots-in-maps/map.png" class="img-fluid"></p>
@@ -3368,7 +3368,7 @@ The full R script for this post is <a href="https://ikashnitsky.github.io/share/
   <title>Arranging subplots with ggplot2</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/align-six-maps/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>For <a href="https://doi.org/10.1186/s41118-017-0018-2">my recently published paper</a>, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
 <p><img src="https://ikashnitsky.github.io/2017/align-six-maps/fig-01.png" class="img-fluid"><strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
 <p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">ggplot2::annotation_custom()</a></code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
@@ -3494,7 +3494,7 @@ To reproduce all the actual results and figures from <a href="https://doi.org/10
   <title>Hacking maps with ggplot2</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.github.io/2017/map-hacking/index.html</link>
-  <description><![CDATA[ <script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>This is a very short post on mapping with <code>ggplot2</code>.</p>
 <p>Quite often, mapping some data, we do not need to follow scrupulously the formal requirements to geographical maps – the idea is just to show the spatial dimension of the data. For instance, the network of rivers is not the most important information when we <a href="https://twitter.com/data_debunk/status/856251551970717698">map the elections outcome</a>. Thus, the simplified mapping allows quite some freedom in transforming the geodata. The classical example of such geodata transformation is the <a href="https://rpubs.com/technocrat/thematic-alaska-hawaii">replacement and scaling of Alaska and Hawaii</a> to be mapped alongside the mainland of the US. As one may see in this example, usually such geodata transformations utilize quite complex GIS tools in order to reposition an object in the coordinate system.</p>
 <p>The interesting feature of mapping with <code>ggplot2</code> is that, before the actual plotting, geodata has to be fotrified (<code><a href="https://ggplot2.tidyverse.org/reference/fortify.html">ggplot2::fortify</a></code>) – transformed to a simple dataframe object. Since fortified geodata is basically a dataframe, some simple transformations could be made really easily.</p>

@@ -234,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><script defer="" data-domain="ikashnitsky.github.io" src="https://plausible.io/js/script.js"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>For <a href="https://doi.org/10.1186/s41118-017-0018-2">my recently published paper</a>, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
 <p><img src="fig-01.png" class="img-fluid"><strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
 <p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">ggplot2::annotation_custom()</a></code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
