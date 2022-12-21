@@ -10,7 +10,7 @@ categories: [r, ggplot2, rspatial]
 
 
 
-Following the [surprising success][tw] of [my latest post][post], I decided to show yet another use case of the handy `annotation_custom()`. Here I will show how to add small graphical information to maps -- just like putting a stamp on an envelope.  
+Following the [surprising success][tw] of [my latest post][post], I decided to show yet another use case of the handy annotation custom function. Here I will show how to add small graphical information to maps -- just like putting a stamp on an envelope.  
 
 The example comes from my current work on a paper, in which I study the effect of urban/rural differences on the relative differences in population ageing (I plan to tell a bit more in one of the next posts). Let's have a look at the map we are going to reproduce in this post:
 
