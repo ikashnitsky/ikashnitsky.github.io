@@ -1,13 +1,13 @@
 ---
-title: "Subscribe for e-mail updates"
+title: ""
 description-meta: "{{< meta website.description >}}"
-title-block-banner: "#DFFF00"
+# title-block-banner: "#DFFF00"
 comments: false
 code-tools: false
 toc: false
 margin-header: |
     <button class="btn btn-lg btn-secondary" type="button">
-    <a href="/">{{< fa house >}} back to blog</a>
+    <a href="/">{{< fa house >}} <small>back to blog</mall></a>
     </button>
 ---
 
@@ -15,7 +15,7 @@ margin-header: |
 
 
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScstzmmXx4TZeDHyf9YLmiew5FeHhVKhZhQLv6t6M9xd8a9Qw/viewform?hl=en&sembedded=true" width="100%" height="404" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScstzmmXx4TZeDHyf9YLmiew5FeHhVKhZhQLv6t6M9xd8a9Qw/viewform?hl=en&sembedded=true" width="100%" height="525" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
 ::: {.callout-important}
 # **No** need to log into your Google account to submit the form
