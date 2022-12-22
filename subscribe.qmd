@@ -17,7 +17,7 @@ margin-header: |
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScstzmmXx4TZeDHyf9YLmiew5FeHhVKhZhQLv6t6M9xd8a9Qw/viewform?hl=en&sembedded=true" width="100%" height="525" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-::: {.callout-important}
+::: {.callout-note}
 # **No** need to log into your Google account to submit the form
 :::
 
