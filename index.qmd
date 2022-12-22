@@ -39,7 +39,10 @@ toc-location: right
 date-format: "MMMM D, YYYY"
 code-tools: false
 comments: false
-margin-header: html/subscribe.html
+margin-header: |
+    <button class="btn btn-lg btn-secondary" type="button">
+    <a href="/subscribe.html"> {{< fa pen-to-square >}} <small>Subscribe</small></a>
+    </button>  
 ---
 
 <!-- ## 2022 -->
@@ -72,5 +75,7 @@ margin-header: html/subscribe.html
 ::: {#posts_2017}
 :::
 
+***
 
+<center><button class="btn btn-lg btn-secondary" type="button"><a href="/subscribe.html"> {{< fa pen-to-square >}} Subscribe for email updates</a></button></center>
 
