@@ -34,7 +34,7 @@ listing:
     sort: "date desc"
     # type: grid
     template: html/listing-grid.ejs
-image-placeholder: img/card-tw.png
+# image-placeholder: img/card-tw.png
 page-layout: full
 toc-title: Year
 toc-location: right
