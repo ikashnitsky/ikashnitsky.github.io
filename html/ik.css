@@ -309,7 +309,7 @@ pre.text, pre.sourceCode, .cell-output pre {
             img {
                 width: 100%;
                 object-fit: cover;
-                max-height: 250px;
+                max-height: 150px;
             }
         }
 
@@ -322,14 +322,84 @@ pre.text, pre.sourceCode, .cell-output pre {
 
         .description {
             font-weight: 300;
-            font-size: 0.95em;
+            font-size: 0.9em;
             margin-bottom: 0.3em;
         }
 
         .date {
-            font-weight: 300;
-            font-size: 0.85em;
+            font-weight: 700;
+            font-size: 0.7em;
             text-align: right;
+        }
+
+        .post-categories {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 0.4em;
+            column-gap: 0.25em;
+            margin: 0.5em 0;
+
+            .post-category {
+                color: $p-lighter-5;
+                border: 1px solid $p-lighter-7;
+                border-radius: 0.15rem;
+                text-transform: lowercase;
+                font-size: 0.7em;
+                font-weight: 700;
+                padding: 0.15em 0.5em;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// Grid
+.grid {
+    .blog-entry {
+        display: flex;
+        flex-direction: row;
+        font-family: $headings-font-family;
+        line-height: 1.15;
+        margin-bottom: 1.5em;
+        column-gap: 1.5em;
+
+        .metadata {
+            flex: 0 0 8%;
+        }
+
+        .body {
+            flex: 1 1 auto;
+        }
+
+        .thumbnail {
+            flex: 0 0 25%;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                max-height: 250px;
+            }
+        }
+
+        .title {
+            font-weight: 900;
+            font-size: 1.1em;
+            margin-top: 0.2em;
+            margin-bottom: 0.2em;
+            line-height: 1.15;
+        }
+
+        .description {
+            font-weight: 300;
+            font-size: 0.9em;
+            margin-bottom: 0.3em;
+        }
+
+        .date {
+            font-weight: 700;
+            font-size: 0.7em;
+            text-align: left;
+            margin-bottom: 0.4em;
         }
 
         .post-categories {
