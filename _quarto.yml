@@ -31,7 +31,7 @@ website:
   site-url: "https://ikashnitsky.github.io"
   repo-url: "https://github.com/ikashnitsky/ikashnitsky.github.io"
 
-  # google-analytics: "UA-93349619-1"
+  google-analytics: "UA-93349619-1"
 
   open-graph:
     image: "/img/card-tw.png"
