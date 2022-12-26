@@ -19,7 +19,7 @@ Okay, so the data issue is solved. Now, it's time for the experiment, a really s
 
 Here are the results for the latest World Cup 2022 (darkest line with all the unlikely outcomes annotated) in comparison with three previous World Cups, 2018, 2014, and 2010. 
 
-![](world-cup-odds-since-2010.png)
+![](world-cup-odds-since-2010.png){.preview-image}
 
 Decreasing step lines in the plot represent my decreasing fictional balance. Each game I bet 1 coin on the least likely outcome. Most often I lose this bet, and my balance decreases. Though, sometimes the least likely outcome happens, then my balance increases substantially by the size of the unlikely outcome odds. For example, in case of Argentina losing to Saudi Arabia the odds for this outcome was 25.
 
