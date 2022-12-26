@@ -439,6 +439,19 @@ pre.text, pre.sourceCode, .cell-output pre {
     }
 }
 
+.cv-download {
+    font-family: $headings-font-family;
+    background-color: $secondary;
+    border-color: $secondary;
+    color: $primary;
+
+    &:hover {
+        background-color: #E2FF48FF;
+        border-color: #E2FF48FF;
+        color: $p-darker-5;
+    }
+}
+
 
 .code-tools-button {
     position: relative;
