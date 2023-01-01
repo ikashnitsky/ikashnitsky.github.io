@@ -2,6 +2,10 @@
 title: "demographeR's notes"
 description-meta: "{{< meta website.description >}}"
 listing:
+  # - id: posts_2023
+  #   contents: "2023/**/index.qmd"
+  #   sort: "date desc"
+  #   template: html/listing-grid.ejs
   - id: posts_2022
     contents: "2022/**/index.qmd"
     sort: "date desc"
@@ -46,6 +50,11 @@ margin-header: |
     <a href="/subscribe.html"> {{< fa pen-to-square >}} <small>Subscribe</small></a>
     </button>  
 ---
+
+<!-- ## 2023 -->
+
+<!-- ::: {#posts_2023} -->
+<!-- ::: -->
 
 ## 2022
 

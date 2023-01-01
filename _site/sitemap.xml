@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/atom.html</loc>
-    <lastmod>2022-12-26T09:49:58.140Z</lastmod>
+    <lastmod>2023-01-01T13:39:01.521Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/cv.html</loc>
@@ -126,7 +126,7 @@
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/index.html</loc>
-    <lastmod>2022-12-26T09:49:59.042Z</lastmod>
+    <lastmod>2023-01-01T13:08:16.541Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/me.html</loc>
@@ -135,5 +135,9 @@
   <url>
     <loc>https://ikashnitsky.github.io/subscribe.html</loc>
     <lastmod>2022-12-26T01:03:50.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2023/map-borders/index.html</loc>
+    <lastmod>2023-01-01T13:39:00.244Z</lastmod>
   </url>
 </urlset>

@@ -20,13 +20,13 @@ d = tibble(
     arrange(size %>% desc)
 
 
-p <- d %>%
+(p <- d %>%
     ggplot(aes(x, y, size = size, color = color)) +
     geom_point() +
     scale_color_identity() +
     scale_size_identity() +
     coord_cartesian(c(0, 1), c(0, 1), expand = F) +
-    theme_void()
+    theme_void())
 
 # quatro blog on mobile -- header image ratio 4.64:1
 a_ratio = 4.64
@@ -45,3 +45,27 @@ g <- d %>%
     theme_void()
 
 ggsave("221217-my-logo/bubbles-github-card.png",g,  width = 6.4, height = 3.2, bg = "#15202b", dpi = 200)
+
+
+
+# change colors -----------------------------------------------------------
+
+
+n <- 5e3
+
+set.seed(911)
+p <- tibble(
+    x = runif(n),
+    y = runif(n),
+    size = runif(n, min = .5, max = 2),
+    color = rgb(runif(n, max = .1), runif(n, min = .7), runif(n, min = .7))
+) %>%
+    arrange(size %>% desc) %>%
+    ggplot(aes(x, y, size = size, color = color)) +
+    geom_point() +
+    scale_color_identity() +
+    scale_size_identity() +
+    coord_cartesian(c(0, 1), c(0, 1), expand = F) +
+    theme_void()
+
+ggsave("img/bubbles-blue.png", p,  width = 6.4, height = 3.2, bg = "#15202b", dpi = 200)
