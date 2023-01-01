@@ -67,6 +67,34 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts_2023 .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      
+      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts_2023'] = new List('listing-posts_2023', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-posts_2022 .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -360,32 +388,70 @@ ga('send', {
     <h2 id="toc-title">Year</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2022</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2021</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2019</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2018</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">2017</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2023</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2022</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2021</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2019</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">2018</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(28)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="award">award <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="convergence">convergence <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(3)</span></div><div class="category" data-category="death rates">death rates <span class="quarto-category-count">(3)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="denmark">denmark <span class="quarto-category-count">(1)</span></div><div class="category" data-category="eurostat">eurostat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="football">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geofacet">geofacet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="global">global <span class="quarto-category-count">(1)</span></div><div class="category" data-category="height">height <span class="quarto-category-count">(1)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="hockey">hockey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="life expectancy">life expectancy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="neet">neet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="nuts">nuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="oddor">oddor <span class="quarto-category-count">(1)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(1)</span></div><div class="category" data-category="paper">paper <span class="quarto-category-count">(1)</span></div><div class="category" data-category="poster">poster <span class="quarto-category-count">(1)</span></div><div class="category" data-category="prospective ageing">prospective ageing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pyramid">pyramid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(28)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(5)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="russia">russia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sex gap">sex gap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sjr">sjr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="speed">speed <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="stringdist">stringdist <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sweden">sweden <span class="quarto-category-count">(2)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tip">tip <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tricolore">tricolore <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div><div class="category" data-category="tw">tw <span class="quarto-category-count">(4)</span></div><div class="category" data-category="zotero">zotero <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(29)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="award">award <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="convergence">convergence <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(4)</span></div><div class="category" data-category="death rates">death rates <span class="quarto-category-count">(3)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="denmark">denmark <span class="quarto-category-count">(1)</span></div><div class="category" data-category="eurostat">eurostat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="football">football <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geofacet">geofacet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="global">global <span class="quarto-category-count">(1)</span></div><div class="category" data-category="hack">hack <span class="quarto-category-count">(1)</span></div><div class="category" data-category="height">height <span class="quarto-category-count">(1)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="hockey">hockey <span class="quarto-category-count">(1)</span></div><div class="category" data-category="life expectancy">life expectancy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="neet">neet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="nuts">nuts <span class="quarto-category-count">(1)</span></div><div class="category" data-category="oddor">oddor <span class="quarto-category-count">(1)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(1)</span></div><div class="category" data-category="paper">paper <span class="quarto-category-count">(1)</span></div><div class="category" data-category="poster">poster <span class="quarto-category-count">(1)</span></div><div class="category" data-category="prospective ageing">prospective ageing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pyramid">pyramid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(29)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(6)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div><div class="category" data-category="russia">russia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sex gap">sex gap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sjr">sjr <span class="quarto-category-count">(1)</span></div><div class="category" data-category="speed">speed <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="stringdist">stringdist <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sweden">sweden <span class="quarto-category-count">(2)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div><div class="category" data-category="tip">tip <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tricolore">tricolore <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div><div class="category" data-category="tw">tw <span class="quarto-category-count">(4)</span></div><div class="category" data-category="zotero">zotero <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
-<!-- ## 2023 -->
-<!-- ::: {#posts_2023} -->
-<!-- ::: -->
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2022</h2>
-<div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
-<div class="list blog">
-    <div class="blog-entry" data-index="0" data-categories="r,oddor,football,sport" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1672048193317" data-listing-reading-time-sort="4.47">
-        <div class="metadata">          
-            <p class="date listing-date">December 25, 2022</p>
-        </div>
+<h2 class="anchored" data-anchor-id="section">2023</h2>
+<div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
+<div class="list grid" style="column-gap: 20px;">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,rspatial,dataviz,hack" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1672580177340" data-listing-reading-time-sort="3.6">
         <div class="body">
+            <a href="./2023/map-borders/index.html">
+                <div class="thumbnail">
+                    <img src="./2023/map-borders/teaser.png" alt="The easiest way to radically improve map aesthetics" title="The easiest way to radically improve map aesthetics">
+                </div>
+            </a>
+            <p class="title listing-title"><a href="./2023/map-borders/index.html">The easiest way to radically improve map aesthetics</a></p>
+            <div class="post-categories listing-categories">
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
+                    r
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
+                    rspatial
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
+                    dataviz
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('hack'); return false;">
+                    hack
+                </div>
+            </div>
+            <div class="metadata">
+                <p class="date listing-date">January 1, 2023</p>
+            </div>
+            <p class="description listing-description">Since R community developed brilliant tools to deal with…<code></code></p>
+        </div>
+    </div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2022</h2>
+<div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
+<div class="list grid" style="column-gap: 20px;">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,oddor,football,sport" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1672048193317" data-listing-reading-time-sort="4.47">
+        <div class="body">
+            <a href="./2022/exceptional-world-cup/index.html">
+                <div class="thumbnail">
+                    <img src="./2022/exceptional-world-cup/teaser.jpg" alt="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?" title="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
+                </div>
+            </a>
             <p class="title listing-title"><a href="./2022/exceptional-world-cup/index.html">Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?</a></p>
             <div class="post-categories listing-categories">
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
@@ -401,10 +467,10 @@ ga('send', {
                     sport
                 </div>
             </div>
+            <div class="metadata">
+                <p class="date listing-date">December 25, 2022</p>
+            </div>
             <p class="description listing-description">FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many – some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning…</p>
-        </div>
-        <div class="thumbnail">
-            <img src="./2022/exceptional-world-cup/teaser.jpg" alt="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?" title="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
         </div>
     </div>
 </div>
@@ -413,15 +479,17 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2021</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2021</h2>
 <div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
-<div class="list blog">
-    <div class="blog-entry" data-index="0" data-categories="r,tw,101,life expectancy" data-listing-date-sort="1614898800000" data-listing-file-modified-sort="1671592943610" data-listing-reading-time-sort="5.03">
-        <div class="metadata">          
-            <p class="date listing-date">March 5, 2021</p>
-        </div>
+<div class="list grid" style="column-gap: 20px;">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,tw,101,life expectancy" data-listing-date-sort="1614898800000" data-listing-file-modified-sort="1671592943610" data-listing-reading-time-sort="5.03">
         <div class="body">
+            <a href="./2021/life-expectancy-101/index.html">
+                <div class="thumbnail">
+                    <img src="./2021/life-expectancy-101/teaser.png" alt="What is life expectancy? And, even more important, what it isn't" title="What is life expectancy? And, even more important, what it isn't">
+                </div>
+            </a>
             <p class="title listing-title"><a href="./2021/life-expectancy-101/index.html">What is life expectancy? And, even more important, what it isn't</a></p>
             <div class="post-categories listing-categories">
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
@@ -437,10 +505,10 @@ No matching items
                     life expectancy
                 </div>
             </div>
+            <div class="metadata">
+                <p class="date listing-date">March 5, 2021</p>
+            </div>
             <p class="description listing-description">It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life…<strong></strong><strong></strong></p>
-        </div>
-        <div class="thumbnail">
-            <img src="./2021/life-expectancy-101/teaser.png" alt="What is life expectancy? And, even more important, what it isn't" title="What is life expectancy? And, even more important, what it isn't">
         </div>
     </div>
 </div>
@@ -452,8 +520,8 @@ No matching items
 <!-- ::: {#posts_2020} -->
 <!-- ::: -->
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">2019</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">2019</h2>
 <div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,dataviz,tip" data-listing-date-sort="1563487200000" data-listing-file-modified-sort="1671586433628" data-listing-reading-time-sort="2.155">
@@ -537,8 +605,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">2018</h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">2018</h2>
 <div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,poster,tricolore,rspatial,award" data-listing-date-sort="1543791600000" data-listing-file-modified-sort="1671593262926" data-listing-reading-time-sort="1.31">
@@ -681,8 +749,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">2017</h2>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1671543010837" data-listing-reading-time-sort="10.97">
@@ -1179,7 +1247,7 @@ No matching items
 </section>
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-posts_2020">
-<div class="list blog">
+<div class="list grid" style="column-gap: 20px;">
 </div>
 <div class="listing-no-matching d-none">
 No matching items

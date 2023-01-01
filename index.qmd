@@ -2,23 +2,23 @@
 title: "demographeR's notes"
 description-meta: "{{< meta website.description >}}"
 listing:
-  # - id: posts_2023
-  #   contents: "2023/**/index.qmd"
-  #   sort: "date desc"
-  #   template: html/listing-grid.ejs
+  - id: posts_2023
+    contents: "2023/**/index.qmd"
+    sort: "date desc"
+    template: html/listing-grid.ejs
   - id: posts_2022
     contents: "2022/**/index.qmd"
     sort: "date desc"
-    template: html/listing.ejs
+    template: html/listing-grid.ejs
     categories: true
   - id: posts_2021
     contents: "2021/**/index.qmd"
     sort: "date desc"
-    template: html/listing.ejs
+    template: html/listing-grid.ejs
   - id: posts_2020
     contents: "2020/**/index.qmd"
     sort: "date desc"
-    template: html/listing.ejs
+    template: html/listing-grid.ejs
   - id: posts_2019
     contents: 
       - "2019/**/index.qmd"
@@ -51,10 +51,10 @@ margin-header: |
     </button>  
 ---
 
-<!-- ## 2023 -->
+## 2023
 
-<!-- ::: {#posts_2023} -->
-<!-- ::: -->
+::: {#posts_2023}
+:::
 
 ## 2022
 
