@@ -20,7 +20,7 @@ Since R community developed brilliant tools to deal with spatial data, producing
 
 Just a few lines of code can reveal the eye-catching and visually pleasant spatial dimension of the data. Similarly, a few more lines of code can radically improve the pleasantness of a simple map -- just **add borders as lines in a separate spatial layer**. 
 
-[![](teaser.png)](https://ikashnitsky.github.io/2023/map-borders/teaser.png){.preview-image}   
+[![](sketch.png)](https://ikashnitsky.github.io/2023/map-borders/sketch.png){.preview-image}   
     
 An often "quick and dirty" solution when composing a simple choropleth map is to use polygons outline as the borders. While this works okay to distinguish the polygons, the map quickly becomes unnecessarily overloaded. All the non-bordering outlines -- complicated coastal lines and islands' outlines -- look ugly and add nothing to the map. 
 
