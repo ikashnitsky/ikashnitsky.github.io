@@ -1,0 +1,86 @@
+---
+title: "Easily re-using self-written funtions: the power of gist + code snippet duo"
+description-meta: "{{< meta website.description >}}"
+date: "2023-01-03"
+image: teaser.png
+categories: [r, rstudio, tip]
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE
+)
+library(tidyverse)
+```
+
+***
+
+Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a certain workflow or even a certain script. But other self-written functions may be more generic and reusable in other circumstances. For example, one may want to have a version of `ggsave()` that always enforces `bg = 'snow'`, or a `theme_own()` function with pre-saved preferences. Self-written functions live in `{.GlobalEnv}` and have to be re-defined in every new R session. Copying the same lines of code across projects can be boring. **How to "bookmark" the useful little own functions and reuse them easier in other projects?** This post offers an elegant solution.
+
+One obvious way to store self-written functions would be to write an own package and have a easy access to these function via `library()` calls. While this may be quite comfortable for own coding purposes, the objective downside of this approach is replicability of the code -- once the code leaves your specific machine, one would have to install your package in order to run the code. This seems an overkill to store a couple of occasional arbitrarily useful functions. 
+
+I suggest a more convenient approach: store the functions as [GitHub gists][gists] and call them using the handy `devtools::source_gist()`. This allows to load self-written functions from standalone R scripts. And to avoid copying manually the lines of code that source a certain gist we may use code snippets. Let me give you an example.
+
+I want to re-use a `ggplot2` theme with certain preferred parameters. Here are the lines of code that define my `theme_ik()` function.
+
+```{r}
+theme_ik <- function(
+        base_size = 12,
+        base_family = "sans",
+        labs_color = "#074949",
+        axis_color = "#002F2F",
+        bg_color = "#eeffff",
+        grid_color = "#ccffff"
+){
+    theme_minimal(base_size = base_size, base_family = base_family)+
+        theme(
+            plot.title = element_text(size = base_size*2, face = 2, color = labs_color),
+            plot.subtitle = element_text(color = labs_color),
+            plot.caption = element_text(color = labs_color),
+            axis.title = element_text(color = axis_color),
+            axis.text = element_text(color = axis_color),
+            plot.background = element_rect(color = NA, fill = bg_color),
+            legend.position = "bottom",
+            panel.spacing = unit(1, "lines"),
+            panel.grid.major = element_line(color = grid_color),
+            panel.grid.minor = element_blank(),
+            line = element_line(lineend = "round")
+        )
+}
+```
+
+I store these lines of R code as [a gist][gist] here. Next, I only need to supply the ID part of the gist URL (`https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184`) to the `devtools::source_gist()` function and it will execute the script stored in the gist, which will result in function `theme_ik()` appearing in my `{.GlobalEnv}`. With the second line of code I set the default `ggplot2` theme to my self-written one. 
+
+```{r}
+devtools::source_gist("653e1040a07364ae82b1bb312501a184")
+theme_set(theme_ik())
+```
+
+Now, the final element of this recipe is to save the two lines above as a code snippet. I'm using RStudio, but code snippets are available in any decent IDE. To add a custom snippet we need to navigate to `Tools --> Edit Code Snippets...`. In the new window just add a custom snippet making sure to respect the indentation. [^1]  
+
+[![](snippet.png)](https://ikashnitsky.github.io/2023/gist-snippet/snippet.png)  
+
+That's it. Save the modified snippets, the new one is ready to be used. Now, when I type `thm` and then press `TAB`, `thm` transforms into the two lines of code that source the specific gist and set the custom theme to `theme_ik()`. Any ggplot that I will produce next in this R session will have my preferred theme defaults.
+
+```{r, fig.width=8}
+swiss %>% 
+        ggplot(aes(x = Agriculture, y = Fertility))+
+        geom_point()+
+        labs(
+            title = "Fertility and rurality in Swiss cantones, 1888"
+        )
+```
+
+
+My preferred `ggplot2` theme here is optimized to produce plots that look nicely in my blog. [^2] 
+**Happy coding with snippets and easily re-usable custom functions!** 
+
+
+***
+
+[^1]: Note that in the left tabset one can choose what kind of snippets to add. In R scripts snippets are called with `TAB`, in rmarkdown documents the hot-key for snippets is `SHIFT+TAB`. 
+[^2]: In case you read this anywhere else, this blog post is available at [https://ikashnitsky.github.io/2023/gist-snippet][post]
+
+[gists]: https://gist.github.com
+[gist]: https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184
+[post]: https://ikashnitsky.github.io/2023/gist-snippet
