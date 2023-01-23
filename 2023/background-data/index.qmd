@@ -4,8 +4,8 @@ description-meta: "{{< meta website.description >}}"
 date: "2023-01-23"
 image: teaser.png
 aliases:
-  - 2020/background-data/index.html
-  - 2020/background-data
+  - https://ikashnitsky.github.io/2020/background-data/index.html
+  - https://ikashnitsky.github.io/2020/background-data
 categories: [r, faceting, dataviz, ggplot2, trick]
 ---
 

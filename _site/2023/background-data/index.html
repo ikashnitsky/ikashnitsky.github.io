@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.2.313">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
-<meta name="dcterms.date" content="2023-01-22">
+<meta name="dcterms.date" content="2023-01-23">
 <meta name="description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
 <title>Show all data in the background of your faceted ggplot | Ilya Kashnitsky</title>
 <style>
@@ -217,6 +217,7 @@ ga('send', {
                 <div class="quarto-category">r</div>
                 <div class="quarto-category">faceting</div>
                 <div class="quarto-category">dataviz</div>
+                <div class="quarto-category">ggplot2</div>
                 <div class="quarto-category">trick</div>
               </div>
                   </div>
@@ -235,7 +236,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 22, 2023</p>
+        <p class="date">January 23, 2023</p>
       </div>
     </div>
     
@@ -250,8 +251,8 @@ ga('send', {
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<div class="page-columns page-full"><p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using small multiples.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> There is a small trick that I was to share today – put all the data in backgroung of every small multiple. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for small multiples. Better to show right away what I mean and then explain in details.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></li></div></div>
-<div class="page-columns page-full"><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> challenge one and my version.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></li></div></div>
+<div class="page-columns page-full"><p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></li></div></div>
+<div class="page-columns page-full"><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <strong>the challenge one</strong> and <strong>my version</strong>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></li></div></div>
 <div class="quarto-layout-panel page-columns page-full">
 <div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full" style="flex-basis: 50.0%;justify-content: center;">
@@ -266,17 +267,16 @@ ga('send', {
 </div>
 </div>
 </div>
-<p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at them one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
-<p>But the main trick here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data removing the variable that was used for faceting.</p>
-<p>Here we use the nice feature of <code>ggplot2</code> – the layers inherit whatever you specify in the main <code>ggplot()</code> call. In this case we are inheriting the <code>data</code> parameter and just remove the variable that is later used for faceting.</p>
-<p>Consider a pseudo-code:</p>
+<p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
+<p>But the <strong>main trick</strong> here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data by removing the variable that was used for faceting.</p>
+<p>Here we use the nice feature of <code>ggplot2</code> – the layers inherit whatever you specify in the main <code>ggplot()</code> call. In this case our background layer is inheriting the <code>data</code> parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">%&gt;%</span> </span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="va">PLOT_PARAMETERS</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu">geom_WHATEVER</span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu">setect</span><span class="op">(</span><span class="op">-</span><span class="va">FACETING_VARIABLE</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">FACETING_VARIABLE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples; note that this only happens for the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data. Put this layer in the backgroung, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly simple and powerful.</p>
+<p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples. Note that this only happens in the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data in this layer. Put this layer in the background, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly straightforward, simple, and powerful.</p>
 <hr>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -499,8 +499,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2023-01-23"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">aliases:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2020/background-data/index.html</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - 2020/background-data</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">  - https://ikashnitsky.github.io/2020/background-data/index.html</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">  - https://ikashnitsky.github.io/2020/background-data</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, faceting, dataviz, ggplot2, trick]</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
