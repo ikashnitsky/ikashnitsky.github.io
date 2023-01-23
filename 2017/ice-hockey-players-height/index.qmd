@@ -3,7 +3,7 @@ title: "Evolution of ice hockey players' height: IIHF world championships 2001-2
 description-meta: "{{< meta website.description >}}"
 date: "2017-05-27"
 image: teaser.png
-categories: [r, hockey, sport, height]
+categories: [r, sport]
 ---
 
 ***

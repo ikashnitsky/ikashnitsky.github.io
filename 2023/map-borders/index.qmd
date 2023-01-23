@@ -3,7 +3,7 @@ title: "The easiest way to radically improve map aesthetics"
 description-meta: "{{< meta website.description >}}"
 date: "2023-01-01"
 image: teaser.png
-categories: [r, rspatial, dataviz, hack]
+categories: [r, rspatial, dataviz, trick]
 ---
 
 ```{r, include=FALSE}

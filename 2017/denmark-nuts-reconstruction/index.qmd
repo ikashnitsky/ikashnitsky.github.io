@@ -3,7 +3,7 @@ title: "R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions o
 description-meta: "{{< meta website.description >}}"
 date: "2017-03-16"
 image: teaser.png
-categories: [r, rspatial, denmark, nuts]
+categories: [r, rspatial]
 ---
 
 

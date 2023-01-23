@@ -3,7 +3,7 @@ title: "sjrdata: all SCImago Journal & Country Rank data, ready for R"
 description-meta: "{{< meta website.description >}}"
 date: "2018-09-23"
 image: teaser.png
-categories: [r, package, sjr, bibliometrics]
+categories: [r, package, bibliometrics]
 ---
 
 ***

@@ -3,7 +3,7 @@ title: "Global convergence in male life expectancy at birth"
 description-meta: "{{< meta website.description >}}"
 date: "2017-07-17"
 image: teaser.png
-categories: [r, life expectancy, global, convergence]
+categories: [r, life expectancy]
 ---
 
 ***

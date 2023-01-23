@@ -3,7 +3,7 @@ title: "A perfect RStudio layout"
 description-meta: "{{< meta website.description >}}"
 date: "2018-05-22"
 image: teaser.png
-categories: [r, rstudio, tip]
+categories: [r, rstudio, trick]
 ---
 
 ***

@@ -3,7 +3,7 @@ title: "Easily re-using self-written functions: the power of gist + code snippet
 description-meta: "{{< meta website.description >}}"
 date: "2023-01-03"
 image: teaser.png
-categories: [r, rstudio, tip]
+categories: [r, rstudio, trick]
 ---
 
 ```{r, include=FALSE}
