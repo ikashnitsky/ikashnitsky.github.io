@@ -23,11 +23,11 @@ There is a weekly dataviz challenge organized by Cole Knaflic. [One particular c
 
 
 
-::: {layout-nrow=1}
-[![Image to improve](swd-challenge.png)](https://ikashnitsky.github.io/2023/backgroung-data/swd-challenge.png)  
 
-[![My version](improved.png)](https://ikashnitsky.github.io/2023/backgroung-data/improved.png)  
-:::
+[![Image to improve](swd-challenge.png)](https://ikashnitsky.github.io/2023/background-data/swd-challenge.png){width=70%}  
+
+[![My version](improved.png)](https://ikashnitsky.github.io/2023/background-data/improved.png)  
+
 
 It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow. 
 

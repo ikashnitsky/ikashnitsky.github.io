@@ -253,19 +253,15 @@ ga('send', {
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="page-columns page-full"><p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></li></div></div>
 <div class="page-columns page-full"><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <strong>the challenge one</strong> and <strong>my version</strong>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></li></div></div>
-<div class="quarto-layout-panel page-columns page-full">
-<div class="quarto-layout-row quarto-layout-valign-top page-columns page-full">
-<div class="quarto-figure quarto-figure-center page-columns page-full" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/backgroung-data/swd-challenge.png"><img src="swd-challenge.png" class="img-fluid figure-img"></a></p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="swd-challenge.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption margin-caption">Image to improve</figcaption><p></p>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center page-columns page-full" style="flex-basis: 50.0%;justify-content: center;">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/backgroung-data/improved.png"><img src="improved.png" class="img-fluid figure-img"></a></p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/improved.png"><img src="improved.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption margin-caption">My version</figcaption><p></p>
 </figure>
-</div>
-</div>
 </div>
 <p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
 <p>But the <strong>main trick</strong> here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data by removing the variable that was used for faceting.</p>
@@ -518,11 +514,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>::: {layout-nrow=1}</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![Image to improve](swd-challenge.png)</span><span class="co">](https://ikashnitsky.github.io/2023/backgroung-data/swd-challenge.png)</span>  </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![Image to improve](swd-challenge.png)</span><span class="co">](https://ikashnitsky.github.io/2023/background-data/swd-challenge.png)</span>{width=70%}  </span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![My version](improved.png)</span><span class="co">](https://ikashnitsky.github.io/2023/backgroung-data/improved.png)</span>  </span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![My version](improved.png)</span><span class="co">](https://ikashnitsky.github.io/2023/background-data/improved.png)</span>  </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow. </span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
