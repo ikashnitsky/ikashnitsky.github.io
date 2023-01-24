@@ -38,7 +38,7 @@ Here we use the nice feature of `ggplot2` -- the layers inherit whatever you spe
 ```{r, eval=FALSE}
 df %>% 
     ggplot(PLOT_PARAMETERS)+
-    geom_WHATEVER(data = df %>% setect(-FACETING_VARIABLE))+
+    geom_WHATEVER(data = df %>% select(-FACETING_VARIABLE))+
     facet_wrap(~ FACETING_VARIABLE)
 ```
 

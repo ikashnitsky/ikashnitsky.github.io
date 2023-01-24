@@ -269,7 +269,7 @@ ga('send', {
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">%&gt;%</span> </span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="va">PLOT_PARAMETERS</span><span class="op">)</span><span class="op">+</span></span>
-<span>    <span class="fu">geom_WHATEVER</span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu">setect</span><span class="op">(</span><span class="op">-</span><span class="va">FACETING_VARIABLE</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">geom_WHATEVER</span><span class="op">(</span>data <span class="op">=</span> <span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">FACETING_VARIABLE</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">FACETING_VARIABLE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples. Note that this only happens in the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data in this layer. Put this layer in the background, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly straightforward, simple, and powerful.</p>
@@ -529,7 +529,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(PLOT_PARAMETERS)<span class="sc">+</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_WHATEVER</span>(<span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">setect</span>(<span class="sc">-</span>FACETING_VARIABLE))<span class="sc">+</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_WHATEVER</span>(<span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>FACETING_VARIABLE))<span class="sc">+</span></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACETING_VARIABLE)</span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
