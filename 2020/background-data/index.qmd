@@ -1,11 +1,10 @@
 ---
 title: "Show all data in the background of your faceted ggplot"
 description-meta: "{{< meta website.description >}}"
-date: "2023-01-23"
+date: "2020-06-19"
 image: teaser.png
 aliases:
-  - https://ikashnitsky.github.io/2020/background-data/index.html
-  - https://ikashnitsky.github.io/2020/background-data
+  - "/2023/background-data/"
 categories: [r, faceting, dataviz, ggplot2, trick]
 ---
 

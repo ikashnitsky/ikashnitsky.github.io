@@ -10,75 +10,7 @@
 <atom:link href="https://ikashnitsky.github.io/atom.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Sun, 22 Jan 2023 23:00:00 GMT</lastBuildDate>
-<item>
-  <title>Show all data in the background of your faceted ggplot</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.github.io/2023/background-data/index.html</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<div class="page-columns page-full"><p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></li></div></div>
-<div class="page-columns page-full"><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<sup>2</sup> <strong>the challenge one</strong> and <strong>my version</strong>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></li></div></div>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption margin-caption">Image to improve</figcaption><p></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/improved.png"><img src="https://ikashnitsky.github.io/2023/background-data/improved.png" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption margin-caption">My version</figcaption><p></p>
-</figure>
-</div>
-<p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
-<p>But the <strong>main trick</strong> here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data by removing the variable that was used for faceting.</p>
-<p>Here we use the nice feature of <code>ggplot2</code> – the layers inherit whatever you specify in the main <code>ggplot()</code> call. In this case our background layer is inheriting the <code>data</code> parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
-<span>    <span class="fu" style="color: #4758AB;">ggplot</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">PLOT_PARAMETERS</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;">geom_WHATEVER</span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">-</span><span class="va" style="color: #111111;">FACETING_VARIABLE</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;">facet_wrap</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">~</span> <span class="va" style="color: #111111;">FACETING_VARIABLE</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
-</div>
-<p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples. Note that this only happens in the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data in this layer. Put this layer in the background, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly straightforward, simple, and powerful.</p>
-<hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-You can replicate the full figure above using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815">gist</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Faceting series
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This post is the first one in the series of faceting tricks that I want to share. I’ll add cross-links to the other posts here once they appear</p>
-</div>
-</div>
-
-
-<!-- -->
-
- ]]></description>
-  <category>r</category>
-  <category>faceting</category>
-  <category>dataviz</category>
-  <category>ggplot2</category>
-  <category>trick</category>
-  <guid>https://ikashnitsky.github.io/2023/background-data/index.html</guid>
-  <pubDate>Sun, 22 Jan 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.github.io/2023/background-data/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
+<lastBuildDate>Mon, 02 Jan 2023 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Easily re-using self-written functions: the power of gist + code snippet duo</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -389,6 +321,74 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
   <guid>https://ikashnitsky.github.io/2021/life-expectancy-101/index.html</guid>
   <pubDate>Thu, 04 Mar 2021 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2021/life-expectancy-101/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>Show all data in the background of your faceted ggplot</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.github.io/2020/background-data/index.html</link>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<div class="page-columns page-full"><p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></li></div></div>
+<div class="page-columns page-full"><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<sup>2</sup> <strong>the challenge one</strong> and <strong>my version</strong>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></li></div></div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="https://ikashnitsky.github.io/2020/background-data/swd-challenge.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption margin-caption">Image to improve</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/improved.png"><img src="https://ikashnitsky.github.io/2020/background-data/improved.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption margin-caption">My version</figcaption><p></p>
+</figure>
+</div>
+<p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
+<p>But the <strong>main trick</strong> here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data by removing the variable that was used for faceting.</p>
+<p>Here we use the nice feature of <code>ggplot2</code> – the layers inherit whatever you specify in the main <code>ggplot()</code> call. In this case our background layer is inheriting the <code>data</code> parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">ggplot</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">PLOT_PARAMETERS</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">geom_WHATEVER</span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">-</span><span class="va" style="color: #111111;">FACETING_VARIABLE</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">facet_wrap</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">~</span> <span class="va" style="color: #111111;">FACETING_VARIABLE</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples. Note that this only happens in the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data in this layer. Put this layer in the background, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly straightforward, simple, and powerful.</p>
+<hr>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+You can replicate the full figure above using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815">gist</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Faceting series
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post is the first one in the series of faceting tricks that I want to share. I’ll add cross-links to the other posts here once they appear</p>
+</div>
+</div>
+
+
+<!-- -->
+
+ ]]></description>
+  <category>r</category>
+  <category>faceting</category>
+  <category>dataviz</category>
+  <category>ggplot2</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.github.io/2020/background-data/index.html</guid>
+  <pubDate>Thu, 18 Jun 2020 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/2020/background-data/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Dotplot – the single most useful yet largely neglected dataviz type</title>
