@@ -7,7 +7,7 @@ toc-location: right
 title-block-banner: "#002F2F"
 code-tools: false
 published-title: CV last updated
-date: 2023-02-02
+date: 2023-02-27
 engine: knitr 
 ---
 

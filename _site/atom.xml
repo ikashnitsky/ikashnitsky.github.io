@@ -10,7 +10,139 @@
 <atom:link href="https://ikashnitsky.github.io/atom.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Mon, 02 Jan 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 26 Feb 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Save space in faceted plots</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.github.io/2023/shrink-space/index.html</link>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<div class="page-columns page-full"><p>Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different is size – a common case yould be time series of varying length – this results in a lot of plot space wasted in the panels with little data to show. In this post I’m showing how to deal with this common issue.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This is the term used for small-multiples in <code>ggplot2</code></p></li><li id="fn2"><p><sup>2</sup>&nbsp;See <a href="https://ikashnitsky.github.io/2020/background-data/">the post</a> in which I improve an overloaded line chart using small-multiples</p></li></div></div>
+<p>Let me first show you the solution. The cornerstone source of data in demography is <a href="https://www.mortality.org">Human Mortality Database</a>. It provides demographic data of highest possible quality for a selection of available countries. The availability of data varies vastly across countries – from 270+ years in Sweden to a handful of decades in many other countries with less exceptional population data statistics. Here are two plots from my recent papers that use HMD.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/map-borders/pnas.png" class="preview-image"><img src="https://ikashnitsky.github.io/2023/shrink-space/pnas.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure A3 from <span class="citation" data-cites="zarulli2021p">Zarulli <em>et al.</em> (2021)</span></figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/map-borders/ije.png"><img src="https://ikashnitsky.github.io/2023/shrink-space/ije.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure 3 from <span class="citation" data-cites="aburto2022ije">Aburto <em>et al.</em> (2022)</span></figcaption><p></p>
+</figure>
+</div>
+<p>The trick in these plots is that countries are arranged by the length of time series. The width of each panel is net to the longest time series observed omong the countries in the column of small multiples. This is easily achieved via the parameter <code>space = "free"</code> in the <code>facet_grid()</code> call.</p>
+<p>One slightly annoying nuance is that the <code>space = "free"</code> parameter is <em>only</em> available <code>facet_grid()</code>. That’s why we need to specify both column and row variables for the layout of small multiples. Yet, usually we have just one meaningful faceting variable in such a setup, country in the examples above. That’s why the steps of data preparation for these plots included the creation of variables <code>row</code> and <code>column</code> that explicitly located the position of each small multiple. You can find code that replicates both figures shown above <a href="https://github.com/ikashnitsky/sex-gap-e0-pnas">here</a> and <a href="https://github.com/OxfordDemSci/ex2020">here</a>. To illustrate the approach in this post we’ll use a minimal example with generated data.</p>
+<p>Consider a case when we have 6 countries, 3 of which have relatively long time series and 3 have relatively short period of observed data. To stay a bit closer to the examples above, let’s say that we have data for Sweden (271 years worth of data), Denmark (186 years), Netherlands (169), Portugal (81), Japan (74), and Estonia (60). Let’s generate some random data of the specified time series’ length.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">911</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">raw</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>    country <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"Sweden"</span>, <span class="st" style="color: #20794D;">"Denmark"</span>, <span class="st" style="color: #20794D;">"Netherlands"</span>, <span class="st" style="color: #20794D;">"Portugal"</span>, <span class="st" style="color: #20794D;">"Japan"</span>, <span class="st" style="color: #20794D;">"Estonia"</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>    n_years <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">271</span>, <span class="fl" style="color: #AD0000;">186</span>, <span class="fl" style="color: #AD0000;">169</span>, <span class="fl" style="color: #AD0000;">81</span>, <span class="fl" style="color: #AD0000;">74</span>, <span class="fl" style="color: #AD0000;">60</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="co" style="color: #5E5E5E;"># mutate(country = country %&gt;% as_factor()) %&gt;% </span></span>
+<span>    <span class="fu" style="color: #4758AB;">group_by</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">group_modify</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op" style="color: #5E5E5E;">(</span>n <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">.x</span><span class="op" style="color: #5E5E5E;">$</span><span class="va" style="color: #111111;">n_years</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">tibble</span><span class="op" style="color: #5E5E5E;">(</span>random <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">.</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">mutate</span><span class="op" style="color: #5E5E5E;">(</span>year <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">2022</span> <span class="op" style="color: #5E5E5E;">-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/seq.html">seq_along</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">ungroup</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Let’s say I want a plot with 3 rows and 2 columns. First, here’s how a simple faceted plot would look like.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">raw</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">ggplot</span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;">aes</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">year</span>, <span class="va" style="color: #111111;">random</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">geom_path</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">facet_wrap</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">~</span><span class="va" style="color: #111111;">country</span>, ncol <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/shrink-space/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>See how much space is just wasted in the plot.</p>
+<p>Next, we’ll do the trick outlined above: arrange the countries by the length of available data and shrink the unused space in the two columns.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">arr</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">raw</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">mutate</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        country <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="va" style="color: #111111;">as_factor</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">fct_infreq</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span></span>
+<span>    <span class="fu" style="color: #4758AB;">arrange</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">country</span>, <span class="va" style="color: #111111;">year</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="co" style="color: #5E5E5E;"># create facet positioning variables on a 3x2 canvas</span></span>
+<span>    <span class="fu" style="color: #4758AB;">mutate</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        row <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span></span>
+<span>            <span class="fu" style="color: #4758AB;">lvls_revalue</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>                new_levels <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">:</span><span class="fl" style="color: #AD0000;">3</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="va" style="color: #111111;">paste</span> </span>
+<span>            <span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        col <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span></span>
+<span>            <span class="fu" style="color: #4758AB;">lvls_revalue</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>                new_levels <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">:</span><span class="fl" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op" style="color: #5E5E5E;">(</span>each <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">3</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="va" style="color: #111111;">paste</span> </span>
+<span>            <span class="op" style="color: #5E5E5E;">)</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span></span>
+<span>    <span class="fu" style="color: #4758AB;">ungroup</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">arr</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">ggplot</span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;">aes</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">year</span>, <span class="va" style="color: #111111;">random</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">geom_path</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">facet_grid</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">row</span><span class="op" style="color: #5E5E5E;">~</span><span class="va" style="color: #111111;">col</span>, scales <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"free_x"</span>, space <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"free"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/shrink-space/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>That’s it, the rest is just visual polishing of the plot. At the very least, we need to get rid of the facet strips which are now meaningless counts of rows and columns and add country names as text annotations.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;">arr</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">ggplot</span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;">aes</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">year</span>, <span class="va" style="color: #111111;">random</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">geom_path</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span> </span>
+<span>    <span class="fu" style="color: #4758AB;">facet_grid</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">row</span><span class="op" style="color: #5E5E5E;">~</span><span class="va" style="color: #111111;">col</span>, scales <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"free_x"</span>, space <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"free"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">geom_text</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">.</span> <span class="op" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">distinct</span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">country</span>, <span class="va" style="color: #111111;">row</span>, <span class="va" style="color: #111111;">col</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        <span class="fu" style="color: #4758AB;">aes</span><span class="op" style="color: #5E5E5E;">(</span>label <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country</span><span class="op" style="color: #5E5E5E;">)</span>, x <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">2020</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.05</span>,</span>
+<span>        hjust <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1</span>, vjust <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">0</span>, size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">5</span>, </span>
+<span>        family <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"ah"</span>, fontface <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">2</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">scale_y_continuous</span><span class="op" style="color: #5E5E5E;">(</span>limits <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">0</span>, <span class="fl" style="color: #AD0000;">1.15</span><span class="op" style="color: #5E5E5E;">)</span>, breaks <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">0</span>, <span class="fl" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">.25</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">scale_x_continuous</span><span class="op" style="color: #5E5E5E;">(</span>breaks <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1750</span>, <span class="fl" style="color: #AD0000;">2000</span>, <span class="fl" style="color: #AD0000;">50</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;">theme</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
+<span>        strip.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;">element_blank</span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/shrink-space/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Enjoy more dataviz freedom with faceting tricks =)</p>
+<hr>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+This post is one in the <strong>faceting series</strong>. Other posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://ikashnitsky.github.io/2020/background-data/">Show all data in the background of your faceted ggplot</a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- -->
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2">
+<div id="ref-aburto2022ije" class="csl-entry">
+Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd JB, Kashyap R. 2022. Quantifying impacts of the <span>COVID</span>-19 pandemic through life-expectancy losses: A population-level study of 29 countries. <em>International Journal of Epidemiology</em> <strong>51</strong>: 63–74 DOI: <a href="https://doi.org/10.1093/ije/dyab207">10.1093/ije/dyab207</a>
+</div>
+<div id="ref-zarulli2021p" class="csl-entry">
+Zarulli V, Kashnitsky I, Vaupel JW. 2021. Death rates at specific life stages mold the sex gap in life expectancy. <em>Proceedings of the National Academy of Sciences</em> <strong>118</strong> DOI: <a href="https://doi.org/10.1073/pnas.2010588118">10.1073/pnas.2010588118</a>
+</div>
+</div></section></div> ]]></description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>trick</category>
+  <category>facet</category>
+  <guid>https://ikashnitsky.github.io/2023/shrink-space/index.html</guid>
+  <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Easily re-using self-written functions: the power of gist + code snippet duo</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -369,11 +501,13 @@ You can replicate the full figure above using the <code>R</code> code from this 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Faceting series
+This post is one in the <strong>faceting series</strong>. Other posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This post is the first one in the series of faceting tricks that I want to share. I’ll add cross-links to the other posts here once they appear</p>
+<ul>
+<li><a href="https://ikashnitsky.github.io/2023/shrink-space">Save space in faceted plots</a></li>
+</ul>
 </div>
 </div>
 
@@ -1846,53 +1980,6 @@ For the full script to reproduce the results check out this <a href="https://gis
   <guid>https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/index.html</guid>
   <pubDate>Mon, 03 Jul 2017 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title>Colorcoded map: regional population structures at a glance</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.github.io/2017/colorcoded-map/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<p>Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my recent multidimensional dataviz prepared for <a href="https://twitter.com/RostockRetreat">Rostock Retreat Visualization</a>, an event that gathered demographers for an amazing “three days long coffebreak”.</p>
-<p>European population is rapidly ageing. But the process is not happening uniformly in all parts of Europe (see <a href="https://doi.org/10.1186/s41118-017-0018-2">my recent paper</a> for more info). Regions differ quite a lot: Eastern Europe still undergoes demographic dividend; Southern European regions form a cluster of lowest-low fertility; Western Europe experiences the greying of the baby boomers; urban regions attract young professionals and force out young parents; peripheral rural regions lose their youths forever… How can we grasp all the differences at a glance?</p>
-<p>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly populating (aged 65+), population at working ages (15-64), and kids (0-14).</p>
-<p><img src="https://ikashnitsky.github.io/2017/colorcoded-map/fig-01.png" class="img-fluid"></p>
-<p>Each of the three variables mapped here is scaled between 0 and 1: otherwise, the map would be just green with slightly variations in tones because the share of working age population is ranged between 65-75% for modern European regions. Thus, it is important to note that this map is not meant to be able to inform the reader of the exact population structure in a specific region. Rather, it provides a snapshot of all the regional population structures, facilitating comparisons between them. So, by design, the colors are only meaningful in comparison only for the given set of regions in a given year, in this case 2015. If we want cross-year comparisons, the variables are to be scaled across the whole timeseries, meaning that each separate map would, most likely, become less contrast.</p>
-<p>In the map we can easily spot the major differences between subregions of Europe. Turkey is still having relatively high fertility, especially in the south-eastern Kurdish part, thus it has higher share of kids and it’s colored in blueish tones. The high-fertility Ireland is also evidently blue in the map. East-European regions are green due to the still lasting demographic dividend. Southern Europe is ageing fastest, thus the colors are reddish.</p>
-<p>We can also see most of the major capital regions that are bright-green as opposed to the depleted periphery. In some countries there are huge regional differences: Northern and Southern Italy, Eastern and Western Germany.</p>
-<p>It is striking how clearly can we see the borders between European countries: Poland and Germany, Czech Republic and Slovakia, Portugal and Spain, France and all the neighbors. The slowly evolving population structures bare imprints of unique populations’ histories, that largely correspond with state borders.</p>
-<p>The obvious drawback of the map is that it is not colorblind friendly, and there is no way to make it so because color is the main player in this dataviz.</p>
-<hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-To reproduce the map from the scratch please see <a href="https://gist.github.com/ikashnitsky/c7bf13f6c716f65ddba3e52073793f3f">the gist</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>r</category>
-  <category>ggplot2</category>
-  <category>rspatial</category>
-  <category>tricolore</category>
-  <guid>https://ikashnitsky.github.io/2017/colorcoded-map/index.html</guid>
-  <pubDate>Thu, 29 Jun 2017 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.github.io/2017/colorcoded-map/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>

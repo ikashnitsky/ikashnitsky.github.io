@@ -51,8 +51,8 @@ Once we've done this, `gpplot2` no longer knows how to assign subsets of data to
 :::
 
 ::: {.callout-note}
-# Faceting series
-This post is the first one in the series of faceting tricks that I want to share. I'll add cross-links to the other posts here once they appear
+# This post is one in the **faceting series**. Other posts:
+- [Save space in faceted plots][shrink]
 :::
 
 
@@ -63,3 +63,4 @@ This post is the first one in the series of faceting tricks that I want to share
 [swd]: https://twitter.com/storywithdata/status/1274019877779619841
 [lat]: https://cran.r-project.org/web/packages/lattice
 [gist]: https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815
+[shrink]: https://ikashnitsky.github.io/2023/shrink-space
