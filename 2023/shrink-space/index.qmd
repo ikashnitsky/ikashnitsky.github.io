@@ -28,9 +28,9 @@ Faceting[^1] is probably the most distinctive feature that defined the early suc
 Let me first show you the solution. The cornerstone source of data in demography is [Human Mortality Database][hmd]. It provides demographic data of highest possible quality for a selection of available countries. The availability of data varies vastly across countries -- from 270+ years in Sweden to a handful of decades in many other countries with less exceptional population data statistics. Here are two plots from my recent papers that use HMD.
 
 
-[![Figure A3 from @zarulli2021p](pnas.png)](https://ikashnitsky.github.io/2023/map-borders/pnas.png){.preview-image}
+[![Figure A3 from @zarulli2021p](pnas.png)](https://ikashnitsky.github.io/2023/shrink-space/pnas.png){.preview-image}
 
-[![Figure 3 from @aburto2022ije](ije.png)](https://ikashnitsky.github.io/2023/map-borders/ije.png)  
+[![Figure 3 from @aburto2022ije](ije.png)](https://ikashnitsky.github.io/2023/shrink-space/ije.png)  
 
 The trick in these plots is that countries are arranged by the length of time series. The width of each panel is net to the longest time series observed omong the countries in the column of small multiples. This is easily achieved via the parameter `space = "free"` in the `facet_grid()` call. 
 
