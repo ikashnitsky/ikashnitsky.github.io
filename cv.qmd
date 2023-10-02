@@ -7,12 +7,12 @@ toc-location: right
 title-block-banner: "#002F2F"
 code-tools: false
 published-title: CV last updated
-date: 2023-06-08
+date: 2023-10-01
 engine: knitr 
 ---
 
 <!-- <button class="btn btn-lg btn-secondary" type="button"> -->
-<!-- [{{< fa file-lines >}} Download current CV](https://ikashnitsky.github.io/x/cv/2023-06-cv-ilya-kashnitsky.pdf) -->
+<!-- [{{< fa file-lines >}} Download current CV](https://ikashnitsky.github.io/x/cv/2023-10-cv-ilya-kashnitsky.pdf) -->
 <!-- </button> -->
 
 
@@ -38,12 +38,12 @@ engine: knitr
 
 ```{=html}
 <p class="text-center">
-  <a class="btn btn-primary btn-lg cv-download" href="https://ikashnitsky.github.io/x/cv/2023-06-cv-ilya-kashnitsky.pdf" target="_blank">
+  <a class="btn btn-primary btn-lg cv-download" href="https://ikashnitsky.github.io/x/cv/2023-10-cv-ilya-kashnitsky.pdf" target="_blank">
     <i class="fa-solid fa-file-arrow-down"></i>&ensp;Download current CV
   </a>
 </p>
 
 <div class="embed-container">
-  <iframe src="https://ikashnitsky.github.io/x/cv/2023-06-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
+  <iframe src="https://ikashnitsky.github.io/x/cv/2023-10-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
 </div>
 ```
