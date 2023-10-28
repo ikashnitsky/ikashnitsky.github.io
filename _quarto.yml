@@ -84,7 +84,7 @@ website:
       <span class="faux-block">[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
     center: |
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-      <span class="faux-block"><a rel="me" href="https://fosstodon.org/@ikashnitsky"> {{< fa brands mastodon >}} <strong>Mastodon</strong></a></span>
+          <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a>   <a rel="me" href="https://fosstodon.org/@ikashnitsky"> {{< fa brands mastodon >}} <strong>Mastodon</strong></a></span>
 
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
