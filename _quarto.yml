@@ -52,6 +52,8 @@ website:
         file: "me.qmd"
       - text: "CV"
         file: "cv.qmd"
+      - text: "DatavizArtSkill"
+        href: https://datavizartskill.ikashnitsky.phd
       - text: "Demographic Digest"
         file: "dd.qmd"
 
