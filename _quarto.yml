@@ -64,9 +64,9 @@ website:
       - icon: linkedin
         aria-label: linkedin
         href: https://www.linkedin.com/in/ikashnitsky
-      - icon: mastodon
-        aria-label: mastodon
-        href: https://fosstodon.org/@ikashnitsky
+      - icon: image-fill  # lightbulb-fill image-fill globe2 mask image-fill sun-fill people
+        aria-label: bluesky
+        href: https://bsky.app/profile/ikashnitsky.phd
       - icon: envelope-fill
         aria-label: email
         href: "mailto:ilya.kashnitsky@gmail.com"
