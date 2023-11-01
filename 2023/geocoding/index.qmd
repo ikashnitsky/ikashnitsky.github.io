@@ -98,7 +98,6 @@ world_outline_robinson %>%
         plot.background = element_rect(fill = "#042222", color = NA),
         axis.text = element_blank(),
         plot.title = element_text(face = 2, size = 18, color = "#ccffff")
-        # plot.subtitle = element_text(face = 2, size = 18, color = "#ccffff")
     )
 ```
 
