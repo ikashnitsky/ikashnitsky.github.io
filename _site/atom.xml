@@ -10,7 +10,126 @@
 <atom:link href="https://ikashnitsky.github.io/atom.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Sun, 26 Feb 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 31 Oct 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Geocode address text strings using tidygeocoder
+</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.github.io/2023/geocoding/index.html</link>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<p>Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of <code>tidygeocoder</code> that queries the free Open Street Map.</p>
+<p>In this tiny example I’m using the birth places that students of my <a href="https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0">2022 BSSD dataviz course</a> kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields – city and country of birth. The resulting small dataset is <a href="https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58">here</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># download the data</span></span>
+<span><span class="co" style="color: #5E5E5E;"># https://stackoverflow.com/a/28986107/4638884</span></span>
+<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://github.com/maxconway/gsheet">gsheet</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">raw</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html">gsheet2tbl</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58"</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># clean a bit and join both fields in one text string </span></span>
+<span><span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">raw</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;">janitor</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;">(</span>text_to_geocode <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">city_settlement</span>, <span class="va" style="color: #111111;">country</span>, sep <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">", "</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main unction in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://jessecambon.github.io/tidygeocoder/">tidygeocoder</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">df_geocoded</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">df</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://jessecambon.github.io/tidygeocoder/reference/geocode.html">geocode</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">text_to_geocode</span>, method <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"osm"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>The magic has already happened. The rest is just the routines to drop the points on the map. Yes, I am submitting this as my first 2023 entry to the <a href="https://30daymapchallenge.com"><code>#30DayMapChallenge</code></a> =)</p>
+<div class="cell">
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># convert coordinates to an sf object</span></span>
+<span><span class="va" style="color: #111111;">df_plot</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">df_geocoded</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        coords <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"long"</span>, <span class="st" style="color: #20794D;">"lat"</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        crs <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">4326</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Next are several steps to plot countries of the worlds as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># get world map outline (you might need to install the package)</span></span>
+<span><span class="va" style="color: #111111;">world_outline</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;">spData</span><span class="fu" style="color: #4758AB;">::</span><span class="va" style="color: #111111;"><a href="https://nowosad.github.io/spData/reference/world.html">world</a></span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># let's use a fancy projection</span></span>
+<span><span class="va" style="color: #111111;">world_outline_robinson</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">world_outline</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op" style="color: #5E5E5E;">(</span>crs <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"ESRI:54030"</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">country_borders</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">world_outline_robinson</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;">rmapshaper</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Now everything is ready to map!</p>
+<div class="cell">
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># map!</span></span>
+<span><span class="va" style="color: #111111;">world_outline_robinson</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">!</span><span class="va" style="color: #111111;">iso_a2</span> <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"AQ"</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co" style="color: #5E5E5E;"># get rid of Antarctica</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#269999"</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">country_borders</span>, size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">.25</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#269999"</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;">prismatic</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/prismatic/man/clr_lighten.html">clr_lighten</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">df_plot</span>, fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#dafa26"</span>, </span>
+<span>        color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#dafa26"</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;">prismatic</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/prismatic/man/clr_darken.html">clr_darken</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">1.5</span>, shape <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">21</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>datum <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op" style="color: #5E5E5E;">(</span>base_family <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Atkinson Hyperlegible"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        title <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Birth places of the participants"</span>,</span>
+<span>        subtitle <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"Barcelona Summer School of Demography dataviz course at CED, July 2022"</span>,</span>
+<span>        caption <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"@ikashnitsky.phd"</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span>        text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#ccffff"</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        plot.background <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#042222"</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        axis.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
+<span>        plot.title <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>face <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">2</span>, size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">18</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#ccffff"</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span>        <span class="co" style="color: #5E5E5E;"># plot.subtitle = element_text(face = 2, size = 18, color = "#ccffff")</span></span>
+<span>    <span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/geocoding/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+<p>That’s it. Going from text to point on the map has never been easier.</p>
+<hr>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+This post is one in the <strong>dataviz course series</strong>. Other posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://ikashnitsky.phd/2023/map-borders/">The easiest way to radically improve map aesthetics</a></li>
+<li><a href="https://ikashnitsky.phd/2020/background-data/">Show all data in the background of your faceted ggplot</a></li>
+<li><a href="https://ikashnitsky.phd/2019/dotplot/">Dotplot – the single most useful yet largely neglected dataviz type</a></li>
+<li><a href="https://ikashnitsky.phd/2023/shrink-space/">Save space in faceted plots</a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>r</category>
+  <category>geocoding</category>
+  <category>rspatial</category>
+  <category>ggplot2</category>
+  <guid>https://ikashnitsky.github.io/2023/geocoding/index.html</guid>
+  <pubDate>Tue, 31 Oct 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/2023/geocoding/teaser.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
 <item>
   <title>Save space in faceted plots</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -1789,197 +1908,6 @@ To reproduce the plot from the scratch please see <a href="https://gist.github.c
   <guid>https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/index.html</guid>
   <pubDate>Sun, 16 Jul 2017 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title>Accelerating ggplot2: use a canvas to speed up plots creation</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/index.html</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Too wrong; don’t read
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Basically, this post turned out to be just a wrong, premature, and unnecessary attempt of code optimization. If you still want to have look, make sure that later you read <a href="https://www.data-imaginist.com/2017/beneath-the-canvas/">this post</a> by Thomas Lin Pedersen. You are warned</p>
-</div>
-</div>
-<hr>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-This post is updated on 2017-07-15
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The earlier version had a terminology mistake <a href="https://twitter.com/hadleywickham/status/882217871769837569">pointed out by Hadley Wickham</a>. I wrongly called creation time of the plots as rendering time.</p>
-</div>
-</div>
-<p>One of the nice features of the <code>gg</code>approach to plotting is that one can save plots as R objects at any step and use later to render and/or modify. I used that feature extensively while creating maps with <code>ggplot2</code> (see my previous posts: <a href="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/">one</a>, <a href="https://ikashnitsky.github.io/2017/map-hacking/">two</a>, <a href="https://ikashnitsky.github.io/2017/align-six-maps/">three</a>, <a href="https://ikashnitsky.github.io/2017/subplots-in-maps/">four</a>, <a href="https://ikashnitsky.github.io/2017/colorcoded-map/">five</a>). It is just convenient to first create a canvas with all the theme parameters appropriate for a map, and then overlay the map layer. At some point I decided to check if that workflow was computationally efficient or not. To my surprise, the usage of canvas reduces the creation time of a ggplot quite a lot. To my further surprise, this finding holds for simple plots as well as maps.</p>
-<p>Let’s start with a simple check.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># load required packages</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;">)</span>      <span class="co" style="color: #5E5E5E;"># data manipulation and viz</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op" style="color: #5E5E5E;">)</span>       <span class="co" style="color: #5E5E5E;"># themes for ggplot2</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op" style="color: #5E5E5E;">)</span>        <span class="co" style="color: #5E5E5E;"># the best color palette</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="http://rgdal.r-forge.r-project.org">rgdal</a></span><span class="op" style="color: #5E5E5E;">)</span>          <span class="co" style="color: #5E5E5E;"># deal with shapefiles</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op" style="color: #5E5E5E;">)</span> <span class="co" style="color: #5E5E5E;"># measure the speed of executing</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op" style="color: #5E5E5E;">)</span>      <span class="co" style="color: #5E5E5E;"># nice font</span></span>
-<span><span class="va" style="color: #111111;">myfont</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="st" style="color: #20794D;">"Roboto Condensed"</span></span>
-<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">RColorBrewer</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># create a canvas </span></span>
-<span><span class="va" style="color: #111111;">canv_mt</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">mtcars</span>, <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">hp</span>, <span class="va" style="color: #111111;">mpg</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">cyl</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># test speed with mocrobenchmark</span></span>
-<span><span class="va" style="color: #111111;">test</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
-<span>        without_canvas <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">mtcars</span>, <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">hp</span>, <span class="va" style="color: #111111;">mpg</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">cyl</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span>        </span>
-<span>        ,</span>
-<span>        </span>
-<span>        with_canvas <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">canv_mt</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span>       </span>
-<span>        ,</span>
-<span>        </span>
-<span>        times <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">100</span></span>
-<span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="va" style="color: #111111;">test</span></span>
-<span></span>
-<span><span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">test</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">expr</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op" style="color: #5E5E5E;">(</span>discrete <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">T</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op" style="color: #5E5E5E;">(</span>base_size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span>, base_family <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">myfont</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
-<span>              axis.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;">(</span>title <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"The speed of creating a simple ggplot"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
-</div>
-<p><img src="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/fig-01-test-simple.png" class="img-fluid"><strong>Figure 1. Microbenchmark output for a simple plot</strong></p>
-<p>The median time of execution is 3.24 milliseconds for the plot <strong>without</strong> canvas and 2.29 milliseconds for the plot <strong>with</strong> canvas.</p>
-<p>Next, let’s do the same check for a map. For that, I will use the data prepared for <a href="https://ikashnitsky.github.io/2017/subplots-in-maps/">one of my earlier posts</a> and recreate the simple map that shows the division of European Union 27 into three subregions.</p>
-<p><img src="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/fig-02-sub.png" class="img-fluid"><strong>Figure 2. The map we use to test the plot creation speed</strong></p>
-<div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># load the already prepared data</span></span>
-<span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"https://ikashnitsky.github.io/doc/misc/map-subplots/df-27-261-urb-rur.RData"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">"https://ikashnitsky.github.io/doc/misc/map-subplots/spatial-27-261.RData"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># fortify spatial objects</span></span>
-<span><span class="va" style="color: #111111;">neib</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">Sneighbors</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span><span class="va" style="color: #111111;">bord</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">Sborders</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span><span class="va" style="color: #111111;">fort</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">Sn2</span>, region <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"id"</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># join spatial and statistical data</span></span>
-<span><span class="va" style="color: #111111;">fort_map</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">df</span>, <span class="va" style="color: #111111;">fort</span>, <span class="st" style="color: #20794D;">"id"</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># pal for the subregions</span></span>
-<span><span class="va" style="color: #111111;">brbg3</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">11</span>,<span class="st" style="color: #20794D;">"BrBG"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">[</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">8</span>,<span class="fl" style="color: #AD0000;">2</span>,<span class="fl" style="color: #AD0000;">11</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">]</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># create a blank map</span></span>
-<span><span class="va" style="color: #111111;">basemap</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">neib</span>,</span>
-<span>                     <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">long</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">lat</span>, group <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">group</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                     fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"grey90"</span>,color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"grey90"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op" style="color: #5E5E5E;">(</span>ylim <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1350000</span>,<span class="fl" style="color: #AD0000;">5450000</span><span class="op" style="color: #5E5E5E;">)</span>, </span>
-<span>                    xlim <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">2500000</span>, <span class="fl" style="color: #AD0000;">6600000</span><span class="op" style="color: #5E5E5E;">)</span>, </span>
-<span>                    expand <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">0</span>,<span class="fl" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/ggthemes/man/theme_map.html">theme_map</a></span><span class="op" style="color: #5E5E5E;">(</span>base_family <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">myfont</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>panel.border <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;">(</span>color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"black"</span>,size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">.5</span>,fill <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>              legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>              legend.justification <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>              legend.background <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;">(</span>colour <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span>, fill <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>              legend.title <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>              legend.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NULL</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NULL</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;"># test speed with mocrobenchmark</span></span>
-<span><span class="va" style="color: #111111;">test_map</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op" style="color: #5E5E5E;">(</span></span>
-<span>        without_canvas <span class="op" style="color: #5E5E5E;">=</span> </span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">neib</span>,</span>
-<span>                             <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">long</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">lat</span>, group <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">group</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                             fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"grey90"</span>,color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"grey90"</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op" style="color: #5E5E5E;">(</span>ylim <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1350000</span>,<span class="fl" style="color: #AD0000;">5450000</span><span class="op" style="color: #5E5E5E;">)</span>, </span>
-<span>                            xlim <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">2500000</span>, <span class="fl" style="color: #AD0000;">6600000</span><span class="op" style="color: #5E5E5E;">)</span>, </span>
-<span>                            expand <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">0</span>,<span class="fl" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/ggthemes/man/theme_map.html">theme_map</a></span><span class="op" style="color: #5E5E5E;">(</span>base_family <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">myfont</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>panel.border <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;">(</span>color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"black"</span>,</span>
-<span>                                                  size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">.5</span>,fill <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                      legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                      legend.justification <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                      legend.background <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;">(</span>colour <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span>, fill <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                      legend.title <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span>,</span>
-<span>                      legend.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NULL</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NULL</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">fort_map</span>, </span>
-<span>                             <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">long</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">lat</span>, group <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">group</span>, </span>
-<span>                                 fill <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">subregion</span><span class="op" style="color: #5E5E5E;">)</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op" style="color: #5E5E5E;">(</span>values <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">brbg3</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"none"</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span>        </span>
-<span>        ,</span>
-<span>        </span>
-<span>        with_canvas <span class="op" style="color: #5E5E5E;">=</span> </span>
-<span>                <span class="va" style="color: #111111;">basemap</span> <span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">fort_map</span>, </span>
-<span>                             <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>x <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">long</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">lat</span>, group <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">group</span>, </span>
-<span>                                 fill <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">subregion</span><span class="op" style="color: #5E5E5E;">)</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op" style="color: #5E5E5E;">(</span>values <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">brbg3</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
-<span>                <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"none"</span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span>        </span>
-<span>        ,</span>
-<span>        </span>
-<span>        times <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">100</span></span>
-<span><span class="op" style="color: #5E5E5E;">)</span></span>
-<span>      </span>
-<span></span>
-<span><span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">test_map</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">expr</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op" style="color: #5E5E5E;">(</span>discrete <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">T</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op" style="color: #5E5E5E;">(</span>base_size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span>, base_family <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">myfont</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;">(</span>legend.position <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
-<span>              axis.text <span class="op" style="color: #5E5E5E;">=</span> <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op" style="color: #5E5E5E;">(</span>size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">15</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
-<span>        <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;">(</span>title <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"The speed of creating a map with ggplot2"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
-</div>
-<p><img src="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/fig-03-test-map.png" class="img-fluid"><strong>Figure 3. Microbenchmark output for a map</strong></p>
-<p>The median time of execution is 18.8 milliseconds for the map <strong>without</strong> canvas and 6.3 milliseconds for the map <strong>with</strong> canvas.</p>
-<section id="conclusion-use-canvas-with-ggplot2" class="level2"><h2 class="anchored" data-anchor-id="conclusion-use-canvas-with-ggplot2">Conclusion: Use canvas with <code>ggplot2</code>
-</h2>
-<hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-For the full script to reproduce the results check out this <a href="https://gist.github.com/ikashnitsky/b9c5d0b838daa2338066dbaa3e035dcc">gist</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-
-
-<!-- -->
-
-</section> ]]></description>
-  <category>r</category>
-  <category>ggplot2</category>
-  <guid>https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/index.html</guid>
-  <pubDate>Mon, 03 Jul 2017 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>

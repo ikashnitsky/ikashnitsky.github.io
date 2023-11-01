@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/atom.html</loc>
-    <lastmod>2023-10-28T06:21:57.072Z</lastmod>
+    <lastmod>2023-11-01T20:03:28.793Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/cv.html</loc>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/index.html</loc>
-    <lastmod>2023-10-28T06:21:59.769Z</lastmod>
+    <lastmod>2023-11-01T20:03:29.646Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.github.io/me.html</loc>
@@ -151,5 +151,9 @@
   <url>
     <loc>https://ikashnitsky.github.io/subscribe.html</loc>
     <lastmod>2023-10-28T06:22:00.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.github.io/2023/geocoding/index.html</loc>
+    <lastmod>2023-11-01T20:03:26.879Z</lastmod>
   </url>
 </urlset>

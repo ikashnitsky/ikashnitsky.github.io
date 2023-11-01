@@ -16,6 +16,7 @@
       "/2023/gist-snippet/index.html",
       "/2017/ice-hockey-players-height/index.html",
       "/2017/gender-gap-in-swedish-mortality/index.html",
+      "/2023/geocoding/index.html",
       "/2017/global-male-life-expectancy-convergence/index.html",
       "/2017/map-hacking/index.html",
       "/2017/hello-r-world/index.html",
@@ -40,6 +41,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/2023/geocoding/index.html",
       "/2023/shrink-space/index.html",
       "/2023/gist-snippet/index.html",
       "/2023/map-borders/index.html",
