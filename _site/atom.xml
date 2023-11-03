@@ -127,7 +127,7 @@ This post is one in the <strong>dataviz course series</strong>. Other posts:
   <category>ggplot2</category>
   <guid>https://ikashnitsky.github.io/2023/geocoding/index.html</guid>
   <pubDate>Tue, 31 Oct 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.github.io/2023/geocoding/teaser.png" medium="image" type="image/png" height="81" width="144"/>
+  <media:content url="https://ikashnitsky.github.io/2023/geocoding/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Save space in faceted plots</title>
