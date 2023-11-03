@@ -44,6 +44,6 @@ engine: knitr
 </p>
 
 <div class="embed-container">
-  <iframe src="https://ikashnitsky.github.io/x/cv/2023-10-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
+  <iframe src="https://ikashnitsky.github.io/x/cv/2023-11-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
 </div>
 ```
