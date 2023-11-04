@@ -10,7 +10,121 @@
 <atom:link href="https://ikashnitsky.github.io/atom.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Tue, 31 Oct 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 03 Nov 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Map projections – fix your maps in one line</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.github.io/2023/map-proj/index.html</link>
+  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<div class="page-columns page-full"><p>Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz? I think<sup>1</sup> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That’s why it’s so annoying when these shapes get distorted – it hinders the smoothness of reading the map and kills the pleasure of the process. I’m sure this is the main reason why <a href="https://r-graph-gallery.com/cartogram.html">cartograms</a> exist forever as a cool idea but are rarely actually used – people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;And here I have to say that I’m not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I’m going to tell further is likely some digested version of what I’ve seen, read, and thought through over years of being into dataviz.</p></li></div></div>
+<p>Geographic projections are a huge field of research in itself. There are infinite ways to project the spherical globe (geoid) to the surface. It’s a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</p>
+<p>There is a brilliant 6-min video explainer of maps projections, I heartily recommend:</p>
+<iframe width="100%" height="650" src="https://www.youtube.com/embed/kIID5FDi2JQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>Beware, the choice of appropriate map projection can be a rabbit hole as deep as choosing fonts or colors for your dataviz – you are warned. In all practical terms, a good strategy is to check what are the canonical projections for the territories one plans to map – that would help not to repel the reader through instantaneous non-recognition of the shape. One good resource for the task is http://epsg.io.</p>
+<p>Just accept that the perfect projection does not exist – there’s no such thing as <del>free lunch</del> perfect projection. Map projections always excel or fail in specific contexts. Here is an example when a very non-standard geographic projection is just perfect for the data it is showing and the story it is telling.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="https://ikashnitsky.phd/2023/map-proj/natgeo.png"><img src="https://ikashnitsky.github.io/2023/map-proj/natgeo.png" class="img-fluid figure-img" style="width:70.0%"></a></p>
+</figure>
+</div>
+<p>Here is another <a href="https://twitter.com/ikashnitsky/status/1261186743585386496">animated example</a>.</p>
+<p>Even the most famous and <a href="https://twitter.com/ikashnitsky/status/1442512307502780422">often</a> <a href="https://twitter.com/ikashnitsky/status/1531395881559375872">ridiculed</a> Mercator projection has its major advantages – it preserves the angles and that’s why it was perfect for the early age of navigation. It’s also pretty safe at preserving coordinates and thus most often is used as the basic projection in which geodata is stored and distributed. And this is the reason why we see it in published maps so often. Honestly, I’m really allergic to the view of Europe in Mercator projection.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="https://ikashnitsky.phd/2023/map-proj/badeu.png"><img src="https://ikashnitsky.github.io/2023/map-proj/badeu.png" class="img-fluid figure-img" style="width:70.0%"></a></p>
+</figure>
+</div>
+<p>And it’s just unbelievable how often these repulsing maps come across in academic papers. Especially when you know that it really takes one line of code to fix it. So let’s see how it’s done.</p>
+<hr>
+<p>For the illustration below I will produce maps of Europe in (A) Mercator and (B) Lambert Equal Area Azimuthal projections, as usual using the beautiful geodata stored in the <a href="https://ropengov.github.io/eurostat/">eurostat</a> package.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://ropengov.github.io/eurostat/">eurostat</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># the built-in dataset of EU boundaries</span></span>
+<span><span class="va" style="color: #111111;">gd</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">eurostat_geodata_60_2016</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;">janitor</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> </span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># filters out only NUTS-2 regions </span></span>
+<span><span class="va" style="color: #111111;">gd_n2</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">levl_code</span> <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">2</span><span class="op" style="color: #5E5E5E;">)</span> </span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># let's build the most basic map</span></span>
+<span><span class="va" style="color: #111111;">gd_n2</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/map-proj/index_files/figure-html/unnamed-chunk-2-1.png" class="" style="width:100.0%;height:100.0%"></p>
+</div>
+</div>
+<p>Note all the overseas territories of France, Spain, and Portugal. At the next step I will remove them to zoom in to the usual scope of mainland Europe. I will also <a href="https://ikashnitsky.phd/2023/map-borders/">add borders between the countries as lines</a>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># remove overseas territories</span></span>
+<span><span class="va" style="color: #111111;">gd_n2_main</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd_n2</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">!</span><span class="va" style="color: #111111;">id</span> <span class="op" style="color: #5E5E5E;"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">'ES'</span>, <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="fl" style="color: #AD0000;">63</span>, <span class="fl" style="color: #AD0000;">64</span>, <span class="fl" style="color: #AD0000;">70</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span>, <span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="st" style="color: #20794D;">'FRY'</span>, <span class="fl" style="color: #AD0000;">1</span><span class="op" style="color: #5E5E5E;">:</span><span class="fl" style="color: #AD0000;">5</span>, sep <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">''</span><span class="op" style="color: #5E5E5E;">)</span>, <span class="st" style="color: #20794D;">'PT20'</span>, <span class="st" style="color: #20794D;">'PT30'</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">)</span> </span>
+<span></span>
+<span><span class="co" style="color: #5E5E5E;"># the lines level with borders at country level</span></span>
+<span><span class="va" style="color: #111111;">bord</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;">levl_code</span> <span class="op" style="color: #5E5E5E;">==</span> <span class="fl" style="color: #AD0000;">0</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;">rmapshaper</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+</div>
+<p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change your the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
+<div class="cell">
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># transform the projection to the one suitable for Europe</span></span>
+<span><span class="va" style="color: #111111;">gd_n2_main_laea</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd_n2_main</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op" style="color: #5E5E5E;">(</span>crs <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">3035</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">a</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd_n2_main</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#F48FB1"</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">bord</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#C2185B"</span>, size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">.5</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>crs <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">3857</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">b</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd_n2_main_laea</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>fill <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#DCE775"</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="cn" style="color: #8f5902;">NA</span><span class="op" style="color: #5E5E5E;">)</span><span class="op" style="color: #5E5E5E;">+</span></span>
+<span>    <span class="fu" style="color: #4758AB;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;">(</span>data <span class="op" style="color: #5E5E5E;">=</span> <span class="va" style="color: #111111;">bord</span>, color <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"#AFB42B"</span>, size <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">.5</span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;">a</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="va" style="color: #111111;">b</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op" style="color: #5E5E5E;">(</span>tag_levels <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"A"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://ikashnitsky.github.io/2023/map-proj/index_files/figure-html/unnamed-chunk-4-1.png" class="" style="width:100.0%;height:100.0%"></p>
+</div>
+</div>
+<p>That’s it. That’s the whole one-line trick. Check out my other post based on my <a href="https://github.com/ikashnitsky/dataviz-art-skill">dataviz course materials</a>.</p>
+<hr>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+This post is one in the <strong>dataviz course series</strong>. Other posts:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://ikashnitsky.phd/2023/map-borders/">The easiest way to radically improve map aesthetics</a></li>
+<li><a href="https://ikashnitsky.phd/2020/background-data/">Show all data in the background of your faceted ggplot</a></li>
+<li><a href="https://ikashnitsky.phd/2019/dotplot/">Dotplot – the single most useful yet largely neglected dataviz type</a></li>
+<li><a href="https://ikashnitsky.phd/2023/shrink-space/">Save space in faceted plots</a></li>
+<li><a href="https://ikashnitsky.phd/2023/geocoding/">Geocode address text strings using <code>tidygeocoder</code></a></li>
+</ul>
+</div>
+</div>
+
+
+<!-- -->
+
+ ]]></description>
+  <category>r</category>
+  <category>rspatial</category>
+  <category>ggplot2</category>
+  <guid>https://ikashnitsky.github.io/2023/map-proj/index.html</guid>
+  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.github.io/2023/map-proj/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
 <item>
   <title>Geocode address text strings using tidygeocoder
 </title>
@@ -1869,44 +1983,6 @@ The whole code may be downloaded from <a href="https://gist.github.com/ikashnits
   <guid>https://ikashnitsky.github.io/2017/neet-in-europe/index.html</guid>
   <pubDate>Mon, 17 Jul 2017 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2017/neet-in-europe/teaser.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Global convergence in male life expectancy at birth</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<p>In the modern history, the world has seen unprecedented decrease in human mortality – the result of the Demographic Transition. Initially, the improvements occurred only in the most developed societies, and by the mid XX century the world population was roughly divided in two parts according to mortality patterns (see the bi-modal distribution). After the 2nd World War, the developing countries started to catch up, and there was a clear convergence in life expectancy at birth, the most common summary measure of mortality.</p>
-<p><img src="https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/e0-convergence.png" class="img-fluid"></p>
-<hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-To reproduce the plot from the scratch please see <a href="https://gist.github.com/ikashnitsky/2f6e29acbb9cbeb1694630c5932b8ad5">the gist</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>r</category>
-  <category>life expectancy</category>
-  <guid>https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/index.html</guid>
-  <pubDate>Sun, 16 Jul 2017 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>
