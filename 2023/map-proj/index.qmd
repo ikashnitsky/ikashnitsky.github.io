@@ -1,5 +1,5 @@
 ---
-title: "Map projections -- fix your maps in one line"
+title: "Improve your maps in one line of code changing map projections"
 description-meta: "{{< meta website.description >}}"
 date: "2023-11-04"
 image: teaser.png
