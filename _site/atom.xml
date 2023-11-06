@@ -69,7 +69,7 @@
 <span>    <span class="fu" style="color: #4758AB;">rmapshaper</span><span class="fu" style="color: #4758AB;">::</span><span class="fu" style="color: #4758AB;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
 </div>
 <p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change your the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;"># transform the projection to the one suitable for Europe</span></span>
 <span><span class="va" style="color: #111111;">gd_n2_main_laea</span> <span class="op" style="color: #5E5E5E;">&lt;-</span> <span class="va" style="color: #111111;">gd_n2_main</span> <span class="op" style="color: #5E5E5E;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu" style="color: #4758AB;"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op" style="color: #5E5E5E;">(</span>crs <span class="op" style="color: #5E5E5E;">=</span> <span class="fl" style="color: #AD0000;">3035</span><span class="op" style="color: #5E5E5E;">)</span></span>
@@ -88,7 +88,7 @@
 <span><span class="kw" style="color: #003B4F;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;">(</span><span class="va" style="color: #111111;"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op" style="color: #5E5E5E;">)</span></span>
 <span></span>
 <span><span class="va" style="color: #111111;">a</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="va" style="color: #111111;">b</span> <span class="op" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op" style="color: #5E5E5E;">(</span>tag_levels <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"A"</span><span class="op" style="color: #5E5E5E;">)</span></span></code></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display column-screen-inset">
 <p><img src="https://ikashnitsky.github.io/2023/map-proj/index_files/figure-html/unnamed-chunk-4-1.png" class="" style="width:100.0%;height:100.0%"></p>
 </div>
 </div>

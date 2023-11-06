@@ -83,7 +83,8 @@ bord <- gd %>%
 
 Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply `st_transform(crs = [EPSG code])` to change your the projection of the geodata object OR fix it directly at the plotting stage via `coord_sf(crs = [EPSG code])`. I think it's generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly `coord_sf()` when plotting in Mercator projection (panel A). 
 
-```{r}
+```{r, warning=FALSE, fig.width=16, fig.height=8}
+#| column: screen-inset
 # transform the projection to the one suitable for Europe
 gd_n2_main_laea <- gd_n2_main %>% 
     st_transform(crs = 3035)
