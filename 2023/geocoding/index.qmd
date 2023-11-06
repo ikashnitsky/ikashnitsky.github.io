@@ -75,6 +75,7 @@ country_borders <- world_outline_robinson %>%
 Now everything is ready to map!
 
 ```{r, out.width="100%"}
+#| column: screen-inset
 # map!
 world_outline_robinson %>% 
     filter(!iso_a2 == "AQ") %>% # get rid of Antarctica

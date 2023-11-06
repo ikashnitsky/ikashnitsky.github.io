@@ -96,6 +96,7 @@ geom_sf(data = . %>% ms_innerlines(), color = 2, size = 1)
 Finally, let's put the two maps side by side.
 
 ```{r, out.width="100%"}
+#| column: screen-inset
 # put side by side
 library(patchwork)
 (

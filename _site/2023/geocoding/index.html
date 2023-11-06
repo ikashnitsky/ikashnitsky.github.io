@@ -253,7 +253,7 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of <code>tidygeocoder</code> that queries the free Open Street Map.</p>
 <p>In this tiny example I’m using the birth places that students of my <a href="https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0">2022 BSSD dataviz course</a> kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields – city and country of birth. The resulting small dataset is <a href="https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58">here</a></p>
 <div class="cell">
@@ -303,7 +303,7 @@ ga('send', {
 <span>    <span class="fu">rmapshaper</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now everything is ready to map!</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># map!</span></span>
 <span><span class="va">world_outline_robinson</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">iso_a2</span> <span class="op">==</span> <span class="st">"AQ"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># get rid of Antarctica</span></span>
@@ -328,7 +328,7 @@ ga('send', {
 <span>        axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="fl">2</span>, size <span class="op">=</span> <span class="fl">18</span>, color <span class="op">=</span> <span class="st">"#ccffff"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
+<div class="cell-output-display column-screen-inset">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" style="width:100.0%"></p>
 </div>
 </div>
@@ -619,54 +619,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>Now everything is ready to map!</span>
 <span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width="100%"}</span></span>
-<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co"># map!</span></span>
-<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>world_outline_robinson <span class="sc">%&gt;%</span> </span>
-<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>iso_a2 <span class="sc">==</span> <span class="st">"AQ"</span>) <span class="sc">%&gt;%</span> <span class="co"># get rid of Antarctica</span></span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#269999"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> country_borders, <span class="at">size =</span> .<span class="dv">25</span>, <span class="at">color =</span> <span class="st">"#269999"</span> <span class="sc">%&gt;%</span> prismatic<span class="sc">::</span><span class="fu">clr_lighten</span>())<span class="sc">+</span></span>
-<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(</span>
-<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df_plot, <span class="at">fill =</span> <span class="st">"#dafa26"</span>, </span>
-<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#dafa26"</span> <span class="sc">%&gt;%</span> prismatic<span class="sc">::</span><span class="fu">clr_darken</span>(),</span>
-<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">shape =</span> <span class="dv">21</span></span>
-<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">+</span></span>
-<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Atkinson Hyperlegible"</span>)<span class="sc">+</span></span>
-<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Birth places of the participants"</span>,</span>
-<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"Barcelona Summer School of Demography dataviz course at CED, July 2022"</span>,</span>
-<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"@ikashnitsky.phd"</span></span>
-<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">+</span></span>
-<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
-<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#ccffff"</span>),</span>
-<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#042222"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
-<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"#ccffff"</span>)</span>
-<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: screen-inset</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="co"># map!</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>world_outline_robinson <span class="sc">%&gt;%</span> </span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>iso_a2 <span class="sc">==</span> <span class="st">"AQ"</span>) <span class="sc">%&gt;%</span> <span class="co"># get rid of Antarctica</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#269999"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> country_borders, <span class="at">size =</span> .<span class="dv">25</span>, <span class="at">color =</span> <span class="st">"#269999"</span> <span class="sc">%&gt;%</span> prismatic<span class="sc">::</span><span class="fu">clr_lighten</span>())<span class="sc">+</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> df_plot, <span class="at">fill =</span> <span class="st">"#dafa26"</span>, </span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">"#dafa26"</span> <span class="sc">%&gt;%</span> prismatic<span class="sc">::</span><span class="fu">clr_darken</span>(),</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">shape =</span> <span class="dv">21</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">+</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Atkinson Hyperlegible"</span>)<span class="sc">+</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Birth places of the participants"</span>,</span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"Barcelona Summer School of Demography dataviz course at CED, July 2022"</span>,</span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>        <span class="at">caption =</span> <span class="st">"@ikashnitsky.phd"</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>    )<span class="sc">+</span></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#ccffff"</span>),</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#042222"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">color =</span> <span class="st">"#ccffff"</span>)</span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>That's it. Going from text to point on the map has never been easier.       </span>
-<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>That's it. Going from text to point on the map has never been easier.       </span>
 <span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is one in the **dataviz course series**. Other posts:</span></span>
-<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">The easiest way to radically improve map aesthetics</span><span class="co">][borders]</span></span>
-<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show all data in the background of your faceted ggplot</span><span class="co">][bg]</span></span>
-<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dotplot – the single most useful yet largely neglected dataviz type</span><span class="co">][dotplot]</span></span>
-<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Save space in faceted plots</span><span class="co">][shrink]</span></span>
-<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is one in the **dataviz course series**. Other posts:</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">The easiest way to radically improve map aesthetics</span><span class="co">][borders]</span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show all data in the background of your faceted ggplot</span><span class="co">][bg]</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dotplot – the single most useful yet largely neglected dataviz type</span><span class="co">][dotplot]</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Save space in faceted plots</span><span class="co">][shrink]</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="ot">[bssd]: https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0</span></span>
-<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="ot">[borders]: https://ikashnitsky.phd/2023/map-borders/</span></span>
-<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[bg]: https://ikashnitsky.phd/2020/background-data/</span></span>
-<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="ot">[dotplot]: https://ikashnitsky.phd/2019/dotplot/</span></span>
-<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="ot">[data]: https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58</span></span>
-<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="ot">[30d]: https://30daymapchallenge.com</span></span>
-<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="ot">[shrink]: https://ikashnitsky.phd/2023/shrink-space/</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a><span class="ot">[bssd]: https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0</span></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[borders]: https://ikashnitsky.phd/2023/map-borders/</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="ot">[bg]: https://ikashnitsky.phd/2020/background-data/</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a><span class="ot">[dotplot]: https://ikashnitsky.phd/2019/dotplot/</span></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="ot">[data]: https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="ot">[30d]: https://30daymapchallenge.com</span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="ot">[shrink]: https://ikashnitsky.phd/2023/shrink-space/</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

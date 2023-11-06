@@ -7,12 +7,22 @@ categories: [r, tricolore, rspatial]
 ---
 
 ***
-
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE
+)
+```
 
 
 On 28 November 2018 I presented a poster at [Dutch Demography Day][nvd] in Utrecht. Here it is:
 
-![](compare-poster.png)
+```{r, echo=FALSE}
+#| column: screen-inset
+knitr::include_graphics("compare-poster.png")
+```
+
+
+
 
 The poster compares population age structures, represented as ternary compositions in three broad age groups, of European NUTS-3 regions and the United States counties. I used ternary color-coding, a dataviz approach that [Jonas Schöley][js] and me recently brought to R in [tricolore][tric] package. 
 

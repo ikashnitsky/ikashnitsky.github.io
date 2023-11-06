@@ -59,7 +59,13 @@ My main interest is demography. For three years, 2015--2017, I was systematicall
 
 I was born in Israel, grew up in Moscow, during my PhD years lived in The Hague, and now live in Odense. Married and have two daughters. I got a bachelors in geography from Moscow State University in 2012, masters in demography from the National Research University Higher School of Economics (Moscow) in 2014, and PhD from University of Groningen in 2020. 
 
-![](img/our-photo-x4.jpg)
+
+```{r, echo=FALSE}
+#| column: screen-inset
+knitr::include_graphics("img/our-photo-x4.jpg")
+```
+
+
 
 ***
 Feel free to contact me via email  
