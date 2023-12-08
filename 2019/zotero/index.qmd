@@ -142,13 +142,13 @@ Then in the next window choose to export as Better BibTeX and check the option t
 
 ![](bbt-menu.png)
 
-The output .bib file should be placed in the directory from which we are going to knit the .rmd file. The name of the .bib is specified in YAML header of the .rmd. Here is an example from my [running project][gf] with [@jm_aburto][jm].
+The output .bib file should be placed in the directory from which we are going to knit the .rmd file. The name of the .bib is specified in YAML header of the .rmd. Here is an example from my [running project][gf] with [jmaburto][jm].
 
 ![](yaml.png)
 
 Note that the exact YAML functions may vary depending on the `rmarkdown` template package. In this case I'm using `bookdown`, which also allows to specify the desired bibliographic style, .csl file should also be copied to the knit directory. 
 
-Then, everything is ready to use the citation keys to generate citations throughout the text. For details on `rmarkdown` citation syntax, it's better to refer to [RStudio's manual][rmd] (see below) or [the relevant chapter][bookd] of [@xieyihui][xie]'s book on `bookdown`.
+Then, everything is ready to use the citation keys to generate citations throughout the text. For details on `rmarkdown` citation syntax, it's better to refer to [RStudio's manual][rmd] (see below) or [the relevant chapter][bookd] of [xieyihui][xie]'s book on `bookdown`.
 
 <iframe width="100%" height="500px" style="background: #FFFFFF;" src="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html"></iframe>
 
@@ -183,8 +183,8 @@ The final hint here is to use `citr` package, which brings an easy and interacti
 [tesg]: https://doi.org/10.1111/tesg.12357
 [geoj]: https://doi.org/10.1007/s10708-018-9953-5
 [gf]: https://doi.org/10.31219/osf.io/f49n6
-[jm]: https://twitter.com/jm_aburto
-[xie]: https://twitter.com/xieyihui
+[jm]: https://github.com/jmaburto
+[xie]: https://github.com/yihui
 [bookd]: https://bookdown.org/yihui/bookdown/citations.html
 [rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
 [citr]: https://github.com/crsh/citr

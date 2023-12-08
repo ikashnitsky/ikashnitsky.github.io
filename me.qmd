@@ -19,11 +19,13 @@ about:
     - icon: mastodon
       text: Mastodon
       href: https://fosstodon.org/@ikashnitsky
+    - text: "{{< fa solid mountain-sun >}} BlueSky"
+      href: https://bsky.app/profile/ikashnitsky.phd
 ---
 
 
 <button type="button" class="btn btn-danger">
-<a href="https://ikashnitsky.github.io/x/cv/2022-12-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
+<a href="https://ikashnitsky.github.io/x/cv/2023-12-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
 </button>
 
 <button type="button" class="btn btn-success">
