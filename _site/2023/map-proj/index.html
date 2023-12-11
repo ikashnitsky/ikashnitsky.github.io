@@ -253,7 +253,8 @@ ga('send', {
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<div class="page-columns page-full"><p>Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz? I think<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That’s why it’s so annoying when these shapes get distorted – it hinders the smoothness of reading the map and kills the pleasure of the process. I’m sure this is the main reason why <a href="https://r-graph-gallery.com/cartogram.html">cartograms</a> exist forever as a cool idea but are rarely actually used – people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;And here I have to say that I’m not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I’m going to tell further is likely some digested version of what I’ve seen, read, and thought through over years of being into dataviz.</p></li></div></div>
+<p>Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz?</p>
+<div class="page-columns page-full"><p>I think<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That’s why it’s so annoying when these shapes get distorted – it hinders the smoothness of reading the map and kills the pleasure of the process. I’m sure this is the main reason why <a href="https://r-graph-gallery.com/cartogram.html">cartograms</a> exist forever as a cool idea but are rarely actually used – people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;And here I have to say that I’m not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I’m going to tell further is likely some digested version of what I’ve seen, read, and thought through over years of being into dataviz.</p></li></div></div>
 <p>Geographic projections are a huge field of research in itself. There are infinite ways to project the spherical globe (geoid) to the surface. It’s a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</p>
 <p>There is a brilliant 6-min video explainer of maps projections, I heartily recommend:</p>
 <iframe width="100%" height="650" src="https://www.youtube.com/embed/kIID5FDi2JQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
@@ -303,7 +304,7 @@ ga('send', {
 <span><span class="co"># the lines level with borders at country level</span></span>
 <span><span class="va">bord</span> <span class="op">&lt;-</span> <span class="va">gd</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">levl_code</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>    <span class="fu">rmapshaper</span><span class="fu">::</span><span class="fu">ms_innerlines</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu">rmapshaper</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change your the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
 <div class="cell page-columns page-full">
@@ -557,125 +558,127 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>Did you ever think why we (okay, I'm clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz? I think<span class="ot">[^1]</span> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That's why it's so annoying when these shapes get distorted -- it hinders the smoothness of reading the map and kills the pleasure of the process. I'm sure this is the main reason why <span class="co">[</span><span class="ot">cartograms</span><span class="co">][cart]</span> exist forever as a cool idea but are rarely actually used -- people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>Did you ever think why we (okay, I'm clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz? </span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>And here I have to say that I'm not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I'm going to tell further is likely some digested version of what I've seen, read, and thought through over years of being into dataviz. </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>I think<span class="ot">[^1]</span> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That's why it's so annoying when these shapes get distorted -- it hinders the smoothness of reading the map and kills the pleasure of the process. I'm sure this is the main reason why <span class="co">[</span><span class="ot">cartograms</span><span class="co">][cart]</span> exist forever as a cool idea but are rarely actually used -- people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>Geographic projections are a huge field of research in itself. There are infinite ways to project the  spherical globe (geoid) to the surface. It's a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>And here I have to say that I'm not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I'm going to tell further is likely some digested version of what I've seen, read, and thought through over years of being into dataviz. </span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>There is a brilliant 6-min video explainer of maps projections, I heartily recommend:</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>Geographic projections are a huge field of research in itself. There are infinite ways to project the  spherical globe (geoid) to the surface. It's a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">width</span><span class="ot">=</span><span class="st">"100%"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"650"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://www.youtube.com/embed/kIID5FDi2JQ"</span> <span class="er">title</span><span class="ot">=</span><span class="st">"YouTube video player"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span> <span class="er">allow</span><span class="ot">=</span><span class="st">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span> <span class="er">allowfullscreen</span><span class="kw">&gt;</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/iframe&gt;</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>Beware, the choice of appropriate map projection can be a rabbit hole as deep as choosing fonts or colors for your dataviz -- you are warned. In all practical terms, a good strategy is to check what are the canonical projections for the territories one plans to map – that would help not to repel the reader through instantaneous non-recognition of the shape. One good resource for the task is http://epsg.io.</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>There is a brilliant 6-min video explainer of maps projections, I heartily recommend:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">width</span><span class="ot">=</span><span class="st">"100%"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"650"</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://www.youtube.com/embed/kIID5FDi2JQ"</span> <span class="er">title</span><span class="ot">=</span><span class="st">"YouTube video player"</span> <span class="er">frameborder</span><span class="ot">=</span><span class="st">"0"</span> <span class="er">allow</span><span class="ot">=</span><span class="st">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span> <span class="er">allowfullscreen</span><span class="kw">&gt;</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/iframe&gt;</span></span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>Just accept that the perfect projection does not exist -- there's no such thing as ~~free lunch~~ perfect projection. Map projections always excel or fail in specific contexts. Here is an example when a very non-standard geographic projection is just perfect for the data it is showing and the story it is telling.</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>Beware, the choice of appropriate map projection can be a rabbit hole as deep as choosing fonts or colors for your dataviz -- you are warned. In all practical terms, a good strategy is to check what are the canonical projections for the territories one plans to map – that would help not to repel the reader through instantaneous non-recognition of the shape. One good resource for the task is http://epsg.io.</span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](natgeo.png)</span><span class="ot">{width=70%}</span><span class="co">][natgeo]</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>Just accept that the perfect projection does not exist -- there's no such thing as ~~free lunch~~ perfect projection. Map projections always excel or fail in specific contexts. Here is an example when a very non-standard geographic projection is just perfect for the data it is showing and the story it is telling.</span>
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>Here is another <span class="co">[</span><span class="ot">animated example</span><span class="co">][volc]</span>.</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](natgeo.png)</span><span class="ot">{width=70%}</span><span class="co">][natgeo]</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Even the most famous and <span class="co">[</span><span class="ot">often</span><span class="co">][m1]</span> <span class="co">[</span><span class="ot">ridiculed</span><span class="co">][m2]</span> Mercator projection has its major advantages -- it preserves the angles and that's why it was perfect for the early age of navigation. It's also pretty safe at preserving coordinates and thus most often is used as the basic projection in which geodata is stored and distributed. And this is the reason why we see it in published maps so often. Honestly, I'm really allergic to the view of Europe in Mercator projection.</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Here is another <span class="co">[</span><span class="ot">animated example</span><span class="co">][volc]</span>.</span>
 <span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](badeu.png)</span><span class="ot">{width=70%}</span><span class="co">][badeu]</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>Even the most famous and <span class="co">[</span><span class="ot">often</span><span class="co">][m1]</span> <span class="co">[</span><span class="ot">ridiculed</span><span class="co">][m2]</span> Mercator projection has its major advantages -- it preserves the angles and that's why it was perfect for the early age of navigation. It's also pretty safe at preserving coordinates and thus most often is used as the basic projection in which geodata is stored and distributed. And this is the reason why we see it in published maps so often. Honestly, I'm really allergic to the view of Europe in Mercator projection.</span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>And it's just unbelievable how often these repulsing maps come across in academic papers. Especially when you know that it really takes one line of code to fix it. So let's see how it's done.</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](badeu.png)</span><span class="ot">{width=70%}</span><span class="co">][badeu]</span></span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>And it's just unbelievable how often these repulsing maps come across in academic papers. Especially when you know that it really takes one line of code to fix it. So let's see how it's done.</span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>For the illustration below I will produce maps of Europe in (A) Mercator and (B) Lambert Equal Area Azimuthal projections, as usual using the beautiful geodata stored in the <span class="in">`{eurostat}`</span> package. </span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat)</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># the built-in dataset of EU boundaries</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>gd <span class="ot">&lt;-</span> eurostat_geodata_60_2016 <span class="sc">%&gt;%</span> </span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="co"># filters out only NUTS-2 regions </span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>gd_n2 <span class="ot">&lt;-</span> gd <span class="sc">%&gt;%</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(levl_code <span class="sc">==</span> <span class="dv">2</span>) </span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="co"># let's build the most basic map</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>gd_n2 <span class="sc">%&gt;%</span> </span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>()</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>Note all the overseas territories of France, Spain, and Portugal. At the next step I will remove them to zoom in to the usual scope of mainland Europe. I will also <span class="co">[</span><span class="ot">add borders between the countries as lines</span><span class="co">][bord]</span>.</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>For the illustration below I will produce maps of Europe in (A) Mercator and (B) Lambert Equal Area Azimuthal projections, as usual using the beautiful geodata stored in the <span class="in">`{eurostat}`</span> package. </span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="co"># the built-in dataset of EU boundaries</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>gd <span class="ot">&lt;-</span> eurostat_geodata_60_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>() </span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co"># filters out only NUTS-2 regions </span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>gd_n2 <span class="ot">&lt;-</span> gd <span class="sc">%&gt;%</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(levl_code <span class="sc">==</span> <span class="dv">2</span>) </span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="co"># let's build the most basic map</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>gd_n2 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>()</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="co"># remove overseas territories</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>gd_n2_main <span class="ot">&lt;-</span> gd_n2 <span class="sc">%&gt;%</span> </span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="st">'ES'</span>, <span class="fu">c</span>(<span class="dv">63</span>, <span class="dv">64</span>, <span class="dv">70</span>)), <span class="fu">paste</span>(<span class="st">'FRY'</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">sep =</span> <span class="st">''</span>), <span class="st">'PT20'</span>, <span class="st">'PT30'</span>)) </span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="co"># the lines level with borders at country level</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>bord <span class="ot">&lt;-</span> gd <span class="sc">%&gt;%</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(levl_code <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>    rmapshaper<span class="sc">::</span><span class="fu">ms_innerlines</span>()</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <span class="in">`st_transform(crs = [EPSG code])`</span> to change your the projection of the geodata object OR fix it directly at the plotting stage via <span class="in">`coord_sf(crs = [EPSG code])`</span>. I think it's generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <span class="in">`coord_sf()`</span> when plotting in Mercator projection (panel A). </span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>Note all the overseas territories of France, Spain, and Portugal. At the next step I will remove them to zoom in to the usual scope of mainland Europe. I will also <span class="co">[</span><span class="ot">add borders between the countries as lines</span><span class="co">][bord]</span>.</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="co"># remove overseas territories</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>gd_n2_main <span class="ot">&lt;-</span> gd_n2 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="fu">paste0</span>(<span class="st">'ES'</span>, <span class="fu">c</span>(<span class="dv">63</span>, <span class="dv">64</span>, <span class="dv">70</span>)), <span class="fu">paste</span>(<span class="st">'FRY'</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">sep =</span> <span class="st">''</span>), <span class="st">'PT20'</span>, <span class="st">'PT30'</span>)) </span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co"># the lines level with borders at country level</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>bord <span class="ot">&lt;-</span> gd <span class="sc">%&gt;%</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(levl_code <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    rmapshaper<span class="sc">::</span><span class="fu">ms_innerlines</span>()</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning=FALSE, fig.width=16, fig.height=8}</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: screen-inset</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co"># transform the projection to the one suitable for Europe</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>gd_n2_main_laea <span class="ot">&lt;-</span> gd_n2_main <span class="sc">%&gt;%</span> </span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">3035</span>)</span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> gd_n2_main <span class="sc">%&gt;%</span> </span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#F48FB1"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bord, <span class="at">color =</span> <span class="st">"#C2185B"</span>, <span class="at">size =</span> .<span class="dv">5</span>)<span class="sc">+</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">crs =</span> <span class="dv">3857</span>)</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> gd_n2_main_laea <span class="sc">%&gt;%</span> </span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#DCE775"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bord, <span class="at">color =</span> <span class="st">"#AFB42B"</span>, <span class="at">size =</span> .<span class="dv">5</span>)</span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <span class="in">`st_transform(crs = [EPSG code])`</span> to change your the projection of the geodata object OR fix it directly at the plotting stage via <span class="in">`coord_sf(crs = [EPSG code])`</span>. I think it's generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <span class="in">`coord_sf()`</span> when plotting in Mercator projection (panel A). </span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning=FALSE, fig.width=16, fig.height=8}</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: screen-inset</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co"># transform the projection to the one suitable for Europe</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>gd_n2_main_laea <span class="ot">&lt;-</span> gd_n2_main <span class="sc">%&gt;%</span> </span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">3035</span>)</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> gd_n2_main <span class="sc">%&gt;%</span> </span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#F48FB1"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bord, <span class="at">color =</span> <span class="st">"#C2185B"</span>, <span class="at">size =</span> .<span class="dv">5</span>)<span class="sc">+</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_sf</span>(<span class="at">crs =</span> <span class="dv">3857</span>)</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> gd_n2_main_laea <span class="sc">%&gt;%</span> </span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"#DCE775"</span>, <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">data =</span> bord, <span class="at">color =</span> <span class="st">"#AFB42B"</span>, <span class="at">size =</span> .<span class="dv">5</span>)</span>
 <span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>That's it. That's the whole one-line trick. Check out my other post based on my <span class="co">[</span><span class="ot">dataviz course materials</span><span class="co">][dv]</span>.</span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">"A"</span>)</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>That's it. That's the whole one-line trick. Check out my other post based on my <span class="co">[</span><span class="ot">dataviz course materials</span><span class="co">][dv]</span>.</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is one in the **dataviz course series**. Other posts:</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">The easiest way to radically improve map aesthetics</span><span class="co">][bord]</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show all data in the background of your faceted ggplot</span><span class="co">][bg]</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dotplot – the single most useful yet largely neglected dataviz type</span><span class="co">][dotplot]</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Save space in faceted plots</span><span class="co">][shrink]</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Geocode address text strings using `tidygeocoder`</span><span class="co">][gcode]</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ot">[cart]: https://r-graph-gallery.com/cartogram.html</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[30d]: https://30daymapchallenge.com</span></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="ot">[volc]: https://twitter.com/ikashnitsky/status/1261186743585386496</span></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="ot">[m1]: https://twitter.com/ikashnitsky/status/1442512307502780422</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="ot">[m2]: https://twitter.com/ikashnitsky/status/1531395881559375872</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="ot">[natgeo]: https://ikashnitsky.phd/2023/map-proj/natgeo.png</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="ot">[badeu]: https://ikashnitsky.phd/2023/map-proj/badeu.png</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="ot">[dv]: https://github.com/ikashnitsky/dataviz-art-skill</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="ot">[bord]: https://ikashnitsky.phd/2023/map-borders/</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="ot">[bg]: https://ikashnitsky.phd/2020/background-data/</span></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="ot">[dotplot]: https://ikashnitsky.phd/2019/dotplot/</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="ot">[shrink]: https://ikashnitsky.phd/2023/shrink-space/</span></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="ot">[gcode]: https://ikashnitsky.phd/2023/geocoding/</span></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is one in the **dataviz course series**. Other posts:</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">The easiest way to radically improve map aesthetics</span><span class="co">][bord]</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Show all data in the background of your faceted ggplot</span><span class="co">][bg]</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Dotplot – the single most useful yet largely neglected dataviz type</span><span class="co">][dotplot]</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Save space in faceted plots</span><span class="co">][shrink]</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Geocode address text strings using `tidygeocoder`</span><span class="co">][gcode]</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="ot">[cart]: https://r-graph-gallery.com/cartogram.html</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="ot">[30d]: https://30daymapchallenge.com</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="ot">[volc]: https://twitter.com/ikashnitsky/status/1261186743585386496</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="ot">[m1]: https://twitter.com/ikashnitsky/status/1442512307502780422</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="ot">[m2]: https://twitter.com/ikashnitsky/status/1531395881559375872</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="ot">[natgeo]: https://ikashnitsky.phd/2023/map-proj/natgeo.png</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="ot">[badeu]: https://ikashnitsky.phd/2023/map-proj/badeu.png</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="ot">[dv]: https://github.com/ikashnitsky/dataviz-art-skill</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="ot">[bord]: https://ikashnitsky.phd/2023/map-borders/</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="ot">[bg]: https://ikashnitsky.phd/2020/background-data/</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="ot">[dotplot]: https://ikashnitsky.phd/2019/dotplot/</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="ot">[shrink]: https://ikashnitsky.phd/2023/shrink-space/</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="ot">[gcode]: https://ikashnitsky.phd/2023/geocoding/</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
