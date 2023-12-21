@@ -15,15 +15,33 @@ Below I list all my contributions as Mastodon post embeds. I use Mastodon becaus
 
 ![](30dmc-2023.png)
 
-|                            |                         |                            |                             |                           |
-|----------------------------|-------------------------|----------------------------|-----------------------------|---------------------------|
-| [01 points](#d1) | [07 navigation](#d7)   | [13 choropleth](#d13)  | [19 5-minutes map](#d19) | [25 Antarctica](#d25) |
-| [02 lines](#d2)     | [08 Africa](#d8)    | [14 Europe](#d14)        | [20 outdoors](#d20)       | ~~26 minimal~~      |
-| [03 polygons](#d3)    | [09 hexagons](#d9) | [15 openstreetmap](#d15) | ~~21 raster~~     | ~~27 dot~~ |
-| [04 a bad map](#d4)       | [10 North America](#d10)  | [16 Oceania](#d16)        | [22 North is not always up](#d22)     | [28 Is it a chart or a map?](#d28)      |
-| [05 analog map](#d5)         | [11 retro](#d11)  | [17 flow](#d17)  | [23 3D](#d23)         | [29 population](#d29)  |
-| [06 Asia](#d6)  | [12 South America](#d12)    | ~~18 atmosphere~~  | ~~24 black & white~~    | [30 my favourite](#d30)          |
+<!-- |                            |                         |                            |                             |                           | -->
+<!-- |----------------------------|-------------------------|----------------------------|-----------------------------|---------------------------| -->
+<!-- | [01 points](#d1) | [07 navigation](#d7)   | [13 choropleth](#d13)  | [19 5-minutes map](#d19) | [25 Antarctica](#d25) | -->
+<!-- | [02 lines](#d2)     | [08 Africa](#d8)    | [14 Europe](#d14)        | [20 outdoors](#d20)       | ~~26 minimal~~      | -->
+<!-- | [03 polygons](#d3)    | [09 hexagons](#d9) | [15 openstreetmap](#d15) | ~~21 raster~~     | ~~27 dot~~ | -->
+<!-- | [04 a bad map](#d4)       | [10 North America](#d10)  | [16 Oceania](#d16)        | [22 North is not always up](#d22)     | [28 Is it a chart or a map?](#d28)      | -->
+<!-- | [05 analog map](#d5)         | [11 retro](#d11)  | [17 flow](#d17)  | [23 3D](#d23)         | [29 population](#d29)  | -->
+<!-- | [06 Asia](#d6)  | [12 South America](#d12)    | ~~18 atmosphere~~  | ~~24 black & white~~    | [30 my favourite](#d30)          | -->
 
+
+|   |   |
+|---|---|
+| [01 points](#d1) | [16 Oceania](#d16) |
+| [02 lines](#d2) | [17 flow](#d17) |
+| [03 polygons](#d3) | ~~18 atmosphere~~ |
+| [04 a bad map](#d4) | [19 5-minutes map](#d19) |
+| [05 analog map](#d5) | [20 outdoors](#d20) |
+| [06 Asia](#d6) | ~~21 raster~~ |
+| [07 navigation](#d7) | [22 North is not always up](#d22) |
+| [08 Africa](#d8) | [23 3D](#d23) |
+| [09 hexagons](#d9) | ~~24 black & white~~ |
+| [10 North America](#d10) | [25 Antarctica](#d25) |
+| [11 retro](#d11) | ~~26 minimal~~ |
+| [12 South America](#d12) | ~~27 dot~~ |
+| [13 choropleth](#d13) | [28 Is it a chart or a map?](#d28) |
+| [14 Europe](#d14) | [29 population](#d29) |
+| [15 openstreetmap](#d15) | [30 my favourite](#d30) |
 
 
 # {#d1}
@@ -42,7 +60,7 @@ Below I list all my contributions as Mastodon post embeds. I use Mastodon becaus
 [bsky](https://bsky.app/profile/ikashnitsky.phd/post/3kd7xqamrlu2l) | [fosstodon](https://fosstodon.org/@ikashnitsky/111405412363995030) | 
 [code](https://gist.github.com/ikashnitsky/90483ee3c3c230aa874dffb856d6074b)
 
-{{< mastodon "https://fosstodon.org/@ikashnitsky/111617789451206000" >}} 
+{{< mastodon "https://fosstodon.org/@ikashnitsky/111337430617092755" >}} 
 {{< mastodon "https://fosstodon.org/@ikashnitsky/111405404938875987" >}}  
 {{< mastodon "https://fosstodon.org/@ikashnitsky/111405412363995030" >}}  
 :::
