@@ -3,6 +3,7 @@
     "listing": "/atom.html",
     "items": [
       "/2017/dd-journals-frequency/index.html",
+      "/2023/30-dmc/index.html",
       "/2018/perfect-rstudio-layout/index.html",
       "/2017/ggplot2-microbenchmark/index.html",
       "/2017/align-six-maps/index.html",
@@ -42,6 +43,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/2023/30-dmc/index.html",
       "/2023/map-proj/index.html",
       "/2023/geocoding/index.html",
       "/2023/shrink-space/index.html",

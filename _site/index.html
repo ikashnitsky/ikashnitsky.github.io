@@ -74,9 +74,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -401,7 +401,7 @@ ga('send', {
   <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(34)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(6)</span></div><div class="category" data-category="death rates">death rates <span class="quarto-category-count">(3)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="eurostat">eurostat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="facet">facet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="faceting">faceting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geocoding">geocoding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geofacet">geofacet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(8)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="life expectancy">life expectancy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="pyramid">pyramid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(34)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(8)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="sex gap">sex gap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="stringdist">stringdist <span class="quarto-category-count">(1)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div><div class="category" data-category="trick">trick <span class="quarto-category-count">(6)</span></div><div class="category" data-category="tricolore">tricolore <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div><div class="category" data-category="tw">tw <span class="quarto-category-count">(4)</span></div><div class="category" data-category="zotero">zotero <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(35)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(6)</span></div><div class="category" data-category="death rates">death rates <span class="quarto-category-count">(3)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(1)</span></div><div class="category" data-category="eurostat">eurostat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="facet">facet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="faceting">faceting <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geocoding">geocoding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geofacet">geofacet <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="life expectancy">life expectancy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="pyramid">pyramid <span class="quarto-category-count">(1)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(35)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="sex gap">sex gap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="stringdist">stringdist <span class="quarto-category-count">(1)</span></div><div class="category" data-category="teaching">teaching <span class="quarto-category-count">(1)</span></div><div class="category" data-category="trick">trick <span class="quarto-category-count">(6)</span></div><div class="category" data-category="tricolore">tricolore <span class="quarto-category-count">(3)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div><div class="category" data-category="tw">tw <span class="quarto-category-count">(4)</span></div><div class="category" data-category="zotero">zotero <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -412,7 +412,32 @@ ga('send', {
 <h2 class="anchored" data-anchor-id="section">2023</h2>
 <div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1702284532609" data-listing-reading-time-sort="4.83">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1703113200000" data-listing-file-modified-sort="1703160196360" data-listing-reading-time-sort="4.685">
+        <div class="body">
+            <a href="./2023/30-dmc/index.html">
+                <div class="thumbnail">
+                    <img src="./2023/30-dmc/teaser.png" alt="30DayMapChallenge my 25/30 contributions" title="30DayMapChallenge my 25/30 contributions">
+                </div>
+            </a>
+            <p class="title listing-title"><a href="./2023/30-dmc/index.html">30DayMapChallenge my 25/30 contributions</a></p>
+            <div class="post-categories listing-categories">
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
+                    r
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
+                    rspatial
+                </div>
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
+                    ggplot2
+                </div>
+            </div>
+            <div class="metadata">
+                <p class="date listing-date">December 21, 2023</p>
+            </div>
+            <p class="description listing-description">For four years I’ve been following #30DayMapCallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities, and towards the end of a year it never felt possible…<code></code></p>
+        </div>
+    </div>
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1702284532609" data-listing-reading-time-sort="4.83">
         <div class="body">
             <a href="./2023/map-proj/index.html">
                 <div class="thumbnail">
@@ -437,7 +462,7 @@ ga('send', {
             <p class="description listing-description">Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz?</p>
         </div>
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,geocoding,rspatial,ggplot2" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1699250609659" data-listing-reading-time-sort="3.535">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,geocoding,rspatial,ggplot2" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1699250609659" data-listing-reading-time-sort="3.535">
         <div class="body">
             <a href="./2023/geocoding/index.html">
                 <div class="thumbnail">
@@ -465,7 +490,7 @@ ga('send', {
             <p class="description listing-description">Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question…<code></code></p>
         </div>
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,dataviz,trick,facet" data-listing-date-sort="1677452400000" data-listing-file-modified-sort="1677475684885" data-listing-reading-time-sort="4.99">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,dataviz,trick,facet" data-listing-date-sort="1677452400000" data-listing-file-modified-sort="1677475684885" data-listing-reading-time-sort="4.99">
         <div class="body">
             <a href="./2023/shrink-space/index.html">
                 <div class="thumbnail">
@@ -493,7 +518,7 @@ ga('send', {
             <p class="description listing-description">Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same…</p>
         </div>
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,rstudio,trick" data-listing-date-sort="1672700400000" data-listing-file-modified-sort="1674476482669" data-listing-reading-time-sort="4.34">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rstudio,trick" data-listing-date-sort="1672700400000" data-listing-file-modified-sort="1674476482669" data-listing-reading-time-sort="4.34">
         <div class="body">
             <a href="./2023/gist-snippet/index.html">
                 <div class="thumbnail">
@@ -518,7 +543,7 @@ ga('send', {
             <p class="description listing-description">Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a…<code></code><code></code><code></code><code></code><strong></strong></p>
         </div>
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rspatial,dataviz,trick" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1699250711413" data-listing-reading-time-sort="3.76">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="r,rspatial,dataviz,trick" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1699250711413" data-listing-reading-time-sort="3.76">
         <div class="body">
             <a href="./2023/map-borders/index.html">
                 <div class="thumbnail">
