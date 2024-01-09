@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -548,9 +553,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># compare mortality rates for 2014</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>ru <span class="ot">&lt;-</span> rus <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">rus =</span> mx)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>jp <span class="ot">&lt;-</span> jpn <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">jpn =</span> mx)</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(jp, ru, <span class="st">'age'</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ru_rate =</span> rus <span class="sc">/</span> jpn)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>ru <span class="ot">&lt;-</span> rus <span class="sc">|&gt;</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">|&gt;</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">rus =</span> mx)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>jp <span class="ot">&lt;-</span> jpn <span class="sc">|&gt;</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2014</span>) <span class="sc">|&gt;</span> <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">jpn =</span> mx)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(jp, ru, <span class="st">'age'</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">ru_rate =</span> rus <span class="sc">/</span> jpn)</span>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting rate ratio of male mortality in Russia and Japan.</span>

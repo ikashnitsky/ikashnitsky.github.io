@@ -46,37 +46,37 @@ opt_pop <- c("FRACNP", "DEUTE", "DEUTW", "GBRCENW", "GBR_NP")
 country <- country[!country %in% opt_pop]
 
 # temporary function to download HMD data for a simgle county (dot = input)
-tempf_get_hmd <- . %>% readHMDweb("Exposures_1x1", ik_user_hmd, ik_pass_hmd) 
+tempf_get_hmd <- . |> readHMDweb("Exposures_1x1", ik_user_hmd, ik_pass_hmd) 
 
 
 # download the data iteratively for all countries using purrr::map()
-exposures <- country %>% map(tempf_get_hmd)
+exposures <- country |> map(tempf_get_hmd)
 
 # data transformation to apply to each county dataframe
-tempf_trans_data <- . %>% 
-        select(Year, Age, Female, Male) %>% 
-        filter(Year %in% 2012) %>%
-        select(-Year) %>%
+tempf_trans_data <- . |> 
+        select(Year, Age, Female, Male) |> 
+        filter(Year %in% 2012) |>
+        select(-Year) |>
         transmute(age = Age, ratio = Male / Female * 100)
 
 # perform transformation
-df_hmd <- exposures %>% 
-        map(tempf_trans_data) %>% 
+df_hmd <- exposures |> 
+        map(tempf_trans_data) |> 
         bind_rows(.id = "country")
 
 # summarize all ages older than 90 (too jerky)
-df_hmd_90 <- df_hmd %>% 
-        filter(age %in% 90:110) %>% 
-        group_by(country) %>% 
-        summarise(ratio = ratio %>% mean(na.rm = T)) %>%
-        ungroup() %>% 
+df_hmd_90 <- df_hmd |> 
+        filter(age %in% 90:110) |> 
+        group_by(country) |> 
+        summarise(ratio = ratio |> mean(na.rm = T)) |>
+        ungroup() |> 
         transmute(country, age = 90, ratio)
 
 # insert summarized 90+
-df_hmd_fin <- bind_rows(df_hmd %>% filter(!age %in% 90:110), df_hmd_90)
+df_hmd_fin <- bind_rows(df_hmd |> filter(!age %in% 90:110), df_hmd_90)
 
 # finaly - plot
-df_hmd_fin %>%  
+df_hmd_fin |>  
         ggplot(aes(age, ratio, color = country, group = country))+
         geom_hline(yintercept = 100, color = "grey50", size = 1)+
         geom_line(size = 1)+
@@ -118,16 +118,16 @@ library(viridis)
 # get the UN country names
 data(UNlocations)
 
-countries <- UNlocations %>% pull(name) %>% paste
+countries <- UNlocations |> pull(name) |> paste
 
 # data on male life expectancy at birth
 data(e0M) 
 
-e0M %>% 
-        filter(country %in% countries) %>% 
-        select(-last.observed) %>% 
-        gather(period, value, 3:15) %>% 
-        ggplot(aes(x = value, y = period %>% fct_rev()))+
+e0M |> 
+        filter(country %in% countries) |> 
+        select(-last.observed) |> 
+        gather(period, value, 3:15) |> 
+        ggplot(aes(x = value, y = period |> fct_rev()))+
         geom_density_ridges(aes(fill = period))+
         scale_fill_viridis(discrete = T, option = "B", direction = -1, 
                            begin = .1, end = .9)+
@@ -164,15 +164,15 @@ show_country_rounds("Netherlands")
 df_ess <- ess_rounds(8, your_email =  ik_email) 
 
 # select a variable and calculate mean value
-df_ess_select <- df_ess %>% 
-        bind_rows() %>% 
-        select(idno, cntry, trstplc) %>% 
-        group_by(cntry) %>% 
-        mutate(avg = trstplc %>% mean(na.rm = T)) %>% 
-        ungroup() %>% 
-        mutate(cntry = cntry %>% as_factor() %>% fct_reorder(avg))
+df_ess_select <- df_ess |> 
+        bind_rows() |> 
+        select(idno, cntry, trstplc) |> 
+        group_by(cntry) |> 
+        mutate(avg = trstplc |> mean(na.rm = T)) |> 
+        ungroup() |> 
+        mutate(cntry = cntry |> as_factor() |> fct_reorder(avg))
 
-df_ess_select %>% 
+df_ess_select |> 
         ggplot(aes(trstplc, fill = avg))+
         geom_histogram()+
         scale_x_continuous(limits = c(0, 11), breaks = seq(2, 10, 2))+
@@ -215,10 +215,10 @@ library(ggplot2)
 # normally, this key is to be stored in .Renviron
 
 # see state and county codes and names
-fips_codes %>% View
+fips_codes |> View
 
 # the available variables
-load_variables(year = 2015, dataset = "acs5") %>% View
+load_variables(year = 2015, dataset = "acs5") |> View
 
 # data on median age of population in Chicago
 df_acs <- get_acs(
@@ -229,13 +229,13 @@ df_acs <- get_acs(
         year = 2015,
         key = ik_api_acs,
         geometry = TRUE
-) %>% clean_names()
+) |> clean_names()
 
 
 # map the data
-df_acs %>% 
+df_acs |> 
         ggplot()+
-        geom_sf(aes(fill = estimate %>% 
+        geom_sf(aes(fill = estimate |> 
                             cut(breaks = seq(20, 60, 10))), 
                 color = NA)+
         scale_fill_viridis_d("Median age", begin = .4)+

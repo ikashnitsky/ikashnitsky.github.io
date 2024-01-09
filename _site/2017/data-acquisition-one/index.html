@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -616,7 +621,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">%&gt;%</span> </span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">|&gt;</span> </span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility, </span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> Catholic <span class="sc">&gt;</span> <span class="dv">50</span>))<span class="sc">+</span></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
@@ -634,7 +639,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
 <span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">|&gt;</span> </span>
 <span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp, </span>
 <span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>                   <span class="at">color =</span> continent))<span class="sc">+</span></span>
 <span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">width =</span> .<span class="dv">75</span>)<span class="sc">+</span></span>
@@ -654,7 +659,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>galton <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"</span>)</span>
 <span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>galton <span class="sc">%&gt;%</span> </span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>galton <span class="sc">|&gt;</span> </span>
 <span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> father, <span class="at">y =</span> height))<span class="sc">+</span></span>
 <span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
@@ -700,12 +705,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>murder <span class="ot">&lt;-</span> <span class="fu">read_xls</span>(<span class="st">"unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls"</span>,</span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">range =</span> <span class="st">"A5:M13"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(OFFENSE <span class="sc">%&gt;%</span> <span class="fu">substr</span>(<span class="dv">1</span>, <span class="dv">6</span>) <span class="sc">==</span> <span class="st">"MURDER"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"year"</span>, <span class="st">"value"</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>())</span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">range =</span> <span class="st">"A5:M13"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(OFFENSE <span class="sc">|&gt;</span> <span class="fu">substr</span>(<span class="dv">1</span>, <span class="dv">6</span>) <span class="sc">==</span> <span class="st">"MURDER"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"year"</span>, <span class="st">"value"</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>())</span>
 <span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>murder <span class="sc">%&gt;%</span> </span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>murder <span class="sc">|&gt;</span> </span>
 <span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value))<span class="sc">+</span></span>
 <span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
@@ -730,7 +735,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>hockey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
 <span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>hockey <span class="sc">%&gt;%</span> </span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>hockey <span class="sc">|&gt;</span> </span>
 <span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> height))<span class="sc">+</span></span>
 <span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#35978f"</span>, <span class="at">alpha =</span> .<span class="dv">1</span>, <span class="at">width =</span> .<span class="dv">25</span>)<span class="sc">+</span></span>
 <span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>

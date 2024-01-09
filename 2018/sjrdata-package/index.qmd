@@ -44,11 +44,11 @@ Let's compare _Nature_ and _Science_.
 library(tidyverse)
 library(sjrdata)
 
-sjr_journals %>%
-    filter(title %in% c("Nature", "Science")) %>%
+sjr_journals |>
+    filter(title %in% c("Nature", "Science")) |>
     ggplot(aes(cites_doc_2years, sjr, color = title))+
     geom_path(size = 1, alpha = .5)+
-    geom_label(aes(label = year %>% str_sub(3, 4)),
+    geom_label(aes(label = year |> str_sub(3, 4)),
               size = 3, label.padding = unit(.15, "line"))
 ```
 
@@ -58,7 +58,7 @@ sjr_journals %>%
 Several demographic journals.
 
 ```{r, eval=FALSE}
-sjr_journals %>%
+sjr_journals |>
     filter(title %in% c(
         "Demography",
         "Population and Development Review",
@@ -66,7 +66,7 @@ sjr_journals %>%
         "Population Studies",
         "Demographic Research",
         "Genus"
-    )) %>%
+    )) |>
     ggplot(aes(cites_doc_2years, sjr, color = title))+
     geom_point()+
     stat_ellipse()+

@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -544,18 +549,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">lines =</span> <span class="fu">readLines</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">lines =</span> lines <span class="sc">%&gt;%</span> <span class="fu">as.character</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">lines =</span> <span class="fu">readLines</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">lines =</span> lines <span class="sc">|&gt;</span> <span class="fu">as.character</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># grab only the lines that contain journals' titles</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(lines <span class="sc">%&gt;%</span> <span class="fu">str_detect</span>(<span class="st">"journaltitle"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(lines <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"journaltitle"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># remove everything that is not the bare journal's title</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">journals =</span> lines <span class="sc">%&gt;%</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">journals =</span> lines <span class="sc">|&gt;</span> </span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">str_replace_all</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">journaltitle = |</span><span class="sc">\\</span><span class="st">Q{</span><span class="sc">\\</span><span class="st">E|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E,|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E"</span>, </span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">replacement =</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">replacement =</span> <span class="st">""</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate frequencies</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(journals) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(journals) <span class="sc">|&gt;</span> </span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
@@ -566,7 +571,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Ageing and Society"</span></span>
 <span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># correct the title of Lancet</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">journals =</span> journals <span class="sc">%&gt;%</span> <span class="fu">str_replace</span>(<span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span>))</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">journals =</span> journals <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span>))</span>
 <span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># correct "Population and Development Review" and "Population Studies" for 6 each</span></span>
 <span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Reason - top cited papers bonus</span></span>
@@ -578,11 +583,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co"># read SJR data for journals in Social Sciences</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>sjr <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">id =</span> Title <span class="sc">%&gt;%</span> <span class="fu">tolower</span>())</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>sjr <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">id =</span> Title <span class="sc">|&gt;</span> <span class="fu">tolower</span>())</span>
 <span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># join the data frames; note that I create an "id" variable in lower case</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>df_sjr <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id =</span> journals <span class="sc">%&gt;%</span> tolower), sjr, <span class="st">"id"</span>) </span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>df_sjr <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id =</span> journals <span class="sc">|&gt;</span> tolower), sjr, <span class="st">"id"</span>) </span>
 <span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>Finally, it's time to visualize the data. I use the amazing <span class="in">`treemap`</span> package<span class="ot">[^2]</span>.</span>

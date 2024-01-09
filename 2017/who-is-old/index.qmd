@@ -44,22 +44,22 @@ df_swe <- read_csv("http://www.rostock-retreat.org/files/application2017/SWE.csv
 # define the selection of years to visualize
 years <- c(seq(1965, 2010, 5),2014)
 
-df <- df_swe %>% select(Year, Sex, Age, Exposure, ex) %>% 
-        filter(Year %in% years) %>% 
+df <- df_swe |> select(Year, Sex, Age, Exposure, ex) |> 
+        filter(Year %in% years) |> 
         mutate(old_c = Age >= 65, 
-               old_p = ex <= 15) %>% 
-        gather("type", "old", contains("old")) %>% 
-        group_by(Year, Sex, type) %>% 
-        mutate(share = Exposure / sum(Exposure)) %>% 
-        ungroup() %>% 
+               old_p = ex <= 15) |> 
+        gather("type", "old", contains("old")) |> 
+        group_by(Year, Sex, type) |> 
+        mutate(share = Exposure / sum(Exposure)) |> 
+        ungroup() |> 
         mutate(share = ifelse(Sex == 'f', share, -share))
         
-names(df) <- names(df) %>% tolower()
+names(df) <- names(df) |> tolower()
 
 
-df_old <- df %>% filter(old == T) %>% 
-        group_by(year, sex, type, old) %>% 
-        summarise(cum_old = sum(share)) %>% 
+df_old <- df |> filter(old == T) |> 
+        group_by(year, sex, type, old) |> 
+        summarise(cum_old = sum(share)) |> 
         ungroup() 
 ```
 
@@ -69,7 +69,7 @@ df_old <- df %>% filter(old == T) %>%
 Let's first have a look at the pyramids in 1965, 1990, and 2014 (the latest available year).
 
 ```{r, eval=FALSE}
-gg_three <- ggplot(df %>% filter(year %in% c(1965, 1990, 2014))) +
+gg_three <- ggplot(df |> filter(year %in% c(1965, 1990, 2014))) +
         geom_bar(aes(x = age, y = share, fill = sex, alpha = old), 
                  stat = 'identity', width = 1)+
         geom_vline(xintercept = 64.5, size = .5, color = 'gold')+
@@ -92,17 +92,17 @@ gg_three <- ggplot(df %>% filter(year %in% c(1965, 1990, 2014))) +
                   y = 0, x = 50, size = 5, vjust = 1, 
                   family = 'Ubuntu Mono') +
         
-        geom_text(data = df_old %>% filter(year %in% c(1965, 1990, 2014), sex == 'f'), 
+        geom_text(data = df_old |> filter(year %in% c(1965, 1990, 2014), sex == 'f'), 
                   aes(label = year),
                   y = 0, x = 30, vjust = 1, hjust = .5, size = 7, 
                   family = 'Ubuntu Mono') +
         
-        geom_text(data = df_old %>% filter(year %in% c(1965, 1990, 2014), sex == 'f'), 
+        geom_text(data = df_old |> filter(year %in% c(1965, 1990, 2014), sex == 'f'), 
                   aes(label = paste('Elderly\nfemales\n', round(cum_old*100,1), '%')),
                   y = .0125, x = 105, vjust = 1, hjust = .5, size = 4, 
                   family = 'Ubuntu Mono') +
         
-        geom_text(data = df_old %>% filter(year %in% c(1965, 1990, 2014), sex == 'm'), 
+        geom_text(data = df_old |> filter(year %in% c(1965, 1990, 2014), sex == 'm'), 
                   aes(label = paste('Elderly\nmales\n', round(-cum_old*100,1), '%')),
                   y = -.0125, x = 105, vjust = 1, hjust = .5, size = 4, 
                   family = 'Ubuntu Mono')
@@ -126,7 +126,7 @@ plots <- list()
 
 for (i in 1:length(years)){
         
-        gg <- ggplot(df %>% filter(year == years[[i]])) +
+        gg <- ggplot(df |> filter(year == years[[i]])) +
                 geom_bar(aes(x = age, y = share, fill = sex, alpha = old), 
                          stat = 'identity', width = 1)+
                 geom_vline(xintercept = 64.5, size = .5, color = 'gold')+
@@ -151,12 +151,12 @@ for (i in 1:length(years)){
                           y = 0, x = 115, size = 5, vjust = 1, 
                           family = 'Ubuntu Mono') +
                 
-                geom_text(data = df_old %>% filter(year == years[[i]], sex == 'f'), 
+                geom_text(data = df_old |> filter(year == years[[i]], sex == 'f'), 
                           aes(label = paste('Elderly\nfemales\n', round(cum_old*100,1), '%')),
                           y = .0125, x = 105, vjust = 1, hjust = .5, size = 4, 
                           family = 'Ubuntu Mono') +
                 
-                geom_text(data = df_old %>% filter(year == years[[i]], sex == 'm'), 
+                geom_text(data = df_old |> filter(year == years[[i]], sex == 'm'), 
                           aes(label = paste('Elderly\nmales\n', round(-cum_old*100,1), '%')),
                           y = -.0125, x = 105, vjust = 1, hjust = .5, size = 4, 
                           family = 'Ubuntu Mono')

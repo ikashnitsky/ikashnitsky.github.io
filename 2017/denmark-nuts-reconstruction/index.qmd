@@ -107,7 +107,7 @@ sp_mun <- readOGR(dsn = "geodata/.", layer = "kommune2006win1252", encoding = da
 gd_mun <- fortify(sp_mun)
 
 # coordinates of the municipalities
-mun_coord <- bind_cols(as.data.frame(coordinates(sp_mun)), sp_mun@data[,1:3]) %>% 
+mun_coord <- bind_cols(as.data.frame(coordinates(sp_mun)), sp_mun@data[,1:3]) |> 
         transmute(long = V1, lat = V2, enhedid, objectid, name = navn)
 ```
   
@@ -139,7 +139,7 @@ To identify which municipalities fall into which NUTS regions, I use the spatial
 mun_centr <- SpatialPoints(coordinates(sp_mun), proj4string = CRS(proj4string(sp_nuts3)))
 
 # spatial intersection with sp::over
-inter <- bind_cols(mun_coord, over(mun_centr, sp_nuts3[,"NUTS_ID"])) %>% 
+inter <- bind_cols(mun_coord, over(mun_centr, sp_nuts3[,"NUTS_ID"])) |> 
         transmute(long, lat, objectid,
                   nuts3 = as.character(NUTS_ID),
                   nuts2 = substr(nuts3, 1, 4))
@@ -230,15 +230,15 @@ First, I simplify the names in both datasets turning them into lowercase, replac
 
 ```{r, eval=FALSE}
 # simplify municipalities names
-mun_geo <- mun_coord %>%         
-        transmute(name = sub(x = name, " Kommune", replacement = ""), objectid) %>% 
+mun_geo <- mun_coord |>         
+        transmute(name = sub(x = name, " Kommune", replacement = ""), objectid) |> 
         mutate(name = gsub(x = tolower(name), "å", "aa"))
 
 mun_stat <- read.csv2("https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-codes-names.csv", 
-                      fileEncoding = danish_ecnoding) %>% 
-        select(name) %>% 
-        separate(name, into = c("code", "name"), sep = " ", extra = "merge") %>% 
-        mutate(name = gsub("\\s*\\([^\\)]+\\)", "", x = name)) %>% 
+                      fileEncoding = danish_ecnoding) |> 
+        select(name) |> 
+        separate(name, into = c("code", "name"), sep = " ", extra = "merge") |> 
+        mutate(name = gsub("\\s*\\([^\\)]+\\)", "", x = name)) |> 
         mutate(name = gsub(x = tolower(name), "å", "aa"))
 ```
 
@@ -256,7 +256,7 @@ The resulting dataframe has 278 rows instead of 271. That means that for some mu
 
 ```{r, eval=FALSE}
 # identify more that 1 match (7 cases) and select which to drop
-fuz_joined_1 %>% group_by(objectid) %>% mutate(n = n()) %>% filter(n > 1)
+fuz_joined_1 |> group_by(objectid) |> mutate(n = n()) |> filter(n > 1)
 ```
 
 ```{r, eval=FALSE}
@@ -288,7 +288,7 @@ The other issue is the municipalities for which no match was found in that stati
 
 ```{r, eval=FALSE}
 # show the non-matched cases
-fuz_joined_1 %>% filter(is.na(code))
+fuz_joined_1 |> filter(is.na(code))
 ```
 
 ```{r, eval=FALSE}
@@ -318,13 +318,13 @@ Now the second attempt to match the datasets (spatial dataset is corrected).
 fuz_joined_2 <- regex_left_join(mun_geo_cor, mun_stat, by = "name")
 
 # drop non-perfect match
-fuz_joined_2 <- fuz_joined_2 %>% 
-        group_by(objectid) %>% 
-        mutate(n = n()) %>% 
-        ungroup() %>% 
+fuz_joined_2 <- fuz_joined_2 |> 
+        group_by(objectid) |> 
+        mutate(n = n()) |> 
+        ungroup() |> 
         filter(n < 2 | name.x==name.y)
 
-fuz_joined_2 <- fuz_joined_2 %>% transmute(name = name.x, objectid, code)
+fuz_joined_2 <- fuz_joined_2 |> transmute(name = name.x, objectid, code)
 ```
 
 The output looks perfect. Now, the last step -- using the matched “objectid” field, I will finally attach the NUTS data to statistical codes.
@@ -343,18 +343,18 @@ The previous manipulations yielded a dataframe that links statistical codes of t
 
 ```{r, eval=FALSE}
 # finally, we only need to aggregate the old stat data
-df_agr <- left_join(key, df, "code") %>% 
-        filter(!is.na(name)) %>% 
+df_agr <- left_join(key, df, "code") |> 
+        filter(!is.na(name)) |> 
         gather("year", "value", y2001:y2006)
 
-df_nuts3 <- df_agr %>% 
-        group_by(year, sex, age, nuts3) %>% 
-        summarise(value = sum(value)) %>% 
+df_nuts3 <- df_agr |> 
+        group_by(year, sex, age, nuts3) |> 
+        summarise(value = sum(value)) |> 
         ungroup()
 
-df_nuts2 <- df_agr %>% 
-        group_by(year, sex, age, nuts2) %>% 
-        summarise(value = sum(value)) %>% 
+df_nuts2 <- df_agr |> 
+        group_by(year, sex, age, nuts2) |> 
+        summarise(value = sum(value)) |> 
         ungroup()
 ```
 
@@ -363,21 +363,21 @@ Let’s now calculate the shares of working age population in Danish NUTS-3 regi
 
 ```{r, eval=FALSE}
 # total population in 2001 by NUTS-3 regions
-tot_01 <- df_nuts3 %>% 
-        filter(year=="y2001") %>% 
-        group_by(nuts3) %>% 
-        summarise(tot = sum(value, na.rm = TRUE)) %>% 
+tot_01 <- df_nuts3 |> 
+        filter(year=="y2001") |> 
+        group_by(nuts3) |> 
+        summarise(tot = sum(value, na.rm = TRUE)) |> 
         ungroup()
 
 # working-age population in 2001 by NUTS-3 regions
-working_01 <- df_nuts3 %>% 
-        filter(year=="y2001", age %in% paste0("a0", 15:64)) %>% 
-        group_by(nuts3) %>% 
-        summarise(work = sum(value, na.rm = TRUE)) %>% 
+working_01 <- df_nuts3 |> 
+        filter(year=="y2001", age %in% paste0("a0", 15:64)) |> 
+        group_by(nuts3) |> 
+        summarise(work = sum(value, na.rm = TRUE)) |> 
         ungroup()
 
 # calculate the shares of working age population
-sw_01 <- left_join(working_01, tot_01, "nuts3") %>% 
+sw_01 <- left_join(working_01, tot_01, "nuts3") |> 
         mutate(sw = work / tot * 100)
 ```
 
@@ -385,7 +385,7 @@ sw_01 <- left_join(working_01, tot_01, "nuts3") %>%
 ```{r, eval=FALSE}
 # map the shares of working age population in 2001 by NUTS-3 regions
 ggplot()+
-        geom_polygon(data = gd_nuts3 %>% left_join(sw_01, c("id" = "nuts3")),
+        geom_polygon(data = gd_nuts3 |> left_join(sw_01, c("id" = "nuts3")),
                      aes(long, lat, group = group, fill = sw), 
                      color = "grey50", size = 1) +
         scale_fill_viridis()+

@@ -16,11 +16,11 @@ d = tibble(
     y = runif(n),
     size = runif(n, min = 1, max = 4),
     color = rgb(runif(n), runif(n), runif(n))
-) %>%
-    arrange(size %>% desc)
+) |>
+    arrange(size |> desc)
 
 
-(p <- d %>%
+(p <- d |>
     ggplot(aes(x, y, size = size, color = color)) +
     geom_point() +
     scale_color_identity() +
@@ -36,7 +36,7 @@ ggsave("221217-my-logo/bubbles-banner-large.png", p,  width = 10, height = 10/4.
 # x1200 for the site
 ggsave("221217-my-logo/bubbles-banner.png", p,  width = 10, height = 10/4.64, bg = "#15202b", dpi = 120)
 
-g <- d %>%
+g <- d |>
     ggplot(aes(x, y, size = size, color = color)) +
     geom_point() +
     scale_color_identity() +
@@ -59,8 +59,8 @@ p <- tibble(
     y = runif(n),
     size = runif(n, min = .5, max = 2),
     color = rgb(runif(n, max = .1), runif(n, min = .7), runif(n, min = .7))
-) %>%
-    arrange(size %>% desc) %>%
+) |>
+    arrange(size |> desc) |>
     ggplot(aes(x, y, size = size, color = color)) +
     geom_point() +
     scale_color_identity() +

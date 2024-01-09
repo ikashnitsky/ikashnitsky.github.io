@@ -99,7 +99,7 @@ makeplot_mosaic <- function(data, x, y, ...){
                 ylab(paste(yvar, "(proportion)"));
 }
 
-typ_mosaic <- makeplot_mosaic(data = df %>% mutate(type = as.numeric(type)), 
+typ_mosaic <- makeplot_mosaic(data = df |> mutate(type = as.numeric(type)), 
                               x = subregion, y = type)+
         theme_void()+
         scale_fill_viridis(option = "B", discrete = T, end = .8)+

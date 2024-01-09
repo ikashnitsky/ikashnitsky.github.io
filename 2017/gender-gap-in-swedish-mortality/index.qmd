@@ -30,9 +30,9 @@ df_swe <- read_csv("http://www.rostock-retreat.org/files/application2017/SWE.csv
 years <- c(1751, 1800, 1850, 1900, 1925, 1950, 1960, 1970, 1980, 1990, 2000, 2010)
 
 # select years and calculate male-to-female arte-ratio of mortality
-df_selected <- df_swe %>% select(Year, Sex, Age, mx) %>% 
-        filter(Year %in% years) %>% 
-        spread(Sex, mx) %>% 
+df_selected <- df_swe |> select(Year, Sex, Age, mx) |> 
+        filter(Year %in% years) |> 
+        spread(Sex, mx) |> 
         transmute(year = Year, age = Age, value = m / f)
 ```
 

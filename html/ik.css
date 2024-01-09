@@ -66,15 +66,19 @@ $p-lighter-x:   #EEFFFF !default;
 // Fonts
 
 
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Gloria+Hallelujah&display=swap);
+
+
 $font-family-sans-serif: "Atkinson Hyperlegible" !default;
 $font-family-base: "Atkinson Hyperlegible" !default;
+$font-family-monospace: "Fira Code" !default;
 
 $headings-font-family: "Atkinson Hyperlegible" !default;
 $headings-font-weight: 700 !default;
 $headings-font-size: 0.97rem !default;
 
 
-$navbar-font-family: "Atkinson Hyperlegible" !default;
+$navbar-font-family: "Gloria Hallelujah" !default;
 $toc-font-family: "Atkinson Hyperlegible" !default;
 $footer-font-family: "Atkinson Hyperlegible" !default;
 
@@ -115,7 +119,6 @@ $footer-fg: $p-lighter-3 !default;
 
 /*-- scss:rules --*/
 
-@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@400;700&display=swap);
 
 
 body {

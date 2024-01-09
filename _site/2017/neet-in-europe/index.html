@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -535,13 +540,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># if the automated download does not work, the data can be grabbed manually at</span></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>neet <span class="sc">%&gt;%</span> </span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(geo <span class="sc">%&gt;%</span> paste <span class="sc">%&gt;%</span> nchar <span class="sc">==</span> <span class="dv">2</span>,</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>               sex <span class="sc">==</span> <span class="st">"T"</span>, age <span class="sc">==</span> <span class="st">"Y18-24"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(geo) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">avg =</span> values <span class="sc">%&gt;%</span> <span class="fu">mean</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">%&gt;%</span> <span class="fu">year</span>(),</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>neet <span class="sc">|&gt;</span> </span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(geo <span class="sc">|&gt;</span> paste <span class="sc">|&gt;</span> nchar <span class="sc">==</span> <span class="dv">2</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>               sex <span class="sc">==</span> <span class="st">"T"</span>, age <span class="sc">==</span> <span class="st">"Y18-24"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(geo) <span class="sc">|&gt;</span> </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">avg =</span> values <span class="sc">|&gt;</span> <span class="fu">mean</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">|&gt;</span> <span class="fu">year</span>(),</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> values))<span class="sc">+</span></span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> values), <span class="at">pch =</span> <span class="dv">21</span>)<span class="sc">+</span></span>

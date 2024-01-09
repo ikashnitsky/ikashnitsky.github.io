@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -608,23 +613,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add arrows</span></span>
 <span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">1</span>),</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">1</span>),</span>
 <span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
 <span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.1</span>,</span>
 <span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">2</span>),</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">2</span>),</span>
 <span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
 <span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
 <span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">3</span>),</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">3</span>),</span>
 <span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
 <span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.15</span>,</span>
 <span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">4</span>),</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">4</span>),</span>
 <span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
 <span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="dv">0</span>,</span>
 <span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">5</span>),</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">5</span>),</span>
 <span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
 <span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.3</span>,</span>
 <span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>)))</span>

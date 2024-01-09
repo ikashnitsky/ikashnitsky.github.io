@@ -215,6 +215,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -621,9 +626,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(exposures)) {</span>
 <span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        di <span class="ot">&lt;-</span> exposures[[i]]</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        sr_agei <span class="ot">&lt;-</span> di <span class="sc">%&gt;%</span> <span class="fu">select</span>(Year,Age,Female,Male) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="dv">2012</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="sc">-</span>Year) <span class="sc">%&gt;%</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        sr_agei <span class="ot">&lt;-</span> di <span class="sc">|&gt;</span> <span class="fu">select</span>(Year,Age,Female,Male) <span class="sc">|&gt;</span> </span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="dv">2012</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="sc">-</span>Year) <span class="sc">|&gt;</span></span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>                <span class="fu">transmute</span>(<span class="at">country =</span> <span class="fu">names</span>(exposures)[i],</span>
 <span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>                          <span class="at">age =</span> Age, <span class="at">sr_age =</span> Male <span class="sc">/</span> Female <span class="sc">*</span> <span class="dv">100</span>)</span>
 <span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        sr_age[[i]] <span class="ot">&lt;-</span> sr_agei</span>
@@ -631,18 +636,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age)</span>
 <span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="co"># remove optional populations</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> sr_age <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span>))</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span>))</span>
 <span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.  </span>
 <span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>sr_age_90 <span class="ot">&lt;-</span> sr_age <span class="sc">%&gt;%</span> <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">sr_age =</span> <span class="fu">mean</span>(sr_age, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(country, <span class="at">age=</span><span class="dv">90</span>, sr_age)</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>sr_age_90 <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">sr_age =</span> <span class="fu">mean</span>(sr_age, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="fu">transmute</span>(country, <span class="at">age=</span><span class="dv">90</span>, sr_age)</span>
 <span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>df_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), sr_age_90)</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>df_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), sr_age_90)</span>
 <span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting sex ratios.</span>

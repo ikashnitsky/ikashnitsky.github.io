@@ -15,15 +15,6 @@ Below I list all my contributions as Mastodon post embeds. I use Mastodon becaus
 
 ![](30dmc-2023.png)
 
-<!-- |                            |                         |                            |                             |                           | -->
-<!-- |----------------------------|-------------------------|----------------------------|-----------------------------|---------------------------| -->
-<!-- | [01 points](#d1) | [07 navigation](#d7)   | [13 choropleth](#d13)  | [19 5-minutes map](#d19) | [25 Antarctica](#d25) | -->
-<!-- | [02 lines](#d2)     | [08 Africa](#d8)    | [14 Europe](#d14)        | [20 outdoors](#d20)       | ~~26 minimal~~      | -->
-<!-- | [03 polygons](#d3)    | [09 hexagons](#d9) | [15 openstreetmap](#d15) | ~~21 raster~~     | ~~27 dot~~ | -->
-<!-- | [04 a bad map](#d4)       | [10 North America](#d10)  | [16 Oceania](#d16)        | [22 North is not always up](#d22)     | [28 Is it a chart or a map?](#d28)      | -->
-<!-- | [05 analog map](#d5)         | [11 retro](#d11)  | [17 flow](#d17)  | [23 3D](#d23)         | [29 population](#d29)  | -->
-<!-- | [06 Asia](#d6)  | [12 South America](#d12)    | ~~18 atmosphere~~  | ~~24 black & white~~    | [30 my favourite](#d30)          | -->
-
 
 |   |   |
 |---|---|
@@ -204,7 +195,8 @@ Below I list all my contributions as Mastodon post embeds. I use Mastodon becaus
 
 :::{.column-page layout-ncol=3 height=500}
 **2023-11-25 | Antarctica**   
-[bsky](https://bsky.app/profile/ikashnitsky.phd/post/3kezt7zaify26) | [fosstodon](https://fosstodon.org/@ikashnitsky/111617105804689802) 
+[bsky](https://bsky.app/profile/ikashnitsky.phd/post/3kezt7zaify26) | [fosstodon](https://fosstodon.org/@ikashnitsky/111617105804689802) | 
+[code](https://github.com/ikashnitsky/30DayMapChallenge/blob/main/src/25-antarctica.R)
 
 **2023-11-28 | Is this a chart or a map?**   
 [bsky](https://bsky.app/profile/ikashnitsky.phd/post/3kfagi4o2yw2k) | [fosstodon](https://fosstodon.org/@ikashnitsky/111617110232462236) | [reddit](https://www.reddit.com/r/dataisbeautiful/comments/o6hezy)

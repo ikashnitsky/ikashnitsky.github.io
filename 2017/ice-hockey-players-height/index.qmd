@@ -47,7 +47,7 @@ Let's first have a look at the pulled average height of all the players that par
 
 ```{r, eval=FALSE}
 # mean height by championship
-df_per <- df %>% group_by(year) %>%
+df_per <- df |> group_by(year) |>
         summarise(height = mean(height))
 
 gg_period_mean <- ggplot(df_per, aes(x = year, y = height))+
@@ -83,19 +83,19 @@ The positive trend is evident. In the 15 years the average height of a player in
 A more correct way to study the dynamics of players' height is to do the comparison between birth cohorts. Here we face an interesting data preparation issue -- some of the players participated in more that one championships. The question is: do we need to clean the duplicate records? If the goal is to see the average height of a player  at the certain championship (as in Figure 1), it is reasonable to keep all the records. Alternatively, if the aim is to analyze the dynamics of players' height itself, I argue, it would be wrong to assign bigger weight to those players that participated in more that one championship. Thus, for the further cohort analysis, I cleaned the dataset from the duplicates.
 
 ```{r, eval=FALSE}
-dfu_h <- df %>% select(year, name, country, position, birth, cohort, height) %>%
+dfu_h <- df |> select(year, name, country, position, birth, cohort, height) |>
         spread(year, height)
 dfu_h$av.height <- apply(dfu_h[, 6:21], 1, mean, na.rm = T)
 dfu_h$times_participated <- apply(!is.na(dfu_h[, 6:21]), 1, sum)
 
-dfu_w <- df %>% select(year, name, country, position, birth, cohort, weight) %>%
+dfu_w <- df |> select(year, name, country, position, birth, cohort, weight) |>
         spread(year, weight)
 dfu_w$av.weight <- apply(dfu_w[, 6:21], 1, mean, na.rm = T)
 
 
-dfu <- left_join(dfu_h %>% select(name, country, position, birth, cohort, av.height, times_participated), 
-                 dfu_w %>% select(name, country, position, birth, cohort, av.weight), 
-                 by = c("name", "country", "position", "birth", "cohort")) %>%
+dfu <- left_join(dfu_h |> select(name, country, position, birth, cohort, av.height, times_participated), 
+                 dfu_w |> select(name, country, position, birth, cohort, av.weight), 
+                 by = c("name", "country", "position", "birth", "cohort")) |>
         mutate(bmi = av.weight / (av.height / 100) ^ 2)
 ```
 
@@ -123,7 +123,7 @@ But there are unique players that participated in a considerable number of champ
 
 ```{r, eval=FALSE}
 # the leaders of participation in world championships
-leaders <- dfu %>% filter(times_participated > 9)
+leaders <- dfu |> filter(times_participated > 9)
 View(leaders)
 # save the table to html
 print(xtable(leaders), type = "html", file = "table_leaders.html")
@@ -315,16 +315,16 @@ Alexander Ovechkin -- 11 times! But it has to be noted that not every player had
 
 ```{r, eval=FALSE}
 # countries times participated
-df_cnt_part <- df %>% select(year, country, no) %>%
-        mutate(country = factor(paste(country))) %>%
-        group_by(country, year) %>%
-        summarise(value = sum(as.numeric(no))) %>%
-        mutate(value = 1) %>%
-        ungroup() %>%
+df_cnt_part <- df |> select(year, country, no) |>
+        mutate(country = factor(paste(country))) |>
+        group_by(country, year) |>
+        summarise(value = sum(as.numeric(no))) |>
+        mutate(value = 1) |>
+        ungroup() |>
         mutate(country = factor(country, levels = rev(levels(country))), 
                year = factor(year))
 
-d_cnt_n <- df_cnt_part %>% group_by(country) %>%
+d_cnt_n <- df_cnt_part |> group_by(country) |>
         summarise(n = sum(value))
 
 gg_cnt_part <- ggplot(data = df_cnt_part, aes(x = year, y = country))+
@@ -350,7 +350,7 @@ The regression analysis allows to address the research question -- the associati
 ```{r, eval=FALSE}
 # remove small cohorts
 table(dfu$cohort)
-dfuc <- dfu %>% filter(cohort < 1997, cohort > 1963)
+dfuc <- dfu |> filter(cohort < 1997, cohort > 1963)
 ```
 
 So, the results. I add the variables one by one.
@@ -618,9 +618,9 @@ gg_pos <- ggplot(dfuc_pos , aes(x = cohort, y = av.height))+
 
 ```{r, eval=FALSE}
 # separate models for positions
-m3d <- lm(data = dfuc %>% filter(position == "D"), av.height~cohort+country)
-m3f <- lm(data = dfuc %>% filter(position == "F"), av.height~cohort+country)
-m3g <- lm(data = dfuc %>% filter(position == "G"), av.height~cohort+country)
+m3d <- lm(data = dfuc |> filter(position == "D"), av.height~cohort+country)
+m3f <- lm(data = dfuc |> filter(position == "F"), av.height~cohort+country)
+m3g <- lm(data = dfuc |> filter(position == "G"), av.height~cohort+country)
 htmlreg(list(m3d, m3f, m3g), file = "models_height_pos.html", single.row = T, 
         custom.model.names = c("Model 3 D", "Model 3 F", "Model 3 G"))
 ```
@@ -828,15 +828,15 @@ For the data on the height of males in population in the corresponding nations I
 
 df_hb <- read.csv("https://ndownloader.figshare.com/files/5303878") 
 
-df_hb <- df_hb %>%
-        gather("country", "h_pop", 2:16) %>%
-        mutate(period = paste(period)) %>%
-        separate(period, c("t1", "t2"), sep = "/")%>%
+df_hb <- df_hb |>
+        gather("country", "h_pop", 2:16) |>
+        mutate(period = paste(period)) |>
+        separate(period, c("t1", "t2"), sep = "/")|>
         transmute(cohort = (as.numeric(t1)+as.numeric(t2))/2, country, h_pop)
 
 # calculate hockey players' cohort height averages for each country
-df_hoc <- dfu %>% group_by(country, cohort) %>%
-        summarise(h_hp = mean(av.height)) %>%
+df_hoc <- dfu |> group_by(country, cohort) |>
+        summarise(h_hp = mean(av.height)) |>
         ungroup()
 ```
 
@@ -850,19 +850,19 @@ both_cnt
 
 ```{r, eval=FALSE}
 gg_hoc_vs_pop <- ggplot()+
-        geom_path(data = df_hb %>% filter(country %in% both_cnt), 
+        geom_path(data = df_hb |> filter(country %in% both_cnt), 
                   aes(x = cohort, y = h_pop), 
                   color = brbg11[9], size = 1)+
-        geom_point(data = df_hb %>% filter(country %in% both_cnt), 
+        geom_point(data = df_hb |> filter(country %in% both_cnt), 
                    aes(x = cohort, y = h_pop), 
                    color = brbg11[9], size = 2)+
-        geom_point(data = df_hb %>% filter(country %in% both_cnt), 
+        geom_point(data = df_hb |> filter(country %in% both_cnt), 
                    aes(x = cohort, y = h_pop), 
                    color = "white", size = 1.5)+
-        geom_point(data = df_hoc %>% filter(country %in% both_cnt), 
+        geom_point(data = df_hoc |> filter(country %in% both_cnt), 
                    aes(x = cohort, y = h_hp), 
                    color = brbg11[3], size = 2, pch = 18)+
-        stat_smooth(data = df_hoc %>% filter(country %in% both_cnt), 
+        stat_smooth(data = df_hoc |> filter(country %in% both_cnt), 
                     aes(x = cohort, y = h_hp), 
                     method = "lm", se = F, color = brbg11[1], size = 1)+
         facet_wrap(~country, ncol = 2)+
@@ -883,18 +883,18 @@ For the cohorts of Europeans that were born in first half of 20-th century, the 
 ```{r, eval=FALSE}
 # growth in population
 
-df_hb_w <- df_hb %>% spread(cohort, h_pop) 
+df_hb_w <- df_hb |> spread(cohort, h_pop) 
 names(df_hb_w)[2:26] <- paste("y", names(df_hb_w)[2:26])
 
 diffs <- df_hb_w[, 3:26]-df_hb_w[, 2:25]
 
-df_hb_gr<- df_hb_w %>%
+df_hb_gr<- df_hb_w |>
         transmute(country, 
                   gr_1961_1980 = unname(apply(diffs[, 22:24], 1, mean, na.rm = T))*2, 
                   gr_1901_1960 = unname(apply(diffs[, 9:21], 1, mean, na.rm = T))*2, 
-                  gr_1856_1900 = unname(apply(diffs[, 1:8], 1, mean, na.rm = T))*2) %>%
-        gather("period", "average_growth", 2:4) %>%
-        filter(country %in% both_cnt) %>%
+                  gr_1856_1900 = unname(apply(diffs[, 1:8], 1, mean, na.rm = T))*2) |>
+        gather("period", "average_growth", 2:4) |>
+        filter(country %in% both_cnt) |>
         mutate(country = factor(country, levels = rev(levels(factor(country)))), 
                period = factor(period, labels = c("1856-1900", "1901-1960", "1961-1980")))
 
@@ -927,7 +927,7 @@ Looking through the literature on the selection in sport, I saw [the finding][se
 
 ```{r, eval=FALSE}
 # check if there are more players born in earlier months
-df_month <- df %>% mutate(month = month(birth)) %>%
+df_month <- df |> mutate(month = month(birth)) |>
         mutate(month = factor(month))
 
 gg_month <- ggplot(df_month, aes(x = factor(month)))+
@@ -947,8 +947,8 @@ True, the distribution is notably skewed -- there are much more players born in 
 
 ```{r, eval=FALSE}
 # facet by decades
-df_month_dec <- df_month %>%
-        mutate(dec = substr(paste(cohort), 3, 3) %>% 
+df_month_dec <- df_month |>
+        mutate(dec = substr(paste(cohort), 3, 3) |> 
                        factor(labels = paste("born in", c("1960s", "1970s", "1980s", "1990s"))))
 
 gg_month_dec <- ggplot(df_month_dec, aes(x = factor(month)))+

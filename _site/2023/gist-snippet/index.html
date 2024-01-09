@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -560,7 +565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>That's it. Save the modified snippets, the new one is ready to be used. Now, when I type <span class="in">`thm`</span> and then press <span class="in">`TAB`</span>, <span class="in">`thm`</span> transforms into the two lines of code that source the specific gist and set the custom theme to <span class="in">`theme_ik()`</span>. Any ggplot that I will produce next in this R session will have my preferred theme defaults.</span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=8}</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">%&gt;%</span> </span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">|&gt;</span> </span>
 <span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility))<span class="sc">+</span></span>
 <span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>

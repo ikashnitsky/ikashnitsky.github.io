@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -655,11 +660,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>Let's have a look at the remaining life expectancy at age 65, the most common conventional age at retirement, in some European countries, separately for males, females, and total population. Some data preparation steps are needed. First, we only need the life expectancy  estimates for those aged 65. Next, we don't need total population, only males and females separately. Finally, let's select just a bunch of countries: Germany, France, Italy, Russia, Spain, the UK.  </span>
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>e0 <span class="sc">%&gt;%</span> </span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>e0 <span class="sc">|&gt;</span> </span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span> sex <span class="sc">==</span> <span class="st">"T"</span>,</span>
 <span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>               age <span class="sc">==</span> <span class="st">"Y65"</span>, </span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>               geo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"DE"</span>, <span class="st">"FR"</span>, <span class="st">"IT"</span>, <span class="st">"RU"</span>, <span class="st">"ES"</span>, <span class="st">"UK"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">%&gt;%</span> <span class="fu">year</span>(), <span class="at">y =</span> values, <span class="at">color =</span> sex))<span class="sc">+</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>               geo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"DE"</span>, <span class="st">"FR"</span>, <span class="st">"IT"</span>, <span class="st">"RU"</span>, <span class="st">"ES"</span>, <span class="st">"UK"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">|&gt;</span> <span class="fu">year</span>(), <span class="at">y =</span> values, <span class="at">color =</span> sex))<span class="sc">+</span></span>
 <span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> geo, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Life expectancy at age 65"</span>, <span class="at">x =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
@@ -678,7 +683,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats)</span>
 <span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="co"># search for a dataset of interest</span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="fu">wbsearch</span>(<span class="st">"fertility"</span>) <span class="sc">%&gt;%</span> head</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="fu">wbsearch</span>(<span class="st">"fertility"</span>) <span class="sc">|&gt;</span> head</span>
 <span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
@@ -699,11 +704,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>df_wb <span class="ot">&lt;-</span> <span class="fu">wb</span>(<span class="at">indicator =</span> <span class="st">"SH.MMR.RISK.ZS"</span>, <span class="at">startdate =</span> <span class="dv">2000</span>, <span class="at">enddate =</span> <span class="dv">2015</span>)</span>
 <span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="co"># have look at the data for one year</span></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(date <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span> View</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">|&gt;</span> <span class="fu">filter</span>(date <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">|&gt;</span> View</span>
 <span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">%&gt;%</span> </span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(iso2c <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"V4"</span>, <span class="st">"V1"</span>, <span class="st">"1W"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>(), <span class="at">y =</span> value, <span class="at">color =</span> country))<span class="sc">+</span></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">|&gt;</span> </span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(iso2c <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"V4"</span>, <span class="st">"V1"</span>, <span class="st">"1W"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(), <span class="at">y =</span> value, <span class="at">color =</span> country))<span class="sc">+</span></span>
 <span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_color_brewer</span>(<span class="cn">NULL</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)<span class="sc">+</span></span>
 <span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">"Lifetime risk of maternal death (%)"</span>)<span class="sc">+</span></span>
@@ -726,20 +731,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OECD)</span>
 <span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="co"># search by keyword</span></span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">search_dataset</span>(<span class="st">"unemployment"</span>) <span class="sc">%&gt;%</span> View</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">search_dataset</span>(<span class="st">"unemployment"</span>) <span class="sc">|&gt;</span> View</span>
 <span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="co"># download the selected dataset</span></span>
 <span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">"AVD_DUR"</span>)</span>
 <span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="co"># turn variable names to lowercase</span></span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_oecd) <span class="ot">&lt;-</span> <span class="fu">names</span>(df_oecd) <span class="sc">%&gt;%</span> <span class="fu">tolower</span>()</span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_oecd) <span class="ot">&lt;-</span> <span class="fu">names</span>(df_oecd) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
 <span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="sc">%&gt;%</span> </span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="sc">|&gt;</span> </span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
 <span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
 <span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">%&gt;%</span> paste)<span class="sc">+</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
 <span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
 <span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
@@ -778,7 +783,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">%&gt;%</span> </span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">|&gt;</span> </span>
 <span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> country)) <span class="sc">+</span></span>
 <span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
 <span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 1% and top 10% personal wealth shares in France and Great Britain"</span>,</span>

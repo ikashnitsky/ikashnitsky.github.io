@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -530,9 +535,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1751</span>, <span class="dv">1800</span>, <span class="dv">1850</span>, <span class="dv">1900</span>, <span class="dv">1925</span>, <span class="dv">1950</span>, <span class="dv">1960</span>, <span class="dv">1970</span>, <span class="dv">1980</span>, <span class="dv">1990</span>, <span class="dv">2000</span>, <span class="dv">2010</span>)</span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># select years and calculate male-to-female arte-ratio of mortality</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>df_selected <span class="ot">&lt;-</span> df_swe <span class="sc">%&gt;%</span> <span class="fu">select</span>(Year, Sex, Age, mx) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> years) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">spread</span>(Sex, mx) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>df_selected <span class="ot">&lt;-</span> df_swe <span class="sc">|&gt;</span> <span class="fu">select</span>(Year, Sex, Age, mx) <span class="sc">|&gt;</span> </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> years) <span class="sc">|&gt;</span> </span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">spread</span>(Sex, mx) <span class="sc">|&gt;</span> </span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">year =</span> Year, <span class="at">age =</span> Age, <span class="at">value =</span> m <span class="sc">/</span> f)</span>
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>

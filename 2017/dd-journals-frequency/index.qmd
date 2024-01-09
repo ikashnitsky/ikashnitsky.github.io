@@ -27,18 +27,18 @@ library(readxl)
 library(extrafont)
 myfont <- "Roboto Condensed"
 
-df <- data.frame(lines = readLines("https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt")) %>% 
-        mutate(lines = lines %>% as.character()) %>% 
+df <- data.frame(lines = readLines("https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt")) |> 
+        mutate(lines = lines |> as.character()) |> 
         
         # grab only the lines that contain journals' titles
-        filter(lines %>% str_detect("journaltitle")) %>% 
+        filter(lines |> str_detect("journaltitle")) |> 
         
         # remove everything that is not the bare journal's title
-        transmute(journals = lines %>% 
+        transmute(journals = lines |> 
                        str_replace_all(pattern = "\tjournaltitle = |\\Q{\\E|\\Q}\\E,|\\Q}\\E", 
-                                       replacement = "")) %>% 
+                                       replacement = "")) |> 
         # calculate frequencies
-        group_by(journals) %>% 
+        group_by(journals) |> 
         summarise(n = n())
 ```
 
@@ -49,7 +49,7 @@ For one journal title, Ageing and Society, I failed to replace the "\&" using [r
 df[1,1] <- "Ageing and Society"
 
 # correct the title of Lancet
-df <- df %>% mutate(journals = journals %>% str_replace("The Lancet", "Lancet"))
+df <- df |> mutate(journals = journals |> str_replace("The Lancet", "Lancet"))
 
 # correct "Population and Development Review" and "Population Studies" for 6 each
 # Reason - top cited papers bonus
@@ -61,11 +61,11 @@ To provide some additional metrics of the journals, I downloaded bibliometric da
 
 ```{r, eval=FALSE}
 # read SJR data for journals in Social Sciences
-sjr <- readxl::read_excel("https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx", 1) %>% 
-        mutate(id = Title %>% tolower())
+sjr <- readxl::read_excel("https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx", 1) |> 
+        mutate(id = Title |> tolower())
 
 # join the data frames; note that I create an "id" variable in lower case
-df_sjr <- left_join(df %>% mutate(id = journals %>% tolower), sjr, "id") 
+df_sjr <- left_join(df |> mutate(id = journals |> tolower), sjr, "id") 
 ```
 
 Finally, it's time to visualize the data. I use the amazing `treemap` package[^2].

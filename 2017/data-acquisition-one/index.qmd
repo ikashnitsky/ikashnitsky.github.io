@@ -28,7 +28,7 @@ The nice feature of the datasets form `datasets` package is that they are "alway
 ```{r, eval=FALSE}
 library(tidyverse)
 
-swiss %>% 
+swiss |> 
         ggplot(aes(x = Agriculture, y = Fertility, 
                    color = Catholic > 50))+
         geom_point()+
@@ -46,7 +46,7 @@ Some packages are created specifically to disseminate datasets in a ready to use
 library(tidyverse)
 library(gapminder)
 
-gapminder %>% 
+gapminder |> 
         ggplot(aes(x = year, y = lifeExp, 
                    color = continent))+
         geom_jitter(size = 1, alpha = .2, width = .75)+
@@ -66,7 +66,7 @@ library(tidyverse)
 
 galton <- read_csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv")
 
-galton %>% 
+galton |> 
         ggplot(aes(x = father, y = height))+
         geom_point(alpha = .2)+
         stat_smooth(method = "lm")+
@@ -112,12 +112,12 @@ Finally, let's read and plot some of the downloaded data.
 
 ```{r, eval=FALSE}
 murder <- read_xls("unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls",
-                   sheet = 1, range = "A5:M13") %>% 
-        filter(OFFENSE %>% substr(1, 6) == "MURDER") %>% 
-        gather("year", "value", 2:13) %>% 
-        mutate(year = year %>% as.numeric())
+                   sheet = 1, range = "A5:M13") |> 
+        filter(OFFENSE |> substr(1, 6) == "MURDER") |> 
+        gather("year", "value", 2:13) |> 
+        mutate(year = year |> as.numeric())
 
-murder %>% 
+murder |> 
         ggplot(aes(year, value))+
         geom_point()+
         stat_smooth(method = "lm")+
@@ -142,7 +142,7 @@ url <- fs_download(article_id = "3394735")
 
 hockey <- read_csv(url)
 
-hockey %>% 
+hockey |> 
         ggplot(aes(x = year, y = height))+
         geom_jitter(size = 2, color = "#35978f", alpha = .1, width = .25)+
         stat_smooth(method = "lm", size = 1)+

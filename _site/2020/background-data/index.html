@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -532,9 +537,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>Here we use the nice feature of <span class="in">`ggplot2`</span> -- the layers inherit whatever you specify in the main <span class="in">`ggplot()`</span> call. In this case our background layer is inheriting the <span class="in">`data`</span> parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:</span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(PLOT_PARAMETERS)<span class="sc">+</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_WHATEVER</span>(<span class="at">data =</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>FACETING_VARIABLE))<span class="sc">+</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_WHATEVER</span>(<span class="at">data =</span> df <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>FACETING_VARIABLE))<span class="sc">+</span></span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACETING_VARIABLE)</span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>

@@ -29,13 +29,13 @@ neet <- get_eurostat("edat_lfse_22")
 # if the automated download does not work, the data can be grabbed manually at
 # http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing
 
-neet %>% 
-        filter(geo %>% paste %>% nchar == 2,
-               sex == "T", age == "Y18-24") %>%
-        group_by(geo) %>% 
-        mutate(avg = values %>% mean()) %>% 
-        ungroup() %>% 
-        ggplot(aes(x = time %>% year(),
+neet |> 
+        filter(geo |> paste |> nchar == 2,
+               sex == "T", age == "Y18-24") |>
+        group_by(geo) |> 
+        mutate(avg = values |> mean()) |> 
+        ungroup() |> 
+        ggplot(aes(x = time |> year(),
                    y = values))+
         geom_path(aes(group = 1))+
         geom_point(aes(fill = values), pch = 21)+

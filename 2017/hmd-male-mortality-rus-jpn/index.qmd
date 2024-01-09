@@ -35,9 +35,9 @@ Next, I select the most recent year for comparison, 2014, and compute the rate r
 
 ```{r, eval=FALSE}
 # compare mortality rates for 2014
-ru <- rus %>% filter(Year == 2014) %>% transmute(age = Age, rus = mx)
-jp <- jpn %>% filter(Year == 2014) %>% transmute(age = Age, jpn = mx)
-df <- left_join(jp, ru, 'age') %>% mutate(ru_rate = rus / jpn)
+ru <- rus |> filter(Year == 2014) |> transmute(age = Age, rus = mx)
+jp <- jpn |> filter(Year == 2014) |> transmute(age = Age, jpn = mx)
+df <- left_join(jp, ru, 'age') |> mutate(ru_rate = rus / jpn)
 ```
 
 Finally, I plot the resulting rate ratio of male mortality in Russia and Japan.

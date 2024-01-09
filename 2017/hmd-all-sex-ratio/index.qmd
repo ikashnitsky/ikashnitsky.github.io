@@ -48,9 +48,9 @@ sr_age <- list()
 
 for (i in 1:length(exposures)) {
         di <- exposures[[i]]
-        sr_agei <- di %>% select(Year,Age,Female,Male) %>% 
-                filter(Year %in% 2012) %>%
-                select(-Year) %>%
+        sr_agei <- di |> select(Year,Age,Female,Male) |> 
+                filter(Year %in% 2012) |>
+                select(-Year) |>
                 transmute(country = names(exposures)[i],
                           age = Age, sr_age = Male / Female * 100)
         sr_age[[i]] <- sr_agei
@@ -58,18 +58,18 @@ for (i in 1:length(exposures)) {
 sr_age <- bind_rows(sr_age)
 
 # remove optional populations
-sr_age <- sr_age %>% filter(!country %in% c("FRACNP","DEUTE","DEUTW","GBRCENW","GBR_NP"))
+sr_age <- sr_age |> filter(!country %in% c("FRACNP","DEUTE","DEUTW","GBRCENW","GBR_NP"))
 ```
 
 After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.  
 
 ```{r, eval=FALSE}
 # summarize all ages older than 90 (too jerky)
-sr_age_90 <- sr_age %>% filter(age %in% 90:110) %>% 
-        group_by(country) %>% summarise(sr_age = mean(sr_age, na.rm = T)) %>%
-        ungroup() %>% transmute(country, age=90, sr_age)
+sr_age_90 <- sr_age |> filter(age %in% 90:110) |> 
+        group_by(country) |> summarise(sr_age = mean(sr_age, na.rm = T)) |>
+        ungroup() |> transmute(country, age=90, sr_age)
 
-df_plot <- bind_rows(sr_age %>% filter(!age %in% 90:110), sr_age_90)
+df_plot <- bind_rows(sr_age |> filter(!age %in% 90:110), sr_age_90)
 ```
 
 Finally, I plot the resulting sex ratios.

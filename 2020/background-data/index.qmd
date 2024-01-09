@@ -35,9 +35,9 @@ But the **main trick** here is adding all the data in the background. And with `
 Here we use the nice feature of `ggplot2` -- the layers inherit whatever you specify in the main `ggplot()` call. In this case our background layer is inheriting the `data` parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:
 
 ```{r, eval=FALSE}
-df %>% 
+df |> 
     ggplot(PLOT_PARAMETERS)+
-    geom_WHATEVER(data = df %>% select(-FACETING_VARIABLE))+
+    geom_WHATEVER(data = df |> select(-FACETING_VARIABLE))+
     facet_wrap(~ FACETING_VARIABLE)
 ```
 

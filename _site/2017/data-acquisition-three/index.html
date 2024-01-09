@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -718,37 +723,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> country[<span class="sc">!</span>country <span class="sc">%in%</span> opt_pop]</span>
 <span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># temporary function to download HMD data for a simgle county (dot = input)</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>tempf_get_hmd <span class="ot">&lt;-</span> . <span class="sc">%&gt;%</span> <span class="fu">readHMDweb</span>(<span class="st">"Exposures_1x1"</span>, ik_user_hmd, ik_pass_hmd) </span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>tempf_get_hmd <span class="ot">&lt;-</span> . <span class="sc">|&gt;</span> <span class="fu">readHMDweb</span>(<span class="st">"Exposures_1x1"</span>, ik_user_hmd, ik_pass_hmd) </span>
 <span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co"># download the data iteratively for all countries using purrr::map()</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> country <span class="sc">%&gt;%</span> <span class="fu">map</span>(tempf_get_hmd)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> country <span class="sc">|&gt;</span> <span class="fu">map</span>(tempf_get_hmd)</span>
 <span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co"># data transformation to apply to each county dataframe</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>tempf_trans_data <span class="ot">&lt;-</span> . <span class="sc">%&gt;%</span> </span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(Year, Age, Female, Male) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="dv">2012</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>Year) <span class="sc">%&gt;%</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>tempf_trans_data <span class="ot">&lt;-</span> . <span class="sc">|&gt;</span> </span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(Year, Age, Female, Male) <span class="sc">|&gt;</span> </span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="dv">2012</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>Year) <span class="sc">|&gt;</span></span>
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">ratio =</span> Male <span class="sc">/</span> Female <span class="sc">*</span> <span class="dv">100</span>)</span>
 <span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="co"># perform transformation</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>df_hmd <span class="ot">&lt;-</span> exposures <span class="sc">%&gt;%</span> </span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">map</span>(tempf_trans_data) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>df_hmd <span class="ot">&lt;-</span> exposures <span class="sc">|&gt;</span> </span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">map</span>(tempf_trans_data) <span class="sc">|&gt;</span> </span>
 <span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"country"</span>)</span>
 <span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>df_hmd_90 <span class="ot">&lt;-</span> df_hmd <span class="sc">%&gt;%</span> </span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">ratio =</span> ratio <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>df_hmd_90 <span class="ot">&lt;-</span> df_hmd <span class="sc">|&gt;</span> </span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">ratio =</span> ratio <span class="sc">|&gt;</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(country, <span class="at">age =</span> <span class="dv">90</span>, ratio)</span>
 <span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="co"># insert summarized 90+</span></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_hmd <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), df_hmd_90)</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_hmd <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), df_hmd_90)</span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="co"># finaly - plot</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="sc">%&gt;%</span>  </span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="sc">|&gt;</span>  </span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(age, ratio, <span class="at">color =</span> country, <span class="at">group =</span> country))<span class="sc">+</span></span>
 <span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">100</span>, <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
 <span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
@@ -790,16 +795,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a><span class="co"># get the UN country names</span></span>
 <span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(UNlocations)</span>
 <span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> UNlocations <span class="sc">%&gt;%</span> <span class="fu">pull</span>(name) <span class="sc">%&gt;%</span> paste</span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> UNlocations <span class="sc">|&gt;</span> <span class="fu">pull</span>(name) <span class="sc">|&gt;</span> paste</span>
 <span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="co"># data on male life expectancy at birth</span></span>
 <span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(e0M) </span>
 <span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>e0M <span class="sc">%&gt;%</span> </span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> countries) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>last.observed) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(period, value, <span class="dv">3</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> period <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()))<span class="sc">+</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>e0M <span class="sc">|&gt;</span> </span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> countries) <span class="sc">|&gt;</span> </span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>last.observed) <span class="sc">|&gt;</span> </span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(period, value, <span class="dv">3</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">y =</span> period <span class="sc">|&gt;</span> <span class="fu">fct_rev</span>()))<span class="sc">+</span></span>
 <span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_density_ridges</span>(<span class="fu">aes</span>(<span class="at">fill =</span> period))<span class="sc">+</span></span>
 <span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> T, <span class="at">option =</span> <span class="st">"B"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>, </span>
 <span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>                           <span class="at">begin =</span> .<span class="dv">1</span>, <span class="at">end =</span> .<span class="dv">9</span>)<span class="sc">+</span></span>
@@ -836,15 +841,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>df_ess <span class="ot">&lt;-</span> <span class="fu">ess_rounds</span>(<span class="dv">8</span>, <span class="at">your_email =</span>  ik_email) </span>
 <span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a><span class="co"># select a variable and calculate mean value</span></span>
-<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="ot">&lt;-</span> df_ess <span class="sc">%&gt;%</span> </span>
-<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(idno, cntry, trstplc) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(cntry) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">avg =</span> trstplc <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cntry =</span> cntry <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_reorder</span>(avg))</span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="ot">&lt;-</span> df_ess <span class="sc">|&gt;</span> </span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bind_rows</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(idno, cntry, trstplc) <span class="sc">|&gt;</span> </span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(cntry) <span class="sc">|&gt;</span> </span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">avg =</span> trstplc <span class="sc">|&gt;</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cntry =</span> cntry <span class="sc">|&gt;</span> <span class="fu">as_factor</span>() <span class="sc">|&gt;</span> <span class="fu">fct_reorder</span>(avg))</span>
 <span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="sc">%&gt;%</span> </span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="sc">|&gt;</span> </span>
 <span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(trstplc, <span class="at">fill =</span> avg))<span class="sc">+</span></span>
 <span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
 <span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">2</span>))<span class="sc">+</span></span>
@@ -887,10 +892,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="co"># normally, this key is to be stored in .Renviron</span></span>
 <span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="co"># see state and county codes and names</span></span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>fips_codes <span class="sc">%&gt;%</span> View</span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a>fips_codes <span class="sc">|&gt;</span> View</span>
 <span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="co"># the available variables</span></span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="fu">load_variables</span>(<span class="at">year =</span> <span class="dv">2015</span>, <span class="at">dataset =</span> <span class="st">"acs5"</span>) <span class="sc">%&gt;%</span> View</span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="fu">load_variables</span>(<span class="at">year =</span> <span class="dv">2015</span>, <span class="at">dataset =</span> <span class="st">"acs5"</span>) <span class="sc">|&gt;</span> View</span>
 <span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="co"># data on median age of population in Chicago</span></span>
 <span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>df_acs <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
@@ -901,13 +906,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a>        <span class="at">year =</span> <span class="dv">2015</span>,</span>
 <span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>        <span class="at">key =</span> ik_api_acs,</span>
 <span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a>        <span class="at">geometry =</span> <span class="cn">TRUE</span></span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span>
 <span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a><span class="co"># map the data</span></span>
-<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>df_acs <span class="sc">%&gt;%</span> </span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>df_acs <span class="sc">|&gt;</span> </span>
 <span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> estimate <span class="sc">%&gt;%</span> </span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> estimate <span class="sc">|&gt;</span> </span>
 <span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">cut</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">20</span>, <span class="dv">60</span>, <span class="dv">10</span>))), </span>
 <span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
 <span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis_d</span>(<span class="st">"Median age"</span>, <span class="at">begin =</span> .<span class="dv">4</span>)<span class="sc">+</span></span>

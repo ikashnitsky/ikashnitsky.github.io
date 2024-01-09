@@ -38,11 +38,11 @@ It can take a while because the dataset is quite big (0.4m obs). If the automate
 Let's have a look at the remaining life expectancy at age 65, the most common conventional age at retirement, in some European countries, separately for males, females, and total population. Some data preparation steps are needed. First, we only need the life expectancy  estimates for those aged 65. Next, we don't need total population, only males and females separately. Finally, let's select just a bunch of countries: Germany, France, Italy, Russia, Spain, the UK.  
 
 ```{r, eval=FALSE}
-e0 %>% 
+e0 |> 
         filter(! sex == "T",
                age == "Y65", 
-               geo %in% c("DE", "FR", "IT", "RU", "ES", "UK")) %>% 
-        ggplot(aes(x = time %>% year(), y = values, color = sex))+
+               geo %in% c("DE", "FR", "IT", "RU", "ES", "UK")) |> 
+        ggplot(aes(x = time |> year(), y = values, color = sex))+
         geom_path()+
         facet_wrap(~ geo, ncol = 3)+
         labs(y = "Life expectancy at age 65", x = NULL)+
@@ -61,7 +61,7 @@ library(tidyverse)
 library(wbstats)
 
 # search for a dataset of interest
-wbsearch("fertility") %>% head
+wbsearch("fertility") |> head
 ```
 
 
@@ -82,11 +82,11 @@ Let's have a look at the indicator `Lifetime risk of maternal death (%)` (code `
 df_wb <- wb(indicator = "SH.MMR.RISK.ZS", startdate = 2000, enddate = 2015)
 
 # have look at the data for one year
-df_wb %>% filter(date == 2015) %>% View
+df_wb |> filter(date == 2015) |> View
 
-df_wb %>% 
-        filter(iso2c %in% c("V4", "V1", "1W")) %>% 
-        ggplot(aes(x = date %>% as.numeric(), y = value, color = country))+
+df_wb |> 
+        filter(iso2c %in% c("V4", "V1", "1W")) |> 
+        ggplot(aes(x = date |> as.numeric(), y = value, color = country))+
         geom_path(size = 1)+
         scale_color_brewer(NULL, palette = "Dark2")+
         labs(x = NULL, y = NULL, title = "Lifetime risk of maternal death (%)")+
@@ -109,20 +109,20 @@ library(viridis)
 library(OECD)
 
 # search by keyword
-search_dataset("unemployment") %>% View
+search_dataset("unemployment") |> View
 
 # download the selected dataset
 df_oecd <- get_dataset("AVD_DUR")
 
 # turn variable names to lowercase
-names(df_oecd) <- names(df_oecd) %>% tolower()
+names(df_oecd) <- names(df_oecd) |> tolower()
 
-df_oecd %>% 
-        filter(country %in% c("EU16", "EU28", "USA"), sex == "MEN", ! age == "1524") %>% 
+df_oecd |> 
+        filter(country %in% c("EU16", "EU28", "USA"), sex == "MEN", ! age == "1524") |> 
         ggplot(aes(obstime, age, fill = obsvalue))+
         geom_tile()+
         scale_fill_viridis("Months", option = "B")+
-        scale_x_discrete(breaks = seq(1970, 2015, 5) %>% paste)+
+        scale_x_discrete(breaks = seq(1970, 2015, 5) |> paste)+
         facet_wrap(~ country, ncol = 1)+
         labs(x = NULL, y = "Age groups", 
              title = "Average duration of unemployment in months, males")+
@@ -161,7 +161,7 @@ df_wid <- download_wid(
 )
 
 
-df_wid %>% 
+df_wid |> 
         ggplot(aes(x = year, y = value, color = country)) +
         geom_path()+
         labs(title = "Top 1% and top 10% personal wealth shares in France and Great Britain",

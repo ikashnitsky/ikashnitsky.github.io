@@ -12,15 +12,15 @@ library(prismatic)
 my_teal <- "#269292"
 
 # darker
-seq(.1, .9, .1) %>%
+seq(.1, .9, .1) |>
     map_chr(
         .x = .,
-        .f = function(x) x %>% clr_darken(my_teal, .)
+        .f = function(x) x |> clr_darken(my_teal, .)
     )
 
 # lighter
-seq(.1, .9, .1) %>%
+seq(.1, .9, .1) |>
     map_chr(
         .x = .,
-        .f = function(x) x %>% clr_lighten(my_teal, .)
+        .f = function(x) x |> clr_lighten(my_teal, .)
     )

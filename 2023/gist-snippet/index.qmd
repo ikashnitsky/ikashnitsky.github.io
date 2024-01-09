@@ -63,7 +63,7 @@ Now, the final element of this recipe is to save the two lines above as a code s
 That's it. Save the modified snippets, the new one is ready to be used. Now, when I type `thm` and then press `TAB`, `thm` transforms into the two lines of code that source the specific gist and set the custom theme to `theme_ik()`. Any ggplot that I will produce next in this R session will have my preferred theme defaults.
 
 ```{r, fig.width=8}
-swiss %>% 
+swiss |> 
         ggplot(aes(x = Agriculture, y = Fertility))+
         geom_point()+
         labs(

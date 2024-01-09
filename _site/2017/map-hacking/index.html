@@ -196,6 +196,11 @@ ga('send', {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
     <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
  <span class="menu-text"></span></a>
@@ -571,8 +576,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># hack geodata to separate macro-regions</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>fort_hack <span class="ot">&lt;-</span> fort <span class="sc">%&gt;%</span> </span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(df <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, subregion), <span class="st">'id'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>fort_hack <span class="ot">&lt;-</span> fort <span class="sc">|&gt;</span> </span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">select</span>(id, subregion), <span class="st">'id'</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'E'</span>, long <span class="sc">+</span> <span class="fl">5e5</span>, long),</span>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, long <span class="sc">+</span> <span class="fl">2e5</span>, long),</span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>               <span class="at">lat =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, lat <span class="sc">-</span> <span class="fl">5e5</span>, lat),</span>

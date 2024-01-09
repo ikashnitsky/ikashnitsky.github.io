@@ -41,8 +41,8 @@ Next, I hack the geodata (`long` and `lat` variables) moving groups of NUTS-2 re
 
 ```{r, eval=FALSE}
 # hack geodata to separate macro-regions
-fort_hack <- fort %>% 
-        left_join(df %>% select(id, subregion), 'id') %>% 
+fort_hack <- fort |> 
+        left_join(df |> select(id, subregion), 'id') |> 
         mutate(long = ifelse(subregion=='E', long + 5e5, long),
                long = ifelse(subregion=='S', long + 2e5, long),
                lat = ifelse(subregion=='S', lat - 5e5, lat),

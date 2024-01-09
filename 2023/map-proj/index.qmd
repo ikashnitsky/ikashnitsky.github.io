@@ -55,15 +55,15 @@ library(sf)
 library(eurostat)
 
 # the built-in dataset of EU boundaries
-gd <- eurostat_geodata_60_2016 %>% 
+gd <- eurostat_geodata_60_2016 |> 
     janitor::clean_names() 
 
 # filters out only NUTS-2 regions 
-gd_n2 <- gd %>%
+gd_n2 <- gd |>
     filter(levl_code == 2) 
 
 # let's build the most basic map
-gd_n2 %>% 
+gd_n2 |> 
     ggplot() +
     geom_sf()
 ```
@@ -73,12 +73,12 @@ Note all the overseas territories of France, Spain, and Portugal. At the next st
 
 ```{r}
 # remove overseas territories
-gd_n2_main <- gd_n2 %>% 
+gd_n2_main <- gd_n2 |> 
     filter(!id %in% c(paste0('ES', c(63, 64, 70)), paste('FRY', 1:5, sep = ''), 'PT20', 'PT30')) 
 
 # the lines level with borders at country level
-bord <- gd %>%
-    filter(levl_code == 0) %>% 
+bord <- gd |>
+    filter(levl_code == 0) |> 
     rmapshaper::ms_innerlines()
 ```
 
@@ -88,16 +88,16 @@ Now, back to reprojecting. There are two ways of changing the projections with {
 ```{r, warning=FALSE, fig.width=16, fig.height=8}
 #| column: screen-inset
 # transform the projection to the one suitable for Europe
-gd_n2_main_laea <- gd_n2_main %>% 
+gd_n2_main_laea <- gd_n2_main |> 
     st_transform(crs = 3035)
 
-a <- gd_n2_main %>% 
+a <- gd_n2_main |> 
     ggplot() +
     geom_sf(fill = "#F48FB1", color = NA)+
     geom_sf(data = bord, color = "#C2185B", size = .5)+
     coord_sf(crs = 3857)
 
-b <- gd_n2_main_laea %>% 
+b <- gd_n2_main_laea |> 
     ggplot() +
     geom_sf(fill = "#DCE775", color = NA)+
     geom_sf(data = bord, color = "#AFB42B", size = .5)

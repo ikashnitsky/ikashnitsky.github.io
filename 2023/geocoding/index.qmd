@@ -30,9 +30,9 @@ library(gsheet)
 raw <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58")
 
 # clean a bit and join both fields in one text string 
-df <- raw %>% 
-    janitor::clean_names() %>% 
-    drop_na() %>% 
+df <- raw |> 
+    janitor::clean_names() |> 
+    drop_na() |> 
     mutate(text_to_geocode = paste(city_settlement, country, sep = ", "))
 ```
 
@@ -41,7 +41,7 @@ Now we are ready to unleash the power of `tidygeocoder`. The way the main unctio
 ```{r}
 library(tidygeocoder)
 
-df_geocoded <- df %>% 
+df_geocoded <- df |> 
     geocode(text_to_geocode, method = "osm")
 ```
 
@@ -49,8 +49,8 @@ The magic has already happened. The rest is just the routines to drop the points
 
 ```{r}
 # convert coordinates to an sf object
-df_plot <- df_geocoded %>% 
-    drop_na() %>% 
+df_plot <- df_geocoded |> 
+    drop_na() |> 
     st_as_sf(
         coords = c("long", "lat"),
         crs = 4326
@@ -61,14 +61,14 @@ Next are several steps to plot countries of the worlds as the background map lay
 
 ```{r}
 # get world map outline (you might need to install the package)
-world_outline <- spData::world %>% 
+world_outline <- spData::world |> 
     st_as_sf()
 
 # let's use a fancy projection
-world_outline_robinson <- world_outline %>% 
+world_outline_robinson <- world_outline |> 
     st_transform(crs = "ESRI:54030")
 
-country_borders <- world_outline_robinson %>% 
+country_borders <- world_outline_robinson |> 
     rmapshaper::ms_innerlines()
 ```
 
@@ -77,14 +77,14 @@ Now everything is ready to map!
 ```{r, out.width="100%"}
 #| column: screen-inset
 # map!
-world_outline_robinson %>% 
-    filter(!iso_a2 == "AQ") %>% # get rid of Antarctica
+world_outline_robinson |> 
+    filter(!iso_a2 == "AQ") |> # get rid of Antarctica
     ggplot()+
     geom_sf(fill = "#269999", color = NA)+
-    geom_sf(data = country_borders, size = .25, color = "#269999" %>% prismatic::clr_lighten())+
+    geom_sf(data = country_borders, size = .25, color = "#269999" |> prismatic::clr_lighten())+
     geom_sf(
         data = df_plot, fill = "#dafa26", 
-        color = "#dafa26" %>% prismatic::clr_darken(),
+        color = "#dafa26" |> prismatic::clr_darken(),
         size = 1.5, shape = 21
     )+
     coord_sf(datum = NA)+

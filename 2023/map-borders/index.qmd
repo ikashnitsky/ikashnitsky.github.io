@@ -35,12 +35,12 @@ set.seed(911)
 
 # subset Greence, NUTS-3 regions
 library(eurostat)
-greece <- eurostat_geodata_60_2016 %>% 
+greece <- eurostat_geodata_60_2016 |> 
     filter(LEVL_CODE==3,
-           str_sub(geo, 1, 2) == "EL") %>% 
+           str_sub(geo, 1, 2) == "EL") |> 
     # create random values for filling the polygons
-    mutate(random = runif(length(id))) %>% 
-    select(id, geometry, random) %>% 
+    mutate(random = runif(length(id))) |> 
+    select(id, geometry, random) |> 
     st_transform(crs = 3035)
 ```
 
@@ -49,7 +49,7 @@ First, here's the typical lazy (or rather no-brainer) way of using the polygons'
 
 ```{r}
 # plot with polygon outlines
-greece %>% 
+greece |> 
     ggplot()+
     geom_sf(aes(fill = random), color = 2, size = 1)+
     labs(title = "Polygons outlined")+
@@ -65,7 +65,7 @@ Look at all the islands, especially the small ones -- what are all these red out
 ```{r}
 # produce border lines with rmapshaper::ms_innerlines()
 library(rmapshaper)
-bord <- greece %>% ms_innerlines()
+bord <- greece |> ms_innerlines()
 ```
 
 
@@ -73,7 +73,7 @@ Now, let's plot the same map with proper borders between the polygons. Note that
 
 ```{r}
 # now plot without polygon outlines and with borders as lines
-greece %>% 
+greece |> 
     ggplot()+
     geom_sf(aes(fill = random), color = NA)+
     geom_sf(data = bord, color = 2, size = 1)+
@@ -87,7 +87,7 @@ gg_bord <- last_plot()
 ```
 
 
-That's it! This is the simplest dataviz trick I know that can radically improve the outlook of simple choropleth maps. It's only one additional line of code. You can even create the borders `sf` object on the fly within the `ggplot` map creation code specifying the `data` parameter as `. %>% ms_innerlines()`, like this:
+That's it! This is the simplest dataviz trick I know that can radically improve the outlook of simple choropleth maps. It's only one additional line of code. You can even create the borders `sf` object on the fly within the `ggplot` map creation code specifying the `data` parameter as `. %>% ms_innerlines()` [^2], like this:
 
 ```{r, eval=FALSE}
 geom_sf(data = . %>% ms_innerlines(), color = 2, size = 1)
@@ -124,8 +124,10 @@ Publishing this post is my personal gestalt closure -- it spent more than three 
 
 
 [^1]: Before I found `rmapshaper` the task seemed overly complicated, I even asked [Stack Overflow][so]
+[^2]: This is one specific case where the base R pipe `|>` cannot simply replace the {magrittr} pipe `%>%`; see more [here][pipe].
 
 
 [so]: https://stackoverflow.com/questions/47760033
 [thread]: https://twitter.com/ikashnitsky/status/1247875600305598464
 [gist]: https://gist.github.com/ikashnitsky/cf2c29a29d39f79bb1c857a4fefc2cd4
+[pipe]: https://bsky.app/profile/ikashnitsky.phd/post/3kilahv45c52n
