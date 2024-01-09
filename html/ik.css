@@ -66,9 +66,9 @@ $p-lighter-x:   #EEFFFF !default;
 // Fonts
 
 
-@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Monoton&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Outfit:wght@900&display=swap);
 
-/*-- Nice display fonts: Gloria Hallelujah, Monoton, Bungee, Paytone One, Dela Gothic One --*/
+/*-- Nice display fonts: Outfit (!), Gloria Hallelujah, Monoton, Bungee, Paytone One, Dela Gothic One --*/
 
 
 $font-family-sans-serif: "Atkinson Hyperlegible" !default;
@@ -80,7 +80,7 @@ $headings-font-weight: 700 !default;
 $headings-font-size: 0.97rem !default;
 
 
-$navbar-font-family: "Monoton" !default;
+$navbar-font-family: "Outfit" !default;
 $toc-font-family: "Atkinson Hyperlegible" !default;
 $footer-font-family: "Atkinson Hyperlegible" !default;
 
