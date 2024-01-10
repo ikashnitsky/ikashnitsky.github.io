@@ -58,7 +58,8 @@ for (i in 1:length(exposures)) {
 sr_age <- bind_rows(sr_age)
 
 # remove optional populations
-sr_age <- sr_age |> filter(!country %in% c("FRACNP","DEUTE","DEUTW","GBRCENW","GBR_NP"))
+sr_age <- sr_age |> 
+    filter(!country %in% c("FRACNP","DEUTE","DEUTW","GBRCENW","GBR_NP"))
 ```
 
 After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.  
@@ -83,8 +84,12 @@ myfont <- "Roboto Condensed"
 gg <- ggplot(df_plot, aes(age, sr_age, color = country, group = country))+
         geom_hline(yintercept = 100, color = 'grey50', size = 1)+
         geom_line(size = 1)+
-        scale_y_continuous(limits = c(0, 120), expand = c(0, 0), breaks = seq(0, 120, 20))+
-        scale_x_continuous(limits = c(0, 90), expand = c(0, 0), breaks = seq(0, 80, 20))+
+        scale_y_continuous(
+            limits = c(0, 120), expand = c(0, 0), breaks = seq(0, 120, 20)
+        )+
+        scale_x_continuous(
+            limits = c(0, 90), expand = c(0, 0), breaks = seq(0, 80, 20)
+        )+
         xlab('Age')+
         ylab('Sex ratio, males per 100 females')+
         facet_wrap(~country, ncol=6)+

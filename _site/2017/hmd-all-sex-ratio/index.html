@@ -327,7 +327,8 @@ Use own credentials
 <span><span class="va">sr_age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">sr_age</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># remove optional populations</span></span>
-<span><span class="va">sr_age</span> <span class="op">&lt;-</span> <span class="va">sr_age</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">sr_age</span> <span class="op">&lt;-</span> <span class="va">sr_age</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.</p>
 <div class="cell">
@@ -348,8 +349,12 @@ Use own credentials
 <span><span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_plot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">sr_age</span>, color <span class="op">=</span> <span class="va">country</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">100</span>, color <span class="op">=</span> <span class="st">'grey50'</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">80</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span></span>
+<span>            limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span>        <span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>            limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">80</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span>        <span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">'Age'</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">'Sex ratio, males per 100 females'</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">country</span>, ncol<span class="op">=</span><span class="fl">6</span><span class="op">)</span><span class="op">+</span></span>
@@ -636,59 +641,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age)</span>
 <span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="co"># remove optional populations</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span>))</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.  </span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>sr_age_90 <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">sr_age =</span> <span class="fu">mean</span>(sr_age, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="fu">transmute</span>(country, <span class="at">age=</span><span class="dv">90</span>, sr_age)</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>df_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), sr_age_90)</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting sex ratios.</span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="co"># get nice font</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="co"># finaly - plot</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_plot, <span class="fu">aes</span>(age, sr_age, <span class="at">color =</span> country, <span class="at">group =</span> country))<span class="sc">+</span></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">100</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">120</span>, <span class="dv">20</span>))<span class="sc">+</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="dv">20</span>))<span class="sc">+</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">'Age'</span>)<span class="sc">+</span></span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">'Sex ratio, males per 100 females'</span>)<span class="sc">+</span></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>country, <span class="at">ncol=</span><span class="dv">6</span>)<span class="sc">+</span></span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> myfont, <span class="at">base_size =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">'none'</span>,</span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>              <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>))</span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>gg</span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="al">![](hmd-sex-ratios.png)</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>sr_age <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> </span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"FRACNP"</span>,<span class="st">"DEUTE"</span>,<span class="st">"DEUTW"</span>,<span class="st">"GBRCENW"</span>,<span class="st">"GBR_NP"</span>))</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>After age 90, sex ratios become quite jerky due to the relatively small numbers of survivors. I decided to aggregate data after the age 90.  </span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>sr_age_90 <span class="ot">&lt;-</span> sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">sr_age =</span> <span class="fu">mean</span>(sr_age, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> <span class="fu">transmute</span>(country, <span class="at">age=</span><span class="dv">90</span>, sr_age)</span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>df_plot <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sr_age <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), sr_age_90)</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>Finally, I plot the resulting sex ratios.</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="co"># get nice font</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a><span class="co"># finaly - plot</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_plot, <span class="fu">aes</span>(age, sr_age, <span class="at">color =</span> country, <span class="at">group =</span> country))<span class="sc">+</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">100</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>            <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">120</span>, <span class="dv">20</span>)</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>            <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="dv">20</span>)</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">'Age'</span>)<span class="sc">+</span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">'Sex ratio, males per 100 females'</span>)<span class="sc">+</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>country, <span class="at">ncol=</span><span class="dv">6</span>)<span class="sc">+</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> myfont, <span class="at">base_size =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">'none'</span>,</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>              <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>))</span>
 <span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>There is quite a variety in the sex ratio profiles. If the initial prevalence of males equalizes in Japan, Sweden, or Norway at around 60, in Russia, Belarus, and Ukraine this happens at around 30 due to very high male mortality. In many countries there are pronounced bumps in the sex ratio at ages 20-30, that are likely to be caused by international migration. For example, Scotland, Northern Ireland, Portugal, and New Zealand are experiencing substantial outflow of young men.</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>What happened in Taiwan?</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>gg</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="al">![](hmd-sex-ratios.png)</span></span>
 <span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>There is quite a variety in the sex ratio profiles. If the initial prevalence of males equalizes in Japan, Sweden, or Norway at around 60, in Russia, Belarus, and Ukraine this happens at around 30 due to very high male mortality. In many countries there are pronounced bumps in the sex ratio at ages 20-30, that are likely to be caused by international migration. For example, Scotland, Northern Ireland, Portugal, and New Zealand are experiencing substantial outflow of young men.</span>
 <span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7)</span></span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>What happened in Taiwan?</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7)</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

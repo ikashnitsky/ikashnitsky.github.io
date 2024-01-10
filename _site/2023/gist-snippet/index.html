@@ -225,7 +225,7 @@ ga('send', {
                                 <div class="quarto-categories">
                 <div class="quarto-category">r</div>
                 <div class="quarto-category">rstudio</div>
-                <div class="quarto-category">tip</div>
+                <div class="quarto-category">trick</div>
               </div>
                   </div>
   </div>
@@ -273,7 +273,9 @@ ga('send', {
 <span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="fu">theme_minimal</span><span class="op">(</span>base_size <span class="op">=</span> <span class="va">base_size</span>, base_family <span class="op">=</span> <span class="va">base_family</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu">theme</span><span class="op">(</span></span>
-<span>            plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="va">base_size</span><span class="op">*</span><span class="fl">2</span>, face <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="va">labs_color</span><span class="op">)</span>,</span>
+<span>            plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span></span>
+<span>                size <span class="op">=</span> <span class="va">base_size</span><span class="op">*</span><span class="fl">2</span>, face <span class="op">=</span> <span class="fl">2</span>, color <span class="op">=</span> <span class="va">labs_color</span></span>
+<span>            <span class="op">)</span>,</span>
 <span>            plot.subtitle <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="va">labs_color</span><span class="op">)</span>,</span>
 <span>            plot.caption <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="va">labs_color</span><span class="op">)</span>,</span>
 <span>            axis.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>color <span class="op">=</span> <span class="va">axis_color</span><span class="op">)</span>,</span>
@@ -299,7 +301,7 @@ ga('send', {
 </div>
 <p>That’s it. Save the modified snippets, the new one is ready to be used. Now, when I type <code>thm</code> and then press <code>TAB</code>, <code>thm</code> transforms into the two lines of code that source the specific gist and set the custom theme to <code>theme_ik()</code>. Any ggplot that I will produce next in this R session will have my preferred theme defaults.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">swiss</span> <span class="op">%&gt;%</span> </span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">swiss</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Agriculture</span>, y <span class="op">=</span> <span class="va">Fertility</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu">labs</span><span class="op">(</span></span>
@@ -536,56 +538,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>){</span>
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> base_size, <span class="at">base_family =</span> base_family)<span class="sc">+</span></span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> base_size<span class="sc">*</span><span class="dv">2</span>, <span class="at">face =</span> <span class="dv">2</span>, <span class="at">color =</span> labs_color),</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> labs_color),</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> labs_color),</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> axis_color),</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> axis_color),</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> bg_color),</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"lines"</span>),</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> grid_color),</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            <span class="at">line =</span> <span class="fu">element_line</span>(<span class="at">lineend =</span> <span class="st">"round"</span>)</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>I store these lines of R code as <span class="co">[</span><span class="ot">a gist</span><span class="co">][gist]</span> here. Next, I only need to supply the ID part of the gist URL (<span class="in">`https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184`</span>) to the <span class="in">`devtools::source_gist()`</span> function and it will execute the script stored in the gist, which will result in function <span class="in">`theme_ik()`</span> appearing in my <span class="in">`{.GlobalEnv}`</span>. With the second line of code I set the default <span class="in">`ggplot2`</span> theme to my self-written one. </span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> base_size<span class="sc">*</span><span class="dv">2</span>, <span class="at">face =</span> <span class="dv">2</span>, <span class="at">color =</span> labs_color</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            ),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> labs_color),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> labs_color),</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> axis_color),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> axis_color),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="cn">NA</span>, <span class="at">fill =</span> bg_color),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"lines"</span>),</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> grid_color),</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>            <span class="at">line =</span> <span class="fu">element_line</span>(<span class="at">lineend =</span> <span class="st">"round"</span>)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">source_gist</span>(<span class="st">"653e1040a07364ae82b1bb312501a184"</span>)</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_ik</span>())</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>Now, the final element of this recipe is to save the two lines above as a code snippet. I'm using RStudio, but code snippets are available in any decent IDE. To add a custom snippet we need to navigate to <span class="in">`Tools --&gt; Edit Code Snippets...`</span>. In the new window just add a custom snippet making sure to respect the indentation. <span class="ot">[^1]</span>  </span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>I store these lines of R code as <span class="co">[</span><span class="ot">a gist</span><span class="co">][gist]</span> here. Next, I only need to supply the ID part of the gist URL (<span class="in">`https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184`</span>) to the <span class="in">`devtools::source_gist()`</span> function and it will execute the script stored in the gist, which will result in function <span class="in">`theme_ik()`</span> appearing in my <span class="in">`{.GlobalEnv}`</span>. With the second line of code I set the default <span class="in">`ggplot2`</span> theme to my self-written one. </span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">source_gist</span>(<span class="st">"653e1040a07364ae82b1bb312501a184"</span>)</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_ik</span>())</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](snippet.png)</span><span class="co">](https://ikashnitsky.github.io/2023/gist-snippet/snippet.png)</span>  </span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>Now, the final element of this recipe is to save the two lines above as a code snippet. I'm using RStudio, but code snippets are available in any decent IDE. To add a custom snippet we need to navigate to <span class="in">`Tools --&gt; Edit Code Snippets...`</span>. In the new window just add a custom snippet making sure to respect the indentation. <span class="ot">[^1]</span>  </span>
 <span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>That's it. Save the modified snippets, the new one is ready to be used. Now, when I type <span class="in">`thm`</span> and then press <span class="in">`TAB`</span>, <span class="in">`thm`</span> transforms into the two lines of code that source the specific gist and set the custom theme to <span class="in">`theme_ik()`</span>. Any ggplot that I will produce next in this R session will have my preferred theme defaults.</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="al">![](snippet.png)</span><span class="co">](https://ikashnitsky.github.io/2023/gist-snippet/snippet.png)</span>  </span>
 <span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=8}</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">|&gt;</span> </span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility))<span class="sc">+</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Fertility and rurality in Swiss cantones, 1888"</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>My preferred <span class="in">`ggplot2`</span> theme here is optimized to produce plots that look nicely in my blog. <span class="ot">[^2]</span> </span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>**Happy coding with snippets and easily re-usable custom functions!** </span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>That's it. Save the modified snippets, the new one is ready to be used. Now, when I type <span class="in">`thm`</span> and then press <span class="in">`TAB`</span>, <span class="in">`thm`</span> transforms into the two lines of code that source the specific gist and set the custom theme to <span class="in">`theme_ik()`</span>. Any ggplot that I will produce next in this R session will have my preferred theme defaults.</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=8}</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>swiss <span class="sc">|&gt;</span> </span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Agriculture, <span class="at">y =</span> Fertility))<span class="sc">+</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Fertility and rurality in Swiss cantones, 1888"</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>My preferred <span class="in">`ggplot2`</span> theme here is optimized to produce plots that look nicely in my blog. <span class="ot">[^2]</span> </span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>**Happy coding with snippets and easily re-usable custom functions!** </span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Note that in the left tabset one can choose what kind of snippets to add. In R scripts snippets are called with <span class="in">`TAB`</span>, in rmarkdown documents the hot-key for snippets is <span class="in">`SHIFT+TAB`</span>. </span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>In case you read this anywhere else, this blog post is available at <span class="co">[</span><span class="ot">https://ikashnitsky.github.io/2023/gist-snippet</span><span class="co">][post]</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="ot">[gists]: https://gist.github.com</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://ikashnitsky.github.io/2023/gist-snippet</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Note that in the left tabset one can choose what kind of snippets to add. In R scripts snippets are called with <span class="in">`TAB`</span>, in rmarkdown documents the hot-key for snippets is <span class="in">`SHIFT+TAB`</span>. </span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>In case you read this anywhere else, this blog post is available at <span class="co">[</span><span class="ot">https://ikashnitsky.github.io/2023/gist-snippet</span><span class="co">][post]</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="ot">[gists]: https://gist.github.com</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="ot">[post]: https://ikashnitsky.github.io/2023/gist-snippet</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

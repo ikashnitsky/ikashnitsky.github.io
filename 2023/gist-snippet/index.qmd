@@ -34,7 +34,9 @@ theme_ik <- function(
 ){
     theme_minimal(base_size = base_size, base_family = base_family)+
         theme(
-            plot.title = element_text(size = base_size*2, face = 2, color = labs_color),
+            plot.title = element_text(
+                size = base_size*2, face = 2, color = labs_color
+            ),
             plot.subtitle = element_text(color = labs_color),
             plot.caption = element_text(color = labs_color),
             axis.title = element_text(color = axis_color),

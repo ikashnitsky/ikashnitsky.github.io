@@ -45,7 +45,8 @@ ggplot(df_selected)+
         stat_smooth(aes(age, value, group = 1, color = factor(year)), se = F)+
         facet_wrap(~year, ncol = 3)+
         labs(title = "Male-to-female age-specific mortality rate ratio, Sweden",
-             subtitle = "Untill quite recent times, mortality of females was not much lower than that of males",
+             subtitle = "Untill quite recent times, mortality of females was not 
+             much lower than that of males",
              caption = "\nData: Human Mortality Database (https://mortality.org)
              Note: Colored lines are produced with loess smoothing",
              x = "Age", y = "Rate ratio")+

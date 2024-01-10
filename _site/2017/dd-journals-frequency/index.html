@@ -271,18 +271,24 @@ ga('send', {
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op">)</span></span>
 <span><span class="va">myfont</span> <span class="op">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="va">lines</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    lines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lines <span class="op">=</span> <span class="va">lines</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        </span>
 <span>        <span class="co"># grab only the lines that contain journals' titles</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lines</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="st">"journaltitle"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lines</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="st">"journaltitle"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        </span>
 <span>        <span class="co"># remove everything that is not the bare journal's title</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>journals <span class="op">=</span> <span class="va">lines</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>                       <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\tjournaltitle = |\\Q{\\E|\\Q}\\E,|\\Q}\\E"</span>, </span>
-<span>                                       replacement <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span></span>
+<span>            journals <span class="op">=</span> <span class="va">lines</span> <span class="op">|&gt;</span> </span>
+<span>                       <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span></span>
+<span>                            pattern <span class="op">=</span> <span class="st">"\tjournaltitle = |\\Q{\\E|\\Q}\\E,|\\Q}\\E"</span>, </span>
+<span>                            replacement <span class="op">=</span> <span class="st">""</span></span>
+<span>                       <span class="op">)</span></span>
+<span>        <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="co"># calculate frequencies</span></span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">journals</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">journals</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For one journal title, Ageing and Society, I failed to replace the “&amp;” using <a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf">regular expressions</a>. This one is to be fixed manually. I also corrected the title of Lancet journal removing the article “The”. Finally, I corrected the frequencies for Population Studies and Population and Development Review subtracting 6, because for both journals I provided lists of most cited papers as a bonus. Following the same logic, I cleaned the data from the papers that appeared in the bonus part.</p>
@@ -291,21 +297,30 @@ ga('send', {
 <span><span class="va">df</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Ageing and Society"</span></span>
 <span></span>
 <span><span class="co"># correct the title of Lancet</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>journals <span class="op">=</span> <span class="va">journals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># correct "Population and Development Review" and "Population Studies" for 6 each</span></span>
-<span><span class="co"># Reason - top cited papers bonus</span></span>
-<span><span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">journals</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Population and Development Review"</span>, <span class="st">"Population Studies"</span><span class="op">)</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> </span>
-<span>        <span class="va">df</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">journals</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Population and Development Review"</span>, <span class="st">"Population Studies"</span><span class="op">)</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">-</span> <span class="fl">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>journals <span class="op">=</span> <span class="va">journals</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="co"># correct "Population and Development Review" and "Population Studies" for 6 each</span></span>
+<span>    <span class="co"># Reason - top cited papers bonus</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>        n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>            <span class="va">journals</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>                <span class="st">"Population and Development Review"</span>, </span>
+<span>                <span class="st">"Population Studies"</span></span>
+<span>            <span class="op">)</span> <span class="op">~</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">6</span>,</span>
+<span>            <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">n</span></span>
+<span>        <span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To provide some additional metrics of the journals, I downloaded bibliometric data from the <a href="">SCImago Journal &amp; Country Rank project</a>http://www.scimagojr.com/aboutus.php. Demographic journals usually have rather low SJR, compared to medical journals; that’s why I downloaded the data only for journals in <a href="http://www.scimagojr.com/journalrank.php?area=3300">Social Sciences</a> (the<a href="../../doc/misc/dd-stats/scimagojr.xlsx">.xlsx file</a>). Then I read the data in R and join to my data frame.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># read SJR data for journals in Social Sciences</span></span>
-<span><span class="va">sjr</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">Title</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># join the data frames; note that I create an "id" variable in lower case</span></span>
-<span><span class="va">df_sjr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="va">journals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">tolower</span><span class="op">)</span>, <span class="va">sjr</span>, <span class="st">"id"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read SJR data for journals in Social Sciences</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sjr <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="dv">1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">id =</span> Title <span class="sc">|&gt;</span> <span class="fu">tolower</span>())</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># join the data frames; note that I create an "id" variable in lower case</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df_sjr <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id =</span> journals <span class="sc">|&gt;</span> tolower), sjr, <span class="st">"id"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="page-columns page-full"><p>Finally, it’s time to visualize the data. I use the amazing <code>treemap</code> package<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;I also tried <code>portfolio</code> and <code>treemapify</code>, but liked the output from <code>treemap</code> most.</p></li></div></div>
 <div class="cell">
@@ -549,79 +564,94 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">lines =</span> <span class="fu">readLines</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">lines =</span> lines <span class="sc">|&gt;</span> <span class="fu">as.character</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># grab only the lines that contain journals' titles</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(lines <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"journaltitle"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># remove everything that is not the bare journal's title</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">journals =</span> lines <span class="sc">|&gt;</span> </span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">str_replace_all</span>(<span class="at">pattern =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">journaltitle = |</span><span class="sc">\\</span><span class="st">Q{</span><span class="sc">\\</span><span class="st">E|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E,|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E"</span>, </span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">replacement =</span> <span class="st">""</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate frequencies</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(journals) <span class="sc">|&gt;</span> </span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>For one journal title, Ageing and Society, I failed to replace the "<span class="sc">\&amp;</span>" using <span class="co">[</span><span class="ot">regular expressions</span><span class="co">](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)</span>. This one is to be fixed manually. I also corrected the title of Lancet journal removing the article "The". Finally, I corrected the frequencies for Population Studies and Population and Development Review subtracting 6, because for both journals I provided lists of most cited papers as a bonus. Following the same logic, I cleaned the data from the papers that appeared in the bonus part. </span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># correct "Ageing and Society"</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Ageing and Society"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">lines =</span> <span class="fu">readLines</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt"</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">lines =</span> lines <span class="sc">|&gt;</span> <span class="fu">as.character</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># grab only the lines that contain journals' titles</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(lines <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"journaltitle"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># remove everything that is not the bare journal's title</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            <span class="at">journals =</span> lines <span class="sc">|&gt;</span> </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">str_replace_all</span>(</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>                            <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">journaltitle = |</span><span class="sc">\\</span><span class="st">Q{</span><span class="sc">\\</span><span class="st">E|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E,|</span><span class="sc">\\</span><span class="st">Q}</span><span class="sc">\\</span><span class="st">E"</span>, </span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                            <span class="at">replacement =</span> <span class="st">""</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>        <span class="co"># calculate frequencies</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(journals) <span class="sc">|&gt;</span> </span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># correct the title of Lancet</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">journals =</span> journals <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span>))</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># correct "Population and Development Review" and "Population Studies" for 6 each</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Reason - top cited papers bonus</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>journals <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Population and Development Review"</span>, <span class="st">"Population Studies"</span>), <span class="dv">2</span>] <span class="ot">&lt;-</span> </span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        df[df<span class="sc">$</span>journals <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Population and Development Review"</span>, <span class="st">"Population Studies"</span>), <span class="dv">2</span>] <span class="sc">-</span> <span class="dv">6</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>To provide some additional metrics of the journals, I downloaded bibliometric data from the <span class="co">[</span><span class="ot">SCImago Journal &amp; Country Rank project</span><span class="co">]()</span>http://www.scimagojr.com/aboutus.php. Demographic journals usually have rather low SJR, compared to medical journals; that's why I downloaded the data only for journals in <span class="co">[</span><span class="ot">Social Sciences</span><span class="co">](http://www.scimagojr.com/journalrank.php?area=3300)</span> (the<span class="co">[</span><span class="ot">.xlsx file</span><span class="co">](/doc/misc/dd-stats/scimagojr.xlsx)</span>). Then I read the data in R and join to my data frame.</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co"># read SJR data for journals in Social Sciences</span></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>sjr <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">id =</span> Title <span class="sc">|&gt;</span> <span class="fu">tolower</span>())</span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="co"># join the data frames; note that I create an "id" variable in lower case</span></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>df_sjr <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id =</span> journals <span class="sc">|&gt;</span> tolower), sjr, <span class="st">"id"</span>) </span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>Finally, it's time to visualize the data. I use the amazing <span class="in">`treemap`</span> package<span class="ot">[^2]</span>.</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>For one journal title, Ageing and Society, I failed to replace the "<span class="sc">\&amp;</span>" using <span class="co">[</span><span class="ot">regular expressions</span><span class="co">](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)</span>. This one is to be fixed manually. I also corrected the title of Lancet journal removing the article "The". Finally, I corrected the frequencies for Population Studies and Population and Development Review subtracting 6, because for both journals I provided lists of most cited papers as a bonus. Following the same logic, I cleaned the data from the papers that appeared in the bonus part. </span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># correct "Ageing and Society"</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Ageing and Society"</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co"># correct the title of Lancet</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">journals =</span> journals <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"The Lancet"</span>, <span class="st">"Lancet"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># correct "Population and Development Review" and "Population Studies" for 6 each</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reason - top cited papers bonus</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            journals <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Population and Development Review"</span>, </span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Population Studies"</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">~</span> n <span class="sc">-</span> <span class="dv">6</span>,</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>            <span class="cn">TRUE</span> <span class="sc">~</span> n</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Treemap visualization</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemap)</span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="fu">treemap</span>(<span class="at">dtf =</span> df_sjr, </span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>        <span class="at">index =</span> <span class="st">"journals"</span>, </span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>        <span class="at">vSize =</span> <span class="st">"n"</span>, </span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        <span class="at">vColor =</span> <span class="st">"SJR"</span>, </span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"value"</span>,</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">n =</span> <span class="dv">5</span>,</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="st">"BrBG"</span>, </span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">border.col =</span> <span class="st">"grey10"</span>, </span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Journals' frequency in Demographic Digest"</span>,</span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        <span class="at">title.legend =</span> <span class="st">"SJR (only social sciences)"</span>,</span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.title =</span> myfont,</span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.labels =</span> myfont,</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.legend =</span> myfont,</span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop.unused.levels =</span> T)</span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="fu"># Here is how the output looks</span></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="al">![](treemap-dd-stats.png)</span></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>Note that the lion's share of Population Studies is mainly explained by <span class="co">[</span><span class="ot">the first issue of Demographic Digest</span><span class="co">](http://demoscope.ru/weekly/2015/0661/digest01.php)</span>, in which I covered all the papers from the brilliant special issue <span class="co">[</span><span class="ot">Population — The long view</span><span class="co">](http://www.tandfonline.com/toc/rpst20/69/sup1)</span>.  </span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>I finish each issue of Demographic Digest with a bonus, in which I cover fun papers, discuss some academia related issues, or just provide link to cool visualizations and projects.</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>I also tried <span class="in">`portfolio`</span> and <span class="in">`treemapify`</span>, but liked the output from <span class="in">`treemap`</span> most. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>To provide some additional metrics of the journals, I downloaded bibliometric data from the <span class="co">[</span><span class="ot">SCImago Journal &amp; Country Rank project</span><span class="co">]()</span>http://www.scimagojr.com/aboutus.php. Demographic journals usually have rather low SJR, compared to medical journals; that's why I downloaded the data only for journals in <span class="co">[</span><span class="ot">Social Sciences</span><span class="co">](http://www.scimagojr.com/journalrank.php?area=3300)</span> (the<span class="co">[</span><span class="ot">.xlsx file</span><span class="co">](/doc/misc/dd-stats/scimagojr.xlsx)</span>). Then I read the data in R and join to my data frame.</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="co"># read SJR data for journals in Social Sciences</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>sjr <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx"</span>, <span class="dv">1</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">id =</span> Title <span class="sc">|&gt;</span> <span class="fu">tolower</span>())</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="co"># join the data frames; note that I create an "id" variable in lower case</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>df_sjr <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">id =</span> journals <span class="sc">|&gt;</span> tolower), sjr, <span class="st">"id"</span>) </span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>Finally, it's time to visualize the data. I use the amazing <span class="in">`treemap`</span> package<span class="ot">[^2]</span>.</span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Treemap visualization</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treemap)</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="fu">treemap</span>(<span class="at">dtf =</span> df_sjr, </span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>        <span class="at">index =</span> <span class="st">"journals"</span>, </span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>        <span class="at">vSize =</span> <span class="st">"n"</span>, </span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>        <span class="at">vColor =</span> <span class="st">"SJR"</span>, </span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"value"</span>,</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>        <span class="at">n =</span> <span class="dv">5</span>,</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>        <span class="at">palette =</span> <span class="st">"BrBG"</span>, </span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">border.col =</span> <span class="st">"grey10"</span>, </span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="st">"Journals' frequency in Demographic Digest"</span>,</span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">title.legend =</span> <span class="st">"SJR (only social sciences)"</span>,</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.title =</span> myfont,</span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.labels =</span> myfont,</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>        <span class="at">fontfamily.legend =</span> myfont,</span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>        <span class="at">drop.unused.levels =</span> T)</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu"># Here is how the output looks</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="al">![](treemap-dd-stats.png)</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a>Note that the lion's share of Population Studies is mainly explained by <span class="co">[</span><span class="ot">the first issue of Demographic Digest</span><span class="co">](http://demoscope.ru/weekly/2015/0661/digest01.php)</span>, in which I covered all the papers from the brilliant special issue <span class="co">[</span><span class="ot">Population — The long view</span><span class="co">](http://www.tandfonline.com/toc/rpst20/69/sup1)</span>.  </span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>I finish each issue of Demographic Digest with a bonus, in which I cover fun papers, discuss some academia related issues, or just provide link to cool visualizations and projects.</span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>I also tried <span class="in">`portfolio`</span> and <span class="in">`treemapify`</span>, but liked the output from <span class="in">`treemap`</span> most. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

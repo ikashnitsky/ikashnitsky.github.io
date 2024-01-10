@@ -118,7 +118,9 @@ df_oecd <- get_dataset("AVD_DUR")
 names(df_oecd) <- names(df_oecd) |> tolower()
 
 df_oecd |> 
-        filter(country %in% c("EU16", "EU28", "USA"), sex == "MEN", ! age == "1524") |> 
+        filter(
+            country %in% c("EU16", "EU28", "USA"), sex == "MEN", ! age == "1524"
+        ) |> 
         ggplot(aes(obstime, age, fill = obsvalue))+
         geom_tile()+
         scale_fill_viridis("Months", option = "B")+
@@ -164,8 +166,11 @@ df_wid <- download_wid(
 df_wid |> 
         ggplot(aes(x = year, y = value, color = country)) +
         geom_path()+
-        labs(title = "Top 1% and top 10% personal wealth shares in France and Great Britain",
-             y = "top share")+
+        labs(
+            title = "Top 1% and top 10% personal wealth shares in 
+            France and Great Britain",
+             y = "top share"
+        )+
         facet_wrap(~ percentile)+
         theme_minimal(base_family = "mono")
 

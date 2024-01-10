@@ -74,7 +74,13 @@ Note all the overseas territories of France, Spain, and Portugal. At the next st
 ```{r}
 # remove overseas territories
 gd_n2_main <- gd_n2 |> 
-    filter(!id %in% c(paste0('ES', c(63, 64, 70)), paste('FRY', 1:5, sep = ''), 'PT20', 'PT30')) 
+    filter(
+        !id %in% c(
+            paste0('ES', c(63, 64, 70)), 
+            paste('FRY', 1:5, sep = ''), 
+            'PT20', 'PT30'
+        )
+    ) 
 
 # the lines level with borders at country level
 bord <- gd |>

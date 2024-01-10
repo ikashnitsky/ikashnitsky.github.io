@@ -84,10 +84,15 @@ df <- read_csv("https://ikashnitsky.github.io/share/1703-nuts2-denmark/BEF1A.csv
 ifelse(!dir.exists("geodata"), dir.create("geodata"), "Directory already exists")
 
 # download, unzip and read Danish NUTS-3 geodata (31KB)
-url_nuts <- "https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz"
+url_nuts <- 
+    "https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz"
 path_nuts <- "geodata/denmark-nuts3-espg3044.tgz"
-ifelse(!file.exists(path_nuts), download.file(url_nuts, path_nuts, mode="wb"), 'file alredy exists')
-# If there are problems downloading the data automatically, please download it manually from
+ifelse(
+    !file.exists(path_nuts), 
+    download.file(url_nuts, path_nuts, mode="wb"), 
+    'file alredy exists'
+)
+# If there are problems downloading the data automatically, please download it from
 # https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz
 untar(tarfile = path_nuts, exdir = "geodata")
 
@@ -96,14 +101,21 @@ gd_nuts3 <- fortify(sp_nuts3, region = "NUTS_ID") # to the ggplot format
 
 
 # download, unzip and read Danish old municipal geodata (6.0MB)
-url_mun <- "https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006win1252.tgz"
+url_mun <- 
+    "https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006win1252.tgz"
 path_mun <- "geodata/kommune2006win1252.tgz"
-ifelse(!file.exists(path_mun), download.file(url_mun, path_mun, mode="wb"), 'file alredy exists')
-# If there are problems downloading the data automatically, please download it manually from
+ifelse(
+    !file.exists(path_mun), 
+    download.file(url_mun, path_mun, mode="wb"), 
+    'file alredy exists'
+)
+# If there are problems downloading the data automatically, please download it from
 # https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006utf8.tgz
 untar(tarfile = path_mun, exdir = "geodata")
 
-sp_mun <- readOGR(dsn = "geodata/.", layer = "kommune2006win1252", encoding = danish_ecnoding) 
+sp_mun <- readOGR(
+    dsn = "geodata/.", layer = "kommune2006win1252", encoding = danish_ecnoding
+) 
 gd_mun <- fortify(sp_mun)
 
 # coordinates of the municipalities
@@ -136,7 +148,9 @@ To identify which municipalities fall into which NUTS regions, I use the spatial
 
 ```{r, eval=FALSE}
 # municipality coordinates to Spatial
-mun_centr <- SpatialPoints(coordinates(sp_mun), proj4string = CRS(proj4string(sp_nuts3)))
+mun_centr <- SpatialPoints(
+    coordinates(sp_mun), proj4string = CRS(proj4string(sp_nuts3))
+)
 
 # spatial intersection with sp::over
 inter <- bind_cols(mun_coord, over(mun_centr, sp_nuts3[,"NUTS_ID"])) |> 
@@ -234,8 +248,10 @@ mun_geo <- mun_coord |>
         transmute(name = sub(x = name, " Kommune", replacement = ""), objectid) |> 
         mutate(name = gsub(x = tolower(name), "å", "aa"))
 
-mun_stat <- read.csv2("https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-codes-names.csv", 
-                      fileEncoding = danish_ecnoding) |> 
+mun_stat <- read.csv2(
+    "https://ikashnitsky.github.io/share/1703-nuts2-denmark/stat-codes-names.csv", 
+    fileEncoding = danish_ecnoding
+) |> 
         select(name) |> 
         separate(name, into = c("code", "name"), sep = " ", extra = "merge") |> 
         mutate(name = gsub("\\s*\\([^\\)]+\\)", "", x = name)) |> 

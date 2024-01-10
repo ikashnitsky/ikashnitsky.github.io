@@ -27,16 +27,22 @@ library(readxl)
 library(extrafont)
 myfont <- "Roboto Condensed"
 
-df <- data.frame(lines = readLines("https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt")) |> 
+df <- data.frame(
+    lines = readLines("https://ikashnitsky.github.io/share/1702-dd-stats/dd-bib.txt")
+) |> 
         mutate(lines = lines |> as.character()) |> 
         
         # grab only the lines that contain journals' titles
         filter(lines |> str_detect("journaltitle")) |> 
         
         # remove everything that is not the bare journal's title
-        transmute(journals = lines |> 
-                       str_replace_all(pattern = "\tjournaltitle = |\\Q{\\E|\\Q}\\E,|\\Q}\\E", 
-                                       replacement = "")) |> 
+        transmute(
+            journals = lines |> 
+                       str_replace_all(
+                            pattern = "\tjournaltitle = |\\Q{\\E|\\Q}\\E,|\\Q}\\E", 
+                            replacement = ""
+                       )
+        ) |> 
         # calculate frequencies
         group_by(journals) |> 
         summarise(n = n())
@@ -49,19 +55,28 @@ For one journal title, Ageing and Society, I failed to replace the "\&" using [r
 df[1,1] <- "Ageing and Society"
 
 # correct the title of Lancet
-df <- df |> mutate(journals = journals |> str_replace("The Lancet", "Lancet"))
-
-# correct "Population and Development Review" and "Population Studies" for 6 each
-# Reason - top cited papers bonus
-df[df$journals %in% c("Population and Development Review", "Population Studies"), 2] <- 
-        df[df$journals %in% c("Population and Development Review", "Population Studies"), 2] - 6
+df <- df |> 
+    mutate(journals = journals |> str_replace("The Lancet", "Lancet")) |>
+    # correct "Population and Development Review" and "Population Studies" for 6 each
+    # Reason - top cited papers bonus
+    mutate(
+        n = case_when(
+            journals %in% c(
+                "Population and Development Review", 
+                "Population Studies"
+            ) ~ n - 6,
+            TRUE ~ n
+        )
+    )
 ```
 
 To provide some additional metrics of the journals, I downloaded bibliometric data from the [SCImago Journal & Country Rank project]()http://www.scimagojr.com/aboutus.php. Demographic journals usually have rather low SJR, compared to medical journals; that's why I downloaded the data only for journals in [Social Sciences](http://www.scimagojr.com/journalrank.php?area=3300) (the[.xlsx file](/doc/misc/dd-stats/scimagojr.xlsx)). Then I read the data in R and join to my data frame.
 
 ```{r, eval=FALSE}
 # read SJR data for journals in Social Sciences
-sjr <- readxl::read_excel("https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx", 1) |> 
+sjr <- readxl::read_excel(
+    "https://ikashnitsky.github.io/share/1702-dd-stats/scimagojr.xlsx", 1
+) |> 
         mutate(id = Title |> tolower())
 
 # join the data frames; note that I create an "id" variable in lower case

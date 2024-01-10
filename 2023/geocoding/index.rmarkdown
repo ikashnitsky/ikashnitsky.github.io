@@ -12,11 +12,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ***
 
 Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of `tidygeocoder` that queries the free Open Street Map. 
 
 In this tiny example I'm using the birth places that students of my [2022 BSSD dataviz course][bssd] kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields -- city and country of birth. The resulting small dataset is [here][data]
+
 
 
 ```{r}
@@ -38,7 +40,9 @@ df <- raw |>
     mutate(text_to_geocode = paste(city_settlement, country, sep = ", "))
 ```
 
+
 Now we are ready to unleash the power of `tidygeocoder`. The way the main unction in the package works is very similar to `mutate` -- you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.  
+
 
 ```{r}
 library(tidygeocoder)
@@ -47,7 +51,9 @@ df_geocoded <- df |>
     geocode(text_to_geocode, method = "osm")
 ```
 
+
 The magic has already happened. The rest is just the routines to drop the points on the map. Yes, I am submitting this as my first 2023 entry to the [`#30DayMapChallenge`][30d] =)
+
 
 ```{r}
 # convert coordinates to an sf object
@@ -59,7 +65,9 @@ df_plot <- df_geocoded |>
     )
 ```
 
+
 Next are several steps to plot countries of the worlds as the background map layer. Note that I'm using the trick of producing a separate lines layer for the country borders, there is a [separate post][borders] about this small dataviz trick.
+
 
 ```{r}
 # get world map outline (you might need to install the package)
@@ -74,7 +82,9 @@ country_borders <- world_outline_robinson |>
     rmapshaper::ms_innerlines()
 ```
 
+
 Now everything is ready to map!
+
 
 ```{r, out.width="100%"}
 #| column: screen-inset
@@ -109,6 +119,7 @@ world_outline_robinson |>
 ```
 
 
+
 That's it. Going from text to point on the map has never been easier.       
 
 
@@ -130,3 +141,4 @@ That's it. Going from text to point on the map has never been easier.
 [data]: https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58
 [30d]: https://30daymapchallenge.com
 [shrink]: https://ikashnitsky.phd/2023/shrink-space/
+

@@ -316,7 +316,9 @@ The series consists of four posts:
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">galton</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"</span><span class="op">)</span></span>
+<span><span class="va">galton</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">galton</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">father</span>, y <span class="op">=</span> <span class="va">height</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
@@ -353,8 +355,10 @@ The series consists of four posts:
 </div>
 <p>Finally, let’s read and plot some of the downloaded data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">murder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls</a></span><span class="op">(</span><span class="st">"unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls"</span>,</span>
-<span>                   sheet <span class="op">=</span> <span class="fl">1</span>, range <span class="op">=</span> <span class="st">"A5:M13"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">murder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xls</a></span><span class="op">(</span></span>
+<span>    <span class="st">"unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls"</span>,</span>
+<span>    sheet <span class="op">=</span> <span class="fl">1</span>, range <span class="op">=</span> <span class="st">"A5:M13"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">OFFENSE</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span><span class="op">)</span> <span class="op">==</span> <span class="st">"MURDER"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"value"</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">13</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">year</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -384,7 +388,9 @@ The series consists of four posts:
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"height, cm"</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"year of competition"</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2005</span>, <span class="fl">2015</span>, <span class="fl">5</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2005</span>, <span class="fl">2015</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span></span>
+<span>            breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2005</span>, <span class="fl">2015</span>, <span class="fl">5</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2005</span>, <span class="fl">2015</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span>        <span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="ice-hockey.png" class="img-fluid"></p>
@@ -657,113 +663,119 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>galton <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"</span>)</span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>galton <span class="sc">|&gt;</span> </span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> father, <span class="at">y =</span> height))<span class="sc">+</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="al">![](galton.png)</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>galton <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>galton <span class="sc">|&gt;</span> </span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> father, <span class="at">y =</span> height))<span class="sc">+</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="fu"># Download and unzip an archive</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="al">![](galton.png)</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>Quite often datasets are stored in archived from. With R it is very simple to download and unzip the desired data archives. As an example, I will download <span class="co">[</span><span class="ot">Historical New York City Crime Data</span><span class="co">][ny]</span> provided by the Government of the Sate of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="fu"># Download and unzip an archive</span></span>
 <span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for the unzipped data</span></span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"unzipped"</span>), <span class="fu">dir.create</span>(<span class="st">"unzipped"</span>), <span class="st">"Directory already exists"</span>)</span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the URL of the archive</span></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>url_zip <span class="ot">&lt;-</span> <span class="st">"http://www.nyc.gov/html/nypd/downloads/zip/analysis_and_planning/citywide_historical_crime_data_archive.zip"</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="co"># storing the archive in a temporary file</span></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url_zip, <span class="at">destfile =</span> f)</span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(f, <span class="at">exdir =</span> <span class="st">"unzipped/."</span>)</span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>If the zipped file is rather big and we don't want to download it again the next time we run the code, it might be useful to keep the archived data.</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>Quite often datasets are stored in archived from. With R it is very simple to download and unzip the desired data archives. As an example, I will download <span class="co">[</span><span class="ot">Historical New York City Crime Data</span><span class="co">][ny]</span> provided by the Government of the Sate of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for the unzipped data</span></span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"unzipped"</span>), <span class="fu">dir.create</span>(<span class="st">"unzipped"</span>), <span class="st">"Directory already exists"</span>)</span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="co"># specify the URL of the archive</span></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>url_zip <span class="ot">&lt;-</span> <span class="st">"http://www.nyc.gov/html/nypd/downloads/zip/analysis_and_planning/citywide_historical_crime_data_archive.zip"</span></span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="co"># storing the archive in a temporary file</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url_zip, <span class="at">destfile =</span> f)</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(f, <span class="at">exdir =</span> <span class="st">"unzipped/."</span>)</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to keep the .zip file</span></span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>path_unzip <span class="ot">&lt;-</span> <span class="st">"unzipped/data_archive.zip"</span></span>
-<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">file.exists</span>(path_unzip), </span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>       <span class="fu">download.file</span>(url_zip, path_unzip, <span class="at">mode=</span><span class="st">"wb"</span>), </span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>       <span class="st">'file alredy exists'</span>)</span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(path_unzip, <span class="at">exdir =</span> <span class="st">"unzipped/."</span>)</span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>If the zipped file is rather big and we don't want to download it again the next time we run the code, it might be useful to keep the archived data.</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="co"># if we want to keep the .zip file</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>path_unzip <span class="ot">&lt;-</span> <span class="st">"unzipped/data_archive.zip"</span></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">file.exists</span>(path_unzip), </span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>       <span class="fu">download.file</span>(url_zip, path_unzip, <span class="at">mode=</span><span class="st">"wb"</span>), </span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>       <span class="st">'file alredy exists'</span>)</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(path_unzip, <span class="at">exdir =</span> <span class="st">"unzipped/."</span>)</span>
 <span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>Finally, let's read and plot some of the downloaded data.</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>murder <span class="ot">&lt;-</span> <span class="fu">read_xls</span>(<span class="st">"unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls"</span>,</span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">range =</span> <span class="st">"A5:M13"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(OFFENSE <span class="sc">|&gt;</span> <span class="fu">substr</span>(<span class="dv">1</span>, <span class="dv">6</span>) <span class="sc">==</span> <span class="st">"MURDER"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"year"</span>, <span class="st">"value"</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>())</span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>murder <span class="sc">|&gt;</span> </span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value))<span class="sc">+</span></span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)<span class="sc">+</span></span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Murders in New York"</span>)</span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a><span class="al">![](new-york.png)</span></span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a><span class="fu"># Figshare</span></span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <span class="in">`rfigshare`</span> to access the datasets from this portal. As an example I will grab <span class="co">[</span><span class="ot">the dataset on ice-hockey playes height</span><span class="co">][figshare]</span> that I assembled manually for <span class="co">[</span><span class="ot">my blog post</span><span class="co">][ice]</span>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. </span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>Finally, let's read and plot some of the downloaded data.</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>murder <span class="ot">&lt;-</span> <span class="fu">read_xls</span>(</span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    <span class="st">"unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls"</span>,</span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">range =</span> <span class="st">"A5:M13"</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(OFFENSE <span class="sc">|&gt;</span> <span class="fu">substr</span>(<span class="dv">1</span>, <span class="dv">6</span>) <span class="sc">==</span> <span class="st">"MURDER"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"year"</span>, <span class="st">"value"</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">year =</span> year <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>())</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>murder <span class="sc">|&gt;</span> </span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value))<span class="sc">+</span></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)<span class="sc">+</span></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Murders in New York"</span>)</span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a><span class="al">![](new-york.png)</span></span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a>There is a search function <span class="in">`fs_search`</span>, though my experience shows that it is easier to search for a dataset in a browser and then use the id of a file to download it. The function <span class="in">`fs_download`</span> turns an id number into a direct URL to download the file.</span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="fu"># Figshare</span></span>
 <span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfigshare)</span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <span class="in">`rfigshare`</span> to access the datasets from this portal. As an example I will grab <span class="co">[</span><span class="ot">the dataset on ice-hockey playes height</span><span class="co">][figshare]</span> that I assembled manually for <span class="co">[</span><span class="ot">my blog post</span><span class="co">][ice]</span>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. </span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a>There is a search function <span class="in">`fs_search`</span>, though my experience shows that it is easier to search for a dataset in a browser and then use the id of a file to download it. The function <span class="in">`fs_download`</span> turns an id number into a direct URL to download the file.</span>
 <span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">fs_download</span>(<span class="at">article_id =</span> <span class="st">"3394735"</span>)</span>
-<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a>hockey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rfigshare)</span>
 <span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>hockey <span class="sc">|&gt;</span> </span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> height))<span class="sc">+</span></span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#35978f"</span>, <span class="at">alpha =</span> .<span class="dv">1</span>, <span class="at">width =</span> .<span class="dv">25</span>)<span class="sc">+</span></span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">"height, cm"</span>)<span class="sc">+</span></span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">"year of competition"</span>)<span class="sc">+</span></span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2005</span>, <span class="dv">2015</span>, <span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">2005</span>, <span class="dv">2015</span>, <span class="dv">5</span>))<span class="sc">+</span></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
-<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a><span class="al">![](ice-hockey.png)</span></span>
-<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="fu"># All the code chunks can be found in [this gist][gist]</span></span>
-<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">fs_download</span>(<span class="at">article_id =</span> <span class="st">"3394735"</span>)</span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>hockey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>hockey <span class="sc">|&gt;</span> </span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> height))<span class="sc">+</span></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"#35978f"</span>, <span class="at">alpha =</span> .<span class="dv">1</span>, <span class="at">width =</span> .<span class="dv">25</span>)<span class="sc">+</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylab</span>(<span class="st">"height, cm"</span>)<span class="sc">+</span></span>
+<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlab</span>(<span class="st">"year of competition"</span>)<span class="sc">+</span></span>
+<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a>            <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2005</span>, <span class="dv">2015</span>, <span class="dv">5</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">2005</span>, <span class="dv">2015</span>, <span class="dv">5</span>)</span>
+<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="al">![](ice-hockey.png)</span></span>
+<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a><span class="ot">[two]: https://ikashnitsky.github.io/2017/data-acquisition-two</span></span>
-<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a><span class="ot">[three]: https://ikashnitsky.github.io/2017/data-acquisition-three</span></span>
-<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a><span class="ot">[odata]: https://github.com/ropensci/opendata</span></span>
-<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a><span class="ot">[list]: https://vincentarelbundock.github.io/Rdatasets/datasets.html</span></span>
-<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a><span class="ot">[ny]: https://catalog.data.gov/dataset/historical-new-york-city-crime-data-ad47e</span></span>
-<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a><span class="ot">[figshare]: https://dx.doi.org/10.6084/m9.figshare.3394735.v2</span></span>
-<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[ice]: https://ikashnitsky.github.io/2017/ice-hockey-players-height/</span></span>
-<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/e1d93a51fe5e2b5ba770096060bacd8a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a><span class="fu"># All the code chunks can be found in [this gist][gist]</span></span>
+<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a><span class="ot">[two]: https://ikashnitsky.github.io/2017/data-acquisition-two</span></span>
+<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="ot">[three]: https://ikashnitsky.github.io/2017/data-acquisition-three</span></span>
+<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a><span class="ot">[odata]: https://github.com/ropensci/opendata</span></span>
+<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a><span class="ot">[list]: https://vincentarelbundock.github.io/Rdatasets/datasets.html</span></span>
+<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a><span class="ot">[ny]: https://catalog.data.gov/dataset/historical-new-york-city-crime-data-ad47e</span></span>
+<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a><span class="ot">[figshare]: https://dx.doi.org/10.6084/m9.figshare.3394735.v2</span></span>
+<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a><span class="ot">[ice]: https://ikashnitsky.github.io/2017/ice-hockey-players-height/</span></span>
+<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/e1d93a51fe5e2b5ba770096060bacd8a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

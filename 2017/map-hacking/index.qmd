@@ -80,7 +80,9 @@ ggleg <- ggplot()+
 
 # create the blank map
 basemap <- ggplot()+
-        coord_equal(ylim=c(900000,5400000), xlim=c(2500000, 7000000), expand = c(0,0))+
+        coord_equal(
+            ylim=c(900000,5400000), xlim=c(2500000, 7000000), expand = c(0,0)
+        )+
         theme_map()+
         theme(panel.border=element_rect(color = 'black',size=.5,fill = NA),
               legend.position = 'none')
@@ -93,11 +95,20 @@ map_temp <- basemap +
 # now combine the map and the legend
 map <- ggplot() + 
         coord_equal(xlim = c(0,1), ylim = c(0,1), expand = c(0,0))+
-        annotation_custom(ggplotGrob(map_temp), xmin = 0, xmax = 1, ymin = 0, ymax = 1)+
-        annotation_custom(ggplotGrob(ggleg), xmin = 0.72, xmax = 0.99, ymin = 0.72, ymax = 0.99)+
-        labs(title = "Labour force and income in EU-27 NUTS-2 regions",
-             subtitle = "Within each of the three macro-regions of Europe - Westren, Southern, and Eastern -\nNUTS-2 regions are classified in 4 groups according to the level of GDP per capita\nand the share of working age population in 2008",
-             caption = "Data: Eurostat\nAuthor: Ilya Kashnitsky (ikashnitsky.github.io)")+
+        annotation_custom(
+            ggplotGrob(map_temp), xmin = 0, xmax = 1, ymin = 0, ymax = 1
+        )+
+        annotation_custom(
+            ggplotGrob(ggleg), xmin = 0.72, xmax = 0.99, ymin = 0.72, ymax = 0.99
+        )+
+        labs(
+            title = "Labour force and income in EU-27 NUTS-2 regions",
+            subtitle = "Within each of the three macro-regions of Europe - Westren, 
+             Southern, and Eastern -\nNUTS-2 regions are classified in 4 groups 
+             according to the level of GDP per capita\nand the share of working 
+             age population in 2008",
+            caption = "Data: Eurostat\nAuthor: Ilya Kashnitsky (ikashnitsky.github.io)"
+        )+
         theme_ipsum_rc(plot_title_size = 30, subtitle_size = 20, caption_size = 15)
 ```
 

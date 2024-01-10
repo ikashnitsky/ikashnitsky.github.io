@@ -397,15 +397,17 @@ The series consists of four posts:
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_oecd) <span class="ot">&lt;-</span> <span class="fu">names</span>(df_oecd) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="sc">|&gt;</span> </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="oecd.png" class="img-fluid"></p>
 </section><section id="wid" class="level1"><h1>WID</h1>
@@ -434,8 +436,11 @@ The series consists of four posts:
 <span><span class="va">df_wid</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">value</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Top 1% and top 10% personal wealth shares in France and Great Britain"</span>,</span>
-<span>             y <span class="op">=</span> <span class="st">"top share"</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>            title <span class="op">=</span> <span class="st">"Top 1% and top 10% personal wealth shares in </span></span>
+<span><span class="st">            France and Great Britain"</span>,</span>
+<span>             y <span class="op">=</span> <span class="st">"top share"</span></span>
+<span>        <span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">percentile</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -763,82 +768,87 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_oecd) <span class="ot">&lt;-</span> <span class="fu">names</span>(df_oecd) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
 <span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="sc">|&gt;</span> </span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="al">![](oecd.png)</span></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>            country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="fu"># WID</span></span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a><span class="al">![](oecd.png)</span></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">World Wealth and Income Database</span><span class="co">][wid]</span> is a harmonized dataset on income and wealth inequality. The developers of the database provide an R package to get their data, which is only <span class="co">[</span><span class="ot">available from github</span><span class="co">][widr]</span> so far. </span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="fu"># WID</span></span>
 <span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
-<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"WIDworld/wid-r-tool"</span>)</span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wid)</span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>The function to acquire data is <span class="in">`download_wid()`</span>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">World Wealth and Income Database</span><span class="co">][wid]</span> is a harmonized dataset on income and wealth inequality. The developers of the database provide an R package to get their data, which is only <span class="co">[</span><span class="ot">available from github</span><span class="co">][widr]</span> so far. </span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"WIDworld/wid-r-tool"</span>)</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wid)</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>?wid_series_type</span>
-<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>?wid_concepts</span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>The following nice example is adapted from <span class="co">[</span><span class="ot">the package vignette</span><span class="co">][vig]</span>. It shows the share of wealth that was owned by the richest 1% and 10% of population in France and Great Britain.</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>The function to acquire data is <span class="in">`download_wid()`</span>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>?wid_series_type</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>?wid_concepts</span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>df_wid <span class="ot">&lt;-</span> <span class="fu">download_wid</span>(</span>
-<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>        <span class="at">indicators =</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
-<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>        <span class="at">areas =</span> <span class="fu">c</span>(<span class="st">"FR"</span>, <span class="st">"GB"</span>), <span class="co"># In France an Italy</span></span>
-<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>        <span class="at">perc =</span> <span class="fu">c</span>(<span class="st">"p90p100"</span>, <span class="st">"p99p100"</span>) <span class="co"># Top 1% and top 10%</span></span>
-<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">|&gt;</span> </span>
-<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
-<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 1% and top 10% personal wealth shares in France and Great Britain"</span>,</span>
-<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"top share"</span>)<span class="sc">+</span></span>
-<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> percentile)<span class="sc">+</span></span>
-<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
-<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a><span class="al">![](wid.png)</span></span>
-<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>The following nice example is adapted from <span class="co">[</span><span class="ot">the package vignette</span><span class="co">][vig]</span>. It shows the share of wealth that was owned by the richest 1% and 10% of population in France and Great Britain.</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>df_wid <span class="ot">&lt;-</span> <span class="fu">download_wid</span>(</span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>        <span class="at">indicators =</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>        <span class="at">areas =</span> <span class="fu">c</span>(<span class="st">"FR"</span>, <span class="st">"GB"</span>), <span class="co"># In France an Italy</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>        <span class="at">perc =</span> <span class="fu">c</span>(<span class="st">"p90p100"</span>, <span class="st">"p99p100"</span>) <span class="co"># Top 1% and top 10%</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">|&gt;</span> </span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Top 1% and top 10% personal wealth shares in </span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="st">            France and Great Britain"</span>,</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"top share"</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> percentile)<span class="sc">+</span></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
 <span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a><span class="fu"># All the code chunks together can be found in [this gist][gist]</span></span>
-<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a><span class="al">![](wid.png)</span></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>***</span>
 <span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a><span class="ot">[odata]: https://github.com/ropensci/opendata</span></span>
-<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a><span class="ot">[one]: https://ikashnitsky.github.io/2017/data-acquisition-one/</span></span>
-<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a><span class="ot">[three]: https://ikashnitsky.github.io/2017/data-acquisition-three</span></span>
-<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a><span class="ot">[estat]: http://ec.europa.eu/eurostat/data/database</span></span>
-<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="ot">[esreg]: http://ec.europa.eu/eurostat/web/regions/data/database</span></span>
-<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="ot">[bulk]: http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing</span></span>
-<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="ot">[wbstats]: https://cran.r-project.org/web/packages/wbstats/README.html</span></span>
-<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="ot">[wid]: http://wid.world/wid-world/</span></span>
-<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="ot">[widr]: https://github.com/WIDworld/wid-r-tool</span></span>
-<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a><span class="ot">[vig]: https://github.com/WIDworld/wid-r-tool/raw/master/inst/doc/wid-demo.pdf</span></span>
-<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/2362ce308f47ff38c3da556384acd20f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a><span class="fu"># All the code chunks together can be found in [this gist][gist]</span></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="ot">[odata]: https://github.com/ropensci/opendata</span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="ot">[one]: https://ikashnitsky.github.io/2017/data-acquisition-one/</span></span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="ot">[three]: https://ikashnitsky.github.io/2017/data-acquisition-three</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="ot">[estat]: http://ec.europa.eu/eurostat/data/database</span></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a><span class="ot">[esreg]: http://ec.europa.eu/eurostat/web/regions/data/database</span></span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="ot">[bulk]: http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing</span></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a><span class="ot">[wbstats]: https://cran.r-project.org/web/packages/wbstats/README.html</span></span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="ot">[wid]: http://wid.world/wid-world/</span></span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a><span class="ot">[widr]: https://github.com/WIDworld/wid-r-tool</span></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="ot">[vig]: https://github.com/WIDworld/wid-r-tool/raw/master/inst/doc/wid-demo.pdf</span></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/2362ce308f47ff38c3da556384acd20f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

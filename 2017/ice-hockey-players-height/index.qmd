@@ -93,10 +93,14 @@ dfu_w <- df |> select(year, name, country, position, birth, cohort, weight) |>
 dfu_w$av.weight <- apply(dfu_w[, 6:21], 1, mean, na.rm = T)
 
 
-dfu <- left_join(dfu_h |> select(name, country, position, birth, cohort, av.height, times_participated), 
-                 dfu_w |> select(name, country, position, birth, cohort, av.weight), 
-                 by = c("name", "country", "position", "birth", "cohort")) |>
-        mutate(bmi = av.weight / (av.height / 100) ^ 2)
+dfu <- left_join(
+    dfu_h |> select(
+        name, country, position, birth, cohort, av.height, times_participated
+    ), 
+    dfu_w |> select(name, country, position, birth, cohort, av.weight), 
+    by = c("name", "country", "position", "birth", "cohort")
+) |>
+    mutate(bmi = av.weight / (av.height / 100) ^ 2)
 ```
 
 The total number of observations decreased from 6292 to 3333. For those who participated in more that one championship, I averaged the data on height and weight as they can change during the life-course. How many times, on average, are ice hockey players honored to represent their countries in the world championships? A bit less than 2.
@@ -329,7 +333,10 @@ d_cnt_n <- df_cnt_part |> group_by(country) |>
 
 gg_cnt_part <- ggplot(data = df_cnt_part, aes(x = year, y = country))+
         geom_point(color = brbg11[11], size = 7)+
-        geom_text(data = d_cnt_n, aes(y = country, x = 17.5, label = n, color = n), size = 7, fontface = 2)+
+        geom_text(
+            data = d_cnt_n, aes(y = country, x = 17.5, label = n, color = n), 
+            size = 7, fontface = 2
+        )+
         geom_text(data = d_cnt_n, aes(y = country, x = 18.5, label = " "), size = 7)+
         scale_color_gradientn(colours = brbg11[7:11])+
         xlab(NULL)+
@@ -576,11 +583,16 @@ htmlreg(list(m1, m2, m3), file = "models_height.html", single.row = T)
 # players' height by country
 gg_av.h_country <- ggplot(dfuc , aes(x = factor(cohort), y = av.height))+
         geom_point(color = "grey50", alpha = .25)+
-        stat_summary(aes(group = country), geom = "line", fun.y = mean, size = .5, color = "grey50")+
+        stat_summary(
+            aes(group = country), geom = "line", fun.y = mean, 
+            size = .5, color = "grey50"
+        )+
         stat_smooth(aes(group = country, color = country), geom = "line", size = 1)+
         facet_wrap(~country, ncol = 4)+
         coord_cartesian(ylim = c(170, 195))+
-        scale_x_discrete(labels = paste(seq(1970, 1990, 10)), breaks = paste(seq(1970, 1990, 10)))+
+        scale_x_discrete(
+            labels = paste(seq(1970, 1990, 10)), breaks = paste(seq(1970, 1990, 10))
+        )+
         labs(x = "birth cohort", y = "height, cm")+
         theme_few(base_size = 15, base_family = "mono")+
         theme(legend.position = "none", 
@@ -608,8 +620,10 @@ gg_pos <- ggplot(dfuc_pos , aes(x = cohort, y = av.height))+
         xlab("birth cohort")+
         ylab("height, cm")+
         theme_few(base_size = 15, base_family = "mono")+
-        theme(legend.position = "none", 
-              panel.grid = element_line(colour = "grey75", size = .25))
+        theme(
+            legend.position = "none", 
+            panel.grid = element_line(colour = "grey75", size = .25)
+        )
 ```
 
 ![](fig-05-corr-by-pos.png)
@@ -621,8 +635,10 @@ gg_pos <- ggplot(dfuc_pos , aes(x = cohort, y = av.height))+
 m3d <- lm(data = dfuc |> filter(position == "D"), av.height~cohort+country)
 m3f <- lm(data = dfuc |> filter(position == "F"), av.height~cohort+country)
 m3g <- lm(data = dfuc |> filter(position == "G"), av.height~cohort+country)
-htmlreg(list(m3d, m3f, m3g), file = "models_height_pos.html", single.row = T, 
-        custom.model.names = c("Model 3 D", "Model 3 F", "Model 3 G"))
+htmlreg(
+    list(m3d, m3f, m3g), file = "models_height_pos.html", single.row = T, 
+    custom.model.names = c("Model 3 D", "Model 3 F", "Model 3 G")
+)
 ```
 
 **Table 3. Model 3 -- separately for defenders, forwards, and goalkeepers**  
@@ -889,14 +905,18 @@ names(df_hb_w)[2:26] <- paste("y", names(df_hb_w)[2:26])
 diffs <- df_hb_w[, 3:26]-df_hb_w[, 2:25]
 
 df_hb_gr<- df_hb_w |>
-        transmute(country, 
-                  gr_1961_1980 = unname(apply(diffs[, 22:24], 1, mean, na.rm = T))*2, 
-                  gr_1901_1960 = unname(apply(diffs[, 9:21], 1, mean, na.rm = T))*2, 
-                  gr_1856_1900 = unname(apply(diffs[, 1:8], 1, mean, na.rm = T))*2) |>
+        transmute(
+            country, 
+            gr_1961_1980 = unname(apply(diffs[, 22:24], 1, mean, na.rm = T))*2, 
+            gr_1901_1960 = unname(apply(diffs[, 9:21], 1, mean, na.rm = T))*2, 
+            gr_1856_1900 = unname(apply(diffs[, 1:8], 1, mean, na.rm = T))*2
+        ) |>
         gather("period", "average_growth", 2:4) |>
         filter(country %in% both_cnt) |>
-        mutate(country = factor(country, levels = rev(levels(factor(country)))), 
-               period = factor(period, labels = c("1856-1900", "1901-1960", "1961-1980")))
+        mutate(
+            country = factor(country, levels = rev(levels(factor(country)))), 
+            period = factor(period, labels = c("1856-1900", "1901-1960", "1961-1980"))
+        )
 
 
 gg_hb_growth <- ggplot(df_hb_gr, aes(x = average_growth, y = country))+
@@ -908,8 +928,10 @@ gg_hb_growth <- ggplot(df_hb_gr, aes(x = average_growth, y = country))+
         xlab("average growth in men's height over 10 years, cm")+
         ylab(NULL)+
         theme_few(base_size = 20, base_family = "mono")+
-        theme(legend.position = "none", 
-              panel.grid = element_line(colour = "grey75", size = .25))
+        theme(
+            legend.position = "none", 
+            panel.grid = element_line(colour = "grey75", size = .25)
+        )
 ```
 
 ![](fig-07-av-growth-pop.png)
@@ -935,8 +957,10 @@ gg_month <- ggplot(df_month, aes(x = factor(month)))+
         scale_x_discrete(breaks = 1:12, labels = month.abb)+
         labs(x = "month of birth", y = "# of players")+
         theme_few(base_size = 20, base_family = "mono")+
-        theme(legend.position = "none", 
-              panel.grid = element_line(colour = "grey75", size = .25))
+        theme(
+            legend.position = "none", 
+            panel.grid = element_line(colour = "grey75", size = .25)
+        )
 ```
 
 ![](fig-08-month-selectivity.png)

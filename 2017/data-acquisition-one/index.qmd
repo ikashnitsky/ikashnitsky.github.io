@@ -64,7 +64,9 @@ If a dataset is hosted online and has a direct link to the file, it can be easil
 ```{r, eval=FALSE}
 library(tidyverse)
 
-galton <- read_csv("https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv")
+galton <- read_csv(
+    "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/Galton.csv"
+)
 
 galton |> 
         ggplot(aes(x = father, y = height))+
@@ -111,8 +113,10 @@ unzip(path_unzip, exdir = "unzipped/.")
 Finally, let's read and plot some of the downloaded data.
 
 ```{r, eval=FALSE}
-murder <- read_xls("unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls",
-                   sheet = 1, range = "A5:M13") |> 
+murder <- read_xls(
+    "unzipped/Web Data 2010-2011/Seven Major Felony Offenses 2000 - 2011.xls",
+    sheet = 1, range = "A5:M13"
+) |> 
         filter(OFFENSE |> substr(1, 6) == "MURDER") |> 
         gather("year", "value", 2:13) |> 
         mutate(year = year |> as.numeric())
@@ -148,7 +152,9 @@ hockey |>
         stat_smooth(method = "lm", size = 1)+
         ylab("height, cm")+
         xlab("year of competition")+
-        scale_x_continuous(breaks = seq(2005, 2015, 5), labels = seq(2005, 2015, 5))+
+        scale_x_continuous(
+            breaks = seq(2005, 2015, 5), labels = seq(2005, 2015, 5)
+        )+
         theme_minimal(base_family = "mono")
 ```
 

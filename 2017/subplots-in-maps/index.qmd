@@ -155,7 +155,10 @@ Finally, everything is ready to build the main map and stick the two subplots on
 ```{r, eval=FALSE}
 # finally the map of Urb/Rur typology
 
-caption <- "Classification: De Beer, J., Van Der Gaag, N., & Van Der Erf, R. (2014). New classification of urban and rural NUTS 2 regions in Europe. NIDI Working Papers, 2014/3. Retrieved from http://www.nidi.nl/shared/content/output/papers/nidi-wp-2014-03.pdf
+caption <- "Classification: De Beer, J., Van Der Gaag, N., & Van Der Erf, R. (2014). 
+New classification of urban and rural NUTS 2 regions in Europe. 
+NIDI Working Papers, 2014/3. 
+Retrieved from http://www.nidi.nl/shared/content/output/papers/nidi-wp-2014-03.pdf
 \nIlya Kashnitsky (ikashnitsky.github.io)"
 
 typ <-  basemap + 

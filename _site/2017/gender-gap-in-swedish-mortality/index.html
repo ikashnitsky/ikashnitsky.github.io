@@ -226,7 +226,6 @@ ga('send', {
                 <div class="quarto-category">r</div>
                 <div class="quarto-category">tw</div>
                 <div class="quarto-category">death rates</div>
-                <div class="quarto-category">sweden</div>
                 <div class="quarto-category">sex gap</div>
               </div>
                   </div>
@@ -276,9 +275,9 @@ ga('send', {
 <span><span class="va">years</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1751</span>, <span class="fl">1800</span>, <span class="fl">1850</span>, <span class="fl">1900</span>, <span class="fl">1925</span>, <span class="fl">1950</span>, <span class="fl">1960</span>, <span class="fl">1970</span>, <span class="fl">1980</span>, <span class="fl">1990</span>, <span class="fl">2000</span>, <span class="fl">2010</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># select years and calculate male-to-female arte-ratio of mortality</span></span>
-<span><span class="va">df_selected</span> <span class="op">&lt;-</span> <span class="va">df_swe</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">Sex</span>, <span class="va">Age</span>, <span class="va">mx</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">years</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>        <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span><span class="op">(</span><span class="va">Sex</span>, <span class="va">mx</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span><span class="va">df_selected</span> <span class="op">&lt;-</span> <span class="va">df_swe</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">Sex</span>, <span class="va">Age</span>, <span class="va">mx</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">years</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span><span class="op">(</span><span class="va">Sex</span>, <span class="va">mx</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">Year</span>, age <span class="op">=</span> <span class="va">Age</span>, value <span class="op">=</span> <span class="va">m</span> <span class="op">/</span> <span class="va">f</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="visualization" class="level1"><h1>Visualization</h1>
@@ -289,7 +288,8 @@ ga('send', {
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">stat_smooth</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">value</span>, group <span class="op">=</span> <span class="fl">1</span>, color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span>, se <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">year</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Male-to-female age-specific mortality rate ratio, Sweden"</span>,</span>
-<span>             subtitle <span class="op">=</span> <span class="st">"Untill quite recent times, mortality of females was not much lower than that of males"</span>,</span>
+<span>             subtitle <span class="op">=</span> <span class="st">"Untill quite recent times, mortality of females was not </span></span>
+<span><span class="st">             much lower than that of males"</span>,</span>
 <span>             caption <span class="op">=</span> <span class="st">"\nData: Human Mortality Database (https://mortality.org)</span></span>
 <span><span class="st">             Note: Colored lines are produced with loess smoothing"</span>,</span>
 <span>             x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Rate ratio"</span><span class="op">)</span><span class="op">+</span></span>
@@ -550,40 +550,41 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(age, value, <span class="at">group =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="fu">factor</span>(year)), <span class="at">se =</span> F)<span class="sc">+</span></span>
 <span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>year, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Male-to-female age-specific mortality rate ratio, Sweden"</span>,</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">"Untill quite recent times, mortality of females was not much lower than that of males"</span>,</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Data: Human Mortality Database (https://mortality.org)</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="st">             Note: Colored lines are produced with loess smoothing"</span>,</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Rate ratio"</span>)<span class="sc">+</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> <span class="st">"Roboto Condensed"</span>) <span class="sc">+</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Roboto Mono"</span>))</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="al">![](sweden.png)</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># Comment</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>Today it is common knowledge that male mortality is always higher than female. There are more males being born, then eventually the sex ratio levels due to higher male mortality (see <span class="co">[</span><span class="ot">my previous post</span><span class="co">][post1]</span>). Though, male mortality was not always much higher. Back in the days, when infant mortality was much higher and women used to have much higher fertility, there was almost no gender gap in age-specific mortality levels. Constant pregnancy and frequent childbirths had a strong negative impact on female health and survival statistics. We can see that only in the second half of the 20-th century gender gap in mortality became substantial in Sweden.  </span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/802310186560081920) and [gist](https://gist.github.com/ikashnitsky/872d3a97390a60d26eeb64f0f5600067)</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">"Untill quite recent times, mortality of females was not </span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="st">             much lower than that of males"</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Data: Human Mortality Database (https://mortality.org)</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="st">             Note: Colored lines are produced with loess smoothing"</span>,</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Rate ratio"</span>)<span class="sc">+</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> <span class="st">"Roboto Condensed"</span>) <span class="sc">+</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Roboto Mono"</span>))</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="al">![](sweden.png)</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="fu"># Comment</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>Today it is common knowledge that male mortality is always higher than female. There are more males being born, then eventually the sex ratio levels due to higher male mortality (see <span class="co">[</span><span class="ot">my previous post</span><span class="co">][post1]</span>). Though, male mortality was not always much higher. Back in the days, when infant mortality was much higher and women used to have much higher fertility, there was almost no gender gap in age-specific mortality levels. Constant pregnancy and frequent childbirths had a strong negative impact on female health and survival statistics. We can see that only in the second half of the 20-th century gender gap in mortality became substantial in Sweden.  </span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu"># This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/802310186560081920) and [gist](https://gist.github.com/ikashnitsky/872d3a97390a60d26eeb64f0f5600067)</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>By using this data, I agree to the <span class="co">[</span><span class="ot">user agreement</span><span class="co">][lic]</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>By using this data, I agree to the <span class="co">[</span><span class="ot">user agreement</span><span class="co">][lic]</span></span>
 <span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmd]: http://www.mortality.org</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="ot">[lic]: http://www.mortality.org/Public/UserAgreement.php</span></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmdhfd]: https://cran.r-project.org/web/packages/HMDHFDplus/index.html</span></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="ot">[tim]: https://sites.google.com/site/timriffepersonal/about-me</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ot">[post1]: https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/</span></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="ot">[post2]: https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/</span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ot">[retr]: http://www.rostock-retreat.org</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmd]: http://www.mortality.org</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="ot">[lic]: http://www.mortality.org/Public/UserAgreement.php</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="ot">[hmdhfd]: https://cran.r-project.org/web/packages/HMDHFDplus/index.html</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="ot">[tim]: https://sites.google.com/site/timriffepersonal/about-me</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="ot">[post1]: https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="ot">[post2]: https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="ot">[retr]: http://www.rostock-retreat.org</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
