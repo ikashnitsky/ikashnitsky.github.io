@@ -75,7 +75,7 @@ website:
         href: "mailto:ilya.kashnitsky@gmail.com"
       - icon: rss-fill
         aria-label: rss
-        href: atom.xml
+        href: index.xml
 
 
   body-header: |

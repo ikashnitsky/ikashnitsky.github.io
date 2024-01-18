@@ -6,11 +6,13 @@ listing:
     contents: "2023/**/index.qmd"
     sort: "date desc"
     template: html/listing-grid.ejs
+    categories: true
+    feed: 
+      categories: r
   - id: posts_2022
     contents: "2022/**/index.qmd"
     sort: "date desc"
     template: html/listing-grid.ejs
-    categories: true
   - id: posts_2021
     contents: "2021/**/index.qmd"
     sort: "date desc"
@@ -36,8 +38,9 @@ listing:
       - "2017/**/index.qmd"
       - "2017/**/index.md"
     sort: "date desc"
-    # type: grid
     template: html/listing-grid.ejs
+    # type: grid
+  
 # image-placeholder: img/card-tw.png
 page-layout: full
 toc-title: Year
