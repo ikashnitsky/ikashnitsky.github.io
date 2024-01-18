@@ -3,7 +3,7 @@ title: "Sex ratios in all countries from Human Mortality Database"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-05"
 image: teaser.png
-categories: [r, tw, hmd, death rates]
+categories: [r, hmd, demography]
 ---
 
 ***

@@ -3,7 +3,7 @@ title: "What is life expectancy? And, even more important, what it isn't"
 description-meta: "{{< meta website.description >}}"
 date: "2021-03-05"
 image: teaser.png
-categories: [r, tw, 101, life expectancy]
+categories: [r, 101, demography]
 ---
 
 ***

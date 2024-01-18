@@ -3,7 +3,7 @@ title: "Regional population structures at a glance"
 description-meta: "{{< meta website.description >}}"
 date: "2018-07-21"
 image: teaser.png
-categories: [r, dataviz, tricolore]
+categories: [r, dataviz, demography]
 ---
 
 ***

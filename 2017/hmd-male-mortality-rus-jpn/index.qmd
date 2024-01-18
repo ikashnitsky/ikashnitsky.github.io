@@ -3,7 +3,7 @@ title: "Male mortality in Russia and Japan"
 description-meta: "{{< meta website.description >}}"
 date: "2017-02-06"
 image: teaser.png
-categories: [r, tw, hmd, death rates]
+categories: [r, hmd, demography]
 ---
 
 ***

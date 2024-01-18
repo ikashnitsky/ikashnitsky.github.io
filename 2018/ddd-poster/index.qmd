@@ -3,7 +3,7 @@ title: "Compare population age structures of Europe NUTS-3 regions and the US co
 description-meta: "{{< meta website.description >}}"
 date: "2018-12-03"
 image: teaser.png
-categories: [r, tricolore, rspatial]
+categories: [r, demography, dataviz, rspatial]
 ---
 
 ***

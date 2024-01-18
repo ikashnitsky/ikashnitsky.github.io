@@ -3,7 +3,7 @@ title: "See you in Barcelona this summer"
 description-meta: "{{< meta website.description >}}"
 date: "2019-03-07"
 image: teaser.png
-categories: [r, dataviz, teaching]
+categories: [r, dataviz, demography]
 ---
 
 ***

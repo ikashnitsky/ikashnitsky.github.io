@@ -3,7 +3,7 @@ title: "Colorcoded map: regional population structures at a glance"
 description-meta: "{{< meta website.description >}}"
 date: "2017-06-30"
 image: teaser.png
-categories: [r, ggplot2, rspatial, tricolore]
+categories: [r, ggplot2, rspatial, dataviz, demography]
 ---
 
 ***

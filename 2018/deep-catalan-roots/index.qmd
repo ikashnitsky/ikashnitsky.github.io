@@ -3,7 +3,7 @@ title: "Deep Catalan roots: playing with stringdist"
 description-meta: "{{< meta website.description >}}"
 date: "2018-06-04"
 image: teaser.jpg
-categories: [r, stringdist]
+categories: [r, demography]
 ---
 
 ***

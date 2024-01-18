@@ -636,7 +636,6 @@ This post is one in the <strong>dataviz course series</strong>. Other posts:
 
  ]]></description>
   <category>r</category>
-  <category>geocoding</category>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.github.io/2023/geocoding/index.html</guid>
@@ -770,7 +769,7 @@ Zarulli V, Kashnitsky I, Vaupel JW. 2021. Death rates at specific life stages mo
   <category>r</category>
   <category>dataviz</category>
   <category>trick</category>
-  <category>facet</category>
+  <category>faceting</category>
   <guid>https://ikashnitsky.github.io/2023/shrink-space/index.html</guid>
   <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg"/>
@@ -1081,9 +1080,8 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
 </div>
 </div></section></div> ]]></description>
   <category>r</category>
-  <category>tw</category>
   <category>101</category>
-  <category>life expectancy</category>
+  <category>demography</category>
   <guid>https://ikashnitsky.github.io/2021/life-expectancy-101/index.html</guid>
   <pubDate>Thu, 04 Mar 2021 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2021/life-expectancy-101/teaser.png" medium="image" type="image/png" height="90" width="144"/>
@@ -1334,7 +1332,6 @@ Happy paper writing with Zotero and RStudio!
  ]]></description>
   <category>r</category>
   <category>tutorial</category>
-  <category>zotero</category>
   <guid>https://ikashnitsky.github.io/2019/zotero/index.html</guid>
   <pubDate>Wed, 13 Mar 2019 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2019/zotero/teaser.png" medium="image" type="image/png" height="90" width="144"/>
@@ -1367,7 +1364,7 @@ Happy paper writing with Zotero and RStudio!
  ]]></description>
   <category>r</category>
   <category>dataviz</category>
-  <category>teaching</category>
+  <category>demography</category>
   <guid>https://ikashnitsky.github.io/2019/barcelona-summer-school-of-demography/index.html</guid>
   <pubDate>Wed, 06 Mar 2019 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2019/barcelona-summer-school-of-demography/teaser.png" medium="image" type="image/png" height="90" width="144"/>
@@ -1427,7 +1424,8 @@ See also
 
  ]]></description>
   <category>r</category>
-  <category>tricolore</category>
+  <category>demography</category>
+  <category>dataviz</category>
   <category>rspatial</category>
   <guid>https://ikashnitsky.github.io/2018/ddd-poster/index.html</guid>
   <pubDate>Sun, 02 Dec 2018 23:00:00 GMT</pubDate>
@@ -1576,7 +1574,7 @@ See also
 </section> ]]></description>
   <category>r</category>
   <category>dataviz</category>
-  <category>tricolore</category>
+  <category>demography</category>
   <guid>https://ikashnitsky.github.io/2018/the-lancet-paper/index.html</guid>
   <pubDate>Fri, 20 Jul 2018 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2018/the-lancet-paper/teaser.png" medium="image" type="image/png" height="90" width="144"/>
@@ -1669,7 +1667,7 @@ Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots
 
  ]]></description>
   <category>r</category>
-  <category>stringdist</category>
+  <category>demography</category>
   <guid>https://ikashnitsky.github.io/2018/deep-catalan-roots/index.html</guid>
   <pubDate>Sun, 03 Jun 2018 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.github.io/2018/deep-catalan-roots/teaser.jpg" medium="image" type="image/jpeg"/>

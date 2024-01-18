@@ -3,7 +3,7 @@ title: "Young people neither in employment nor in education and training in Euro
 description-meta: "{{< meta website.description >}}"
 date: "2017-07-18"
 image: teaser.jpg
-categories: [r, eurostat, geofacet]
+categories: [r, faceting]
 ---
 
 ***

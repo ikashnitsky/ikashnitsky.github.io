@@ -3,7 +3,7 @@ title: "Save space in faceted plots"
 description-meta: "{{< meta website.description >}}"
 date: "2023-02-27"
 image: teaser.jpg
-categories: [r, dataviz, trick, facet]
+categories: [r, dataviz, trick, faceting]
 ---
 
 

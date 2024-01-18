@@ -3,7 +3,7 @@ title: "Zotero hacks: unlimited synced storage and its smooth use with rmarkdown
 description-meta: "{{< meta website.description >}}"
 date: "2019-03-14"
 image: teaser.png
-categories: [r, tutorial, zotero]
+categories: [r, tutorial]
 ---
 
 ***
