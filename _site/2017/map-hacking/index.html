@@ -215,11 +215,6 @@ ga('send', {
 </i> 
  <span class="menu-text"></span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index-r.xml"><i class="bi bi-r" role="img" aria-label="rss-r">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
 </ul>
 <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -270,9 +265,9 @@ ga('send', {
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># version 1.1.1</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op">)</span> <span class="co"># version 0.17</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span> <span class="co"># version 3.4.0</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/">ggthemes</a></span><span class="op">)</span> <span class="co"># version 3.4.0</span></span>
 <span><span class="va">font</span> <span class="op">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/hrbrmstr/hrbrthemes">hrbrthemes</a></span><span class="op">)</span> <span class="co"># version 0.1.0</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hrbrthemes</span><span class="op">)</span> <span class="co"># version 0.1.0</span></span>
 <span><span class="co"># The code is tested on a PC-win7-x64</span></span>
 <span><span class="co"># R version 3.3.3</span></span>
 <span></span>
@@ -320,14 +315,14 @@ ga('send', {
 <span>                 size <span class="op">=</span> <span class="fl">6</span>, fontface <span class="op">=</span> <span class="fl">2</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'LOW'</span>, <span class="st">'HIGH'</span><span class="op">)</span>, family <span class="op">=</span> <span class="va">font</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">'text'</span>, x <span class="op">=</span> <span class="fl">.1</span>, y <span class="op">=</span> <span class="fl">.9</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>                 size <span class="op">=</span> <span class="fl">7</span>, fontface <span class="op">=</span> <span class="fl">2</span>, label <span class="op">=</span> <span class="st">"LEGEND"</span>, family <span class="op">=</span> <span class="va">font</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>        <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create the blank map</span></span>
 <span><span class="va">basemap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span></span>
 <span>            ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">900000</span>,<span class="fl">5400000</span><span class="op">)</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500000</span>, <span class="fl">7000000</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span></span>
 <span>        <span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'black'</span>,size<span class="op">=</span><span class="fl">.5</span>,fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
 <span>              legend.position <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
 <span></span>

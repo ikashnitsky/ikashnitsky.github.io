@@ -25,7 +25,7 @@ about:
 
 
 <button type="button" class="btn btn-danger">
-<a href="https://ikashnitsky.github.io/x/cv/2023-12-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
+<a href="https://ikashnitsky.github.io/x/cv/2024-06-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
 </button>
 
 <button type="button" class="btn btn-success">
@@ -47,7 +47,9 @@ I am a demographer.
 
 This site gives an overview of my academic activities.
 
-I am an Assistant Professor at [Interdisciplinary Centre on Population Dynamics][cpop], University of Southern Denmark, Odense, Denmark. The main projects that I am currently involved in are on [the sustainability of pension systems under the changing mortality][indexation] and [the analysis of excess deaths due to the COVID-19 pandemic][excess].
+I am a Senior Researcher at [Statistics Denmark][dst]. 
+
+Until recently I was an Assistant Professor at the [Interdisciplinary Centre on Population Dynamics][cpop], University of Southern Denmark, Odense, Denmark. 
 
 I did [my PhD project][phd] at the [University of Groningen][rug] and [Netherlands Interdisciplinary Demographic Institute][nidi] with the scientific supervision by [Leo van Wissen][lvw] and [Joop de Beer][jdb]. The focus of [the thesis][thesis] is on regional variations in aging across Europe, the demographic processes shaping them, their dynamics and possible implications for economies and societies. My interests include most topics relating to demography, population geography, spatial analysis and data visualization.
 
@@ -102,3 +104,4 @@ Ilya
 [cpop]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop
 [cpop-me]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/about_the_centre/our_people/cpop_dem/ilya_kashnitsky
 [mailto]: mailto:ilya.kashnitsky@gmail.com  
+[dst]: https://www.dst.dk/en/
