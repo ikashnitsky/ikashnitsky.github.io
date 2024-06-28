@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.553">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-05-22">
-<meta name="description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<title>Arranging subplots with ggplot2 | Ilya Kashnitsky</title>
+<meta name="description" content="<strong>?meta:website.description</strong>">
+
+<title>Arranging subplots with ggplot2 | ?meta:website.title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,11 +20,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,44 +50,15 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -102,13 +77,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -117,10 +99,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
-}</script><script type="text/javascript">
+}</script>
+
+<script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -132,94 +118,107 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script><style>
-    .quarto-title-block .quarto-title-banner {
-      background: #025757;
-    }
-    </style>
-<meta property="og:title" content="Arranging subplots with ggplot2 | Ilya Kashnitsky">
-<meta property="og:description" content="For my recently published paper, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:">
-<meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta property="og:site-name" content="Ilya Kashnitsky">
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #025757;
+      }
+</style>
+
+
+<meta property="og:title" content="Arranging subplots with ggplot2 | ?meta:website.title">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta property="og:image" content="https://ikashnitsky.github.io/2017/align-six-maps/teaser.png">
+<meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:width" content="1910">
-<meta name="twitter:title" content="Arranging subplots with ggplot2 | Ilya Kashnitsky">
-<meta name="twitter:description" content="For my recently published paper, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
+<meta property="og:image:height" content="250">
+<meta property="og:image:width" content="400">
+<meta name="twitter:title" content="Arranging subplots with ggplot2 | ?meta:website.title">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/align-six-maps/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1000">
-<meta name="twitter:image-width" content="1910">
+<meta name="twitter:image-height" content="250">
+<meta name="twitter:image-width" content="400">
 </head>
+
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../me.html">
- <span class="menu-text">About me</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../me.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd">
- <span class="menu-text">DatavizArtSkill</span></a>
+    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd"> 
+<span class="menu-text">DatavizArtSkill</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dd.html">
- <span class="menu-text">Demographic Digest</span></a>
+    <a class="nav-link" href="../../dd.html"> 
+<span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ikashnitsky"><i class="bi bi-github" role="img" aria-label="github">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"> <i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"> <i class="bi bi-mastodon" role="img" aria-label="mastodon">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"> <i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Arranging subplots with ggplot2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -235,7 +234,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p><a href="https://ikashnitsky.github.io">Ilya Kashnitsky</a> <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
             </div>
     </div>
       
@@ -255,109 +254,115 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>For <a href="https://doi.org/10.1186/s41118-017-0018-2">my recently published paper</a>, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
-<p><img src="fig-01.png" class="img-fluid"><strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
-<p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">ggplot2::annotation_custom()</a></code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
+<p><img src="fig-01.png" class="img-fluid"> <strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
+<p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code>ggplot2::annotation_custom()</code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">align_six_plots</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">list.plots</span>, </span>
-<span>                                    <span class="va">family</span> <span class="op">=</span> <span class="st">""</span>,</span>
-<span>                                    <span class="va">labels</span><span class="op">=</span><span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, </span>
-<span>                                    <span class="va">labels.size</span><span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">{</span></span>
-<span></span>
-<span>        <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span>        <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
-<span></span>
-<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">21</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">21</span>, ymax <span class="op">=</span> <span class="fl">29</span><span class="op">)</span><span class="op">+</span></span>
-<span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>, xmax <span class="op">=</span> <span class="fl">20.5</span>, ymin <span class="op">=</span> <span class="fl">19.5</span>, ymax <span class="op">=</span> <span class="fl">27.5</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>,xmax <span class="op">=</span> <span class="fl">20.5</span>,ymin <span class="op">=</span> <span class="fl">10.5</span>,ymax <span class="op">=</span> <span class="fl">18.5</span><span class="op">)</span><span class="op">+</span></span>
-<span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">9</span>,ymax <span class="op">=</span> <span class="fl">17</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>,xmax <span class="op">=</span> <span class="fl">20.5</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">+</span></span>
-<span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span>        <span class="co"># DF with the coordinates of the 5 arrows</span></span>
-<span>        <span class="va">df.arrows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
-<span>                                x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span><span class="op">)</span>,</span>
-<span>                                y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">21</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span><span class="op">)</span>,</span>
-<span>                                xend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span><span class="op">)</span>,</span>
-<span>                                yend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20.5</span>,<span class="fl">17.5</span>,<span class="fl">10</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span>        <span class="co"># add arrows</span></span>
-<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>,</span>
-<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
-<span>                           curvature <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span>,</span>
-<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
-<span>                           curvature <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,</span>
-<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">3</span><span class="op">)</span>,</span>
-<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
-<span>                           curvature <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>,</span>
-<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">4</span><span class="op">)</span>,</span>
-<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
-<span>                           curvature <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">5</span><span class="op">)</span>,</span>
-<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
-<span>                           curvature <span class="op">=</span> <span class="fl">0.3</span>,</span>
-<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span>        <span class="co"># add labes</span></span>
-<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">'text'</span>,label <span class="op">=</span> <span class="va">labels</span>,</span>
-<span>                            x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">.5</span>,<span class="fl">.5</span>,<span class="fl">12.5</span><span class="op">)</span><span class="op">+</span><span class="fl">.5</span>,</span>
-<span>                            y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">29</span>,<span class="fl">27.5</span>,<span class="fl">18.5</span>,<span class="fl">17</span>,<span class="fl">8</span>,<span class="fl">8</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span>,</span>
-<span>                            size<span class="op">=</span><span class="va">labels.size</span>,hjust<span class="op">=</span><span class="fl">0</span>, vjust<span class="op">=</span><span class="fl">0</span>, family <span class="op">=</span> <span class="va">family</span><span class="op">)</span></span>
-<span></span>
-<span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">gg</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>align_six_plots <span class="ot">&lt;-</span> <span class="cf">function</span>(list.plots, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">family =</span> <span class="st">""</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels.size=</span><span class="dv">8</span>){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(tidyverse)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(gridExtra)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">21</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">1</span>]]),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">21</span>, <span class="at">ymax =</span> <span class="dv">29</span>)<span class="sc">+</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">2</span>]]),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>, <span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="fl">19.5</span>, <span class="at">ymax =</span> <span class="fl">27.5</span>)<span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">3</span>]]),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>,<span class="at">ymin =</span> <span class="fl">10.5</span>,<span class="at">ymax =</span> <span class="fl">18.5</span>)<span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">4</span>]]),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">9</span>,<span class="at">ymax =</span> <span class="dv">17</span>)<span class="sc">+</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">5</span>]]),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">6</span>]]),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_void</span>()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># DF with the coordinates of the 5 arrows</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        df.arrows <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">x=</span><span class="fu">c</span>(<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                                <span class="at">y=</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">21</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                                <span class="at">xend=</span><span class="fu">c</span>(<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>),</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                                <span class="at">yend=</span><span class="fu">c</span>(<span class="fl">20.5</span>,<span class="fl">17.5</span>,<span class="dv">10</span>,<span class="dv">7</span>,<span class="dv">7</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add arrows</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">1</span>),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.1</span>,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">2</span>),</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">3</span>),</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.15</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">4</span>),</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="dv">0</span>,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">5</span>),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.3</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>)))</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add labes</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">'text'</span>,<span class="at">label =</span> labels,</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x=</span><span class="fu">c</span>(.<span class="dv">5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,.<span class="dv">5</span>,.<span class="dv">5</span>,<span class="fl">12.5</span>)<span class="sc">+</span>.<span class="dv">5</span>,</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span><span class="fu">c</span>(<span class="dv">29</span>,<span class="fl">27.5</span>,<span class="fl">18.5</span>,<span class="dv">17</span>,<span class="dv">8</span>,<span class="dv">8</span>)<span class="sc">+</span>.<span class="dv">1</span>,</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>                            <span class="at">size=</span>labels.size,<span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="dv">0</span>, <span class="at">family =</span> family)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(gg)</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s check, if the function works. For that I create just a blank plot, clone it six times, store the six plots in a list, and finally feed it to the function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/">ggthemes</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># create a simple blank square plot</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.5</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>        aspect.ratio <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># clone this plot six times and store as a list of six</span></span>
-<span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">mget</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># use the function on the list</span></span>
-<span><span class="va">six</span> <span class="op">&lt;-</span> <span class="fu">align_six_plots</span><span class="op">(</span><span class="va">plots</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># save the output</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"six_square_plots_aligned.png"</span>, <span class="va">six</span>, width<span class="op">=</span><span class="fl">12</span>, height<span class="op">=</span><span class="fl">18</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a simple blank square plot</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()<span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># clone this plot six times and store as a list of six</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">mget</span>(<span class="fu">rep</span>(<span class="st">"p"</span>, <span class="dv">6</span>))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># use the function on the list</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>six <span class="ot">&lt;-</span> <span class="fu">align_six_plots</span>(plots)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># save the output</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"six_square_plots_aligned.png"</span>, six, <span class="at">width=</span><span class="dv">12</span>, <span class="at">height=</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="fig-02.png" class="img-fluid"></p>
 <p>Just what we wanted to get.</p>
 <hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 To reproduce all the actual results and figures from <a href="https://doi.org/10.1186/s41118-017-0018-2">my paper</a>, have a look at this github <a href="https://github.com/ikashnitsky/genus-2017">repo</a>
 </div>
 </div>
@@ -370,7 +375,8 @@ To reproduce all the actual results and figures from <a href="https://doi.org/10
 <!-- -->
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -397,9 +403,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -486,10 +506,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -499,8 +536,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -512,9 +558,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -553,8 +835,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIow4AQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Arranging subplots with ggplot2"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -574,97 +859,97 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>Actually, <span class="in">`ggplot2`</span> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it's all about the handy function <span class="in">`ggplot2::annotation_custom()`</span>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function. </span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>align_six_plots <span class="ot">&lt;-</span> <span class="cf">function</span>(list.plots, </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">family =</span> <span class="st">""</span>,</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels.size=</span><span class="dv">8</span>){</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="in">align_six_plots &lt;- function(list.plots, </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="in">                                    family = "",</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="in">                                    labels=LETTERS[1:6], </span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="in">                                    labels.size=8){</span></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(tidyverse)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(gridExtra)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="in">        require(tidyverse)</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="in">        require(gridExtra)</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">21</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="in">        gg &lt;- ggplot()+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="in">                coord_equal(xlim = c(0, 21), ylim = c(0, 30), expand = c(0,0))+</span></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">1</span>]]),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">21</span>, <span class="at">ymax =</span> <span class="dv">29</span>)<span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[1]]),</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 0.5, xmax = 8.5, ymin = 21, ymax = 29)+</span></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">2</span>]]),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>, <span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="fl">19.5</span>, <span class="at">ymax =</span> <span class="fl">27.5</span>)<span class="sc">+</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">3</span>]]),</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>,<span class="at">ymin =</span> <span class="fl">10.5</span>,<span class="at">ymax =</span> <span class="fl">18.5</span>)<span class="sc">+</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[2]]),</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 12.5, xmax = 20.5, ymin = 19.5, ymax = 27.5)+</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[3]]),</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 12.5,xmax = 20.5,ymin = 10.5,ymax = 18.5)+</span></span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">4</span>]]),</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">9</span>,<span class="at">ymax =</span> <span class="dv">17</span>)<span class="sc">+</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">5</span>]]),</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">6</span>]]),</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[4]]),</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 0.5, xmax = 8.5, ymin = 9,ymax = 17)+</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[5]]),</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 0.5, xmax = 8.5, ymin = 0, ymax = 8)+</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="in">                annotation_custom(ggplotGrob(list.plots[[6]]),</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="in">                                  xmin = 12.5,xmax = 20.5, ymin = 0, ymax = 8)+</span></span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_void</span>()</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="in">                labs(x = NULL, y = NULL)+</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="in">                theme_void()</span></span>
 <span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># DF with the coordinates of the 5 arrows</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>        df.arrows <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>                                <span class="at">x=</span><span class="fu">c</span>(<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>),</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                                <span class="at">y=</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">21</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>),</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                                <span class="at">xend=</span><span class="fu">c</span>(<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>),</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                                <span class="at">yend=</span><span class="fu">c</span>(<span class="fl">20.5</span>,<span class="fl">17.5</span>,<span class="dv">10</span>,<span class="dv">7</span>,<span class="dv">7</span>))</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="in">        # DF with the coordinates of the 5 arrows</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="in">        df.arrows &lt;- data.frame(id=1:5,</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="in">                                x=c(8.5,8.5,12.5,12.5,12.5),</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="in">                                y=c(21,21,10.5,10.5,10.5),</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="in">                                xend=c(12.5,12.5,8.5,8.5,12.5),</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="in">                                yend=c(20.5,17.5,10,7,7))</span></span>
 <span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add arrows</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">1</span>),</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.1</span>,</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">2</span>),</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">3</span>),</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.15</span>,</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">4</span>),</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="dv">0</span>,</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">5</span>),</span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.3</span>,</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>)))</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="in">        # add arrows</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="in">        gg &lt;- gg +</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_curve(data = df.arrows |&gt; filter(id==1),</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="in">                           aes(x=x,y=y,xend=xend,yend=yend),</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="in">                           curvature = 0.1,</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="in">                           arrow = arrow(type="closed",length = unit(0.25,"cm"))) +</span></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_curve(data = df.arrows |&gt; filter(id==2),</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="in">                           aes(x=x,y=y,xend=xend,yend=yend),</span></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="in">                           curvature = -0.1,</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="in">                           arrow = arrow(type="closed",length = unit(0.25,"cm"))) +</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_curve(data = df.arrows |&gt; filter(id==3),</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="in">                           aes(x=x,y=y,xend=xend,yend=yend),</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="in">                           curvature = -0.15,</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="in">                           arrow = arrow(type="closed",length = unit(0.25,"cm"))) +</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_curve(data = df.arrows |&gt; filter(id==4),</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="in">                           aes(x=x,y=y,xend=xend,yend=yend),</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="in">                           curvature = 0,</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="in">                           arrow = arrow(type="closed",length = unit(0.25,"cm"))) +</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_curve(data = df.arrows |&gt; filter(id==5),</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="in">                           aes(x=x,y=y,xend=xend,yend=yend),</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a><span class="in">                           curvature = 0.3,</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="in">                           arrow = arrow(type="closed",length = unit(0.25,"cm")))</span></span>
 <span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add labes</span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">'text'</span>,<span class="at">label =</span> labels,</span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x=</span><span class="fu">c</span>(.<span class="dv">5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,.<span class="dv">5</span>,.<span class="dv">5</span>,<span class="fl">12.5</span>)<span class="sc">+</span>.<span class="dv">5</span>,</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span><span class="fu">c</span>(<span class="dv">29</span>,<span class="fl">27.5</span>,<span class="fl">18.5</span>,<span class="dv">17</span>,<span class="dv">8</span>,<span class="dv">8</span>)<span class="sc">+</span>.<span class="dv">1</span>,</span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>                            <span class="at">size=</span>labels.size,<span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="dv">0</span>, <span class="at">family =</span> family)</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="in">        # add labes</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="in">        gg &lt;- gg + annotate('text',label = labels,</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="in">                            x=c(.5,12.5,12.5,.5,.5,12.5)+.5,</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="in">                            y=c(29,27.5,18.5,17,8,8)+.1,</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="in">                            size=labels.size,hjust=0, vjust=0, family = family)</span></span>
 <span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(gg)</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="in">        return(gg)</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>Let's check, if the function works. For that I create just a blank plot, clone it six times, store the six plots in a list, and finally feed it to the function.</span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggthemes)</span></span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="co"># create a simple blank square plot</span></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()<span class="sc">+</span></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="dv">1</span>)</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="in"># create a simple blank square plot</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a><span class="in">p &lt;- ggplot()+</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="in">  expand_limits(x = c(0,1), y = c(0,1))+</span></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_map()+</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a><span class="in">  theme(panel.border = element_rect(color = "black", size = 0.5, fill = NA),</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="in">        aspect.ratio = 1)</span></span>
 <span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="co"># clone this plot six times and store as a list of six</span></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">mget</span>(<span class="fu">rep</span>(<span class="st">"p"</span>, <span class="dv">6</span>))</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="in"># clone this plot six times and store as a list of six</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="in">plots &lt;- mget(rep("p", 6))</span></span>
 <span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># use the function on the list</span></span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>six <span class="ot">&lt;-</span> <span class="fu">align_six_plots</span>(plots)</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="in"># use the function on the list</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="in">six &lt;- align_six_plots(plots)</span></span>
 <span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="co"># save the output</span></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"six_square_plots_aligned.png"</span>, six, <span class="at">width=</span><span class="dv">12</span>, <span class="at">height=</span><span class="dv">18</span>)</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="in"># save the output</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="in">ggsave("six_square_plots_aligned.png", six, width=12, height=18)</span></span>
 <span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="al">![](fig-02.png)</span></span>
@@ -686,12 +971,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[git]: https://github.com/ikashnitsky/genus-2017</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></div>   
-      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
+
 
 
 </body></html>

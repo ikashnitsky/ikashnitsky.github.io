@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.553">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-03-31">
-<meta name="description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<title>Who is old? Visualizing the concept of prospective ageing with animated population pyramids | Ilya Kashnitsky</title>
+<meta name="description" content="<strong>?meta:website.description</strong>">
+
+<title>Who is old? Visualizing the concept of prospective ageing with animated population pyramids | ?meta:website.title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,11 +20,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,44 +50,15 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -102,13 +77,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -117,10 +99,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
-}</script><script type="text/javascript">
+}</script>
+
+<script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -132,94 +118,107 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script><style>
-    .quarto-title-block .quarto-title-banner {
-      background: #025757;
-    }
-    </style>
-<meta property="og:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | Ilya Kashnitsky">
-<meta property="og:description" content="This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing.">
-<meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta property="og:site-name" content="Ilya Kashnitsky">
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #025757;
+      }
+</style>
+
+
+<meta property="og:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | ?meta:website.title">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta property="og:image" content="https://ikashnitsky.github.io/2017/who-is-old/teaser.png">
+<meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:width" content="1910">
-<meta name="twitter:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | Ilya Kashnitsky">
-<meta name="twitter:description" content="This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
+<meta property="og:image:height" content="250">
+<meta property="og:image:width" content="400">
+<meta name="twitter:title" content="Who is old? Visualizing the concept of prospective ageing with animated population pyramids | ?meta:website.title">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/who-is-old/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1000">
-<meta name="twitter:image-width" content="1910">
+<meta name="twitter:image-height" content="250">
+<meta name="twitter:image-width" content="400">
 </head>
+
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../me.html">
- <span class="menu-text">About me</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../me.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd">
- <span class="menu-text">DatavizArtSkill</span></a>
+    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd"> 
+<span class="menu-text">DatavizArtSkill</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dd.html">
- <span class="menu-text">Demographic Digest</span></a>
+    <a class="nav-link" href="../../dd.html"> 
+<span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ikashnitsky"><i class="bi bi-github" role="img" aria-label="github">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"> <i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"> <i class="bi bi-mastodon" role="img" aria-label="mastodon">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"> <i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Who is old? Visualizing the concept of prospective ageing with animated population pyramids</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -236,7 +235,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p><a href="https://ikashnitsky.github.io">Ilya Kashnitsky</a> <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
             </div>
     </div>
       
@@ -257,146 +256,161 @@ ga('send', {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p><img src="swe-animated.gif" class="img-fluid"></p>
-<p>This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This visualization was created in collaboration with my colleague <a href="http://nidi.nl/en/staff/overview/boissonneault">Michael Boissonneault</a>: (mostly) his idea and (mostly) my implementation. The animated visualization builds upon Michael’s viz prepared for the submission to the highly anticipated event at the end June 2017 – <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a>. My visualization of the <a href="http://www.rostock-retreat.org/files/application2017/SWE.csv">provided Swedish dataset</a> can be found in <a href="../../2017/gender-gap-in-swedish-mortality/">the previous post</a>.</p>
-<section id="prospective-ageing" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="prospective-ageing">Prospective ageing</h2>
+<p>This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This visualization was created in collaboration with my colleague <a href="http://nidi.nl/en/staff/overview/boissonneault">Michael Boissonneault</a>: (mostly) his idea and (mostly) my implementation. The animated visualization builds upon Michael’s viz prepared for the submission to the highly anticipated event at the end June 2017 – <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a>. My visualization of the <a href="http://www.rostock-retreat.org/files/application2017/SWE.csv">provided Swedish dataset</a> can be found in <a href="../..\2017/gender-gap-in-swedish-mortality/">the previous post</a>.</p>
+<section id="prospective-ageing" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="prospective-ageing">Prospective ageing</h2>
 <p>Over the past decades the alarmist views of the upcoming population ageing disaster became widely spread. True, with the growing number of countries approaching the ending of the Demographic Transition, the average/median age of their population increases rapidly, which is something unprecedented in the documented human history. But does that imply an unbearable burden of elderly population in the nearest future? Not necessarily.</p>
-<div class="page-columns page-full"><p>The demographic prospects depend a lot on how we define ageing. Quite recently <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Warren_Sanderson.html">Waren Sanderson</a> and <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Serguei-Scherbov.en.html">Sergei Scherbov</a> proposed <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple – age is not static: a person aged 65 (the conventional border deliminating elderly population) today is in many aspects not the same as a person ages 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one the latest papers of Sanderson and Scherbov <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> summarizes the phenomenon nicely: <em>Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging</em>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Sanderson W, Scherbov S. 2005. Average remaining lifetimes can increase as human populations age. <em>Nature</em> <strong>435</strong>: 811–813 <a href="https://doi.org/10.1038/nature03593">DOI</a>: 10.1038/nature03593</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Sanderson W, Scherbov S. 2010. Remeasuring Aging. <em>Science</em> <strong>329</strong>: 1287–1288 <a href="https://doi.org/10.1126/science.1193647">DOI</a>: 10.1126/science.1193647</p></li><li id="fn3"><p><sup>3</sup>&nbsp;Sanderson WC, Scherbov S. 2015. Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. <em>PLoS ONE</em> <strong>10</strong>: e0121922 <a href="http://doi.org/10.1371/journal.pone.0121922">DOI</a>: 10.1371/journal.pone.0121922</p></li></div></div>
-<div class="page-columns page-full"><p>Of course, the choice of the new ageing threshold is a rather arbitrary question <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. It became usual to define this threshold at the remaining life expectancy of 15 years.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;See the <a href="http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf">working paper</a> of my colleagues devoted to this question</p></li></div></div>
-</section><section id="population-pyramids-for-sweden" class="level1 page-columns page-full"><h1>Population pyramids for Sweden</h1>
+<p>The demographic prospects depend a lot on how we define ageing. Quite recently <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Warren_Sanderson.html">Waren Sanderson</a> and <a href="http://www.iiasa.ac.at/web/home/research/researchPrograms/WorldPopulation/Staff/Serguei-Scherbov.en.html">Sergei Scherbov</a> proposed <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple – age is not static: a person aged 65 (the conventional border deliminating elderly population) today is in many aspects not the same as a person ages 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one the latest papers of Sanderson and Scherbov <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> summarizes the phenomenon nicely: <em>Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging</em>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Sanderson W, Scherbov S. 2005. Average remaining lifetimes can increase as human populations age. <em>Nature</em> <strong>435</strong>: 811–813 <a href="https://doi.org/10.1038/nature03593">DOI</a>: 10.1038/nature03593</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Sanderson W, Scherbov S. 2010. Remeasuring Aging. <em>Science</em> <strong>329</strong>: 1287–1288 <a href="https://doi.org/10.1126/science.1193647">DOI</a>: 10.1126/science.1193647</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Sanderson WC, Scherbov S. 2015. Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging. <em>PLoS ONE</em> <strong>10</strong>: e0121922 <a href="http://doi.org/10.1371/journal.pone.0121922">DOI</a>: 10.1371/journal.pone.0121922</p></div><div id="fn4"><p><sup>4</sup>&nbsp;See the <a href="http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf">working paper</a> of my colleagues devoted to this question</p></div></div><p>Of course, the choice of the new ageing threshold is a rather arbitrary question <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. It became usual to define this threshold at the remaining life expectancy of 15 years.</p>
+</section>
+<section id="population-pyramids-for-sweden" class="level1 page-columns page-full">
+<h1>Population pyramids for Sweden</h1>
 <p>Population pyramid is a simple and nice way to represent population composition and to compare changes in the age structure of a given population over time. We show the difference between conventional and prospective approach to the definition of the elderly population using Swedish data for the last half a century. Sweden is a natural choice for demographers aiming to play with rich and reliable data.</p>
-<div class="page-columns page-full"><p>The data used for this visualization comes from <a href="http://www.mortality.org">Human Mortality Database</a>. It can be easily accessed from an R session using <a href="https://cran.r-project.org/web/packages/HMDHFDplus/index.html"><code>HMDHFDplus</code></a> package by <a href="https://sites.google.com/site/timriffepersonal/about-me">Tim Riffe</a> (for examples see my previous posts - <a href="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/">one</a> and <a href="https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/">two</a>). For this exercise, I will use the dataset for Sweden that was provided for an application task for <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;By using this data, I agree to the <a href="http://www.mortality.org/Public/UserAgreement.php">user agreement</a></p></li></div></div>
-</section><section id="data-preparation" class="level1"><h1>Data preparation</h1>
+<p>The data used for this visualization comes from <a href="http://www.mortality.org">Human Mortality Database</a>. It can be easily accessed from an R session using <a href="https://cran.r-project.org/web/packages/HMDHFDplus/index.html"><code>HMDHFDplus</code></a> package by <a href="https://sites.google.com/site/timriffepersonal/about-me">Tim Riffe</a> (for examples see my previous posts - <a href="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/">one</a> and <a href="https://ikashnitsky.github.io/2017/hmd-male-mortality-rus-jpn/">two</a>). For this exercise, I will use the dataset for Sweden that was provided for an application task for <a href="http://www.rostock-retreat.org">Rostock Retreat Visualization</a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;By using this data, I agree to the <a href="http://www.mortality.org/Public/UserAgreement.php">user agreement</a></p></div></div></section>
+<section id="data-preparation" class="level1">
+<h1>Data preparation</h1>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op">)</span></span>
-<span><span class="va">myfont</span> <span class="op">&lt;-</span> <span class="st">"Ubuntu Mono"</span></span>
-<span></span>
-<span><span class="co"># download data</span></span>
-<span><span class="va">df_swe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"http://www.rostock-retreat.org/files/application2017/SWE.csv"</span><span class="op">)</span></span>
-<span><span class="co"># copy at https://ikashnitsky.github.io/doc/misc/application-rostock-retreat/SWE.csv</span></span>
-<span></span>
-<span><span class="co"># define the selection of years to visualize</span></span>
-<span><span class="va">years</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1965</span>, <span class="fl">2010</span>, <span class="fl">5</span><span class="op">)</span>,<span class="fl">2014</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df_swe</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">Sex</span>, <span class="va">Age</span>, <span class="va">Exposure</span>, <span class="va">ex</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">years</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>old_c <span class="op">=</span> <span class="va">Age</span> <span class="op">&gt;=</span> <span class="fl">65</span>, </span>
-<span>               old_p <span class="op">=</span> <span class="va">ex</span> <span class="op">&lt;=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span><span class="st">"type"</span>, <span class="st">"old"</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">contains</a></span><span class="op">(</span><span class="st">"old"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">Sex</span>, <span class="va">type</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>share <span class="op">=</span> <span class="va">Exposure</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Exposure</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>share <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span> <span class="op">==</span> <span class="st">'f'</span>, <span class="va">share</span>, <span class="op">-</span><span class="va">share</span><span class="op">)</span><span class="op">)</span></span>
-<span>        </span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">df_old</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">old</span> <span class="op">==</span> <span class="cn">T</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">sex</span>, <span class="va">type</span>, <span class="va">old</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>cum_old <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">share</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Ubuntu Mono"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># download data</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df_swe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.rostock-retreat.org/files/application2017/SWE.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># copy at https://ikashnitsky.github.io/doc/misc/application-rostock-retreat/SWE.csv</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># define the selection of years to visualize</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">1965</span>, <span class="dv">2010</span>, <span class="dv">5</span>),<span class="dv">2014</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_swe <span class="sc">|&gt;</span> <span class="fu">select</span>(Year, Sex, Age, Exposure, ex) <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> years) <span class="sc">|&gt;</span> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">old_c =</span> Age <span class="sc">&gt;=</span> <span class="dv">65</span>, </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">old_p =</span> ex <span class="sc">&lt;=</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"type"</span>, <span class="st">"old"</span>, <span class="fu">contains</span>(<span class="st">"old"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(Year, Sex, type) <span class="sc">|&gt;</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">share =</span> Exposure <span class="sc">/</span> <span class="fu">sum</span>(Exposure)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">share =</span> <span class="fu">ifelse</span>(Sex <span class="sc">==</span> <span class="st">'f'</span>, share, <span class="sc">-</span>share))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">names</span>(df) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df_old <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">filter</span>(old <span class="sc">==</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(year, sex, type, old) <span class="sc">|&gt;</span> </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">cum_old =</span> <span class="fu">sum</span>(share)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="visualization" class="level1"><h1>Visualization</h1>
+</section>
+<section id="visualization" class="level1">
+<h1>Visualization</h1>
 <p>Let’s first have a look at the pyramids in 1965, 1990, and 2014 (the latest available year).</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gg_three</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1965</span>, <span class="fl">1990</span>, <span class="fl">2014</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">share</span>, fill <span class="op">=</span> <span class="va">sex</span>, alpha <span class="op">=</span> <span class="va">old</span><span class="op">)</span>, </span>
-<span>                 stat <span class="op">=</span> <span class="st">'identity'</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">64.5</span>, size <span class="op">=</span> <span class="fl">.5</span>, color <span class="op">=</span> <span class="st">'gold'</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.01</span>, <span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.01</span>, <span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,</span>
-<span>                           limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.02</span>, <span class="fl">.02</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">year</span><span class="op">~</span><span class="va">type</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>              legend.position <span class="op">=</span> <span class="st">'none'</span>,</span>
-<span>              plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
-<span>              plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>, size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>        </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>             x <span class="op">=</span> <span class="st">'Age'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'old_c'</span>, <span class="st">'old_p'</span><span class="op">)</span>,</span>
-<span>                                    label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">label</span><span class="op">)</span>, </span>
-<span>                  y <span class="op">=</span> <span class="fl">0</span>, x <span class="op">=</span> <span class="fl">50</span>, size <span class="op">=</span> <span class="fl">5</span>, vjust <span class="op">=</span> <span class="fl">1</span>, </span>
-<span>                  family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_old</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1965</span>, <span class="fl">1990</span>, <span class="fl">2014</span><span class="op">)</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">'f'</span><span class="op">)</span>, </span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">year</span><span class="op">)</span>,</span>
-<span>                  y <span class="op">=</span> <span class="fl">0</span>, x <span class="op">=</span> <span class="fl">30</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">.5</span>, size <span class="op">=</span> <span class="fl">7</span>, </span>
-<span>                  family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_old</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1965</span>, <span class="fl">1990</span>, <span class="fl">2014</span><span class="op">)</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">'f'</span><span class="op">)</span>, </span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Elderly\nfemales\n'</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cum_old</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">'%'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                  y <span class="op">=</span> <span class="fl">.0125</span>, x <span class="op">=</span> <span class="fl">105</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">.5</span>, size <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                  family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_old</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1965</span>, <span class="fl">1990</span>, <span class="fl">2014</span><span class="op">)</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">'m'</span><span class="op">)</span>, </span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Elderly\nmales\n'</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="op">-</span><span class="va">cum_old</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">'%'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                  y <span class="op">=</span> <span class="op">-</span><span class="fl">.0125</span>, x <span class="op">=</span> <span class="fl">105</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">.5</span>, size <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                  family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co">#ggsave("figures/three-years.png", gg_three, width = 6, height = 8)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gg_three <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>))) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> share, <span class="at">fill =</span> sex, <span class="at">alpha =</span> old), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">width =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">64.5</span>, <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">color =</span> <span class="st">'gold'</span>)<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>), <span class="at">labels =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">02</span>, .<span class="dv">02</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_grid</span>(year<span class="sc">~</span>type) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="st">'Age'</span>) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data_frame</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="st">'old_c'</span>, <span class="st">'old_p'</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span>)),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> label), </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">50</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> year),</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">30</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">7</span>, </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">females</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> .<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'m'</span>), </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">males</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(<span class="sc">-</span>cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="sc">-</span>.<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave("figures/three-years.png", gg_three, width = 6, height = 8)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="three-years.png" class="img-fluid"></p>
-</section><section id="animated-pyramid" class="level1 page-columns page-full"><h1>Animated pyramid</h1>
-<div class="page-columns page-full"><p>To get an animated pyramid I simply saved all the separate plots and then use the very convenient free online tool to make an animated image - <a href="http://gifcreator.me">GIFCreator</a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;I did try to play with the package <code>gganimate</code>, though it produced a strange output.</p></li></div></div>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">note</span> <span class="op">&lt;-</span> <span class="st">'The population pyramid can be used to compare change in the age structure of a given population over time. In many cases, doing so gives the impression of rapid aging. This is due to the fact that age is represented as a static variable; however, as Sanderson and Scherbov showed repeatedly, age is not static: a person age 65 in 1965 is in many aspects not the same as a person age 65 in 2015. In the right panel, old age is considered to start when the period remaining life expectancy reaches 15 years, thereby providing another look at the change in the age structure of a population. The gold line deliminates the conventional border of old age at 65. Elderly populations are filled with non-transparent colors. Authors: Michael Boissonneault, Ilya Kashnitsky (NIDI)'</span></span>
-<span></span>
-<span><span class="co"># I will store the plots in a list</span></span>
-<span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">years</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span>        </span>
-<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">years</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">share</span>, fill <span class="op">=</span> <span class="va">sex</span>, alpha <span class="op">=</span> <span class="va">old</span><span class="op">)</span>, </span>
-<span>                         stat <span class="op">=</span> <span class="st">'identity'</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">64.5</span>, size <span class="op">=</span> <span class="fl">.5</span>, color <span class="op">=</span> <span class="st">'gold'</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.01</span>, <span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.01</span>, <span class="fl">0</span>, <span class="fl">.01</span><span class="op">)</span>,</span>
-<span>                                   limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.02</span>, <span class="fl">.02</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">type</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                      legend.position <span class="op">=</span> <span class="st">'none'</span>,</span>
-<span>                      plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
-<span>                      plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0</span>, size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>                </span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Sweden"</span>, <span class="va">years</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                     caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strwrap.html">strwrap</a></span><span class="op">(</span><span class="va">note</span>, width <span class="op">=</span> <span class="fl">106</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">'\n'</span><span class="op">)</span>, </span>
-<span>                     y <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                     x <span class="op">=</span> <span class="st">'Age'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                </span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">data_frame</a></span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'old_c'</span>, <span class="st">'old_p'</span><span class="op">)</span>,</span>
-<span>                                            label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                          <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">label</span><span class="op">)</span>, </span>
-<span>                          y <span class="op">=</span> <span class="fl">0</span>, x <span class="op">=</span> <span class="fl">115</span>, size <span class="op">=</span> <span class="fl">5</span>, vjust <span class="op">=</span> <span class="fl">1</span>, </span>
-<span>                          family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                </span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_old</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">years</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">'f'</span><span class="op">)</span>, </span>
-<span>                          <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Elderly\nfemales\n'</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cum_old</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">'%'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                          y <span class="op">=</span> <span class="fl">.0125</span>, x <span class="op">=</span> <span class="fl">105</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">.5</span>, size <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                          family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span> <span class="op">+</span></span>
-<span>                </span>
-<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df_old</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">years</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">sex</span> <span class="op">==</span> <span class="st">'m'</span><span class="op">)</span>, </span>
-<span>                          <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">'Elderly\nmales\n'</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="op">-</span><span class="va">cum_old</span><span class="op">*</span><span class="fl">100</span>,<span class="fl">1</span><span class="op">)</span>, <span class="st">'%'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                          y <span class="op">=</span> <span class="op">-</span><span class="fl">.0125</span>, x <span class="op">=</span> <span class="fl">105</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">.5</span>, size <span class="op">=</span> <span class="fl">4</span>, </span>
-<span>                          family <span class="op">=</span> <span class="st">'Ubuntu Mono'</span><span class="op">)</span></span>
-<span>        </span>
-<span>        <span class="va">plots</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">gg</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># # a loop to save the plots</span></span>
-<span><span class="co"># for (i in 1:length(years)){</span></span>
-<span><span class="co">#         ggsave(paste0('figures/swe-', years[i], '.png'), plots[[i]], </span></span>
-<span><span class="co">#                       width = 8, height = 5.6)</span></span>
-<span><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="animated-pyramid" class="level1 page-columns page-full">
+<h1>Animated pyramid</h1>
+<p>To get an animated pyramid I simply saved all the separate plots and then use the very convenient free online tool to make an animated image - <a href="http://gifcreator.me">GIFCreator</a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;I did try to play with the package <code>gganimate</code>, though it produced a strange output.</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="st">'The population pyramid can be used to compare change in the age structure of a given population over time. In many cases, doing so gives the impression of rapid aging. This is due to the fact that age is represented as a static variable; however, as Sanderson and Scherbov showed repeatedly, age is not static: a person age 65 in 1965 is in many aspects not the same as a person age 65 in 2015. In the right panel, old age is considered to start when the period remaining life expectancy reaches 15 years, thereby providing another look at the change in the age structure of a population. The gold line deliminates the conventional border of old age at 65. Elderly populations are filled with non-transparent colors. Authors: Michael Boissonneault, Ilya Kashnitsky (NIDI)'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I will store the plots in a list</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(years)){</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]])) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> share, <span class="at">fill =</span> sex, <span class="at">alpha =</span> old), </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">width =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">64.5</span>, <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">color =</span> <span class="st">'gold'</span>)<span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>), <span class="at">labels =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">02</span>, .<span class="dv">02</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">facet_wrap</span>(<span class="sc">~</span>type, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme</span>(<span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Sweden"</span>, years[i]),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>                     <span class="at">caption =</span> <span class="fu">paste</span>(<span class="fu">strwrap</span>(note, <span class="at">width =</span> <span class="dv">106</span>), <span class="at">collapse =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>), </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> <span class="st">'Age'</span>) <span class="sc">+</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data_frame</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="st">'old_c'</span>, <span class="st">'old_p'</span>),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span>)),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> label), </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">115</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]], sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">females</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> .<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]], sex <span class="sc">==</span> <span class="st">'m'</span>), </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">males</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(<span class="sc">-</span>cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="sc">-</span>.<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        plots[[i]] <span class="ot">&lt;-</span> gg</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># # a loop to save the plots</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in 1:length(years)){</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">#         ggsave(paste0('figures/swe-', years[i], '.png'), plots[[i]], </span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">#                       width = 8, height = 5.6)</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="swe-animated.gif" class="img-fluid"></p>
 <hr>
@@ -404,7 +418,11 @@ ga('send', {
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -431,9 +449,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -520,10 +552,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -533,8 +582,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -546,9 +604,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -587,8 +881,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIow4AQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Who is old? Visualizing the concept of prospective ageing with animated population pyramids"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -623,35 +920,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data preparation</span></span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Ubuntu Mono"</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="in"># load packages</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="in">library(extrafont)</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="in">myfont &lt;- "Ubuntu Mono"</span></span>
 <span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># download data</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>df_swe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.rostock-retreat.org/files/application2017/SWE.csv"</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># copy at https://ikashnitsky.github.io/doc/misc/application-rostock-retreat/SWE.csv</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="in"># download data</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">df_swe &lt;- read_csv("http://www.rostock-retreat.org/files/application2017/SWE.csv")</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in"># copy at https://ikashnitsky.github.io/doc/misc/application-rostock-retreat/SWE.csv</span></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co"># define the selection of years to visualize</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">1965</span>, <span class="dv">2010</span>, <span class="dv">5</span>),<span class="dv">2014</span>)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in"># define the selection of years to visualize</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="in">years &lt;- c(seq(1965, 2010, 5),2014)</span></span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df_swe <span class="sc">|&gt;</span> <span class="fu">select</span>(Year, Sex, Age, Exposure, ex) <span class="sc">|&gt;</span> </span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> years) <span class="sc">|&gt;</span> </span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">old_c =</span> Age <span class="sc">&gt;=</span> <span class="dv">65</span>, </span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>               <span class="at">old_p =</span> ex <span class="sc">&lt;=</span> <span class="dv">15</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="fu">gather</span>(<span class="st">"type"</span>, <span class="st">"old"</span>, <span class="fu">contains</span>(<span class="st">"old"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(Year, Sex, type) <span class="sc">|&gt;</span> </span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">share =</span> Exposure <span class="sc">/</span> <span class="fu">sum</span>(Exposure)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">share =</span> <span class="fu">ifelse</span>(Sex <span class="sc">==</span> <span class="st">'f'</span>, share, <span class="sc">-</span>share))</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">names</span>(df) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="in">df &lt;- df_swe |&gt; select(Year, Sex, Age, Exposure, ex) |&gt; </span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="in">        filter(Year %in% years) |&gt; </span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="in">        mutate(old_c = Age &gt;= 65, </span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="in">               old_p = ex &lt;= 15) |&gt; </span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="in">        gather("type", "old", contains("old")) |&gt; </span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="in">        group_by(Year, Sex, type) |&gt; </span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="in">        mutate(share = Exposure / sum(Exposure)) |&gt; </span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">        ungroup() |&gt; </span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="in">        mutate(share = ifelse(Sex == 'f', share, -share))</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="in">names(df) &lt;- names(df) |&gt; tolower()</span></span>
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>df_old <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">filter</span>(old <span class="sc">==</span> T) <span class="sc">|&gt;</span> </span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(year, sex, type, old) <span class="sc">|&gt;</span> </span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">cum_old =</span> <span class="fu">sum</span>(share)) <span class="sc">|&gt;</span> </span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() </span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="in">df_old &lt;- df |&gt; filter(old == T) |&gt; </span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">        group_by(year, sex, type, old) |&gt; </span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="in">        summarise(cum_old = sum(share)) |&gt; </span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">        ungroup() </span></span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
@@ -660,46 +957,46 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>Let's first have a look at the pyramids in 1965, 1990, and 2014 (the latest available year).</span>
 <span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>gg_three <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>))) <span class="sc">+</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> share, <span class="at">fill =</span> sex, <span class="at">alpha =</span> old), </span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">width =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">64.5</span>, <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">color =</span> <span class="st">'gold'</span>)<span class="sc">+</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>), <span class="at">labels =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>),</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>                           <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">02</span>, .<span class="dv">02</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_grid</span>(year<span class="sc">~</span>type) <span class="sc">+</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>),</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>              <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span> </span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> <span class="st">'Age'</span>) <span class="sc">+</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data_frame</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="st">'old_c'</span>, <span class="st">'old_p'</span>),</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span>)),</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> label), </span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">50</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> year),</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">30</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">7</span>, </span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">females</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> .<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1965</span>, <span class="dv">1990</span>, <span class="dv">2014</span>), sex <span class="sc">==</span> <span class="st">'m'</span>), </span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">males</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(<span class="sc">-</span>cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="sc">-</span>.<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>                  <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="in">gg_three &lt;- ggplot(df |&gt; filter(year %in% c(1965, 1990, 2014))) +</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_bar(aes(x = age, y = share, fill = sex, alpha = old), </span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="in">                 stat = 'identity', width = 1)+</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_vline(xintercept = 64.5, size = .5, color = 'gold')+</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="in">        scale_y_continuous(breaks = c(-.01, 0, .01), labels = c(.01, 0, .01),</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="in">                           limits = c(-.02, .02), expand = c(0,0))+</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="in">        facet_grid(year~type) +</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="in">        theme_minimal(base_family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="in">        theme(strip.text = element_blank(),</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="in">              legend.position = 'none',</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="in">              plot.title = element_text(hjust = 0.5, size = 20),</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="in">              plot.caption = element_text(hjust = 0, size = 10)) + </span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="in">        coord_flip() + </span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="in">        labs(y = NULL,</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="in">             x = 'Age') +</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_text(data = data_frame(type = c('old_c', 'old_p'),</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">                                    label = c('CONVENTIONAL', 'PROSPECTIVE')),</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">                  aes(label = label), </span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="in">                  y = 0, x = 50, size = 5, vjust = 1, </span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">                  family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_text(data = df_old |&gt; filter(year %in% c(1965, 1990, 2014), sex == 'f'), </span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="in">                  aes(label = year),</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="in">                  y = 0, x = 30, vjust = 1, hjust = .5, size = 7, </span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="in">                  family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_text(data = df_old |&gt; filter(year %in% c(1965, 1990, 2014), sex == 'f'), </span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="in">                  aes(label = paste('Elderly\nfemales\n', round(cum_old*100,1), '%')),</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="in">                  y = .0125, x = 105, vjust = 1, hjust = .5, size = 4, </span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="in">                  family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_text(data = df_old |&gt; filter(year %in% c(1965, 1990, 2014), sex == 'm'), </span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="in">                  aes(label = paste('Elderly\nmales\n', round(-cum_old*100,1), '%')),</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="in">                  y = -.0125, x = 105, vjust = 1, hjust = .5, size = 4, </span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="in">                  family = 'Ubuntu Mono')</span></span>
 <span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave("figures/three-years.png", gg_three, width = 6, height = 8)</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="in">#ggsave("figures/three-years.png", gg_three, width = 6, height = 8)</span></span>
 <span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="al">![](three-years.png)</span></span>
@@ -710,56 +1007,56 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>To get an animated pyramid I simply saved all the separate plots and then use the very convenient free online tool to make an animated image - <span class="co">[</span><span class="ot">GIFCreator</span><span class="co">][gif]</span> <span class="ot">[^6]</span>.</span>
 <span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>note <span class="ot">&lt;-</span> <span class="st">'The population pyramid can be used to compare change in the age structure of a given population over time. In many cases, doing so gives the impression of rapid aging. This is due to the fact that age is represented as a static variable; however, as Sanderson and Scherbov showed repeatedly, age is not static: a person age 65 in 1965 is in many aspects not the same as a person age 65 in 2015. In the right panel, old age is considered to start when the period remaining life expectancy reaches 15 years, thereby providing another look at the change in the age structure of a population. The gold line deliminates the conventional border of old age at 65. Elderly populations are filled with non-transparent colors. Authors: Michael Boissonneault, Ilya Kashnitsky (NIDI)'</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="in">note &lt;- 'The population pyramid can be used to compare change in the age structure of a given population over time. In many cases, doing so gives the impression of rapid aging. This is due to the fact that age is represented as a static variable; however, as Sanderson and Scherbov showed repeatedly, age is not static: a person age 65 in 1965 is in many aspects not the same as a person age 65 in 2015. In the right panel, old age is considered to start when the period remaining life expectancy reaches 15 years, thereby providing another look at the change in the age structure of a population. The gold line deliminates the conventional border of old age at 65. Elderly populations are filled with non-transparent colors. Authors: Michael Boissonneault, Ilya Kashnitsky (NIDI)'</span></span>
 <span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="co"># I will store the plots in a list</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="in"># I will store the plots in a list</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="in">plots &lt;- list()</span></span>
 <span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(years)){</span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]])) <span class="sc">+</span></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> share, <span class="at">fill =</span> sex, <span class="at">alpha =</span> old), </span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>                         <span class="at">stat =</span> <span class="st">'identity'</span>, <span class="at">width =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">64.5</span>, <span class="at">size =</span> .<span class="dv">5</span>, <span class="at">color =</span> <span class="st">'gold'</span>)<span class="sc">+</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>                <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>), <span class="at">labels =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>, .<span class="dv">01</span>),</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">02</span>, .<span class="dv">02</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>                <span class="fu">facet_wrap</span>(<span class="sc">~</span>type, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme</span>(<span class="at">strip.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.position =</span> <span class="st">'none'</span>,</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>                      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">20</span>),</span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>                      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span> </span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Sweden"</span>, years[i]),</span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>                     <span class="at">caption =</span> <span class="fu">paste</span>(<span class="fu">strwrap</span>(note, <span class="at">width =</span> <span class="dv">106</span>), <span class="at">collapse =</span> <span class="st">'</span><span class="sc">\n</span><span class="st">'</span>), </span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> <span class="st">'Age'</span>) <span class="sc">+</span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> <span class="fu">data_frame</span>(<span class="at">type =</span> <span class="fu">c</span>(<span class="st">'old_c'</span>, <span class="st">'old_p'</span>),</span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'CONVENTIONAL'</span>, <span class="st">'PROSPECTIVE'</span>)),</span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> label), </span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="dv">0</span>, <span class="at">x =</span> <span class="dv">115</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">vjust =</span> <span class="dv">1</span>, </span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]], sex <span class="sc">==</span> <span class="st">'f'</span>), </span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">females</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> .<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>) <span class="sc">+</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_text</span>(<span class="at">data =</span> df_old <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> years[[i]], sex <span class="sc">==</span> <span class="st">'m'</span>), </span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(<span class="st">'Elderly</span><span class="sc">\n</span><span class="st">males</span><span class="sc">\n</span><span class="st">'</span>, <span class="fu">round</span>(<span class="sc">-</span>cum_old<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>), <span class="st">'%'</span>)),</span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>                          <span class="at">y =</span> <span class="sc">-</span>.<span class="dv">0125</span>, <span class="at">x =</span> <span class="dv">105</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>                          <span class="at">family =</span> <span class="st">'Ubuntu Mono'</span>)</span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>        plots[[i]] <span class="ot">&lt;-</span> gg</span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:length(years)){</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="in">        gg &lt;- ggplot(df |&gt; filter(year == years[[i]])) +</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_bar(aes(x = age, y = share, fill = sex, alpha = old), </span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="in">                         stat = 'identity', width = 1)+</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_vline(xintercept = 64.5, size = .5, color = 'gold')+</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="in">                scale_y_continuous(breaks = c(-.01, 0, .01), labels = c(.01, 0, .01),</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="in">                                   limits = c(-.02, .02), expand = c(0,0))+</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="in">                facet_wrap(~type, ncol = 2) +</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="in">                theme_minimal(base_family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="in">                theme(strip.text = element_blank(),</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="in">                      legend.position = 'none',</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="in">                      plot.title = element_text(hjust = 0.5, size = 20),</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="in">                      plot.caption = element_text(hjust = 0, size = 10)) + </span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="in">                coord_flip() + </span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="in">                </span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="in">                labs(title = paste("Sweden", years[i]),</span></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="in">                     caption = paste(strwrap(note, width = 106), collapse = '\n'), </span></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="in">                     y = NULL,</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="in">                     x = 'Age') +</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="in">                </span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_text(data = data_frame(type = c('old_c', 'old_p'),</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="in">                                            label = c('CONVENTIONAL', 'PROSPECTIVE')),</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="in">                          aes(label = label), </span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="in">                          y = 0, x = 115, size = 5, vjust = 1, </span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="in">                          family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="in">                </span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_text(data = df_old |&gt; filter(year == years[[i]], sex == 'f'), </span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="in">                          aes(label = paste('Elderly\nfemales\n', round(cum_old*100,1), '%')),</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="in">                          y = .0125, x = 105, vjust = 1, hjust = .5, size = 4, </span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="in">                          family = 'Ubuntu Mono') +</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="in">                </span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="in">                geom_text(data = df_old |&gt; filter(year == years[[i]], sex == 'm'), </span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a><span class="in">                          aes(label = paste('Elderly\nmales\n', round(-cum_old*100,1), '%')),</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="in">                          y = -.0125, x = 105, vjust = 1, hjust = .5, size = 4, </span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="in">                          family = 'Ubuntu Mono')</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="in">        plots[[i]] &lt;- gg</span></span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="co"># # a loop to save the plots</span></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="co"># for (i in 1:length(years)){</span></span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="co">#         ggsave(paste0('figures/swe-', years[i], '.png'), plots[[i]], </span></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="co">#                       width = 8, height = 5.6)</span></span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="in"># # a loop to save the plots</span></span>
+<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="in"># for (i in 1:length(years)){</span></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="in">#         ggsave(paste0('figures/swe-', years[i], '.png'), plots[[i]], </span></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="in">#                       width = 8, height = 5.6)</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a><span class="in"># }</span></span>
 <span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a></span>
@@ -790,12 +1087,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="ot">[gif]: http://gifcreator.me</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></div>   
-      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
+
 
 
 </body></html>

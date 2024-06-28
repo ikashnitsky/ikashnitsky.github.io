@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.553">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-11-07">
-<meta name="description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<title>Data acquisition in R (2/4) | Ilya Kashnitsky</title>
+<meta name="description" content="<strong>?meta:website.description</strong>">
+
+<title>Data acquisition in R (2/4) | ?meta:website.title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,11 +20,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,44 +50,15 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -102,13 +77,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -117,10 +99,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
-}</script><script type="text/javascript">
+}</script>
+
+<script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -132,94 +118,107 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script><style>
-    .quarto-title-block .quarto-title-banner {
-      background: #025757;
-    }
-    </style>
-<meta property="og:title" content="Data acquisition in R (2/4) | Ilya Kashnitsky">
-<meta property="og:description" content="For each of the data acquisition options I provide a small visualization use case.">
-<meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta property="og:site-name" content="Ilya Kashnitsky">
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #025757;
+      }
+</style>
+
+
+<meta property="og:title" content="Data acquisition in R (2/4) | ?meta:website.title">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta property="og:image" content="https://ikashnitsky.github.io/2017/data-acquisition-two/teaser.png">
+<meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="1000">
-<meta property="og:image:width" content="1910">
-<meta name="twitter:title" content="Data acquisition in R (2/4) | Ilya Kashnitsky">
-<meta name="twitter:description" content="For each of the data acquisition options I provide a small visualization use case.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
+<meta property="og:image:height" content="250">
+<meta property="og:image:width" content="400">
+<meta name="twitter:title" content="Data acquisition in R (2/4) | ?meta:website.title">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/data-acquisition-two/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1000">
-<meta name="twitter:image-width" content="1910">
+<meta name="twitter:image-height" content="250">
+<meta name="twitter:image-width" content="400">
 </head>
+
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../me.html">
- <span class="menu-text">About me</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../me.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd">
- <span class="menu-text">DatavizArtSkill</span></a>
+    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd"> 
+<span class="menu-text">DatavizArtSkill</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dd.html">
- <span class="menu-text">Demographic Digest</span></a>
+    <a class="nav-link" href="../../dd.html"> 
+<span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ikashnitsky"><i class="bi bi-github" role="img" aria-label="github">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"> <i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"> <i class="bi bi-mastodon" role="img" aria-label="mastodon">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"> <i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Data acquisition in R (2/4)</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -236,7 +235,7 @@ ga('send', {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Ilya Kashnitsky <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p><a href="https://ikashnitsky.github.io">Ilya Kashnitsky</a> <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
             </div>
     </div>
       
@@ -256,26 +255,29 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<div class="callout-note callout callout-style-default callout-captioned">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The series consists of four posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>
-<a href="https://ikashnitsky.github.io/2017/data-acquisition-one/">Loading prepared datasets</a><br>
+<li><a href="https://ikashnitsky.github.io/2017/data-acquisition-one/">Loading prepared datasets</a><br>
 </li>
-<li>
-<strong>Accessing popular statistical databases</strong><br>
+<li><strong>Accessing popular statistical databases</strong><br>
 </li>
-<li>
-<a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a><br>
+<li><a href="https://ikashnitsky.github.io/2017/data-acquisition-three">Demographic data sources</a><br>
 </li>
 <li>Getting spatial data<br>
 </li>
@@ -283,32 +285,35 @@ The series consists of four posts:
 </div>
 </div>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
-<section id="eurostat" class="level1"><h1>Eurostat</h1>
+<section id="eurostat" class="level1">
+<h1>Eurostat</h1>
 <p>The package <code>eurostat</code> has a function <code>search_eurostat</code> to search for the relevant datasets. Though, sadly enough, this function does not provide the codes of all the datasets that has the expression of interest in the title. For example, the search on the expression <code>life expectancy</code> produces an output with just 2 results, which does not make any sense. Thus, the best strategy is to go to <a href="http://ec.europa.eu/eurostat/data/database">Eurostat website</a>, find the needed dataset code, and fetch the desired dataset by its code. Note that there is a <a href="http://ec.europa.eu/eurostat/web/regions/data/database">separate database for subregional level indicators</a>.</p>
 <p>I am going to download life expectancy estimates for European countries; the dataset code is <code>demo_mlexpec</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/">eurostat</a></span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co"># download the selected dataset</span></span>
-<span><span class="va">e0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_mlexpec"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># download the selected dataset</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>e0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"demo_mlexpec"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It can take a while because the dataset is quite big (0.4m obs). If the automated procedure does not work, one can download the data manually via the <a href="http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing">Bulk Download Service</a> of Eurostat.</p>
 <p>Let’s have a look at the remaining life expectancy at age 65, the most common conventional age at retirement, in some European countries, separately for males, females, and total population. Some data preparation steps are needed. First, we only need the life expectancy estimates for those aged 65. Next, we don’t need total population, only males and females separately. Finally, let’s select just a bunch of countries: Germany, France, Italy, Russia, Spain, the UK.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">e0</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span> <span class="va">sex</span> <span class="op">==</span> <span class="st">"T"</span>,</span>
-<span>               <span class="va">age</span> <span class="op">==</span> <span class="st">"Y65"</span>, </span>
-<span>               <span class="va">geo</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"DE"</span>, <span class="st">"FR"</span>, <span class="st">"IT"</span>, <span class="st">"RU"</span>, <span class="st">"ES"</span>, <span class="st">"UK"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">time</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">values</span>, color <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">geo</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Life expectancy at age 65"</span>, x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>e0 <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span> sex <span class="sc">==</span> <span class="st">"T"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               age <span class="sc">==</span> <span class="st">"Y65"</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>               geo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"DE"</span>, <span class="st">"FR"</span>, <span class="st">"IT"</span>, <span class="st">"RU"</span>, <span class="st">"ES"</span>, <span class="st">"UK"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">|&gt;</span> <span class="fu">year</span>(), <span class="at">y =</span> values, <span class="at">color =</span> sex))<span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> geo, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Life expectancy at age 65"</span>, <span class="at">x =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="eurostat.png" class="img-fluid"></p>
-</section><section id="world-bank" class="level1"><h1>World Bank</h1>
+</section>
+<section id="world-bank" class="level1">
+<h1>World Bank</h1>
 <p>There are several packages that provide an API to World Bank data. Probably, the most elaborated one is a fairly recent <a href="https://cran.r-project.org/web/packages/wbstats/README.html"><code>wbstats</code></a>. Its <code>wbsearch</code> function really does great job searching through the database for the relevant datasets. For example, <code>wbsearch("fertility")</code> produces a dataframe of 339 entries with the codes and names of the relevant indicators.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
@@ -323,11 +328,13 @@ The series consists of four posts:
 <col style="width: 18%">
 <col style="width: 75%">
 </colgroup>
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th style="text-align: left;"></th>
 <th style="text-align: left;">indicatorID</th>
 <th style="text-align: left;">indicator</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">2479</td>
@@ -380,7 +387,9 @@ The series consists of four posts:
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">8</span>, .<span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="worldbank.png" class="img-fluid"></p>
-</section><section id="oecd" class="level1"><h1>OECD</h1>
+</section>
+<section id="oecd" class="level1">
+<h1>OECD</h1>
 <p>Organization for Economic Cooperation and Development provides detailed economic and demographic data on the member countries. There is an R package <code>OECD</code> that streamlines the use of their data in R. The function <code>search_dataset</code> works nicely to browse the available datasets by keywords. Then <code>get_dataset</code> would fetch the chosen dataset. In the example below I grab the data on the duration of unemployment and then plot the data for the male population of EU16, EU28 and the US as heatmaps.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
@@ -410,48 +419,50 @@ The series consists of four posts:
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="oecd.png" class="img-fluid"></p>
-</section><section id="wid" class="level1"><h1>WID</h1>
+</section>
+<section id="wid" class="level1">
+<h1>WID</h1>
 <p><a href="http://wid.world/wid-world/">World Wealth and Income Database</a> is a harmonized dataset on income and wealth inequality. The developers of the database provide an R package to get their data, which is only <a href="https://github.com/WIDworld/wid-r-tool">available from github</a> so far.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
-<span></span>
-<span><span class="co">#install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"WIDworld/wid-r-tool"</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">wid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"WIDworld/wid-r-tool"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function to acquire data is <code>download_wid()</code>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">wid_series_type</span></span>
-<span><span class="op">?</span><span class="va">wid_concepts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>?wid_series_type</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>?wid_concepts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The following nice example is adapted from <a href="https://github.com/WIDworld/wid-r-tool/raw/master/inst/doc/wid-demo.pdf">the package vignette</a>. It shows the share of wealth that was owned by the richest 1% and 10% of population in France and Great Britain.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_wid</span> <span class="op">&lt;-</span> <span class="fu">download_wid</span><span class="op">(</span></span>
-<span>        indicators <span class="op">=</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
-<span>        areas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FR"</span>, <span class="st">"GB"</span><span class="op">)</span>, <span class="co"># In France an Italy</span></span>
-<span>        perc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"p90p100"</span>, <span class="st">"p99p100"</span><span class="op">)</span> <span class="co"># Top 1% and top 10%</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">df_wid</span> <span class="op">|&gt;</span> </span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">value</span>, color <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>            title <span class="op">=</span> <span class="st">"Top 1% and top 10% personal wealth shares in </span></span>
-<span><span class="st">            France and Great Britain"</span>,</span>
-<span>             y <span class="op">=</span> <span class="st">"top share"</span></span>
-<span>        <span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">percentile</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_wid <span class="ot">&lt;-</span> <span class="fu">download_wid</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">indicators =</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">areas =</span> <span class="fu">c</span>(<span class="st">"FR"</span>, <span class="st">"GB"</span>), <span class="co"># In France an Italy</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">perc =</span> <span class="fu">c</span>(<span class="st">"p90p100"</span>, <span class="st">"p99p100"</span>) <span class="co"># Top 1% and top 10%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">|&gt;</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Top 1% and top 10% personal wealth shares in </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">            France and Great Britain"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"top share"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> percentile)<span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="wid.png" class="img-fluid"></p>
 <hr>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 All the code chunks together can be found in <a href="https://gist.github.com/ikashnitsky/2362ce308f47ff38c3da556384acd20f">this gist</a>
 </div>
 </div>
@@ -463,7 +474,10 @@ All the code chunks together can be found in <a href="https://gist.github.com/ik
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -490,9 +504,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -579,10 +607,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -592,8 +637,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -605,9 +659,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -646,8 +936,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIow4AQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script>
+<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data acquisition in R (2/4)"</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -675,12 +968,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>I am going to download life expectancy estimates for European countries; the dataset code is <span class="in">`demo_mlexpec`</span>. </span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat) </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) </span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">library(lubridate)</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="in">library(eurostat) </span></span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co"># download the selected dataset</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>e0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"demo_mlexpec"</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="in"># download the selected dataset</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="in">e0 &lt;- get_eurostat("demo_mlexpec")</span></span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>It can take a while because the dataset is quite big (0.4m obs). If the automated procedure does not work, one can download the data manually via the <span class="co">[</span><span class="ot">Bulk Download Service</span><span class="co">][bulk]</span> of Eurostat.  </span>
@@ -688,15 +981,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>Let's have a look at the remaining life expectancy at age 65, the most common conventional age at retirement, in some European countries, separately for males, females, and total population. Some data preparation steps are needed. First, we only need the life expectancy  estimates for those aged 65. Next, we don't need total population, only males and females separately. Finally, let's select just a bunch of countries: Germany, France, Italy, Russia, Spain, the UK.  </span>
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>e0 <span class="sc">|&gt;</span> </span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span> sex <span class="sc">==</span> <span class="st">"T"</span>,</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>               age <span class="sc">==</span> <span class="st">"Y65"</span>, </span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>               geo <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"DE"</span>, <span class="st">"FR"</span>, <span class="st">"IT"</span>, <span class="st">"RU"</span>, <span class="st">"ES"</span>, <span class="st">"UK"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time <span class="sc">|&gt;</span> <span class="fu">year</span>(), <span class="at">y =</span> values, <span class="at">color =</span> sex))<span class="sc">+</span></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> geo, <span class="at">ncol =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Life expectancy at age 65"</span>, <span class="at">x =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="in">e0 |&gt; </span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">        filter(! sex == "T",</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="in">               age == "Y65", </span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="in">               geo %in% c("DE", "FR", "IT", "RU", "ES", "UK")) |&gt; </span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="in">        ggplot(aes(x = time |&gt; year(), y = values, color = sex))+</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_path()+</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">        facet_wrap(~ geo, ncol = 3)+</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">        labs(y = "Life expectancy at age 65", x = NULL)+</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="in">        theme_minimal(base_family = "mono")</span></span>
 <span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="al">![](eurostat.png)</span></span>
@@ -707,11 +1000,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>There are several packages that provide an API to World Bank data. Probably, the most elaborated one is a fairly recent <span class="co">[</span><span class="ot">`wbstats`</span><span class="co">][wbstats]</span>. Its <span class="in">`wbsearch`</span> function really does great job searching through the database for the relevant datasets. For example, <span class="in">`wbsearch("fertility")`</span> produces a dataframe of 339 entries with the codes and names of the relevant indicators. </span>
 <span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wbstats)</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) </span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">library(wbstats)</span></span>
 <span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="co"># search for a dataset of interest</span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="fu">wbsearch</span>(<span class="st">"fertility"</span>) <span class="sc">|&gt;</span> head</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in"># search for a dataset of interest</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="in">wbsearch("fertility") |&gt; head</span></span>
 <span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
@@ -728,21 +1021,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>Let's have a look at the indicator <span class="in">`Lifetime risk of maternal death (%)`</span> (code <span class="in">`SH.MMR.RISK.ZS`</span>). World Bank provides a variety of country groupings. One of the curious groupings divides countries based on the advance over the Demographic Transition path. Below I plot our selected indicator for (1) the countries that have passed the Demographic Transition, (2) the countries that haven't yet experienced demographic dividend, and (3) the whole World. </span>
 <span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="co"># fetch the selected dataset</span></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>df_wb <span class="ot">&lt;-</span> <span class="fu">wb</span>(<span class="at">indicator =</span> <span class="st">"SH.MMR.RISK.ZS"</span>, <span class="at">startdate =</span> <span class="dv">2000</span>, <span class="at">enddate =</span> <span class="dv">2015</span>)</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="in"># fetch the selected dataset</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="in">df_wb &lt;- wb(indicator = "SH.MMR.RISK.ZS", startdate = 2000, enddate = 2015)</span></span>
 <span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="co"># have look at the data for one year</span></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">|&gt;</span> <span class="fu">filter</span>(date <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">|&gt;</span> View</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="in"># have look at the data for one year</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a><span class="in">df_wb |&gt; filter(date == 2015) |&gt; View</span></span>
 <span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>df_wb <span class="sc">|&gt;</span> </span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(iso2c <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"V4"</span>, <span class="st">"V1"</span>, <span class="st">"1W"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(), <span class="at">y =</span> value, <span class="at">color =</span> country))<span class="sc">+</span></span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_color_brewer</span>(<span class="cn">NULL</span>, <span class="at">palette =</span> <span class="st">"Dark2"</span>)<span class="sc">+</span></span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">"Lifetime risk of maternal death (%)"</span>)<span class="sc">+</span></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)<span class="sc">+</span></span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="fu">c</span>(.<span class="dv">8</span>, .<span class="dv">9</span>))</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="in">df_wb |&gt; </span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a><span class="in">        filter(iso2c %in% c("V4", "V1", "1W")) |&gt; </span></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a><span class="in">        ggplot(aes(x = date |&gt; as.numeric(), y = value, color = country))+</span></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_path(size = 1)+</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="in">        scale_color_brewer(NULL, palette = "Dark2")+</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="in">        labs(x = NULL, y = NULL, title = "Lifetime risk of maternal death (%)")+</span></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="in">        theme_minimal(base_family = "mono")+</span></span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a><span class="in">        theme(panel.grid.minor = element_blank(),</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a><span class="in">              legend.position = c(.8, .9))</span></span>
 <span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
@@ -754,31 +1047,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OECD)</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) </span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="in">library(viridis)</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="in">library(OECD)</span></span>
 <span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="co"># search by keyword</span></span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">search_dataset</span>(<span class="st">"unemployment"</span>) <span class="sc">|&gt;</span> View</span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="in"># search by keyword</span></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="in">search_dataset("unemployment") |&gt; View</span></span>
 <span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="co"># download the selected dataset</span></span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">"AVD_DUR"</span>)</span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="in"># download the selected dataset</span></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="in">df_oecd &lt;- get_dataset("AVD_DUR")</span></span>
 <span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="co"># turn variable names to lowercase</span></span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df_oecd) <span class="ot">&lt;-</span> <span class="fu">names</span>(df_oecd) <span class="sc">|&gt;</span> <span class="fu">tolower</span>()</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="in"># turn variable names to lowercase</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="in">names(df_oecd) &lt;- names(df_oecd) |&gt; tolower()</span></span>
 <span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>df_oecd <span class="sc">|&gt;</span> </span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>            country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EU16"</span>, <span class="st">"EU28"</span>, <span class="st">"USA"</span>), sex <span class="sc">==</span> <span class="st">"MEN"</span>, <span class="sc">!</span> age <span class="sc">==</span> <span class="st">"1524"</span></span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(obstime, age, <span class="at">fill =</span> obsvalue))<span class="sc">+</span></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_tile</span>()<span class="sc">+</span></span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="st">"Months"</span>, <span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2015</span>, <span class="dv">5</span>) <span class="sc">|&gt;</span> paste)<span class="sc">+</span></span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> country, <span class="at">ncol =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Age groups"</span>, </span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Average duration of unemployment in months, males"</span>)<span class="sc">+</span></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a><span class="in">df_oecd |&gt; </span></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="in">        filter(</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="in">            country %in% c("EU16", "EU28", "USA"), sex == "MEN", ! age == "1524"</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="in">        ) |&gt; </span></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a><span class="in">        ggplot(aes(obstime, age, fill = obsvalue))+</span></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_tile()+</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="in">        scale_fill_viridis("Months", option = "B")+</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a><span class="in">        scale_x_discrete(breaks = seq(1970, 2015, 5) |&gt; paste)+</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a><span class="in">        facet_wrap(~ country, ncol = 1)+</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a><span class="in">        labs(x = NULL, y = "Age groups", </span></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="in">             title = "Average duration of unemployment in months, males")+</span></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="in">        theme_minimal(base_family = "mono")</span></span>
 <span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a><span class="al">![](oecd.png)</span></span>
@@ -789,40 +1082,40 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">World Wealth and Income Database</span><span class="co">][wid]</span> is a harmonized dataset on income and wealth inequality. The developers of the database provide an R package to get their data, which is only <span class="co">[</span><span class="ot">available from github</span><span class="co">][widr]</span> so far. </span>
 <span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) </span></span>
 <span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"WIDworld/wid-r-tool"</span>)</span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wid)</span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="in">#install.packages("devtools")</span></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="in">devtools::install_github("WIDworld/wid-r-tool")</span></span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="in">library(wid)</span></span>
 <span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>The function to acquire data is <span class="in">`download_wid()`</span>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</span>
 <span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>?wid_series_type</span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>?wid_concepts</span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="in">?wid_series_type</span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a><span class="in">?wid_concepts</span></span>
 <span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>The following nice example is adapted from <span class="co">[</span><span class="ot">the package vignette</span><span class="co">][vig]</span>. It shows the share of wealth that was owned by the richest 1% and 10% of population in France and Great Britain.</span>
 <span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>df_wid <span class="ot">&lt;-</span> <span class="fu">download_wid</span>(</span>
-<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>        <span class="at">indicators =</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
-<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>        <span class="at">areas =</span> <span class="fu">c</span>(<span class="st">"FR"</span>, <span class="st">"GB"</span>), <span class="co"># In France an Italy</span></span>
-<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>        <span class="at">perc =</span> <span class="fu">c</span>(<span class="st">"p90p100"</span>, <span class="st">"p99p100"</span>) <span class="co"># Top 1% and top 10%</span></span>
-<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a><span class="in">df_wid &lt;- download_wid(</span></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a><span class="in">        indicators = "shweal", # Shares of personal wealth</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="in">        areas = c("FR", "GB"), # In France an Italy</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="in">        perc = c("p90p100", "p99p100") # Top 1% and top 10%</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>df_wid <span class="sc">|&gt;</span> </span>
-<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_path</span>()<span class="sc">+</span></span>
-<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
-<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Top 1% and top 10% personal wealth shares in </span></span>
-<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="st">            France and Great Britain"</span>,</span>
-<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"top share"</span></span>
-<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
-<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span> percentile)<span class="sc">+</span></span>
-<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)</span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a><span class="in">df_wid |&gt; </span></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="in">        ggplot(aes(x = year, y = value, color = country)) +</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="in">        geom_path()+</span></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="in">        labs(</span></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="in">            title = "Top 1% and top 10% personal wealth shares in </span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="in">            France and Great Britain",</span></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a><span class="in">             y = "top share"</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a><span class="in">        )+</span></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a><span class="in">        facet_wrap(~ percentile)+</span></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a><span class="in">        theme_minimal(base_family = "mono")</span></span>
 <span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
@@ -851,12 +1144,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/2362ce308f47ff38c3da556384acd20f</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></div>   
-      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
+
 
 
 </body></html>
