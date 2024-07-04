@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ilya Kashnitsky">
-<meta name="description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
+<meta name="description" content="<strong>?meta:website.description</strong>">
 
-<title>demographeR’s notes | Ilya Kashnitsky</title>
+<title>demographeR’s notes | ?meta:website.title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -51,7 +51,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -60,8 +66,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -74,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -102,9 +110,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -130,9 +138,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -158,9 +166,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-aliases','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-aliases','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-aliases","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-aliases","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -186,9 +194,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -214,9 +222,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -242,9 +250,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-author','listing-format','listing-title-block-banner','listing-title','listing-description-meta','listing-date','listing-image','listing-categories','listing-path','listing-description','listing-filename','listing-file-modified','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-author","listing-format","listing-title-block-banner","listing-title","listing-description-meta","listing-date","listing-image","listing-categories","listing-path","listing-description","listing-filename","listing-file-modified","listing-reading-time"],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -276,20 +284,49 @@ ga('send', {
 });
 </script>
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #002F2F;
-    }
-    </style>
 
+      .quarto-title-block .quarto-title-banner {
+        background: #002F2F;
+      }
+</style>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="alternate" type="application/rss+xml" title="Ilya Kashnitsky" href="index.xml"><meta property="og:title" content="demographeR’s notes | Ilya Kashnitsky">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="Ilya Kashnitsky" href="index.xml" data-external="1"><meta property="og:title" content="demographeR’s notes | ?meta:website.title">
 <meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
-<meta property="og:site-name" content="Ilya Kashnitsky">
+<meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
-<meta name="twitter:title" content="demographeR’s notes | Ilya Kashnitsky">
+<meta name="twitter:title" content="demographeR’s notes | ?meta:website.title">
 <meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -301,70 +338,72 @@ ga('send', {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./me.html">
- <span class="menu-text">About me</span></a>
+    <a class="nav-link" href="./me.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html">
- <span class="menu-text">CV</span></a>
+    <a class="nav-link" href="./cv.html"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd">
- <span class="menu-text">DatavizArtSkill</span></a>
+    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd"> 
+<span class="menu-text">DatavizArtSkill</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dd.html">
- <span class="menu-text">Demographic Digest</span></a>
+    <a class="nav-link" href="./dd.html"> 
+<span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ikashnitsky"><i class="bi bi-github" role="img" aria-label="github">
+    <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/ikashnitsky"> <i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"><i class="bi bi-mastodon" role="img" aria-label="mastodon">
+    <a class="nav-link" href="https://fosstodon.org/@ikashnitsky"> <i class="bi bi-mastodon" role="img" aria-label="mastodon">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"><i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"><i class="bi bi-envelope-fill" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:ilya.kashnitsky@gmail.com"> <i class="bi bi-envelope-fill" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"><i class="bi bi-rss-fill" role="img" aria-label="rss">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss-fill" role="img" aria-label="rss">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -377,7 +416,7 @@ ga('send', {
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -412,167 +451,267 @@ ga('send', {
 
 
 
+
 <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">2023</h2>
 <div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1703113200000" data-listing-file-modified-sort="1705571122661" data-listing-reading-time-sort="3.565">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1703113200000" data-listing-file-modified-sort="1717570235801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="689">
+
         <div class="body">
+
             <a href="./2023/30-dmc/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/30-dmc/teaser.png" alt="30DayMapChallenge my 25/30 contributions" title="30DayMapChallenge my 25/30 contributions">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/30-dmc/index.html">30DayMapChallenge my 25/30 contributions</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">December 21, 2023</p>
             </div>
-            <p class="description listing-description">For four years I’ve been following #30DayMapCallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities, and towards the end of a year it never felt possible…<code></code></p>
+
+            <p class="description listing-description">For four years I’ve been following #30DayMapCallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities…<code></code></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1704878388208" data-listing-reading-time-sort="5.11">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1717570236041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1022">
+
         <div class="body">
+
             <a href="./2023/map-proj/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/map-proj/teaser.png" alt="Improve your maps in one line of code changing map projections" title="Improve your maps in one line of code changing map projections">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/map-proj/index.html">Improve your maps in one line of code changing map projections</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">November 4, 2023</p>
             </div>
+
             <p class="description listing-description">Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz?</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1705566651594" data-listing-reading-time-sort="3.695">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,rspatial,ggplot2" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1717570235821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="739">
+
         <div class="body">
+
             <a href="./2023/geocoding/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/geocoding/teaser.png" alt="Geocode address text strings using `tidygeocoder`" title="Geocode address text strings using `tidygeocoder`">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/geocoding/index.html">Geocode address text strings using `tidygeocoder`</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">November 1, 2023</p>
             </div>
+
             <p class="description listing-description">Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question…<code></code></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,dataviz,trick,faceting" data-listing-date-sort="1677452400000" data-listing-file-modified-sort="1705566553797" data-listing-reading-time-sort="4.99">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,dataviz,trick,faceting" data-listing-date-sort="1677452400000" data-listing-file-modified-sort="1717570236051" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="998">
+
         <div class="body">
+
             <a href="./2023/shrink-space/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/shrink-space/teaser.jpg" alt="Save space in faceted plots" title="Save space in faceted plots">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/shrink-space/index.html">Save space in faceted plots</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('faceting'); return false;">
                     faceting
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">February 27, 2023</p>
             </div>
-            <p class="description listing-description">Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same…</p>
+
+            <p class="description listing-description">Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rstudio,trick" data-listing-date-sort="1672700400000" data-listing-file-modified-sort="1704878766233" data-listing-reading-time-sort="4.48">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rstudio,trick" data-listing-date-sort="1672700400000" data-listing-file-modified-sort="1717570235821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="896">
+
         <div class="body">
+
             <a href="./2023/gist-snippet/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/gist-snippet/teaser.png" alt="Easily re-using self-written functions: the power of gist + code snippet duo" title="Easily re-using self-written functions: the power of gist + code snippet duo">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/gist-snippet/index.html">Easily re-using self-written functions: the power of gist + code snippet duo</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
                     rstudio
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">January 3, 2023</p>
             </div>
-            <p class="description listing-description">Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a…<code></code><code></code><code></code><code></code><strong></strong></p>
+
+            <p class="description listing-description">Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a certain…<code></code><code></code><code></code><code></code><strong></strong></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="r,rspatial,dataviz,trick" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1704838512317" data-listing-reading-time-sort="3.875">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="r,rspatial,dataviz,trick" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1717570235821" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="775">
+
         <div class="body">
+
             <a href="./2023/map-borders/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2023/map-borders/teaser.png" alt="The easiest way to radically improve map aesthetics" title="The easiest way to radically improve map aesthetics">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2023/map-borders/index.html">The easiest way to radically improve map aesthetics</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">January 1, 2023</p>
             </div>
-            <p class="description listing-description">Since R community developed brilliant tools to deal with…<code></code></p>
+
+            <p class="description listing-description">Since R community developed brilliant tools to deal with spatial data, producing maps is no longer the privilege of a narrow group of people with very specific almost…<code></code></p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -583,31 +722,48 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-1">2022</h2>
 <div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,sport,package" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1674476620590" data-listing-reading-time-sort="4.47">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,sport,package" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1717570235790" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="894">
+
         <div class="body">
+
             <a href="./2022/exceptional-world-cup/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2022/exceptional-world-cup/teaser.jpg" alt="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?" title="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2022/exceptional-world-cup/index.html">Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('sport'); return false;">
                     sport
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('package'); return false;">
                     package
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">December 25, 2022</p>
             </div>
+
             <p class="description listing-description">FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many – some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning…</p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -618,31 +774,48 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-2">2021</h2>
 <div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,101,demography" data-listing-date-sort="1614898800000" data-listing-file-modified-sort="1705566140070" data-listing-reading-time-sort="5.03">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,101,demography" data-listing-date-sort="1614898800000" data-listing-file-modified-sort="1717570235790" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1006">
+
         <div class="body">
+
             <a href="./2021/life-expectancy-101/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2021/life-expectancy-101/teaser.png" alt="What is life expectancy? And, even more important, what it isn't" title="What is life expectancy? And, even more important, what it isn't">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2021/life-expectancy-101/index.html">What is life expectancy? And, even more important, what it isn't</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('101'); return false;">
                     101
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">March 5, 2021</p>
             </div>
-            <p class="description listing-description">It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life…<strong></strong><strong></strong></p>
+
+            <p class="description listing-description">It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life expectancy. Unlike many statistics and…<strong></strong><strong></strong></p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -653,37 +826,56 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-3">2020</h2>
 <div id="listing-posts_2020" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,faceting,dataviz,ggplot2,trick" data-listing-date-sort="1592517600000" data-listing-file-modified-sort="1704832111894" data-listing-reading-time-sort="2.205">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,faceting,dataviz,ggplot2,trick" data-listing-date-sort="1592517600000" data-listing-file-modified-sort="1717570235780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
+
         <div class="body">
+
             <a href="./2020/background-data/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2020/background-data/teaser.png" alt="Show all data in the background of your faceted ggplot" title="Show all data in the background of your faceted ggplot">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2020/background-data/index.html">Show all data in the background of your faceted ggplot</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('faceting'); return false;">
                     faceting
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">June 19, 2020</p>
             </div>
-            <p class="description listing-description">One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the…</p>
+
+            <p class="description listing-description">One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to…</p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -694,78 +886,126 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-4">2019</h2>
 <div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,dataviz,trick" data-listing-date-sort="1563487200000" data-listing-file-modified-sort="1674476504745" data-listing-reading-time-sort="2.155">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,dataviz,trick" data-listing-date-sort="1563487200000" data-listing-file-modified-sort="1717570235747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="431">
+
         <div class="body">
+
             <a href="./2019/dotplot/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2019/dotplot/teaser.jpeg" alt="Dotplot – the single most useful yet largely neglected dataviz type" title="Dotplot – the single most useful yet largely neglected dataviz type">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2019/dotplot/index.html">Dotplot – the single most useful yet largely neglected dataviz type</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">July 19, 2019</p>
             </div>
-            <p class="description listing-description">I have to confess…<strong></strong></p>
+
+            <p class="description listing-description">I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advise to every (ha-ha-ha) listening…<strong></strong></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,tutorial" data-listing-date-sort="1552518000000" data-listing-file-modified-sort="1705566339791" data-listing-reading-time-sort="10.485">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,tutorial" data-listing-date-sort="1552518000000" data-listing-file-modified-sort="1717570235759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2097">
+
         <div class="body">
+
             <a href="./2019/zotero/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2019/zotero/teaser.png" alt="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown" title="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2019/zotero/index.html">Zotero hacks: unlimited synced storage and its smooth use with rmarkdown</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
                     tutorial
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">March 14, 2019</p>
             </div>
-            <p class="description listing-description">Here is a bit refreshed translation of my 2015 blog post, initially published on Russian blog platform habr.com. The post shows how to organize a personal academic library of unlimited size for free. This is a funny case of a self written manual which I came back to multiple times…</p>
+
+            <p class="description listing-description">Here is a bit refreshed translation of my 2015 blog post, initially published on Russian blog platform habr.com. The post shows how to organize a personal academic library…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,dataviz,demography" data-listing-date-sort="1551913200000" data-listing-file-modified-sort="1705566284155" data-listing-reading-time-sort="0.915">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,dataviz,demography" data-listing-date-sort="1551913200000" data-listing-file-modified-sort="1717570235737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183">
+
         <div class="body">
+
             <a href="./2019/barcelona-summer-school-of-demography/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2019/barcelona-summer-school-of-demography/teaser.png" alt="See you in Barcelona this summer" title="See you in Barcelona this summer">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2019/barcelona-summer-school-of-demography/index.html">See you in Barcelona this summer</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">March 7, 2019</p>
             </div>
+
             <p class="description listing-description">Have you been feeling lately that you are missing out the coolest skill-set in academia?</p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -776,131 +1016,212 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-5">2018</h2>
 <div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,demography,dataviz,rspatial" data-listing-date-sort="1543791600000" data-listing-file-modified-sort="1705566476936" data-listing-reading-time-sort="1.365">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,demography,dataviz,rspatial" data-listing-date-sort="1543791600000" data-listing-file-modified-sort="1717570235667" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
+
         <div class="body">
+
             <a href="./2018/ddd-poster/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2018/ddd-poster/teaser.png" alt="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding" title="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2018/ddd-poster/index.html">Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">December 3, 2018</p>
             </div>
+
             <p class="description listing-description">On 28 November 2018 I presented a poster at Dutch Demography Day in Utrecht. Here it is:</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,package,bibliometrics" data-listing-date-sort="1537653600000" data-listing-file-modified-sort="1704832111893" data-listing-reading-time-sort="1.445">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,package,bibliometrics" data-listing-date-sort="1537653600000" data-listing-file-modified-sort="1717570235708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="289">
+
         <div class="body">
+
             <a href="./2018/sjrdata-package/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2018/sjrdata-package/teaser.png" alt="sjrdata: all SCImago Journal &amp; Country Rank data, ready for R" title="sjrdata: all SCImago Journal &amp; Country Rank data, ready for R">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2018/sjrdata-package/index.html">sjrdata: all SCImago Journal &amp; Country Rank data, ready for R</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('package'); return false;">
                     package
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('bibliometrics'); return false;">
                     bibliometrics
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">September 23, 2018</p>
             </div>
-            <p class="description listing-description">SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at the project website and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled…</p>
+
+            <p class="description listing-description">SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at the project website and is distributed for deeper…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,dataviz,demography" data-listing-date-sort="1532124000000" data-listing-file-modified-sort="1705566446636" data-listing-reading-time-sort="1.43">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,dataviz,demography" data-listing-date-sort="1532124000000" data-listing-file-modified-sort="1717570235718" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
+
         <div class="body">
+
             <a href="./2018/the-lancet-paper/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2018/the-lancet-paper/teaser.png" alt="Regional population structures at a glance" title="Regional population structures at a glance">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2018/the-lancet-paper/index.html">Regional population structures at a glance</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">July 21, 2018</p>
             </div>
+
             <p class="description listing-description">I am happy to announce that our paper is published today in <em>The Lancet</em>.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,demography" data-listing-date-sort="1528063200000" data-listing-file-modified-sort="1705566086187" data-listing-reading-time-sort="4.14">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,demography" data-listing-date-sort="1528063200000" data-listing-file-modified-sort="1717570235687" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="828">
+
         <div class="body">
+
             <a href="./2018/deep-catalan-roots/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2018/deep-catalan-roots/teaser.jpg" alt="Deep Catalan roots: playing with stringdist" title="Deep Catalan roots: playing with stringdist">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2018/deep-catalan-roots/index.html">Deep Catalan roots: playing with stringdist</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">June 4, 2018</p>
             </div>
-            <p class="description listing-description">This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It keeps migrating across European research centers; this year Jim Vaupel’s research group in Odense…</p>
+
+            <p class="description listing-description">This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It keeps migrating…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rstudio,trick" data-listing-date-sort="1526940000000" data-listing-file-modified-sort="1674476527464" data-listing-reading-time-sort="1.07">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,rstudio,trick" data-listing-date-sort="1526940000000" data-listing-file-modified-sort="1717570235695" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="214">
+
         <div class="body">
+
             <a href="./2018/perfect-rstudio-layout/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2018/perfect-rstudio-layout/teaser.png" alt="A perfect RStudio layout" title="A perfect RStudio layout">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2018/perfect-rstudio-layout/index.html">A perfect RStudio layout</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
                     rstudio
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('trick'); return false;">
                     trick
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">May 22, 2018</p>
             </div>
-            <p class="description listing-description">Tiny things can separate life into “before” and “after”. Here is one. For almost a year I’ve been daily sending mental “thank you” to Ugo who showed me how to re-organize panes in RStudio. Since then I’ve been spreading this tiny improvement so many times that I thought the tiny advise deserved a separate…<strong></strong></p>
+
+            <p class="description listing-description">Tiny things can separate life into “before” and “after”. Here is one. For almost a year I’ve been daily sending mental “thank you” to Ugo who showed me how to re-organize…<strong></strong></p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -911,432 +1232,713 @@ No matching items
 <h2 class="anchored" data-anchor-id="section-6">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1704832111848" data-listing-reading-time-sort="10.97">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1717570235458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2194">
+
         <div class="body">
+
             <a href="./2017/data-acquisition-three/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/data-acquisition-three/teaser.png" alt="Data acquisition in R (3/4)" title="Data acquisition in R (3/4)">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/data-acquisition-three/index.html">Data acquisition in R (3/4)</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
                     tutorial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('data acquisition'); return false;">
                     data acquisition
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">December 10, 2017</p>
             </div>
+
             <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1510009200000" data-listing-file-modified-sort="1704878949704" data-listing-reading-time-sort="6.87">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1510009200000" data-listing-file-modified-sort="1717570235466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1374">
+
         <div class="body">
+
             <a href="./2017/data-acquisition-two/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/data-acquisition-two/teaser.png" alt="Data acquisition in R (2/4)" title="Data acquisition in R (2/4)">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/data-acquisition-two/index.html">Data acquisition in R (2/4)</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
                     tutorial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('data acquisition'); return false;">
                     data acquisition
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">November 7, 2017</p>
             </div>
+
             <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1508191200000" data-listing-file-modified-sort="1704879079615" data-listing-reading-time-sort="5.1">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="r,tutorial,data acquisition" data-listing-date-sort="1508191200000" data-listing-file-modified-sort="1717570235450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1020">
+
         <div class="body">
+
             <a href="./2017/data-acquisition-one/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/data-acquisition-one/teaser.png" alt="Data acquisition in R (1/4)" title="Data acquisition in R (1/4)">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/data-acquisition-one/index.html">Data acquisition in R (1/4)</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
                     tutorial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('data acquisition'); return false;">
                     data acquisition
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">October 17, 2017</p>
             </div>
+
             <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,faceting" data-listing-date-sort="1500328800000" data-listing-file-modified-sort="1705566592180" data-listing-reading-time-sort="2.235">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="r,faceting" data-listing-date-sort="1500328800000" data-listing-file-modified-sort="1717570235614" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="447">
+
         <div class="body">
+
             <a href="./2017/neet-in-europe/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/neet-in-europe/teaser.jpg" alt="Young people neither in employment nor in education and training in Europe, 2000-2016" title="Young people neither in employment nor in education and training in Europe, 2000-2016">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/neet-in-europe/index.html">Young people neither in employment nor in education and training in Europe, 2000-2016</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('faceting'); return false;">
                     faceting
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">July 18, 2017</p>
             </div>
-            <p class="description listing-description">As an example of…<code></code></p>
+
+            <p class="description listing-description">As an example of Eurostat data usage I chose to show the dynamics of NEET (Young people neither in employment nor in education and training) in European countries. The…<code></code></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,demography" data-listing-date-sort="1500242400000" data-listing-file-modified-sort="1705566118377" data-listing-reading-time-sort="0.425">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="r,demography" data-listing-date-sort="1500242400000" data-listing-file-modified-sort="1717570235532" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="85">
+
         <div class="body">
+
             <a href="./2017/global-male-life-expectancy-convergence/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/global-male-life-expectancy-convergence/teaser.png" alt="Global convergence in male life expectancy at birth" title="Global convergence in male life expectancy at birth">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/global-male-life-expectancy-convergence/index.html">Global convergence in male life expectancy at birth</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">July 17, 2017</p>
             </div>
+
             <p class="description listing-description">In the modern history, the world has seen unprecedented decrease in human mortality – the result of the Demographic Transition. Initially, the improvements occurred only in…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="r,ggplot2" data-listing-date-sort="1499119200000" data-listing-file-modified-sort="1674479421767" data-listing-reading-time-sort="8.96">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="r,ggplot2" data-listing-date-sort="1499119200000" data-listing-file-modified-sort="1717570235524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1792">
+
         <div class="body">
+
             <a href="./2017/ggplot2-microbenchmark/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/ggplot2-microbenchmark/teaser.png" alt="Accelerating ggplot2: use a canvas to speed up plots creation" title="Accelerating ggplot2: use a canvas to speed up plots creation">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/ggplot2-microbenchmark/index.html">Accelerating ggplot2: use a canvas to speed up plots creation</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">July 4, 2017</p>
             </div>
-            <p class="description listing-description">Basically, this post turned out to be just a wrong, premature, and unnecessary attempt of code optimization. If you still want to have look, make sure that later you read this…</p>
+
+            <p class="description listing-description">Basically, this post turned out to be just a wrong, premature, and unnecessary attempt of code optimization. If you still want to have look, make sure that later you read thi…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="6" data-categories="r,ggplot2,rspatial,dataviz,demography" data-listing-date-sort="1498773600000" data-listing-file-modified-sort="1705566416246" data-listing-reading-time-sort="2.455">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="6" data-categories="r,ggplot2,rspatial,dataviz,demography" data-listing-date-sort="1498773600000" data-listing-file-modified-sort="1717570235442" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="491">
+
         <div class="body">
+
             <a href="./2017/colorcoded-map/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/colorcoded-map/teaser.png" alt="Colorcoded map: regional population structures at a glance" title="Colorcoded map: regional population structures at a glance">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/colorcoded-map/index.html">Colorcoded map: regional population structures at a glance</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
                     dataviz
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">June 30, 2017</p>
             </div>
-            <p class="description listing-description">Data visualization is…</p>
+
+            <p class="description listing-description">Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my recent…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="7" data-categories="r,sport" data-listing-date-sort="1495836000000" data-listing-file-modified-sort="1704879426772" data-listing-reading-time-sort="33.825">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="7" data-categories="r,sport" data-listing-date-sort="1495836000000" data-listing-file-modified-sort="1717570235606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6765">
+
         <div class="body">
+
             <a href="./2017/ice-hockey-players-height/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/ice-hockey-players-height/teaser.png" alt="Evolution of ice hockey players' height: IIHF world championships 2001-2016" title="Evolution of ice hockey players' height: IIHF world championships 2001-2016">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/ice-hockey-players-height/index.html">Evolution of ice hockey players' height: IIHF world championships 2001-2016</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('sport'); return false;">
                     sport
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">May 27, 2017</p>
             </div>
-            <p class="description listing-description">The 2017 Ice Hockey World Championship has started. Thus I want to share a small research on the height of ice hockey players that I did almost a year ago and pub…</p>
+
+            <p class="description listing-description">The 2017 Ice Hockey World Championship has started. Thus I want to share a small research on the height of ice hockey players that I did almost a year ago and published in…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="r,ggplot2,rspatial" data-listing-date-sort="1495663200000" data-listing-file-modified-sort="1704879546620" data-listing-reading-time-sort="10.335">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="r,ggplot2,rspatial" data-listing-date-sort="1495663200000" data-listing-file-modified-sort="1717570235616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2067">
+
         <div class="body">
+
             <a href="./2017/subplots-in-maps/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/subplots-in-maps/teaser.png" alt="Subplots in maps with ggplot2" title="Subplots in maps with ggplot2">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/subplots-in-maps/index.html">Subplots in maps with ggplot2</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">May 25, 2017</p>
             </div>
-            <p class="description listing-description">Following the surprising success of my latest post, I decided to show yet another use case of the handy…</p>
+
+            <p class="description listing-description">Following the surprising success of my latest post, I decided to show yet another use case of the handy annotation custom function. Here I will show how to add small…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="r,ggplot2" data-listing-date-sort="1495404000000" data-listing-file-modified-sort="1704832111834" data-listing-reading-time-sort="8.22">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="r,ggplot2" data-listing-date-sort="1495404000000" data-listing-file-modified-sort="1717570235426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1644">
+
         <div class="body">
+
             <a href="./2017/align-six-maps/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/align-six-maps/teaser.png" alt="Arranging subplots with ggplot2" title="Arranging subplots with ggplot2">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/align-six-maps/index.html">Arranging subplots with ggplot2</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">May 22, 2017</p>
             </div>
+
             <p class="description listing-description">For my recently published paper, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="r,ggplot2,rspatial" data-listing-date-sort="1492984800000" data-listing-file-modified-sort="1704879755336" data-listing-reading-time-sort="6.245">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="r,ggplot2,rspatial" data-listing-date-sort="1492984800000" data-listing-file-modified-sort="1717570235606" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1249">
+
         <div class="body">
+
             <a href="./2017/map-hacking/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/map-hacking/teaser.png" alt="Hacking maps with ggplot2" title="Hacking maps with ggplot2">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/map-hacking/index.html">Hacking maps with ggplot2</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
                     ggplot2
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">April 24, 2017</p>
             </div>
+
             <p class="description listing-description">This is a very short post on mapping with <code>ggplot2</code>.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="11" data-categories="r,animaion" data-listing-date-sort="1490911200000" data-listing-file-modified-sort="1705566046248" data-listing-reading-time-sort="13.33">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="11" data-categories="r,animaion" data-listing-date-sort="1490911200000" data-listing-file-modified-sort="1717570235626" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2666">
+
         <div class="body">
+
             <a href="./2017/who-is-old/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/who-is-old/teaser.png" alt="Who is old? Visualizing the concept of prospective ageing with animated population pyramids" title="Who is old? Visualizing the concept of prospective ageing with animated population pyramids">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/who-is-old/index.html">Who is old? Visualizing the concept of prospective ageing with animated population pyramids</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('animaion'); return false;">
                     animaion
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">March 31, 2017</p>
             </div>
-            <p class="description listing-description">This post is about illustrating the concept of…</p>
+
+            <p class="description listing-description">This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="12" data-categories="r,rspatial" data-listing-date-sort="1489618800000" data-listing-file-modified-sort="1704879967694" data-listing-reading-time-sort="18.105">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="12" data-categories="r,rspatial" data-listing-date-sort="1489618800000" data-listing-file-modified-sort="1717570235513" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3621">
+
         <div class="body">
+
             <a href="./2017/denmark-nuts-reconstruction/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/denmark-nuts-reconstruction/teaser.png" alt="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark" title="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/denmark-nuts-reconstruction/index.html">R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('rspatial'); return false;">
                     rspatial
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">March 16, 2017</p>
             </div>
-            <p class="description listing-description">NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the…</p>
+
+            <p class="description listing-description">NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="13" data-categories="r,demography" data-listing-date-sort="1487977200000" data-listing-file-modified-sort="1705566254336" data-listing-reading-time-sort="2.63">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="13" data-categories="r,demography" data-listing-date-sort="1487977200000" data-listing-file-modified-sort="1717570235513" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526">
+
         <div class="body">
+
             <a href="./2017/gender-gap-in-swedish-mortality/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/gender-gap-in-swedish-mortality/teaser.png" alt="Gender gap in Swedish mortality" title="Gender gap in Swedish mortality">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/gender-gap-in-swedish-mortality/index.html">Gender gap in Swedish mortality</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">February 25, 2017</p>
             </div>
-            <p class="description listing-description">S…</p>
+
+            <p class="description listing-description">Sweden, with its high quality statistical record since 1748, is the natural choice for any demographic study that aims to cover population dynamics during a long period of…</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="r,demography,bibliometrics" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1704880359637" data-listing-reading-time-sort="5.39">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="r,demography,bibliometrics" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1717570235466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1078">
+
         <div class="body">
+
             <a href="./2017/dd-journals-frequency/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/dd-journals-frequency/teaser.png" alt="30 issues of Demographic Digest - the most frequent journals" title="30 issues of Demographic Digest - the most frequent journals">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/dd-journals-frequency/index.html">30 issues of Demographic Digest - the most frequent journals</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('bibliometrics'); return false;">
                     bibliometrics
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">February 14, 2017</p>
             </div>
+
             <p class="description listing-description">This week, the 30-th issue of my Demographic Digest was published.</p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="r,hmd,demography" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1705566215449" data-listing-reading-time-sort="2.755">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="r,hmd,demography" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1717570235542" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="551">
+
         <div class="body">
+
             <a href="./2017/hmd-male-mortality-rus-jpn/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/hmd-male-mortality-rus-jpn/teaser.png" alt="Male mortality in Russia and Japan" title="Male mortality in Russia and Japan">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/hmd-male-mortality-rus-jpn/index.html">Male mortality in Russia and Japan</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
                     hmd
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">February 6, 2017</p>
             </div>
-            <p class="description listing-description">Russia is sadly notorious for its ridiculously high adult male mortality. According to Human Mortality Database data (2010), the probability for…<sup></sup></p>
+
+            <p class="description listing-description">Russia is sadly notorious for its ridiculously high adult male mortality. According to Human Mortality Database data (2010), the probability for a Russian men to survive…<sup></sup></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="r,hmd,demography" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1705566182788" data-listing-reading-time-sort="4.66">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="r,hmd,demography" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1717570235534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
+
         <div class="body">
+
             <a href="./2017/hmd-all-sex-ratio/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/hmd-all-sex-ratio/teaser.png" alt="Sex ratios in all countries from Human Mortality Database" title="Sex ratios in all countries from Human Mortality Database">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/hmd-all-sex-ratio/index.html">Sex ratios in all countries from Human Mortality Database</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('hmd'); return false;">
                     hmd
                 </div>
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
                     demography
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">February 5, 2017</p>
             </div>
-            <p class="description listing-description">Sex ratios reflect the two basic regularities of…<sup></sup></p>
+
+            <p class="description listing-description">Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their…<sup></sup></p>
         </div>
+
     </div>
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="17" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1671592226605" data-listing-reading-time-sort="0.99">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="17" data-categories="r" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1717570235534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
+
         <div class="body">
+
             <a href="./2017/hello-r-world/index.html">
+                
                 <div class="thumbnail">
                     <img src="./2017/hello-r-world/teaser.png" alt="Hello R world post" title="Hello R world post">
                 </div>
+                
             </a>
+
             <p class="title listing-title"><a href="./2017/hello-r-world/index.html">Hello R world post</a></p>
+
+            
             <div class="post-categories listing-categories">
+                
                 <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
                     r
                 </div>
+                
             </div>
+            
+
             <div class="metadata">
                 <p class="date listing-date">January 29, 2017</p>
             </div>
+
             <p class="description listing-description">Welcome to my blog!</p>
         </div>
+
     </div>
+    
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -1381,9 +1983,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1419,10 +2035,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1432,8 +2065,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1445,9 +2087,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1490,11 +2368,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></div>   
-      <div class="nav-footer-center"><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></div>
-    <div class="nav-footer-right"><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+    <div class="nav-footer-left">
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block">Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span> <span class="faux-block"><a href="https://github.com/ikashnitsky/ikashnitsky.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
+
 
 
 
