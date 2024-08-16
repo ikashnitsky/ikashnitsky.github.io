@@ -2,7 +2,7 @@
 title: "[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library"
 description-meta: "{{< meta website.description >}}"
 date: "2024-08-16"
-image: teaser.png
+image: zotero-teaser.png
 categories: [r, tutorial]
 ---
 

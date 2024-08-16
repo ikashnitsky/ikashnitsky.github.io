@@ -75,6 +75,34 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-posts_2024 .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-posts_2024'] = new List('listing-posts_2024', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-posts_2023 .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -321,13 +349,13 @@ window.Quarto = {
 </script>
 
 <link rel="alternate" type="application/rss+xml" title="Ilya Kashnitsky" href="index.xml" data-external="1"><meta property="og:title" content="demographeR’s notes | ?meta:website.title">
-<meta property="og:image" content="https://ikashnitsky.github.io/img/card-tw.png">
+<meta property="og:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
 <meta name="twitter:title" content="demographeR’s notes | ?meta:website.title">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/img/card-tw.png">
+<meta name="twitter:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
@@ -436,16 +464,17 @@ window.Quarto = {
     <h2 id="toc-title">Year</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2023</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2022</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2021</a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2020</a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">2019</a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">2018</a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2017</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2024</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2023</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2022</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2021</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">2020</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">2019</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">2018</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(35)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(8)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(11)</span></div><div class="category" data-category="faceting">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(35)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="trick">trick <span class="quarto-category-count">(6)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(4)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(36)</span></div><div class="category" data-category="101">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="animaion">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bibliometrics">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="data acquisition">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dataviz">dataviz <span class="quarto-category-count">(8)</span></div><div class="category" data-category="demography">demography <span class="quarto-category-count">(11)</span></div><div class="category" data-category="faceting">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="hmd">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="package">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(36)</span></div><div class="category" data-category="rspatial">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="sport">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="trick">trick <span class="quarto-category-count">(6)</span></div><div class="category" data-category="tutorial">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -454,7 +483,55 @@ window.Quarto = {
 
 <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2023</h2>
+<h2 class="anchored" data-anchor-id="section">2024</h2>
+<div id="listing-posts_2024" class="quarto-listing quarto-listing-container-custom">
+<div class="list grid" style="column-gap: 20px;">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="r,tutorial" data-listing-date-sort="1723759200000" data-listing-file-modified-sort="1723841864592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2490">
+
+        <div class="body">
+
+            <a href="./2024/zotero7/index.html">
+                
+                <div class="thumbnail">
+                    <img src="./2024/zotero7/zotero-teaser.png" alt="[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library" title="[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library">
+                </div>
+                
+            </a>
+
+            <p class="title listing-title"><a href="./2024/zotero7/index.html">[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library</a></p>
+
+            
+            <div class="post-categories listing-categories">
+                
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
+                    r
+                </div>
+                
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('tutorial'); return false;">
+                    tutorial
+                </div>
+                
+            </div>
+            
+
+            <div class="metadata">
+                <p class="date listing-date">August 16, 2024</p>
+            </div>
+
+            <p class="description listing-description">In summer 2024, Zotero had a major update to version 7. The update affected some of the setup routines that I outlined ages ago in the Zotero hacks post. The recipe laid out…</p>
+        </div>
+
+    </div>
+    
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2023</h2>
 <div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -718,8 +795,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2022</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">2022</h2>
 <div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -770,8 +847,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">2021</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">2021</h2>
 <div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -822,8 +899,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">2020</h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">2020</h2>
 <div id="listing-posts_2020" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -882,8 +959,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">2019</h2>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">2019</h2>
 <div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1012,8 +1089,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">2018</h2>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">2018</h2>
 <div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1228,8 +1305,8 @@ No matching items
 </div>
 </div>
 </section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">2017</h2>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">2017</h2>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -2037,7 +2114,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.phd");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -2369,7 +2446,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
