@@ -4,15 +4,20 @@
 # Ilya Kashnitsky, ilya.kashnitsky@gmail.com
 #===============================================================================
 
+# The original plot
+# https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/
 
 
 library(tidyverse)
 
 # Points digitized manually using
 # https://web.eecs.utk.edu/~dcostine/personal/PowerDeviceLib/DigiTest/index.html
-digi <- read_csv("2024/rotate-damn-plot/data.csv", col_names = c("x", "happiness"))
+digi <- read_csv(
+    "https://gist.githubusercontent.com/ikashnitsky/8cc26eab8165b0b79f67da761aa66a1e/raw/8d44c9e6ddea51de3cbb0fdb742fb75a62a307fd/data.csv",
+    col_names = c("x", "happiness")
+)
 
-
+# get all combinations of the categories and attach the digitized data
 df <- crossing(
     country = c("United Kingdom", "Estonia", "Denmark", "Netherlands", "Czech Republic", "Finland", "Austria") |> as_factor(),
     group = c("18-29", "30-39", "40-49", "50-59", "Total")
