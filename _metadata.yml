@@ -27,11 +27,11 @@ freeze: true
 # Default knitr options
 execute:
   echo: true
-  message: true
-  warning: true
+  message: false
+  warning: false
 
 # # Default author
 # author:
 #   - name: Ilya Kashnitsky
-#     url: https://ikashnitsky.github.io
+#     url: https://ikashnitsky.phd
 #     orcid: 0000-0003-1835-8687

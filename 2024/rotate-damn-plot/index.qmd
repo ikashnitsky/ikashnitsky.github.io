@@ -140,12 +140,6 @@ And of course I added a title, subtitle, and legend caption. Note also a small h
 Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e. necessarily horizontal and large enough), preferable using some nice font. **Pay attention to the text elements of you dataviz**!
 
 
-***
-
-::: {.callout-note}
-# This post is the first in the **Damn Plot series**. Other posts will follow, for now you may follow @[damnplot.ikashnitsky.phd][bsky] BlueSky account. 
-:::
-
 [orig]: https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/
 [early]: https://ikashnitsky.phd/2019/dotplot/
 [artskill]:https://github.com/ikashnitsky/dataviz-art-skill
@@ -158,3 +152,11 @@ Let me conclude with just reiterating that it is hard to overestimate how import
 [col]: https://chromewebstore.google.com/detail/snap-color-picker/nbpljhppefmpifoffhhmllmacfdckokh?hl=en&pli=1
 [theme]: https://ikashnitsky.phd/2023/gist-snippet/
 [wilke]: https://clauswilke.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps
+
+
+***
+
+::: {.callout-note}
+# This post is the first in the **Damn Plot series**. Other posts will follow, for now you may follow @[damnplot.ikashnitsky.phd][bsky] BlueSky account. 
+:::
+
