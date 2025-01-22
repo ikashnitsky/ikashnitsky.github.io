@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
-
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2018-12-03">
 <meta name="description" content="<strong>?meta:website.description</strong>">
-
-<title>Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding | ?meta:website.title</title>
+<title>Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding – Ilya Kashnitsky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,9 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<script type="text/javascript">
+}</script><script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -118,50 +111,44 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script>
-<style>
+</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #025757;
       }
 </style>
-
-
-<meta property="og:title" content="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding | ?meta:website.title">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta property="og:image" content="https://ikashnitsky.github.io/2018/ddd-poster/teaser.png">
+<meta property="og:title" content="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:image" content="https://ikashnitsky.phd/2018/ddd-poster/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding | ?meta:website.title">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/2018/ddd-poster/teaser.png">
+<meta name="twitter:title" content="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:image" content="https://ikashnitsky.phd/2018/ddd-poster/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="250">
 <meta name="twitter:image-width" content="400">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../me.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
@@ -178,8 +165,8 @@ ga('send', {
 <span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
 <span class="menu-text"></span></a>
@@ -195,7 +182,7 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-check-circle-fill" role="img" aria-label="bluesky">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,15 +197,11 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -255,19 +238,12 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>On 28 November 2018 I presented a poster at <a href="http://www.nvdemografie.nl/en/activities/dutch-demography-day/dutch-demography-day-2018">Dutch Demography Day</a> in Utrecht. Here it is:</p>
 <div class="cell page-columns page-full">
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="compare-poster.png" class="img-fluid figure-img column-screen-inset" width="1756"></p>
+<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="compare-poster.png" class="img-fluid figure-img column-screen-inset" width="1756"></p>
 </figure>
 </div>
 </div>
@@ -314,8 +290,7 @@ See also
 <!-- -->
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -350,18 +325,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -393,7 +357,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -447,12 +433,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.phd");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -774,11 +760,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -843,13 +826,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ot">[proj]: https://osf.io/d4hjx/</span></span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ot">[demres17]: https://doi.org/10.4054/DemRes.2017.36.21</span></span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ot">[dr18]: https://github.com/ikashnitsky/demres-2018-geofacet</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
@@ -859,8 +841,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

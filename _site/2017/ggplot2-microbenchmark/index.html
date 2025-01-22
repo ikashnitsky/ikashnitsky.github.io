@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
-
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-07-04">
 <meta name="description" content="<strong>?meta:website.description</strong>">
-
-<title>Accelerating ggplot2: use a canvas to speed up plots creation | ?meta:website.title</title>
+<title>Accelerating ggplot2: use a canvas to speed up plots creation – Ilya Kashnitsky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,9 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<script type="text/javascript">
+}</script><script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -118,50 +111,44 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script>
-<style>
+</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #025757;
       }
 </style>
-
-
-<meta property="og:title" content="Accelerating ggplot2: use a canvas to speed up plots creation | ?meta:website.title">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta property="og:image" content="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/teaser.png">
+<meta property="og:title" content="Accelerating ggplot2: use a canvas to speed up plots creation">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:image" content="https://ikashnitsky.phd/2017/ggplot2-microbenchmark/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Accelerating ggplot2: use a canvas to speed up plots creation | ?meta:website.title">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/ggplot2-microbenchmark/teaser.png">
+<meta name="twitter:title" content="Accelerating ggplot2: use a canvas to speed up plots creation">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:image" content="https://ikashnitsky.phd/2017/ggplot2-microbenchmark/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="250">
 <meta name="twitter:image-width" content="400">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../me.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
@@ -178,8 +165,8 @@ ga('send', {
 <span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
 <span class="menu-text"></span></a>
@@ -195,7 +182,7 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-check-circle-fill" role="img" aria-label="bluesky">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,15 +197,11 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Accelerating ggplot2: use a canvas to speed up plots creation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -255,13 +238,7 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -292,137 +269,137 @@ This post is updated on 2017-07-15
 <p>One of the nice features of the <code>gg</code>approach to plotting is that one can save plots as R objects at any step and use later to render and/or modify. I used that feature extensively while creating maps with <code>ggplot2</code> (see my previous posts: <a href="https://ikashnitsky.github.io/2017/denmark-nuts-reconstruction/">one</a>, <a href="https://ikashnitsky.github.io/2017/map-hacking/">two</a>, <a href="https://ikashnitsky.github.io/2017/align-six-maps/">three</a>, <a href="https://ikashnitsky.github.io/2017/subplots-in-maps/">four</a>, <a href="https://ikashnitsky.github.io/2017/colorcoded-map/">five</a>). It is just convenient to first create a canvas with all the theme parameters appropriate for a map, and then overlay the map layer. At some point I decided to check if that workflow was computationally efficient or not. To my surprise, the usage of canvas reduces the creation time of a ggplot quite a lot. To my further surprise, this finding holds for simple plots as well as maps.</p>
 <p>Let’s start with a simple check.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># data manipulation and viz</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)       <span class="co"># themes for ggplot2</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)        <span class="co"># the best color palette</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgdal)          <span class="co"># deal with shapefiles</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark) <span class="co"># measure the speed of executing</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)      <span class="co"># nice font</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>myfont <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a canvas </span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>canv_mt <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> cyl))<span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_cartesian</span>()</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># test speed with mocrobenchmark</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">without_canvas =</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> cyl))<span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_cartesian</span>()<span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>()</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        ,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">with_canvas =</span> canv_mt<span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>()</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>       </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        ,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">times =</span> <span class="dv">100</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>test</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(test)<span class="sc">+</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">fill =</span> expr)<span class="sc">+</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> T)<span class="sc">+</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> myfont)<span class="sc">+</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>              <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))<span class="sc">+</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The speed of creating a simple ggplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load required packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>      <span class="co"># data manipulation and viz</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/">ggthemes</a></span><span class="op">)</span>       <span class="co"># themes for ggplot2</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span>        <span class="co"># the best color palette</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rgdal</span><span class="op">)</span>          <span class="co"># deal with shapefiles</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op">)</span> <span class="co"># measure the speed of executing</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op">)</span>      <span class="co"># nice font</span></span>
+<span><span class="va">myfont</span> <span class="op">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create a canvas </span></span>
+<span><span class="va">canv_mt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hp</span>, <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># test speed with mocrobenchmark</span></span>
+<span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
+<span>        without_canvas <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hp</span>, <span class="va">mpg</span>, color <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>        </span>
+<span>        ,</span>
+<span>        </span>
+<span>        with_canvas <span class="op">=</span> <span class="va">canv_mt</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>       </span>
+<span>        ,</span>
+<span>        </span>
+<span>        times <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">test</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">test</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">expr</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span>, base_family <span class="op">=</span> <span class="va">myfont</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>              axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The speed of creating a simple ggplot"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-01-test-simple.png" class="img-fluid"> <strong>Figure 1. Microbenchmark output for a simple plot</strong></p>
+<p><img src="fig-01-test-simple.png" class="img-fluid"><strong>Figure 1. Microbenchmark output for a simple plot</strong></p>
 <p>The median time of execution is 3.24 milliseconds for the plot <strong>without</strong> canvas and 2.29 milliseconds for the plot <strong>with</strong> canvas.</p>
 <p>Next, let’s do the same check for a map. For that, I will use the data prepared for <a href="https://ikashnitsky.github.io/2017/subplots-in-maps/">one of my earlier posts</a> and recreate the simple map that shows the division of European Union 27 into three subregions.</p>
-<p><img src="fig-02-sub.png" class="img-fluid"> <strong>Figure 2. The map we use to test the plot creation speed</strong></p>
+<p><img src="fig-02-sub.png" class="img-fluid"><strong>Figure 2. The map we use to test the plot creation speed</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the already prepared data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://ikashnitsky.github.io/doc/misc/map-subplots/df-27-261-urb-rur.RData"</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://ikashnitsky.github.io/doc/misc/map-subplots/spatial-27-261.RData"</span>))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fortify spatial objects</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>neib <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sneighbors)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>bord <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sborders)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>fort <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sn2, <span class="at">region =</span> <span class="st">"id"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># join spatial and statistical data</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>fort_map <span class="ot">&lt;-</span> <span class="fu">left_join</span>(df, fort, <span class="st">"id"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># pal for the subregions</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>brbg3 <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">11</span>,<span class="st">"BrBG"</span>)[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">11</span>)]</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># create a blank map</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>basemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_polygon</span>(<span class="at">data =</span> neib,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">fill =</span> <span class="st">"grey90"</span>,<span class="at">color =</span> <span class="st">"grey90"</span>)<span class="sc">+</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1350000</span>,<span class="dv">5450000</span>), </span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2500000</span>, <span class="dv">6600000</span>), </span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_map</span>(<span class="at">base_family =</span> myfont)<span class="sc">+</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>,<span class="at">size =</span> .<span class="dv">5</span>,<span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>),</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))<span class="sc">+</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># test speed with mocrobenchmark</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>test_map <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">without_canvas =</span> </span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_polygon</span>(<span class="at">data =</span> neib,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group),</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                             <span class="at">fill =</span> <span class="st">"grey90"</span>,<span class="at">color =</span> <span class="st">"grey90"</span>)<span class="sc">+</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_equal</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1350000</span>,<span class="dv">5450000</span>), </span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                            <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2500000</span>, <span class="dv">6600000</span>), </span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                            <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_map</span>(<span class="at">base_family =</span> myfont)<span class="sc">+</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>                                                  <span class="at">size =</span> .<span class="dv">5</span>,<span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="cn">NA</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>),</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>                      <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))<span class="sc">+</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_polygon</span>(<span class="at">data =</span> fort_map, </span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group, </span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">fill =</span> subregion), <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>                <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(brbg3)) <span class="sc">+</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>        ,</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>        <span class="at">with_canvas =</span> </span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>                basemap <span class="sc">+</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_polygon</span>(<span class="at">data =</span> fort_map, </span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group, </span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">fill =</span> subregion), <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>                <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(brbg3)) <span class="sc">+</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        ,</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>        <span class="at">times =</span> <span class="dv">100</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(test_map)<span class="sc">+</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">fill =</span> expr)<span class="sc">+</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> T)<span class="sc">+</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family =</span> myfont)<span class="sc">+</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>              <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>))<span class="sc">+</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The speed of creating a map with ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load the already prepared data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://ikashnitsky.github.io/doc/misc/map-subplots/df-27-261-urb-rur.RData"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"https://ikashnitsky.github.io/doc/misc/map-subplots/spatial-27-261.RData"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fortify spatial objects</span></span>
+<span><span class="va">neib</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sneighbors</span><span class="op">)</span></span>
+<span><span class="va">bord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sborders</span><span class="op">)</span></span>
+<span><span class="va">fort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sn2</span>, region <span class="op">=</span> <span class="st">"id"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># join spatial and statistical data</span></span>
+<span><span class="va">fort_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df</span>, <span class="va">fort</span>, <span class="st">"id"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># pal for the subregions</span></span>
+<span><span class="va">brbg3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">11</span>,<span class="st">"BrBG"</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8</span>,<span class="fl">2</span>,<span class="fl">11</span><span class="op">)</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># create a blank map</span></span>
+<span><span class="va">basemap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">neib</span>,</span>
+<span>                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,</span>
+<span>                     fill <span class="op">=</span> <span class="st">"grey90"</span>,color <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1350000</span>,<span class="fl">5450000</span><span class="op">)</span>, </span>
+<span>                    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500000</span>, <span class="fl">6600000</span><span class="op">)</span>, </span>
+<span>                    expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="va">myfont</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>,size <span class="op">=</span> <span class="fl">.5</span>,fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>              legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>              legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span>
+<span>              legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># test speed with mocrobenchmark</span></span>
+<span><span class="va">test_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
+<span>        without_canvas <span class="op">=</span> </span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">neib</span>,</span>
+<span>                             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,</span>
+<span>                             fill <span class="op">=</span> <span class="st">"grey90"</span>,color <span class="op">=</span> <span class="st">"grey90"</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1350000</span>,<span class="fl">5450000</span><span class="op">)</span>, </span>
+<span>                            xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500000</span>, <span class="fl">6600000</span><span class="op">)</span>, </span>
+<span>                            expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="va">myfont</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>                                                  size <span class="op">=</span> <span class="fl">.5</span>,fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                      legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>                      legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>                      legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>                      legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span>
+<span>                      legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fort_map</span>, </span>
+<span>                             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, </span>
+<span>                                 fill <span class="op">=</span> <span class="va">subregion</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">brbg3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span>        </span>
+<span>        ,</span>
+<span>        </span>
+<span>        with_canvas <span class="op">=</span> </span>
+<span>                <span class="va">basemap</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fort_map</span>, </span>
+<span>                             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, </span>
+<span>                                 fill <span class="op">=</span> <span class="va">subregion</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="va">brbg3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span>        </span>
+<span>        ,</span>
+<span>        </span>
+<span>        times <span class="op">=</span> <span class="fl">100</span></span>
+<span><span class="op">)</span></span>
+<span>      </span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">test_map</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">expr</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span>discrete <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span>, base_family <span class="op">=</span> <span class="va">myfont</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>              axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"The speed of creating a map with ggplot2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="fig-03-test-map.png" class="img-fluid"> <strong>Figure 3. Microbenchmark output for a map</strong></p>
+<p><img src="fig-03-test-map.png" class="img-fluid"><strong>Figure 3. Microbenchmark output for a map</strong></p>
 <p>The median time of execution is 18.8 milliseconds for the map <strong>without</strong> canvas and 6.3 milliseconds for the map <strong>with</strong> canvas.</p>
-<section id="conclusion-use-canvas-with-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion-use-canvas-with-ggplot2">Conclusion: Use canvas with <code>ggplot2</code></h2>
+<section id="conclusion-use-canvas-with-ggplot2" class="level2"><h2 class="anchored" data-anchor-id="conclusion-use-canvas-with-ggplot2">Conclusion: Use canvas with <code>ggplot2</code>
+</h2>
 <hr>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -441,10 +418,7 @@ For the full script to reproduce the results check out this <a href="https://gis
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -479,18 +453,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -522,7 +485,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -576,12 +561,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.phd");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -903,11 +888,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Accelerating ggplot2: use a canvas to speed up plots creation"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -1097,13 +1079,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="ot">[four]: https://ikashnitsky.github.io/2017/subplots-in-maps/</span></span>
 <span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="ot">[five]: https://ikashnitsky.github.io/2017/colorcoded-map/</span></span>
 <span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/b9c5d0b838daa2338066dbaa3e035dcc</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="ot">[hadley]: https://twitter.com/hadleywickham/status/882217871769837569</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="ot">[hadley]: https://twitter.com/hadleywickham/status/882217871769837569</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
@@ -1113,8 +1094,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

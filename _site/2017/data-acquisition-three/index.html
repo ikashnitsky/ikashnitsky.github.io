@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
-
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-12-10">
 <meta name="description" content="<strong>?meta:website.description</strong>">
-
-<title>Data acquisition in R (3/4) | ?meta:website.title</title>
+<title>Data acquisition in R (3/4) – Ilya Kashnitsky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,9 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<script type="text/javascript">
+}</script><script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -118,50 +111,44 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script>
-<style>
+</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #025757;
       }
 </style>
-
-
-<meta property="og:title" content="Data acquisition in R (3/4) | ?meta:website.title">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta property="og:image" content="https://ikashnitsky.github.io/2017/data-acquisition-three/teaser.png">
+<meta property="og:title" content="Data acquisition in R (3/4)">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:image" content="https://ikashnitsky.phd/2017/data-acquisition-three/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Data acquisition in R (3/4) | ?meta:website.title">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/data-acquisition-three/teaser.png">
+<meta name="twitter:title" content="Data acquisition in R (3/4)">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:image" content="https://ikashnitsky.phd/2017/data-acquisition-three/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="250">
 <meta name="twitter:image-width" content="400">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../me.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
@@ -178,8 +165,8 @@ ga('send', {
 <span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
 <span class="menu-text"></span></a>
@@ -195,7 +182,7 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-check-circle-fill" role="img" aria-label="bluesky">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,15 +197,11 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Data acquisition in R (3/4)</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -255,13 +238,7 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -281,81 +258,78 @@ The series consists of four posts:
 </div>
 </div>
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
-<section id="human-mortality-database" class="level1">
-<h1>Human Mortality Database</h1>
+<section id="human-mortality-database" class="level1"><h1>Human Mortality Database</h1>
 <p>When it comes to testing the big questions of human population dynamics, there is no more reliable data source than <a href="http://www.mortality.org">Human Mortality Database</a>. This database is run by demographers who use state-of-the-art methodology to overcome issues in the data. As the result, the estimates are as precise as possible. Their <a href="http://www.mortality.org/Public/Docs/MethodsProtocol.pdf">methods protocol</a> is a masterpiece of demographic data processing. On the down side, the data of decent enough quality is available for only a bunch of countries. To explore the data I highly recommend [Human Mortality Database Explorer][exp] by <a href="https://twitter.com/jschoeley">Jonas Schöley</a>.</p>
 <p>Thanks to <a href="https://twitter.com/timriffe1">Tim Riffe</a>’s <code>HMDHFDplus</code> package, one can now download HMD data with just a couple of lines of <code>R</code> code. Please note that an account at <a href="http://www.mortality.org">mortality.org</a> is needed in order to download data. As one may guess from the package name, it also helps to grab data from equally brilliant <a href="http://www.humanfertility.org/">Human Fertility Database</a>.</p>
 <p>The following example is taken from my <a href="https://ikashnitsky.github.io/2017/hmd-all-sex-ratio/">earlier post</a> (and updated a bit). I think it illustrates nicely the power of automated data acquisition in <code>R</code>. Here I am going to download one year population population structures for both males and females for each single country of HMD. If you want to reproduce the result, beware that the script will download a couple of dozens megabits of data. Then I will calculate and visualize as small multiples sex ratios in all countries along age dimension. Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their life-course. Besides some artificial and well known exceptions, sex ratio at birth does not vary dramatically and is more or less constant at the level of 105-106 boys per 100 girls. Hence, differences in the sex ratio profiles of countries mainly reflect gender gap in mortality.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HMDHFDplus)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># help function to list the available countries</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> <span class="fu">getHMDcountries</span>()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># remove optional populations</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>opt_pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"FRACNP"</span>, <span class="st">"DEUTE"</span>, <span class="st">"DEUTW"</span>, <span class="st">"GBRCENW"</span>, <span class="st">"GBR_NP"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>country <span class="ot">&lt;-</span> country[<span class="sc">!</span>country <span class="sc">%in%</span> opt_pop]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># temporary function to download HMD data for a simgle county (dot = input)</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>tempf_get_hmd <span class="ot">&lt;-</span> . <span class="sc">|&gt;</span> <span class="fu">readHMDweb</span>(<span class="st">"Exposures_1x1"</span>, ik_user_hmd, ik_pass_hmd) </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># download the data iteratively for all countries using purrr::map()</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>exposures <span class="ot">&lt;-</span> country <span class="sc">|&gt;</span> <span class="fu">map</span>(tempf_get_hmd)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># data transformation to apply to each county dataframe</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>tempf_trans_data <span class="ot">&lt;-</span> . <span class="sc">|&gt;</span> </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(Year, Age, Female, Male) <span class="sc">|&gt;</span> </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Year <span class="sc">%in%</span> <span class="dv">2012</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>Year) <span class="sc">|&gt;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(<span class="at">age =</span> Age, <span class="at">ratio =</span> Male <span class="sc">/</span> Female <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># perform transformation</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>df_hmd <span class="ot">&lt;-</span> exposures <span class="sc">|&gt;</span> </span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">map</span>(tempf_trans_data) <span class="sc">|&gt;</span> </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">"country"</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>df_hmd_90 <span class="ot">&lt;-</span> df_hmd <span class="sc">|&gt;</span> </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">ratio =</span> ratio <span class="sc">|&gt;</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="fu">transmute</span>(country, <span class="at">age =</span> <span class="dv">90</span>, ratio)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># insert summarized 90+</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_hmd <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>age <span class="sc">%in%</span> <span class="dv">90</span><span class="sc">:</span><span class="dv">110</span>), df_hmd_90)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># finaly - plot</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>df_hmd_fin <span class="sc">|&gt;</span>  </span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(age, ratio, <span class="at">color =</span> country, <span class="at">group =</span> country))<span class="sc">+</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">100</span>, <span class="at">color =</span> <span class="st">"grey50"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>), </span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                           <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                           <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">120</span>, <span class="dv">20</span>))<span class="sc">+</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), </span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>                           <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>                           <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">80</span>, <span class="dv">20</span>))<span class="sc">+</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>country, <span class="at">ncol =</span> <span class="dv">6</span>)<span class="sc">+</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>, <span class="at">base_size =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>              <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">size =</span> .<span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, </span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">color =</span> <span class="st">"grey50"</span>))<span class="sc">+</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, </span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"Sex ratio, males per 100 females"</span>, </span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Sex ratio in all countries from Human Mortality Database"</span>,</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">"HMD 2012, via HMDHFDplus by @timriffe1"</span>,</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"ikashnitsky.github.io"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># load required packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/timriffe/TR1">HMDHFDplus</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/">purrr</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># help function to list the available countries</span></span>
+<span><span class="va">country</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HMDHFDplus/man/getHMDcountries.html">getHMDcountries</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># remove optional populations</span></span>
+<span><span class="va">opt_pop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FRACNP"</span>, <span class="st">"DEUTE"</span>, <span class="st">"DEUTW"</span>, <span class="st">"GBRCENW"</span>, <span class="st">"GBR_NP"</span><span class="op">)</span></span>
+<span><span class="va">country</span> <span class="op">&lt;-</span> <span class="va">country</span><span class="op">[</span><span class="op">!</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">opt_pop</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># temporary function to download HMD data for a simgle county (dot = input)</span></span>
+<span><span class="va">tempf_get_hmd</span> <span class="op">&lt;-</span> <span class="va">.</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/HMDHFDplus/man/readHMDweb.html">readHMDweb</a></span><span class="op">(</span><span class="st">"Exposures_1x1"</span>, <span class="va">ik_user_hmd</span>, <span class="va">ik_pass_hmd</span><span class="op">)</span> </span>
+<span></span>
+<span></span>
+<span><span class="co"># download the data iteratively for all countries using purrr::map()</span></span>
+<span><span class="va">exposures</span> <span class="op">&lt;-</span> <span class="va">country</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">tempf_get_hmd</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># data transformation to apply to each county dataframe</span></span>
+<span><span class="va">tempf_trans_data</span> <span class="op">&lt;-</span> <span class="va">.</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">Age</span>, <span class="va">Female</span>, <span class="va">Male</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">2012</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>age <span class="op">=</span> <span class="va">Age</span>, ratio <span class="op">=</span> <span class="va">Male</span> <span class="op">/</span> <span class="va">Female</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># perform transformation</span></span>
+<span><span class="va">df_hmd</span> <span class="op">&lt;-</span> <span class="va">exposures</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">tempf_trans_data</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span>.id <span class="op">=</span> <span class="st">"country"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># summarize all ages older than 90 (too jerky)</span></span>
+<span><span class="va">df_hmd_90</span> <span class="op">&lt;-</span> <span class="va">df_hmd</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">age</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">90</span><span class="op">:</span><span class="fl">110</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>ratio <span class="op">=</span> <span class="va">ratio</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span><span class="va">country</span>, age <span class="op">=</span> <span class="fl">90</span>, <span class="va">ratio</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># insert summarized 90+</span></span>
+<span><span class="va">df_hmd_fin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="va">df_hmd</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">age</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">90</span><span class="op">:</span><span class="fl">110</span><span class="op">)</span>, <span class="va">df_hmd_90</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># finaly - plot</span></span>
+<span><span class="va">df_hmd_fin</span> <span class="op">|&gt;</span>  </span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">ratio</span>, color <span class="op">=</span> <span class="va">country</span>, group <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">100</span>, color <span class="op">=</span> <span class="st">"grey50"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span><span class="op">)</span>, </span>
+<span>                           expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>                           breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">120</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span>, </span>
+<span>                           expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>                           breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">80</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">country</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span>, base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>              panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">.5</span>, fill <span class="op">=</span> <span class="cn">NA</span>, </span>
+<span>                                          color <span class="op">=</span> <span class="st">"grey50"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, </span>
+<span>             y <span class="op">=</span> <span class="st">"Sex ratio, males per 100 females"</span>, </span>
+<span>             title <span class="op">=</span> <span class="st">"Sex ratio in all countries from Human Mortality Database"</span>,</span>
+<span>             subtitle <span class="op">=</span> <span class="st">"HMD 2012, via HMDHFDplus by @timriffe1"</span>,</span>
+<span>             caption <span class="op">=</span> <span class="st">"ikashnitsky.github.io"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="hmd.png" class="img-fluid"></p>
-</section>
-<section id="united-nations-world-population-prospects" class="level1">
-<h1>United Nations World Population Prospects</h1>
+</section><section id="united-nations-world-population-prospects" class="level1"><h1>United Nations World Population Prospects</h1>
 <p>Population Department of the United Nations provides high quality population estimates for all countries of the world. They update estimates every 2-3 years and publish openly as an interactive report <a href="https://esa.un.org/unpd/wpp/">World Population Prospects</a>. One may find in these reports key highlights and, of course, rich data. The data is later wrapped in <code>R</code> packages called <code>wpp20xx</code>. Currently, the available packages are for the estimate updates 2008, 2010, 2012, 2015, and 2017. I will give here an example of <code>wpp2015</code> use adapted from my earlier <a href="https://ikashnitsky.github.io/2017/global-male-life-expectancy-convergence/">post</a>.</p>
 <p>Using ridgeplot, the amazing type of dataviz promoted <code>ggridges</code> package by <a href="https://twitter.com/ClausWilke">Claus Wilke</a>, I am going to show the impressive reduction of global inequality in male mortality that took place since 1950.</p>
 <div class="cell">
@@ -389,50 +363,46 @@ The series consists of four posts:
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="wpp2015.png" class="img-fluid"></p>
-</section>
-<section id="european-social-survey-ess" class="level1">
-<h1>European Social Survey (ESS)</h1>
+</section><section id="european-social-survey-ess" class="level1"><h1>European Social Survey (ESS)</h1>
 <p><a href="http://www.europeansocialsurvey.org/about/">European Social Survey</a> provides uniquely rich nationally representative cross-county comparable information on the values of Europeans. Every two years a cross-sectional sample is taken in each participating country. All the data is easily available <a href="http://www.europeansocialsurvey.org/user/new">upon registration</a>. Datasets are distributed as SAS, SPSS, or STATA files. Thanks to <a href="https://twitter.com/cimentadaj">Jorge Cimentada</a>, these datasets are now easily available via <code>ess</code> package. I am going to visualize how respondents assessed their level of trust in police in all available countries at the latest round of the survey.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ess)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># help gunction to see the available countries</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">show_countries</span>()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check the available rounds for a selected country</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">show_country_rounds</span>(<span class="st">"Netherlands"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get the full dataset of the last (8) round</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df_ess <span class="ot">&lt;-</span> <span class="fu">ess_rounds</span>(<span class="dv">8</span>, <span class="at">your_email =</span>  ik_email) </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># select a variable and calculate mean value</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="ot">&lt;-</span> df_ess <span class="sc">|&gt;</span> </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">bind_rows</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(idno, cntry, trstplc) <span class="sc">|&gt;</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(cntry) <span class="sc">|&gt;</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">avg =</span> trstplc <span class="sc">|&gt;</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">cntry =</span> cntry <span class="sc">|&gt;</span> <span class="fu">as_factor</span>() <span class="sc">|&gt;</span> <span class="fu">fct_reorder</span>(avg))</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>df_ess_select <span class="sc">|&gt;</span> </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(trstplc, <span class="at">fill =</span> avg))<span class="sc">+</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_gradient</span>(<span class="st">"Average</span><span class="sc">\n</span><span class="st">trust</span><span class="sc">\n</span><span class="st">score"</span>, </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                            <span class="at">low =</span> <span class="st">"black"</span>, <span class="at">high =</span> <span class="st">"aquamarine"</span>)<span class="sc">+</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>cntry, <span class="at">ncol =</span> <span class="dv">6</span>)<span class="sc">+</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"mono"</span>)<span class="sc">+</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Trust score [0 -- 10]"</span>,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="st">"# of respondents"</span>,</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Trust in police"</span>,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">"ESS wave 8 2017, via ess by @cimentadaj"</span>,</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"ikashnitsky.github.io"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mlindsk/ess">ess</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># help gunction to see the available countries</span></span>
+<span><span class="fu">show_countries</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># check the available rounds for a selected country</span></span>
+<span><span class="fu">show_country_rounds</span><span class="op">(</span><span class="st">"Netherlands"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># get the full dataset of the last (8) round</span></span>
+<span><span class="va">df_ess</span> <span class="op">&lt;-</span> <span class="fu">ess_rounds</span><span class="op">(</span><span class="fl">8</span>, your_email <span class="op">=</span>  <span class="va">ik_email</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># select a variable and calculate mean value</span></span>
+<span><span class="va">df_ess_select</span> <span class="op">&lt;-</span> <span class="va">df_ess</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html">bind_rows</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">idno</span>, <span class="va">cntry</span>, <span class="va">trstplc</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cntry</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>avg <span class="op">=</span> <span class="va">trstplc</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>cntry <span class="op">=</span> <span class="va">cntry</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">avg</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df_ess_select</span> <span class="op">|&gt;</span> </span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">trstplc</span>, fill <span class="op">=</span> <span class="va">avg</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">11</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradient</a></span><span class="op">(</span><span class="st">"Average\ntrust\nscore"</span>, </span>
+<span>                            low <span class="op">=</span> <span class="st">"black"</span>, high <span class="op">=</span> <span class="st">"aquamarine"</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">cntry</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"mono"</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Trust score [0 -- 10]"</span>,</span>
+<span>             y <span class="op">=</span> <span class="st">"# of respondents"</span>,</span>
+<span>             title <span class="op">=</span> <span class="st">"Trust in police"</span>,</span>
+<span>             subtitle <span class="op">=</span> <span class="st">"ESS wave 8 2017, via ess by @cimentadaj"</span>,</span>
+<span>             caption <span class="op">=</span> <span class="st">"ikashnitsky.github.io"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="ess.png" class="img-fluid"></p>
-</section>
-<section id="american-community-survey-and-census" class="level1">
-<h1>American Community Survey and Census</h1>
+</section><section id="american-community-survey-and-census" class="level1"><h1>American Community Survey and Census</h1>
 <p>There are several packages that provide access to the US Census and ACS data. Perhaps the most convenient one is the recent <code>tidycensus</code> package by <a href="https://twitter.com/kyle_e_walker">Kyle Walker</a>. One extremely useful feature of this approach is the ability to download geodata along with stats in the form of simple features. Simple features, a revolutionary approach to deal with spatial data in R implemented in <code>sf</code> package by <a href="https://twitter.com/edzerpebesma">Edzer Pebesma</a>, allow to manage and visualize geodata tidy and efficiently. Note that in order to reproduce the following example one would have to install the development version of ggplot2.</p>
 <p>Below I map median ages of census tracts population in Chicago based on the ACS estimates in 2015. To use <code>tidycensus</code>, an API key is required. API is instantly provided <a href="https://api.census.gov/data/key_signup.html">upon registration</a>.</p>
 <div class="cell">
@@ -502,10 +472,7 @@ Tip
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -540,18 +507,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -583,7 +539,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -637,12 +615,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.phd");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -964,11 +942,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Data acquisition in R (3/4)"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -1249,13 +1224,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a><span class="ot">[edz]: https://twitter.com/edzerpebesma</span></span>
 <span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a><span class="ot">[api]: https://api.census.gov/data/key_signup.html</span></span>
 <span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/2e4bb16e097b1a264eeeae13ca6d7ce3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/2e4bb16e097b1a264eeeae13ca6d7ce3</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
@@ -1265,8 +1239,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

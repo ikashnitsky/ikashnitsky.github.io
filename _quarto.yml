@@ -20,7 +20,7 @@ bibliography: bib/cited-in-blog.bib
 csl: bib/population-space-and-place.csl
 
 # Metadata stuff
-pagetitle: "{{< meta title >}} | {{< meta website.title >}}"
+pagetitle: "{{< meta title >}}"
 description-meta: "{{< meta description >}}"
 author-meta: "Ilya Kashnitsky"
 
@@ -67,7 +67,7 @@ website:
       - icon: mastodon
         aria-label: mastodon
         href: https://fosstodon.org/@ikashnitsky
-      - icon: image-fill  # lightbulb-fill image-fill globe2 mask image-fill sun-fill people
+      - icon: check-circle-fill  # lightbulb-fill image-fill globe2 mask image-fill sun-fill people
         aria-label: bluesky
         href: https://bsky.app/profile/ikashnitsky.phd
       - icon: envelope-fill

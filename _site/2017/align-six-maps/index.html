@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
-
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-05-22">
 <meta name="description" content="<strong>?meta:website.description</strong>">
-
-<title>Arranging subplots with ggplot2 | ?meta:website.title</title>
+<title>Arranging subplots with ggplot2 – Ilya Kashnitsky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -59,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -77,8 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,9 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-<script type="text/javascript">
+}</script><script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -118,50 +111,44 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script>
-<style>
+</script><style>
 
       .quarto-title-block .quarto-title-banner {
         background: #025757;
       }
 </style>
-
-
-<meta property="og:title" content="Arranging subplots with ggplot2 | ?meta:website.title">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta property="og:image" content="https://ikashnitsky.github.io/2017/align-six-maps/teaser.png">
+<meta property="og:title" content="Arranging subplots with ggplot2">
+<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:image" content="https://ikashnitsky.phd/2017/align-six-maps/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Arranging subplots with ggplot2 | ?meta:website.title">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is an Assistant Professor of demography at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark, Odense, DK.">
-<meta name="twitter:image" content="https://ikashnitsky.github.io/2017/align-six-maps/teaser.png">
+<meta name="twitter:title" content="Arranging subplots with ggplot2">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:image" content="https://ikashnitsky.phd/2017/align-six-maps/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="250">
 <meta name="twitter:image-width" content="400">
 </head>
-
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../me.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
@@ -178,8 +165,8 @@ ga('send', {
 <span class="menu-text">Demographic Digest</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/ikashnitsky"> <i class="bi bi-github" role="img" aria-label="github">
 </i> 
 <span class="menu-text"></span></a>
@@ -195,7 +182,7 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-image-fill" role="img" aria-label="bluesky">
+    <a class="nav-link" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="bi bi-check-circle-fill" role="img" aria-label="bluesky">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -210,15 +197,11 @@ ga('send', {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Arranging subplots with ggplot2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
                                 <div class="quarto-categories">
@@ -254,105 +237,99 @@ ga('send', {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
 <p>For <a href="https://doi.org/10.1186/s41118-017-0018-2">my recently published paper</a>, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
-<p><img src="fig-01.png" class="img-fluid"> <strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
-<p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code>ggplot2::annotation_custom()</code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
+<p><img src="fig-01.png" class="img-fluid"><strong>Figure 3 from my paper (<a href="https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf">PDF</a>)</strong></p>
+<p>Actually, <code>ggplot2</code> is a very powerful and flexible tool that allows to draw figures with quite a complex layout. Today I want to show the code that aligns six square plots (actually, maps) just as in the figure above. And it’s all about the handy function <code><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">ggplot2::annotation_custom()</a></code>. Since I used the layout more than once, I wrapped the code that produced it into a function that takes a list of 6 square plots as an input and yields the arranged figure with arrows as an output. Here is the commented code of the function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>align_six_plots <span class="ot">&lt;-</span> <span class="cf">function</span>(list.plots, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">family =</span> <span class="st">""</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">labels.size=</span><span class="dv">8</span>){</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(tidyverse)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">require</span>(gridExtra)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">21</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">30</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">1</span>]]),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">21</span>, <span class="at">ymax =</span> <span class="dv">29</span>)<span class="sc">+</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">2</span>]]),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>, <span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="fl">19.5</span>, <span class="at">ymax =</span> <span class="fl">27.5</span>)<span class="sc">+</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">3</span>]]),</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>,<span class="at">ymin =</span> <span class="fl">10.5</span>,<span class="at">ymax =</span> <span class="fl">18.5</span>)<span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">4</span>]]),</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">9</span>,<span class="at">ymax =</span> <span class="dv">17</span>)<span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">5</span>]]),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">0.5</span>, <span class="at">xmax =</span> <span class="fl">8.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">annotation_custom</span>(<span class="fu">ggplotGrob</span>(list.plots[[<span class="dv">6</span>]]),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">xmin =</span> <span class="fl">12.5</span>,<span class="at">xmax =</span> <span class="fl">20.5</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">8</span>)<span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                <span class="fu">theme_void</span>()</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># DF with the coordinates of the 5 arrows</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        df.arrows <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                                <span class="at">x=</span><span class="fu">c</span>(<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>),</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                                <span class="at">y=</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">21</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>),</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                                <span class="at">xend=</span><span class="fu">c</span>(<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>),</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                                <span class="at">yend=</span><span class="fu">c</span>(<span class="fl">20.5</span>,<span class="fl">17.5</span>,<span class="dv">10</span>,<span class="dv">7</span>,<span class="dv">7</span>))</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add arrows</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">1</span>),</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.1</span>,</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">2</span>),</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">3</span>),</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="sc">-</span><span class="fl">0.15</span>,</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">4</span>),</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="dv">0</span>,</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_curve</span>(<span class="at">data =</span> df.arrows <span class="sc">|&gt;</span> <span class="fu">filter</span>(id<span class="sc">==</span><span class="dv">5</span>),</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">xend=</span>xend,<span class="at">yend=</span>yend),</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>                           <span class="at">curvature =</span> <span class="fl">0.3</span>,</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">"closed"</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>)))</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># add labes</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        gg <span class="ot">&lt;-</span> gg <span class="sc">+</span> <span class="fu">annotate</span>(<span class="st">'text'</span>,<span class="at">label =</span> labels,</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>                            <span class="at">x=</span><span class="fu">c</span>(.<span class="dv">5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,.<span class="dv">5</span>,.<span class="dv">5</span>,<span class="fl">12.5</span>)<span class="sc">+</span>.<span class="dv">5</span>,</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span><span class="fu">c</span>(<span class="dv">29</span>,<span class="fl">27.5</span>,<span class="fl">18.5</span>,<span class="dv">17</span>,<span class="dv">8</span>,<span class="dv">8</span>)<span class="sc">+</span>.<span class="dv">1</span>,</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>                            <span class="at">size=</span>labels.size,<span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="dv">0</span>, <span class="at">family =</span> family)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(gg)</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">align_six_plots</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">list.plots</span>, </span>
+<span>                                    <span class="va">family</span> <span class="op">=</span> <span class="st">""</span>,</span>
+<span>                                    <span class="va">labels</span><span class="op">=</span><span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, </span>
+<span>                                    <span class="va">labels.size</span><span class="op">=</span><span class="fl">8</span><span class="op">)</span><span class="op">{</span></span>
+<span></span>
+<span>        <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span>        <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">gridExtra</span><span class="op">)</span></span>
+<span></span>
+<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_equal</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">21</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">21</span>, ymax <span class="op">=</span> <span class="fl">29</span><span class="op">)</span><span class="op">+</span></span>
+<span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>, xmax <span class="op">=</span> <span class="fl">20.5</span>, ymin <span class="op">=</span> <span class="fl">19.5</span>, ymax <span class="op">=</span> <span class="fl">27.5</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>,xmax <span class="op">=</span> <span class="fl">20.5</span>,ymin <span class="op">=</span> <span class="fl">10.5</span>,ymax <span class="op">=</span> <span class="fl">18.5</span><span class="op">)</span><span class="op">+</span></span>
+<span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">9</span>,ymax <span class="op">=</span> <span class="fl">17</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">0.5</span>, xmax <span class="op">=</span> <span class="fl">8.5</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotation_custom.html">annotation_custom</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="va">list.plots</span><span class="op">[[</span><span class="fl">6</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                                  xmin <span class="op">=</span> <span class="fl">12.5</span>,xmax <span class="op">=</span> <span class="fl">20.5</span>, ymin <span class="op">=</span> <span class="fl">0</span>, ymax <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">+</span></span>
+<span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span>        <span class="co"># DF with the coordinates of the 5 arrows</span></span>
+<span>        <span class="va">df.arrows</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span>
+<span>                                x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span><span class="op">)</span>,</span>
+<span>                                y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>,<span class="fl">21</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span>,<span class="fl">10.5</span><span class="op">)</span>,</span>
+<span>                                xend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">8.5</span>,<span class="fl">8.5</span>,<span class="fl">12.5</span><span class="op">)</span>,</span>
+<span>                                yend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20.5</span>,<span class="fl">17.5</span>,<span class="fl">10</span>,<span class="fl">7</span>,<span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>        <span class="co"># add arrows</span></span>
+<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
+<span>                           curvature <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
+<span>                           curvature <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span>,</span>
+<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">3</span><span class="op">)</span>,</span>
+<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
+<span>                           curvature <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>,</span>
+<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">4</span><span class="op">)</span>,</span>
+<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
+<span>                           curvature <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_curve</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">df.arrows</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">id</span><span class="op">==</span><span class="fl">5</span><span class="op">)</span>,</span>
+<span>                           <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>,y<span class="op">=</span><span class="va">y</span>,xend<span class="op">=</span><span class="va">xend</span>,yend<span class="op">=</span><span class="va">yend</span><span class="op">)</span>,</span>
+<span>                           curvature <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>                           arrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/arrow.html">arrow</a></span><span class="op">(</span>type<span class="op">=</span><span class="st">"closed"</span>,length <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0.25</span>,<span class="st">"cm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>        <span class="co"># add labes</span></span>
+<span>        <span class="va">gg</span> <span class="op">&lt;-</span> <span class="va">gg</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">'text'</span>,label <span class="op">=</span> <span class="va">labels</span>,</span>
+<span>                            x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="fl">.5</span>,<span class="fl">.5</span>,<span class="fl">12.5</span><span class="op">)</span><span class="op">+</span><span class="fl">.5</span>,</span>
+<span>                            y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">29</span>,<span class="fl">27.5</span>,<span class="fl">18.5</span>,<span class="fl">17</span>,<span class="fl">8</span>,<span class="fl">8</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span>,</span>
+<span>                            size<span class="op">=</span><span class="va">labels.size</span>,hjust<span class="op">=</span><span class="fl">0</span>, vjust<span class="op">=</span><span class="fl">0</span>, family <span class="op">=</span> <span class="va">family</span><span class="op">)</span></span>
+<span></span>
+<span>        <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">gg</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s check, if the function works. For that I create just a blank plot, clone it six times, store the six plots in a list, and finally feed it to the function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a simple blank square plot</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_map</span>()<span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">aspect.ratio =</span> <span class="dv">1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># clone this plot six times and store as a list of six</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">mget</span>(<span class="fu">rep</span>(<span class="st">"p"</span>, <span class="dv">6</span>))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># use the function on the list</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>six <span class="ot">&lt;-</span> <span class="fu">align_six_plots</span>(plots)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># save the output</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"six_square_plots_aligned.png"</span>, six, <span class="at">width=</span><span class="dv">12</span>, <span class="at">height=</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/">ggthemes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create a simple blank square plot</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">0.5</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>        aspect.ratio <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># clone this plot six times and store as a list of six</span></span>
+<span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/get.html">mget</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># use the function on the list</span></span>
+<span><span class="va">six</span> <span class="op">&lt;-</span> <span class="fu">align_six_plots</span><span class="op">(</span><span class="va">plots</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># save the output</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"six_square_plots_aligned.png"</span>, <span class="va">six</span>, width<span class="op">=</span><span class="fl">12</span>, height<span class="op">=</span><span class="fl">18</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="fig-02.png" class="img-fluid"></p>
 <p>Just what we wanted to get.</p>
@@ -375,8 +352,7 @@ To reproduce all the actual results and figures from <a href="https://doi.org/10
 <!-- -->
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -411,18 +387,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -454,7 +419,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -508,12 +495,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ikashnitsky\.github\.io");
+      var filterRegex = new RegExp("https:\/\/ikashnitsky\.phd");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -835,11 +822,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+</script><script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Arranging subplots with ggplot2"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
@@ -968,13 +952,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="ot">[gen]: https://doi.org/10.1186/s41118-017-0018-2</span></span>
 <span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="ot">[pdf]: https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf</span></span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[git]: https://github.com/ikashnitsky/genus-2017</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="ot">[git]: https://github.com/ikashnitsky/genus-2017</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2023 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
@@ -984,8 +967,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>
