@@ -117,7 +117,9 @@ We need to define two paths. The **first** is the default location of the files 
 
 ![](pref-za.png)
 
-To navigate easier in this database of PDFs use the option `Subfolder`. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the [`documentation` link to learn the naming options][naming]. I choose to simply have a separate folder for each first author. In my case the option is `{{ authors max="1" case="lower" }}`. The advantage of this convention is that I only reed to remember the first author -- and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds 
+To navigate easier in this database of PDFs use the option `Subfolder`. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the [`documentation` link to learn the naming options][naming]. I choose to simply have a separate folder for each first author. In my case the option is `{{{ authors max="1" case="lower" }}}`. The advantage of this convention is that I only reed to remember the first author -- and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds 
+
+<!-- Some weird rendering issue with {{}} -- thus {{{ are to be rendered in {{ -->
 
 ![](show-gdrive.png)
 
@@ -131,7 +133,7 @@ The `Filename` option defines the rules for renaming the attached PDF files. Cli
 ![](pref-naming.png)
 
 Again, the options are nearly infinite. My choice is to have attached PDFs named according to their FIRST AUTHOR then YEAR then TITLE, everything in [snake_case][case], which yields file names like `kashnitsky_2021_unequally_ageing_regions_of_europe.pdf` (again an example for [my paper][popst] in *Population Studies*). The code to get such name is:
-`{{ authors max="1" suffix="_" case="snake" }}{{ year suffix="_" }}{{ title truncate="100" case="snake"}}`.
+`{{{ authors max="1" suffix="_" case="snake" }}}{{ year suffix="_" }}{{ title truncate="100" case="snake"}}`.
 
 And here comes the kill feature of the proper setup -- paths to the full texts are stored in the metadata itself. This allows seamless transition between the machines (or even a simultaneous usage across several machines) as long as the relative file paths structure starting from the base file directory `zotero-library` stays unchanged.
 
