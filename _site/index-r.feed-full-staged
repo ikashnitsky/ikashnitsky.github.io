@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Ilya Kashnitsky</title>
+<link>https://ikashnitsky.phd/#category=r</link>
+<atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
+<description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
+<generator>quarto-1.5.57</generator>
+<lastBuildDate>Tue, 17 Dec 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>{B4F502887207:/2024/rotate-damn-plot/index.html}</title>
+  <link>https://ikashnitsky.phd/2024/rotate-damn-plot/</link>
+  <description>{B4F502887207:/2024/rotate-damn-plot/index.html}</description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2024/rotate-damn-plot/</guid>
+  <pubDate>Tue, 17 Dec 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2024/zotero7/index.html}</title>
+  <link>https://ikashnitsky.phd/2024/zotero7/</link>
+  <description>{B4F502887207:/2024/zotero7/index.html}</description>
+  <category>r</category>
+  <category>tutorial</category>
+  <guid>https://ikashnitsky.phd/2024/zotero7/</guid>
+  <pubDate>Thu, 15 Aug 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2024/zotero7/zotero-teaser.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/30-dmc/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/30-dmc/</link>
+  <description>{B4F502887207:/2023/30-dmc/index.html}</description>
+  <category>r</category>
+  <category>rspatial</category>
+  <category>ggplot2</category>
+  <guid>https://ikashnitsky.phd/2023/30-dmc/</guid>
+  <pubDate>Wed, 20 Dec 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/30-dmc/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/map-proj/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/map-proj/</link>
+  <description>{B4F502887207:/2023/map-proj/index.html}</description>
+  <category>r</category>
+  <category>rspatial</category>
+  <category>ggplot2</category>
+  <guid>https://ikashnitsky.phd/2023/map-proj/</guid>
+  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/map-proj/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/geocoding/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/geocoding/</link>
+  <description>{B4F502887207:/2023/geocoding/index.html}</description>
+  <category>r</category>
+  <category>rspatial</category>
+  <category>ggplot2</category>
+  <guid>https://ikashnitsky.phd/2023/geocoding/</guid>
+  <pubDate>Tue, 31 Oct 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/geocoding/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/shrink-space/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/shrink-space/</link>
+  <description>{B4F502887207:/2023/shrink-space/index.html}</description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>trick</category>
+  <category>faceting</category>
+  <guid>https://ikashnitsky.phd/2023/shrink-space/</guid>
+  <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/gist-snippet/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/gist-snippet/</link>
+  <description>{B4F502887207:/2023/gist-snippet/index.html}</description>
+  <category>r</category>
+  <category>rstudio</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2023/gist-snippet/</guid>
+  <pubDate>Mon, 02 Jan 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/gist-snippet/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2023/map-borders/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2023/map-borders/</link>
+  <description>{B4F502887207:/2023/map-borders/index.html}</description>
+  <category>r</category>
+  <category>rspatial</category>
+  <category>dataviz</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2023/map-borders/</guid>
+  <pubDate>Sat, 31 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2023/map-borders/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2022/exceptional-world-cup/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2022/exceptional-world-cup/</link>
+  <description>{B4F502887207:/2022/exceptional-world-cup/index.html}</description>
+  <category>r</category>
+  <category>sport</category>
+  <category>package</category>
+  <guid>https://ikashnitsky.phd/2022/exceptional-world-cup/</guid>
+  <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>{B4F502887207:/2021/life-expectancy-101/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2021/life-expectancy-101/</link>
+  <description>{B4F502887207:/2021/life-expectancy-101/index.html}</description>
+  <category>r</category>
+  <category>101</category>
+  <category>demography</category>
+  <guid>https://ikashnitsky.phd/2021/life-expectancy-101/</guid>
+  <pubDate>Thu, 04 Mar 2021 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2021/life-expectancy-101/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2020/background-data/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2020/background-data/</link>
+  <description>{B4F502887207:/2020/background-data/index.html}</description>
+  <category>r</category>
+  <category>faceting</category>
+  <category>dataviz</category>
+  <category>ggplot2</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2020/background-data/</guid>
+  <pubDate>Thu, 18 Jun 2020 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2020/background-data/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2019/dotplot/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2019/dotplot/</link>
+  <description>{B4F502887207:/2019/dotplot/index.html}</description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2019/dotplot/</guid>
+  <pubDate>Thu, 18 Jul 2019 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2019/dotplot/teaser.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>{B4F502887207:/2019/zotero/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2019/zotero/</link>
+  <description>{B4F502887207:/2019/zotero/index.html}</description>
+  <category>r</category>
+  <category>tutorial</category>
+  <guid>https://ikashnitsky.phd/2019/zotero/</guid>
+  <pubDate>Wed, 13 Mar 2019 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2019/zotero/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2019/barcelona-summer-school-of-demography/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/</link>
+  <description>{B4F502887207:/2019/barcelona-summer-school-of-demography/index.html}</description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>demography</category>
+  <guid>https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/</guid>
+  <pubDate>Wed, 06 Mar 2019 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2018/ddd-poster/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2018/ddd-poster/</link>
+  <description>{B4F502887207:/2018/ddd-poster/index.html}</description>
+  <category>r</category>
+  <category>demography</category>
+  <category>dataviz</category>
+  <category>rspatial</category>
+  <guid>https://ikashnitsky.phd/2018/ddd-poster/</guid>
+  <pubDate>Sun, 02 Dec 2018 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2018/ddd-poster/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2018/sjrdata-package/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2018/sjrdata-package/</link>
+  <description>{B4F502887207:/2018/sjrdata-package/index.html}</description>
+  <category>r</category>
+  <category>package</category>
+  <category>bibliometrics</category>
+  <guid>https://ikashnitsky.phd/2018/sjrdata-package/</guid>
+  <pubDate>Sat, 22 Sep 2018 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2018/sjrdata-package/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2018/the-lancet-paper/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2018/the-lancet-paper/</link>
+  <description>{B4F502887207:/2018/the-lancet-paper/index.html}</description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>demography</category>
+  <guid>https://ikashnitsky.phd/2018/the-lancet-paper/</guid>
+  <pubDate>Fri, 20 Jul 2018 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2018/the-lancet-paper/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2018/deep-catalan-roots/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2018/deep-catalan-roots/</link>
+  <description>{B4F502887207:/2018/deep-catalan-roots/index.html}</description>
+  <category>r</category>
+  <category>demography</category>
+  <guid>https://ikashnitsky.phd/2018/deep-catalan-roots/</guid>
+  <pubDate>Sun, 03 Jun 2018 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>{B4F502887207:/2018/perfect-rstudio-layout/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2018/perfect-rstudio-layout/</link>
+  <description>{B4F502887207:/2018/perfect-rstudio-layout/index.html}</description>
+  <category>r</category>
+  <category>rstudio</category>
+  <category>trick</category>
+  <guid>https://ikashnitsky.phd/2018/perfect-rstudio-layout/</guid>
+  <pubDate>Mon, 21 May 2018 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2018/perfect-rstudio-layout/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+<item>
+  <title>{B4F502887207:/2017/data-acquisition-three/index.html}</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2017/data-acquisition-three/</link>
+  <description>{B4F502887207:/2017/data-acquisition-three/index.html}</description>
+  <category>r</category>
+  <category>tutorial</category>
+  <category>data acquisition</category>
+  <guid>https://ikashnitsky.phd/2017/data-acquisition-three/</guid>
+  <pubDate>Sat, 09 Dec 2017 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2017/data-acquisition-three/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
+</channel>
+</rss>
