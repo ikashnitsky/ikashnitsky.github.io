@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>Ilya Kashnitsky</title>
-<link>https://ikashnitsky.phd/#category=r</link>
-<atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
+<link>https://ikashnitsky.phd/</link>
+<atom:link href="https://ikashnitsky.phd/index.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
 <generator>quarto-1.5.57</generator>
 <lastBuildDate>Tue, 17 Dec 2024 23:00:00 GMT</lastBuildDate>
@@ -1691,11 +1691,13 @@ font-style: inherit;">raw</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gsheet2tbl</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html">gsheet2tbl</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
+font-style: inherit;">(</span></span>
+<span>    <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58"</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">"https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58"</span></span>
+<span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span></span>
@@ -1973,7 +1975,8 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">(</span>data <span class="op" style="color: #5E5E5E;
+font-style: inherit;">(</span></span>
+<span>        data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
@@ -1981,7 +1984,8 @@ font-style: inherit;">country_borders</span>, size <span class="op" style="color
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">.25</span>, color <span class="op" style="color: #5E5E5E;
+font-style: inherit;">.25</span>, </span>
+<span>        color <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -1997,7 +2001,8 @@ font-style: inherit;"><a href="https://emilhvitfeldt.github.io/prismatic/referen
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">)</span></span>
+<span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2087,7 +2092,10 @@ font-style: inherit;">"Birth places of the participants"</span>,</span>
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Barcelona Summer School of Demography dataviz course at CED, July 2022"</span>,</span>
+font-style: inherit;">"Barcelona Summer School of Demography </span></span>
+<span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">        dataviz course at CED, July 2022"</span>,</span>
 <span>        caption <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
