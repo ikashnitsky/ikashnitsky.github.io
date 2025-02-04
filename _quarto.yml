@@ -15,7 +15,7 @@ project:
   resources:
     - "img/**"
 
-freeze: auto
+freeze: true
 
 bibliography: bib/cited-in-blog.bib
 csl: bib/population-space-and-place.csl

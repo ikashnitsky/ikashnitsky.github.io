@@ -19,12 +19,12 @@ about:
     - icon: mastodon
       text: Mastodon
       href: https://fosstodon.org/@ikashnitsky
-    - text: "{{< fa solid mountain-sun >}} BlueSky"
+    - text: "{{< fa check-circle-fill >}} BlueSky"
       href: https://bsky.app/profile/ikashnitsky.phd
 ---
 
 
-<button type="button" class="btn btn-danger">
+<button type="button" class="btn btn-warning">
 <a href="https://ikashnitsky.github.io/x/cv/2024-06-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
 </button>
 
@@ -36,9 +36,6 @@ about:
 <a href="https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en" style="color:#fff;"> {{< ai google-scholar >}} Google Scholar</a>
 </button>
 
-<button type="button" class="btn btn-warning">
-<a href="https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/about_the_centre/our_people/cpop_dem/ilya_kashnitsky" style="color:#fff;"> {{< ai preregistered >}} CPop SDU</a>
-</button>
 
 
 # Welcome to my website!
@@ -47,7 +44,7 @@ I am a demographer.
 
 This site gives an overview of my academic activities.
 
-I am a Senior Researcher at [Statistics Denmark][dst]. 
+I am a Senior Researcher at [Statistics Denmark][dst] and an Associate Member at  [Leverhulme Centre for Demographic Science][lcds], University of Oxford . 
 
 Until recently I was an Assistant Professor at the [Interdisciplinary Centre on Population Dynamics][cpop], University of Southern Denmark, Odense, Denmark. 
 
@@ -105,3 +102,4 @@ Ilya
 [cpop-me]: https://www.sdu.dk/en/forskning/forskningsenheder/samf/cpop/about_the_centre/our_people/cpop_dem/ilya_kashnitsky
 [mailto]: mailto:ilya.kashnitsky@gmail.com  
 [dst]: https://www.dst.dk/en/
+[lcds]: https://www.demography.ox.ac.uk/
