@@ -1,0 +1,24 @@
+---
+draft: true
+title: "My (already not just) academic path reflection"
+description-meta: "{{< meta website.description >}}"
+fig-cap-location: margin
+reference-location: margin
+date: "2025-01-01"
+image: teaser.png
+categories: [demography, career, academia]
+---
+
+
+<!-- my first non R post in the blog -->
+
+
+- Very successful academic path
+- Lack of own research topic
+- Diverse experience: research in several fields of demography and in several countries and research teams, extensive teaching in several contexts, outreach, communication with journalists, R package development, blog and social media
+- Tons of early career researchers career mentoring
+- Lack of formal scientific mentoring
+- Recent experience of giving feedback to Sebastian
+- I'm ready to be a scientific mentor now!
+
+
