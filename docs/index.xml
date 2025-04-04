@@ -594,6 +594,8 @@ This post is the first in the <strong>Damn Plot series</strong>. Other posts wil
 </div>
 
 
+<!-- -->
+
 </section> ]]></description>
   <category>r</category>
   <category>dataviz</category>
@@ -607,6 +609,7 @@ This post is the first in the <strong>Damn Plot series</strong>. Other posts wil
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2024/zotero7/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -728,6 +731,8 @@ Happy paper writing with Zotero and Quarto!
 <hr>
 
 
+<!-- -->
+
 </section>
 
 
@@ -826,7 +831,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -866,7 +871,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -906,7 +911,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -946,7 +951,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -986,7 +991,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1026,7 +1031,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1067,7 +1072,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1107,7 +1112,7 @@ Happy paper writing with Zotero and Quarto!
 <div>
 
 </div>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>
@@ -4989,7 +4994,7 @@ font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a><
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;"><a href="https://github.com/timriffe/TR1">HMDHFDplus</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://github.com/timriffe/HMDHFDplus">HMDHFDplus</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="kw" style="color: #003B4F;

@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -84,6 +118,12 @@ ga('send', {
   'anonymizeIp': true,
 });
 </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #025757;
+      }
+</style>
 
 
 <meta property="og:title" content="?meta:title">
@@ -106,7 +146,7 @@ ga('send', {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -135,6 +175,10 @@ ga('send', {
   <li class="nav-item">
     <a class="nav-link" href="../../dd.html"> 
 <span class="menu-text">Demographic Digest</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://words.ikashnitsky.phd"> 
+<span class="menu-text">Words</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -176,18 +220,41 @@ ga('send', {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default blog-post page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p><a href="https://ikashnitsky.github.io">Ilya Kashnitsky</a> <a href="https://orcid.org/0000-0003-1835-8687" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+
 
 
 
 
 <!-- LLM jumpstarter prompt -->
-<section id="prompt" class="level1">
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><section id="prompt" class="level1">
 <h1>PROMPT</h1>
 <p>Please help me draft a blog post called “My (already not just) academic path reflection”. Here is my CV to augment the factual points: https://ikashnitsky.github.io/x/cv/2025-02-cv-ilya-kashnitsky.pdf Below are the bullet points that should provide the structure for the blog post. I plan to expand each bullet point into a paragraph of a section of the blog post.</p>
 <ul>
@@ -382,6 +449,8 @@ ga('send', {
 <p>This moment of clarity has brought me to an important realization: I’m ready to step fully into the role of scientific mentor. The breadth of my experience across multiple countries and research contexts, combined with my board membership in the Danish Demographic Association and my involvement with organizations like IUSSP and EAPS, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path spanning urbanization, mortality, and migration—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.</p>
 
 
+<!-- -->
+
 </section>
 </section>
 
@@ -475,6 +544,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -806,11 +926,272 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="ikashnitsky/ikashnitsky.github.io" data-repo-id="R_kgDOIoyPxQ" data-category="General" data-category-id="DIC_kwDOIow4Ac4CTIis" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark"><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- LLM jumpstarter prompt --&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu"># PROMPT</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Please help me draft a blog post called "My (already not just) academic path reflection". Here is my CV to augment the factual points: https://ikashnitsky.github.io/x/cv/2025-02-cv-ilya-kashnitsky.pdf</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Below are the bullet points that should provide the structure for the blog post. I plan to expand each bullet point into a paragraph of a section of the blog post.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Very successful academic path</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Lack of own research topic</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Diverse experience: research in several fields of demography and in several countries and research teams, extensive teaching in several contexts, outreach, communication with journalists, R package development, blog and social media</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tons of early career researchers career mentoring</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Lack of formal scientific mentoring</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Recent experience of giving feedback to Sebastian</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I'm ready to be a scientific mentor now!</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- chatGPT jumpstarter --&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># ChatGPT</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**My (Already Not Just) Academic Path Reflection**</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>*Embarking on my academic journey, I have been fortunate to experience a trajectory marked by diverse roles and enriching experiences.* From earning a PhD in Demography at the University of Groningen in 2020 to serving as a Senior Researcher at Statistics Denmark, my path has been both rewarding and multifaceted.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>*Despite these accomplishments, I have often grappled with the absence of a singular research focus.* This lack of a dedicated niche has sometimes left me questioning the depth of my expertise in any one area.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>*However, this breadth has also been a strength.* My engagements span various domains within demography, including spatial analysis and population aging, and have taken me across multiple countries and research teams. Beyond research, I have embraced roles in teaching, outreach, and even R package development, maintaining an active presence through blogging and social media.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>*A significant aspect of my journey has been mentoring early-career researchers.* Drawing from my own experiences, I have endeavored to offer guidance and support to those navigating the early stages of their academic careers.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>*Interestingly, while I have provided mentorship, I have not had the experience of formal scientific mentoring myself.* This absence has underscored the importance of structured guidance in academia and has shaped my approach to supporting others.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>*Recently, I had the opportunity to provide feedback to a colleague, Sebastian.* This experience was enlightening, reinforcing the value of constructive critique and the mutual growth it fosters.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>*Reflecting on these experiences, I recognize that I am now prepared to step into the role of a scientific mentor.* I am eager to share my insights, support the development of emerging scholars, and contribute to a collaborative and nurturing academic environment.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- deepseek jumpstarter --&gt;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># DEEP SEEK</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## My (Already Not Just) Academic Path Reflection</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>As I look back on my academic journey, I am struck by how far I’ve come and how much I’ve learned along the way. What began as a straightforward academic path has evolved into something far more diverse and multifaceted. This blog post is a reflection on my experiences, the challenges I’ve faced, and the lessons I’ve learned. It’s also a declaration of readiness to take on a new role: that of a scientific mentor.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Very Successful Academic Path</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>By many measures, my academic career has been a success. I’ve earned a PhD in Demography, published in reputable journals, and presented at international conferences. My work has taken me across Europe and beyond, allowing me to collaborate with leading researchers in the field. I’ve secured funding, won awards, and built a strong professional network. On paper, it looks like a classic academic success story. Yet, as I reflect on this path, I realize that success in academia is not just about ticking boxes or climbing the ladder. It’s about finding meaning in the work you do and making a tangible impact—something I’ve been striving to achieve in my own way.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Lack of a Clear Research Topic</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>One of the challenges I’ve faced is the absence of a single, well-defined research topic that I can call my own. While I’ve worked on a variety of projects—ranging from mortality and aging to migration and spatial demography—I’ve often felt like a jack-of-all-trades rather than a specialist. This lack of focus has sometimes made it difficult to position myself within the academic landscape. However, it has also allowed me to explore diverse areas of demography, gaining a broad perspective that I wouldn’t have had otherwise. I’ve come to see this not as a weakness, but as a strength that enables me to connect ideas across disciplines and contribute to interdisciplinary research.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diverse Experiences: Research, Teaching, Outreach, and More</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>My career has been anything but linear. I’ve conducted research in multiple fields of demography, worked in several countries, and collaborated with diverse research teams. Beyond research, I’ve taught in various contexts, from university courses to workshops, and developed an R package to make demographic methods more accessible. I’ve also engaged in science communication, writing blog posts, interacting with journalists, and maintaining an active presence on social media. These experiences have taught me the value of versatility and adaptability. They’ve also shown me that academia is not just about publishing papers—it’s about sharing knowledge, inspiring others, and contributing to the broader scientific community.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mentoring Early Career Researchers</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>One of the most rewarding aspects of my career has been mentoring early career researchers. Over the years, I’ve guided countless students and young professionals, helping them navigate the complexities of academia, develop their skills, and build their confidence. This role has given me a sense of purpose and fulfillment that goes beyond my own research achievements. It’s also made me realize how much I enjoy supporting others in their academic journeys. While I’ve always been happy to offer advice and encouragement, I’ve recently come to see mentoring as a more formal and integral part of my professional identity.</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Lack of Formal Scientific Mentoring</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>Despite my success in mentoring others, I’ve often felt the absence of formal scientific mentoring in my own career. While I’ve had supportive colleagues and collaborators, I’ve never had a dedicated mentor who could provide consistent guidance and feedback. This has sometimes left me feeling isolated and uncertain about my direction. However, it has also pushed me to take ownership of my career and seek out opportunities for growth on my own. In a way, this lack of formal mentoring has made me more self-reliant and resourceful, qualities that I now bring to my own mentoring relationships.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Recent Mentoring Experience: Giving Feedback to Sebastian</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>A recent experience solidified my belief in the importance of mentoring. I had the opportunity to give feedback to Sebastian, a young researcher who was struggling with a project. As we discussed his work, I realized how much I’ve learned over the years—not just about demography, but about the process of doing research, communicating ideas, and overcoming challenges. Sharing this knowledge with Sebastian was incredibly rewarding, and it reminded me of the impact that a good mentor can have. It also made me realize that I’m ready to take on a more formal mentoring role, not just as an occasional advisor, but as a dedicated guide for early career researchers.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### I’m Ready to Be a Scientific Mentor Now!</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>After years of diverse experiences, both within and beyond academia, I feel ready to embrace the role of a scientific mentor. I want to help others navigate the challenges I’ve faced, share the lessons I’ve learned, and support them in achieving their goals. Mentoring is not just about imparting knowledge—it’s about building relationships, fostering growth, and creating a sense of community. I’m excited to take on this role and contribute to the development of the next generation of researchers. If my journey has taught me anything, it’s that success in academia is not just about individual achievements, but about the connections we make and the impact we have on others.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>As I move forward, I look forward to continuing my research, teaching, and outreach efforts, but also to dedicating more time and energy to mentoring. My academic path may have started as a straightforward pursuit of knowledge, but it has evolved into something much richer and more meaningful. I’m grateful for the opportunities I’ve had and excited for what’s to come. Here’s to the next chapter—and to helping others write their own stories.</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Claude jumpstarter --&gt;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="fu"># CLAUDE</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## My (Already Not Just) Academic Path Reflection</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>**The Traditional Success Story**</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>My academic journey has followed what many would consider a textbook path to success. I've published in respected journals, secured competitive funding, and established myself within my field. The metrics that academia values—citations, impact factors, and institutional affiliations—have all aligned favorably with my career trajectory. From the outside looking in, the conventional checkboxes of academic achievement have been ticked off one by one.</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>**Searching for My North Star**</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>Despite these external markers of success, I've often found myself wrestling with a fundamental question: what is *my* research topic? While colleagues built careers around specific niches, methodologies, or theoretical frameworks, my path has been less singularly focused. This absence of a clear research identity has been both a source of insecurity and, paradoxically, a catalyst for the diverse path I've forged.</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>**The Power of Academic Versatility**</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>What my career may lack in singular focus, it makes up for in breadth and adaptability. My research has spanned multiple subfields of demography, taking me across continents and introducing me to diverse research teams with varying approaches and priorities. I've taught everything from large introductory lectures to specialized graduate seminars, each requiring different pedagogical approaches. Beyond traditional academic outputs, I've developed R packages that serve the wider community, maintained an active blog and social media presence, and cultivated relationships with journalists to communicate research to broader audiences.</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>**The Accidental Mentor**</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>Perhaps the most unexpected development in my career has been the gravitational pull toward mentoring early career researchers. Without consciously seeking this role, I've found myself repeatedly providing guidance on everything from statistical methods to work-life balance, from publication strategies to career decisions. These conversations have become not just a peripheral activity but a central and deeply rewarding aspect of my professional identity.</span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>**The Missing Piece**</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>Despite my comfort in advising others, I've navigated much of my own path without formal scientific mentorship. While administrative mentors have helped me understand promotion processes and institutional politics, I've largely lacked someone to help shape my research agenda, challenge my methodological choices, or push me toward more ambitious questions. This absence has fostered independence but also left me wondering what different paths might have opened with more guided scientific development.</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>**Learning to Guide by Being Guided**</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>A recent experience providing feedback to Sebastian revealed something significant: the act of critically engaging with another's research—identifying strengths, questioning assumptions, suggesting alternative approaches—crystallized my own scientific perspective in ways I hadn't previously recognized. The process of articulating what makes for rigorous, innovative, and meaningful research helped me realize that I've developed a coherent scientific viewpoint despite my diverse path.</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>**The Next Chapter: Embracing the Scientific Mentor Role**</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of scientific mentor. The breadth of my experience, combined with the perspective gained from working across different research contexts, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ChatGPT CV augmented jumpstarter --&gt;</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="fu"># ChatGPT CV augmented</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## **My (Already Not Just) Academic Path Reflection**</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>Looking back on my journey, my academic path has been filled with achievements, opportunities, and invaluable experiences that extend far beyond traditional research. What began as a structured pursuit of demography has evolved into a dynamic career spanning research, teaching, outreach, and mentoring. This reflection explores my trajectory—its successes, challenges, and the point I’ve now reached: I am ready to be a scientific mentor.  </span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## **A Successful Academic Path**  </span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>My academic career has been marked by significant milestones. After completing a BSc in Geography at Moscow State University and an MSc in Demography at the Higher School of Economics in Moscow, I earned a PhD in Demography from the University of Groningen and the Netherlands Interdisciplinary Demographic Institute in 2020. My dissertation, *Changing Regional Inequalities in Ageing Across Europe*, examined demographic disparities across the continent.  </span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>Following my PhD, I navigated through various research positions, from Research Assistant to Assistant Professor at the Interdisciplinary Centre on Population Dynamics, University of Southern Denmark. Now, as a Senior Researcher (Specialkonsulent) at Statistics Denmark, I continue to contribute to the field, specializing in demographic research and data analysis. Additionally, I am an Associate Member of the Leverhulme Centre for Demographic Science at the University of Oxford and a board member of the Danish Demographic Association.  </span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>Beyond research, my work has received recognition, including the *EAPS Outreach Award* in 2018 and selection as a *Leading Population Expert* by Population Europe in 2022.  </span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Challenge: No Singular Research Topic**  </span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>Despite my accomplishments, one aspect of my academic career has always left me unsettled: I have never had a single, well-defined research focus. My interests span various areas within demography, including spatial analysis, population aging, internal migration, and COVID-19’s demographic impact.  </span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>While many researchers develop a signature topic early in their careers, I have instead followed a broad and interdisciplinary path. I have contributed to high-impact publications in *Nature Human Behaviour*, *BMJ Open*, and *Population Studies*, collaborated on projects in diverse domains, and even developed R packages like *sjrdata* and *tricolore*. While this diversity has enriched my experience, it has also made me feel like an academic generalist rather than a specialist.  </span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## **A Multifaceted Career: Research, Teaching, and Outreach**  </span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>Although my research spans different topics, my career has been anything but narrow. I have worked in multiple countries (Russia, the Netherlands, Denmark, Germany, and the UK) and collaborated with international research teams. Teaching has been another major pillar of my work, with courses and workshops on data visualization, R programming, and demographic methods at institutions such as the University of Oxford, the Max Planck Institute for Demographic Research, and Universitat Autònoma de Barcelona.  </span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>Outreach has also been a passion of mine. I have actively communicated demographic insights to wider audiences, engaging with journalists and contributing to discussions on platforms like *Our World in Data*, *The Guardian*, and *The Economist*. My blog and social media presence have allowed me to share research, tutorials, and reflections on academia.  </span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## **Mentoring Early-Career Researchers**  </span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>Throughout my career, I have been deeply involved in mentoring early-career researchers. I have provided career advice, guidance on academic writing, and insights into navigating academia’s challenges. Having gone through the ups and downs of research, funding, and publishing, I find it incredibly fulfilling to help others avoid pitfalls and develop their careers strategically.  </span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## **The Absence of Formal Mentorship**  </span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>Interestingly, while I have mentored others, I have never had a formal scientific mentor myself. My academic journey has been largely self-directed, shaped by interactions with peers and collaborators rather than structured guidance. This has given me independence but also reinforced the importance of mentorship—something I lacked and now want to provide to others.  </span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## **A Recent Mentorship Experience**  </span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>A recent experience that reinforced this realization was providing feedback to Sebastian Hanika, a PhD candidate at Lund University. Reviewing his work and discussing his research made me recognize how much I enjoy guiding and shaping the ideas of emerging scholars. It was a moment of clarity: I am ready to take on a formal mentorship role.  </span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## **I Am Ready to Be a Scientific Mentor**  </span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>Reflecting on my journey, I see that my broad expertise, international experience, and commitment to outreach and mentoring have prepared me for this next step. I am eager to support young researchers, help them navigate academia, and create an environment where they can thrive.  </span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>Academia can be daunting, but good mentorship makes a difference. Now, I want to be the mentor I never had.  </span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- deepseek jumpstarter --&gt;</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="fu"># Deep Seek CV augmented</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>Certainly! Below is the augmented version of your blog post, incorporating factual details from your CV to enrich the narrative:</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## My (Already Not Just) Academic Path Reflection</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>As I look back on my academic journey, I am struck by how far I’ve come and how much I’ve learned along the way. What began as a straightforward academic path has evolved into something far more diverse and multifaceted. This blog post is a reflection on my experiences, the challenges I’ve faced, and the lessons I’ve learned. It’s also a declaration of readiness to take on a new role: that of a scientific mentor.</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Very Successful Academic Path</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>By many measures, my academic career has been a success. I’ve earned a **PhD in Demography** from the **University of Groningen**, where I defended my dissertation on *Changing regional inequalities in ageing across Europe* in 2020. My work has been published in reputable journals such as *Nature Human Behaviour*, *Population Studies*, and *The Lancet*, and I’ve presented at international conferences across Europe and beyond. I’ve held positions at prestigious institutions, including my current role as a **Senior Researcher at Statistics Denmark** and my **Associate Membership at the Leverhulme Centre for Demographic Science, University of Oxford**. I’ve also been recognized with awards such as the **EAPS Outreach Award** and the **Best Poster Award** from the Netherlands Demographic Society. On paper, it looks like a classic academic success story. Yet, as I reflect on this path, I realize that success in academia is not just about ticking boxes or climbing the ladder. It’s about finding meaning in the work you do and making a tangible impact—something I’ve been striving to achieve in my own way.</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Lack of a Clear Research Topic</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>One of the challenges I’ve faced is the absence of a single, well-defined research topic that I can call my own. While I’ve worked on a variety of projects—ranging from **mortality and aging** to **migration** and **spatial demography**—I’ve often felt like a jack-of-all-trades rather than a specialist. For example, my research has explored topics as diverse as **non-survival to pension age in Denmark and Sweden**, **COVID-19’s impact on aging European regions**, and **internal youth migration in Russia**. This lack of focus has sometimes made it difficult to position myself within the academic landscape. However, it has also allowed me to explore diverse areas of demography, gaining a broad perspective that I wouldn’t have had otherwise. I’ve come to see this not as a weakness, but as a strength that enables me to connect ideas across disciplines and contribute to interdisciplinary research.</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diverse Experiences: Research, Teaching, Outreach, and More</span></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>My career has been anything but linear. I’ve conducted research in multiple fields of demography, worked in several countries, and collaborated with diverse research teams. Beyond research, I’ve taught in various contexts, from university courses to workshops, and developed an **R package** (*DemoTools*) to make demographic methods more accessible. I’ve also engaged in science communication, writing blog posts, interacting with journalists, and maintaining an active presence on social media. My teaching experience includes courses like *Data Visualization – the Art/Skill Cocktail* at the **University of Oxford** and workshops on *Mapping in R* at the **University of Groningen**. These experiences have taught me the value of versatility and adaptability. They’ve also shown me that academia is not just about publishing papers—it’s about sharing knowledge, inspiring others, and contributing to the broader scientific community.</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mentoring Early Career Researchers</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>One of the most rewarding aspects of my career has been mentoring early career researchers. Over the years, I’ve guided countless students and young professionals, helping them navigate the complexities of academia, develop their skills, and build their confidence. For example, I’ve served as an **external evaluator for PhD candidates** like **Sebastian Hanika** at **Lund University**, and I’ve reviewed master’s theses at the **National Research University Higher School of Economics**. This role has given me a sense of purpose and fulfillment that goes beyond my own research achievements. It’s also made me realize how much I enjoy supporting others in their academic journeys. While I’ve always been happy to offer advice and encouragement, I’ve recently come to see mentoring as a more formal and integral part of my professional identity.</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Lack of Formal Scientific Mentoring</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>Despite my success in mentoring others, I’ve often felt the absence of formal scientific mentoring in my own career. While I’ve had supportive colleagues and collaborators, I’ve never had a dedicated mentor who could provide consistent guidance and feedback. This has sometimes left me feeling isolated and uncertain about my direction. However, it has also pushed me to take ownership of my career and seek out opportunities for growth on my own. In a way, this lack of formal mentoring has made me more self-reliant and resourceful, qualities that I now bring to my own mentoring relationships.</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Recent Mentoring Experience: Giving Feedback to Sebastian</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>A recent experience solidified my belief in the importance of mentoring. I had the opportunity to give feedback to **Sebastian**, a young researcher who was struggling with a project. As we discussed his work, I realized how much I’ve learned over the years—not just about demography, but about the process of doing research, communicating ideas, and overcoming challenges. Sharing this knowledge with Sebastian was incredibly rewarding, and it reminded me of the impact that a good mentor can have. It also made me realize that I’m ready to take on a more formal mentoring role, not just as an occasional advisor, but as a dedicated guide for early career researchers.</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="fu">### I’m Ready to Be a Scientific Mentor Now!</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>After years of diverse experiences, both within and beyond academia, I feel ready to embrace the role of a scientific mentor. I want to help others navigate the challenges I’ve faced, share the lessons I’ve learned, and support them in achieving their goals. Mentoring is not just about imparting knowledge—it’s about building relationships, fostering growth, and creating a sense of community. I’m excited to take on this role and contribute to the development of the next generation of researchers. If my journey has taught me anything, it’s that success in academia is not just about individual achievements, but about the connections we make and the impact we have on others.</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>As I move forward, I look forward to continuing my research, teaching, and outreach efforts, but also to dedicating more time and energy to mentoring. My academic path may have started as a straightforward pursuit of knowledge, but it has evolved into something much richer and more meaningful. I’m grateful for the opportunities I’ve had and excited for what’s to come. Here’s to the next chapter—and to helping others write their own stories.</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>This version of the blog post integrates specific details from your CV, such as your publications, teaching experiences, and mentoring activities, to provide a more comprehensive and personalized reflection on your academic journey.</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Claude CV augmented jumpstarter --&gt;</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="fu"># Claude CV augmented</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Traditional Success Story</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>My academic journey has followed what many would consider a textbook path to success. From my early beginnings at Moscow State University to earning my PhD at the University of Groningen, I've published in respected journals like *The Lancet*, *PNAS*, and *Population Studies*. My research on regional inequalities in aging across Europe has secured recognition, including the EAPS Outreach Award and an AURORA-II PhD Scholarship. The metrics that academia values—citations, impact factors, and institutional affiliations—have aligned favorably with my career trajectory, leading to my current position as Senior Researcher at Statistics Denmark and Associate Member at the Leverhulme Centre for Demographic Science at Oxford.</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="fu">## Searching for My North Star</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>Despite these external markers of success, I've often found myself wrestling with a fundamental question: what is *my* research topic? While colleagues built careers around specific niches, my publications span diverse areas—from COVID-19 impacts on unequally aging regions to sex gaps in life expectancy, from internal youth migration in Russia to regional convergence in population aging across Europe. This absence of a clear research identity has been both a source of insecurity and, paradoxically, a catalyst for the diverse path I've forged.</span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Power of Academic Versatility</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>What my career may lack in singular focus, it makes up for in breadth and adaptability. My research has spanned multiple subfields of demography, taking me from Moscow to Groningen, from Odense to Copenhagen, and introducing me to diverse research teams with varying approaches. I've taught everything from specialized workshops on data visualization at the Barcelona Summer School of Demography to guest lectures on migration and R programming at various institutions. Beyond traditional academic outputs, I've developed R packages like DemoTools and tricolore that serve the wider community, maintained an active blog and social media presence (as evidenced by my BSKY and GitHub profiles), and cultivated relationships with outlets like The Atlantic, The Economist, and The Guardian to communicate research to broader audiences.</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Accidental Mentor</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>Perhaps the most unexpected development in my career has been the gravitational pull toward mentoring early career researchers. Without consciously seeking this role, I've found myself repeatedly providing guidance through my teaching activities across institutions like the Max Planck Institute, Oxford, and Barcelona. These teaching experiences in data visualization, mapping in R, and demographic methods have become not just peripheral activities but central and deeply rewarding aspects of my professional identity, reflected in the community service section of my CV that shows my commitment to nurturing the field.</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Missing Piece</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>Despite my comfort in advising others, I've navigated much of my own path without formal scientific mentorship. While I've had excellent PhD advisors in Leo van Wissen and Joop de Beer, and have collaborated with established scholars like James Vaupel (whom I helped commemorate through the memorial website), I've largely lacked someone to consistently help shape my research agenda across the various institutions where I've worked. This absence has fostered independence but also left me wondering what different paths might have opened with more guided scientific development throughout my career transitions from Russia to the Netherlands to Denmark.</span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning to Guide by Being Guided</span></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>A recent experience providing feedback to Sebastian Hanika as an external PhD evaluator at Lund University revealed something significant: the act of critically engaging with another's research—identifying strengths, questioning assumptions, suggesting alternative approaches—crystallized my own scientific perspective in ways I hadn't previously recognized. This formal evaluation role, combined with my extensive peer review experience for journals like *Population Studies*, *Demography*, and *The BMJ*, has helped me develop a coherent scientific viewpoint despite my diverse path.</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Next Chapter: Embracing the Scientific Mentor Role</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of scientific mentor. The breadth of my experience across multiple countries and research contexts, combined with my board membership in the Danish Demographic Association and my involvement with organizations like IUSSP and EAPS, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path spanning urbanization, mortality, and migration—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2024 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2025 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"><strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>
