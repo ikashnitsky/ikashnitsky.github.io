@@ -57,6 +57,8 @@ website:
         href: https://datavizartskill.ikashnitsky.phd
       - text: "Demographic Digest"
         file: "dd.qmd"
+      - text: 'Words'
+        href: https://words.ikashnitsky.phd
 
     right:
       - icon: github
