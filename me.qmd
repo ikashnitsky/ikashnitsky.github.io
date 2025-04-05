@@ -1,8 +1,8 @@
 ---
 title: "."
 description-meta: "{{< meta website.description >}}"
-image: img/ik.jpg
-title-block-banner: img/bubbles-banner.jpg
+image: img/ik.png
+title-block-banner: img/abs-banner-me.png
 code-tools: false
 comments: false
 toc: false
