@@ -1,0 +1,1924 @@
+---
+draft: true
+title: "Simple but exact tasks are not that simple for LLMs"
+description-meta: "{{< meta website.description >}}"
+fig-cap-location: margin
+reference-location: margin
+date: "2025-07-11"
+image: teaser.png
+categories: [r, llm, dataviz]
+---
+
+
+<!-- Top-50 authors in 10 leading demographic journals -->
+
+Recently a research paper made quite a splash [in] over social media, it claimed that experienced developers are wasting more time fiddling around with LLMs than actually saving time with their help. In this blog post I am going to show you how exactly such things may actually happen =)
+
+
+This week marks a significant event in my new professional life -- I rolled out the yearly update of Lifelines, an important dataset developed by Data Science Lab of Statistics Denmark. Since recently, I am in charge of development and updating this product.
+
+Briefly describe lifelines 
+
+And while I was updating the documentation of the package I needed to recreate a simple plot that illustrates the possible types of lifelines observed in the data set. The historical plot was developed at some point by someone and of course the code was never to be traced. So I needed to replicate the plot. Pretty straightforward. 
+
+Yet I came up with an idea of offloading the task to the magnificent large language models. The task seems both easy and possibly not that easy. So I uploaded the picture and asked the models to analyze it and then with the text prompt asked to recreate the plot by R scripting. This blog post documents their surprisingly lengthy and frustrating experience of solving the task through multiple top of the class models. In the end I managed to achieve a recent result that only requested minimal aesthetic tweaking. Spoiler: the most able model turned out to be Google's Gemini 2.5 Pro, which is surprisingly available for free via there exploratory project called Google AI Studio. You see I'm not trying to hoodwing you into reading this post further than necessary. Please continue if you wanted to see how different models attempt in the task struggled and mostly failed. 
+
+
+This document showcases various attempts by different Large Language Models (LLMs) to recreate a schematic illustration in R using `tidyverse` and `ggplot2`. The initial prompt provided an image of the desired plot.
+
+## Claude 4.0 Sonnet via pplx
+
+Claude 4.0 Sonnet is a large language model from Anthropic. It's known for its strong performance in a variety of natural language processing tasks, including text generation, summarization, and question answering. It is designed to be a more balanced model in terms of performance and cost. [28, 29, 39, 40]
+
+### First Attempt
+
+
+
+```{r}
+#| eval: false
+library(ggplot2)
+library(dplyr)
+
+# Create data for the diagonal lines (lifelines/cohort lines)
+lines_data <- data.frame(
+    xstart = c(1986, 1986, 1986, 1986, 1986, 1986, 1986),
+    xend = c(2018, 2018, 2018, 2018, 2018, 2018, 2018),
+    ystart = c(0, 10, 20, 30, 40, 50, 60),
+    yend = c(32, 42, 52, 62, 72, 82, 92)
+)
+
+# Create data for the blue points (observed data points)
+points_data <- data.frame(
+    x = c(1987, 1987, 1996),
+    y = c(87, 76, 62)
+)
+
+# Create the plot
+ggplot() +
+    # Add diagonal lines
+    geom_segment(data = lines_data,
+                 aes(x = xstart, y = ystart, xend = xend, yend = yend),
+                 color = "blue",
+                 size = 0.8) +
+
+    # Add points
+    geom_point(data = points_data,
+               aes(x = x, y = y),
+               color = "blue",
+               size = 2) +
+
+    # Set axis scales and labels
+    scale_x_continuous(name = "Calendar time",
+                       breaks = seq(1986, 2018, by = 8),
+                       limits = c(1986, 2018)) +
+
+    scale_y_continuous(name = "Age",
+                       breaks = seq(0, 100, by = 20),
+                       limits = c(0, 100)) +
+
+    # Apply minimal theme with grid
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_line(color = "grey80", size = 0.5),
+        panel.grid.minor = element_line(color = "grey90", size = 0.3),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10)
+    )
+
+ggsave("/rout/rec-claude.pdf", width = 6, height = 4.5)
+```
+
+### Second Attempt
+
+```{r}
+#| eval: false
+# Load the required libraries
+library(ggplot2)
+library(dplyr)
+
+# Create a data frame for the individual line segments observed in the plot
+# These represent different cohort groups over different time periods.
+segments_data <- data.frame(
+    x_start = c(1986, 1986, 1986, 1986, 1986, 2003, 2003, 2003, 2003, 2003),
+    y_start = c(0, 10, 20, 30, 53, 0, 5, 10, 30, 40),
+    x_end   = c(2002, 2002, 2002, 2002, 1995, 2018, 2018, 2018, 2018, 2018),
+    y_end   = c(16, 26, 36, 46, 62, 15, 20, 25, 45, 55)
+)
+
+# Create a data frame for the three distinct data points
+points_data <- data.frame(
+    x_val = c(1987, 1988, 1995),
+    y_val = c(87, 76, 62)
+)
+
+# Generate the plot
+ggplot() +
+    # Add the diagonal line segments
+    geom_segment(
+        data = segments_data,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.6
+    ) +
+
+    # Add the data points
+    geom_point(
+        data = points_data,
+        aes(x = x_val, y = y_val),
+        color = "blue",
+        size = 2.5
+    ) +
+
+    # Ensure the aspect ratio is 1:1, so lifelines have a true 45-degree slope
+    coord_fixed(ratio = 1) +
+
+    # Configure the axes to match the schematic
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = seq(1986, 2018, by = 8),
+        minor_breaks = seq(1986, 2018, by = 2),
+        limits = c(1986, 2018),
+        expand = c(0.01, 0.01)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(0, 100, by = 20),
+        minor_breaks = seq(0, 100, by = 10),
+        limits = c(0, 100),
+        expand = c(0.01, 0.01)
+    ) +
+
+    # Apply a minimal theme and customize the grid and panel
+    theme_bw() +
+    theme(
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.title.y = element_text(margin = margin(r = 15)),
+        panel.grid.major = element_line(color = "grey75", linewidth = 0.5),
+        panel.grid.minor = element_line(color = "grey85", linetype = "dashed", linewidth = 0.35),
+        panel.border = element_rect(color = "black", linewidth = 1)
+    )
+
+ggsave("/rout/rec-claude-two.pdf", width = 6, height = 4.5)
+```
+
+### Third Attempt
+
+```{r}
+#| eval: false
+# Load the required libraries
+library(ggplot2)
+library(dplyr)
+
+# Create a data frame for the individual line segments
+# Data has been carefully adjusted to fit the 40-60 age range
+segments_data <- data.frame(
+    x_start = c(1986, 1986, 1986, 1986, 1986, 2003, 2003, 2003, 2003, 2003),
+    y_start = c(40.5, 42.5, 44.5, 46.5, 48.5, 41.5, 43.5, 45.5, 47.5, 49.5),
+    x_end   = c(2002, 2002, 2002, 2002, 1995, 2018, 2018, 2018, 2018, 2018),
+    y_end   = c(56.5, 58.5, 60.5, 62.5, 57.5, 56.5, 58.5, 60.5, 62.5, 64.5)
+)
+
+# Create a data frame for the three distinct data points
+# Adjusted to fall within the 40-60 age range
+points_data <- data.frame(
+    x_val = c(1987, 1988, 1995),
+    y_val = c(58.5, 52.5, 48.5)
+)
+
+# Generate the plot
+ggplot() +
+    # Add the diagonal line segments
+    geom_segment(
+        data = segments_data,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.6
+    ) +
+
+    # Add the data points
+    geom_point(
+        data = points_data,
+        aes(x = x_val, y = y_val),
+        color = "blue",
+        size = 2.5
+    ) +
+
+    # Ensure the aspect ratio is 1:1 for proper Lexis surface representation
+    coord_fixed(ratio = 1) +
+
+    # Configure the axes for the 40-60 age range
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = seq(1986, 2018, by = 8),
+        minor_breaks = seq(1986, 2018, by = 2),
+        limits = c(1986, 2018),
+        expand = c(0.01, 0.01)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(40, 60, by = 5),
+        minor_breaks = seq(40, 60, by = 2.5),
+        limits = c(40, 60),
+        expand = c(0.01, 0.01)
+    ) +
+
+    # Apply a minimal theme and customize the grid and panel
+    theme_bw() +
+    theme(
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.title.y = element_text(margin = margin(r = 15)),
+        panel.grid.major = element_line(color = "grey75", linewidth = 0.5),
+        panel.grid.minor = element_line(color = "grey85", linetype = "dashed", linewidth = 0.35),
+        panel.border = element_rect(color = "black", linewidth = 1)
+    )
+
+ggsave("/rout/rec-claude-three.pdf", width = 6, height = 4.5)
+```
+
+### Fourth Attempt
+
+```{r}
+#| eval: false
+# Load the required libraries
+library(ggplot2)
+library(dplyr)
+
+# Create lifeline segments that END at death points
+# These represent individual life trajectories until death
+death_lifelines <- data.frame(
+    x_start = c(1986, 1986, 1986),
+    y_start = c(40.5, 34.5, 29.5),
+    x_end   = c(1987, 1988, 1995),
+    y_end   = c(58.5, 52.5, 48.5)
+)
+
+# Create lifeline segments with emigration gaps
+# These show people leaving and re-entering the population
+emigration_lifelines <- data.frame(
+    # First segments (before emigration)
+    x_start = c(1986, 1986, 1986, 1986),
+    y_start = c(42.0, 44.0, 46.0, 48.0),
+    x_end   = c(1992, 1994, 1990, 1993),
+    y_end   = c(48.0, 50.0, 46.0, 49.0),
+
+    # Second segments (after re-immigration)
+    x_start_2 = c(1998, 2000, 1996, 2002),
+    y_start_2 = c(54.0, 56.0, 52.0, 58.0),
+    x_end_2   = c(2018, 2018, 2018, 2018),
+    y_end_2   = c(74.0, 76.0, 72.0, 78.0)
+)
+
+# Continuous lifelines (no emigration)
+continuous_lifelines <- data.frame(
+    x_start = c(1986, 1986, 1986),
+    y_start = c(41.0, 43.0, 45.0),
+    x_end   = c(2018, 2018, 2018),
+    y_end   = c(73.0, 75.0, 77.0)
+)
+
+# Death points (endpoints of lifelines)
+death_points <- data.frame(
+    x_val = c(1987, 1988, 1995),
+    y_val = c(58.5, 52.5, 48.5)
+)
+
+# Generate the plot
+ggplot() +
+    # Add lifelines that end in death
+    geom_segment(
+        data = death_lifelines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.8
+    ) +
+
+    # Add first segments of emigration lifelines
+    geom_segment(
+        data = emigration_lifelines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.6
+    ) +
+
+    # Add second segments of emigration lifelines (after re-immigration)
+    geom_segment(
+        data = emigration_lifelines,
+        aes(x = x_start_2, y = y_start_2, xend = x_end_2, yend = y_end_2),
+        color = "blue",
+        linewidth = 0.6
+    ) +
+
+    # Add continuous lifelines (no emigration)
+    geom_segment(
+        data = continuous_lifelines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.6
+    ) +
+
+    # Add death points at the END of lifelines
+    geom_point(
+        data = death_points,
+        aes(x = x_val, y = y_val),
+        color = "blue",
+        size = 3,
+        shape = 16
+    ) +
+
+    # Ensure proper Lexis surface representation
+    coord_fixed(ratio = 1) +
+
+    # Configure the axes
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = seq(1986, 2018, by = 8),
+        minor_breaks = seq(1986, 2018, by = 2),
+        limits = c(1986, 2018),
+        expand = c(0.01, 0.01)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(40, 80, by = 10),
+        minor_breaks = seq(40, 80, by = 5),
+        limits = c(40, 80),
+        expand = c(0.01, 0.01)
+    ) +
+
+    # Apply theme
+    theme_bw() +
+    theme(
+        axis.title.x = element_text(margin = margin(t = 15)),
+        axis.title.y = element_text(margin = margin(r = 15)),
+        panel.grid.major = element_line(color = "grey75", linewidth = 0.5),
+        panel.grid.minor = element_line(color = "grey85", linetype = "dashed", linewidth = 0.35),
+        panel.border = element_rect(color = "black", linewidth = 1)
+    )
+
+ggsave("/rout/rec-claude-four.pdf", width = 6, height = 4.5)
+```
+
+### Fifth Attempt
+
+```{r}
+#| eval: false
+# Load the required libraries
+library(ggplot2)
+library(dplyr)
+
+# Create the main lifeline segments - these are the core diagonal lines
+# Each represents a birth cohort aging through time
+main_lifelines <- data.frame(
+    x_start = c(1986, 1986, 1986, 1986, 1986),
+    y_start = c(41, 43, 45, 47, 49),
+    x_end   = c(2018, 2018, 2018, 2018, 2018),
+    y_end   = c(73, 75, 77, 79, 81)
+)
+
+# Lifelines that end in death (these connect to the death points)
+death_lifelines <- data.frame(
+    x_start = c(1986, 1986, 1995),
+    y_start = c(40, 42, 47),
+    x_end   = c(1987, 1988, 1996),
+    y_end   = c(58, 52, 48)
+)
+
+# Lifelines with emigration gaps - first segment
+emigration_first <- data.frame(
+    x_start = c(1986, 1986),
+    y_start = c(44, 46),
+    x_end   = c(1992, 1994),
+    y_end   = c(50, 52)
+)
+
+# Lifelines with emigration gaps - second segment (after re-immigration)
+emigration_second <- data.frame(
+    x_start = c(1998, 2000),
+    y_start = c(56, 58),
+    x_end   = c(2018, 2018),
+    y_end   = c(76, 78)
+)
+
+# Death points - these mark the observed deaths
+death_points <- data.frame(
+    x_val = c(1987, 1988, 1996),
+    y_val = c(58, 52, 48)
+)
+
+# Create the plot
+ggplot() +
+    # Add main continuous lifelines
+    geom_segment(
+        data = main_lifelines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+
+    # Add lifelines that end in death
+    geom_segment(
+        data = death_lifelines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+
+    # Add first segments of emigration lifelines
+    geom_segment(
+        data = emigration_first,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+
+    # Add second segments of emigration lifelines
+    geom_segment(
+        data = emigration_second,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+
+    # Add death points
+    geom_point(
+        data = death_points,
+        aes(x = x_val, y = y_val),
+        color = "blue",
+        size = 3
+    ) +
+
+    # Maintain 1:1 aspect ratio for proper Lexis surface
+    coord_fixed(ratio = 1) +
+
+    # Set up axes to match original
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = seq(1986, 2018, by = 8),
+        limits = c(1986, 2018),
+        expand = c(0.02, 0.02)
+    ) +
+
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(40, 80, by = 10),
+        limits = c(40, 80),
+        expand = c(0.02, 0.02)
+    ) +
+
+    # Clean theme matching the original
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_line(color = "grey80", linewidth = 0.5),
+        panel.grid.minor = element_line(color = "grey90", linewidth = 0.3),
+        panel.border = element_rect(color = "black", fill = NA, linewidth = 1),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10)
+    )
+
+ggsave("/rout/rec-claude-five.pdf", width = 6, height = 4.5)
+```
+
+## Gemini 2.5 Pro via pplx
+
+Gemini 2.5 Pro is a powerful, multimodal large language model from Google. It excels at complex reasoning, coding, and analyzing large datasets containing text, images, audio, and video. [2, 5, 8, 9, 10]
+
+```{r}
+#| eval: false
+# Load the tidyverse library, which includes ggplot2
+library(tidyverse)
+
+# --- 1. Prepare the Data ---
+
+# Create a tibble (a modern data frame) for the points
+# Each row represents a single point with x and y coordinates.
+points_data <- tribble(
+    ~calendar_time, ~age,
+    1988,           88,
+    1989,           77,
+    1995,           63
+)
+
+# Create a tibble for the line segments.
+# Each row defines a line with start (x_start, y_start) and end (x_end, y_end) coordinates.
+lines_data <- tribble(
+    ~x_start, ~y_start, ~x_end, ~y_end,
+    1986,     53,       1996,   63,
+    1990,     35,       2002,   47,
+    1986,     19,       2002,   35,
+    1986,     11,       2002,   27,
+    2004,     30,       2018,   44,
+    2004,     20,       2018,   34,
+    2004,     0,        2018,   14
+)
+
+# --- 2. Build the Plot ---
+
+# Create the plot using ggplot2
+ggplot() +
+    # Add the line segments using geom_segment
+    geom_segment(
+        data = lines_data,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 1 # Adjust line thickness if needed
+    ) +
+
+    # Add the points using geom_point
+    geom_point(
+        data = points_data,
+        aes(x = calendar_time, y = age),
+        color = "blue",
+        size = 3.5 # Adjust point size
+    ) +
+
+    # --- 3. Customize Appearance ---
+
+    # Customize the x-axis to match the image
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = seq(1986, 2018, by = 8), # Set breaks at 8-year intervals
+        limits = c(1985, 2018)
+    ) +
+
+    # Customize the y-axis to match the image
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(0, 100, by = 20), # Set breaks at 20-year intervals
+        limits = c(0, 100)
+    ) +
+
+    # Apply a theme and customize the grid
+    theme_bw() + # Start with a theme that has a white background and grid
+    theme(
+        panel.grid.major = element_line(color = "grey75"),
+        panel.grid.minor = element_line(color = "grey90"),
+        axis.title = element_text(size = 12),
+        plot.background = element_rect(fill = "white", color = NA) # Ensure background is white
+    )
+
+ggsave("/rout/rec-gemini.pdf", width = 6, height = 4.5)
+```
+
+## Perplexity Research mode
+
+Perplexity AI offers a "Research mode" that functions as an AI-powered search engine. It synthesizes information from various sources to provide comprehensive answers with citations, making it useful for in-depth research tasks. [15, 34, 45]
+
+### First Attempt
+
+```{r}
+#| eval: false
+# Load required libraries
+library(ggplot2)
+library(tidyverse)
+
+# Create the data points from the image
+data_points <- data.frame(
+    calendar_time = c(1988, 1990, 1996),
+    age = c(85, 75, 62)
+)
+
+# Create data for the trend lines
+# Based on the image, there appear to be 3 parallel trend lines
+trend_years <- seq(1986, 2018, length.out = 100)
+
+# Create three trend lines with different intercepts but similar slopes
+trend_data <- data.frame(
+    calendar_time = rep(trend_years, 3),
+    age = c(
+        90 - 0.8 * (trend_years - 1986),  # Top trend line
+        70 - 0.8 * (trend_years - 1986),  # Middle trend line
+        50 - 0.8 * (trend_years - 1986)   # Bottom trend line
+    ),
+    line_group = rep(c("Line 1", "Line 2", "Line 3"), each = length(trend_years))
+)
+
+# Create the plot
+ggplot() +
+    # Add trend lines
+    geom_line(data = trend_data,
+              aes(x = calendar_time, y = age, group = line_group),
+              color = "steelblue",
+              size = 0.8) +
+
+    # Add data points
+    geom_point(data = data_points,
+               aes(x = calendar_time, y = age),
+               color = "steelblue",
+               size = 3) +
+
+    # Set axis labels
+    labs(x = "Calendar time",
+         y = "Age") +
+
+    # Set axis limits and breaks
+    scale_x_continuous(limits = c(1986, 2018),
+                       breaks = seq(1986, 2018, by = 8)) +
+    scale_y_continuous(limits = c(0, 100),
+                       breaks = seq(0, 100, by = 20)) +
+
+    # Apply minimal theme with grid
+    theme_minimal() +
+
+    # Customize the theme
+    theme(
+        panel.grid.major = element_line(color = "gray80", size = 0.5),
+        panel.grid.minor = element_line(color = "gray90", size = 0.3),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 12),
+        panel.background = element_rect(fill = "white", color = NA),
+        plot.background = element_rect(fill = "white", color = NA)
+    )
+
+ggsave("/rout/rec-perplexity.pdf", width = 6, height = 4.5)
+```
+
+### Second Attempt
+
+```{r}
+#| eval: false
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+# Create the exact data points from the image
+data_points <- data.frame(
+    calendar_time = c(1988, 1990, 1996),
+    age = c(85, 75, 62)
+)
+
+# Create the three trend lines with exact parameters from image analysis
+# All lines have slope = 0.344 but different intercepts
+x_vals <- seq(1986, 2018, length.out = 100)
+
+trend_data <- data.frame(
+    calendar_time = rep(x_vals, 3),
+    age = c(
+        0.344 * x_vals - 630.7,  # Top trend line
+        0.344 * x_vals - 647.7,  # Middle trend line
+        0.344 * x_vals - 664.7   # Bottom trend line
+    ),
+    line_id = rep(c("line1", "line2", "line3"), each = length(x_vals))
+)
+
+# Create the exact plot
+ggplot() +
+    # Add the three trend lines
+    geom_line(data = trend_data,
+              aes(x = calendar_time, y = age, group = line_id),
+              color = "#4682B4",  # Steel blue color
+              size = 0.7,
+              alpha = 0.8) +
+
+    # Add the three data points
+    geom_point(data = data_points,
+               aes(x = calendar_time, y = age),
+               color = "#4682B4",  # Steel blue color
+               size = 2.5,
+               alpha = 0.9) +
+
+    # Set exact axis labels
+    labs(x = "Calendar time",
+         y = "Age") +
+
+    # Set exact axis limits and breaks to match the image
+    scale_x_continuous(
+        limits = c(1986, 2018),
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        expand = c(0, 0)
+    ) +
+
+    scale_y_continuous(
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20),
+        expand = c(0, 0)
+    ) +
+
+    # Apply the exact theme to match the image
+    theme_minimal() +
+
+    theme(
+        # Grid styling to match the image exactly
+        panel.grid.major = element_line(color = "gray85", size = 0.5, linetype = "solid"),
+        panel.grid.minor = element_line(color = "gray92", size = 0.3, linetype = "solid"),
+
+        # Background and panel
+        panel.background = element_rect(fill = "white", color = NA),
+        plot.background = element_rect(fill = "white", color = NA),
+
+        # Axis styling
+        axis.line = element_blank(),
+        axis.ticks = element_line(color = "gray60", size = 0.4),
+        axis.ticks.length = unit(0.15, "cm"),
+        axis.text = element_text(color = "gray30", size = 9),
+        axis.title = element_text(color = "gray20", size = 10),
+
+        # Remove legend
+        legend.position = "none",
+
+        # Plot margins
+        plot.margin = margin(15, 15, 15, 15)
+    )
+
+ggsave("/rout/rec-perplexity-two.pdf", width = 6, height = 4.5)
+```
+
+## Grok via pplx
+
+Grok is a large language model from xAI, known for its ability to access real-time information through its integration with the X (formerly Twitter) platform. It is designed to have a bit of a rebellious and witty personality. [13, 17, 21, 22, 35]
+
+```{r}
+#| eval: false
+# Load required libraries
+library(ggplot2)
+library(dplyr)
+
+# Data points from the schematic
+data_points <- data.frame(
+    calendar_time = c(1988, 1990, 1996),
+    age = c(85, 75, 62)
+)
+
+# Create three parallel lines with the same slope, spaced evenly
+x_vals <- seq(1986, 2018, length.out = 100)
+slope <- 0.344  # Estimated slope from the schematic
+
+trend_data <- data.frame(
+    calendar_time = rep(x_vals, 3),
+    age = c(
+        slope * x_vals - 600,  # Top line
+        slope * x_vals - 620,  # Middle line
+        slope * x_vals - 640   # Bottom line
+    ),
+    line_id = rep(c("line1", "line2", "line3"), each = length(x_vals))
+)
+
+# Plot
+ggplot() +
+    # Add trend lines
+    geom_line(
+        data = trend_data,
+        aes(x = calendar_time, y = age, group = line_id),
+        color = "#377eb8",  # Blue
+        size = 0.7
+    ) +
+    # Add points
+    geom_point(
+        data = data_points,
+        aes(x = calendar_time, y = age),
+        color = "#377eb8",
+        size = 3
+    ) +
+    # Axes labels
+    labs(x = "Calendar time", y = "Age") +
+    # Axes limits and breaks
+    scale_x_continuous(
+        limits = c(1986, 2018),
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20),
+        expand = c(0, 0)
+    ) +
+    # Minimal theme and grid styling
+    theme_minimal(base_size = 12) +
+    theme(
+        panel.grid.major = element_line(color = "gray80", size = 0.5),
+        panel.grid.minor = element_line(color = "gray90", size = 0.3),
+        axis.line = element_blank(),
+        axis.ticks = element_line(color = "gray60", size = 0.4),
+        axis.ticks.length = unit(0.15, "cm"),
+        axis.text = element_text(color = "gray30", size = 10),
+        axis.title = element_text(color = "gray20", size = 12),
+        legend.position = "none",
+        plot.background = element_rect(fill = "white", color = NA),
+        panel.background = element_rect(fill = "white", color = NA),
+        plot.margin = margin(15, 15, 15, 15)
+    )
+
+ggsave("/rout/rec-grok.pdf", width = 6, height = 4.5)
+```
+
+## GPT 4.1 via pplx
+
+GPT-4.1 is a family of large language models from OpenAI, designed with a focus on developer experience, including improved instruction following and coding capabilities. It comes in different sizes (GPT-4.1, GPT-4.1 mini, and GPT-4.1 nano) to suit various performance and cost needs. [3, 6, 7, 16, 24]
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+# Data for points
+points_df <- tibble(
+    calendar_time = c(1986, 1986, 1994),
+    age = c(88, 77, 63)
+)
+
+# Data for lines
+line_starts <- tibble(
+    start_time = c(1986, 1986, 1986, 1986, 1986),
+    start_age = c(0, 20, 40, 60, 80)
+)
+
+line_ends <- tibble(
+    end_time = c(2018, 2018, 2018, 2018, 2018),
+    end_age = c(32, 52, 72, 92, 112) # 2018-1986 = 32
+)
+
+lines_df <- line_starts %>%
+    mutate(end_time = end_time,
+           end_age = start_age + (end_time - start_time)) %>%
+    select(start_time, start_age, end_time, end_age)
+
+# ERROR here -- next I fix it
+
+# Data for lines
+line_starts <- tibble(
+    start_time = c(1986, 1986, 1986, 1986, 1986),
+    start_age = c(0, 20, 40, 60, 80),
+    end_time = c(2018, 2018, 2018, 2018, 2018),
+    end_age = c(32, 52, 72, 92, 112) # 2018-1986 = 32
+)
+
+lines_df <- line_starts %>%
+    mutate(end_time = end_time,
+           end_age = start_age + (end_time - start_time)) %>%
+    select(start_time, start_age, end_time, end_age)
+
+# Prepare data for geom_segment
+lines_plot <- tibble(
+    x = rep(1986, 5),
+    xend = rep(2018, 5),
+    y = c(0, 20, 40, 60, 80),
+    yend = c(32, 52, 72, 92, 112)
+)
+
+# Plot
+ggplot() +
+    geom_segment(data = lines_plot, aes(x = x, y = y, xend = xend, yend = yend), color = "blue") +
+    geom_point(data = points_df, aes(x = calendar_time, y = age), color = "blue", size = 3) +
+    scale_x_continuous(breaks = seq(1986, 2018, by = 8), limits = c(1985, 2019)) +
+    scale_y_continuous(limits = c(0, 100)) +
+    labs(x = "Calendar time", y = "Age") +
+    theme_minimal() +
+    theme(panel.grid.major = element_line(color = "grey80"))
+
+
+ggsave("/rout/rec-gpt.pdf", width = 6, height = 4.5)
+```
+
+## o3 reasoning via pplx
+
+OpenAI's o3 is a "reasoning" model, meaning it's specifically designed to tackle complex problems that require step-by-step logical thinking. It often takes more time to generate a response as it deliberates on the problem. [4, 18, 30, 36, 38]
+
+```{r}
+#| eval: false
+# Install/load tidyverse (includes ggplot2)
+# install.packages("tidyverse")
+library(tidyverse)
+
+## 1. Data -------------------------------------------------------------
+
+# Points (blue dots)
+points_df <- tribble(
+    ~cal_time, ~age,
+    1988, 88,
+    1989, 78,
+    1995, 63
+)
+
+# Diagonal life-lines (blue segments)
+lines_df <- tribble(
+    # x-start, y-start, x-end, y-end
+    1986, 53,  1996, 63,   # upper line through dot at ≈63
+    1988, 35,  2002, 48,   # middle “life line”
+    1986, 19,  2002, 35,
+    1986, 11,  2002, 27,
+    2004, 30,  2018, 44,
+    2004, 20,  2018, 34,
+    2004,  0,  2018, 14
+)
+
+#' ERROR
+#' Error in `tribble()`:
+#' ! Must specify at least one column using the
+#' `~name` syntax.
+#' Run `rlang::last_trace()` to see where the error occurred.
+
+# manual fix
+# Diagonal life-lines (blue segments)
+lines_df <- tribble(
+    ~x_start, ~y_start, ~x_end, ~y_end,
+    1986, 53,  1996, 63,   # upper line through dot at ≈63
+    1988, 35,  2002, 48,   # middle “life line”
+    1986, 19,  2002, 35,
+    1986, 11,  2002, 27,
+    2004, 30,  2018, 44,
+    2004, 20,  2018, 34,
+    2004,  0,  2018, 14
+)
+
+## 2. Plot -------------------------------------------------------------
+
+ggplot() +
+    # life-lines
+    geom_segment(
+        data = lines_df,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        colour = "royalblue", linewidth = 0.9
+    ) +
+    # cohort points
+    geom_point(
+        data = points_df,
+        aes(cal_time, age),
+        colour = "royalblue", size = 3
+    ) +
+    # axes
+    scale_x_continuous(
+        name   = "Calendar time",
+        limits = c(1985, 2019),
+        breaks = seq(1986, 2018, by = 8)
+    ) +
+    scale_y_continuous(
+        name   = "Age",
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20)
+    ) +
+    # theme tweaks
+    theme_bw() +
+    theme(
+        panel.grid.major = element_line(colour = "grey70"),
+        panel.grid.minor = element_line(colour = "grey90"),
+        axis.title       = element_text(size = 12),
+        plot.background  = element_rect(fill = "white", colour = NA)
+    )
+
+ggsave("/rout/rec-o3.pdf", width = 6, height = 4.5)
+```
+
+## Claude Sonnet 4 web
+
+This is another instance of using Claude Sonnet 4, likely through a different web interface. The core model is the same as the one used via pplx. [28, 29, 39, 40]
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(ggplot2)
+
+# Create the base plot
+p <- ggplot() +
+    # Set up the coordinate system and limits
+    xlim(1986, 2018) +
+    ylim(0, 100) +
+
+    # Add the parallel trend lines (these appear to be cohort lines)
+    # Each line represents a different birth cohort
+    geom_abline(intercept = 50, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = 40, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = 30, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = 20, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = 10, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = 0, slope = 1, color = "steelblue", size = 0.8) +
+    geom_abline(intercept = -10, slope = 1, color = "steelblue", size = 0.8) +
+
+    # Add the data points visible in the original chart
+    geom_point(data = data.frame(x = c(1988, 1989, 1996),
+                                 y = c(85, 75, 62)),
+               aes(x = x, y = y),
+               color = "darkblue",
+               size = 2.5) +
+
+    # Customize the theme and appearance
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_line(color = "grey90", size = 0.5),
+        panel.grid.minor = element_line(color = "grey95", size = 0.3),
+        axis.line = element_line(color = "black", size = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        plot.background = element_rect(fill = "white", color = NA),
+        panel.background = element_rect(fill = "white", color = NA)
+    ) +
+
+    # Add axis labels
+    labs(x = "Calendar time", y = "Age") +
+
+    # Set axis breaks and limits
+    scale_x_continuous(breaks = seq(1986, 2018, by = 8),
+                       limits = c(1986, 2018)) +
+    scale_y_continuous(breaks = seq(0, 100, by = 20),
+                       limits = c(0, 100))
+
+# Display the plot
+print(p)
+
+# Alternative version with more precise control over line positioning
+p2 <- ggplot() +
+    xlim(1986, 2018) +
+    ylim(0, 100) +
+
+    # Create cohort lines more precisely
+    geom_segment(aes(x = 1986, y = 50, xend = 2018, yend = 82),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = 40, xend = 2018, yend = 72),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = 30, xend = 2018, yend = 62),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = 20, xend = 2018, yend = 52),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = 10, xend = 2018, yend = 42),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = 0, xend = 2018, yend = 32),
+                 color = "steelblue", size = 0.8) +
+    geom_segment(aes(x = 1986, y = -10, xend = 2010, yend = 14),
+                 color = "steelblue", size = 0.8) +
+
+    # Add data points
+    geom_point(data = data.frame(x = c(1988, 1989, 1996),
+                                 y = c(85, 75, 62)),
+               aes(x = x, y = y),
+               color = "darkblue",
+               size = 2.5) +
+
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_line(color = "grey90", size = 0.5),
+        panel.grid.minor = element_line(color = "grey95", size = 0.3),
+        axis.line = element_line(color = "black", size = 0.5),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10)
+    ) +
+
+    labs(x = "Calendar time", y = "Age") +
+    scale_x_continuous(breaks = seq(1986, 2018, by = 8)) +
+    scale_y_continuous(breaks = seq(0, 100, by = 20))
+
+# Display the alternative version
+print(p2)
+
+
+ggsave("/rout/rec-claude-web.pdf", p2, width = 6, height = 4.5)
+```
+
+## Gemini 2.5 Flash web
+
+Gemini 2.5 Flash is a more lightweight and faster version of the Gemini 2.5 Pro model. It's designed for tasks that require quick responses and high throughput, while still offering strong reasoning capabilities. [41, 44, 46, 47]
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(ggplot2)
+
+# Data for points
+points_data <- tibble(
+    calendar_time = c(1987.5, 1988, 1995),
+    age = c(88, 77, 63)
+)
+
+# Data for lines (cohort lines)
+# Each line represents Age = Calendar_time - Birth_Year
+# We'll define start and end points for each segment
+lines_data <- tribble(
+    ~x,    ~y,    ~xend, ~yend,  ~cohort_year,
+    1986,  12,    2001,  27,     1974, # Line 1: Age = time - 1974
+    1986,  20,    2001,  35,     1966, # Line 2: Age = time - 1966
+    1986,  35,    2001,  50,     1951, # Line 3: Age = time - 1951
+    1986,  54,    1996,  64,     1932, # Line 4: Age = time - 1932
+    2003,  0,     2018,  15,     2003, # Line 5: Age = time - 2003
+    2003,  10,    2018,  25,     1993, # Line 6: Age = time - 1993
+    2003,  30,    2018,  45,     1973, # Line 7: Age = time - 1973
+    2003,  40,    2018,  55,     1963, # Line 8: Age = time - 1963
+    2003,  52,    2018,  67,     1951  # Line 9: Age = time - 1951
+)
+
+
+# Create the plot
+ggplot() +
+    # Add the cohort lines
+    geom_segment(data = lines_data, aes(x = x, y = y, xend = xend, yend = yend),
+                 color = "blue", size = 0.5) +
+    # Add the points
+    geom_point(data = points_data, aes(x = calendar_time, y = age),
+               color = "blue", size = 3, shape = 16) +
+    # Set the scales and labels
+    scale_x_continuous(name = "Calendar time",
+                       breaks = seq(1986, 2018, by = 4),
+                       limits = c(1986, 2018)) +
+    scale_y_continuous(name = "Age",
+                       breaks = seq(0, 100, by = 20),
+                       limits = c(0, 100)) +
+    # Add a grid
+    theme_minimal() +
+    theme(
+        panel.grid.major = element_line(color = "grey80", linetype = "solid"),
+        panel.grid.minor = element_line(color = "grey90", linetype = "solid"),
+        axis.text = element_text(color = "black"),
+        axis.title = element_text(color = "black")
+    )
+
+ggsave("/rout/rec-gemini-flash.pdf", width = 6, height = 4.5)
+```
+
+## DeepSeek Deep Think web
+
+DeepSeek is a large language model developed by DeepSeek AI. It is known for its strong coding and reasoning abilities. The "Deep Think" likely refers to a mode or version of the model that emphasizes more in-depth processing.
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(ggplot2)
+
+# Create a data frame with axis break points
+plot_data <- data.frame(
+    x = c(1986, 1994, 2002, 2010, 2018),
+    y = seq(0, 100, 20)
+)
+
+# ERROR Error in data.frame(x = c(1986, 1994, 2002, 2010, 2018), y = seq(0, 100,  :
+# arguments imply differing number of rows: 5, 6
+
+# manual fix
+plot_data <- data.frame(
+    x = c(1986, 1994, 2002, 2010, 2018),
+    y = seq(0, 100, 25)
+)
+
+# Create the plot
+ggplot() +
+    # Add horizontal grid lines
+    geom_hline(yintercept = seq(0, 100, 20),
+               color = "gray90", linewidth = 0.5) +
+    # Add vertical grid lines
+    geom_vline(xintercept = c(1986, 1994, 2002, 2010, 2018),
+               color = "gray90", linewidth = 0.5) +
+    # Set axis breaks and labels
+    scale_x_continuous(
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        limits = c(1986, 2018),
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        breaks = seq(0, 100, 20),
+        limits = c(0, 100),
+        expand = c(0, 0)
+    ) +
+    # Add axis titles
+    labs(
+        title = "Calendar time",
+        x = "",
+        y = ""
+    ) +
+    # Apply minimal theme with customizations
+    theme_minimal() +
+    theme(
+        panel.grid = element_blank(),
+        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
+        axis.text = element_text(size = 10, color = "black"),
+        axis.ticks = element_line(color = "black"),
+        axis.ticks.length = unit(0.2, "cm"),
+        panel.border = element_blank(),
+        plot.margin = margin(20, 20, 20, 20)
+    )
+
+ggsave("/rout/rec-deepseek.pdf", width = 6, height = 4.5)```
+
+## Mistral Small 3.2 24b free via OpenRouter
+
+Mistral Small is a smaller, more efficient model from Mistral AI. It is designed to be a good balance of performance and speed, suitable for a wide range of tasks, and is often used in environments where lower latency is important. [19, 33, 37, 42, 48]
+
+```{r}
+#| eval: false
+# Load necessary libraries
+library(tidyverse)
+
+# Create the data for the illustration
+data <- data.frame(
+    "Calendar_time" = c(rep(1986, 3), rep(1994, 3)),
+    "Age" = c(85, 75, 65, 75, 65, 55)
+)
+
+# Also create a data frame for the lines
+lines_data <- data.frame(
+    "Calendar_time_start" = rep(1986, 10),
+    "Age_start" = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100),
+    "Slope" = c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+) %>%
+    mutate(
+        "Age_end" = Age_start + (2016 - Calendar_time_start) * Slope,
+        "Calendar_time_end" = 2016
+    )
+
+# Plotting using ggplot2
+ggplot() +
+    # Add background
+    theme_bw() +
+    theme(
+        panel.grid.major = element_line(colour = "gray", size = 0.1),
+        panel.grid.minor = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA),
+        axis.ticks = element_line(colour = "black"),
+        panel.background = element_rect(fill = "white")
+    ) +
+    # Add the lines
+    geom_segment(data = lines_data, aes(x = Calendar_time_start, y = Age_start, xend = Calendar_time_end, yend = Age_end), color = "blue", linewidth = 0.5) +
+    # Add the data points
+    geom_point(data = data, aes(x = Calendar_time, y = Age), size = 3, color = "blue") +
+    # Set axis labels and limits
+    labs(x = "Calendar time", y = "Age") +
+    scale_x_continuous(expand = c(0, 0), breaks = c(1986, 1994, 2002, 2010, 2018)) +
+    scale_y_continuous(expand = c(0, 0), breaks = seq(0, 100, by = 20))
+
+ggsave("/rout/rec-mistral.pdf", width = 6, height = 4.5)
+```
+
+## Qwen 3 32B via Open Router
+
+Qwen is a series of large language models from Alibaba Cloud. The 32B model is a large and powerful version, known for its strong multilingual capabilities and performance on a variety of tasks, including a "thinking" mode for more complex reasoning. [11, 12, 14, 23, 32]
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+# Define the calendar time and age grid
+Calendar_time <- 1986:2018  # Extend to match the range shown in the schematic
+Age <- 10:100               # Age range from 0 to 100
+
+# Generate all possible diagonal lines (each line represents a cohort)
+lines_data <- crossing(Calendar_time, Age) %>%
+    mutate(Cohort = {Calendar_time - Age}) |>
+    filter(Cohort >= 1900) %>%  # Ensure valid birth year (for clarity)
+    ungroup() %>%
+    select(Cohort, Calendar_time, Age)
+
+# Define example data points at specific (Calendar_time, Age) locations
+points_data <- data.frame(
+    Calendar_time = c(1986, 1986, 1994, 1994, 1994),
+    Age = c(85, 75, 65, 75, 65)
+)
+
+# Create the plot
+ggplot() +
+    # Diagonal lines representing age over time (cohort paths)
+    geom_segment(
+        data = lines_data,
+        aes(x = Cohort, y = 0, xend = Calendar_time, yend = Age),
+        color = "steelblue", size = 0.3, alpha = 0.8
+    ) +
+    # Highlight example data points
+    geom_point(
+        data = points_data,
+        aes(x = Calendar_time, y = Age),
+        size = 3, color = "blue", shape = 1
+    ) +
+    # Aesthetic adjustments for a schematic look
+    theme_minimal() +
+    theme(
+        axis.title.x = element_text(size = 12, face = "bold"),
+        axis.title.y = element_text(size = 12, face = "bold"),
+        axis.ticks.length = unit(0.25, "cm"),
+        panel.grid.major = element_blank(),  # Remove major grid
+        panel.grid.minor = element_blank(),
+        panel.border = element_rect(color = "black", fill = NA, size = 1),
+        aspect.ratio = 1  # Square aspect ratio for symmetry
+    ) +
+    # Axis labeling
+    labs(
+        x = "Calendar Time (Year)",
+        y = "Age",
+        title = "Age-Period-Cohort Schematic Illustration",
+        subtitle = "Diagonal lines represent birth cohorts"
+    ) +
+    coord_cartesian(
+        xlim = c(1986, 2018),  # Set x-axis limits to match the schematic
+        ylim = c(0, 100)      # Set y-axis limits to match the schematic
+    )
+
+ggsave("/rout/rec-qwen.pdf", width = 6, height = 4.5)
+```
+
+## tencent/hunyuan-a13b-instruct:free via OpenRouter
+
+Hunyuan is a large language model from Tencent. As with other major LLMs, it is capable of a wide range of natural language processing tasks.
+
+```{r}
+#| eval: false
+# Load required libraries
+library(tidyverse)
+
+# 1. Synthetic Data (Example)
+
+# Create data for a cohort (e.g., individuals born in 1990)
+set.seed(123)  # For reproducibility
+time_years <- 1990:2023  # Calendar time (x-axis)
+age_years <- time_years - 1990  # Age = Time since birth (y-axis for cohort lines)
+
+# Simulate an observed outcome (e.g., income, health score) that increases with age
+outcome_data <- data.frame(
+    time = time_years,
+    age = age_years,
+    outcome = 20 + 1.5 * age_years + rnorm(length(time_years), sd = 2),  # Outcome increases with age
+    group = "1990 Cohort"  # Label for the cohort
+)
+
+# Add a second cohort (e.g., born in 1995) for comparison
+outcome_data <- rbind(
+    outcome_data,
+    data.frame(
+        time = time_years,
+        age = time_years - 1995,
+        outcome = 25 + 1.2 * age_years + rnorm(length(time_years), sd = 2),  # Slightly different slope
+        group = "1995 Cohort"
+    )
+)
+
+# Add example data points (e.g., survey measurements at specific times)
+data_points <- data.frame(
+    time = c(1990, 1995, 2000, 2005, 2010, 2015, 2020),
+    age = c(0, 5, 10, 15, 20, 25, 30),
+    outcome = c(24, 29, 32, 38, 43, 47, 50),  # Observed values
+    group = "Observed"
+)
+
+
+# 2. Visualization with ggplot2
+
+ggplot() +
+    # Add cohort lines (diagonal, age progression over time)
+    geom_line(
+        data = outcome_data,
+        aes(x = time, y = outcome, color = group, group = group),  # group = group to connect points
+        linewidth = 0.7,
+        alpha = 0.9
+    ) +
+
+    # Add observed data points (markers)
+    geom_point(
+        data = data_points,
+        aes(x = time, y = outcome, color = group, size = group),
+        shape = 16,  # Solid circle
+        alpha = 0.9
+    ) +
+
+    # Add labels and titles
+    labs(
+        x = "Calendar Time (Year)",
+        y = "Outcome (e.g., Annual Income, Health Score)",
+        color = "Group/Cohort",
+        size = "Data",
+        title = "Age Progression of an Outcome Over Time"
+    ) +
+
+    # custom color palette
+    scale_color_brewer(palette = "Set1") +
+    scale_size_manual(values = c("Observed" = 3)) +
+
+    # Adjust axes and theme
+    scale_x_continuous(
+        breaks = seq(1990, 2023, by = 5),  # Show every 5 years
+        limits = c(1985, 2025)  # Extend axes slightly beyond data
+    ) +
+    scale_y_continuous(
+        breaks = seq(20, 55, by = 5),  # Show every 5 years
+        limits = c(18, 60)  # Extend y-axis
+    ) +
+    theme_minimal() +
+    theme(
+        axis.text.x = element_text(angle = 45, hjust = 1),  # Rotate x-axis labels
+        legend.position = "top",  # Place legend on top
+        legend.box = "horizontal",  # Align legend items horizontally
+        plot.title = element_text(face = "bold"),  # Bold title
+        panel.grid.major = element_line(color = "lightgray", linetype = "dashed"),
+        panel.grid.minor = element_blank()
+    ) +
+
+    # Add a vertical line for a key event (e.g., policy change)
+    annotate(
+        "line",
+        x = 2010, y = Inf, xend = 2010, yend = -Inf,
+        color = "red", linetype = "dashed", linewidth = 1
+    ) +
+    annotate(
+        "text",
+        x = 2013, y = 50, label = "Policy Change",
+        color = "red", angle = 45
+    )
+
+ggsave("/rout/rec-tencent.pdf", width = 6, height = 4.5)
+```
+
+## tngtech/deepseek-r1t2-chimera:free via OpenRouter
+
+This model from TNG Technology Consulting is a "chimera" model, created by merging multiple DeepSeek models. This "Assembly of Experts" approach aims to combine the strengths of the parent models to create a more capable and efficient resulting model. [20, 25, 26, 27, 31]
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(ggplot2)
+
+# Create data for diagonal lines (each represents a "cohort")
+lines <- tibble(
+    cohort = seq(1900, 1980, by = 10),
+    x_start = 1986,
+    y_start = x_start - cohort
+) %>%
+    mutate(x_end = 2016, y_end = y_start + (x_end - x_start))
+
+# Create sample data points
+points <- tibble(
+    year = c(1986, 1986, 1994, 1994, 2010, 2010),
+    age = c(85, 75, 75, 65, 65, 55)
+)
+
+# Create plot
+ggplot() +
+    # Diagonal cohort lines
+    geom_segment(
+        data = lines,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "gray80",
+        linewidth = 0.3
+    ) +
+    # Data points
+    geom_point(
+        data = points,
+        aes(x = year, y = age),
+        size = 3,
+        shape = 21,
+        fill = "#0072B2",
+        color = "white",
+        stroke = 1
+    ) +
+    # Ticks and labels
+    scale_x_continuous(
+        breaks = seq(1986, 2016, 7),
+        limits = c(1980, 2020),
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        breaks = seq(50, 90, 10),
+        limits = c(50, 90),
+        expand = c(0, 0)
+    ) +
+    # Theme
+    theme_minimal() +
+    theme(
+        panel.grid = element_blank(),
+        axis.line = element_line(color = "black"),
+        axis.text = element_text(size = 10, color = "black")
+    ) +
+    labs(x = "Calendar Year", y = "Age")
+
+ggsave("/rout/rec-deepseek-chimera.pdf", width = 6, height = 4.5)
+```
+
+## THE WINNER
+
+After several iterations with different models, the following section presents the winning attempts, which successfully captured the essence of the original plot and incorporated the additional context provided in the prompts.
+
+### Gemini 2.5 Pro via AI studio
+
+This section details the successful interaction with Gemini 2.5 Pro through Google's AI Studio.
+
+#### First Attempt
+
+```{r}
+#| eval: false
+# Load the tidyverse library, which includes ggplot2
+library(tidyverse)
+
+# 1. Define data for the diagonal line segments (lifelines)
+# Each row represents a line with start (x, y) and end (x_end, y_end) coordinates.
+# The coordinates are estimated from the grid in the original image,
+# ensuring each line has a slope of 1 (age increases by 1 per calendar year).
+lifelines_data <- tibble::tribble(
+    ~x_start, ~y_start, ~x_end, ~y_end,
+    # Lifelines with points at the end
+    1986, 86, 1988, 88,
+    1986, 75, 1988, 77,
+    1986, 53, 1996, 63,
+    # Other lifelines, some are fragmented
+    1986, 20, 2002, 36,
+    1986, 12, 2002, 28,
+    2004, 32, 2018, 46,
+    2004, 24, 2018, 38,
+    2004,  0, 2018, 14,
+    2008,  0, 2018, 10
+)
+
+# 2. Define data for the blue points (events)
+# Each row represents a single point with (x, y) coordinates.
+events_data <- tibble::tribble(
+    ~calendar_time, ~age,
+    1988, 88,
+    1988, 77,
+    1996, 63
+)
+
+# 3. Create the plot using ggplot2
+ggplot() +
+    # Add the diagonal line segments
+    geom_segment(
+        data = lifelines_data,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+    # Add the blue points
+    geom_point(
+        data = events_data,
+        aes(x = calendar_time, y = age),
+        color = "blue",
+        size = 3.5
+    ) +
+    # Set the scales for the X and Y axes
+    scale_x_continuous(
+        name = "Calendar time",
+        limits = c(1986, 2018),
+        breaks = seq(1986, 2018, by = 8),
+        minor_breaks = seq(1986, 2018, by = 2),
+        expand = c(0, 0) # Remove padding around the limits
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20),
+        expand = c(0, 0) # Remove padding around the limits
+    ) +
+    # Apply a minimal theme and customize the grid
+    theme_bw() +
+    theme(
+        # Make grid lines lighter to match the original
+        panel.grid.major = element_line(color = "grey80"),
+        panel.grid.minor = element_line(color = "grey90"),
+        # Ensure plot background is white
+        plot.background = element_rect(fill = "white", color = NA),
+        # Center the y-axis title
+        axis.title.y = element_text(vjust = 0.5)
+    )
+
+ggsave("/rout/rec-ai-studio.pdf", width = 6, height = 4.5)
+```
+
+#### Second Try
+
+```{r}
+#| eval: false
+# Load the tidyverse library, which includes ggplot2
+library(tidyverse)
+
+# 1. Define new data for the zoomed-in view (Age 40-60)
+# The data is carefully created so lifelines and events appear within this window.
+# The slope of each lifeline is still 1.
+lifelines_data_zoomed <- tibble::tribble(
+    ~x_start, ~y_start, ~x_end, ~y_end,
+    # Lifelines with points at the end
+    1992, 38, 2000, 46, # Enters the window and ends
+    1998, 42, 2008, 52, # Starts and ends within the window
+    2004, 50, 2010, 56, # Starts and ends within the window
+    # Other lifeline fragments
+    1994, 51, 2002, 59, # A fragment entirely within the window
+    1990, 45, 2010, 65, # A longer line that passes through the entire window
+    2000, 40, 2015, 55  # Starts at the bottom edge and stays within
+)
+
+# 2. Define data for the blue points in the new view
+events_data_zoomed <- tibble::tribble(
+    ~calendar_time, ~age,
+    2000, 46,
+    2008, 52,
+    2010, 56
+)
+
+# 3. Create the plot using ggplot2
+ggplot() +
+    # Add the diagonal line segments
+    geom_segment(
+        data = lifelines_data_zoomed,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.7
+    ) +
+    # Add the blue points
+    geom_point(
+        data = events_data_zoomed,
+        aes(x = calendar_time, y = age),
+        color = "blue",
+        size = 3.5
+    ) +
+    # Set the scales for the X and Y axes for the zoomed-in view
+    scale_x_continuous(
+        name = "Calendar time",
+        limits = c(1990, 2015),
+        breaks = seq(1990, 2015, by = 5),
+        minor_breaks = seq(1990, 2015, by = 1)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        limits = c(40, 60),
+        breaks = seq(40, 60, by = 5),
+        minor_breaks = seq(40, 60, by = 1)
+    ) +
+    # --- KEY MODIFICATION ---
+    # Enforce a 1:1 aspect ratio for a true Lexis diagram visualization.
+    # This makes the lifelines appear as perfect 45-degree lines.
+    coord_fixed(ratio = 1) +
+    # Apply a minimal theme and customize the grid
+    theme_bw() +
+    theme(
+        panel.grid.major = element_line(color = "grey80"),
+        panel.grid.minor = element_line(color = "grey90"),
+        plot.background = element_rect(fill = "white", color = NA),
+        axis.title.y = element_text(vjust = 0.5)
+    )
+
+ggsave("/rout/rec-ai-studio-two.pdf", width = 6, height = 4.5)
+```
+
+#### Third Try
+
+```{r}
+#| eval: false
+# Load the tidyverse library, which includes ggplot2
+library(tidyverse)
+
+# --- 1. Define Data Based on Observational Scenarios ---
+
+# Let's set the study window
+study_start_time <- 1990
+study_end_time <- 2015
+age_min <- 0
+age_max <- 20
+
+# Define lifelines for different scenarios. Each segment is a row.
+# A single individual with a gap will have multiple rows.
+lifelines_data_conceptual <- tibble::tribble(
+    ~person_id, ~x_start, ~y_start, ~x_end, ~y_end, ~scenario,
+    # Scenario A: Born during study, ages out of the window
+    "A", 1992, 0, 2012, 20, "Born in study, ages out",
+    # Scenario B: Present at study start, dies during study
+    "B", 1990, 8, 2000, 18, "Present at start, dies",
+    # Scenario C: Immigrates into study, survives past study end
+    "C", 1995, 12, 2008, 25, "Immigrates, survives", # y_end is >20, so it hits the top boundary
+    # Scenario D: Emigration and Re-immigration, then survives past study end
+    "D", 1998, 0, 2004, 6, "Emigration/Re-immigration", # Born, then emigrates
+    "D", 2008, 10, 2015, 17, "Emigration/Re-immigration", # Re-immigrates, survives to study end
+    # Scenario E: Born during study, dies during study
+    "E", 2002, 0, 2014, 12, "Born in study, dies",
+    # Scenario F: Immigrates and emigrates (lost to follow-up)
+    "F", 2005, 5, 2010, 10, "Immigrates and emigrates"
+)
+
+# Define deaths data. Points must correspond to the end of a lifeline.
+deaths_data_conceptual <- tibble::tribble(
+    ~calendar_time, ~age, ~scenario,
+    2000, 18, "Present at start, dies", # Person B
+    2014, 12, "Born in study, dies"     # Person E
+)
+
+# --- 2. Create the Plot using ggplot2 ---
+
+ggplot() +
+    # Add the lifeline segments
+    geom_segment(
+        data = lifelines_data_conceptual,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end),
+        color = "blue",
+        linewidth = 0.8
+    ) +
+    # Add the points for deaths
+    geom_point(
+        data = deaths_data_conceptual,
+        aes(x = calendar_time, y = age),
+        color = "blue",
+        size = 4,
+        shape = 19 # Solid circle
+    ) +
+    # Set the coordinate system with a fixed 1:1 ratio and define plot limits
+    coord_fixed(
+        ratio = 1,
+        xlim = c(study_start_time, study_end_time),
+        ylim = c(age_min, age_max),
+        expand = FALSE # Prevent padding around the plot
+    ) +
+    # Set axis breaks for clarity
+    scale_x_continuous(breaks = seq(study_start_time, study_end_time, by = 5)) +
+    scale_y_continuous(breaks = seq(age_min, age_max, by = 5)) +
+    # Add informative labels, title, and caption
+    labs(
+        title = "Conceptual Lexis Diagram: Illustrating Lifeline Scenarios",
+        subtitle = "Age 0-20, Calendar Time 1990-2015",
+        x = "Calendar Time",
+        y = "Age",
+        caption = "Lifeline starts: Birth (Age=0), Immigration (inside plot), or present at study start (Time=1990).\nLifeline ends: Death (•), Emigration (no point), or exit from study window (at boundary)."
+    ) +
+    # Apply a clean theme
+    theme_bw() +
+    theme(
+        plot.title = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0, size = 9), # Align caption left
+        panel.grid.minor = element_line(color = "grey92"),
+        panel.grid.major = element_line(color = "grey85")
+    )
+
+ggsave("/rout/rec-gemini-three.pdf", width = 6, height = 4.5)
+```
+
+#### Fourth Try
+
+```{r}
+#| eval: false
+# Load the tidyverse library, which includes ggplot2
+library(tidyverse)
+
+# --- 1. Define Updated Data and Parameters ---
+
+# Set the new, wider study window
+study_start_time <- 1986
+study_end_time <- 2024
+age_min <- 0
+age_max <- 20
+
+# Define lifelines for the new window.
+# We will add a 'color' column directly based on the entry type.
+lifelines_data_final <- tibble::tribble(
+    ~person_id, ~x_start, ~y_start, ~x_end, ~y_end,
+    # --- Born into the population (y_start == 0) ---
+    "A", 1990, 0, 2010, 20, # Born, ages out of the window
+    "B", 2005, 0, 2018, 13, # Born, dies during study
+    "C", 1994, 0, 2002, 8,  # Born, emigrates...
+    "C", 2008, 14, 2014, 20, # ...and re-immigrates, then ages out
+
+    # --- Entered study already alive (y_start > 0) ---
+    "D", 1986, 12, 2000, 26, # Present at study start, ages out
+    "E", 1986, 4, 1998, 16,  # Present at study start, dies
+    "F", 2000, 5, 2012, 17,  # Immigrates, survives to end of study
+    "G", 2015, 10, 2021, 16  # Immigrates and then emigrates
+) %>%
+    # Add the color column based on the entry rule
+    mutate(
+        color = if_else(y_start == 0, "#0e4a4a", "#8aca4a") # Dark Teal for born, Lighter Green otherwise
+    )
+
+# Define deaths data (black points). Coordinates must match lifeline ends.
+deaths_data_final <- tibble::tribble(
+    ~calendar_time, ~age,
+    2018, 13, # Person B
+    1998, 16  # Person E
+)
+
+# --- 2. Create the Final Plot ---
+
+ggplot() +
+    # Add the colored lifeline segments
+    geom_segment(
+        data = lifelines_data_final,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end, color = color),
+        linewidth = 0.9,
+        show.legend = FALSE # Explicitly hide the legend
+    ) +
+    # Add the black points for deaths
+    geom_point(
+        data = deaths_data_final,
+        aes(x = calendar_time, y = age),
+        color = "black", # Set color to black
+        size = 4,
+        shape = 19 # Solid circle
+    ) +
+    # Use scale_color_identity to tell ggplot to use the color values directly
+    scale_color_identity() +
+    # Set the coordinate system with a fixed 1:1 ratio and precise limits
+    coord_fixed(
+        ratio = 1,
+        xlim = c(study_start_time, study_end_time),
+        ylim = c(age_min, age_max),
+        expand = FALSE # No padding
+    ) +
+    # Set axis breaks for the new, wider time scale
+    scale_x_continuous(breaks = seq(1990, 2020, by = 10)) +
+    scale_y_continuous(breaks = seq(0, 20, by = 5)) +
+    # Add final labels and title
+    labs(
+        title = "Conceptual Lexis Diagram: Individual Life Histories",
+        subtitle = "Age 0-20, Calendar Time 1986-2024",
+        x = "Calendar Time",
+        y = "Age",
+        caption = "Dark Teal: Born into population. Light Green: Entered population while alive (at start or via immigration)."
+    ) +
+    # Apply a clean theme
+    theme_bw() +
+    theme(
+        plot.title = element_text(face = "bold", size = 14),
+        plot.subtitle = element_text(size = 11),
+        plot.caption = element_text(hjust = 0, size = 9, face = "italic"),
+        panel.grid.minor = element_line(color = "grey92"),
+        panel.grid.major = element_line(color = "grey85"),
+        panel.border = element_rect(color = "black")
+    )
+
+ggsave("/rout/rec-gemini-four.pdf", width = 6, height = 4.5)
+```
+
+### FINAL tweaked version
+
+This is the final, manually tweaked version of the code that produces the desired plot, incorporating a custom theme.
+
+```{r}
+#| eval: false
+# set own theme
+devtools::source_gist("653e1040a07364ae82b1bb312501a184")
+sysfonts::font_add_google("Atkinson Hyperlegible", family = "ah")
+
+# --- 1. Define Updated Data and Parameters ---
+
+# Set the new, wider study window
+study_start_time <- 1986
+study_end_time <- 2024
+age_min <- 0
+age_max <- 20
+
+# Define lifelines for the new window.
+# We will add a 'color' column directly based on the entry type.
+lifelines_data_final <- tibble::tribble(
+    ~person_id, ~x_start, ~y_start, ~x_end, ~y_end,
+    # --- Born into the population (y_start == 0) ---
+    "A", 1990, 0, 2010, 20, # Born, ages out of the window
+    "B", 2005, 0, 2018, 13, # Born, dies during study
+    "C", 1994, 0, 2002, 8,  # Born, emigrates...
+    "C", 2008, 14, 2014, 20, # ...and re-immigrates, then ages out
+
+    # --- Entered study already alive (y_start > 0) ---
+    "D", 1986, 12, 2000, 26, # Present at study start, ages out
+    "E", 1986, 4, 1998, 16,  # Present at study start, dies
+    "F", 2002, 5, 2014, 17,  # Immigrates and then emigrates
+    "G", 2013, 10, 2023, 20  # Immigrates, survives to end of study
+) %>%
+    # Add the color column based on the entry rule
+    mutate(
+        color = c("#0e7a7a", "#0e7a7a", "#0e7a7a", "#0e7a7a", "#0e7a7a", "#8aca4a", "#8aca4a", "#8aca4a")
+ # Teal for born, Lighter Green otherwise
+    )
+
+# Define deaths data (black points). Coordinates must match lifeline ends.
+deaths_data_final <- tibble::tribble(
+    ~calendar_time, ~age,
+    2018, 13, # Person B
+    1998, 16  # Person E
+)
+
+# --- 2. Create the Final Plot ---
+
+ggplot() +
+    # Add the colored lifeline segments
+    geom_segment(
+        data = lifelines_data_final,
+        aes(x = x_start, y = y_start, xend = x_end, yend = y_end, color = color),
+        linewidth = 0.9,
+        show.legend = FALSE # Explicitly hide the legend
+    ) +
+    # Add the black points for deaths
+    geom_point(
+        data = deaths_data_final,
+        aes(x = calendar_time, y = age),
+        color = "black", # Set color to black
+        size = 4,
+        shape = 19 # Solid circle
+    ) +
+    # Use scale_color_identity to tell ggplot to use the color values directly
+    scale_color_identity() +
+    # Set the coordinate system with a fixed 1:1 ratio and precise limits
+    coord_fixed(
+        ratio = 1,
+        xlim = c(study_start_time, study_end_time),
+        ylim = c(age_min, age_max),
+        expand = FALSE # No padding
+    ) +
+    # Set axis breaks for the new, wider time scale
+    scale_x_continuous(breaks = seq(1990, 2020, by = 10)) +
+    scale_y_continuous(breaks = seq(0, 20, by = 5)) +
+    # Add final labels and title
+    labs(
+        title = "Lifeline scenarios on a Lexis surface",
+        subtitle = "Age 0-20, Calendar Time 1986-2024",
+        x = "Calendar Time",
+        y = "Age",
+        caption = "Lifeline starts: Birth (Age=0; teal color), Immigration (inside the plot; light-green color), or present at study start (Time=1986). Lifeline ends: Death (•), Emigration (no point), or exit from study window (at boundary)." |> str_wrap(120)
+    )+
+    # Apply a clean theme
+    theme_ik(base_family = "ah")+
+    theme(
+        panel.border = element_rect(
+            color = "#aafafa", linewidth = 0.5, fill = NA
+        ),
+        plot.caption = element_text(
+            hjust = 0, face = "italic"),
+    )
+
+ggsave("/rout/illustrate-lifelines.pdf", width = 8, height = 6)
+```
+```
+
+***
+
+[in]: https://www.linkedin.com/feed/update/urn:li:activity:7349153537035030530/
+
+[gist]: https://gist.github.com/ikashnitsky/819a7a87ed3844db0cce637f71e1c9f4
+[bsky]: https://bsky.app/profile/ikashnitsky.phd/post/3kh5zbmftvw2f
