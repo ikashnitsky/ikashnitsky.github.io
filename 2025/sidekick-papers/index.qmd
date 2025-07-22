@@ -1,5 +1,4 @@
 ---
-draft: false
 title: "Sidekick projects may be worthy distractions for an early academic"
 description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
