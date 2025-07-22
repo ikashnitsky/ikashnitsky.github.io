@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-project','listing-freeze','listing-bibliography','listing-csl','listing-pagetitle','listing-description-meta','listing-author-meta','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-project","listing-freeze","listing-bibliography","listing-csl","listing-pagetitle","listing-description-meta","listing-author-meta","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -507,7 +507,7 @@ window.Quarto = {
   <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(37)</span></div><div class="category" data-category="MTAx">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5pbWFpb24=">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGF0YSUyMGFjcXVpc2l0aW9u">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(9)</span></div><div class="category" data-category="ZGVtb2dyYXBoeQ==">demography <span class="quarto-category-count">(11)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="aG1k">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(37)</span></div><div class="category" data-category="cnNwYXRpYWw=">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="cnN0dWRpbw==">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3BvcnQ=">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHJpY2s=">trick <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(38)</span></div><div class="category" data-category="MTAx">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5pbWFpb24=">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y2FyZWVy">career <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFjcXVpc2l0aW9u">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(9)</span></div><div class="category" data-category="ZGVtb2dyYXBoeQ==">demography <span class="quarto-category-count">(12)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="aG1k">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(37)</span></div><div class="category" data-category="cnNwYXRpYWw=">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="cnN0dWRpbw==">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3BvcnQ=">sport <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHJpY2s=">trick <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -519,6 +519,47 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="section">2025</h2>
 <div id="listing-posts_2025" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
+    
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNkZW1vZ3JhcGh5" data-listing-date-sort="1753135200000" data-listing-file-modified-sort="1753173814335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="982">
+
+        <div class="body">
+
+            <a href="./2025/sidekick-papers/index.html">
+                
+                <div class="thumbnail">
+                    <img src="./2025/sidekick-papers/teaser.png" alt="Sidekick projects may be worthy distractions for an early academic" title="Sidekick projects may be worthy distractions for an early academic">
+                </div>
+                
+            </a>
+
+            <p class="title listing-title"><a href="./2025/sidekick-papers/index.html">Sidekick projects may be worthy distractions for an early academic</a></p>
+
+            
+            <div class="post-categories listing-categories">
+                
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('academia'); return false;">
+                    academia
+                </div>
+                
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('career'); return false;">
+                    career
+                </div>
+                
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
+                    demography
+                </div>
+                
+            </div>
+            
+
+            <div class="metadata">
+                <p class="date listing-date">July 22, 2025</p>
+            </div>
+
+            <p class="description listing-description">In the last few days, I’ve been thinking a lot about Claus Wilke’s blog post on the essential need of writing and publishing a lot of papers for academic researchers. This…</p>
+        </div>
+
+    </div>
     
 </div>
 <div class="listing-no-matching d-none">
