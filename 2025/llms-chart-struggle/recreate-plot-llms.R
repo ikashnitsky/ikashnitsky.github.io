@@ -4,12 +4,431 @@
 # Ilya Kashnitsky, ilya.kashnitsky@gmail.com
 # ..........................................................
 
+# UPD 2026-02-23 ----
+# Run with new generation of models
 
 
-#' Prompt:
+# prompt -----------------------------------------------------------------
+
+#' Prompt
 #' generate R code to recreate this schematic illustration in R using tidyverse and ggplot2
 #' + attached image:
-#' https://api.cloudinary.com/v1_1/pplx/image/download?timestamp=1751973666&public_id=user_uploads%2F17623787%2Ffdf0d885-de6e-4c34-a2db-383f3f9ce80b%2Flifelines&format=jpg&signature=a83d4748fc18f4aafa00664a815c29296f2856b1&api_key=168798331147639
+#' https://i.imgur.com/80kSa3w.png
+
+
+
+# gemini 3.1 --------------------------------------------------------------
+
+library(tidyverse)
+
+# --- Data (edit these endpoints to match your schematic precisely) ----
+segments <- tribble(
+    ~id, ~x,    ~y,  ~xend, ~yend,
+    "s1", 1986, 10,  2002, 27,
+    "s2", 1986, 18,  2002, 35,
+    "s3", 1986, 25,  2002, 42,
+    "s4", 1986, 52,  1996, 63,
+    "s5", 1991, 36,  2018, 63,
+    "s6", 1991, 20,  2018, 45,
+    "s7", 1991, 12,  2001, 27,
+    "s8", 2003,  0,  2018, 15,
+    "s9", 2008,  0,  2018,  9,
+    "s10",1986.2,73, 1987.0,76,
+    "s11",1986.2,82, 1987.0,87
+)
+
+points <- tribble(
+    ~id,  ~x,    ~y,
+    "p1", 1987.0, 76,
+    "p2", 1987.0, 87,
+    "p3", 1996.0, 63
+)
+
+# --- Plot ----
+ggplot() +
+    geom_segment(
+        data = segments,
+        aes(x = x, y = y, xend = xend, yend = yend),
+        linewidth = 1.0,
+        colour = "dodgerblue3",
+        lineend = "round"
+    ) +
+    geom_point(
+        data = points,
+        aes(x = x, y = y),
+        size = 2.2,
+        colour = "dodgerblue3"
+    ) +
+    scale_x_continuous(
+        limits = c(1986, 2018),
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        minor_breaks = seq(1986, 2018, by = 2),
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20),
+        minor_breaks = seq(0, 100, by = 10),
+        expand = c(0, 0)
+    ) +
+    labs(x = "Calendar time", y = "Age") +
+    theme_bw(base_size = 11) +
+    theme(
+        panel.grid.major = element_line(colour = "grey75", linewidth = 0.6),
+        panel.grid.minor = element_line(colour = "grey87", linewidth = 0.4),
+        axis.ticks = element_line(colour = "grey20", linewidth = 0.6),
+        axis.ticks.length = unit(3, "pt"),
+        panel.border = element_rect(colour = "grey20", linewidth = 0.8),
+        plot.margin = margin(8, 8, 8, 8)
+    )
+
+
+
+# GPT 5.2 -----------------------------------------------------------------
+
+library(tidyverse)
+
+# --- Data (approximate coordinates eyeballed from the provided schematic)
+# Store segments as start/end calendar time (t0/t1) and start age (age0).
+# End age is computed as age0 + (t1 - t0), i.e., age increases 1 year per year.
+segments <- tribble(
+    ~id,  ~t0,  ~t1,  ~age0,
+    "s1", 1986, 1988, 74,   # short top-left
+    "s2", 1986, 1988, 85,   # short top-left
+    "s3", 1986, 1996, 53,   # ends with a dot around mid-1990s
+
+    # Several parallel trajectories with a gap around ~2002–2003
+    "s4a", 1986, 2001, 12,
+    "s4b", 2003, 2018, 29,
+
+    "s5a", 1986, 2001, 20,
+    "s5b", 2003, 2018, 37,
+
+    "s6a", 1986, 2001, 28,
+    "s6b", 2003, 2018, 45,
+
+    # Long line starting later
+    "s7",  1990, 2018, 37,
+
+    # Bottom-right short/medium lines
+    "s8",  2003, 2018, 0,
+    "s9",  2008, 2018, 0,
+    "s10", 2010, 2018, 5
+) |>
+    mutate(age1 = age0 + (t1 - t0))
+
+points <- tribble(
+    ~t,    ~age,
+    1988,  76,
+    1988,  87,
+    1996,  63
+)
+
+# --- Plot
+ggplot() +
+    geom_segment(
+        data = segments,
+        aes(x = t0, y = age0, xend = t1, yend = age1),
+        colour = "blue",
+        linewidth = 0.8,
+        lineend = "round"
+    ) +
+    geom_point(
+        data = points,
+        aes(x = t, y = age),
+        colour = "blue",
+        size = 2
+    ) +
+    scale_x_continuous(
+        name = "Calendar time",
+        limits = c(1986, 2018),
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        minor_breaks = seq(1986, 2018, by = 2),
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        limits = c(0, 100),
+        breaks = seq(0, 100, by = 20),
+        minor_breaks = seq(0, 100, by = 10),
+        expand = c(0, 0)
+    ) +
+    coord_cartesian(clip = "on") +
+    theme_bw(base_size = 11) +
+    theme(
+        panel.grid.major = element_line(colour = "grey80", linewidth = 0.4),
+        panel.grid.minor = element_line(colour = "grey90", linewidth = 0.3),
+        panel.border = element_rect(colour = "black", linewidth = 0.6),
+        axis.title = element_text(colour = "black"),
+        axis.text = element_text(colour = "black")
+    )
+
+
+# Sonar -------------------------------------------------------------------
+
+library(ggplot2)
+library(dplyr)
+
+# Define years
+years <- c(1986, 1994, 2002, 2010, 2018)
+
+# Approximate linear lines based on schematic positions
+# Line 1: from (1986,0) to (2018,80)
+line1 <- approx(years, c(0, 20, 40, 60, 80), xout = years)$y
+
+# Line 2: from (1986,20) to (2018,100)
+line2 <- approx(years, c(20, 40, 60, 80, 100), xout = years)$y
+
+# Line 3: from (1986,40) to (2018,100), flattening at end
+line3 <- pmin(approx(years, c(40, 60, 80, 100, 100), xout = years)$y, 100)
+
+# Line 4: parallel to line 2, shifted up slightly but capped
+line4 <- pmin(line2 + 20, 100)
+
+# Combine lines data
+data_lines <- data.frame(
+    year = rep(years, 4),
+    age = c(line1, line2, line3, line4),
+    group = rep(1:4, each = 5)
+)
+
+# Points data (blue dots at approximate positions)
+data_points <- data.frame(
+    year = years,
+    age = c(80, 60, 60, 40, 20)
+)
+
+# Create the plot
+p <- ggplot() +
+    geom_line(data = data_lines, aes(x = year, y = age, group = group),
+              color = "steelblue", size = 1.2, alpha = 0.9) +
+    geom_point(data = data_points, aes(x = year, y = age),
+               color = "darkblue", size = 4, shape = 19) +
+    scale_x_continuous(breaks = years, labels = years) +
+    scale_y_continuous(breaks = seq(0, 100, 20), limits = c(0, 105), expand = c(0,0)) +
+    labs(x = "Calendar time", y = "Age") +
+    theme_classic(base_size = 14) +
+    theme(
+        legend.position = "none",
+        panel.grid.major = element_line(color = "grey85", size = 0.5),
+        panel.grid.minor = element_blank(),
+        axis.line = element_line(color = "black", size = 0.5),
+        axis.ticks = element_line(color = "black"),
+        axis.text = element_text(color = "black")
+    )
+
+# Display and save
+print(p)
+ggsave("schematic_recreation.png", p, width = 8, height = 6, dpi = 300)
+
+
+
+# Claude Sonnet 4.6 -------------------------------------------------------
+
+library(tidyverse)
+
+# ── 1. Lexis cohort lines
+# Each line follows: age = calendar_time − birth_year  (slope = 1)
+birth_cohorts <- seq(1954, 2002, by = 8)
+
+line_data <- map_df(birth_cohorts, \(bc) {
+    t_start <- max(1986, bc)        # clip: age ≥ 0 and t ≥ 1986
+    t_end   <- min(2018, bc + 100)  # clip: age ≤ 100 and t ≤ 2018
+    if (t_start >= t_end) return(tibble())
+    tibble(
+        cohort        = factor(bc),
+        calendar_time = c(t_start, t_end),
+        age           = c(t_start - bc, t_end - bc)
+    )
+})
+
+# ── 2. Observed data points
+pts <- tibble(
+    calendar_time = c(1987, 1988, 1995),
+    age           = c(88,   78,   63)
+)
+
+# ── 3. Plot
+ggplot() +
+    geom_line(
+        data      = line_data,
+        aes(x = calendar_time, y = age, group = cohort),
+        colour    = "steelblue",
+        linewidth = 0.65
+    ) +
+    geom_point(
+        data   = pts,
+        aes(x = calendar_time, y = age),
+        colour = "steelblue",
+        size   = 3,
+        shape  = 16          # solid filled circle
+    ) +
+    scale_x_continuous(
+        limits       = c(1986, 2018),
+        breaks       = c(1986, 1994, 2002, 2010, 2018),
+        minor_breaks = seq(1986, 2018, by = 2),
+        expand       = expansion(0)
+    ) +
+    scale_y_continuous(
+        limits       = c(0, 100),
+        breaks       = seq(0, 100, 20),
+        minor_breaks = seq(0, 100, 5),
+        expand       = expansion(0)
+    ) +
+    labs(x = "Calendar time", y = "Age") +
+    theme_bw(base_size = 12) +
+    theme(
+        panel.grid.major = element_line(colour = "grey80", linewidth = 0.4),
+        panel.grid.minor = element_line(colour = "grey90", linewidth = 0.25),
+        axis.title       = element_text(size = 11),
+        plot.margin      = margin(10, 15, 10, 10)
+    )
+
+
+
+# grok 4.1 --------------------------------------------------------------------
+
+library(tidyverse)
+
+# Define periods matching the plot ticks
+periods <- c(1986, 1994, 2002, 2010, 2018)
+
+# Create data for multiple cohort trajectories with points (ages calculated as period - cohort;
+# cohorts chosen to approximate visual positions: high ages left, descending diagonally)
+cohort_data <- tibble(
+    cohort = rep(c(1906, 1914, 1922, 1930, 1938), times = c(3, 4, 4, 3, 2)),
+    period = c(1986, 1994, 2002,
+               1986, 1994, 2002, 2010,
+               1994, 2002, 2010, 2018,
+               2002, 2010, 2018,
+               2010, 2018),
+    age = period - cohort
+) |>
+    mutate(cohort = factor(cohort, levels = unique(cohort)))  # For consistent grouping
+
+# Generate the plot
+ggplot(cohort_data, aes(x = period, y = age, group = cohort, color = cohort)) +
+    geom_line(linewidth = 1, alpha = 0.8) +
+    geom_point(size = 3, alpha = 0.9) +
+    scale_x_continuous(
+        name = "Calendar time",
+        breaks = periods,
+        expand = c(0, 0)
+    ) +
+    scale_y_continuous(
+        name = "Age",
+        breaks = seq(0, 100, 20),
+        limits = c(0, 100),
+        expand = c(0, 0)
+    ) +
+    coord_fixed(ratio = 1, xlim = c(1986, 2018), ylim = c(0, 100)) +  # Equal scaling for 45° diagonals
+    theme_minimal(base_size = 12) +
+    theme(
+        legend.position = "none",
+        panel.grid.major = element_line(color = "grey90", linewidth = 0.5),
+        panel.grid.minor = element_blank(),
+        axis.ticks.length = unit(0.2, "cm")
+    ) +
+    scale_color_manual(values = rep("steelblue", 5))  # Uniform blue as in schematic
+
+
+
+# Kimi K2.5 ---------------------------------------------------------------
+
+library(tidyverse)
+
+# axis limits
+x_min <- 1986
+x_max <- 2018
+y_min <- 0
+y_max <- 100
+
+# ------------------------------------------------------------------
+# 1. Cohort (life‑line) data: diagonal lines with slope 1
+#    age = calendar_time - cohort_year
+# ------------------------------------------------------------------
+cohort_years <- seq(1920, 1990, by = 10)   # choose as many as you like
+
+cohort_df <-
+    expand_grid(
+        cohort = cohort_years,
+        year   = seq(x_min, x_max, by = 0.1)
+    ) |>
+    mutate(age = year - cohort) |>
+    filter(between(age, y_min, y_max))
+
+# ------------------------------------------------------------------
+# 2. Short upper‑left line segments (schematic “partial” lifelines)
+# ------------------------------------------------------------------
+short_segments <- tribble(
+    ~id, ~x0,  ~y0, ~x1,  ~y1,
+    1, 1986,  55, 1994,  63,
+    2, 1986,  75, 1989,  78,
+    3, 1986,  85, 1988,  87,
+    4, 1989,  58, 1996,  65
+)
+
+# ------------------------------------------------------------------
+# 3. Points at the end of some segments
+# ------------------------------------------------------------------
+points_df <- tribble(
+    ~year, ~age,
+    1987.0,  85,
+    1987.0,  75,
+    1994.0,  62
+)
+
+# ------------------------------------------------------------------
+# 4. Plot
+# ------------------------------------------------------------------
+ggplot() +
+    # cohort life lines
+    geom_line(
+        data = cohort_df,
+        aes(x = year, y = age, group = cohort),
+        colour = "royalblue3",
+        linewidth = 0.5
+    ) +
+    # short segments in the upper left
+    geom_segment(
+        data = short_segments,
+        aes(x = x0, y = y0, xend = x1, yend = y1),
+        colour = "royalblue3",
+        linewidth = 0.5
+    ) +
+    # blue points
+    geom_point(
+        data = points_df,
+        aes(x = year, y = age),
+        colour = "royalblue3",
+        size = 2.5
+    ) +
+    # axes and grid
+    scale_x_continuous(
+        name   = "Calendar time",
+        limits = c(x_min, x_max),
+        breaks = c(1986, 1994, 2002, 2010, 2018),
+        expand = expansion(mult = 0)
+    ) +
+    scale_y_continuous(
+        name   = "Age",
+        limits = c(y_min, y_max),
+        breaks = seq(0, 100, by = 20),
+        expand = expansion(mult = 0)
+    ) +
+    coord_fixed(ratio = 1, clip = "off") +   # 45° cohort lines
+    theme_minimal(base_size = 11) +
+    theme(
+        panel.grid.major = element_line(colour = "grey80", linewidth = 0.4),
+        panel.grid.minor = element_blank(),
+        axis.title.x = element_text(margin = margin(t = 8)),
+        axis.title.y = element_text(margin = margin(r = 8))
+    )
+
+
+
+# OLD CODE ----------------------------------------------------------------
+
 
 # Claude 4.0 Sonnet via pplx ----------------------------------------------
 

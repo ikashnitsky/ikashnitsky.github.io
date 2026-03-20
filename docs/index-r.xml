@@ -9,8 +9,75 @@
 <link>https://ikashnitsky.phd/#category=r</link>
 <atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
-<generator>quarto-1.7.32</generator>
-<lastBuildDate>Sun, 12 Oct 2025 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.25</generator>
+<lastBuildDate>Fri, 20 Mar 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2026/laliga-preview/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let’s check the track record of three popular Russian football pundits.</p>
+<p><a href="https://t.me/lukomski">Vadim Lukomskiy</a>, <a href="https://t.me/alhasbro">Denis Alkhazov</a>, and <a href="https://t.me/barcafamilyyy">Vladimir Grabchak</a> air a fantastic <a href="https://youtube.com/playlist?list=PLZgJT1M3SJ9XVvZFlcJeCKUMzrMYCrCwc&amp;si=RVs-ryd-bKHXuOBB">La Liga Preview podcast on YouTube</a>. Each week they discuss the upcoming matchday and offer their bets, one per game. Next week, they start by reviewing the outcomes. For a long while I was wondering how do the weekly predictions add up in the long run –I wanted to see whether a thorough knowledge of the specific league and a deep involvement can allow the pundits to stay in the profitable zone while betting on all the games of the season.</p>
+<p>So I decided to check it. In the current 2025-2026 season we have data up to matchday 28, and matchdays 6 and 18 were played midweek, so the guys happened to skip predictions. In total, 26 rounds, 10 games in each – quite some data to play with.</p>
+<p>The data collection was a curious workflow in itself. I took screenshots of the predictions directly from the YouTube videos and used LLMs (Gemini and Claude) to parse the images and compile them into a clean dataset. Yet, there was a challenge along the way. LLMs struggled with team names that were represented with small logo images. Here’s how a typical screenshot looked like:</p>
+<p><img src="https://github.com/ikashnitsky/laliga-preview/blob/main/dat/screenshots/Screenshot_20260319-163345.png?raw=true" class="img-fluid"></p>
+<p>Sometimes they managed to pick up the names of the playing teams from the text description of the bet. But in other cases they had to leave placeholder marks “Team A” / “Team B”. To fill the gaps, I cross-referenced it with a <a href="https://fbref.com/en/comps/12/schedule/La-Liga-Scores-and-Fixtures">dump of all played matches</a> in La Liga this season. This helped to figure out all the team names where the LLMs failed on the first run <sup>1</sup>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;On the test run, Gemini gave me a perfect decoding of one screenshot. I thought that it used computer vision to read the team names from the logos, but it turned out that it just used the text transcript of the YouTube video that I linked in the initial prompt.</p></div></div><p>Anyways, with less effort than it would have taken to manually transcribe the predictions, I ended up with a tidy dataset of 259 predictions, including the predicted winner, the odds, and the actual match outcomes.</p>
+<p>Naturally, I fired up R to answer two burning questions: was any of our three experts profitable in the long run, and whether they were systematically better at predicting the outcomes of some specific teams that they may know and understand the best?</p>
+<section id="the-overall-scoreboard" class="level2">
+<h2 class="anchored" data-anchor-id="the-overall-scoreboard">The Overall Scoreboard</h2>
+<p>First, let’s look at the overall performance. Evaluating a pundit isn’t just about how many times they win; it’s about the value of the odds they successfully predict.</p>
+<p><img src="https://ikashnitsky.phd/2026/laliga-preview/summary.png" class="img-fluid"></p>
+<p>I was amused to see the results. Two of the three pundits managed to win 44% of their bets with the cumulative effect bringing them to almost a perfectly neutral balance as a result. So, even an extremely deep domain knowledge and a high involvement in the league doesn’t translate into a profitable betting strategy. No real surprise here, but just another reminder that one does not fool the system that is designed to fool him.</p>
+</section>
+<section id="just-bet-on-xxx-you-cannot-miss" class="level2">
+<h2 class="anchored" data-anchor-id="just-bet-on-xxx-you-cannot-miss">Just bet on XXX – you cannot miss</h2>
+<p>Well, maybe our experts know some of the teams so well that they can predict the outcomes of these teams much better? You know, football is highly contextual. A pundit might struggle to predict some team’s volatile form but perfectly read another’s tactical setups. I wanted to see if the pundits have “specialty” teams.</p>
+<p>To do this, I reshaped the data so that every match counted for both the Home and Away teams involved, calculating the success rate for each pundit-team combination.</p>
+<p><img src="https://github.com/ikashnitsky/laliga-preview/raw/main/out/by-team.png" class="img-fluid"></p>
+<p>Wow! Some fascinating patterns emerge:</p>
+<ul>
+<li><strong>Lukomskiy’s Yellow Submarine:</strong> Vadim has an incredible read on <strong>Villarreal</strong>. Out of 21 predictions involving them, he got 14 right—a massive 66.7% success rate over a large sample size. He also consistently reads Athletic Bilbao and Real Sociedad well.</li>
+<li><strong>Alkhazov’s Levante:</strong> Denis has certain success (luck?) with <strong>Levante</strong>, accurately predicting 14 out of 26 matches (53.8%). Interestingly, while he struggles overall compared to Vadim, his read on mid-to-lower table clashes seems to be his bread and butter.</li>
+<li><strong>Grabchak’s Flawless Osasuna:</strong> Though his sample size is smaller, Vladimir went a perfect <strong>7 for 7</strong> on matches involving Osasuna.</li>
+<li>All three pundits have consistently failed with the big trio <strong>Real Madrid</strong>, <strong>Barcelona</strong>, and <strong>Atletico Madrid</strong>, which is quite surprising given the perpetual attention to these clubs and their often consistent performance.</li>
+</ul>
+<p><strong>Do pundits really know something specific about some teams, or is it just a matter of luck?</strong></p>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Code and data to reproduce this analysis are available on <a href="https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click">GitHub</a>.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<hr>
+
+
+<!-- -->
+
+</section>
+
+
+ ]]></description>
+  <category>r</category>
+  <category>football</category>
+  <category>dataviz</category>
+  <category>llm</category>
+  <guid>https://ikashnitsky.phd/2026/laliga-preview/</guid>
+  <pubDate>Fri, 20 Mar 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2026/laliga-preview/teaser.png" medium="image" type="image/png" height="90" width="144"/>
+</item>
 <item>
   <title>Beyond Fraud: How IHME Distorts Academic Metrics</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -877,10 +944,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d3" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -897,13 +961,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111337430617092755/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405404938875987/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405412363995030/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111337430617092755/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405404938875987/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405412363995030/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -917,10 +976,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d6" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -937,13 +993,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405418702631776/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405425388263054/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405431300734214/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405418702631776/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405425388263054/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405431300734214/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -957,10 +1008,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d9" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -977,13 +1025,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405445483890222/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405472725576212/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405561927666632/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405445483890222/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405472725576212/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405561927666632/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -997,10 +1040,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d12" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -1017,13 +1057,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405574357933368/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405579379722589/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415413730412646/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405574357933368/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111405579379722589/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415413730412646/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -1037,10 +1072,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d15" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1057,13 +1089,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415503143998080/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415506806961974/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617074263351272/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415503143998080/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111415506806961974/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617074263351272/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -1077,10 +1104,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d19" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1097,13 +1121,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617077358434718/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617087998805744/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617092075958239/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617077358434718/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617087998805744/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617092075958239/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -1118,10 +1137,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d23" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1138,13 +1154,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617097507129329/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617100355788689/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617103299501948/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617097507129329/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617100355788689/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617103299501948/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -1158,10 +1169,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d29" class="level1 page-columns page-full">
 <h1></h1>
-<div>
-
-</div>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>
@@ -1178,13 +1186,8 @@ Happy paper writing with Zotero and Quarto!
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617105804689802/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617110232462236/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617121105818580/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
+<p></p><div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617105804689802/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div>  <div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617110232462236/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <br>
+<div style="position: relative;"> <iframe src="https://fosstodon.org/@ikashnitsky/111617121105818580/embed" class="mastodon-embed" style="max-width: 100%; border: 0;" width="100%" height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://mastodon.social/embed.js" async="async"></script></div> <p></p>
 </div>
 </div>
 </div>
@@ -2267,11 +2270,11 @@ This post is one in the <strong>dataviz course series</strong>. Other posts:
 <p>Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different is size – a common case yould be time series of varying length – this results in a lot of plot space wasted in the panels with little data to show. In this post I’m showing how to deal with this common issue.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This is the term used for small-multiples in <code>ggplot2</code></p></div><div id="fn2"><p><sup>2</sup>&nbsp;See <a href="https://ikashnitsky.github.io/2020/background-data/">the post</a> in which I improve an overloaded line chart using small-multiples</p></div></div><p>Let me first show you the solution. The cornerstone source of data in demography is <a href="https://www.mortality.org">Human Mortality Database</a>. It provides demographic data of highest possible quality for a selection of available countries. The availability of data varies vastly across countries – from 270+ years in Sweden to a handful of decades in many other countries with less exceptional population data statistics. Here are two plots from my recent papers that use HMD.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/pnas.png" class="preview-image"><img src="https://ikashnitsky.phd/2023/shrink-space/pnas.png" class="img-fluid figure-img" alt="Figure A3 from Zarulli et al. (2021)"></a></p>
-<figcaption class="margin-caption">Figure A3 from <span class="citation" data-cites="zarulli2021p">Zarulli <em>et al.</em> (2021)</span></figcaption></figure>
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/pnas.png" class="preview-image"><img src="https://ikashnitsky.phd/2023/shrink-space/pnas.png" class="img-fluid figure-img"></a></p>
+<figcaption class="margin-caption">Figure A3 from <span class="citation" data-cites="zarulli2021p">(<strong>zarulli2021p?</strong>)</span></figcaption></figure>
 </div>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/ije.png"><img src="https://ikashnitsky.phd/2023/shrink-space/ije.png" class="img-fluid figure-img" alt="Figure 3 from Aburto et al. (2022)"></a></p>
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/ije.png"><img src="https://ikashnitsky.phd/2023/shrink-space/ije.png" class="img-fluid figure-img"></a></p>
 <figcaption class="margin-caption">Figure 3 from <span class="citation" data-cites="aburto2022ije">Aburto <em>et al.</em> (2022)</span></figcaption></figure>
 </div>
 <p>The trick in these plots is that countries are arranged by the length of time series. The width of each panel is net to the longest time series observed omong the countries in the column of small multiples. This is easily achieved via the parameter <code>space = "free"</code> in the <code>facet_grid()</code> call.</p>
@@ -2967,10 +2970,7 @@ This post is one in the <strong>faceting series</strong>. Other posts:
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-aburto2022ije" class="csl-entry">
-Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd JB, Kashyap R. 2022. Quantifying impacts of the <span>COVID</span>-19 pandemic through life-expectancy losses: A population-level study of 29 countries. <em>International Journal of Epidemiology</em> <strong>51</strong>: 63–74 DOI: <a href="https://doi.org/10.1093/ije/dyab207">10.1093/ije/dyab207</a>
-</div>
-<div id="ref-zarulli2021p" class="csl-entry">
-Zarulli V, Kashnitsky I, Vaupel JW. 2021. Death rates at specific life stages mold the sex gap in life expectancy. <em>Proceedings of the National Academy of Sciences</em> <strong>118</strong> DOI: <a href="https://doi.org/10.1073/pnas.2010588118">10.1073/pnas.2010588118</a>
+Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd JB, Kashyap R. 2022. Quantifying impacts of the <span>COVID-19</span> pandemic through life-expectancy losses: A population-level study of 29 countries. <em>International Journal of Epidemiology</em> <strong>51</strong>: 63–74 DOI: <a href="https://doi.org/10.1093/ije/dyab207">10.1093/ije/dyab207</a>
 </div>
 </div></section></div> ]]></description>
   <category>r</category>
@@ -3964,13 +3964,13 @@ About this post
 <p>In contrast, Play-offs are apparently less chaotic and more predictable. Betting on the underdogs at the Play-offs stage would guarantee to lose money in all 4 recent World Cups.</p>
 <p>Of course, the surprising beneficial result of the betting-on-the-underdog experiment at the group-stage games at World Cups made me curious about other competitions. So I did a similar analysis for the <a href="https://www.reddit.com/r/dataisbeautiful/comments/zim8d6">Champions League (from season 2004–05)</a> and for <a href="https://www.reddit.com/r/dataisbeautiful/comments/ziojgj">English Premier League (from season 2003–04)</a>. Predictably, no miracle happened – betting consistently on the underdogs would almost always bring financial losses. So, either World Cups are just different, or all 4 last tournaments were exceptional with the latest being a crazy outlier. Would it be reasonable to try this no-brainer betting strategy at the group-stage of the next World Cup? I’m not sure. But let’s see in 4 years. <sup>4</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I guess I have to say that this is not a financial advise =)</p></div></div><hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Replicate this analysis using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/e7b391c03f9f5b98d589b2388d16089f">gist</a>
+<span class="screen-reader-only">Tip</span>Replicate this analysis using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/e7b391c03f9f5b98d589b2388d16089f">gist</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3985,7 +3985,7 @@ Replicate this analysis using the <code>R</code> code from this <a href="https:/
 
  ]]></description>
   <category>r</category>
-  <category>sport</category>
+  <category>football</category>
   <category>package</category>
   <guid>https://ikashnitsky.phd/2022/exceptional-world-cup/</guid>
   <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
@@ -4040,7 +4040,7 @@ This post is based on my previous <a href="https://twitter.com/ikashnitsky/statu
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-goldstein2006ps" class="csl-entry">
-Goldstein JR, Wachter KW. 2006. Relationships between period and cohort life expectancy: Gaps and lags. <em>Population Studies</em> <strong>60</strong>: 257–269 DOI: <a href="https://doi.org/10.1080/00324720600895876">10.1080/00324720600895876</a>
+Goldstein JR, Wachter KW. 2006. Relationships between <span>Period</span> and <span>Cohort Life Expectancy</span>: <span>Gaps</span> and <span>Lags</span>. <em>Population Studies</em> <strong>60</strong>: 257–269 DOI: <a href="https://doi.org/10.1080/00324720600895876">10.1080/00324720600895876</a>
 </div>
 <div id="ref-oeppen2002s" class="csl-entry">
 Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <strong>296</strong>: 1029–1031 DOI: <a href="https://doi.org/10.1126/science.1069675">10.1126/science.1069675</a>
@@ -4061,11 +4061,11 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
 <p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></div></div><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<sup>2</sup> <strong>the challenge one</strong> and <strong>my version</strong>.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="https://ikashnitsky.phd/2020/background-data/swd-challenge.png" class="img-fluid figure-img" alt="Image to improve"></a></p>
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="https://ikashnitsky.phd/2020/background-data/swd-challenge.png" class="img-fluid figure-img"></a></p>
 <figcaption class="margin-caption">Image to improve</figcaption></figure>
 </div>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/improved.png"><img src="https://ikashnitsky.phd/2020/background-data/improved.png" class="img-fluid figure-img" alt="My version"></a></p>
+<figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/improved.png"><img src="https://ikashnitsky.phd/2020/background-data/improved.png" class="img-fluid figure-img"></a></p>
 <figcaption class="margin-caption">My version</figcaption></figure>
 </div>
 <p>It is impossible to meaningfully compare and distinguish multiple spaghetti lines at once. Thus, my choice here was to use small multiples and look at the lines one by one. But we still want to compare the lines. For this, I added the pale background lines that show the spread of all data. Note that I also sorted the small multiples in the decreasing order and added the average line in yellow.</p>
@@ -4491,7 +4491,7 @@ font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a><
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://github.com/ikashnitsky/sjrdata">sjrdata</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span></span>
@@ -4528,7 +4528,7 @@ font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a><
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://github.com/ikashnitsky/sjrdata">sjrdata</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span></span>
@@ -4969,40 +4969,6 @@ Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots
   <guid>https://ikashnitsky.phd/2018/deep-catalan-roots/</guid>
   <pubDate>Sun, 03 Jun 2018 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>A perfect RStudio layout</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.phd/2018/perfect-rstudio-layout/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<p>Tiny things can separate life into “before” and “after”. Here is one. For almost a year I’ve been daily sending mental “thank you” to <a href="https://sciences.social/@ugobas">Ugo</a> who showed me how to re-organize panes in RStudio. Since then I’ve been spreading this tiny improvement so many times that I thought the tiny advise deserved a separate tiny post. Please note, below is an opinionated view of a comfortable UI improvement; feel free to ignore it if you don’t like. This advise is <strong>highly subjective</strong>, though, I really believe it is useful.</p>
-<p>I find the default 4-pane layout of RStudio is not perfect. One needs more space for the “Source” pane. Especially when RStudio is used as the main text editor, i.e.&nbsp;<strong>the</strong> program to write code, papers, blog posts, prepare presentations… Thus, the perfect solution is to move “Console” to the top-right position, leave least useful “History” in the bottom-left corner and collapse it, and move everything else to the bottom-right corner (see the screenshot).</p>
-<p><img src="https://ikashnitsky.phd/2018/perfect-rstudio-layout/layout-annotated.png" class="img-fluid"></p>
-<p>Just go to “Tools” –&gt; “Global options” –&gt; “Pane layout” and fix it.</p>
-<p><img src="https://ikashnitsky.phd/2018/perfect-rstudio-layout/options.png" class="img-fluid"></p>
-<p>That’s it!</p>
-<p>Just enjoy your improved RStudio, <strong>the</strong> program.</p>
-<p>P.S. It is also very handy to memorize and use the hot keys for panes. <code>CTRL + #</code> moves focus to the pane, <code>CTRL + SHIFT + #</code> maximizes the pane.</p>
-<p><img src="https://ikashnitsky.phd/2018/perfect-rstudio-layout/hotkeys.png" class="img-fluid"></p>
-<hr>
-
-
-<!-- -->
-
-
- ]]></description>
-  <category>r</category>
-  <category>rstudio</category>
-  <category>trick</category>
-  <guid>https://ikashnitsky.phd/2018/perfect-rstudio-layout/</guid>
-  <pubDate>Mon, 21 May 2018 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2018/perfect-rstudio-layout/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>

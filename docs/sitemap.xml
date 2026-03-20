@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ikashnitsky.phd/index.html</loc>
-    <lastmod>2025-03-01T09:50:28.114Z</lastmod>
+    <loc>https://ikashnitsky.phd/2025/sidekick-papers/gallery.html</loc>
+    <lastmod>2025-07-22T19:30:47.881Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2017/ice-hockey-players-height/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.427Z</lastmod>
+    <loc>https://ikashnitsky.phd/me.html</loc>
+    <lastmod>2025-04-05T09:59:34.754Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2023/map-borders/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
+    <loc>https://ikashnitsky.phd/dd.html</loc>
+    <lastmod>2025-02-17T17:08:02.211Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2023/geocoding/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
+    <loc>https://ikashnitsky.phd/2025/my-path-reflection/llm-jumpstarters.html</loc>
+    <lastmod>2025-03-01T09:27:33.288Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2017/subplots-in-maps/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.443Z</lastmod>
+    <loc>https://ikashnitsky.phd/2024/zotero7/index.html</loc>
+    <lastmod>2025-02-17T17:08:02.027Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2024/rotate-damn-plot/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.994Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2023/map-proj/index.html</loc>
@@ -29,48 +33,12 @@
     <lastmod>2025-02-17T17:08:01.627Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2017/dd-journals-frequency/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.294Z</lastmod>
+    <loc>https://ikashnitsky.phd/2023/30-dmc/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2018/sjrdata-package/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/who-is-old/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.444Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/hmd-male-mortality-rus-jpn/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.378Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/cv.html</loc>
-    <lastmod>2025-10-13T06:04:33.577Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/hello-r-world/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.368Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/gender-gap-in-swedish-mortality/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.344Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2018/the-lancet-paper/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.528Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/subscribe.html</loc>
-    <lastmod>2025-02-17T17:08:02.929Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2024/zotero7/index.html</loc>
-    <lastmod>2025-02-17T17:08:02.027Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2022/exceptional-world-cup/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.611Z</lastmod>
+    <loc>https://ikashnitsky.phd/2021/life-expectancy-101/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.610Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2019/zotero/index.html</loc>
@@ -81,76 +49,52 @@
     <lastmod>2025-02-17T17:08:01.544Z</lastmod>
   </url>
   <url>
+    <loc>https://ikashnitsky.phd/2018/sjrdata-package/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.511Z</lastmod>
+  </url>
+  <url>
     <loc>https://ikashnitsky.phd/2018/deep-catalan-roots/index.html</loc>
     <lastmod>2025-02-17T17:08:01.494Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2025/my-path-reflection/llm-jumpstarters.html</loc>
-    <lastmod>2025-03-01T09:27:33.288Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/global-male-life-expectancy-convergence/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.361Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2018/perfect-rstudio-layout/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.511Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2019/dotplot/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.560Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2021/life-expectancy-101/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/dd.html</loc>
-    <lastmod>2025-02-17T17:08:02.211Z</lastmod>
+    <loc>https://ikashnitsky.phd/2017/who-is-old/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.444Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2017/neet-in-europe/index.html</loc>
     <lastmod>2025-02-17T17:08:01.427Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2017/align-six-maps/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/ggplot2-microbenchmark/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.361Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2020/background-data/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/me.html</loc>
-    <lastmod>2025-04-05T09:59:34.754Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/map-hacking/index.html</loc>
+    <loc>https://ikashnitsky.phd/2017/ice-hockey-players-height/index.html</loc>
     <lastmod>2025-02-17T17:08:01.427Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2018/ddd-poster/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.477Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/2017/data-acquisition-three/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.277Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2017/hmd-all-sex-ratio/index.html</loc>
     <lastmod>2025-02-17T17:08:01.368Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2024/rotate-damn-plot/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.994Z</lastmod>
+    <loc>https://ikashnitsky.phd/2017/global-male-life-expectancy-convergence/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.361Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2023/shrink-space/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.911Z</lastmod>
+    <loc>https://ikashnitsky.phd/2017/gender-gap-in-swedish-mortality/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.344Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/dd-journals-frequency/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.294Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/data-acquisition-three/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.277Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/colorcoded-map/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/align-six-maps/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.244Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2017/data-acquisition-one/index.html</loc>
@@ -161,27 +105,87 @@
     <lastmod>2025-02-17T17:08:01.294Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2023/30-dmc/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
-  </url>
-  <url>
     <loc>https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/index.html</loc>
     <lastmod>2025-02-17T17:08:01.344Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2017/colorcoded-map/index.html</loc>
-    <lastmod>2025-02-17T17:08:01.268Z</lastmod>
+    <loc>https://ikashnitsky.phd/2017/ggplot2-microbenchmark/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/hello-r-world/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.368Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/hmd-male-mortality-rus-jpn/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.378Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/map-hacking/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.427Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2017/subplots-in-maps/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2018/ddd-poster/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2018/perfect-rstudio-layout/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2018/the-lancet-paper/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.528Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2019/dotplot/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.560Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2020/background-data/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2022/exceptional-world-cup/index.html</loc>
+    <lastmod>2026-03-20T23:16:16.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2023/geocoding/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2023/map-borders/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2023/shrink-space/index.html</loc>
+    <lastmod>2025-02-17T17:08:01.911Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2025/ihme-bibl/index.html</loc>
+    <lastmod>2025-10-13T06:36:54.967Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2025/sidekick-papers/index.html</loc>
     <lastmod>2025-07-23T05:38:24.629Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2025/sidekick-papers/gallery.html</loc>
-    <lastmod>2025-07-22T19:30:47.881Z</lastmod>
+    <loc>https://ikashnitsky.phd/cv.html</loc>
+    <lastmod>2025-10-13T06:04:33.577Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2025/ihme-bibl/index.html</loc>
-    <lastmod>2025-10-13T06:36:54.967Z</lastmod>
+    <loc>https://ikashnitsky.phd/index.html</loc>
+    <lastmod>2026-03-20T21:48:59.109Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/subscribe.html</loc>
+    <lastmod>2025-02-17T17:08:02.929Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2026/laliga-preview/index.html</loc>
+    <lastmod>2026-03-20T23:18:23.898Z</lastmod>
   </url>
 </urlset>
