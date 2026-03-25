@@ -1,6 +1,5 @@
 ---
 title: "."
-description-meta: "{{< meta website.description >}}"
 comments: false
 title-block-banner: img/dd-banner.png
 code-tools: false
@@ -32,4 +31,6 @@ toc-location: right
 ***
 
 <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ikashnitsky" data-color="#269292" data-emoji="" data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+
+
 

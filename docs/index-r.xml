@@ -54,7 +54,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code and data to reproduce this analysis are available on <a href="https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click">GitHub</a>.
+<span class="screen-reader-only">Tip</span>Code and data to reproduce this analysis are available on <a href="https://github.com/ikashnitsky/laliga-preview">GitHub</a>.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -99,13 +99,13 @@
 <p>IHME really screwed up the bibliometrics evaluation of several scientific fields. Thousands of researchers around the world claim unwarranted recognition for their blown-up citation metrics. And fractional counting (when incoming citations are shared by coauthors according to their contribution) is simply not yet there as the general-use go-to research evaluation tool. The net effect of this authorship-citation inflation is not innocent. I did a back-of-an-envelope <a href="https://x.com/ikashnitsky/status/1440960984341000193">calculation back in 2021</a>. Since I didn’t find back my old calculations, I re-did it today. In the world of bibliometrics without fractional counting (think of the most widely circulated numbers from Google Scholar, Scopus, WoS), when you cite a paper with many authors, each one of them receives a full citation point. Basically, papers with more co-authors inflate the currency of this market via generating more citation points once they get cited. Now, back to the IHME issue. Consider <a href="https://www.thelancet.com/journals/lancet/article/piis0140-6736(20)30752-2/fulltext">just one of the many GBD papers</a>. Yes, it lists 940 names as authors, and it’s cited 7550 times (<a href="https://openalex.org/works/w3092861045">OpenAlex, 2025-10-09</a>). This creates 7.1 million citation points. Just one paper, published in 2020. Now, my field’s leading journal Demography has published 3838 papers since its launch in 1964, and <a href="https://openalex.org/sources/s30543418">these papers were cited 258k times</a>. Accounting for multiple authorship of these papers, we get 572k citation points. So, just one fairly recent IHME paper generated 12 times more citation points than all of the papers ever published in Demography journal in it’s 6+ decades since 1964. <a href="https://gist.github.com/ikashnitsky/cc6d7ee2d9d0e5af78822e6a467820ad">Data and replication code here</a>.</p>
 <p>The whole IHME story is a fascinating one (covered in all details by Timothy Schwab: <a href="https://www.thenation.com/article/society/gates-covid-data-ihme">initial article in The Nation</a> and <a href="https://www.amazon.com/Bill-Gates-Problem-Reckoning-Billionaire/dp/1250850096">a dedicated book later</a>) I guess, at the core of it is a genuine scientific endeavor. Chris Murray was a visionary in his early career, and the creation of the Global Burden of Diseases was an important milestone, impossible without his enthusiasm and organizational talent. It was his burning fire and the talent of igniting others that brought him to the massive and exclusive funding by Bill and Melinda Gates, who were apparently genuinely impressed and saw this outsized funding as an opportunity to contribute largely to the development of global public health. Which it did. At the beginning. But then a curious side effect happened (akin the digression of absolute monarchs) — the generous finding placed IHME outside the normal feedback and evaluation loop of the normal scientific process. And with time the quality of their products declined dramatically. Not necessarily the GBD most. But their global population estimates <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01051-5/fulltext">were very problematic</a>, and also obsolete with <a href="https://doi.org/10.31235/osf.io/5syef">World Population Prospects</a>. Even more outrageous fuckup happened with their COVID spread model, losing in prediction accuracy to <em>every</em> other model, notably to the one created by one postdoc. Fun fact, they eventually quietly retired the COVID model <a href="https://x.com/phytools_liam/status/1449443388256923653">as if the embarrassment never happened</a>.</p>
 <p><strong>Scientific excellence is impossible without feedback!</strong></p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is a rather spontaneous attempt to pull together my previous fragmented mentions of the issue over <a href="https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click">Twitter</a> and a more recent <a href="https://www.linkedin.com/feed/update/urn:li:activity:7381133506355056640?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7381133506355056640%2C7381207133352087552%29&amp;dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287381207133352087552%2Curn%3Ali%3Aactivity%3A7381133506355056640%29">LinkedIn comment</a>
+<span class="screen-reader-only">Tip</span>This post is a rather spontaneous attempt to pull together my previous fragmented mentions of the issue over <a href="https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click">Twitter</a> and a more recent <a href="https://www.linkedin.com/feed/update/urn:li:activity:7381133506355056640?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7381133506355056640%2C7381207133352087552%29&amp;dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287381207133352087552%2Curn%3Ali%3Aactivity%3A7381133506355056640%29">LinkedIn comment</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -155,7 +155,7 @@ This post is a rather spontaneous attempt to pull together my previous fragmente
 <p>Having digitized the data manually, we are now good to go and finally replicate the original plot.</p>
 <p>The following lines of code retrieve and reshape the data</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -291,11 +291,11 @@ font-style: inherit;">happiness</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now we have the dataset ready to be plotted. First, let’s try to recreate the original plot as closely as we can. Note that I use exactly the same colors, which I picked from the original plot using a <a href="https://chromewebstore.google.com/detail/snap-color-picker/nbpljhppefmpifoffhhmllmacfdckokh?hl=en&amp;pli=1">color picker tool</a>. I also tried to outsource this simple task to LLMs. Yes, you guessed it right – they failed.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># recreate the plot</span></span>
 <span><span class="va" style="color: #111111;
@@ -454,7 +454,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2024/rotate-damn-plot/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
@@ -466,7 +466,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </section><section id="improving-the-plot" class="level1"><h1>Improving the plot</h1>
 <p>The following lines of code take care of {ggplot2} theme, setting it to the one with my preferred selection of options. Earlier I wrote <a href="https://ikashnitsky.phd/2023/gist-snippet/">a dedicated blog post</a> about this portable theming solution.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># custom theming</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -501,7 +501,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -519,11 +519,11 @@ font-style: inherit;">11</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>And finally the improved version of the plot.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create the plot</span></span>
 <span><span class="va" style="color: #111111;
@@ -680,7 +680,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2024/rotate-damn-plot/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -695,13 +695,13 @@ font-style: inherit;">)</span></span></code></pre></div>
 <p>And of course I added a title, subtitle, and legend caption. Note also a small handy trick that I use all the time – I moved x-axis labels to the top of the plot which allows me to use the subtitle as the axis label and not only save some space but also make the process of reading the plot more straightforward.</p>
 <p>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e.&nbsp;necessarily horizontal and large enough), preferable using some nice font. <strong>Pay attention to the text elements of you dataviz</strong>!</p>
 <hr>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is the first in the <strong>Damn Plot series</strong>. Other posts will follow, for now you may follow @<a href="https://bsky.app/profile/damnplot.ikashnitsky.phd">damnplot.ikashnitsky.phd</a> BlueSky account.
+<span class="screen-reader-only">Note</span>This post is the first in the <strong>Damn Plot series</strong>. Other posts will follow, for now you may follow @<a href="https://bsky.app/profile/damnplot.ikashnitsky.phd">damnplot.ikashnitsky.phd</a> BlueSky account.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -831,13 +831,13 @@ This post is the first in the <strong>Damn Plot series</strong>. Other posts wil
 <section id="conclusions-and-a-final-remark-on-zotero" class="level1">
 <h1>Conclusions and a final remark on Zotero</h1>
 <p>This tutorial offers a time-proven recipe for tuning a personal Zotero library so that everything is synced seamlessly across multiple devices. Once set up properly, you will enjoy an unlimited storage of PDFs via any side cloud solution of your chouce coupled with the highly reliable and free native sync of metadata form Zotero. As a free open-source project Zotero is not aimed at generating profits, yet subscription fees are essential for the development and sustainability of this amazing project. Personal tiers may feel a bit hefty for individuals, especially students, but if you can convince your institutions to use Zotero and get an institutional subscription, find more info <a href="https://www.zotero.org/getinvolved/">here</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Happy paper writing with Zotero and Quarto!
+<span class="screen-reader-only">Tip</span>Happy paper writing with Zotero and Quarto!
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -944,7 +944,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d3" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -976,7 +976,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d6" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -1008,7 +1008,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d9" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -1040,7 +1040,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d12" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -1072,7 +1072,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d15" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1104,7 +1104,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d19" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1137,7 +1137,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d23" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1169,7 +1169,7 @@ Happy paper writing with Zotero and Quarto!
 </section>
 <section id="d29" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>
@@ -1234,7 +1234,7 @@ Happy paper writing with Zotero and Quarto!
 <hr>
 <p>For the illustration below I will produce maps of Europe in (A) Mercator and (B) Lambert Equal Area Azimuthal projections, as usual using the beautiful geodata stored in the <a href="https://ropengov.github.io/eurostat/">eurostat</a> package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -1338,7 +1338,7 @@ font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/map-proj/index_files/figure-html/unnamed-chunk-2-1.png" class="figure-img" style="width:100.0%;height:100.0%"></p>
@@ -1348,7 +1348,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>Note all the overseas territories of France, Spain, and Portugal. At the next step I will remove them to zoom in to the usual scope of mainland Europe. I will also <a href="https://ikashnitsky.phd/2023/map-borders/">add borders between the countries as lines</a>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># remove overseas territories</span></span>
 <span><span class="va" style="color: #111111;
@@ -1461,15 +1461,15 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change your the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># transform the projection to the one suitable for Europe</span></span>
 <span><span class="va" style="color: #111111;
@@ -1645,7 +1645,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"A"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
 <figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="https://ikashnitsky.phd/2023/map-proj/index_files/figure-html/unnamed-chunk-4-1.png" class="figure-img column-screen-inset" style="width:100.0%;height:100.0%"></p>
@@ -1661,7 +1661,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is one in the <strong>dataviz course series</strong>. Other posts:
+<span class="screen-reader-only">Note</span>This post is one in the <strong>dataviz course series</strong>. Other posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1695,7 +1695,7 @@ This post is one in the <strong>dataviz course series</strong>. Other posts:
 <p>Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of <code>tidygeocoder</code> that queries the free Open Street Map.</p>
 <p>In this tiny example I’m using the birth places that students of my <a href="https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0">2022 BSSD dataviz course</a> kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields – city and country of birth. The resulting small dataset is <a href="https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58">here</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -1805,11 +1805,11 @@ font-style: inherit;">", "</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main unction in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -1841,11 +1841,11 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"osm"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>The magic has already happened. The rest is just the routines to drop the points on the map. Yes, I am submitting this as my first 2023 entry to the <a href="https://30daymapchallenge.com"><code>#30DayMapChallenge</code></a> =)</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># convert coordinates to an sf object</span></span>
 <span><span class="va" style="color: #111111;
@@ -1891,11 +1891,11 @@ background-color: null;
 font-style: inherit;">4326</span></span>
 <span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Next are several steps to plot countries of the worlds as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># get world map outline (you might need to install the package)</span></span>
 <span><span class="va" style="color: #111111;
@@ -1958,15 +1958,15 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now everything is ready to map!</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># map!</span></span>
 <span><span class="va" style="color: #111111;
@@ -2221,7 +2221,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
 <figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="https://ikashnitsky.phd/2023/geocoding/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img column-screen-inset" style="width:100.0%"></p>
@@ -2237,7 +2237,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is one in the <strong>dataviz course series</strong>. Other posts:
+<span class="screen-reader-only">Note</span>This post is one in the <strong>dataviz course series</strong>. Other posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2281,7 +2281,7 @@ This post is one in the <strong>dataviz course series</strong>. Other posts:
 <p>One slightly annoying nuance is that the <code>space = "free"</code> parameter is <em>only</em> available <code>facet_grid()</code>. That’s why we need to specify both column and row variables for the layout of small multiples. Yet, usually we have just one meaningful faceting variable in such a setup, country in the examples above. That’s why the steps of data preparation for these plots included the creation of variables <code>row</code> and <code>column</code> that explicitly located the position of each small multiple. You can find code that replicates both figures shown above <a href="https://github.com/ikashnitsky/sex-gap-e0-pnas">here</a> and <a href="https://github.com/OxfordDemSci/ex2020">here</a>. To illustrate the approach in this post we’ll use a minimal example with generated data.</p>
 <p>Consider a case when we have 6 countries, 3 of which have relatively long time series and 3 have relatively short period of observed data. To stay a bit closer to the examples above, let’s say that we have data for Sweden (271 years worth of data), Denmark (186 years), Netherlands (169), Portugal (81), Japan (74), and Estonia (60). Let’s generate some random data of the specified time series’ length.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2427,11 +2427,11 @@ font-style: inherit;">ungroup</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Let’s say I want a plot with 3 rows and 2 columns. First, here’s how a simple faceted plot would look like.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">raw</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2482,7 +2482,7 @@ font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/shrink-space/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
@@ -2493,7 +2493,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <p>See how much space is just wasted in the plot.</p>
 <p>Next, we’ll do the trick outlined above: arrange the countries by the length of available data and shrink the unused space in the two columns.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">arr</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2710,7 +2710,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"free"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/shrink-space/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
@@ -2720,7 +2720,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 <p>That’s it, the rest is just visual polishing of the plot. At the very least, we need to get rid of the facet strips which are now meaningless counts of rows and columns and add country names as text annotations.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">arr</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2938,7 +2938,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/shrink-space/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
@@ -2954,7 +2954,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is one in the <strong>faceting series</strong>. Other posts:
+<span class="screen-reader-only">Note</span>This post is one in the <strong>faceting series</strong>. Other posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2991,7 +2991,7 @@ Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd
 <p>I suggest a more convenient approach: store the functions as <a href="https://gist.github.com">GitHub gists</a> and call them using the handy <code><a href="https://devtools.r-lib.org/reference/source_gist.html">devtools::source_gist()</a></code>. This allows to load self-written functions from standalone R scripts. And to avoid copying manually the lines of code that source a certain gist we may use code snippets. Let me give you an example.</p>
 <p>I want to re-use a <code>ggplot2</code> theme with certain preferred parameters. Here are the lines of code that define my <code>theme_ik()</code> function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">theme_ik</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3224,11 +3224,11 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>I store these lines of R code as <a href="https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184">a gist</a> here. Next, I only need to supply the ID part of the gist URL (<code>https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184</code>) to the <code><a href="https://devtools.r-lib.org/reference/source_gist.html">devtools::source_gist()</a></code> function and it will execute the script stored in the gist, which will result in function <code>theme_ik()</code> appearing in my <code>{.GlobalEnv}</code>. With the second line of code I set the default <code>ggplot2</code> theme to my self-written one.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">devtools</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3253,13 +3253,13 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now, the final element of this recipe is to save the two lines above as a code snippet. I’m using RStudio, but code snippets are available in any decent IDE. To add a custom snippet we need to navigate to <code>Tools --&gt; Edit Code Snippets...</code>. In the new window just add a custom snippet making sure to respect the indentation. <sup>1</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Note that in the left tabset one can choose what kind of snippets to add. In R scripts snippets are called with <code>TAB</code>, in rmarkdown documents the hot-key for snippets is <code>SHIFT+TAB</code>.</p></div></div><p><a href="https://ikashnitsky.github.io/2023/gist-snippet/snippet.png"><img src="https://ikashnitsky.phd/2023/gist-snippet/snippet.png" class="img-fluid"></a></p>
 <p>That’s it. Save the modified snippets, the new one is ready to be used. Now, when I type <code>thm</code> and then press <code>TAB</code>, <code>thm</code> transforms into the two lines of code that source the specific gist and set the custom theme to <code>theme_ik()</code>. Any ggplot that I will produce next in this R session will have my preferred theme defaults.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">swiss</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3308,7 +3308,7 @@ background-color: null;
 font-style: inherit;">"Fertility and rurality in Swiss cantones, 1888"</span></span>
 <span>        <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/gist-snippet/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="768"></p>
@@ -3342,7 +3342,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <p>An often “quick and dirty” solution when composing a simple choropleth map is to use polygons outline as the borders. While this works okay to distinguish the polygons, the map quickly becomes unnecessarily overloaded. All the non-bordering outlines – complicated coastal lines and islands’ outlines – look ugly and add nothing to the map.</p>
 <p>Let’s illustrate the ease of this trick mapping Greece with its numerous small islands. We’ll use the beautiful <code>eurostat</code> package that has a built in spatial dataset with NUTS-3 regions of Europe.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -3490,11 +3490,11 @@ font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3035</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>First, here’s the typical lazy (or rather no-brainer) way of using the polygons’ outlines to show the borders between our spatial units.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># plot with polygon outlines</span></span>
 <span><span class="va" style="color: #111111;
@@ -3595,28 +3595,28 @@ font-style: inherit;">"#eeffff"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">gg_outline</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Look at all the islands, especially the small ones – what are all these red outlines for? Insted, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines()</a></code> exactly for the task. <sup>1</sup></p>
+<p>Look at all the islands, especially the small ones – what are all these red outlines for? Insted, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines()</a></code> exactly for the task. <sup>1</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Before I found <code>rmapshaper</code> the task seemed overly complicated, I even asked <a href="https://stackoverflow.com/questions/47760033">Stack Overflow</a></p></div></div><div class="cell">
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># produce border lines with rmapshaper::ms_innerlines()</span></span>
 <span><span class="kw" style="color: #003B4F;
@@ -3639,15 +3639,15 @@ font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Now, let’s plot the same map with proper borders between the polygons. Note that for the <code>sf</code> layer with polygons I set <code>color = NA</code> to get rid of the polygons outline. Then with the next call to <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf()</a></code> I draw the line borders as a separate layer.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># now plot without polygon outlines and with borders as lines</span></span>
 <span><span class="va" style="color: #111111;
@@ -3765,28 +3765,28 @@ font-style: inherit;">"#eeffff"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">gg_bord</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>That’s it! This is the simplest dataviz trick I know that can radically improve the outlook of simple choropleth maps. It’s only one additional line of code. You can even create the borders <code>sf</code> object on the fly within the <code>ggplot</code> map creation code specifying the <code>data</code> parameter as <code>. %&gt;% ms_innerlines()</code> <sup>2</sup>, like this:</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;This is one specific case where the base R pipe <code>|&gt;</code> cannot simply replace the {magrittr} pipe <code>%&gt;%</code>; see more <a href="https://bsky.app/profile/ikashnitsky.phd/post/3kilahv45c52n">here</a>.</p></div></div><div class="cell">
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3798,7 +3798,7 @@ font-style: inherit;">.</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3812,11 +3812,11 @@ font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Finally, let’s put the two maps side by side.</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># put side by side</span></span>
 <span><span class="kw" style="color: #003B4F;
@@ -3894,7 +3894,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span>    <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
 <figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img column-screen-inset" style="width:100.0%"></p>
@@ -3903,13 +3903,13 @@ font-style: inherit;">)</span></span></code></pre></div>
 </div>
 </div>
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Replicate this analysis using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/cf2c29a29d39f79bb1c857a4fefc2cd4">gist</a>. This post is partially based on my previous <a href="https://twitter.com/ikashnitsky/status/1247875600305598464">Twitter thread</a>
+<span class="screen-reader-only">Tip</span>Replicate this analysis using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/cf2c29a29d39f79bb1c857a4fefc2cd4">gist</a>. This post is partially based on my previous <a href="https://twitter.com/ikashnitsky/status/1247875600305598464">Twitter thread</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3922,7 +3922,7 @@ Replicate this analysis using the <code>R</code> code from this <a href="https:/
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-About this post
+<span class="screen-reader-only">Note</span>About this post
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4019,13 +4019,13 @@ About this post
 <p><img src="https://ikashnitsky.phd/2021/life-expectancy-101/ita-ex.png" class="img-fluid"></p>
 <p>At age 34 remaining life expectancy was the same as at birth. Only, it applied to the 41% survivors. And I guess the perception of age was not radically different among those survivors. It was all about selection and luck getting there. The high early life mortality is responsible for another popular demographic myth, which postulates that everybody used to have many kids in the past. No, people used to have many births, and only a fraction of those kids survived to adult life.</p>
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is based on my previous <a href="https://twitter.com/ikashnitsky/status/1367856010476613632">Twitter thread</a>
+<span class="screen-reader-only">Tip</span>This post is based on my previous <a href="https://twitter.com/ikashnitsky/status/1367856010476613632">Twitter thread</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4072,7 +4072,7 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
 <p>But the <strong>main trick</strong> here is adding all the data in the background. And with <code>ggplot2</code> it’s super easy to do. All we need is to add a layer to the plot in which we modify the data by removing the variable that was used for faceting.</p>
 <p>Here we use the nice feature of <code>ggplot2</code> – the layers inherit whatever you specify in the main <code>ggplot()</code> call. In this case our background layer is inheriting the <code>data</code> parameter and all we need is just to remove the variable that is later used for faceting. Consider the following pseudo-code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">df</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4123,17 +4123,17 @@ font-style: inherit;">~</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">FACETING_VARIABLE</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Once we’ve done this, <code>gpplot2</code> no longer knows how to assign subsets of data to the corresponding small multiples. Note that this only happens in the layer where we perform the trick and explicitly throw out the faceting variable. As the result, in each small multiple we end up with all the data in this layer. Put this layer in the background, make it appropriately pale/transparent – and that’s it. I find this dataviz trick amazingly straightforward, simple, and powerful.</p>
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-You can replicate the full figure above using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815">gist</a>
+<span class="screen-reader-only">Tip</span>You can replicate the full figure above using the <code>R</code> code from this <a href="https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815">gist</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4146,7 +4146,7 @@ You can replicate the full figure above using the <code>R</code> code from this 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-This post is one in the <strong>faceting series</strong>. Other posts:
+<span class="screen-reader-only">Note</span>This post is one in the <strong>faceting series</strong>. Other posts:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4235,7 +4235,7 @@ Important
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-About this tutorial
+<span class="screen-reader-only">Note</span>About this tutorial
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4324,13 +4324,13 @@ About this tutorial
 <iframe width="100%" height="500px" style="background: #FFFFFF;" src="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">
 </iframe>
 <p>The final hint here is to use <code>citr</code> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <code>Insert citation</code> appears which executes the <code>citr:::insert_citation()</code> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <a href="https://github.com/crsh/citr">github repo</a>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Happy paper writing with Zotero and RStudio!
+<span class="screen-reader-only">Tip</span>Happy paper writing with Zotero and RStudio!
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4411,7 +4411,7 @@ Happy paper writing with Zotero and RStudio!
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Replication
+<span class="screen-reader-only">Tip</span>Replication
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4424,7 +4424,7 @@ Replication
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-See also
+<span class="screen-reader-only">Note</span>See also
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4464,7 +4464,7 @@ See also
 <p>Install the package from github, load it and use the data.</p>
 <p>The installation will take a while since the main dataset <code>sjr_journals</code> is pretty heavy (15.7MB compressed).</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># install</span></span>
 <span><span class="fu" style="color: #4758AB;
@@ -4473,7 +4473,7 @@ font-style: inherit;">devtools</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://devtools.r-lib.org/reference/install-deprecated.html">install_github</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -4506,12 +4506,12 @@ font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">sjr_countries</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </section><section id="a-couple-of-examples" class="level1"><h1>A couple of examples</h1>
 <p>Let’s compare <em>Nature</em> and <em>Science</em>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
@@ -4645,12 +4645,12 @@ font-style: inherit;">"line"</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p><img src="https://ikashnitsky.phd/2018/sjrdata-package/nature-science.png" class="img-fluid"></p>
 <p>Several demographic journals.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">sjr_journals</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4757,7 +4757,7 @@ font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p><img src="https://ikashnitsky.phd/2018/sjrdata-package/demographic-journals.png" class="img-fluid"></p>
 <hr>
@@ -4791,7 +4791,7 @@ font-style: inherit;">)</span></span></code></pre></div>
 <p>With ternary colour coding, each element of a three-dimensional array of compositional data is represented with a unique colour. The resulting colours show direction and magnitude of deviations from the centrepoint, which represents the average age of the European population, and is dark grey. The hue component of a colour encodes the direction of deviation: yellow indicates an elderly population (&gt;65 years), cyan indicates people of working age (15–64 years), and magenta indicates children (0–14 years).</p>
 <p>The method is very flexible, and one can easily produce these meaningful colours using our <a href="https://github.com/jschoeley/tricolore">R package <code>tricolore</code></a>. Just explore the capabilities of the package in a built-in shiny app using the following lines of code:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4816,29 +4816,29 @@ font-style: inherit;"><a href="https://rdrr.io/pkg/tricolore/man/DemoTricolore.h
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">)</span></span></code></pre></div>
+font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Replication materials <a href="https://github.com/ikashnitsky/the-lancet-2018">at github</a>
+<span class="screen-reader-only">Tip</span>Replication materials <a href="https://github.com/ikashnitsky/the-lancet-2018">at github</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Folow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, <a href="https://twitter.com/jschoeley">jschoeley</a>
+<span class="screen-reader-only">Important</span>Folow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, <a href="https://twitter.com/jschoeley">jschoeley</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4851,7 +4851,7 @@ Folow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-See also
+<span class="screen-reader-only">Note</span>See also
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4911,7 +4911,7 @@ See also
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Reproducibility note
+<span class="screen-reader-only">Important</span>Reproducibility note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4944,13 +4944,13 @@ Reproducibility note
 <h1>Conclusions</h1>
 <p>There are 20 people in our EDSD group, 10 guys and 10 girls. We come from different countries: Germany, Italy, China, United States, Russia, Spain, Mexico, Bosnia, Poland, Hungary, Estonia, and Denmark. Our names are quite different from that of 16-17 century Catalans. Still, using string distance matching we can find similarly named persons in the historical dataset. This fun example just exposes the power of formal text mining approach.</p>
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots">at github</a>
+<span class="screen-reader-only">Tip</span>Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots">at github</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">

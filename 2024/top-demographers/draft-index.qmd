@@ -1,7 +1,6 @@
 ---
 draft: true
 title: "Demographic Hall of Fame"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2024-01-01"
@@ -40,3 +39,5 @@ Having this noted, the rest is objective. I think, in a way this *is* a demograp
 [init]: https://fosstodon.org/@ikashnitsky/111626330689709952
 [gist]: https://gist.github.com/ikashnitsky/819a7a87ed3844db0cce637f71e1c9f4
 [bsky]: https://bsky.app/profile/ikashnitsky.phd/post/3kh5zbmftvw2f
+
+

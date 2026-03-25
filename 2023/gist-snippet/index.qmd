@@ -1,6 +1,5 @@
 ---
 title: "Easily re-using self-written functions: the power of gist + code snippet duo"
-description-meta: "{{< meta website.description >}}"
 date: "2023-01-03"
 image: teaser.png
 categories: [r, rstudio, trick]
@@ -86,3 +85,5 @@ My preferred `ggplot2` theme here is optimized to produce plots that look nicely
 [gists]: https://gist.github.com
 [gist]: https://gist.github.com/ikashnitsky/653e1040a07364ae82b1bb312501a184
 [post]: https://ikashnitsky.github.io/2023/gist-snippet
+
+

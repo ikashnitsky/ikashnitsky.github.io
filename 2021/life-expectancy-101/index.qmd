@@ -1,6 +1,5 @@
 ---
 title: "What is life expectancy? And, even more important, what it isn't"
-description-meta: "{{< meta website.description >}}"
 date: "2021-03-05"
 image: teaser.png
 categories: [r, 101, demography]
@@ -53,4 +52,6 @@ At age 34 remaining life expectancy was the same as at birth. Only, it applied t
 [robert-2]: https://twitter.com/therealrchung/status/1365313760416526340
 [hmd]: https://www.mortality.org/
 [thread]: https://twitter.com/ikashnitsky/status/1367856010476613632
+
+
 

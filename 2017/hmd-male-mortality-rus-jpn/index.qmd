@@ -1,6 +1,5 @@
 ---
 title: "Male mortality in Russia and Japan"
-description-meta: "{{< meta website.description >}}"
 date: "2017-02-06"
 image: teaser.png
 categories: [r, hmd, demography]
@@ -78,3 +77,5 @@ In the middle ages, male mortality in Russian is up to 10 times higher than in J
 
 [^1]: To compare, the same probabilities for males in some developed countries are: France (0.89), Japan (0.92), US (0.87), UK (0.91). 
 [^2]: See for example the recent [NIDI working paper of Balachandran et. al (2017)](http://www.nidi.nl/shared/content/output/papers/nidi-wp-2017-01.pdf).
+
+

@@ -1,6 +1,5 @@
 ---
 title: "Zotero hacks: unlimited synced storage and its smooth use with rmarkdown"
-description-meta: "{{< meta website.description >}}"
 date: "2019-03-14"
 image: teaser.png
 categories: [r, tutorial]
@@ -188,4 +187,6 @@ The final hint here is to use `citr` package, which brings an easy and interacti
 [bookd]: https://bookdown.org/yihui/bookdown/citations.html
 [rmd]: https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
 [citr]: https://github.com/crsh/citr
+
+
 

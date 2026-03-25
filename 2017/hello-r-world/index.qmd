@@ -1,6 +1,5 @@
 ---
 title: "Hello R world post"
-description-meta: "{{< meta website.description >}}"
 date: "2017-01-29"
 image: teaser.png
 categories: [r]
@@ -38,3 +37,5 @@ Enjoy!
 P.S. If something similar exists in one of the well known packages, please tell me.
 
 ***
+
+

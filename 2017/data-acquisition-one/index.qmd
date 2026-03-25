@@ -1,6 +1,5 @@
 ---
 title: "Data acquisition in R (1/4)"
-description-meta: "{{< meta website.description >}}"
 date: "2017-10-17"
 image: teaser.png
 categories: [r, tutorial, data acquisition]
@@ -177,3 +176,5 @@ hockey |>
 [figshare]: https://dx.doi.org/10.6084/m9.figshare.3394735.v2
 [ice]: https://ikashnitsky.github.io/2017/ice-hockey-players-height/
 [gist]: https://gist.github.com/ikashnitsky/e1d93a51fe5e2b5ba770096060bacd8a
+
+

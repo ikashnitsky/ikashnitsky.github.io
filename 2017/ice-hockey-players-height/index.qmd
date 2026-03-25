@@ -1,6 +1,5 @@
 ---
 title: "Evolution of ice hockey players' height: IIHF world championships 2001-2016"
-description-meta: "{{< meta website.description >}}"
 date: "2017-05-27"
 image: teaser.png
 categories: [r, sport]
@@ -1009,3 +1008,5 @@ gg_month_dec <- ggplot(df_month_dec, aes(x = factor(month)))+
 [cnt]: https://dx.doi.org/10.6084/m9.figshare.3394795.v1
 [sel]: https://dx.doi.org/10.1080/02640410600908001
 [code]: https://dx.doi.org/10.6084/m9.figshare.3395983.v2
+
+

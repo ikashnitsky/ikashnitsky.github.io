@@ -1,6 +1,5 @@
 ---
 title: "Show all data in the background of your faceted ggplot"
-description-meta: "{{< meta website.description >}}"
 date: "2020-06-19"
 image: teaser.png
 aliases:
@@ -64,3 +63,5 @@ Once we've done this, `gpplot2` no longer knows how to assign subsets of data to
 [lat]: https://cran.r-project.org/web/packages/lattice
 [gist]: https://gist.github.com/ikashnitsky/ee73b39e93f9d074d3362c7fb0d6c815
 [shrink]: https://ikashnitsky.github.io/2023/shrink-space
+
+

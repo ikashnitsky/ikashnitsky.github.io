@@ -1,6 +1,5 @@
 ---
 title: "Beyond Fraud: How IHME Distorts Academic Metrics"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-10-13"
@@ -42,3 +41,5 @@ The whole IHME story is a fascinating one (covered in all details by Timothy Sch
 [twi]: https://x.com/search?q=from%3Aikashnitsky%20ihme&src=recent_search_click
 [li]: https://www.linkedin.com/posts/publishing-with-integrity_i-was-sent-a-google-scholar-profile-via-a-activity-7381133506355056640-TU2d
 [lic]: https://www.linkedin.com/feed/update/urn:li:activity:7381133506355056640?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7381133506355056640%2C7381207133352087552%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287381207133352087552%2Curn%3Ali%3Aactivity%3A7381133506355056640%29
+
+

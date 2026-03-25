@@ -1,6 +1,5 @@
 ---
 title: "demographeR's notes"
-description-meta: "{{< meta website.description >}}"
 listing:
   - id: posts_2026
     contents: "2026/**/index.qmd"
@@ -52,7 +51,6 @@ listing:
     sort: "date desc"
     template: html/listing-grid.ejs
     # type: grid
-  
 # image-placeholder: img/card-tw.png
 page-layout: full
 toc-title: Year
@@ -119,4 +117,6 @@ margin-header: |
 ***
 
 <center><button class="btn btn-lg btn-secondary" type="button"><a href="/subscribe.html"> {{< fa pen-to-square >}} Subscribe for email updates</a></button></center>
+
+
 

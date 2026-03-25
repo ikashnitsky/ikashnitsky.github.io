@@ -1,6 +1,5 @@
 ---
 title: "#30DayMapChallenge my 25/30 contributions"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2023-12-21"
@@ -233,3 +232,5 @@ Below I list all my contributions as Mastodon post embeds. I use Mastodon becaus
 [one]: https://ikashnitsky.phd/2023/geocoding/
 [two]: https://ikashnitsky.phd/2023/map-proj/
 [bsky]: https://bsky.app/profile/ikashnitsky.phd/post/3kgzxxhdgbm24
+
+

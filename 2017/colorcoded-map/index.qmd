@@ -1,6 +1,5 @@
 ---
 title: "Colorcoded map: regional population structures at a glance"
-description-meta: "{{< meta website.description >}}"
 date: "2017-06-30"
 image: teaser.png
 categories: [r, ggplot2, rspatial, dataviz, demography]
@@ -38,3 +37,5 @@ The obvious drawback of the map is that it is not colorblind friendly, and there
 [retreat]: https://twitter.com/RostockRetreat
 [gen]: https://doi.org/10.1186/s41118-017-0018-2
 [gist]: https://gist.github.com/ikashnitsky/c7bf13f6c716f65ddba3e52073793f3f
+
+

@@ -1,6 +1,5 @@
 ---
 title: "."
-description-meta: "{{< meta website.description >}}"
 image: img/ik.png
 title-block-banner: img/abs-banner-me.png
 code-tools: false
@@ -103,3 +102,5 @@ Ilya
 [mailto]: mailto:ilya.kashnitsky@gmail.com  
 [dst]: https://www.dst.dk/en/
 [lcds]: https://www.demography.ox.ac.uk/
+
+

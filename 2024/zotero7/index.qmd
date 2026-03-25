@@ -1,6 +1,5 @@
 ---
 title: "[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library"
-description-meta: "{{< meta website.description >}}"
 date: "2024-08-16"
 image: zotero-teaser.png
 categories: [r, tutorial]
@@ -212,4 +211,6 @@ This tutorial offers a time-proven recipe for tuning a personal Zotero library s
 [case]: https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/dbb99049-2916-4bc8-824f-1816f5c4f06d_rw_1920.png?h=f0b45a30ba31ad414562d1085cd6c172
 [citing]: https://quarto.org/docs/authoring/citations.html
 [get-involved]: https://www.zotero.org/getinvolved/
+
+
 

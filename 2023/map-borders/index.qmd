@@ -1,6 +1,5 @@
 ---
 title: "The easiest way to radically improve map aesthetics"
-description-meta: "{{< meta website.description >}}"
 date: "2023-01-01"
 image: teaser.png
 categories: [r, rspatial, dataviz, trick]
@@ -131,3 +130,5 @@ Publishing this post is my personal gestalt closure -- it spent more than three 
 [thread]: https://twitter.com/ikashnitsky/status/1247875600305598464
 [gist]: https://gist.github.com/ikashnitsky/cf2c29a29d39f79bb1c857a4fefc2cd4
 [pipe]: https://bsky.app/profile/ikashnitsky.phd/post/3kilahv45c52n
+
+

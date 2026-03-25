@@ -1,6 +1,5 @@
 ---
 title: "Dotplot – the single most useful yet largely neglected dataviz type"
-description-meta: "{{< meta website.description >}}"
 date: "2019-07-19"
 image: teaser.jpeg
 categories: [r, dataviz, trick]
@@ -47,5 +46,7 @@ The code to replicate this figure is in [this gist][gist]. A couple of coding so
 [geoj]: https://doi.org/10.1007/s10708-018-9953-5
 [wp]: https://ikashnitsky.github.io/www.nidi.nl/shared/content/output/papers/nidi-wp-2014-14.pdf
 [gist]: https://gist.github.com/ikashnitsky/2f3e2b2af6f50911bb775bbce6eb0fb8
+
+
 
 

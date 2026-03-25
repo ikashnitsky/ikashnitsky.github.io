@@ -1,6 +1,5 @@
 ---
 title: "Arranging subplots with ggplot2"
-description-meta: "{{< meta website.description >}}"
 date: "2017-05-22"
 image: teaser.png
 categories: [r, ggplot2]
@@ -127,3 +126,5 @@ Just what we wanted to get.
 [gen]: https://doi.org/10.1186/s41118-017-0018-2
 [pdf]: https://ikashnitsky.github.io/doc/pubs/1705-genus-ik.pdf
 [git]: https://github.com/ikashnitsky/genus-2017
+
+

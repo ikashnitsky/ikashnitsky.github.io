@@ -8,7 +8,6 @@
 
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2026-03-21">
-<meta name="description" content="<strong>?meta:website.description</strong>">
 
 <title>Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions – Ilya Kashnitsky</title>
 <style>
@@ -130,14 +129,14 @@ ga('send', {
 </style>
 
 
-<meta property="og:title" content="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions">
+<meta property="og:title" content="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions – Ilya Kashnitsky">
 <meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta property="og:image" content="https://ikashnitsky.phd/2026/laliga-preview/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions">
+<meta name="twitter:title" content="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions – Ilya Kashnitsky">
 <meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2026/laliga-preview/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
@@ -305,7 +304,7 @@ ga('send', {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Code and data to reproduce this analysis are available on <a href="https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click">GitHub</a>.
+<span class="screen-reader-only">Tip</span>Code and data to reproduce this analysis are available on <a href="https://github.com/ikashnitsky/laliga-preview">GitHub</a>.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -803,75 +802,76 @@ ga('send', {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits' La Liga predictions"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> margin</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">reference-location:</span><span class="co"> margin</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-03-21"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, football, dataviz, llm]</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let's check the track record of three popular Russian football pundits.  </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Vadim Lukomskiy</span><span class="co">](https://t.me/lukomski)</span>, <span class="co">[</span><span class="ot">Denis Alkhazov</span><span class="co">](https://t.me/alhasbro)</span>, and <span class="co">[</span><span class="ot">Vladimir Grabchak</span><span class="co">](https://t.me/barcafamilyyy)</span> air a fantastic <span class="co">[</span><span class="ot">La Liga Preview podcast on YouTube</span><span class="co">][yt]</span>. Each week they discuss the upcoming matchday and offer their bets, one per game. Next week, they start by reviewing the outcomes. For a long while I was wondering how do the weekly predictions add up in the long run --I wanted to see whether a thorough knowledge of the specific league and a deep involvement can allow the pundits to stay in the profitable zone while betting on all the games of the season. </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>So I decided to check it. In the current 2025-2026 season we have data up to matchday 28, and matchdays 6 and 18 were played midweek, so the guys happened to skip predictions. In total, 26 rounds, 10 games in each -- quite some data to play with. </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>The data collection was a curious workflow in itself. I took screenshots of the predictions directly from the YouTube videos and used LLMs (Gemini and Claude) to parse the images and compile them into a clean dataset. Yet, there was a challenge along the way. LLMs struggled with team names that were represented with small logo images. Here's how a typical screenshot looked like:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="al">![][screenshot]</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Sometimes they managed to pick up the names of the playing teams from the text description of the bet. But in other cases they had to leave placeholder marks "Team A" / "Team B". To fill the gaps, I cross-referenced it with a <span class="co">[</span><span class="ot">dump of all played matches</span><span class="co">][fbref]</span> in La Liga this season. This helped to figure out all the team names where the LLMs failed on the first run <span class="ot">[^1]</span>. </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>On the test run, Gemini gave me a perfect decoding of one screenshot. I thought that it used computer vision to read the team names from the logos, but it turned out that it just used the text transcript of the YouTube video that I linked in the initial prompt.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Anyways, with less effort than it would have taken to manually transcribe the predictions, I ended up with a tidy dataset of 259 predictions, including the predicted winner, the odds, and the actual match outcomes.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Naturally, I fired up R to answer two burning questions: was any of our three experts profitable in the long run, and whether they were systematically better at predicting the outcomes of some specific teams that they may know and understand the best?</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Overall Scoreboard</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>First, let’s look at the overall performance. Evaluating a pundit isn't just about how many times they win; it's about the value of the odds they successfully predict. </span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="al">![](summary.png)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>I was amused to see the results. Two of the three pundits managed to win 44% of their bets with the cumulative effect bringing them to almost  a perfectly neutral balance as a result. So, even an extremely deep domain knowledge and a high involvement in the league doesn't translate into a profitable betting strategy. No real surprise here, but just another reminder that one does not fool the system that is designed to fool him.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just bet on XXX -- you cannot miss</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Well, maybe our experts know some of the teams so well that they can predict the outcomes of these teams much better? You know, football is highly contextual. A pundit might struggle to predict some team's volatile form but perfectly read another's tactical setups. I wanted to see if the pundits have "specialty" teams.</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>To do this, I reshaped the data so that every match counted for both the Home and Away teams involved, calculating the success rate for each pundit-team combination.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="al">![][img]</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>Wow! Some fascinating patterns emerge:</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Lukomskiy's Yellow Submarine:** Vadim has an incredible read on **Villarreal**. Out of 21 predictions involving them, he got 14 right—a massive 66.7% success rate over a large sample size. He also consistently reads Athletic Bilbao and Real Sociedad well.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Alkhazov's Levante:** Denis has certain success (luck?) with **Levante**, accurately predicting 14 out of 26 matches (53.8%). Interestingly, while he struggles overall compared to Vadim, his read on mid-to-lower table clashes seems to be his bread and butter. </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Grabchak's Flawless Osasuna:** Though his sample size is smaller, Vladimir went a perfect **7 for 7** on matches involving Osasuna. </span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>All three pundits have consistently failed with the big trio **Real Madrid**, **Barcelona**, and **Atletico Madrid**, which is quite surprising given the perpetual attention to these clubs and their often consistent performance.</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**Do pundits really know something specific about some teams, or is it just a matter of luck?** </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> margin</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">reference-location:</span><span class="co"> margin</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-03-21"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, football, dataviz, llm]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let's check the track record of three popular Russian football pundits.  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Vadim Lukomskiy</span><span class="co">](https://t.me/lukomski)</span>, <span class="co">[</span><span class="ot">Denis Alkhazov</span><span class="co">](https://t.me/alhasbro)</span>, and <span class="co">[</span><span class="ot">Vladimir Grabchak</span><span class="co">](https://t.me/barcafamilyyy)</span> air a fantastic <span class="co">[</span><span class="ot">La Liga Preview podcast on YouTube</span><span class="co">][yt]</span>. Each week they discuss the upcoming matchday and offer their bets, one per game. Next week, they start by reviewing the outcomes. For a long while I was wondering how do the weekly predictions add up in the long run --I wanted to see whether a thorough knowledge of the specific league and a deep involvement can allow the pundits to stay in the profitable zone while betting on all the games of the season. </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>So I decided to check it. In the current 2025-2026 season we have data up to matchday 28, and matchdays 6 and 18 were played midweek, so the guys happened to skip predictions. In total, 26 rounds, 10 games in each -- quite some data to play with. </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>The data collection was a curious workflow in itself. I took screenshots of the predictions directly from the YouTube videos and used LLMs (Gemini and Claude) to parse the images and compile them into a clean dataset. Yet, there was a challenge along the way. LLMs struggled with team names that were represented with small logo images. Here's how a typical screenshot looked like:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="al">![][screenshot]</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Sometimes they managed to pick up the names of the playing teams from the text description of the bet. But in other cases they had to leave placeholder marks "Team A" / "Team B". To fill the gaps, I cross-referenced it with a <span class="co">[</span><span class="ot">dump of all played matches</span><span class="co">][fbref]</span> in La Liga this season. This helped to figure out all the team names where the LLMs failed on the first run <span class="ot">[^1]</span>. </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>On the test run, Gemini gave me a perfect decoding of one screenshot. I thought that it used computer vision to read the team names from the logos, but it turned out that it just used the text transcript of the YouTube video that I linked in the initial prompt.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Anyways, with less effort than it would have taken to manually transcribe the predictions, I ended up with a tidy dataset of 259 predictions, including the predicted winner, the odds, and the actual match outcomes.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Naturally, I fired up R to answer two burning questions: was any of our three experts profitable in the long run, and whether they were systematically better at predicting the outcomes of some specific teams that they may know and understand the best?</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Overall Scoreboard</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>First, let’s look at the overall performance. Evaluating a pundit isn't just about how many times they win; it's about the value of the odds they successfully predict. </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="al">![](summary.png)</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>I was amused to see the results. Two of the three pundits managed to win 44% of their bets with the cumulative effect bringing them to almost  a perfectly neutral balance as a result. So, even an extremely deep domain knowledge and a high involvement in the league doesn't translate into a profitable betting strategy. No real surprise here, but just another reminder that one does not fool the system that is designed to fool him.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Just bet on XXX -- you cannot miss</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Well, maybe our experts know some of the teams so well that they can predict the outcomes of these teams much better? You know, football is highly contextual. A pundit might struggle to predict some team's volatile form but perfectly read another's tactical setups. I wanted to see if the pundits have "specialty" teams.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>To do this, I reshaped the data so that every match counted for both the Home and Away teams involved, calculating the success rate for each pundit-team combination.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="al">![][img]</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Wow! Some fascinating patterns emerge:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Lukomskiy's Yellow Submarine:** Vadim has an incredible read on **Villarreal**. Out of 21 predictions involving them, he got 14 right—a massive 66.7% success rate over a large sample size. He also consistently reads Athletic Bilbao and Real Sociedad well.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Alkhazov's Levante:** Denis has certain success (luck?) with **Levante**, accurately predicting 14 out of 26 matches (53.8%). Interestingly, while he struggles overall compared to Vadim, his read on mid-to-lower table clashes seems to be his bread and butter. </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Grabchak's Flawless Osasuna:** Though his sample size is smaller, Vladimir went a perfect **7 for 7** on matches involving Osasuna. </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>All three pundits have consistently failed with the big trio **Real Madrid**, **Barcelona**, and **Atletico Madrid**, which is quite surprising given the perpetual attention to these clubs and their often consistent performance.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>**Do pundits really know something specific about some teams, or is it just a matter of luck?** </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code and data to reproduce this analysis are available on [GitHub][gh].</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ot">[gh]: https://x.com/search?q=from%3Aikashnitsky%20ihme&amp;src=recent_search_click</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ot">[img]: https://github.com/ikashnitsky/laliga-preview/raw/main/out/by-team.png</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ot">[yt]: https://youtube.com/playlist?list=PLZgJT1M3SJ9XVvZFlcJeCKUMzrMYCrCwc&amp;si=RVs-ryd-bKHXuOBB</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ot">[screenshot]: https://github.com/ikashnitsky/laliga-preview/blob/main/dat/screenshots/Screenshot_20260319-163345.png?raw=true</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ot">[fbref]: https://fbref.com/en/comps/12/schedule/La-Liga-Scores-and-Fixtures</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code and data to reproduce this analysis are available on [GitHub][gh].</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ot">[gh]: https://github.com/ikashnitsky/laliga-preview</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ot">[img]: https://github.com/ikashnitsky/laliga-preview/raw/main/out/by-team.png</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ot">[yt]: https://youtube.com/playlist?list=PLZgJT1M3SJ9XVvZFlcJeCKUMzrMYCrCwc&amp;si=RVs-ryd-bKHXuOBB</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ot">[screenshot]: https://github.com/ikashnitsky/laliga-preview/blob/main/dat/screenshots/Screenshot_20260319-163345.png?raw=true</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ot">[fbref]: https://fbref.com/en/comps/12/schedule/La-Liga-Scores-and-Fixtures</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2025 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2026 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>

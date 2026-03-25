@@ -1,6 +1,5 @@
 ---
 title: "Deep Catalan roots: playing with stringdist"
-description-meta: "{{< meta website.description >}}"
 date: "2018-06-04"
 image: teaser.jpg
 categories: [r, demography]
@@ -89,3 +88,5 @@ There are 20 people in our EDSD group, 10 guys and 10 girls. We come from differ
 [paper]: https://link.springer.com/chapter/10.1007/978-3-319-19884-2_10
 [doc]: https://cran.r-project.org/web/packages/stringdist/stringdist.pdf
 [repo]: https://github.com/ikashnitsky/deep-catalan-roots
+
+

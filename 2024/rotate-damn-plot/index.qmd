@@ -1,6 +1,5 @@
 ---
 title: "Rotate the damn plot"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2024-12-18"
@@ -159,4 +158,6 @@ Let me conclude with just reiterating that it is hard to overestimate how import
 ::: {.callout-note}
 # This post is the first in the **Damn Plot series**. Other posts will follow, for now you may follow @[damnplot.ikashnitsky.phd][bsky] BlueSky account. 
 :::
+
+
 

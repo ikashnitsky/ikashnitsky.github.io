@@ -1,6 +1,5 @@
 ---
 title: "Data acquisition in R (2/4)"
-description-meta: "{{< meta website.description >}}"
 date: "2017-11-07"
 image: teaser.png
 categories: [r, tutorial, data acquisition]
@@ -199,3 +198,5 @@ df_wid |>
 [widr]: https://github.com/WIDworld/wid-r-tool
 [vig]: https://github.com/WIDworld/wid-r-tool/raw/master/inst/doc/wid-demo.pdf
 [gist]: https://gist.github.com/ikashnitsky/2362ce308f47ff38c3da556384acd20f
+
+

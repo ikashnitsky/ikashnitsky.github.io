@@ -1,6 +1,5 @@
 ---
 title: "sjrdata: all SCImago Journal & Country Rank data, ready for R"
-description-meta: "{{< meta website.description >}}"
 date: "2018-09-23"
 image: teaser.png
 categories: [r, package, bibliometrics]
@@ -82,3 +81,5 @@ sjr_journals |>
 [site]: https://www.scimagojr.com
 [repo]: https://github.com/ikashnitsky/sjrdata 
 [gist]: https://gist.github.com/ikashnitsky/3133422ef85ff3f3d65be9926d6bd990
+
+

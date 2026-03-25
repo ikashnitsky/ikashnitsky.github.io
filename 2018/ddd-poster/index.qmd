@@ -1,6 +1,5 @@
 ---
 title: "Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding"
-description-meta: "{{< meta website.description >}}"
 date: "2018-12-03"
 image: teaser.png
 categories: [r, demography, dataviz, rspatial]
@@ -62,5 +61,7 @@ This time I layouted the poster in [Inkscape][ink] rather than arranging everyth
 [proj]: https://osf.io/d4hjx/
 [demres17]: https://doi.org/10.4054/DemRes.2017.36.21
 [dr18]: https://github.com/ikashnitsky/demres-2018-geofacet
+
+
 
 

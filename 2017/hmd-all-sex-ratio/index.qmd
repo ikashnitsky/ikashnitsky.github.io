@@ -1,6 +1,5 @@
 ---
 title: "Sex ratios in all countries from Human Mortality Database"
-description-meta: "{{< meta website.description >}}"
 date: "2017-02-05"
 image: teaser.png
 categories: [r, hmd, demography]
@@ -112,6 +111,8 @@ What happened in Taiwan?
 ::: {.callout-tip}
 # This post is based on my earlier [tweet](https://twitter.com/ikashnitsky/status/785973218775478273) and [gist](https://gist.github.com/ikashnitsky/a578eaef6b122aa2aa2e3469fd2dcbe7)
 :::
+
+
 
 
 

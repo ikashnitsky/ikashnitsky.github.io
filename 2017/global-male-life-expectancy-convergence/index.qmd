@@ -1,6 +1,5 @@
 ---
 title: "Global convergence in male life expectancy at birth"
-description-meta: "{{< meta website.description >}}"
 date: "2017-07-17"
 image: teaser.png
 categories: [r, demography]
@@ -20,3 +19,5 @@ In the modern history, the world has seen unprecedented decrease in human mortal
 
 
 [gist]: https://gist.github.com/ikashnitsky/2f6e29acbb9cbeb1694630c5932b8ad5
+
+

@@ -1,3 +1,11 @@
+---
+title: "My (already not just) academic path reflection - LLM jumpstarters"
+fig-cap-location: margin
+reference-location: margin
+date: "2025-01-01"
+image: teaser.png
+categories: [demography, career, academia]
+---
 
 <!-- LLM jumpstarter prompt -->
 
@@ -112,7 +120,7 @@ A recent experience providing feedback to Sebastian revealed something significa
 
 **The Next Chapter: Embracing the Scientific Mentor Role**
 
-This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of scientific mentor. The breadth of my experience, combined with the perspective gained from working across different research contexts, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.
+This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of a scientific mentor. The breadth of my experience, combined with the perspective gained from working across different research contexts, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.
 
 
 
@@ -253,6 +261,6 @@ A recent experience providing feedback to Sebastian Hanika as an external PhD ev
 
 ## The Next Chapter: Embracing the Scientific Mentor Role
 
-This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of scientific mentor. The breadth of my experience across multiple countries and research contexts, combined with my board membership in the Danish Demographic Association and my involvement with organizations like IUSSP and EAPS, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path spanning urbanization, mortality, and migration—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.
+This moment of clarity has brought me to an important realization: I'm ready to step fully into the role of a scientific mentor. The breadth of my experience across multiple countries and research contexts, combined with my board membership in the Danish Demographic Association and my involvement with organizations like IUSSP and EAPS, has equipped me to guide others not just in navigating academic careers but in shaping research agendas and advancing scientific understanding. What once felt like a liability—my non-linear research path spanning urbanization, mortality, and migration—now reveals itself as a unique asset in helping others find their own way through the complex terrain of academic science.
 
 

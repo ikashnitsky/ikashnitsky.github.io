@@ -1,6 +1,5 @@
 ---
 title: "Data acquisition in R (3/4)"
-description-meta: "{{< meta website.description >}}"
 date: "2017-12-10"
 image: teaser.png
 categories: [r, tutorial, data acquisition]
@@ -279,3 +278,5 @@ All the code chunks together can be found in [this gist][gist]
 [api]: https://api.census.gov/data/key_signup.html
 
 [gist]: https://gist.github.com/ikashnitsky/2e4bb16e097b1a264eeeae13ca6d7ce3
+
+

@@ -1,6 +1,5 @@
 ---
 title: "R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark"
-description-meta: "{{< meta website.description >}}"
 date: "2017-03-16"
 image: teaser.png
 categories: [r, rspatial]
@@ -455,3 +454,5 @@ The result (thankfully!) looks realistic, with higher shares of the working-age 
 [^1]: Vrangbæk, K. (2010). Structural Reform in Denmark, 2007–09: Central Reform Processes in a Decentralised Environment. Local Government Studies, 36(2), 205–221. https://doi.org/10.1080/03003930903560562
 [^2]: I have spent quite some time searching if someone else did the job before me and failed to find.
 [^3]: There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.
+
+

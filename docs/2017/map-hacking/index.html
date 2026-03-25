@@ -2,11 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-04-24">
-<meta name="description" content="<strong>?meta:website.description</strong>">
 <title>Hacking maps with ggplot2 – Ilya Kashnitsky</title>
 <style>
 code{white-space: pre-wrap;}
@@ -66,14 +65,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4568ffbcec85b4807573e5e5302b237f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-574bf93e77159822ee1dd582d4d6753c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1b3044e804994b6d621efb4b1aa7037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-de9568bf8b5f098cbe1a9a00ddf4face.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -119,14 +119,14 @@ ga('send', {
         background: #025757;
       }
 </style>
-<meta property="og:title" content="Hacking maps with ggplot2">
+<meta property="og:title" content="Hacking maps with ggplot2 – Ilya Kashnitsky">
 <meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta property="og:image" content="https://ikashnitsky.phd/2017/map-hacking/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
-<meta name="twitter:title" content="Hacking maps with ggplot2">
+<meta name="twitter:title" content="Hacking maps with ggplot2 – Ilya Kashnitsky">
 <meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2017/map-hacking/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
@@ -140,6 +140,8 @@ ga('send', {
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
@@ -251,8 +253,8 @@ ga('send', {
 <p>In my last <a href="https://osf.io/suwxf/">paper</a>, I needed to show a two-dimensional grouping of the European NUTS-2 regions in 4 quadrants according to GDP per capita and the share of working-age population (see Figure 8 in the <a href="https://ikashnitsky.github.io/doc/pubs/1702-nidi-wp-ik.pdf">preprint</a>). In line with the study setting, I did the grouping separately for Western, Southern, and Eastern Europe. I decided that the most straightforward way to show that on map would be to visually separate the 3 subregions of Europe. The task is easily doable through triggering the fortified geodata object – see the code below.</p>
 <p>First, the code to prepare the R session and load the (already prepared) data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># version 1.1.1</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/wch/extrafont">extrafont</a></span><span class="op">)</span> <span class="co"># version 0.17</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># version 1.1.1</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/fbertran/extrafont">extrafont</a></span><span class="op">)</span> <span class="co"># version 0.17</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jrnold.github.io/ggthemes/">ggthemes</a></span><span class="op">)</span> <span class="co"># version 3.4.0</span></span>
 <span><span class="va">font</span> <span class="op">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hrbrthemes</span><span class="op">)</span> <span class="co"># version 0.1.0</span></span>
@@ -265,21 +267,21 @@ ga('send', {
 <span></span>
 <span><span class="co"># fortify the spatial objects</span></span>
 <span><span class="va">bord</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sborders</span><span class="op">)</span></span>
-<span><span class="va">fort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sn2</span>, region <span class="op">=</span> <span class="st">'id'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">fort</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/fortify.html">fortify</a></span><span class="op">(</span><span class="va">Sn2</span>, region <span class="op">=</span> <span class="st">'id'</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, I hack the geodata (<code>long</code> and <code>lat</code> variables) moving groups of NUTS-2 regions (Western, Southern, and Eastern Europe) apart. The appropriate values to move the groups of regions were found empirically.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># hack geodata to separate macro-regions</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># hack geodata to separate macro-regions</span></span>
 <span><span class="va">fort_hack</span> <span class="op">&lt;-</span> <span class="va">fort</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">df</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">subregion</span><span class="op">)</span>, <span class="st">'id'</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>        <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>long <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">subregion</span><span class="op">==</span><span class="st">'E'</span>, <span class="va">long</span> <span class="op">+</span> <span class="fl">5e5</span>, <span class="va">long</span><span class="op">)</span>,</span>
 <span>               long <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">subregion</span><span class="op">==</span><span class="st">'S'</span>, <span class="va">long</span> <span class="op">+</span> <span class="fl">2e5</span>, <span class="va">long</span><span class="op">)</span>,</span>
 <span>               lat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">subregion</span><span class="op">==</span><span class="st">'S'</span>, <span class="va">lat</span> <span class="op">-</span> <span class="fl">5e5</span>, <span class="va">lat</span><span class="op">)</span>,</span>
-<span>               long <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">subregion</span><span class="op">==</span><span class="st">'W'</span>, <span class="va">long</span> <span class="op">-</span> <span class="fl">2e5</span>, <span class="va">long</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>               long <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">subregion</span><span class="op">==</span><span class="st">'W'</span>, <span class="va">long</span> <span class="op">-</span> <span class="fl">2e5</span>, <span class="va">long</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finally, we are ready to create the schematic map.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create color pallete</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create color pallete</span></span>
 <span><span class="va">brbg</span> <span class="op">&lt;-</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">11</span>,<span class="st">"BrBG"</span><span class="op">)</span></span>
 <span><span class="va">brbg4</span> <span class="op">&lt;-</span> <span class="va">brbg</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">9</span>,<span class="fl">2</span>,<span class="fl">11</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
@@ -336,7 +338,7 @@ ga('send', {
 <span><span class="st">             age population in 2008"</span>,</span>
 <span>            caption <span class="op">=</span> <span class="st">"Data: Eurostat\nAuthor: Ilya Kashnitsky (ikashnitsky.github.io)"</span></span>
 <span>        <span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum_rc.html">theme_ipsum_rc</a></span><span class="op">(</span>plot_title_size <span class="op">=</span> <span class="fl">30</span>, subtitle_size <span class="op">=</span> <span class="fl">20</span>, caption_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum_rc.html">theme_ipsum_rc</a></span><span class="op">(</span>plot_title_size <span class="op">=</span> <span class="fl">30</span>, subtitle_size <span class="op">=</span> <span class="fl">20</span>, caption_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And here is the result.</p>
 <hr>
@@ -398,13 +400,14 @@ ga('send', {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -823,139 +826,139 @@ ga('send', {
   }
   loadGiscus();
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Hacking maps with ggplot2"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2017-04-24"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, ggplot2, rspatial]</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2017-04-24"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.png</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, ggplot2, rspatial]</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>This is a very short post on mapping with <span class="in">`ggplot2`</span>.   </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>Quite often, mapping some data, we do not need to follow scrupulously the formal requirements to geographical maps -- the idea is just to show the spatial dimension of the data. For instance, the network of rivers is not the most important information when we <span class="co">[</span><span class="ot">map the elections outcome</span><span class="co">][ele]</span>. Thus, the simplified mapping allows quite some freedom in transforming the geodata. The classical example of such geodata transformation is the <span class="co">[</span><span class="ot">replacement and scaling of Alaska and Hawaii</span><span class="co">][ala]</span> to be mapped alongside the mainland of the US. As one may see in this example, usually such geodata transformations utilize quite complex GIS tools in order to reposition an object in the coordinate system.  </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>The interesting feature of mapping with <span class="in">`ggplot2`</span> is that, before the actual plotting, geodata has to be fotrified (<span class="in">`ggplot2::fortify`</span>) -- transformed to a simple dataframe object. Since fortified geodata is basically a dataframe, some simple transformations could be made really easily.   </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>In my last <span class="co">[</span><span class="ot">paper</span><span class="co">][osf]</span>, I needed to show a two-dimensional grouping of the European NUTS-2 regions in 4 quadrants according to GDP per capita and the share of working-age population (see Figure 8 in the <span class="co">[</span><span class="ot">preprint</span><span class="co">][pre]</span>). In line with the study setting, I did the grouping separately for Western, Southern, and Eastern Europe. I decided that the most straightforward way to show that on map would be to visually separate the 3 subregions of Europe. The task is easily doable through triggering the fortified geodata object -- see the code below. </span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>First, the code to prepare the R session and load the (already prepared) data.</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># version 1.1.1</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont) <span class="co"># version 0.17</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes) <span class="co"># version 3.4.0</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>font <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hrbrthemes) <span class="co"># version 0.1.0</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># The code is tested on a PC-win7-x64</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># R version 3.3.3</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>This is a very short post on mapping with <span class="in">`ggplot2`</span>.   </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>Quite often, mapping some data, we do not need to follow scrupulously the formal requirements to geographical maps -- the idea is just to show the spatial dimension of the data. For instance, the network of rivers is not the most important information when we <span class="co">[</span><span class="ot">map the elections outcome</span><span class="co">][ele]</span>. Thus, the simplified mapping allows quite some freedom in transforming the geodata. The classical example of such geodata transformation is the <span class="co">[</span><span class="ot">replacement and scaling of Alaska and Hawaii</span><span class="co">][ala]</span> to be mapped alongside the mainland of the US. As one may see in this example, usually such geodata transformations utilize quite complex GIS tools in order to reposition an object in the coordinate system.  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>The interesting feature of mapping with <span class="in">`ggplot2`</span> is that, before the actual plotting, geodata has to be fotrified (<span class="in">`ggplot2::fortify`</span>) -- transformed to a simple dataframe object. Since fortified geodata is basically a dataframe, some simple transformations could be made really easily.   </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>In my last <span class="co">[</span><span class="ot">paper</span><span class="co">][osf]</span>, I needed to show a two-dimensional grouping of the European NUTS-2 regions in 4 quadrants according to GDP per capita and the share of working-age population (see Figure 8 in the <span class="co">[</span><span class="ot">preprint</span><span class="co">][pre]</span>). In line with the study setting, I did the grouping separately for Western, Southern, and Eastern Europe. I decided that the most straightforward way to show that on map would be to visually separate the 3 subregions of Europe. The task is easily doable through triggering the fortified geodata object -- see the code below. </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>First, the code to prepare the R session and load the (already prepared) data.</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># version 1.1.1</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont) <span class="co"># version 0.17</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes) <span class="co"># version 3.4.0</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>font <span class="ot">&lt;-</span> <span class="st">"Roboto Condensed"</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hrbrthemes) <span class="co"># version 0.1.0</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># The code is tested on a PC-win7-x64</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># R version 3.3.3</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># load the prepared geodata and stat data</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://ikashnitsky.github.io/share/1704-map-hacking/map-hacking.Rdata"</span>))</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># fortify the spatial objects</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>bord <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sborders)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>fort <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sn2, <span class="at">region =</span> <span class="st">'id'</span>)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>Next, I hack the geodata (<span class="in">`long`</span> and <span class="in">`lat`</span> variables) moving groups of NUTS-2 regions (Western, Southern, and Eastern Europe) apart. The appropriate values to move the groups of regions were found empirically. </span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># hack geodata to separate macro-regions</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>fort_hack <span class="ot">&lt;-</span> fort <span class="sc">|&gt;</span> </span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">select</span>(id, subregion), <span class="st">'id'</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'E'</span>, long <span class="sc">+</span> <span class="fl">5e5</span>, long),</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, long <span class="sc">+</span> <span class="fl">2e5</span>, long),</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>               <span class="at">lat =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, lat <span class="sc">-</span> <span class="fl">5e5</span>, lat),</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>               <span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'W'</span>, long <span class="sc">-</span> <span class="fl">2e5</span>, long))</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>Finally, we are ready to create the schematic map. </span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co"># create color pallete</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>brbg <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">11</span>,<span class="st">"BrBG"</span>)</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>brbg4 <span class="ot">&lt;-</span> brbg[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">11</span>)]</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="co"># create the two-dim legend</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>ggleg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">45</span>, <span class="at">xmax =</span> .<span class="dv">6</span>, <span class="at">ymin =</span> .<span class="dv">1</span>, <span class="at">ymax =</span> .<span class="dv">25</span>, </span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">1</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">45</span>, <span class="at">xmax =</span> .<span class="dv">6</span>, <span class="at">ymin =</span> .<span class="dv">4</span>, <span class="at">ymax =</span> .<span class="dv">55</span>, </span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">2</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">75</span>, <span class="at">xmax =</span> .<span class="dv">9</span>, <span class="at">ymin =</span> .<span class="dv">1</span>, <span class="at">ymax =</span> .<span class="dv">25</span>, </span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">3</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">75</span>, <span class="at">xmax =</span> .<span class="dv">9</span>, <span class="at">ymin =</span> .<span class="dv">4</span>, <span class="at">ymax =</span> .<span class="dv">55</span>, </span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">4</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">05</span>, <span class="at">xmax =</span> .<span class="dv">95</span>, <span class="at">ymin =</span> .<span class="dv">05</span>, <span class="at">ymax =</span> .<span class="dv">95</span>, </span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"grey20"</span>)<span class="sc">+</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> .<span class="dv">35</span>, <span class="at">y =</span> <span class="fu">c</span>(.<span class="dv">175</span>, .<span class="dv">475</span>), <span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> <span class="dv">1</span>,</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">6</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'POOR'</span>, <span class="st">'RICH'</span>), <span class="at">family =</span> font) <span class="sc">+</span> </span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> <span class="fu">c</span>(.<span class="dv">525</span>, .<span class="dv">825</span>), <span class="at">y =</span> .<span class="dv">65</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">6</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'LOW'</span>, <span class="st">'HIGH'</span>), <span class="at">family =</span> font)<span class="sc">+</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> .<span class="dv">1</span>, <span class="at">y =</span> .<span class="dv">9</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">7</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="st">"LEGEND"</span>, <span class="at">family =</span> font)<span class="sc">+</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_map</span>()</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="co"># create the blank map</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>basemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">900000</span>,<span class="dv">5400000</span>), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">2500000</span>, <span class="dv">7000000</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_map</span>()<span class="sc">+</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">panel.border=</span><span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">'black'</span>,<span class="at">size=</span>.<span class="dv">5</span>,<span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co"># the main map</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>map_temp <span class="ot">&lt;-</span> basemap <span class="sc">+</span> </span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> fort_hack, <span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">map_id=</span>id, <span class="at">fill=</span>group))<span class="sc">+</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> brbg4[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)])</span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co"># now combine the map and the legend</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotation_custom</span>(</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggplotGrob</span>(map_temp), <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">1</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">1</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotation_custom</span>(</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggplotGrob</span>(ggleg), <span class="at">xmin =</span> <span class="fl">0.72</span>, <span class="at">xmax =</span> <span class="fl">0.99</span>, <span class="at">ymin =</span> <span class="fl">0.72</span>, <span class="at">ymax =</span> <span class="fl">0.99</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Labour force and income in EU-27 NUTS-2 regions"</span>,</span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>            <span class="at">subtitle =</span> <span class="st">"Within each of the three macro-regions of Europe - Westren, </span></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="st">             Southern, and Eastern -</span><span class="sc">\n</span><span class="st">NUTS-2 regions are classified in 4 groups </span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="st">             according to the level of GDP per capita</span><span class="sc">\n</span><span class="st">and the share of working </span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="st">             age population in 2008"</span>,</span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>            <span class="at">caption =</span> <span class="st">"Data: Eurostat</span><span class="sc">\n</span><span class="st">Author: Ilya Kashnitsky (ikashnitsky.github.io)"</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_ipsum_rc</span>(<span class="at">plot_title_size =</span> <span class="dv">30</span>, <span class="at">subtitle_size =</span> <span class="dv">20</span>, <span class="at">caption_size =</span> <span class="dv">15</span>)</span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>And here is the result.</span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>***  </span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="al">![](hacked-map.png)</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># load the prepared geodata and stat data</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://ikashnitsky.github.io/share/1704-map-hacking/map-hacking.Rdata"</span>))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># fortify the spatial objects</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>bord <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sborders)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>fort <span class="ot">&lt;-</span> <span class="fu">fortify</span>(Sn2, <span class="at">region =</span> <span class="st">'id'</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Next, I hack the geodata (<span class="in">`long`</span> and <span class="in">`lat`</span> variables) moving groups of NUTS-2 regions (Western, Southern, and Eastern Europe) apart. The appropriate values to move the groups of regions were found empirically. </span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># hack geodata to separate macro-regions</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>fort_hack <span class="ot">&lt;-</span> fort <span class="sc">|&gt;</span> </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(df <span class="sc">|&gt;</span> <span class="fu">select</span>(id, subregion), <span class="st">'id'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'E'</span>, long <span class="sc">+</span> <span class="fl">5e5</span>, long),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>               <span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, long <span class="sc">+</span> <span class="fl">2e5</span>, long),</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>               <span class="at">lat =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'S'</span>, lat <span class="sc">-</span> <span class="fl">5e5</span>, lat),</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>               <span class="at">long =</span> <span class="fu">ifelse</span>(subregion<span class="sc">==</span><span class="st">'W'</span>, long <span class="sc">-</span> <span class="fl">2e5</span>, long))</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>Finally, we are ready to create the schematic map. </span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="co"># create color pallete</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>brbg <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">11</span>,<span class="st">"BrBG"</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>brbg4 <span class="ot">&lt;-</span> brbg[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">2</span>,<span class="dv">11</span>)]</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># create the two-dim legend</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>ggleg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">45</span>, <span class="at">xmax =</span> .<span class="dv">6</span>, <span class="at">ymin =</span> .<span class="dv">1</span>, <span class="at">ymax =</span> .<span class="dv">25</span>, </span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">1</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">45</span>, <span class="at">xmax =</span> .<span class="dv">6</span>, <span class="at">ymin =</span> .<span class="dv">4</span>, <span class="at">ymax =</span> .<span class="dv">55</span>, </span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">2</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">75</span>, <span class="at">xmax =</span> .<span class="dv">9</span>, <span class="at">ymin =</span> .<span class="dv">1</span>, <span class="at">ymax =</span> .<span class="dv">25</span>, </span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">3</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">75</span>, <span class="at">xmax =</span> .<span class="dv">9</span>, <span class="at">ymin =</span> .<span class="dv">4</span>, <span class="at">ymax =</span> .<span class="dv">55</span>, </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> brbg4[<span class="dv">4</span>], <span class="at">color =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'rect'</span>, <span class="at">xmin =</span> .<span class="dv">05</span>, <span class="at">xmax =</span> .<span class="dv">95</span>, <span class="at">ymin =</span> .<span class="dv">05</span>, <span class="at">ymax =</span> .<span class="dv">95</span>, </span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"grey20"</span>)<span class="sc">+</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> .<span class="dv">35</span>, <span class="at">y =</span> <span class="fu">c</span>(.<span class="dv">175</span>, .<span class="dv">475</span>), <span class="at">vjust =</span> .<span class="dv">5</span>, <span class="at">hjust =</span> <span class="dv">1</span>,</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">6</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'POOR'</span>, <span class="st">'RICH'</span>), <span class="at">family =</span> font) <span class="sc">+</span> </span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> <span class="fu">c</span>(.<span class="dv">525</span>, .<span class="dv">825</span>), <span class="at">y =</span> .<span class="dv">65</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">hjust =</span> .<span class="dv">5</span>,</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">6</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="fu">c</span>(<span class="st">'LOW'</span>, <span class="st">'HIGH'</span>), <span class="at">family =</span> font)<span class="sc">+</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> .<span class="dv">1</span>, <span class="at">y =</span> .<span class="dv">9</span>, <span class="at">vjust =</span> <span class="dv">1</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">7</span>, <span class="at">fontface =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="st">"LEGEND"</span>, <span class="at">family =</span> font)<span class="sc">+</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_map</span>()</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="co"># create the blank map</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>basemap <span class="ot">&lt;-</span> <span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">900000</span>,<span class="dv">5400000</span>), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">2500000</span>, <span class="dv">7000000</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_map</span>()<span class="sc">+</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme</span>(<span class="at">panel.border=</span><span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">'black'</span>,<span class="at">size=</span>.<span class="dv">5</span>,<span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>              <span class="at">legend.position =</span> <span class="st">'none'</span>)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co"># the main map</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>map_temp <span class="ot">&lt;-</span> basemap <span class="sc">+</span> </span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_map</span>(<span class="at">map =</span> fort_hack, <span class="at">data =</span> df, <span class="fu">aes</span>(<span class="at">map_id=</span>id, <span class="at">fill=</span>group))<span class="sc">+</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> brbg4[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)])</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co"># now combine the map and the legend</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>        <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="sc">+</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotation_custom</span>(</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggplotGrob</span>(map_temp), <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">1</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">1</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        <span class="fu">annotation_custom</span>(</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ggplotGrob</span>(ggleg), <span class="at">xmin =</span> <span class="fl">0.72</span>, <span class="at">xmax =</span> <span class="fl">0.99</span>, <span class="at">ymin =</span> <span class="fl">0.72</span>, <span class="at">ymax =</span> <span class="fl">0.99</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">"Labour force and income in EU-27 NUTS-2 regions"</span>,</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>            <span class="at">subtitle =</span> <span class="st">"Within each of the three macro-regions of Europe - Westren, </span></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="st">             Southern, and Eastern -</span><span class="sc">\n</span><span class="st">NUTS-2 regions are classified in 4 groups </span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="st">             according to the level of GDP per capita</span><span class="sc">\n</span><span class="st">and the share of working </span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="st">             age population in 2008"</span>,</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>            <span class="at">caption =</span> <span class="st">"Data: Eurostat</span><span class="sc">\n</span><span class="st">Author: Ilya Kashnitsky (ikashnitsky.github.io)"</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_ipsum_rc</span>(<span class="at">plot_title_size =</span> <span class="dv">30</span>, <span class="at">subtitle_size =</span> <span class="dv">20</span>, <span class="at">caption_size =</span> <span class="dv">15</span>)</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>And here is the result.</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>***  </span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="al">![](hacked-map.png)</span></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="ot">[ele]: https://twitter.com/data_debunk/status/856251551970717698</span></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ot">[ala]: https://rpubs.com/technocrat/thematic-alaska-hawaii</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="ot">[osf]: https://osf.io/suwxf/</span></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="ot">[pre]: https://ikashnitsky.github.io/doc/pubs/1702-nidi-wp-ik.pdf</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="ot">[ele]: https://twitter.com/data_debunk/status/856251551970717698</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="ot">[ala]: https://rpubs.com/technocrat/thematic-alaska-hawaii</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="ot">[osf]: https://osf.io/suwxf/</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="ot">[pre]: https://ikashnitsky.github.io/doc/pubs/1702-nidi-wp-ik.pdf</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2025 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2026 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>

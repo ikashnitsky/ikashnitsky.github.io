@@ -1,6 +1,5 @@
 ---
 title: ""
-description-meta: "{{< meta website.description >}}"
 # title-block-banner: "#DFFF00"
 comments: false
 code-tools: false
@@ -20,4 +19,6 @@ margin-header: |
 ::: {.callout-note}
 # **No** need to log into your Google account to submit the form
 :::
+
+
 

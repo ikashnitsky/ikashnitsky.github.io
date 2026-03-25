@@ -1,7 +1,6 @@
 ---
 draft: true
 title: "My (already not just) academic path reflection"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-01-01"
@@ -20,5 +19,7 @@ categories: [demography, career, academia]
 - Lack of formal scientific mentoring
 - Recent experience of giving feedback to Sebastian
 - I'm ready to be a scientific mentor now!
+
+
 
 

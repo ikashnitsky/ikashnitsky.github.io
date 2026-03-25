@@ -8,7 +8,6 @@
 
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2022-12-25">
-<meta name="description" content="<strong>?meta:website.description</strong>">
 
 <title>Were there too many unlikely results at the FIFA World Cup 2022 in Qatar? – Ilya Kashnitsky</title>
 <style>
@@ -130,12 +129,12 @@ ga('send', {
 </style>
 
 
-<meta property="og:title" content="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
+<meta property="og:title" content="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar? – Ilya Kashnitsky">
 <meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta property="og:image" content="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
+<meta name="twitter:title" content="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar? – Ilya Kashnitsky">
 <meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg">
 <meta name="twitter:creator" content="ikashnitsky">
@@ -781,65 +780,65 @@ ga('send', {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">description-meta:</span><span class="co"> "{{&lt; meta website.description &gt;}}"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-12-25"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.jpg</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, football, package]</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-12-25"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> teaser.jpg</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [r, football, package]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many -- some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning of the group stage, via the loss of the magnificent Brazil to Cameroon at the end of the group stage, to the groundbreaking performance of Morocco who were competitive playing against all the usual grands.  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Somewhere towards the middle of the group stage I started wondering -- is it ordinary to have so many surprises at the World Cup? What if this particular World Cup is really exceptional by the number of unlikely match outcomes? <span class="ot">[^1]</span> If so, how should I measure it? </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Just a bit of thinking yielded an answer that was really on the surface -- **bookmakers**. They are the people who use all available knowledge to make money on the outcome expectations. Pretty soon I <span class="co">[</span><span class="ot">figured out</span><span class="co">][so-data]</span> that there is one website <span class="co">[</span><span class="ot">oddsportal.com</span><span class="co">][oddsportal]</span> that offers long historical data series of betting odds and match outcomes. The real challenge came at the step of scraping the website. Stack Overflow and other similar places are <span class="co">[</span><span class="ot">filled</span><span class="co">][q1]</span> with <span class="co">[</span><span class="ot">questions</span><span class="co">][q2]</span> about <span class="co">[</span><span class="ot">scraping</span><span class="co">][q3]</span> this specific tricky website. Having finally figured out how to do this (after countless trials and failures) I wrapped up the working solution into an R package <span class="co">[</span><span class="ot">`oddor`</span><span class="co">][odd]</span>. The idea is that the package provides both scraping tools and the cleaned extracted datasets. <span class="ot">[^2]</span> </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Okay, so the data issue is solved. Now, it's time for the experiment, a really simple one. I simulate the scenario where I consistently bet on the **least likely outcome** and track how my fictional balance changes over time. Out of the three possible outcomes of the games -- (1) home team wins, (2) draw in main time, and (3) away team wins <span class="ot">[^3]</span> -- I always select the one that promises the highest odds, meaning that this outcome is considered the least likely of the three by the bookmakers. </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Here are the results for the latest World Cup 2022 (darkest line with all the unlikely outcomes annotated) in comparison with three previous World Cups, 2018, 2014, and 2010. </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="al">![](world-cup-odds-since-2010.png)</span>{.preview-image}</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Decreasing step lines in the plot represent my decreasing fictional balance. Each game I bet 1 coin on the least likely outcome. Most often I lose this bet, and my balance decreases. Though, sometimes the least likely outcome happens, then my balance increases substantially by the size of the unlikely outcome odds. For example, in case of Argentina losing to Saudi Arabia the odds for this outcome was 25.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>We can see that the 2022 World Cup was really exceptional -- too often the outcomes that were considered the least likely happened. It's also evident that surprises happen more often at the group stage, especially in the third round when many leaders apparently have already reached their group-stage goals (think of the recent game Brazil--Cameroon, where Brazilians literally played with the second team). I would say it's **really** surprising -- if one bets consistently against the odds at all the group-stage games, at least in the last 4 World Cups (for which we have odds and outcomes data) this dead-simple strategy turns out to be beneficial. My wild guess is that the World Cups see masses of inexperienced new betters who are placing bets on their national teams whatever, which at the global scale is disbalancing the whole system. Alternatively, maybe we are just slow and bad at recognizing how football is becoming more international, and now more underdogs are able to give a decent fight to the traditional grands. </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>In contrast, Play-offs are apparently less chaotic and more predictable. Betting on the underdogs at the Play-offs stage would guarantee to lose money in all 4 recent World Cups. </span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Of course, the surprising beneficial result of the betting-on-the-underdog experiment at the group-stage games at World Cups made me curious about other competitions. So I did a similar analysis for the <span class="co">[</span><span class="ot">Champions League (from season 2004--05)</span><span class="co">][cl]</span> and for <span class="co">[</span><span class="ot">English Premier League (from season 2003--04)</span><span class="co">][epl]</span>. Predictably, no miracle happened -- betting consistently on the underdogs would almost always bring financial losses. So, either World Cups are just different, or all 4 last tournaments were exceptional with the latest being a crazy outlier. Would it be reasonable to try this no-brainer betting strategy at the group-stage of the next World Cup? I'm not sure. But let's see in 4 years. <span class="ot">[^4]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many -- some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning of the group stage, via the loss of the magnificent Brazil to Cameroon at the end of the group stage, to the groundbreaking performance of Morocco who were competitive playing against all the usual grands.  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Somewhere towards the middle of the group stage I started wondering -- is it ordinary to have so many surprises at the World Cup? What if this particular World Cup is really exceptional by the number of unlikely match outcomes? <span class="ot">[^1]</span> If so, how should I measure it? </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Just a bit of thinking yielded an answer that was really on the surface -- **bookmakers**. They are the people who use all available knowledge to make money on the outcome expectations. Pretty soon I <span class="co">[</span><span class="ot">figured out</span><span class="co">][so-data]</span> that there is one website <span class="co">[</span><span class="ot">oddsportal.com</span><span class="co">][oddsportal]</span> that offers long historical data series of betting odds and match outcomes. The real challenge came at the step of scraping the website. Stack Overflow and other similar places are <span class="co">[</span><span class="ot">filled</span><span class="co">][q1]</span> with <span class="co">[</span><span class="ot">questions</span><span class="co">][q2]</span> about <span class="co">[</span><span class="ot">scraping</span><span class="co">][q3]</span> this specific tricky website. Having finally figured out how to do this (after countless trials and failures) I wrapped up the working solution into an R package <span class="co">[</span><span class="ot">`oddor`</span><span class="co">][odd]</span>. The idea is that the package provides both scraping tools and the cleaned extracted datasets. <span class="ot">[^2]</span> </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Okay, so the data issue is solved. Now, it's time for the experiment, a really simple one. I simulate the scenario where I consistently bet on the **least likely outcome** and track how my fictional balance changes over time. Out of the three possible outcomes of the games -- (1) home team wins, (2) draw in main time, and (3) away team wins <span class="ot">[^3]</span> -- I always select the one that promises the highest odds, meaning that this outcome is considered the least likely of the three by the bookmakers. </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Here are the results for the latest World Cup 2022 (darkest line with all the unlikely outcomes annotated) in comparison with three previous World Cups, 2018, 2014, and 2010. </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="al">![](world-cup-odds-since-2010.png)</span>{.preview-image}</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Decreasing step lines in the plot represent my decreasing fictional balance. Each game I bet 1 coin on the least likely outcome. Most often I lose this bet, and my balance decreases. Though, sometimes the least likely outcome happens, then my balance increases substantially by the size of the unlikely outcome odds. For example, in case of Argentina losing to Saudi Arabia the odds for this outcome was 25.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>We can see that the 2022 World Cup was really exceptional -- too often the outcomes that were considered the least likely happened. It's also evident that surprises happen more often at the group stage, especially in the third round when many leaders apparently have already reached their group-stage goals (think of the recent game Brazil--Cameroon, where Brazilians literally played with the second team). I would say it's **really** surprising -- if one bets consistently against the odds at all the group-stage games, at least in the last 4 World Cups (for which we have odds and outcomes data) this dead-simple strategy turns out to be beneficial. My wild guess is that the World Cups see masses of inexperienced new betters who are placing bets on their national teams whatever, which at the global scale is disbalancing the whole system. Alternatively, maybe we are just slow and bad at recognizing how football is becoming more international, and now more underdogs are able to give a decent fight to the traditional grands. </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>In contrast, Play-offs are apparently less chaotic and more predictable. Betting on the underdogs at the Play-offs stage would guarantee to lose money in all 4 recent World Cups. </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Of course, the surprising beneficial result of the betting-on-the-underdog experiment at the group-stage games at World Cups made me curious about other competitions. So I did a similar analysis for the <span class="co">[</span><span class="ot">Champions League (from season 2004--05)</span><span class="co">][cl]</span> and for <span class="co">[</span><span class="ot">English Premier League (from season 2003--04)</span><span class="co">][epl]</span>. Predictably, no miracle happened -- betting consistently on the underdogs would almost always bring financial losses. So, either World Cups are just different, or all 4 last tournaments were exceptional with the latest being a crazy outlier. Would it be reasonable to try this no-brainer betting strategy at the group-stage of the next World Cup? I'm not sure. But let's see in 4 years. <span class="ot">[^4]</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>***</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu"># Replicate this analysis using the `R` code from this [gist][gist]</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>***</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Replicate this analysis using the `R` code from this [gist][gist]</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Through discussions of <span class="co">[</span><span class="ot">my earlier postings of this analysis</span><span class="co">][red1]</span> I figured out that the usual term to describe these unlikely outcomes is "upset". I don't like the term since it seems to suggest inherently that one always supports the favorite, which is definitely no my case, I tend to cheer for the underdogs. The term I used initially was "sensations", which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I'll use the term "unlikely outcome". </span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>For now I only scraped and added several football tournaments and leagues. Please, feel free to add more results via <span class="co">[</span><span class="ot">GitHub pull requests</span><span class="co">][gh-pr]</span>.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>Of course, "home" and "away" designation is very arbitrary at world cups, still I use the terms for consistency.  </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>I guess I have to say that this is not a financial advise =)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ot">[so-data]: https://opendata.stackexchange.com/a/9010/7044</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ot">[oddsportal.com]: https://oddsportal.com</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ot">[q1]: https://stackoverflow.com/q/34785764</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ot">[q2]: https://stackoverflow.com/q/23417638</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ot">[q3]: https://stackoverflow.com/q/56984218</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ot">[red1]: https://www.reddit.com/r/dataisbeautiful/comments/zcm4r0</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ot">[odd]: https://github.com/ikashnitsky/oddor</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ot">[gh-pr]: https://github.com/ikashnitsky/oddor/pulls</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ot">[cl]: https://www.reddit.com/r/dataisbeautiful/comments/zim8d6</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ot">[epl]: https://www.reddit.com/r/dataisbeautiful/comments/ziojgj</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/e7b391c03f9f5b98d589b2388d16089f</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Through discussions of <span class="co">[</span><span class="ot">my earlier postings of this analysis</span><span class="co">][red1]</span> I figured out that the usual term to describe these unlikely outcomes is "upset". I don't like the term since it seems to suggest inherently that one always supports the favorite, which is definitely no my case, I tend to cheer for the underdogs. The term I used initially was "sensations", which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I'll use the term "unlikely outcome". </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>For now I only scraped and added several football tournaments and leagues. Please, feel free to add more results via <span class="co">[</span><span class="ot">GitHub pull requests</span><span class="co">][gh-pr]</span>.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>Of course, "home" and "away" designation is very arbitrary at world cups, still I use the terms for consistency.  </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ot">[^4]: </span>I guess I have to say that this is not a financial advise =)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ot">[so-data]: https://opendata.stackexchange.com/a/9010/7044</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ot">[oddsportal.com]: https://oddsportal.com</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ot">[q1]: https://stackoverflow.com/q/34785764</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ot">[q2]: https://stackoverflow.com/q/23417638</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ot">[q3]: https://stackoverflow.com/q/56984218</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ot">[red1]: https://www.reddit.com/r/dataisbeautiful/comments/zcm4r0</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ot">[odd]: https://github.com/ikashnitsky/oddor</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ot">[gh-pr]: https://github.com/ikashnitsky/oddor/pulls</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ot">[cl]: https://www.reddit.com/r/dataisbeautiful/comments/zim8d6</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ot">[epl]: https://www.reddit.com/r/dataisbeautiful/comments/ziojgj</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ot">[gist]: https://gist.github.com/ikashnitsky/e7b391c03f9f5b98d589b2388d16089f</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2025 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
+<p><span class="faux-block"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2017–2026 Ilya Kashnitsky</span> <span class="faux-block"><a href="https://creativecommons.org/licenses/by-sa/4.0/"><i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-sa" aria-label="creative-commons-sa"></i> Creative Commons CC BY-SA 4.0</a></span></p>
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"><i class="fa-brands fa-orcid" aria-label="orcid"></i> <strong>ORCID</strong> <a href="https://orcid.org/0000-0003-1835-8687">0000-0003-1835-8687</a></span> <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"> <i class="fa-brands fa-bluesky" aria-label="bluesky"></i> <strong>BlueSky</strong></a> <a rel="me" href="https://fosstodon.org/@ikashnitsky"> <i class="fa-brands fa-mastodon" aria-label="mastodon"></i> <strong>Mastodon</strong></a></span></p>

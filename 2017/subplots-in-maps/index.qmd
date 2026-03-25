@@ -1,6 +1,5 @@
 ---
 title: "Subplots in maps with ggplot2"
-description-meta: "{{< meta website.description >}}"
 date: "2017-05-25"
 image: teaser.png
 categories: [r, ggplot2, rspatial]
@@ -207,4 +206,6 @@ Of course, it takes several iterations to position each element in its proper pl
 [poly]: https://stackoverflow.com/questions/21748852
 [fix]: https://stackoverflow.com/a/32186989/4638884
 [code]: https://ikashnitsky.github.io/share/1705-map-subplots/code.R
+
+
 

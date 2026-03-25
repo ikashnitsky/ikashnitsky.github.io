@@ -1,6 +1,5 @@
 ---
 title: "Accelerating ggplot2: use a canvas to speed up plots creation"
-description-meta: "{{< meta website.description >}}"
 date: "2017-07-04"
 image: teaser.png
 categories: [r, ggplot2]
@@ -188,3 +187,5 @@ The median time of execution is 18.8 milliseconds for the map **without** canvas
 [five]: https://ikashnitsky.github.io/2017/colorcoded-map/
 [gist]: https://gist.github.com/ikashnitsky/b9c5d0b838daa2338066dbaa3e035dcc
 [hadley]: https://twitter.com/hadleywickham/status/882217871769837569
+
+

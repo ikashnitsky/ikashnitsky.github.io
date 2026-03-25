@@ -1,6 +1,5 @@
 ---
 title: "Who is old? Visualizing the concept of prospective ageing with animated population pyramids"
-description-meta: "{{< meta website.description >}}"
 date: "2017-03-31"
 image: teaser.png
 categories: [r, animaion]
@@ -197,4 +196,6 @@ for (i in 1:length(years)){
 [hmdhfd]: https://cran.r-project.org/web/packages/HMDHFDplus/index.html
 [tim]: https://sites.google.com/site/timriffepersonal/about-me
 [gif]: http://gifcreator.me
+
+
 

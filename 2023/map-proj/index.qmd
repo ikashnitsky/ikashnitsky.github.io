@@ -1,6 +1,5 @@
 ---
 title: "Improve your maps in one line of code changing map projections"
-description-meta: "{{< meta website.description >}}"
 date: "2023-11-04"
 image: teaser.png
 categories: [r, rspatial, ggplot2]
@@ -143,3 +142,5 @@ That's it. That's the whole one-line trick. Check out my other post based on my 
 [dotplot]: https://ikashnitsky.phd/2019/dotplot/
 [shrink]: https://ikashnitsky.phd/2023/shrink-space/
 [gcode]: https://ikashnitsky.phd/2023/geocoding/
+
+

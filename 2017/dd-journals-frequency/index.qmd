@@ -1,6 +1,5 @@
 ---
 title: "30 issues of Demographic Digest - the most frequent journals"
-description-meta: "{{< meta website.description >}}"
 date: "2017-02-14"
 image: teaser.png
 categories: [r, demography, bibliometrics]
@@ -115,3 +114,5 @@ Note that the lion's share of Population Studies is mainly explained by [the fir
 
 [^1]: I finish each issue of Demographic Digest with a bonus, in which I cover fun papers, discuss some academia related issues, or just provide link to cool visualizations and projects.
 [^2]: I also tried `portfolio` and `treemapify`, but liked the output from `treemap` most. 
+
+

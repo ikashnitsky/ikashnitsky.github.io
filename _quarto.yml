@@ -15,15 +15,8 @@ project:
   resources:
     - "img/**"
 
-freeze: true
-
 bibliography: bib/cited-in-blog.bib
 csl: bib/population-space-and-place.csl
-
-# Metadata stuff
-pagetitle: "{{< meta title >}}"
-description-meta: "{{< meta description >}}"
-author-meta: "Ilya Kashnitsky"
 
 website:
   title: "Ilya Kashnitsky"
@@ -44,45 +37,41 @@ website:
     creator: "ikashnitsky"
     site: "ikashnitsky"
 
-
   navbar:
     pinned: true
-
     left:
       - text: "About me"
-        file: "me.qmd"
+        href: "me.qmd"
       - text: "CV"
-        file: "cv.qmd"
+        href: "cv.qmd"
       - text: "DatavizArtSkill"
-        href: https://datavizartskill.ikashnitsky.phd
+        href: "https://datavizartskill.ikashnitsky.phd"
       - text: "Demographic Digest"
-        file: "dd.qmd"
-      - text: 'Words'
-        href: https://words.ikashnitsky.phd
-
+        href: "dd.qmd"
+      - text: "Words"
+        href: "https://words.ikashnitsky.phd"
     right:
       - icon: github
         aria-label: github
-        href: https://github.com/ikashnitsky
+        href: "https://github.com/ikashnitsky"
       - icon: linkedin
         aria-label: linkedin
-        href: https://www.linkedin.com/in/ikashnitsky
+        href: "https://www.linkedin.com/in/ikashnitsky"
       - icon: mastodon
         aria-label: mastodon
-        href: https://fosstodon.org/@ikashnitsky
+        href: "https://fosstodon.org/@ikashnitsky"
       - icon: bluesky
         aria-label: bluesky
-        href: https://bsky.app/profile/ikashnitsky.phd
+        href: "https://bsky.app/profile/ikashnitsky.phd"
       - icon: envelope-fill
         aria-label: email
         href: "mailto:ilya.kashnitsky@gmail.com"
       - icon: rss-fill
         aria-label: rss
-        href: index.xml
-
+        href: "index.xml"
 
   body-header: |
-      <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+    <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
 
   page-footer:
     left: |
@@ -90,8 +79,7 @@ website:
       <span class="faux-block">[{{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-sa >}} Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)</span>
     center: |
       <span class="faux-block">{{< fa brands orcid >}} <strong>ORCID</strong> [{{< var orcid >}}](https://orcid.org/{{< var orcid >}})</span>
-          <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"> {{< fa brands bluesky >}} <strong>BlueSky</strong></a>   <a rel="me" href="https://fosstodon.org/@ikashnitsky"> {{< fa brands mastodon >}} <strong>Mastodon</strong></a></span>
-
+      <span class="faux-block"><a rel="me" href="https://bsky.app/profile/ikashnitsky.phd"> {{< fa brands bluesky >}} <strong>BlueSky</strong></a>   <a rel="me" href="https://fosstodon.org/@ikashnitsky"> {{< fa brands mastodon >}} <strong>Mastodon</strong></a></span>
     right: |
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
       <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
@@ -106,4 +94,4 @@ format:
     reference-location: margin
     footnotes-hover: true
     highlight-style: monokai
-
+    freeze: auto

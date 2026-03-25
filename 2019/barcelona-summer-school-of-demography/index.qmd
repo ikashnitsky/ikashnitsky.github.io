@@ -1,6 +1,5 @@
 ---
 title: "See you in Barcelona this summer"
-description-meta: "{{< meta website.description >}}"
 date: "2019-03-07"
 image: teaser.png
 categories: [r, dataviz, demography]
@@ -36,4 +35,6 @@ I'll be happy to see you in sunny Catalonia!
 [ilya]: https://twitter.com/ikashnitsky
 [mariepier]: https://portal.findresearcher.sdu.dk/da/persons/mpbergeron
 [juan]: https://twitter.com/CEDemografia
+
+
 

@@ -1,6 +1,5 @@
 ---
 title: "Hacking maps with ggplot2"
-description-meta: "{{< meta website.description >}}"
 date: "2017-04-24"
 image: teaser.png
 categories: [r, ggplot2, rspatial]
@@ -126,3 +125,5 @@ And here is the result.
 [ala]: https://rpubs.com/technocrat/thematic-alaska-hawaii
 [osf]: https://osf.io/suwxf/
 [pre]: https://ikashnitsky.github.io/doc/pubs/1702-nidi-wp-ik.pdf
+
+

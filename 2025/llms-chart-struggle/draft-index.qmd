@@ -1,7 +1,6 @@
 ---
 draft: true
 title: "Simple but exact tasks are not that simple for LLMs"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-07-11"
@@ -1922,3 +1921,5 @@ ggsave("/rout/illustrate-lifelines.pdf", width = 8, height = 6)
 
 [gist]: https://gist.github.com/ikashnitsky/819a7a87ed3844db0cce637f71e1c9f4
 [bsky]: https://bsky.app/profile/ikashnitsky.phd/post/3kh5zbmftvw2f
+
+

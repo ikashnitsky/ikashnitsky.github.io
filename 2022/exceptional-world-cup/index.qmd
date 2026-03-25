@@ -1,6 +1,5 @@
 ---
 title: "Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?"
-description-meta: "{{< meta website.description >}}"
 date: "2022-12-25"
 image: teaser.jpg
 categories: [r, football, package]
@@ -53,3 +52,5 @@ Of course, the surprising beneficial result of the betting-on-the-underdog exper
 [cl]: https://www.reddit.com/r/dataisbeautiful/comments/zim8d6
 [epl]: https://www.reddit.com/r/dataisbeautiful/comments/ziojgj
 [gist]: https://gist.github.com/ikashnitsky/e7b391c03f9f5b98d589b2388d16089f
+
+

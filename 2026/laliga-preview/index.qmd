@@ -1,6 +1,5 @@
 ---
 title: "Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits' La Liga predictions"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2026-03-21"
@@ -58,9 +57,11 @@ Wow! Some fascinating patterns emerge:
 
 ***
 
-[gh]: https://x.com/search?q=from%3Aikashnitsky%20ihme&src=recent_search_click
+[gh]: https://github.com/ikashnitsky/laliga-preview
 [img]: https://github.com/ikashnitsky/laliga-preview/raw/main/out/by-team.png
 [yt]: https://youtube.com/playlist?list=PLZgJT1M3SJ9XVvZFlcJeCKUMzrMYCrCwc&si=RVs-ryd-bKHXuOBB
 [screenshot]: https://github.com/ikashnitsky/laliga-preview/blob/main/dat/screenshots/Screenshot_20260319-163345.png?raw=true
 [fbref]: https://fbref.com/en/comps/12/schedule/La-Liga-Scores-and-Fixtures
+
+
 

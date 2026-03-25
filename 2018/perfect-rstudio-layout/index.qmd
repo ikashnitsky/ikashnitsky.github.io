@@ -1,6 +1,5 @@
 ---
 title: "A perfect RStudio layout"
-description-meta: "{{< meta website.description >}}"
 date: "2018-05-22"
 image: teaser.png
 categories: [r, rstudio, trick]
@@ -35,3 +34,5 @@ P.S. It is also very handy to memorize and use the hot keys for panes. `CTRL + #
 ***
 
 [ugo]: https://sciences.social/@ugobas
+
+

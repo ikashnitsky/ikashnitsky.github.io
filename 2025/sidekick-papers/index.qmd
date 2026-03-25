@@ -1,6 +1,5 @@
 ---
 title: "Sidekick projects may be worthy distractions for an early academic"
-description-meta: "{{< meta website.description >}}"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-07-22"
@@ -27,4 +26,6 @@ Linking back to the populist idea of limiting how many papers researchers may su
 [cw]: https://clauswilke.substack.com/p/from-the-archives-no-one-reads-your
 [mg]: https://www.linkedin.com/in/maria-gunko-84198625a/
 [drob]: https://posit.co/resources/videos/the-unreasonable-effectiveness-of-public-work
+
+
 
