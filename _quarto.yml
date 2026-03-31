@@ -10,7 +10,6 @@ project:
 
   render:
     - "*.qmd"
-    - "*.md"
 
   resources:
     - "img/**"

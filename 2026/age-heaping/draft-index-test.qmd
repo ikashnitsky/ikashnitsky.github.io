@@ -1,0 +1,27 @@
+---
+title: "Age heaping in Turkey: when you don't really know your exact age"
+date: "2020-10-20"
+image: teaser.png
+categories: [r, kast, demography, dataviz]
+---
+
+***
+
+Consider a seemingly simple task: you want to know how old someone is. What can be easier? Just ask them. But what if they simply don't know?
+
+In historical demography, there is a fascinating data quality phenomenon known as **age heaping**. When populations lack systematic birth registration or a cultural habit of tracking exact birth dates, people tend to approximate. Asked "How old are you?", they are likely to answer something like, "Ah... well... about 65." 
+
+As a result, the reported ages cluster heavily around numbers ending in 0 or 5. When you plot this data on a population pyramid, it creates a highly unnatural, jagged shape. Instead of smooth demographic structures, you get massive spikes at ages 30, 35, 40, 50, and deep valleys in between. 
+
+We often think of this as a medieval problem, something you'd only expect to see in centuries-old parish registers or historical census reconstructions. But it wasn't just medieval times. Let's have a look at Turkey in 1960. 
+
+Thanks to the brilliant `eurostat` package, we can easily grab this historical data right into our `R` session. 
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(eurostat)
+
+# Download population data from Eurostat
+df_pop <- get_eurostat("demo_pjan")
+
+# ... filtering for Turkey (TR) in 1960 and formatting the age groups ...

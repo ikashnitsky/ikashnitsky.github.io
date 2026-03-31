@@ -10,7 +10,88 @@
 <atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Fri, 20 Mar 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 30 Mar 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2026/royal-longevity/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>End of March is the time when I remember with warm nostalgia the vivid memories of working alongside and learning from Jim Vaupel, who died untimely on 27th March 2022. He was a brilliant demographer and a vital person who radiated love to demography and influenced generations of researchers in finding and shaping their academic paths. Please read more about Jim on our collective memorial webpage – <a href="https://remembering-james-vaupel.org" class="uri">https://remembering-james-vaupel.org</a> 💚 In this post, I’m revisiting one of the last projects that we worked on with Jim. Unlike all other posts in my blog, here I’m using plural voice since an earlier draft of the analysis was co-authored with Jim.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="resonant-headlines-in-the-context-of-global-news" class="level1">
+<h1>Resonant headlines in the context of global news</h1>
+<p>Following the death of Prince Philip in April 2021, <em>The Conversation</em> published a <a href="https://theconversation.com/long-live-the-monarchy-british-royals-tend-to-survive-a-full-three-decades-longer-than-their-subjects-158766">piece by Jay Olshansky</a> titled <em>“Long live the monarchy! British royals tend to survive a full three decades longer than their subjects.”</em> In this, essentially, blog post routinely perceived by the media almost as a peer-reviewed article – the usual problem with The Conversation – the author compared the longevity of last six UK monarchs and their spouses with the longevity of their subjects. Employing a deeply flawed analysis, Olshansky arrived at sensational conclusions, which were, of course, elevated to the title of the piece and to the title of the only figure from the analysis, which <a href="https://www.altmetric.com/details/103817538">circulated widely in the media</a>.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/olshansky-plot.jpg" class="img-fluid" style="width:80.0%"></p>
+<p>Drawing far-reaching conclusions based on a handful of individuals’ lifespans is already very problematic, since longevity of humans fluctuates a lot by chance. Yet, apart from this obvious statistical limitation, there are at least two purely demographic methodological flaws in the analysis that make the conclusions completely wrong. Olshansky compared the lifespan of a UK monarch or spouse with the <strong>period life expectancy</strong> that prevailed in the <strong>year of their birth</strong>. This is demographically wrong, for at least two reasons.</p>
+</section>
+<section id="flawed-design-of-the-analysis" class="level1 page-columns page-full">
+<h1>Flawed design of the analysis</h1>
+<p><strong>Firstly</strong>, period life expectancy for a certain year is a poor predictor of the future lifespan of a child born in the year. <sup>1</sup> Despite the seemingly straightforward name, period life expectancy is <strong>not</strong> designed to forecast longevity, despite this being a way too often misinterpretation of the indicator. It is just a summary measure of current age-specific death rates in a population. In other words, life expectancy gives the average length of life for a cohort of newborns only in the unlikely (i.e.&nbsp;not registered in the observed human history) case when death rates remain unchanged throughout their lives. Mortality, however, has <a href="https://doi.org/10.1073/pnas.2019536118">decreased substantially</a> over the past two centuries in all countries, including the UK, and the actual longevity of people born in a specific year is usually <a href="https://doi.org/10.1080/00324720600895876">much higher</a> than the period life expectancy that was observed when they were born.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Have a look at my <a href="https://ikashnitsky.github.io/2021/what-is-life-expectancy/">previous post</a> about common misinterpretations of life expectancy.</p></div></div><p>Why is this error so important? Because life expectancy at birth in historical populations was massively skewed by staggering infant and child mortality rates. When we hear that medieval peasants had a life expectancy of 35, it wasn’t because a hard life in the fields meant dropping dead at 36; it was because a huge fraction of the population died of disease during childhood. A peasant who reached adulthood actually had pretty good odds of reaching 60. And this leads us to the <strong>second</strong> massive flaw in the design of the initial analysis.</p>
+<p>A monarch, by definition, has already survived childhood to reach the age of their coronation. It makes little sense to compare the actual fulfilled lifespans of royal individuals who succeeded to become monarchs with life expectancy <strong>at birth</strong> in the year of their birth. What about all their siblings who were less lucky? <sup>2</sup> One simply cannot evaluate historical longevity without properly accounting for survival bias. It’s all about selection and the luck of surviving through the hazardous early years of life. Back in the days, infant, child and early-adult mortality <a href="https://ourworldindata.org/child-mortality-in-the-past">used to be so high</a> that it’s hard for us to imagine how society functioned when half of the lifeborn kids don’t reach teenage. For the purpose of this reanalysis, we need to factor in the – too obvious when you spell it out – truth: only those royalty who survived to the date of their coronation became monarchs. <sup>3</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In data analysis this common fallacy is known as <a href="https://xkcd.com/1827"><em>survivorship bias</em></a>.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Interestingly, the age of UK monarchs’ coronation varied widely, from 9 years for Queen Victoria to 59 years for King Edward VII.</p></div></div></section>
+<section id="a-demographically-correct-approach" class="level1 page-columns page-full">
+<h1>A demographically correct approach</h1>
+<p>So, what should a proper comparison look like if we still want to evaluate whether royals lived exceptionally long compared to their subjects? The methodological corrections are straightforward: 1) Instead of period life tables we should look at cohort life tables (also obtained from the <a href="https://www.mortality.org">Human Mortality Database</a>); 2) As the comparison population, we need to look at the people who were born at the same year as the monarch in question and who survived at least until the age when this monarch was crowned. We compare monarch’s lifespan against the <strong>remaining cohort life expectancy</strong> of their birth cohort <em>at the exact age of the monarch’s coronation</em>. Correcting for these two errors, we obtained the demographically correct results below. <sup>4</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Let me re-iterate, just in case: we do not claim that this is a good way of researching the royal premium in survival. Our aim here is to correct the fundamental demographic flaws in the original widely circulated piece.</p></div></div><p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival.png" class="img-fluid"></p>
+<p>The results? Yes, royals still enjoy a survival advantage over the general population. This is hardly a surprise – living in extreme privilege gives you access to the best diet, living environments, and medical care of your era. But the sensational headline from Olshansky’s piece no longer holds. Instead of the claimed 30 year advantage, we see a more modest 7.7 years of extra survival, on average across the 12 monarchs and their spouses.</p>
+<p>And let’s highlight again that even this largely corrected figure does not convincingly claim that the royals live much longer than their subjects. We are still comparing a summary of 12 individual lifespans against population-level demographic averages. Human lifespans vary. <sup>5</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In a <a href="http://doi.org/10.4054/DemRes.2021.44.35">recent article</a> we introduced a new outsurvival measure to study differences in longevity between populations, taking into account lifespan inequality.</p></div></div><p>The longevity premium for royalty depends on the age of coronation – the younger the monarch begins to reign, the fewer of those born in his or her year of birth are dead. Thus, the biggest differences in longevity are for those monarchs who stepped in very young, such as Queen Victoria or Queen Elizabeth II. When Queen Elizabeth II was crowned at age 25, 88% of her birth cohort was still alive. In comparison, when King Edward VII was crowned at age 59, only 37% of his birth cohort was alive.</p>
+<p>Another way to frame the comparison is to calculate the percentage of monarch’s birth cohort who were alive at the monarch’s coronation and who were subsequently outlived by this monarch. This is a sort of p-score for the monarch’s longevity – how “well” did he or she “perform” compared correctly with their birth cohort.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival-relative.png" class="img-fluid"></p>
+<p>King Edward VII outlived only 30% of males his age alive at his coronation: 70% of his peers alive at his crowning were alive at his funeral. Prince Philip outlived 99.5% of those UK males born in 1921 who lived at least until 1952.</p>
+</section>
+<section id="bonus" class="level1">
+<h1>Bonus</h1>
+<p>For the dedicated readers we offer a third plot in which we combined all the data discussed in the text in one figure. We realise it may be slightly challenging to process, but we also believe it provides a unique opportunity to see the whole data-story “at a glance”.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival-combined.png" class="preview-image img-fluid"></p>
+<p><em>In the plot</em>: The colored stripes start at the age of the monarch’s coronation, they fade out as the remaining birth cohort dies out; the average survival of the reference cohorts is marked with white vertical ticks; survival to the coronation is annotated in red labels.</p>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Replication
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can find the data and the <code>R</code> code to reproduce this re-analysis in <a href="https://gist.github.com/ikashnitsky/bec6af5ac0d57129a406ee5b5a522ce2">this GitHub gist</a>. The post is based on my earlier <a href="https://x.com/ikashnitsky/status/1382595760756244481">Twitter thread</a>.</p>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+
+ ]]></description>
+  <category>r</category>
+  <category>kast</category>
+  <category>demography</category>
+  <category>dataviz</category>
+  <guid>https://ikashnitsky.phd/2026/royal-longevity/</guid>
+  <pubDate>Mon, 30 Mar 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -4875,100 +4956,6 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <guid>https://ikashnitsky.phd/2018/the-lancet-paper/</guid>
   <pubDate>Fri, 20 Jul 2018 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/the-lancet-paper/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title>Deep Catalan roots: playing with stringdist</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.phd/2018/deep-catalan-roots/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<section id="preambule" class="level1">
-<h1>Preambule</h1>
-<p>This academic year I am participating in <a href="https://www.demogr.mpg.de/en/education_career/european_doctoral_school_of_demography_1913/default.htm">European Doctoral School of Demography</a>. It is a unique one-year-long training for PhD students in demography. It keeps migrating across European research centers; this year Jim Vaupel’s research group in Odense hosts the program. Best demographers visit us to give us various one-week-long courses. Here we are, the EDSD cohort 2017/18:</p>
-<p><img src="https://ikashnitsky.phd/2018/deep-catalan-roots/our-cohort.jpg" class="img-fluid"></p>
-</section>
-<section id="the-creative-task" class="level1">
-<h1>The creative task</h1>
-<p>Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), <a href="https://twitter.com/VillavicencioFG">Francisco Villavichencio</a> gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in <a href="https://link.springer.com/chapter/10.1007/978-3-319-19884-2_10">one of his PhD papers</a>, in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs their of parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:</p>
-<blockquote class="blockquote">
-<p>Villavicencio F, Jordà JP, Pujadas-Mora JM. 2015. Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In <em>Population Reconstruction</em>, 199–216. Springer.</p>
-</blockquote>
-<p>Our assignment was to play with a sample of the dataset and link daughters, who got married in 1597–1629, to their possible parents, who got married in 1573–1617, using string distance metrics. But that’s not what I am about to show you.</p>
-</section>
-<section id="a-side-walk-solution" class="level1">
-<h1>A side-walk solution</h1>
-<p>While doing the assignment, I decided to check if there lived “re-incarnations” of my group-mates in Barcelona back in the day. Instead of linking daughters to parents I linked us, 20 young demographers from various countries, to Catalans from 16-17 century. Here is how I handed in the assignment =)</p>
-<p><img src="https://ikashnitsky.phd/2018/deep-catalan-roots/hand-in.jpg" class="img-fluid"></p>
-<p>So, let’s dive into string distances and probabilistic string matching.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Reproducibility note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For the sake of post’s readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the <a href="https://github.com/ikashnitsky/deep-catalan-roots">github repo</a> that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the guthub repo only contains minimal indicative data sample – 10 best matching records to each of the groupmate’s name.</p>
-</div>
-</div>
-</section>
-<section id="exploring-the-methods" class="level1">
-<h1>Exploring the methods</h1>
-<p>There are multiple ways to calculate string distances. Most popular are implemented in <code>stringdist</code> R package. I’m not going to present the methods themselve, just check <code>stringdist</code> <a href="https://cran.r-project.org/web/packages/stringdist/stringdist.pdf">documentation</a> if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their “voting”, it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible.</p>
-<p>So, first I decided to compare the speed of these methods and choose the fastest for the first step comparison. Here is what I got calculating the distance between words “demography” and “democracy”.</p>
-<p><img src="https://ikashnitsky.phd/2018/deep-catalan-roots/benchmarking.png" class="img-fluid"></p>
-<p>As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is “jw”, Jaro-Winker distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure.</p>
-</section>
-<section id="finally-lets-find-our-catalan-ancestors" class="level1">
-<h1>Finally, let’s find our Catalan “ancestors”</h1>
-<p>Instead of choosing some cut-off value I ranked the results of “jw” distance and filtered 10 best fitting results for each of the names of my fellows. For these pre-selected candidates I calculated also several other distance measures: “osa”, “lcs”, “qgram”, “cosine”, and “jaccard”. In the final tables I showed only 3 best matching results ranked by the geometric average of all the 6 calculated distances taken with equal weights.</p>
-<section id="here-is-the-table-for-guys" class="level2">
-<h2 class="anchored" data-anchor-id="here-is-the-table-for-guys">Here is the table for guys:</h2>
-<p><img src="https://ikashnitsky.phd/2018/deep-catalan-roots/edsd-males.png" class="img-fluid"></p>
-<p>My personal favorite here is <strong>Hanbo Wo</strong> becoming <strong>Antonio Duc</strong>.</p>
-</section>
-<section id="and-a-similar-table-for-girls" class="level2">
-<h2 class="anchored" data-anchor-id="and-a-similar-table-for-girls">And a similar table for girls:</h2>
-<p><img src="https://ikashnitsky.phd/2018/deep-catalan-roots/edsd-females.png" class="img-fluid"></p>
-<p>Here I like <strong>Elena Bastianelli</strong> turning to <strong>Elena Albanell</strong>.</p>
-</section>
-</section>
-<section id="conclusions" class="level1">
-<h1>Conclusions</h1>
-<p>There are 20 people in our EDSD group, 10 guys and 10 girls. We come from different countries: Germany, Italy, China, United States, Russia, Spain, Mexico, Bosnia, Poland, Hungary, Estonia, and Denmark. Our names are quite different from that of 16-17 century Catalans. Still, using string distance matching we can find similarly named persons in the historical dataset. This fun example just exposes the power of formal text mining approach.</p>
-<hr>
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Replication materials <a href="https://github.com/ikashnitsky/deep-catalan-roots">at github</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-
-
-<!-- -->
-
-</section>
-
- ]]></description>
-  <category>r</category>
-  <category>demography</category>
-  <guid>https://ikashnitsky.phd/2018/deep-catalan-roots/</guid>
-  <pubDate>Sun, 03 Jun 2018 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

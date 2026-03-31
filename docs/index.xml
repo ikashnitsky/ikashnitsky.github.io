@@ -10,7 +10,88 @@
 <atom:link href="https://ikashnitsky.phd/index.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Fri, 20 Mar 2026 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 30 Mar 2026 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2026/royal-longevity/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>End of March is the time when I remember with warm nostalgia the vivid memories of working alongside and learning from Jim Vaupel, who died untimely on 27th March 2022. He was a brilliant demographer and a vital person who radiated love to demography and influenced generations of researchers in finding and shaping their academic paths. Please read more about Jim on our collective memorial webpage – <a href="https://remembering-james-vaupel.org" class="uri">https://remembering-james-vaupel.org</a> 💚 In this post, I’m revisiting one of the last projects that we worked on with Jim. Unlike all other posts in my blog, here I’m using plural voice since an earlier draft of the analysis was co-authored with Jim.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="resonant-headlines-in-the-context-of-global-news" class="level1">
+<h1>Resonant headlines in the context of global news</h1>
+<p>Following the death of Prince Philip in April 2021, <em>The Conversation</em> published a <a href="https://theconversation.com/long-live-the-monarchy-british-royals-tend-to-survive-a-full-three-decades-longer-than-their-subjects-158766">piece by Jay Olshansky</a> titled <em>“Long live the monarchy! British royals tend to survive a full three decades longer than their subjects.”</em> In this, essentially, blog post routinely perceived by the media almost as a peer-reviewed article – the usual problem with The Conversation – the author compared the longevity of last six UK monarchs and their spouses with the longevity of their subjects. Employing a deeply flawed analysis, Olshansky arrived at sensational conclusions, which were, of course, elevated to the title of the piece and to the title of the only figure from the analysis, which <a href="https://www.altmetric.com/details/103817538">circulated widely in the media</a>.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/olshansky-plot.jpg" class="img-fluid" style="width:80.0%"></p>
+<p>Drawing far-reaching conclusions based on a handful of individuals’ lifespans is already very problematic, since longevity of humans fluctuates a lot by chance. Yet, apart from this obvious statistical limitation, there are at least two purely demographic methodological flaws in the analysis that make the conclusions completely wrong. Olshansky compared the lifespan of a UK monarch or spouse with the <strong>period life expectancy</strong> that prevailed in the <strong>year of their birth</strong>. This is demographically wrong, for at least two reasons.</p>
+</section>
+<section id="flawed-design-of-the-analysis" class="level1 page-columns page-full">
+<h1>Flawed design of the analysis</h1>
+<p><strong>Firstly</strong>, period life expectancy for a certain year is a poor predictor of the future lifespan of a child born in the year. <sup>1</sup> Despite the seemingly straightforward name, period life expectancy is <strong>not</strong> designed to forecast longevity, despite this being a way too often misinterpretation of the indicator. It is just a summary measure of current age-specific death rates in a population. In other words, life expectancy gives the average length of life for a cohort of newborns only in the unlikely (i.e.&nbsp;not registered in the observed human history) case when death rates remain unchanged throughout their lives. Mortality, however, has <a href="https://doi.org/10.1073/pnas.2019536118">decreased substantially</a> over the past two centuries in all countries, including the UK, and the actual longevity of people born in a specific year is usually <a href="https://doi.org/10.1080/00324720600895876">much higher</a> than the period life expectancy that was observed when they were born.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Have a look at my <a href="https://ikashnitsky.github.io/2021/what-is-life-expectancy/">previous post</a> about common misinterpretations of life expectancy.</p></div></div><p>Why is this error so important? Because life expectancy at birth in historical populations was massively skewed by staggering infant and child mortality rates. When we hear that medieval peasants had a life expectancy of 35, it wasn’t because a hard life in the fields meant dropping dead at 36; it was because a huge fraction of the population died of disease during childhood. A peasant who reached adulthood actually had pretty good odds of reaching 60. And this leads us to the <strong>second</strong> massive flaw in the design of the initial analysis.</p>
+<p>A monarch, by definition, has already survived childhood to reach the age of their coronation. It makes little sense to compare the actual fulfilled lifespans of royal individuals who succeeded to become monarchs with life expectancy <strong>at birth</strong> in the year of their birth. What about all their siblings who were less lucky? <sup>2</sup> One simply cannot evaluate historical longevity without properly accounting for survival bias. It’s all about selection and the luck of surviving through the hazardous early years of life. Back in the days, infant, child and early-adult mortality <a href="https://ourworldindata.org/child-mortality-in-the-past">used to be so high</a> that it’s hard for us to imagine how society functioned when half of the lifeborn kids don’t reach teenage. For the purpose of this reanalysis, we need to factor in the – too obvious when you spell it out – truth: only those royalty who survived to the date of their coronation became monarchs. <sup>3</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In data analysis this common fallacy is known as <a href="https://xkcd.com/1827"><em>survivorship bias</em></a>.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Interestingly, the age of UK monarchs’ coronation varied widely, from 9 years for Queen Victoria to 59 years for King Edward VII.</p></div></div></section>
+<section id="a-demographically-correct-approach" class="level1 page-columns page-full">
+<h1>A demographically correct approach</h1>
+<p>So, what should a proper comparison look like if we still want to evaluate whether royals lived exceptionally long compared to their subjects? The methodological corrections are straightforward: 1) Instead of period life tables we should look at cohort life tables (also obtained from the <a href="https://www.mortality.org">Human Mortality Database</a>); 2) As the comparison population, we need to look at the people who were born at the same year as the monarch in question and who survived at least until the age when this monarch was crowned. We compare monarch’s lifespan against the <strong>remaining cohort life expectancy</strong> of their birth cohort <em>at the exact age of the monarch’s coronation</em>. Correcting for these two errors, we obtained the demographically correct results below. <sup>4</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;Let me re-iterate, just in case: we do not claim that this is a good way of researching the royal premium in survival. Our aim here is to correct the fundamental demographic flaws in the original widely circulated piece.</p></div></div><p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival.png" class="img-fluid"></p>
+<p>The results? Yes, royals still enjoy a survival advantage over the general population. This is hardly a surprise – living in extreme privilege gives you access to the best diet, living environments, and medical care of your era. But the sensational headline from Olshansky’s piece no longer holds. Instead of the claimed 30 year advantage, we see a more modest 7.7 years of extra survival, on average across the 12 monarchs and their spouses.</p>
+<p>And let’s highlight again that even this largely corrected figure does not convincingly claim that the royals live much longer than their subjects. We are still comparing a summary of 12 individual lifespans against population-level demographic averages. Human lifespans vary. <sup>5</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In a <a href="http://doi.org/10.4054/DemRes.2021.44.35">recent article</a> we introduced a new outsurvival measure to study differences in longevity between populations, taking into account lifespan inequality.</p></div></div><p>The longevity premium for royalty depends on the age of coronation – the younger the monarch begins to reign, the fewer of those born in his or her year of birth are dead. Thus, the biggest differences in longevity are for those monarchs who stepped in very young, such as Queen Victoria or Queen Elizabeth II. When Queen Elizabeth II was crowned at age 25, 88% of her birth cohort was still alive. In comparison, when King Edward VII was crowned at age 59, only 37% of his birth cohort was alive.</p>
+<p>Another way to frame the comparison is to calculate the percentage of monarch’s birth cohort who were alive at the monarch’s coronation and who were subsequently outlived by this monarch. This is a sort of p-score for the monarch’s longevity – how “well” did he or she “perform” compared correctly with their birth cohort.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival-relative.png" class="img-fluid"></p>
+<p>King Edward VII outlived only 30% of males his age alive at his coronation: 70% of his peers alive at his crowning were alive at his funeral. Prince Philip outlived 99.5% of those UK males born in 1921 who lived at least until 1952.</p>
+</section>
+<section id="bonus" class="level1">
+<h1>Bonus</h1>
+<p>For the dedicated readers we offer a third plot in which we combined all the data discussed in the text in one figure. We realise it may be slightly challenging to process, but we also believe it provides a unique opportunity to see the whole data-story “at a glance”.</p>
+<p><img src="https://ikashnitsky.phd/2026/royal-longevity/royal-survival-combined.png" class="preview-image img-fluid"></p>
+<p><em>In the plot</em>: The colored stripes start at the age of the monarch’s coronation, they fade out as the remaining birth cohort dies out; the average survival of the reference cohorts is marked with white vertical ticks; survival to the coronation is annotated in red labels.</p>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Replication
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can find the data and the <code>R</code> code to reproduce this re-analysis in <a href="https://gist.github.com/ikashnitsky/bec6af5ac0d57129a406ee5b5a522ce2">this GitHub gist</a>. The post is based on my earlier <a href="https://x.com/ikashnitsky/status/1382595760756244481">Twitter thread</a>.</p>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+
+ ]]></description>
+  <category>r</category>
+  <category>kast</category>
+  <category>demography</category>
+  <category>dataviz</category>
+  <guid>https://ikashnitsky.phd/2026/royal-longevity/</guid>
+  <pubDate>Mon, 30 Mar 2026 22:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -4825,109 +4906,6 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <guid>https://ikashnitsky.phd/2018/sjrdata-package/</guid>
   <pubDate>Sat, 22 Sep 2018 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/sjrdata-package/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title>Regional population structures at a glance</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.phd/2018/the-lancet-paper/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<p><img src="https://ikashnitsky.phd/2018/the-lancet-paper/full-text.png" class="img-fluid"></p>
-<p>I am happy to announce that our paper is <a href="https://doi.org/10.1016/S0140-6736(18)31194-2">published today in <em>The Lancet</em></a>.</p>
-<blockquote class="blockquote">
-<p>Kashnitsky I, Schöley J. 2018. Regional population structures at a glance. <em>The Lancet</em> <strong>392</strong>: 209–210. <a href="https://doi.org/10.1016/S0140-6736(18)31194-2">https://doi.org/10.1016/S0140-6736(18)31194-2</a></p>
-</blockquote>
-<section id="at-a-glance" class="level1"><h1>At a glance</h1>
-<p>Demographic history of a population is imprinted in its age structure. A meaningful representation of regional population age structures can tell numerous demographic stories – at a glance. To produce such a snapshot of regional populations, we use an innovative approach of <strong>ternary colour coding</strong>.</p>
-<p>Here is the map:</p>
-<p><img src="https://ikashnitsky.phd/2018/the-lancet-paper/the-map.png" class="img-fluid"></p>
-</section><section id="we-let-the-data-speak-colours" class="level1"><h1>We let the data speak colours</h1>
-<p>With ternary colour coding, each element of a three-dimensional array of compositional data is represented with a unique colour. The resulting colours show direction and magnitude of deviations from the centrepoint, which represents the average age of the European population, and is dark grey. The hue component of a colour encodes the direction of deviation: yellow indicates an elderly population (&gt;65 years), cyan indicates people of working age (15–64 years), and magenta indicates children (0–14 years).</p>
-<p>The method is very flexible, and one can easily produce these meaningful colours using our <a href="https://github.com/jschoeley/tricolore">R package <code>tricolore</code></a>. Just explore the capabilities of the package in a built-in shiny app using the following lines of code:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"tricolore"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://github.com/jschoeley/tricolore">tricolore</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/tricolore/man/DemoTricolore.html">DemoTricolore</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</div>
-<hr>
-<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Replication materials <a href="https://github.com/ikashnitsky/the-lancet-2018">at github</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Folow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, <a href="https://twitter.com/jschoeley">jschoeley</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>See also
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a href="https://osf.io/d4hjx/"><strong>My PhD project – Regional demographic convergence in Europe</strong></a></li>
-<li><a href="https://ikashnitsky.github.io/2017/colorcoded-map/">Blog post on the first version of the map presented at Rostock Retreat Visualization in June 2017</a></li>
-<li><a href="https://doi.org/10.4054/DemRes.2017.36.21">Paper (Schöley &amp; Willekens 2017) with the initial ideas for tricolore package</a></li>
-<li><a href="https://github.com/ikashnitsky/demres-2018-geofacet">An example of ternary colorcoding used to visualize cause-of-death data</a></li>
-<li><a href="https://doi.org/10.1186/s41118-017-0018-2">My other paper , which explores regional differences in population age structures</a></li>
-</ul>
-</div>
-</div>
-
-
-<!-- -->
-
-</section> ]]></description>
-  <category>r</category>
-  <category>dataviz</category>
-  <category>demography</category>
-  <guid>https://ikashnitsky.phd/2018/the-lancet-paper/</guid>
-  <pubDate>Fri, 20 Jul 2018 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2018/the-lancet-paper/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>
