@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>demographeR’s notes – Ilya Kashnitsky</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-574bf93e77159822ee1dd582d4d6753c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3da6ec74c44dce64361965dec80dea11.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-de9568bf8b5f098cbe1a9a00ddf4face.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a1c5f4f830740676523363eaf39b678c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -82,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -110,9 +112,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -138,9 +140,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -166,9 +168,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -194,9 +196,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -222,9 +224,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -250,9 +252,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-aliases','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-aliases','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-aliases","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-aliases","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -278,9 +280,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -306,9 +308,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -334,9 +336,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -373,9 +375,47 @@ ga('send', {
         background: #002F2F;
       }
 </style>
+<meta name="description" content="demographeR's notes — Ilya Kashnitsky's blog on demography, R programming, and data visualization. Research, tutorials, and open science.">
+<link rel="canonical" href="https://ikashnitsky.phd/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "demographeR's notes",
+  "url": "https://ikashnitsky.phd",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ikashnitsky.phd/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ilya Kashnitsky",
+  "url": "https://ikashnitsky.phd",
+  "sameAs": [
+    "https://bsky.app/profile/ikashnitsky.phd",
+    "https://twitter.com/ikashnitsky",
+    "https://github.com/ikashnitsky",
+    "https://orcid.org/0000-0003-1835-8687",
+    "https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en"
+  ],
+  "jobTitle": "Demographer",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "author inquiry",
+    "url": "https://ikashnitsky.phd/me.html"
+  }
+}
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -426,8 +466,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>

@@ -1,0 +1,9 @@
+# demographeR's notes – Ilya Kashnitsky
+
+> Author: Ilya Kashnitsky, demographer and data visualization researcher
+> Purpose: personal research blog on demography, R, and data visualization
+
+## Links
+- Homepage: https://ikashnitsky.phd/
+- About me: https://ikashnitsky.phd/me.html
+- RSS feed: https://ikashnitsky.phd/index.xml

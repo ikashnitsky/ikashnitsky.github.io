@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Who is Ilya Kashnitsky?",
+    "answer": "Ilya Kashnitsky is a demographer, currently a Senior Researcher at Statistics Denmark and an Associate Member at the Leverhulme Centre for Demographic Science, University of Oxford. His work focuses on regional variations in aging, population geography, spatial analysis, and data visualization."
+  },
+  {
+    "question": "What topics are covered on this blog?",
+    "answer": "The blog covers topics related to demography, R programming, data visualization, spatial analysis, and open science."
+  },
+  {
+    "question": "What is the Demographic Digest?",
+    "answer": "The Demographic Digest is a series of brief summaries of selected demographic papers, written in Russian, that Ilya Kashnitsky published between 2015 and 2017."
+  },
+  {
+    "question": "How can I contact Ilya Kashnitsky?",
+    "answer": "You can contact Ilya Kashnitsky via email at ilya.kashnitsky@gmail.com, or through his social media profiles like BlueSky and Mastodon."
+  },
+  {
+    "question": "Where can I find the source code for this site?",
+    "answer": "The source code for the site is available on GitHub at https://github.com/ikashnitsky/ikashnitsky.github.io. The site is built using R and Quarto."
+  }
+]

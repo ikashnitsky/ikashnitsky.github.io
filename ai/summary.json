@@ -1,0 +1,8 @@
+{
+  "name": "demographeR's notes",
+  "description": "Personal research blog by Ilya Kashnitsky covering demography, R programming, and scientific data visualization.",
+  "url": "https://ikashnitsky.phd",
+  "author": "Ilya Kashnitsky",
+  "language": "en",
+  "feed": "https://ikashnitsky.phd/index.xml"
+}

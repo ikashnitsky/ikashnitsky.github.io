@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ikashnitsky.phd/2025/sidekick-papers/gallery.html</loc>
-    <lastmod>2026-03-25T11:31:54.126Z</lastmod>
+    <loc>https://ikashnitsky.phd/subscribe.html</loc>
+    <lastmod>2026-03-25T11:31:54.137Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/me.html</loc>
-    <lastmod>2026-03-25T11:31:54.136Z</lastmod>
+    <loc>https://ikashnitsky.phd/index.html</loc>
+    <lastmod>2026-04-29T05:04:31.861Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/dd.html</loc>
-    <lastmod>2026-03-25T11:31:54.132Z</lastmod>
+    <loc>https://ikashnitsky.phd/cv.html</loc>
+    <lastmod>2026-03-25T11:31:54.130Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2025/sidekick-papers/index.html</loc>
-    <lastmod>2026-03-25T11:31:54.127Z</lastmod>
+    <loc>https://ikashnitsky.phd/2026/age-heaping/draft-index-test.html</loc>
+    <lastmod>2026-03-30T23:09:16.888Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/2025/my-path-reflection/llm-jumpstarters.html</loc>
+    <lastmod>2026-03-25T11:31:54.124Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2025/ihme-bibl/index.html</loc>
@@ -169,31 +173,27 @@
     <lastmod>2026-03-25T11:31:54.048Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2025/my-path-reflection/llm-jumpstarters.html</loc>
-    <lastmod>2026-03-25T11:31:54.124Z</lastmod>
+    <loc>https://ikashnitsky.phd/2025/sidekick-papers/index.html</loc>
+    <lastmod>2026-03-25T11:31:54.127Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/2026/laliga-preview/index.html</loc>
     <lastmod>2026-03-25T11:31:54.129Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/cv.html</loc>
-    <lastmod>2026-03-25T11:31:54.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/index.html</loc>
-    <lastmod>2026-03-25T11:31:54.134Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/subscribe.html</loc>
-    <lastmod>2026-03-25T11:31:54.137Z</lastmod>
-  </url>
-  <url>
     <loc>https://ikashnitsky.phd/2026/royal-longevity/index.html</loc>
     <lastmod>2026-03-31T06:15:22.575Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/2026/age-heaping/draft-index-test.html</loc>
-    <lastmod>2026-03-30T23:09:16.888Z</lastmod>
+    <loc>https://ikashnitsky.phd/about.html</loc>
+    <lastmod>2026-04-29T05:04:33.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/dd.html</loc>
+    <lastmod>2026-03-25T11:31:54.132Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/me.html</loc>
+    <lastmod>2026-03-25T11:31:54.136Z</lastmod>
   </url>
 </urlset>

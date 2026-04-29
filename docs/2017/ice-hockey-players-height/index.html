@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-05-27">
 <title>Evolution of ice hockey players’ height: IIHF world championships 2001-2016 – Ilya Kashnitsky</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -65,15 +68,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-574bf93e77159822ee1dd582d4d6753c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3da6ec74c44dce64361965dec80dea11.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-de9568bf8b5f098cbe1a9a00ddf4face.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a1c5f4f830740676523363eaf39b678c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -140,8 +142,6 @@ ga('send', {
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
@@ -346,15 +346,7 @@ ga('send', {
 <span><span class="co"># save the table to html</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/xtable/man/xtable.html">xtable</a></span><span class="op">(</span><span class="va">leaders</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"html"</span>, file <span class="op">=</span> <span class="st">"table_leaders.html"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<strong>Table 1. The most frequently participated players</strong><br><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-ls8f{font-family:Georgia, serif !important;}
-.tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;}
-.tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center}
-</style>
+<strong>Table 1. The most frequently participated players</strong><br><style type="text/css"> .tg {border-collapse:collapse;border-spacing:0;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg .tg-ls8f{font-family:Georgia, serif !important;} .tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;} .tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center} .tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center} </style>
 <table class="tg">
 <tbody><tr>
 <th class="tg-oa1s">
@@ -845,17 +837,7 @@ F
 <span><span class="co"># export the models to html</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/texreg/man/htmlreg.html">htmlreg</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">m2</span>, <span class="va">m3</span><span class="op">)</span>, file <span class="op">=</span> <span class="st">"models_height.html"</span>, single.row <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<strong>Table2. The models</strong><br><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-ls8f{font-family:Georgia, serif !important;}
-.tg .tg-t6te{font-style:italic;font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;}
-.tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-mmdc{font-style:italic;font-family:Georgia, serif !important;}
-</style>
+<strong>Table2. The models</strong><br><style type="text/css"> .tg {border-collapse:collapse;border-spacing:0;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg .tg-ls8f{font-family:Georgia, serif !important;} .tg .tg-t6te{font-style:italic;font-family:Georgia, serif !important;;text-align:center} .tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;} .tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center} .tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center} .tg .tg-mmdc{font-style:italic;font-family:Georgia, serif !important;} </style>
 <table class="tg">
 <tbody><tr>
 <th class="tg-oa1s">
@@ -1289,17 +1271,7 @@ RMSE
 <span>    custom.model.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Model 3 D"</span>, <span class="st">"Model 3 F"</span>, <span class="st">"Model 3 G"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<strong>Table 3. Model 3 – separately for defenders, forwards, and goalkeepers</strong><br><style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-ls8f{font-family:Georgia, serif !important;}
-.tg .tg-t6te{font-style:italic;font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;}
-.tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center}
-.tg .tg-mmdc{font-style:italic;font-family:Georgia, serif !important;}
-</style>
+<strong>Table 3. Model 3 – separately for defenders, forwards, and goalkeepers</strong><br><style type="text/css"> .tg {border-collapse:collapse;border-spacing:0;} .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;} .tg .tg-ls8f{font-family:Georgia, serif !important;} .tg .tg-t6te{font-style:italic;font-family:Georgia, serif !important;;text-align:center} .tg .tg-oa1s{font-weight:bold;font-family:Georgia, serif !important;} .tg .tg-jrsh{font-family:Georgia, serif !important;;text-align:center} .tg .tg-lyle{font-weight:bold;font-family:Georgia, serif !important;;text-align:center} .tg .tg-mmdc{font-style:italic;font-family:Georgia, serif !important;} </style>
 <table class="tg">
 <tbody><tr>
 <th class="tg-oa1s">

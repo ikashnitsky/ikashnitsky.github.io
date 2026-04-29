@@ -62,6 +62,9 @@ margin-header: |
     <button class="btn btn-lg btn-secondary" type="button">
     <a href="/subscribe.html"> {{< fa pen-to-square >}} <small>Subscribe</small></a>
     </button>  
+format:
+  html:
+    include-in-header: index-meta.html
 ---
 
 ## 2026

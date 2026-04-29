@@ -9,7 +9,7 @@
 <link>https://ikashnitsky.phd/#category=r</link>
 <atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
-<generator>quarto-1.8.25</generator>
+<generator>quarto-1.9.36</generator>
 <lastBuildDate>Mon, 30 Mar 2026 22:00:00 GMT</lastBuildDate>
 <item>
   <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
@@ -1025,7 +1025,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d3" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -1057,7 +1057,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d6" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -1089,7 +1089,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d9" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -1121,7 +1121,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d12" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -1153,7 +1153,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d15" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1185,7 +1185,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d19" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1218,7 +1218,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d23" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1250,7 +1250,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d29" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>
@@ -4090,7 +4090,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>This big assumption of unchanging age profile of death rates almost never holds in real life. Mortality in human populations keeps improving beyond the most optimistic expectations. For decades the best demographers were systematically underestimating the progress in mortality reduction <span class="citation" data-cites="oeppen2002s">(Oeppen and Vaupel, 2002)</span>.</p>
 <p><img src="https://ikashnitsky.phd/2021/life-expectancy-101/oeppen-vaupel.jpg" class="img-fluid"></p>
 <p><strong>The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)</strong></p>
-<p>Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely <a href="https://twitter.com/therealrchung/status/1365091610766155778">illustrated by Dr.&nbsp;Robert Chung</a>: “I have a car that can display”driving range” given its estimate of fuel level and how I’m driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That’s what period e(x) is like.”</p>
+<p>Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely <a href="https://twitter.com/therealrchung/status/1365091610766155778">illustrated by Dr.&nbsp;Robert Chung</a>: “I have a car that can display “driving range” given its estimate of fuel level and how I’m driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That’s what period e(x) is like.”</p>
 <p>But if life expectancy talk about now and not the future, why is it called “expectancy” in the first place? This rather unfortunate and confusing <a href="https://twitter.com/therealrchung/status/1365313760416526340">naming comes from statistics</a>, where “expected value” is a standard term for the mean of a distribution. The connotation crossing is rather unfortunate and as it strongly nudges the common future oriented misinterpretation of life expectancy.</p>
 <p>The most popular error in public perception of period life expectancy forgets about the heavy assumption of the synthetic cohort (constant age-specific death rates throughout their hypothetic lives anchored in current year) and talks about the future of kids being born now. In normal years this large interpretation error is somewhat masked by the gradual and often close to linear improvements in mortality. A rule of thumb is to simply add ~6 years to period life expectancy to obtain a reasonable cohort estimate <span class="citation" data-cites="goldstein2006ps">(Goldstein and Wachter, 2006)</span>. Mortality shocks like 2020 are a different story though. Here the “forward looking” (mis)interpretation of period life expectancy projects the <strong>shock levels of mortality</strong> into the future. Of course this doesn’t happen. Shocks are called shocks because they are temporal.</p>
 <p>Another important detail that often misses public attention is that life expectancy is not a single value – it can be estimated for every age. Most often and by default life expectancy is reported “at birth”. But we can estimate remaining life expectancy for various ages. And here comes another popular misunderstanding of life expectancy. Too often we come across the references to human age and longevity in the past that sound something like: “She was 40, a very elderly lady by the standards of that time as people lived on average about 30 years back the”. True, there were times when life expectancy <strong>at birth</strong> was about 30 years even in the most developed now countries. This doesn’t mean though that those who outlived this threshold age were getting old at young (by our current standards) ages. Let me illustrate.</p>

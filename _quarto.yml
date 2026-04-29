@@ -13,6 +13,10 @@ project:
 
   resources:
     - "img/**"
+    - "robots.txt"
+    - "llms.txt"
+    - "ai/**"
+    - ".well-known/**"
 
 bibliography: bib/cited-in-blog.bib
 csl: bib/population-space-and-place.csl

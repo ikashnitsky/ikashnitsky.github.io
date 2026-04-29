@@ -1,0 +1,14 @@
+---
+title: "About me"
+aliases:
+  - about
+  - about.html
+---
+
+<script type="text/javascript">
+  window.location.href = "/me.html";
+</script>
+
+<meta http-equiv="refresh" content="0; url=/me.html">
+
+Redirecting to the [About me page](/me.html)...
