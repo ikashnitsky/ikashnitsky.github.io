@@ -1,7 +1,22 @@
 {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
   "name": "demographeR's notes",
+  "url": "https://ikashnitsky.phd",
   "description": "Educational and research resource providing tutorials, data visualization techniques, and insights into demographic analysis using R.",
-  "category": "Education / Research",
-  "provider": "Ilya Kashnitsky",
-  "termsOfService": "Creative Commons CC BY-SA 4.0"
+  "applicationCategory": "Education / Research",
+  "operatingSystem": "Web browser",
+  "provider": {
+    "@type": "Person",
+    "name": "Ilya Kashnitsky",
+    "url": "https://ikashnitsky.phd/me.html"
+  },
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "inLanguage": "en",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Researchers, demographers, R programmers, data scientists"
+  },
+  "availableLanguage": "English",
+  "keywords": ["demography", "R programming", "data visualization", "spatial analysis", "ggplot2", "population geography"]
 }

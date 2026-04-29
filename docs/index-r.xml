@@ -1025,7 +1025,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d3" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -1057,7 +1057,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d6" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -1089,7 +1089,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d9" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -1121,7 +1121,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d12" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -1153,7 +1153,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d15" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1185,7 +1185,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d19" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1218,7 +1218,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d23" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1250,7 +1250,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d29" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
+<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>

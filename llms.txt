@@ -1,14 +1,43 @@
 # demographeR's notes – Ilya Kashnitsky
 
 > Author: Ilya Kashnitsky, demographer and data visualization researcher
-> Purpose: personal research blog on demography, R, and data visualization
+> Purpose: personal research blog on demography, R programming, and data visualization
+
+## About the Author
+
+Ilya Kashnitsky is a Senior Researcher at Statistics Denmark and an Associate Member at the Leverhulme Centre for Demographic Science, University of Oxford. His work focuses on regional variations in aging, mortality, population geography, spatial analysis, and data visualization.
 
 ## Expertise & Core Themes
 - **Demography:** Population geography, spatial analysis, regional variations in aging, mortality, and life expectancy.
 - **R Programming:** #rspatial, data wrangling, tidyverse, workflow optimization, and reproducibility.
 - **Data Visualization:** ggplot2, visual storytelling, map projections, demographic dataviz.
 
-## Links
-- Homepage: https://ikashnitsky.phd/
-- About me: https://ikashnitsky.phd/me.html
-- RSS feed: https://ikashnitsky.phd/index.xml
+## Key Pages
+- [Homepage](https://ikashnitsky.phd/)
+- [About Ilya Kashnitsky](https://ikashnitsky.phd/me.html)
+- [CV (PDF)](https://ikashnitsky.github.io/x/cv/2024-06-cv-ilya-kashnitsky.pdf)
+- [Demographic Digest](https://ikashnitsky.phd/dd.html)
+- [Subscribe for updates](https://ikashnitsky.phd/subscribe.html)
+
+## Selected Posts
+- [Life expectancy 101](https://ikashnitsky.phd/2021/life-expectancy-101/)
+- [Map projections](https://ikashnitsky.phd/2023/map-proj/)
+- [Zotero workflow for academics](https://ikashnitsky.phd/2019/zotero/)
+- [Zotero 7 guide](https://ikashnitsky.phd/2024/zotero7/)
+- [Rotate the damn plot](https://ikashnitsky.phd/2024/rotate-damn-plot/)
+- [Exceptional World Cup](https://ikashnitsky.phd/2022/exceptional-world-cup/)
+- [Royal longevity](https://ikashnitsky.phd/2026/royal-longevity/)
+
+## External Profiles
+- [ORCID](https://orcid.org/0000-0003-1835-8687)
+- [Google Scholar](https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en)
+- [GitHub](https://github.com/ikashnitsky)
+- [LinkedIn](https://www.linkedin.com/in/ikashnitsky)
+- [BlueSky](https://bsky.app/profile/ikashnitsky.phd)
+- [Mastodon](https://fosstodon.org/@ikashnitsky)
+
+## Machine-Readable Endpoints
+- [AI FAQ](https://ikashnitsky.phd/ai/faq.json)
+- [AI Summary](https://ikashnitsky.phd/ai/summary.json)
+- [AI Service](https://ikashnitsky.phd/ai/service.json)
+- [RSS Feed](https://ikashnitsky.phd/index.xml)

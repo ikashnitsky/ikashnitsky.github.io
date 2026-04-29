@@ -23,15 +23,15 @@ about:
 ---
 
 
-<button type="button" class="btn btn-warning">
+<button type="button" class="btn btn-warning" aria-label="Download Ilya Kashnitsky's CV as PDF" toolname="DownloadCV" tooldescription="Downloads the academic CV of Ilya Kashnitsky in PDF format">
 <a href="https://ikashnitsky.github.io/x/cv/2024-06-cv-ilya-kashnitsky.pdf" style="color:#fff;"> {{< fa file-lines >}} CV</a>
 </button>
 
-<button type="button" class="btn btn-success">
+<button type="button" class="btn btn-success" aria-label="View Ilya Kashnitsky's ORCID profile">
 <a href="https://orcid.org/0000-0003-1835-8687" style="color:#fff;"> {{< fa brands orcid >}} ORCID</a>
 </button>
 
-<button type="button" class="btn btn-info">
+<button type="button" class="btn btn-info" aria-label="View Ilya Kashnitsky's Google Scholar profile">
 <a href="https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en" style="color:#fff;"> {{< ai google-scholar >}} Google Scholar</a>
 </button>
 
@@ -55,7 +55,9 @@ My main interest is demography. For three years, 2015--2017, I was systematicall
 
 ***
 
-## BIO 
+## Biography
+
+### Background
 
 I was born in Israel, grew up in Moscow, during my PhD years lived in The Hague, and now live in Odense. Married and have two daughters. I got a bachelors in geography from Moscow State University in 2012, masters in demography from the National Research University Higher School of Economics (Moscow) in 2014, and PhD from University of Groningen in 2020. 
 
@@ -74,7 +76,7 @@ Feel free to contact me via email
 Ilya  
 
 
-<button class="btn btn-lg btn-secondary" type="button">
+<button class="btn btn-lg btn-secondary" type="button" aria-label="Subscribe for email updates from Ilya Kashnitsky" toolname="Subscribe" tooldescription="Sign up for email notifications when new blog posts are published">
 <a href="/subscribe.html"> {{< fa pen-to-square >}} Subscribe for email updates</a>
 </button>       
 
