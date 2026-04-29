@@ -1,0 +1,122 @@
+﻿========================================================================
+RAG CHUNK READINESS DIAGNOSTIC REPORT
+========================================================================
+Found 55 long sections (> 200 words) across 36 files.
+
+                                                 file
+             2017/ice-hockey-players-height/index.qmd
+                   2021/life-expectancy-101/index.qmd
+                       2025/sidekick-papers/index.qmd
+             2017/ice-hockey-players-height/index.qmd
+                             2025/ihme-bibl/index.qmd
+                 2022/exceptional-world-cup/index.qmd
+                              2023/map-proj/index.qmd
+                                2019/zotero/index.qmd
+                          2023/shrink-space/index.qmd
+                          2023/gist-snippet/index.qmd
+         2025/my-path-reflection/llm-jumpstarters.qmd
+                        2017/colorcoded-map/index.qmd
+                               2024/zotero7/index.qmd
+                       2026/royal-longevity/index.qmd
+                        2026/laliga-preview/index.qmd
+                               2019/dotplot/index.qmd
+                               2024/zotero7/index.qmd
+                                2019/zotero/index.qmd
+                       2026/royal-longevity/index.qmd
+                           2023/map-borders/index.qmd
+                               2024/zotero7/index.qmd
+                      2017/subplots-in-maps/index.qmd
+                       2020/background-data/index.qmd
+                 2017/dd-journals-frequency/index.qmd
+             2026/llms-chart-struggle/draft-index.qmd
+                           2017/map-hacking/index.qmd
+                                2023/30-dmc/index.qmd
+           2017/denmark-nuts-reconstruction/index.qmd
+                2017/data-acquisition-three/index.qmd
+                             2023/geocoding/index.qmd
+             2017/ice-hockey-players-height/index.qmd
+                                2019/zotero/index.qmd
+                                2019/zotero/index.qmd
+                      2024/rotate-damn-plot/index.qmd
+           2017/denmark-nuts-reconstruction/index.qmd
+         2025/my-path-reflection/llm-jumpstarters.qmd
+                      2024/rotate-damn-plot/index.qmd
+                      2024/rotate-damn-plot/index.qmd
+                            2017/who-is-old/index.qmd
+           2017/denmark-nuts-reconstruction/index.qmd
+                2017/ggplot2-microbenchmark/index.qmd
+                2024/top-demographers/draft-index.qmd
+           2017/denmark-nuts-reconstruction/index.qmd
+                    2018/deep-catalan-roots/index.qmd
+                               2024/zotero7/index.qmd
+                        2026/laliga-preview/index.qmd
+                2018/perfect-rstudio-layout/index.qmd
+                     2017/hmd-all-sex-ratio/index.qmd
+         2025/my-path-reflection/llm-jumpstarters.qmd
+                  2017/data-acquisition-two/index.qmd
+           2017/denmark-nuts-reconstruction/index.qmd
+                     2017/hmd-all-sex-ratio/index.qmd
+                2026/age-heaping/draft-index-test.qmd
+ 2019/barcelona-summer-school-of-demography/index.qmd
+                            2018/ddd-poster/index.qmd
+                                                        heading word_count
+ Do the ice hochey players become taller? (regression analysis)       1310
+                                                        [Intro]       1033
+                                                        [Intro]       1001
+                                                Cohort approach        957
+                                                        [Intro]        766
+                                                        [Intro]        763
+                                                        [Intro]        739
+                                            ZotFile Preferences        581
+                                                        [Intro]        571
+                                                  [No Headings]        563
+                 My (Already Not Just) Academic Path Reflection        536
+                                                        [Intro]        512
+                                                       Attanger        498
+                             A demographically correct approach        490
+                                                        [Intro]        465
+                                                  [No Headings]        464
+                                                    Why Zotero?        463
+                                             Zotero preferences        438
+                                  Flawed design of the analysis        436
+                                                        [Intro]        411
+                                                  Better BibTeX        406
+                                                        [Intro]        405
+                                                        [Intro]        400
+                                                        [Intro]        385
+                                                        [Intro]        371
+                                                  [No Headings]        341
+                                                        [Intro]        335
+                                                        Denmark        313
+                                       Human Mortality Database        303
+                                                        [Intro]        303
+                                          Compare to population        301
+                 Use Zotero library in RStudio with `rmarkdown`        298
+                                                    Why Zotero?        296
+                                             Improving the plot        295
+              Joining spatial and statistical data (fuzzy join)        293
+                                                        ChatGPT        290
+                                                        [Intro]        278
+                                            Digitizing the data        275
+                                             Prospective ageing        270
+                                         The broken time series        267
+                             This post is updated on 2017-07-15        267
+                                                  [No Headings]        256
+                                               Spatial matching        250
+                                          Exploring the methods        245
+                                                  Prerequisites        241
+                             Just bet on XXX -- you cannot miss        240
+                                                  [No Headings]        238
+                                            Use own credentials        228
+                       IΓÇÖm Ready to Be a Scientific Mentor Now!        222
+                                                       Eurostat        216
+                                                           Data        216
+                                                        [Intro]        216
+                                                        [Intro]        211
+                                                  [No Headings]        209
+                                                        [Intro]        201
+
+ACTION REQUIRED:
+For the files listed above, consider breaking long sections into smaller chunks
+using additional H2 (##) or H3 (###) subheadings. Also, ensure each major
+section opens with a 1-2 sentence definition or summary to improve AI extraction.

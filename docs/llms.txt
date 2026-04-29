@@ -3,6 +3,11 @@
 > Author: Ilya Kashnitsky, demographer and data visualization researcher
 > Purpose: personal research blog on demography, R, and data visualization
 
+## Expertise & Core Themes
+- **Demography:** Population geography, spatial analysis, regional variations in aging, mortality, and life expectancy.
+- **R Programming:** #rspatial, data wrangling, tidyverse, workflow optimization, and reproducibility.
+- **Data Visualization:** ggplot2, visual storytelling, map projections, demographic dataviz.
+
 ## Links
 - Homepage: https://ikashnitsky.phd/
 - About me: https://ikashnitsky.phd/me.html

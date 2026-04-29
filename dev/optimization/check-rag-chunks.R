@@ -21,7 +21,7 @@ files_to_check <- dir_ls(dirs_to_scan, recurse = TRUE, type = "file", regexp = "
 files_to_check <- files_to_check[!str_detect(files_to_check, "^\\d{4}/index\\.(qmd|md)$")]
 
 # Function to analyze a single file
-analyze_file_chunks <- function(filepath) {
+analyze_file_chunks <- function(filepath, threshold = 200) {
   content <- readLines(filepath, warn = FALSE)
   content_text <- paste(content, collapse = "\n")
   
@@ -31,26 +31,46 @@ analyze_file_chunks <- function(filepath) {
   # Remove code blocks
   content_text <- str_replace_all(content_text, "```[\\s\\S]*?```", "")
   
-  # Split by headings
-  sections <- str_split(content_text, "\\n#+ ")[[1]]
+  # Find all headings and their positions
+  heading_matches <- str_locate_all(content_text, "\\n#+ [^\\n]+")[[1]]
   
-  # Count words in each section
-  word_counts <- map_int(sections, ~ {
-    words <- str_split(str_trim(.x), "\\s+")[[1]]
+  if (nrow(heading_matches) == 0) {
+    # No headings, treat whole file as one section
+    sections <- list(list(heading = "[No Headings]", content = content_text))
+  } else {
+    # Split content into sections based on headings
+    sections <- list()
+    
+    # Text before first heading
+    first_heading_start <- heading_matches[1, 1]
+    sections[[1]] <- list(heading = "[Intro]", content = str_sub(content_text, 1, first_heading_start - 1))
+    
+    for (i in 1:nrow(heading_matches)) {
+      start <- heading_matches[i, 1]
+      end <- if (i < nrow(heading_matches)) heading_matches[i+1, 1] - 1 else nchar(content_text)
+      
+      heading_line <- str_sub(content_text, heading_matches[i, 1], heading_matches[i, 2])
+      heading_text <- str_trim(str_replace(heading_line, "^\\n#+ ", ""))
+      section_content <- str_sub(content_text, heading_matches[i, 2] + 1, end)
+      
+      sections[[i+1]] <- list(heading = heading_text, content = section_content)
+    }
+  }
+  
+  # Analyze sections
+  long_sections_details <- map_dfr(sections, ~ {
+    words <- str_split(str_trim(.x$content), "\\s+")[[1]]
     words <- words[words != ""]
-    length(words)
+    count <- length(words)
+    
+    if (count > threshold) {
+      return(tibble(heading = .x$heading, word_count = count))
+    }
+    return(NULL)
   })
   
-  # Check if any section is > 200 words
-  long_sections <- word_counts[word_counts > 200]
-  
-  if (length(long_sections) > 0) {
-    return(tibble(
-      file = filepath,
-      total_sections = length(sections),
-      long_sections_count = length(long_sections),
-      max_words = max(long_sections)
-    ))
+  if (nrow(long_sections_details) > 0) {
+    return(long_sections_details %>% mutate(file = filepath))
   }
   return(NULL)
 }
@@ -63,11 +83,15 @@ if (nrow(results) > 0) {
   cat("========================================================================\n")
   cat("RAG CHUNK READINESS DIAGNOSTIC REPORT\n")
   cat("========================================================================\n")
-  cat(sprintf("Found %d files with sections > 200 words.\n\n", nrow(results)))
+  cat(sprintf("Found %d long sections (> 200 words) across %d files.\n\n", 
+              nrow(results), length(unique(results$file))))
   
-  results <- results %>% arrange(desc(max_words))
+  # Select and arrange for better display
+  report <- results %>% 
+    select(file, heading, word_count) %>% 
+    arrange(desc(word_count))
   
-  print(as.data.frame(results))
+  print(as.data.frame(report), row.names = FALSE)
   
   cat("\nACTION REQUIRED:\n")
   cat("For the files listed above, consider breaking long sections into smaller chunks\n")
