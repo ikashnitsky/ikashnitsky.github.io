@@ -1,3 +1,21 @@
+# ai.txt — AI agent permissions for ikashnitsky.phd
+# See: https://ai.txt.org
+
+Site: https://ikashnitsky.phd
+Contact: ilya.kashnitsky@gmail.com
+License: CC BY-SA 4.0
+Language: en
+
+# AI Usage Policy
+Allow: all
+
+# Discovery endpoints
+LLMs-txt: https://ikashnitsky.phd/llms.txt
+FAQ: https://ikashnitsky.phd/ai/faq.json
+Summary: https://ikashnitsky.phd/ai/summary.json
+Service: https://ikashnitsky.phd/ai/service.json
+
+# Explicitly allow known AI crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -16,13 +34,7 @@ Allow: /
 User-agent: Claude-SearchBot
 Allow: /
 
-User-agent: claude-web
-Allow: /
-
 User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended
@@ -43,16 +55,7 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-User-agent: Bytespider
-Allow: /
-
 User-agent: meta-externalagent
-Allow: /
-
-User-agent: Meta-ExternalFetcher
-Allow: /
-
-User-agent: facebookexternalhit
 Allow: /
 
 User-agent: Amazonbot
@@ -61,16 +64,7 @@ Allow: /
 User-agent: AI2Bot
 Allow: /
 
-User-agent: AI2Bot-Dolma
-Allow: /
-
 User-agent: xAI-Bot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: PetalBot
 Allow: /
 
 User-agent: YouBot

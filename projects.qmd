@@ -1,0 +1,75 @@
+---
+title: "Projects"
+comments: false
+toc: false
+toc-location: right
+title-block-banner: "#002F2F"
+code-tools: false
+---
+
+A selection of research projects, teaching initiatives, and academic columns.
+
+::: {.row .row-cols-1 .row-cols-md-2 .g-4 .my-4}
+
+::: {.col}
+::: {.card .h-100 .shadow-sm .project-card}
+<div class="project-banner-container d-flex align-items-center justify-content-center" style="background-color: #002F2F; height: 180px;">
+  <img src="img/dataviz-art-skill.png" alt="DatavizArtSkill logo" style="max-height: 150px; width: auto; object-fit: contain;">
+</div>
+
+::: {.card-body .d-flex .flex-column}
+<h3 class="card-title mt-0"><a href="https://datavizartskill.ikashnitsky.phd" class="stretched-link text-decoration-none">Dataviz – the Art/Skill Cocktail</a></h3>
+
+<div class="text-muted mb-3 fw-bold">DatavizArtSkill</div>
+
+<p class="card-text flex-grow-1">
+An intensive, practice-oriented data visualization curriculum and workshop series. Designed to empower researchers with the flexibility of R and the tidyverse (<code>ggplot2</code>) to build impactful, publication-ready graphics, explore visual design theory, and master reproducible thematic cartography.
+</p>
+
+<div class="d-flex flex-wrap gap-1 mb-3">
+  <span class="badge bg-light text-dark border">R</span>
+  <span class="badge bg-light text-dark border">ggplot2</span>
+  <span class="badge bg-light text-dark border">tidyverse</span>
+  <span class="badge bg-light text-dark border">Data Viz</span>
+  <span class="badge bg-light text-dark border">Mapping</span>
+</div>
+
+<div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+  <span class="badge bg-primary">Workshop / Course</span>
+  <span class="text-primary fw-bold font-monospace">Explore project &rarr;</span>
+</div>
+:::
+:::
+:::
+
+::: {.col}
+::: {.card .h-100 .shadow-sm .project-card}
+<div class="project-banner-container" style="background-color: #002F2F; height: 180px; overflow: hidden;">
+  <img src="img/dd-banner.png" alt="Demographic Digest banner" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+
+::: {.card-body .d-flex .flex-column}
+<h3 class="card-title mt-0"><a href="dd.html" class="stretched-link text-decoration-none">Demographic Digest</a></h3>
+
+<div class="text-muted mb-3 fw-bold">Демографический Дайджест</div>
+
+<p class="card-text flex-grow-1">
+A long-running academic column at <em>Demoscope Weekly</em> featuring Russian-language summaries and critical overviews of fresh demographic research papers published in top international peer-reviewed journals.
+</p>
+
+<div class="d-flex flex-wrap gap-1 mb-3">
+  <span class="badge bg-light text-dark border">Demography</span>
+  <span class="badge bg-light text-dark border">Demoscope Weekly</span>
+  <span class="badge bg-light text-dark border">Reviews</span>
+  <span class="badge bg-light text-dark border">Academic Column</span>
+</div>
+
+<div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+  <span class="badge bg-primary">Academic Column</span>
+  <span class="text-primary fw-bold font-monospace">Read digest &rarr;</span>
+</div>
+:::
+:::
+:::
+
+:::

@@ -466,3 +466,55 @@ pre.text, pre.sourceCode, .cell-output pre {
         left: 0;
     }
 }
+
+// Project cards
+.project-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0, 47, 47, 0.12) !important;
+    border-radius: 0.75rem !important;
+    background-color: #ffffff;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(4, 132, 132, 0.16) !important;
+    }
+
+    .project-banner-container {
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+    }
+
+    .card-title {
+        font-family: $headings-font-family;
+        font-weight: 700;
+        color: $p-darker-7;
+    }
+}
+
+// Tool cards
+.tool-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border: 1px solid rgba(0, 47, 47, 0.1) !important;
+    border-radius: 0.5rem !important;
+    background-color: #ffffff;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(4, 132, 132, 0.12) !important;
+        border-color: $p-lighter-3 !important;
+    }
+
+    .card-title {
+        font-family: $headings-font-family;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: $p-darker-7;
+    }
+
+    .badge {
+        font-family: $navbar-font-family;
+        font-weight: 700;
+        font-size: 0.7rem;
+    }
+}
+

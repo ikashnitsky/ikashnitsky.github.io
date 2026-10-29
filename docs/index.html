@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3da6ec74c44dce64361965dec80dea11.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8fd3faaa6222612f4ec1274525a2b4af.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a1c5f4f830740676523363eaf39b678c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f630bb2ada531137d842fffd72875e02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -404,7 +407,9 @@ ul.task-list li input[type="checkbox"] {
     "https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en",
     "https://www.linkedin.com/in/ikashnitsky",
     "https://fosstodon.org/@ikashnitsky",
-    "https://www.wikidata.org/wiki/Q130311699"
+    "https://www.wikidata.org/wiki/Q130311699",
+    "https://www.researchgate.net/profile/Ilya-Kashnitsky",
+    "https://ikashnitsky.academia.edu"
   ],
   "jobTitle": "Senior Researcher",
   "worksFor": {
@@ -440,7 +445,9 @@ ul.task-list li input[type="checkbox"] {
   "sameAs": [
     "https://github.com/ikashnitsky/ikashnitsky.github.io",
     "https://www.linkedin.com/in/ikashnitsky",
-    "https://www.wikidata.org/wiki/Q130311699"
+    "https://www.wikidata.org/wiki/Q130311699",
+    "https://orcid.org/0000-0003-1835-8687",
+    "https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en"
   ]
 }
 </script>
@@ -496,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -526,12 +533,14 @@ window.Quarto = {
 </script>
 
 <link rel="alternate" type="application/rss+xml" title="Ilya Kashnitsky" href="index.xml" data-external="1"><meta property="og:title" content="demographeR's notes – Ilya Kashnitsky">
+<meta property="og:description" content="A blog on demography, R programming, and data visualization by Ilya Kashnitsky, Senior Researcher at Statistics Denmark. Browse posts by year below.">
 <meta property="og:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
 <meta name="twitter:title" content="demographeR’s notes – Ilya Kashnitsky">
+<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -566,12 +575,12 @@ window.Quarto = {
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://datavizartskill.ikashnitsky.phd"> 
-<span class="menu-text">DatavizArtSkill</span></a>
+    <a class="nav-link" href="./projects.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dd.html"> 
-<span class="menu-text">Demographic Digest</span></a>
+    <a class="nav-link" href="./tools.html"> 
+<span class="menu-text">Tools</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://words.ikashnitsky.phd"> 
@@ -637,7 +646,7 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<button class="btn btn-lg btn-secondary" type="button">
+<button class="btn btn-lg btn-secondary" type="button" aria-label="Subscribe for email updates" toolname="Subscribe" tooldescription="Sign up for email notifications when new blog posts are published">
 <a href="./subscribe.html"> <i class="fa-solid fa-pen-to-square" aria-label="pen-to-square"></i> <small>Subscribe</small></a>
 </button>
 </div></div>
@@ -645,7 +654,9 @@ window.Quarto = {
     <h2 id="toc-title">Year</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2026</a></li>
+  <li><a href="#recent-posts" id="toc-recent-posts" class="nav-link active" data-scroll-target="#recent-posts">Recent Posts</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2026</a></li>
   <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2025</a></li>
   <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">2024</a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">2023</a></li>
@@ -655,6 +666,7 @@ window.Quarto = {
   <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">2019</a></li>
   <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">2018</a></li>
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">2017</a></li>
+  </ul></li>
   </ul>
 </nav>
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(41)</span></div><div class="category" data-category="MTAx">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YW5pbWFpb24=">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y2FyZWVy">career <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFjcXVpc2l0aW9u">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(11)</span></div><div class="category" data-category="ZGVtb2dyYXBoeQ==">demography <span class="quarto-category-count">(14)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="aG1k">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="a2FzdA==">kast <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(40)</span></div><div class="category" data-category="cnNwYXRpYWw=">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="cnN0dWRpbw==">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3BvcnQ=">sport <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJpY2s=">trick <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
@@ -665,8 +677,11 @@ window.Quarto = {
 
 
 <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">2026</h2>
+<section id="recent-posts" class="level2">
+<h2 class="anchored" data-anchor-id="recent-posts">Recent Posts</h2>
+<p>A blog on demography, R programming, and data visualization by <a href="https://ikashnitsky.phd/me.html">Ilya Kashnitsky</a>, Senior Researcher at Statistics Denmark. Browse posts by year below.</p>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">2026</h3>
 <div id="listing-posts_2026" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -710,7 +725,7 @@ window.Quarto = {
                 <p class="date listing-date">March 31, 2026</p>
             </div>
 
-            <p class="description listing-description">Following the death of Prince Philip in April 2021, <em>The Conversation</em> published a piece by Jay Olshansky titled <em>“Long live the monarchy! British royals tend to survive a full…</em></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2026/royal-longevity/index.html --></p>
         </div>
 
     </div>
@@ -755,7 +770,7 @@ window.Quarto = {
                 <p class="date listing-date">March 21, 2026</p>
             </div>
 
-            <p class="description listing-description">As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let’s check the track record of three popular Russian…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2026/laliga-preview/index.html --></p>
         </div>
 
     </div>
@@ -764,8 +779,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">2025</h2>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">2025</h3>
 <div id="listing-posts_2025" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -809,7 +824,7 @@ window.Quarto = {
                 <p class="date listing-date">October 13, 2025</p>
             </div>
 
-            <p class="description listing-description">Recently, a post on LinkedIn highlighted a Google Scholar profile of an apparently just starting PhD researcher who suddenly started accumulating unbelievable counts of…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2025/ihme-bibl/index.html --></p>
         </div>
 
     </div>
@@ -850,7 +865,7 @@ window.Quarto = {
                 <p class="date listing-date">July 22, 2025</p>
             </div>
 
-            <p class="description listing-description">In the last few days, I’ve been thinking a lot about Claus Wilke’s blog post on the essential need of writing and publishing a lot of papers for academic researchers. This…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2025/sidekick-papers/index.html --></p>
         </div>
 
     </div>
@@ -859,8 +874,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">2024</h2>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">2024</h3>
 <div id="listing-posts_2024" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -900,7 +915,7 @@ window.Quarto = {
                 <p class="date listing-date">December 18, 2024</p>
             </div>
 
-            <p class="description listing-description">Several days ago I saw a post on LinkedIn by Jornt Mandemakers with some very curious results from Gender and Generations Programme surveys. While representing interesting…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2024/rotate-damn-plot/index.html --></p>
         </div>
 
     </div>
@@ -937,7 +952,7 @@ window.Quarto = {
                 <p class="date listing-date">August 16, 2024</p>
             </div>
 
-            <p class="description listing-description">In summer 2024, Zotero had a major update to version 7. The update affected some of the setup routines that I outlined ages ago in the Zotero hacks post. The recipe laid out…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2024/zotero7/index.html --></p>
         </div>
 
     </div>
@@ -946,8 +961,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3">2023</h2>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">2023</h3>
 <div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -987,12 +1002,12 @@ window.Quarto = {
                 <p class="date listing-date">December 21, 2023</p>
             </div>
 
-            <p class="description listing-description">For four years I’ve been following #30DayMapCallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities…<code></code></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/30-dmc/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1774438314038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1022">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1774438314038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1017">
 
         <div class="body">
 
@@ -1028,12 +1043,12 @@ window.Quarto = {
                 <p class="date listing-date">November 4, 2023</p>
             </div>
 
-            <p class="description listing-description">Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz?</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/map-proj/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1774438314031" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="739">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1774438314031" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="731">
 
         <div class="body">
 
@@ -1069,7 +1084,7 @@ window.Quarto = {
                 <p class="date listing-date">November 1, 2023</p>
             </div>
 
-            <p class="description listing-description">Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question…<code></code></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/geocoding/index.html --></p>
         </div>
 
     </div>
@@ -1114,7 +1129,7 @@ window.Quarto = {
                 <p class="date listing-date">February 27, 2023</p>
             </div>
 
-            <p class="description listing-description">Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/shrink-space/index.html --></p>
         </div>
 
     </div>
@@ -1155,12 +1170,12 @@ window.Quarto = {
                 <p class="date listing-date">January 3, 2023</p>
             </div>
 
-            <p class="description listing-description">Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a certain…<code></code><code></code><code></code><code></code><strong></strong></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/gist-snippet/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ3JzcGF0aWFsJTJDZGF0YXZpeiUyQ3RyaWNr" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1774438314035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="775">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ3JzcGF0aWFsJTJDZGF0YXZpeiUyQ3RyaWNr" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1774438314035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="759">
 
         <div class="body">
 
@@ -1200,7 +1215,7 @@ window.Quarto = {
                 <p class="date listing-date">January 1, 2023</p>
             </div>
 
-            <p class="description listing-description">Since R community developed brilliant tools to deal with spatial data, producing maps is no longer the privilege of a narrow group of people with very specific almost…<code></code></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2023/map-borders/index.html --></p>
         </div>
 
     </div>
@@ -1209,8 +1224,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4">2022</h2>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">2022</h3>
 <div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1250,7 +1265,7 @@ window.Quarto = {
                 <p class="date listing-date">December 25, 2022</p>
             </div>
 
-            <p class="description listing-description">FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many – some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2022/exceptional-world-cup/index.html --></p>
         </div>
 
     </div>
@@ -1259,8 +1274,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-5" class="level2">
-<h2 class="anchored" data-anchor-id="section-5">2021</h2>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">2021</h3>
 <div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1300,7 +1315,7 @@ window.Quarto = {
                 <p class="date listing-date">March 5, 2021</p>
             </div>
 
-            <p class="description listing-description">It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life expectancy. Unlike many statistics and…<strong></strong><strong></strong></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2021/life-expectancy-101/index.html --></p>
         </div>
 
     </div>
@@ -1309,8 +1324,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">2020</h2>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">2020</h3>
 <div id="listing-posts_2020" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1358,7 +1373,7 @@ window.Quarto = {
                 <p class="date listing-date">June 19, 2020</p>
             </div>
 
-            <p class="description listing-description">One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2020/background-data/index.html --></p>
         </div>
 
     </div>
@@ -1367,8 +1382,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-7" class="level2">
-<h2 class="anchored" data-anchor-id="section-7">2019</h2>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">2019</h3>
 <div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1408,7 +1423,7 @@ window.Quarto = {
                 <p class="date listing-date">July 19, 2019</p>
             </div>
 
-            <p class="description listing-description">I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advise to every (ha-ha-ha) listening…<strong></strong></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2019/dotplot/index.html --></p>
         </div>
 
     </div>
@@ -1445,7 +1460,7 @@ window.Quarto = {
                 <p class="date listing-date">March 14, 2019</p>
             </div>
 
-            <p class="description listing-description">Here is a bit refreshed translation of my 2015 blog post, initially published on Russian blog platform habr.com. The post shows how to organize a personal academic library…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2019/zotero/index.html --></p>
         </div>
 
     </div>
@@ -1486,7 +1501,7 @@ window.Quarto = {
                 <p class="date listing-date">March 7, 2019</p>
             </div>
 
-            <p class="description listing-description">Have you been feeling lately that you are missing out the coolest skill-set in academia?</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2019/barcelona-summer-school-of-demography/index.html --></p>
         </div>
 
     </div>
@@ -1495,8 +1510,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-8" class="level2">
-<h2 class="anchored" data-anchor-id="section-8">2018</h2>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">2018</h3>
 <div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1540,7 +1555,7 @@ window.Quarto = {
                 <p class="date listing-date">December 3, 2018</p>
             </div>
 
-            <p class="description listing-description">On 28 November 2018 I presented a poster at Dutch Demography Day in Utrecht. Here it is:</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2018/ddd-poster/index.html --></p>
         </div>
 
     </div>
@@ -1581,7 +1596,7 @@ window.Quarto = {
                 <p class="date listing-date">September 23, 2018</p>
             </div>
 
-            <p class="description listing-description">SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at the project website and is distributed for deeper…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2018/sjrdata-package/index.html --></p>
         </div>
 
     </div>
@@ -1622,7 +1637,7 @@ window.Quarto = {
                 <p class="date listing-date">July 21, 2018</p>
             </div>
 
-            <p class="description listing-description">I am happy to announce that our paper is published today in <em>The Lancet</em>.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2018/the-lancet-paper/index.html --></p>
         </div>
 
     </div>
@@ -1659,7 +1674,7 @@ window.Quarto = {
                 <p class="date listing-date">June 4, 2018</p>
             </div>
 
-            <p class="description listing-description">This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It keeps migrating…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2018/deep-catalan-roots/index.html --></p>
         </div>
 
     </div>
@@ -1700,7 +1715,7 @@ window.Quarto = {
                 <p class="date listing-date">May 22, 2018</p>
             </div>
 
-            <p class="description listing-description">Tiny things can separate life into “before” and “after”. Here is one. For almost a year I’ve been daily sending mental “thank you” to Ugo who showed me how to re-organize…<strong></strong></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2018/perfect-rstudio-layout/index.html --></p>
         </div>
 
     </div>
@@ -1709,8 +1724,8 @@ window.Quarto = {
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </section>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">2017</h2>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">2017</h3>
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
@@ -1750,7 +1765,7 @@ window.Quarto = {
                 <p class="date listing-date">December 10, 2017</p>
             </div>
 
-            <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/data-acquisition-three/index.html --></p>
         </div>
 
     </div>
@@ -1791,7 +1806,7 @@ window.Quarto = {
                 <p class="date listing-date">November 7, 2017</p>
             </div>
 
-            <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/data-acquisition-two/index.html --></p>
         </div>
 
     </div>
@@ -1832,12 +1847,12 @@ window.Quarto = {
                 <p class="date listing-date">October 17, 2017</p>
             </div>
 
-            <p class="description listing-description">For each of the data acquisition options I provide a small visualization use case.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/data-acquisition-one/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2ZhY2V0aW5n" data-listing-date-sort="1500328800000" data-listing-file-modified-sort="1774438313984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="447">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2ZhY2V0aW5n" data-listing-date-sort="1500328800000" data-listing-file-modified-sort="1774438313984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="444">
 
         <div class="body">
 
@@ -1869,7 +1884,7 @@ window.Quarto = {
                 <p class="date listing-date">July 18, 2017</p>
             </div>
 
-            <p class="description listing-description">As an example of Eurostat data usage I chose to show the dynamics of NEET (Young people neither in employment nor in education and training) in European countries. The…<code></code></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/neet-in-europe/index.html --></p>
         </div>
 
     </div>
@@ -1906,7 +1921,7 @@ window.Quarto = {
                 <p class="date listing-date">July 17, 2017</p>
             </div>
 
-            <p class="description listing-description">In the modern history, the world has seen unprecedented decrease in human mortality – the result of the Demographic Transition. Initially, the improvements occurred only in…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/global-male-life-expectancy-convergence/index.html --></p>
         </div>
 
     </div>
@@ -1943,7 +1958,7 @@ window.Quarto = {
                 <p class="date listing-date">July 4, 2017</p>
             </div>
 
-            <p class="description listing-description">Basically, this post turned out to be just a wrong, premature, and unnecessary attempt of code optimization. If you still want to have look, make sure that later you read thi…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/ggplot2-microbenchmark/index.html --></p>
         </div>
 
     </div>
@@ -1992,7 +2007,7 @@ window.Quarto = {
                 <p class="date listing-date">June 30, 2017</p>
             </div>
 
-            <p class="description listing-description">Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my recent…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/colorcoded-map/index.html --></p>
         </div>
 
     </div>
@@ -2029,12 +2044,12 @@ window.Quarto = {
                 <p class="date listing-date">May 27, 2017</p>
             </div>
 
-            <p class="description listing-description">The 2017 Ice Hockey World Championship has started. Thus I want to share a small research on the height of ice hockey players that I did almost a year ago and published in…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/ice-hockey-players-height/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1495663200000" data-listing-file-modified-sort="1774438313987" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2067">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1495663200000" data-listing-file-modified-sort="1774438313987" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2060">
 
         <div class="body">
 
@@ -2070,12 +2085,12 @@ window.Quarto = {
                 <p class="date listing-date">May 25, 2017</p>
             </div>
 
-            <p class="description listing-description">Following the surprising success of my latest post, I decided to show yet another use case of the handy annotation custom function. Here I will show how to add small…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/subplots-in-maps/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1495404000000" data-listing-file-modified-sort="1774438313902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1644">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1495404000000" data-listing-file-modified-sort="1774438313902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1632">
 
         <div class="body">
 
@@ -2107,12 +2122,12 @@ window.Quarto = {
                 <p class="date listing-date">May 22, 2017</p>
             </div>
 
-            <p class="description listing-description">For my recently published paper, I produced not-so-standard figures that show the two step decomposition used in the analysis. Have a look:</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/align-six-maps/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1492984800000" data-listing-file-modified-sort="1774438313982" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1249">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1492984800000" data-listing-file-modified-sort="1774438313982" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1256">
 
         <div class="body">
 
@@ -2148,7 +2163,7 @@ window.Quarto = {
                 <p class="date listing-date">April 24, 2017</p>
             </div>
 
-            <p class="description listing-description">This is a very short post on mapping with <code>ggplot2</code>.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/map-hacking/index.html --></p>
         </div>
 
     </div>
@@ -2185,7 +2200,7 @@ window.Quarto = {
                 <p class="date listing-date">March 31, 2017</p>
             </div>
 
-            <p class="description listing-description">This post is about illustrating the concept of prospective ageing, a relatively fresh approach in demography to refine our understanding of population ageing. This…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/who-is-old/index.html --></p>
         </div>
 
     </div>
@@ -2222,7 +2237,7 @@ window.Quarto = {
                 <p class="date listing-date">March 16, 2017</p>
             </div>
 
-            <p class="description listing-description">NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/denmark-nuts-reconstruction/index.html --></p>
         </div>
 
     </div>
@@ -2259,12 +2274,12 @@ window.Quarto = {
                 <p class="date listing-date">February 25, 2017</p>
             </div>
 
-            <p class="description listing-description">Sweden, with its high quality statistical record since 1748, is the natural choice for any demographic study that aims to cover population dynamics during a long period of…</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/gender-gap-in-swedish-mortality/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="ciUyQ2RlbW9ncmFwaHklMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1774438313920" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1078">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="ciUyQ2RlbW9ncmFwaHklMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1774438313920" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1075">
 
         <div class="body">
 
@@ -2300,12 +2315,12 @@ window.Quarto = {
                 <p class="date listing-date">February 14, 2017</p>
             </div>
 
-            <p class="description listing-description">This week, the 30-th issue of my Demographic Digest was published.</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/dd-journals-frequency/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1774438313945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="551">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1774438313945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
 
         <div class="body">
 
@@ -2341,12 +2356,12 @@ window.Quarto = {
                 <p class="date listing-date">February 6, 2017</p>
             </div>
 
-            <p class="description listing-description">Russia is sadly notorious for its ridiculously high adult male mortality. According to Human Mortality Database data (2010), the probability for a Russian men to survive…<sup></sup></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/hmd-male-mortality-rus-jpn/index.html --></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1774438313943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="932">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1774438313943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="931">
 
         <div class="body">
 
@@ -2382,7 +2397,7 @@ window.Quarto = {
                 <p class="date listing-date">February 5, 2017</p>
             </div>
 
-            <p class="description listing-description">Sex ratios reflect the two basic regularities of human demographics: 1) there are always more boys being born; 2) males experience higher mortality throughout their…<sup></sup></p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/hmd-all-sex-ratio/index.html --></p>
         </div>
 
     </div>
@@ -2415,7 +2430,7 @@ window.Quarto = {
                 <p class="date listing-date">January 29, 2017</p>
             </div>
 
-            <p class="description listing-description">Welcome to my blog!</p>
+            <p class="description listing-description"><!-- desc(5A0113B34292)[max=175]:2017/hello-r-world/index.html --></p>
         </div>
 
     </div>
@@ -2425,13 +2440,14 @@ window.Quarto = {
 </div>
 <hr>
 <center>
-<button class="btn btn-lg btn-secondary" type="button">
+<button class="btn btn-lg btn-secondary" type="button" aria-label="Subscribe for email updates" toolname="Subscribe" tooldescription="Sign up for email notifications when new blog posts are published">
 <a href="./subscribe.html"> <i class="fa-solid fa-pen-to-square" aria-label="pen-to-square"></i> Subscribe for email updates</a>
 </button>
 </center>
 
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
