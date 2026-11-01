@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ikashnitsky.phd/subscribe.html</loc>
-    <lastmod>2026-03-25T11:31:54.137Z</lastmod>
+    <loc>https://ikashnitsky.phd/tools.html</loc>
+    <lastmod>2026-10-29T07:10:29.775Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ikashnitsky.phd/projects.html</loc>
+    <lastmod>2026-10-29T07:09:57.612Z</lastmod>
   </url>
   <url>
     <loc>https://ikashnitsky.phd/index.html</loc>
@@ -197,11 +201,7 @@
     <lastmod>2026-04-29T20:12:52.069Z</lastmod>
   </url>
   <url>
-    <loc>https://ikashnitsky.phd/projects.html</loc>
-    <lastmod>2026-10-29T07:09:57.612Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ikashnitsky.phd/tools.html</loc>
-    <lastmod>2026-10-29T07:10:29.775Z</lastmod>
+    <loc>https://ikashnitsky.phd/subscribe.html</loc>
+    <lastmod>2026-03-25T11:31:54.137Z</lastmod>
   </url>
 </urlset>
