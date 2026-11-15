@@ -9,7 +9,7 @@
 <link>https://ikashnitsky.phd/</link>
 <atom:link href="https://ikashnitsky.phd/index.xml" rel="self" type="application/rss+xml"/>
 <description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
-<generator>quarto-1.10.18</generator>
+<generator>quarto-1.11.9</generator>
 <lastBuildDate>Mon, 30 Mar 2026 22:00:00 GMT</lastBuildDate>
 <item>
   <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
@@ -90,7 +90,7 @@
   <category>dataviz</category>
   <guid>https://ikashnitsky.phd/2026/royal-longevity/</guid>
   <pubDate>Mon, 30 Mar 2026 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits’ La Liga predictions</title>
@@ -1078,7 +1078,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d3" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-01 | points</strong><br>
@@ -1110,7 +1110,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d6" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-04 | points</strong><br>
@@ -1142,7 +1142,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d9" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-07 | navigation</strong><br>
@@ -1174,7 +1174,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d12" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-10 | North America</strong><br>
@@ -1206,7 +1206,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d15" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-13 | choropleth</strong><br>
@@ -1238,7 +1238,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d19" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-16 | Oceania</strong><br>
@@ -1271,7 +1271,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d23" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-20 | outdoors</strong><br>
@@ -1303,7 +1303,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="d29" class="level1 page-columns page-full">
 <h1></h1>
-<div class="column-page quarto-layout-panel" data-layout-ncol="3" height="500">
+<div class="column-page quarto-layout-panel" height="500" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <p><strong>2023-11-25 | Antarctica</strong><br>
@@ -3113,7 +3113,7 @@ Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd
   <category>faceting</category>
   <guid>https://ikashnitsky.phd/2023/shrink-space/</guid>
   <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://ikashnitsky.phd/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>Easily re-using self-written functions: the power of gist + code snippet duo</title>
@@ -4123,7 +4123,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>package</category>
   <guid>https://ikashnitsky.phd/2022/exceptional-world-cup/</guid>
   <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>What is life expectancy? And, even more important, what it isn’t</title>
@@ -4350,7 +4350,7 @@ Important
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2019/dotplot/</guid>
   <pubDate>Thu, 18 Jul 2019 22:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2019/dotplot/teaser.jpeg" medium="image" type="image/jpeg"/>
+  <media:content url="https://ikashnitsky.phd/2019/dotplot/teaser.jpeg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>Zotero hacks: unlimited synced storage and its smooth use with rmarkdown</title>

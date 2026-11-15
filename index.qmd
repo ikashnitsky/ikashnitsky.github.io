@@ -67,10 +67,6 @@ format:
     include-in-header: index-meta.html
 ---
 
-## Recent Posts
-
-A blog on demography, R programming, and data visualization by [Ilya Kashnitsky](https://ikashnitsky.phd/me.html), Senior Researcher at Statistics Denmark. Browse posts by year below.
-
 ### 2026
 
 ::: {#posts_2026}

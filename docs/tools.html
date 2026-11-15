@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,14 +38,15 @@ ul.task-list li input[type="checkbox"] {
 <link href=".//img/ikx-logo-500.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8fd3faaa6222612f4ec1274525a2b4af.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f630bb2ada531137d842fffd72875e02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0cdebc085995f4245ddb7992a50a77a0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -96,23 +97,20 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1000">
-<meta name="twitter:image-width" content="1910">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Ilya Kashnitsky</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -173,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -197,384 +196,561 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Categories</h2>
    
   <ul>
-  <li><a href="#development-terminal" id="toc-development-terminal" class="nav-link active" data-scroll-target="#development-terminal">Development &amp; Terminal</a></li>
-  <li><a href="#data-tabular-analysis" id="toc-data-tabular-analysis" class="nav-link" data-scroll-target="#data-tabular-analysis">Data &amp; Tabular Analysis</a></li>
-  <li><a href="#documents-academic-literature" id="toc-documents-academic-literature" class="nav-link" data-scroll-target="#documents-academic-literature">Documents &amp; Academic Literature</a></li>
-  <li><a href="#browsing-search-ai" id="toc-browsing-search-ai" class="nav-link" data-scroll-target="#browsing-search-ai">Browsing, Search &amp; AI</a></li>
-  <li><a href="#system-file-utilities" id="toc-system-file-utilities" class="nav-link" data-scroll-target="#system-file-utilities">System &amp; File Utilities</a></li>
-  <li><a href="#productivity-communication" id="toc-productivity-communication" class="nav-link" data-scroll-target="#productivity-communication">Productivity &amp; Communication</a></li>
+  <li><a href="#coding-terminal-environments" id="toc-coding-terminal-environments" class="nav-link active" data-scroll-target="#coding-terminal-environments">Coding, Terminal &amp; Environments</a></li>
+  <li><a href="#ai-voice" id="toc-ai-voice" class="nav-link" data-scroll-target="#ai-voice">AI &amp; Voice</a></li>
+  <li><a href="#data-web-file-conversion" id="toc-data-web-file-conversion" class="nav-link" data-scroll-target="#data-web-file-conversion">Data, Web &amp; File Conversion</a></li>
+  <li><a href="#reading-notes-references" id="toc-reading-notes-references" class="nav-link" data-scroll-target="#reading-notes-references">Reading, Notes &amp; References</a></li>
+  <li><a href="#files-backups-security" id="toc-files-backups-security" class="nav-link" data-scroll-target="#files-backups-security">Files, Backups &amp; Security</a></li>
+  <li><a href="#browsing-links-social" id="toc-browsing-links-social" class="nav-link" data-scroll-target="#browsing-links-social">Browsing, Links &amp; Social</a></li>
+  <li><a href="#productivity-focus" id="toc-productivity-focus" class="nav-link" data-scroll-target="#productivity-focus">Productivity &amp; Focus</a></li>
+  <li><a href="#travel-fitness-everyday" id="toc-travel-fitness-everyday" class="nav-link" data-scroll-target="#travel-fitness-everyday">Travel, Fitness &amp; Everyday</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1">
 
 
 
 
 <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
 <p>A curated selection of software, services, and utilities that I find exceptionally useful, use in my daily workflows, and warmly recommend.</p>
-<section id="development-terminal" class="level2">
-<h2 class="anchored" data-anchor-id="development-terminal">Development &amp; Terminal</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://positron.posit.co/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Positron</a>
-</h4>
-<p><span class="badge bg-light text-dark border">IDE</span></p>
+<section id="coding-terminal-environments" class="level2">
+<h2 class="anchored" data-anchor-id="coding-terminal-environments">Coding, Terminal &amp; Environments</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://positron.posit.co/" target="_blank" rel="noopener noreferrer">Positron</a>
 </div>
-<p class="card-text text-muted mb-0">
-Next-generation data science IDE from Posit, purpose-built for R and Python exploratory workflows.
-</p>
+<div class="tool-desc">
+Next-generation data science IDE by Posit; combines VS Code extensibility with first-class interactive R and Python data exploration.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://wezfurlong.org/wezterm/" target="_blank" rel="noopener noreferrer">WezTerm</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://wezfurlong.org/wezterm/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">WezTerm</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Terminal</span></p>
+<div class="tool-desc">
+GPU-accelerated terminal emulator and multiplexer in Rust; fast, cross-platform, and cleanly configurable via Lua.
 </div>
-<p class="card-text text-muted mb-0">
-GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust, configured with Lua.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://quarto.org/" target="_blank" rel="noopener noreferrer">Quarto</a>
 </div>
+<div class="tool-desc">
+Open-source scientific publishing system for reproducible papers, slides, books, and websites (powers this site).
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://github.com/tw93/Pake" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Pake</a>
-</h4>
-<p><span class="badge bg-light text-dark border">App Builder</span></p>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
 </div>
-<p class="card-text text-muted mb-0">
-Lightweight CLI tool that turns any webpage into a standalone desktop application using Tauri and Rust.
-</p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://bun.sh/" target="_blank" rel="noopener noreferrer">bun</a>
 </div>
+<div class="tool-desc">
+All-in-one JavaScript runtime, bundler, and package manager that replaces slow Node tooling with near-instant execution.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Antigravity (AI Pro subscription)</a>
-</h4>
-<p><span class="badge bg-light text-dark border">AI Coding</span></p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://docs.astral.sh/uv/" target="_blank" rel="noopener noreferrer">uv</a>
 </div>
-<p class="card-text text-muted mb-0">
-Advanced agentic AI development environment and pair-programming assistant, leveraged with the AI Pro subscription.
-</p>
+<div class="tool-desc">
+Rust-based Python package and environment manager; orders of magnitude faster and far cleaner than pip/conda.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://yazi-rs.github.io/" target="_blank" rel="noopener noreferrer">yazi</a>
 </div>
+<div class="tool-desc">
+Blazing-fast terminal file manager in Rust with async I/O, inline image previews, and effortless Vim-like navigation.
 </div>
-</section>
-<section id="data-tabular-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="data-tabular-analysis">Data &amp; Tabular Analysis</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.tadviewer.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Tad</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Data Viewer</span></p>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
 </div>
-<p class="card-text text-muted mb-0">
-Fast desktop tabular data viewer and pivot explorer powered by DuckDB, built for large CSV and Parquet files.
-</p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/Graphixa/FontGet" target="_blank" rel="noopener noreferrer">fontget</a>
 </div>
+<div class="tool-desc">
+Cross-platform CLI for searching and installing fonts directly from the terminal without hunting through websites.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://smoothcsv.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">SmoothCSV</a>
-</h4>
-<p><span class="badge bg-light text-dark border">CSV Editor</span></p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://fedoraproject.org/" target="_blank" rel="noopener noreferrer">Fedora</a>
 </div>
-<p class="card-text text-muted mb-0">
-High-performance, user-friendly desktop CSV editor and spreadsheet viewer for editing large delimited files.
-</p>
+<div class="tool-desc">
+Polished, up-to-date Linux distribution that balances modern packages with rock-solid stability for daily work.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Linux OS</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/coatless-rpkg/livelink" target="_blank" rel="noopener noreferrer">livelink</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://vert.sh/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Vert.sh</a>
-</h4>
-<p><span class="badge bg-light text-dark border">File Converter</span></p>
+<div class="tool-desc">
+R package that turns local R scripts and Shiny apps into shareable URLs running directly in the browser via webR.
 </div>
-<p class="card-text text-muted mb-0">
-Private, local in-browser file and format converter powered by WebAssembly without uploading files to servers.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">R</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer">llama.cpp</a>
 </div>
+<div class="tool-desc">
+Lightweight C/C++ inference engine for running open-weight LLMs locally with minimal overhead and full privacy.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
 </div>
 </section>
-<section id="documents-academic-literature" class="level2">
-<h2 class="anchored" data-anchor-id="documents-academic-literature">Documents &amp; Academic Literature</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Zotero</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Reference Manager</span></p>
+<section id="ai-voice" class="level2">
+<h2 class="anchored" data-anchor-id="ai-voice">AI &amp; Voice</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer">Antigravity (AI Pro)</a>
 </div>
-<p class="card-text text-muted mb-0">
-Open-source reference manager to collect, annotate, organize, and cite academic research papers and literature.
-</p>
+<div class="tool-desc">
+Agentic AI development environment that dramatically accelerates coding, refactoring, and research workflows (with AI Pro).
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://skillsmanager.dev/" target="_blank" rel="noopener noreferrer">Skills Manager</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.pdfgear.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">PdfGear</a>
-</h4>
-<p><span class="badge bg-light text-dark border">PDF Tool</span></p>
+<div class="tool-desc">
+Clean utility to organize, sync, and reuse AI coding assistant skills consistently across tools and projects.
 </div>
-<p class="card-text text-muted mb-0">
-Free, fully featured PDF reader, editor, annotator, and converter equipped with an AI document assistant.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity</a>
 </div>
+<div class="tool-desc">
+AI search engine that synthesizes live web sources with inline citations—my go-to for quick fact-checking and exploration.
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://calibre-ebook.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Calibre</a>
-</h4>
-<p><span class="badge bg-light text-dark border">E-Book Manager</span></p>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
 </div>
-<p class="card-text text-muted mb-0">
-Comprehensive open-source e-book manager, format converter, and reader for digital publications.
-</p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/cjpais/Handy" target="_blank" rel="noopener noreferrer">Handy</a>
 </div>
+<div class="tool-desc">
+Free, open-source offline speech-to-text app; push-to-talk local dictation into any text field with zero cloud lock-in.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://elevenlabs.io/text-reader" target="_blank" rel="noopener noreferrer">Eleven Reader</a>
 </div>
-</section>
-<section id="browsing-search-ai" class="level2">
-<h2 class="anchored" data-anchor-id="browsing-search-ai">Browsing, Search &amp; AI</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://brave.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Brave</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Browser</span></p>
+<div class="tool-desc">
+Natural-sounding AI text-to-speech reader that turns long articles, PDFs, and e-books into effortless listening.
 </div>
-<p class="card-text text-muted mb-0">
-Fast, privacy-focused browser with native ad and tracker blocking, shields, and full Chromium extension support.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.newsoveraudio.com/" target="_blank" rel="noopener noreferrer">Noa</a>
 </div>
+<div class="tool-desc">
+Audio journalism app with human-narrated deep-dive articles from top publications for screen-free commuting.
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Perplexity</a>
-</h4>
-<p><span class="badge bg-light text-dark border">AI Search</span></p>
-</div>
-<p class="card-text text-muted mb-0">
-Conversational AI search engine providing synthesized answers with inline citations from live web sources.
-</p>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://raindrop.io/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Raindrop (with AI subscription)</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Bookmarks</span></p>
-</div>
-<p class="card-text text-muted mb-0">
-Modern bookmark manager with web clipping, nested collections, full-text search, and AI-assisted organization.
-</p>
-</div>
-</div>
-</div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://alternativeto.net/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Alternativeto.net</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Discovery</span></p>
-</div>
-<p class="card-text text-muted mb-0">
-Crowdsourced software recommendation platform to discover free, open-source, and better alternatives to software.
-</p>
-</div>
-</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
 </div>
 </section>
-<section id="system-file-utilities" class="level2">
-<h2 class="anchored" data-anchor-id="system-file-utilities">System &amp; File Utilities</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://filepilot.tech/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">FilePilot</a>
-</h4>
-<p><span class="badge bg-light text-dark border">File Explorer</span></p>
+<section id="data-web-file-conversion" class="level2">
+<h2 class="anchored" data-anchor-id="data-web-file-conversion">Data, Web &amp; File Conversion</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.tadviewer.com/" target="_blank" rel="noopener noreferrer">Tad</a>
 </div>
-<p class="card-text text-muted mb-0">
-Ultra-fast, lightweight alternative file explorer and search utility for Windows designed for instant speed.
-</p>
+<div class="tool-desc">
+DuckDB-powered desktop viewer for inspecting and pivoting huge CSV and Parquet files that choke spreadsheet apps.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://smoothcsv.com/" target="_blank" rel="noopener noreferrer">SmoothCSV</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://diskanalyzer.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">WizTree</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Disk Analyzer</span></p>
+<div class="tool-desc">
+Fast, responsive desktop CSV editor built specifically for cleanly viewing and editing large delimited tables.
 </div>
-<p class="card-text text-muted mb-0">
-Blazing fast disk space analyzer for Windows that scans the NTFS Master File Table (MFT) in seconds.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://ziptbl.com/" target="_blank" rel="noopener noreferrer">Ziptable</a>
 </div>
+<div class="tool-desc">
+Shares small CSV/JSON datasets as a single URL compressed directly in the link fragment—no server or account needed.
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://github.com/adileo/squirreldisk" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">SquirrelDisk</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Disk Analyzer</span></p>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
 </div>
-<p class="card-text text-muted mb-0">
-Modern, open-source cross-platform disk usage visualizer and cleanup utility written in Rust.
-</p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://vert.sh/" target="_blank" rel="noopener noreferrer">Vert.sh</a>
 </div>
+<div class="tool-desc">
+Private, ad-free in-browser file converter powered by WebAssembly; converts files locally without uploading them.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://flameshot.org/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Flameshot</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Screenshots</span></p>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://yhsure.github.io/qr-dancer/" target="_blank" rel="noopener noreferrer">qr-dancer</a>
 </div>
-<p class="card-text text-muted mb-0">
-Powerful yet simple open-source screenshot capture tool with built-in in-place drawing and annotation.
-</p>
+<div class="tool-desc">
+Turns pixel art into functional, locally verified custom QR codes—great for distinctive slides and handouts.
 </div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
 </div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.star-history.com/" target="_blank" rel="noopener noreferrer">Star-history</a>
+</div>
+<div class="tool-desc">
+Simple, clean way to plot and compare GitHub repository star growth over time when evaluating open-source tools.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
 </div>
 </div>
 </section>
-<section id="productivity-communication" class="level2">
-<h2 class="anchored" data-anchor-id="productivity-communication">Productivity &amp; Communication</h2>
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-4">
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://super-productivity.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">SuperProductivity</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Productivity</span></p>
+<section id="reading-notes-references" class="level2">
+<h2 class="anchored" data-anchor-id="reading-notes-references">Reading, Notes &amp; References</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer">Zotero</a>
 </div>
-<p class="card-text text-muted mb-0">
-Free and open-source task manager, time tracker, and Pomodoro tool integrating with GitHub, GitLab, and Jira.
-</p>
+<div class="tool-desc">
+Indispensable open-source reference manager for collecting, annotating, organizing, and citing academic literature.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.pdfgear.com/" target="_blank" rel="noopener noreferrer">PdfGear</a>
+</div>
+<div class="tool-desc">
+Free, fast PDF reader, editor, annotator, and converter that handles everything without Adobe subscriptions.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://calibre-ebook.com/" target="_blank" rel="noopener noreferrer">Calibre</a>
+</div>
+<div class="tool-desc">
+Comprehensive open-source e-book library manager and format converter for keeping digital books organized.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://getferrite.dev/" target="_blank" rel="noopener noreferrer">Ferrite</a>
+</div>
+<div class="tool-desc">
+Fast, native Markdown and structured text editor in Rust—lightweight and crisp without Electron bloat.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://remarkable.com/" target="_blank" rel="noopener noreferrer">reMarkable</a>
+</div>
+<div class="tool-desc">
+Desktop companion app for syncing and organizing handwritten paper-tablet notes and annotated PDFs.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://raindrop.io/" target="_blank" rel="noopener noreferrer">Raindrop (with AI)</a>
+</div>
+<div class="tool-desc">
+Polished bookmark manager with full-text search, nested collections, and AI auto-tagging that keeps links retrievable.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web / App</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.meco.app/" target="_blank" rel="noopener noreferrer">Meco</a>
+</div>
+<div class="tool-desc">
+Dedicated newsletter reader that pulls Substack and email digests out of my inbox into a calm reading space.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
 </div>
+</section>
+<section id="files-backups-security" class="level2">
+<h2 class="anchored" data-anchor-id="files-backups-security">Files, Backups &amp; Security</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://filepilot.tech/" target="_blank" rel="noopener noreferrer">FilePilot</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.when2meet.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">When2Meet</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Scheduling</span></p>
+<div class="tool-desc">
+Ultra-fast, lightweight alternative file explorer for Windows; instant startup and navigation where Explorer lags.
 </div>
-<p class="card-text text-muted mb-0">
-Minimalist, zero-friction group scheduling tool to quickly find overlapping meeting availability without accounts.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Windows</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://localsend.org/" target="_blank" rel="noopener noreferrer">LocalSend</a>
+</div>
+<div class="tool-desc">
+Open-source AirDrop alternative for effortless, encrypted file sharing across devices on local Wi-Fi.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Cross-Platform</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/schollz/croc" target="_blank" rel="noopener noreferrer">croc</a>
+</div>
+<div class="tool-desc">
+Simple, end-to-end encrypted peer-to-peer CLI for securely sending files between any two computers anywhere.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">CLI</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://freefilesync.org/" target="_blank" rel="noopener noreferrer">FreeFileSync</a>
+</div>
+<div class="tool-desc">
+Reliable, open-source folder comparison and sync tool for fast local, external-drive, and network backups.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://diskanalyzer.com/" target="_blank" rel="noopener noreferrer">WizTree</a>
+</div>
+<div class="tool-desc">
+Blazing-fast disk space analyzer for Windows that reads the NTFS Master File Table to map drives in seconds.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Windows</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/adileo/squirreldisk" target="_blank" rel="noopener noreferrer">SquirrelDisk</a>
+</div>
+<div class="tool-desc">
+Clean, open-source cross-platform disk usage visualizer written in Rust for quick storage cleanups.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://flameshot.org/" target="_blank" rel="noopener noreferrer">Flameshot</a>
+</div>
+<div class="tool-desc">
+Open-source screenshot tool with fast in-place arrows, highlights, and redaction—ideal for tutorials and bug reports.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://bitwarden.com/" target="_blank" rel="noopener noreferrer">Bitwarden</a>
+</div>
+<div class="tool-desc">
+Trustworthy, open-source password manager with seamless encrypted vault syncing across desktop, browser, and phone.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Cross-Platform</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://ente.io/auth/" target="_blank" rel="noopener noreferrer">Ente Auth</a>
+</div>
+<div class="tool-desc">
+Open-source, end-to-end encrypted 2FA authenticator with reliable cloud backup so tokens are never lost.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android / App</span></p>
 </div>
 </div>
+</section>
+<section id="browsing-links-social" class="level2">
+<h2 class="anchored" data-anchor-id="browsing-links-social">Browsing, Links &amp; Social</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://brave.com/" target="_blank" rel="noopener noreferrer">Brave</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://bsky.app/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Bluesky</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Social</span></p>
+<div class="tool-desc">
+Fast, privacy-first Chromium browser with built-in ad/tracker blocking that keeps the web clean out of the box.
 </div>
-<p class="card-text text-muted mb-0">
-Decentralized social network built on the AT Protocol, home to an active academic and data visualization community.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Browser</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://alternativeto.net/" target="_blank" rel="noopener noreferrer">Alternativeto.net</a>
+</div>
+<div class="tool-desc">
+Crowdsourced software directory that reliably surfaces free, open-source, and lighter alternatives to bloated apps.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://short.io/" target="_blank" rel="noopener noreferrer">Short.io</a>
+</div>
+<div class="tool-desc">
+Branded URL shortener with custom domains and link analytics—great for clean, memorable links in talks and papers.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://bsky.app/" target="_blank" rel="noopener noreferrer">Bluesky</a>
+</div>
+<div class="tool-desc">
+Open AT-Protocol social network that has become the liveliest home for demography, R, and dataviz communities.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web / App</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Linkedin</a>
+</div>
+<div class="tool-desc">
+Essential professional network for keeping up with colleagues, institutions, and sharing research milestones.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web / App</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://antennapod.org/" target="_blank" rel="noopener noreferrer">AntennaPod</a>
+</div>
+<div class="tool-desc">
+Open-source, ad-free Android podcast player with great queue management and zero algorithmic clutter.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
 </div>
+</section>
+<section id="productivity-focus" class="level2">
+<h2 class="anchored" data-anchor-id="productivity-focus">Productivity &amp; Focus</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://super-productivity.com/" target="_blank" rel="noopener noreferrer">SuperProductivity</a>
 </div>
-<div class="col">
-<div class="card h-100 tool-card shadow-sm">
-<div class="card-body">
-<div class="d-flex justify-content-between align-items-start mb-2">
-<h4 class="card-title my-0 anchored">
-<a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="stretched-link text-decoration-none">Linkedin</a>
-</h4>
-<p><span class="badge bg-light text-dark border">Professional</span></p>
+<div class="tool-desc">
+Free, open-source task manager and time tracker with Pomodoro support and GitHub/Jira integration, stored locally.
 </div>
-<p class="card-text text-muted mb-0">
-Professional network for connecting with researchers, institutions, career updates, and sharing work.
-</p>
+<p><span class="badge bg-light text-dark border tool-badge">Desktop</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.when2meet.com/" target="_blank" rel="noopener noreferrer">When2Meet</a>
+</div>
+<div class="tool-desc">
+Zero-friction group scheduling grid—no logins, no bloat, just fast overlapping availability.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Web</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://github.com/tanujnotes/Olauncher" target="_blank" rel="noopener noreferrer">Olauncher</a>
+</div>
+<div class="tool-desc">
+Minimal, text-based Android home screen launcher that cuts visual noise and curbs mindless phone scrolling.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://loophabits.org/" target="_blank" rel="noopener noreferrer">Habits</a>
+</div>
+<div class="tool-desc">
+Open-source, ad-free habit tracker (Loop) with clean streak charts and zero nagware or subscriptions.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://meditofoundation.org/" target="_blank" rel="noopener noreferrer">Medito</a>
+</div>
+<div class="tool-desc">
+Completely free, non-profit, open-source meditation app with thoughtful guided sessions and no paywalls.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
 </div>
+</section>
+<section id="travel-fitness-everyday" class="level2">
+<h2 class="anchored" data-anchor-id="travel-fitness-everyday">Travel, Fitness &amp; Everyday</h2>
+<div class="tool-list">
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.strava.com/" target="_blank" rel="noopener noreferrer">Strava</a>
+</div>
+<div class="tool-desc">
+Motivating GPS activity tracker and social fitness log for keeping track of runs, rides, and outdoor routes.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://maps.me/" target="_blank" rel="noopener noreferrer">Maps.me</a>
+</div>
+<div class="tool-desc">
+Reliable offline maps and hiking trails powered by OpenStreetMap—invaluable when traveling without data.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.discovercars.com/" target="_blank" rel="noopener noreferrer">DiscoverCars</a>
+</div>
+<div class="tool-desc">
+Clear car rental comparison platform that consistently surfaces transparent pricing when traveling.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android / Web</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer">Revolut</a>
+</div>
+<div class="tool-desc">
+Multi-currency digital banking app with great exchange rates and virtual cards for hassle-free travel spending.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://forzafootball.com/" target="_blank" rel="noopener noreferrer">Forza</a>
+</div>
+<div class="tool-desc">
+Clean, fast live football scores, lineups, and match notifications without ad-heavy clutter.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
+</div>
+<div class="tool-row">
+<div class="tool-name">
+<a href="https://play.google.com/store/apps/details?id=io.github.vinceglb.molkky" target="_blank" rel="noopener noreferrer">Mölkky</a>
+</div>
+<div class="tool-desc">
+Open-source scorekeeper app that cleanly tracks turns, points, and elimination rules for Mölkky games.
+</div>
+<p><span class="badge bg-light text-dark border tool-badge">Android</span></p>
 </div>
 </div>
 
@@ -660,7 +836,8 @@ Professional network for connecting with researchers, institutions, career updat
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -669,8 +846,69 @@ Professional network for connecting with researchers, institutions, career updat
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -684,6 +922,7 @@ Professional network for connecting with researchers, institutions, career updat
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -846,44 +1085,54 @@ Professional network for connecting with researchers, institutions, career updat
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -981,6 +1230,9 @@ Professional network for connecting with researchers, institutions, career updat
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">

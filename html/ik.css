@@ -66,7 +66,7 @@ $p-lighter-x:   #EEFFFF !default;
 // Fonts
 
 
-@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Outfit:wght@900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Outfit:wght@900&family=Syne+Mono&display=swap);
 
 /*-- Nice display fonts: Outfit (!), Gloria Hallelujah, Monoton, Bungee, Paytone One, Dela Gothic One --*/
 
@@ -152,6 +152,12 @@ body {
     #title-block-header {
         margin-block-end: 0;
     }
+}
+
+// Inline code font
+:not(pre) > code {
+    font-family: "Syne Mono", monospace;
+    font-synthesis: none;
 }
 
 // Shrink blocks of code
@@ -491,30 +497,79 @@ pre.text, pre.sourceCode, .cell-output pre {
     }
 }
 
-// Tool cards
-.tool-card {
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    border: 1px solid rgba(0, 47, 47, 0.1) !important;
-    border-radius: 0.5rem !important;
+// Tool rows
+.tool-list {
     background-color: #ffffff;
-
-    &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 18px rgba(4, 132, 132, 0.12) !important;
-        border-color: $p-lighter-3 !important;
-    }
-
-    .card-title {
-        font-family: $headings-font-family;
-        font-weight: 700;
-        font-size: 1.15rem;
-        color: $p-darker-7;
-    }
-
-    .badge {
-        font-family: $navbar-font-family;
-        font-weight: 700;
-        font-size: 0.7rem;
-    }
+    border: 1px solid rgba(0, 47, 47, 0.1);
+    border-radius: 0.45rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
 }
 
+.tool-row {
+    display: grid;
+    grid-template-columns: minmax(165px, 205px) 1fr auto;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid rgba(0, 47, 47, 0.08);
+    transition: background-color 0.12s ease;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #f4fbfb;
+    }
+
+    .tool-name {
+        font-family: $headings-font-family;
+        font-weight: 700;
+        font-size: 0.96rem;
+        line-height: 1.25;
+
+        a {
+            color: $primary;
+            text-decoration: none;
+
+            &:hover {
+                color: $p-darker-7;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .tool-desc {
+        font-size: 0.88rem;
+        line-height: 1.35;
+        color: $gray-700;
+    }
+
+    .tool-badge {
+        font-family: $navbar-font-family;
+        font-weight: 700;
+        font-size: 0.66rem;
+        padding: 0.25em 0.55em;
+        justify-self: end;
+        white-space: nowrap;
+    }
+
+    @media (max-width: map-get($grid-breakpoints, md)) {
+        grid-template-columns: 1fr auto;
+        gap: 0.2rem 0.75rem;
+
+        .tool-name {
+            grid-column: 1;
+        }
+
+        .tool-badge {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .tool-desc {
+            grid-column: 1 / -1;
+        }
+    }
+}
