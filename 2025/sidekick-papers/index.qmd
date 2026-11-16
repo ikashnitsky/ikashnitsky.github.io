@@ -3,7 +3,7 @@ title: "Sidekick projects may be worthy distractions for an early academic"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-07-22"
-image: teaser.png
+image: teaser.jpg
 categories: [academia, career, demography]
 ---
 

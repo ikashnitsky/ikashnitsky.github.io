@@ -3,7 +3,7 @@ title: "Can deep football knowledge guarantee betting success? Systematic evalua
 fig-cap-location: margin
 reference-location: margin
 date: "2026-03-21"
-image: teaser.png
+image: teaser.jpg
 categories: [r, football, dataviz, llm]
 ---
 

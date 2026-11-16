@@ -3,7 +3,7 @@ title: "Beyond Fraud: How IHME Distorts Academic Metrics"
 fig-cap-location: margin
 reference-location: margin
 date: "2025-10-13"
-image: teaser.png
+image: teaser.jpg
 categories: [r, academia, bibliometrics, demography]
 ---
 
