@@ -18,7 +18,10 @@ A selection of research projects, teaching initiatives, and academic columns.
 </div>
 
 ::: {.card-body .d-flex .flex-column}
-<h3 class="card-title mt-0"><a href="https://datavizartskill.ikashnitsky.phd" class="stretched-link text-decoration-none">Dataviz – the Art/Skill Cocktail</a></h3>
+<div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+  <h3 class="card-title mt-0 mb-0"><a href="https://datavizartskill.ikashnitsky.phd" class="stretched-link text-decoration-none">Dataviz – the Art/Skill Cocktail</a></h3>
+  <span class="badge bg-primary flex-shrink-0 mt-1">Workshop / Course</span>
+</div>
 
 <div class="text-muted mb-3 fw-bold">DatavizArtSkill</div>
 
@@ -26,17 +29,58 @@ A selection of research projects, teaching initiatives, and academic columns.
 An intensive, practice-oriented data visualization curriculum and workshop series. Designed to empower researchers with the flexibility of R and the tidyverse (<code>ggplot2</code>) to build impactful, publication-ready graphics, explore visual design theory, and master reproducible thematic cartography.
 </p>
 
-<div class="d-flex flex-wrap gap-1 mb-3">
-  <span class="badge bg-light text-dark border">R</span>
-  <span class="badge bg-light text-dark border">ggplot2</span>
-  <span class="badge bg-light text-dark border">tidyverse</span>
-  <span class="badge bg-light text-dark border">Data Viz</span>
-  <span class="badge bg-light text-dark border">Mapping</span>
+<div class="mt-auto pt-3 border-top">
+  <span class="btn btn-outline-primary btn-sm fw-bold font-monospace">Explore project &rarr;</span>
+</div>
+:::
+:::
+:::
+
+::: {.col}
+::: {.card .h-100 .shadow-sm .project-card}
+<div class="project-banner-container d-flex align-items-center justify-content-center" style="background-color: #002F2F; height: 180px;">
+  <img src="img/4rum-hex.png" alt="4R/um hex logo" style="max-height: 150px; width: auto; object-fit: contain;">
 </div>
 
-<div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-  <span class="badge bg-primary">Workshop / Course</span>
-  <span class="text-primary fw-bold font-monospace">Explore project &rarr;</span>
+::: {.card-body .d-flex .flex-column}
+<div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+  <h3 class="card-title mt-0 mb-0"><a href="https://dshub.dev" class="stretched-link text-decoration-none">4R/um</a></h3>
+  <span class="badge bg-primary flex-shrink-0 mt-1">Community / Club</span>
+</div>
+
+<div class="text-muted mb-3 fw-bold">Statistics Denmark R Exchange</div>
+
+<p class="card-text flex-grow-1">
+A monthly R exchange meeting and discussion club at Statistics Denmark. Fostering open collaboration, reproducibility, and knowledge sharing around open-source data science tools, Quarto publishing, and modern R workflows.
+</p>
+
+<div class="mt-auto pt-3 border-top">
+  <span class="btn btn-outline-primary btn-sm fw-bold font-monospace">Explore project &rarr;</span>
+</div>
+:::
+:::
+:::
+
+::: {.col}
+::: {.card .h-100 .shadow-sm .project-card}
+<div class="project-banner-container d-flex align-items-center justify-content-center" style="background-color: #002F2F; height: 180px;">
+  <img src="img/skagerrak-logo.png" alt="Skagerrak Demographic Series logo" style="max-height: 150px; width: auto; object-fit: contain;">
+</div>
+
+::: {.card-body .d-flex .flex-column}
+<div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+  <h3 class="card-title mt-0 mb-0"><a href="https://demografi.dk/skagerrak" class="stretched-link text-decoration-none">Skagerrak Demographic Series</a></h3>
+  <span class="badge bg-primary flex-shrink-0 mt-1">Seminar Series</span>
+</div>
+
+<div class="text-muted mb-3 fw-bold">DDF &middot; NDF &middot; SDF</div>
+
+<p class="card-text flex-grow-1">
+A joint monthly seminar series organized by the Danish, Norwegian, and Swedish Demographic Societies. Hosted online with hybrid hubs in Copenhagen, Oslo, and Stockholm, providing a Nordic platform for knowledge exchange and discussion across the demographic community.
+</p>
+
+<div class="mt-auto pt-3 border-top">
+  <span class="btn btn-outline-primary btn-sm fw-bold font-monospace">Explore project &rarr;</span>
 </div>
 :::
 :::
@@ -49,7 +93,10 @@ An intensive, practice-oriented data visualization curriculum and workshop serie
 </div>
 
 ::: {.card-body .d-flex .flex-column}
-<h3 class="card-title mt-0"><a href="dd.html" class="stretched-link text-decoration-none">Demographic Digest</a></h3>
+<div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+  <h3 class="card-title mt-0 mb-0"><a href="dd.html" class="stretched-link text-decoration-none">Demographic Digest</a></h3>
+  <span class="badge bg-primary flex-shrink-0 mt-1">Academic Column</span>
+</div>
 
 <div class="text-muted mb-3 fw-bold">Демографический Дайджест</div>
 
@@ -57,16 +104,8 @@ An intensive, practice-oriented data visualization curriculum and workshop serie
 A long-running academic column at <em>Demoscope Weekly</em> featuring Russian-language summaries and critical overviews of fresh demographic research papers published in top international peer-reviewed journals.
 </p>
 
-<div class="d-flex flex-wrap gap-1 mb-3">
-  <span class="badge bg-light text-dark border">Demography</span>
-  <span class="badge bg-light text-dark border">Demoscope Weekly</span>
-  <span class="badge bg-light text-dark border">Reviews</span>
-  <span class="badge bg-light text-dark border">Academic Column</span>
-</div>
-
-<div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-  <span class="badge bg-primary">Academic Column</span>
-  <span class="text-primary fw-bold font-monospace">Read digest &rarr;</span>
+<div class="mt-auto pt-3 border-top">
+  <span class="btn btn-outline-primary btn-sm fw-bold font-monospace">Read digest &rarr;</span>
 </div>
 :::
 :::
