@@ -66,11 +66,13 @@ $p-lighter-x:   #EEFFFF !default;
 // Fonts
 
 
-@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Jost:wght@700&family=Fira+Code:wght@700&family=Outfit:wght@900&family=Syne+Mono&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Archivo+Narrow:wght@400;700&family=Fira+Code:wght@700&family=Outfit:wght@900&family=Syne+Mono&display=swap);
 
 /*-- Nice display fonts: Outfit (!), Gloria Hallelujah, Monoton, Bungee, Paytone One, Dela Gothic One --*/
 
 
+/* $font-family-sans-serif: "Archivo Narrow" !default;
+$font-family-base: "Archivo Narrow" !default; */
 $font-family-sans-serif: "Atkinson Hyperlegible" !default;
 $font-family-base: "Atkinson Hyperlegible" !default;
 $font-family-monospace: "Fira Code" !default;
@@ -81,7 +83,7 @@ $headings-font-size: 0.97rem !default;
 
 
 $navbar-font-family: "Outfit" !default;
-$toc-font-family: "Atkinson Hyperlegible" !default;
+$toc-font-family: "Archivo Narrow" !default;
 $footer-font-family: "Atkinson Hyperlegible" !default;
 
 $font-size-base: 1.07rem !default; // Assumes the browser default, typically `16px`
@@ -158,6 +160,13 @@ body {
 :not(pre) > code {
     font-family: "Syne Mono", monospace;
     font-synthesis: none;
+}
+
+// Margin footnotes font
+.column-margin [id^="fn"],
+.footnotes,
+.tippy-content {
+    font-family: "Archivo Narrow", sans-serif;
 }
 
 // Shrink blocks of code
