@@ -36,10 +36,10 @@ Of course, the surprising beneficial result of the betting-on-the-underdog exper
 :::
 
 
-[^1]: Through discussions of [my earlier postings of this analysis][red1] I figured out that the usual term to describe these unlikely outcomes is "upset". I don't like the term since it seems to suggest inherently that one always supports the favorite, which is definitely no my case, I tend to cheer for the underdogs. The term I used initially was "sensations", which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I'll use the term "unlikely outcome". 
+[^1]: Through discussions of [my earlier postings of this analysis][red1] I figured out that the usual term to describe these unlikely outcomes is "upset". I don't like the term since it seems to suggest inherently that one always supports the favorite, which is definitely not my case, I tend to cheer for the underdogs. The term I used initially was "sensations", which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I'll use the term "unlikely outcome". 
 [^2]: For now I only scraped and added several football tournaments and leagues. Please, feel free to add more results via [GitHub pull requests][gh-pr].
 [^3]: Of course, "home" and "away" designation is very arbitrary at world cups, still I use the terms for consistency.  
-[^4]: I guess I have to say that this is not a financial advise =)
+[^4]: I guess I have to say that this is not a financial advice =)
 
 [so-data]: https://opendata.stackexchange.com/a/9010/7044
 [oddsportal.com]: https://oddsportal.com

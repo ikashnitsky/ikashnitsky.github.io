@@ -1,5 +1,5 @@
 ---
-title: "[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library"
+title: "[UPD] Zotero hacks: reliably setup unlimited storage for your personal academic library"
 date: "2024-08-16"
 image: zotero-teaser.png
 categories: [r, tutorial]
@@ -38,7 +38,7 @@ Bibliographic manager keeps track of all the LEGO blocks and knows (learns easil
 
 There are dozens of bibliographic managers out there ([see a comparative table][wiki]). Some of them are free, the others require paid subscriptions. Probably, the most popular two are [Zotero][zotero] ~~and [Mendeley][mendeley]. Both are free to use and make money by offering cloud storage to sync PDFs of the papers. Yet, both give some limited storage for free -- Zotero gives 300MB, and Mendeley gives 2GB.~~[^2] 
 
-[^2]: Mendeley, a bibliographic manager provided freely by Elsevier, used to be a very popular alternative to Zotero, and thus the previous version of tutorial used is for comparison. Yet, as if to illustrate the point I'm making here, the proprietary program was simply killed the program that was used daily by thousands of academics. 
+[^2]: Mendeley, a bibliographic manager provided freely by Elsevier, used to be a very popular alternative to Zotero, and thus the previous version of tutorial used it for comparison. Yet, as if to illustrate the point I'm making here, the proprietary program was simply killed the program that was used daily by thousands of academics. 
 
 Why do I choose and recommend Zotero then? Because it's fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one's choice (I use Google Drive). **It's the main set-up hack that I'm showing in this blog post**. ~~There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage.~~ 
 
@@ -47,12 +47,12 @@ Another consideration in favor of Zotero is that it's an open-source program wit
 [^3]: Unfortunately to many of those who chose to use Mendeley at some point and was reluctant to switch, Elsevier first discontinued support of the mobile apps for Mendeley, both Android and iOS, [in 2021][mend21]; and [in 2023][mend23] the corporation decided to sunset the whole project. Just like that. Here is the best illustration why it's so much more reasonable and safe choice to choose open-source community driven projects. 
 
 
-Finally, an example of how strong Zotero community is. Once I figured out there the style repository does not have a style for Demographic Research, one of the best journals in demography. I've opened [a request on Zotero forum][req] and in two days the style was created.
+Finally, an example of how strong Zotero community is. Once I figured out that the style repository does not have a style for Demographic Research, one of the best journals in demography. I've opened [a request on Zotero forum][req] and in two days the style was created.
 
 
 # Prerequisites
 
-1. [Download and install Zotero][down]. It's cross-platform and works smoothly with various systems, even when the same database is sycned in parallel on machines with different operation systems. I've used `win+linux` and `win+mac` -- no sync problems ever. 
+1. [Download and install Zotero][down]. It's cross-platform and works smoothly with various systems, even when the same database is synced in parallel on machines with different operation systems. I've used `win+linux` and `win+mac` -- no sync problems ever. 
 
 2. From the same [download page][down] go to install Zotero Connector, a browser extension that helps to retrieve bibliographic metadata.
 
@@ -71,7 +71,7 @@ We are ready to go through the setup step-by-step.
 
 # Zotero preferences
 
-Let's walk though Zotero Settings, one tab at a time. To see and edit them go to `Edit --> Settings`. A separate window with several tabs pops up. 
+Let's walk through Zotero Settings, one tab at a time. To see and edit them go to `Edit --> Settings`. A separate window with several tabs pops up. 
 
 ## General
 
@@ -116,7 +116,7 @@ We need to define two paths. The **first** is the default location of the files 
 
 ![](pref-za.png)
 
-To navigate easier in this database of PDFs use the option `Subfolder`. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the [`documentation` link to learn the naming options][naming]. I choose to simply have a separate folder for each first author. In my case the option is `{{{ authors max="1" case="lower" }}}`. The advantage of this convention is that I only reed to remember the first author -- and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds 
+To navigate easier in this database of PDFs use the option `Subfolder`. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the [`documentation` link to learn the naming options][naming]. I choose to simply have a separate folder for each first author. In my case the option is `{{{ authors max="1" case="lower" }}}`. The advantage of this convention is that I only need to remember the first author -- and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds 
 
 <!-- Some weird rendering issue with {{}} -- thus {{{ are to be rendered in {{ -->
 
@@ -142,19 +142,19 @@ When I need to restore my whole database of academic papers on another machine, 
 
 ## Better BibTeX
 
-This tab appears after we install the Better BibTeX extension. The plugin is needed to export the bibliographic library, in whole or some specific collections (aka folders), as plain `.bib` text files, which are later used while writing academic papers with LaTeX, rmarkdown, Quarto, or any other text based editor. `
+This tab appears after we install the Better BibTeX extension. The plugin is needed to export the bibliographic library, in whole or some specific collections (aka folders), as plain `.bib` text files, which are later used while writing academic papers with LaTeX, rmarkdown, Quarto, or any other text based editor.
 
 ![](pref-bbt.png)
 
 The most important option here is to define the rules for creating citation keys. There are almost infinite number of ways one can define these keys ([check the manual][keys]). My personal choice is `[auth:lower][year][journal:lower:abbr]`, which means that a key consists of the first author's name, publication year, and the first letters abbreviation of the journal's title, everything in lower case. For example, the key for one of [my papers][popst] published in *Population Studies* is `kashnitsky2021ps`. 
 
-Once Better BibTeX is installed and fine-tuned, exporting to `.bib` is easily achieved via the context menu -- right click on a collection (or the whole library, but this would be slow and take a long whole) and choose `Export Collection`. 
+Once Better BibTeX is installed and fine-tuned, exporting to `.bib` is easily achieved via the context menu -- right click on a collection (or the whole library, but this would be slow and take a long while) and choose `Export Collection`. 
 
 ![](show-bbt-export.png)
 
-In the next small window choose the parameters of the export. There are multiple formats to choose from, yet for our purposes the default `Better BibTeX` is prefect. Then there are several other options to choose. 
+In the next small window choose the parameters of the export. There are multiple formats to choose from, yet for our purposes the default `Better BibTeX` is perfect. Then there are several other options to choose. 
 
-`Keep Updated` would monitor the exported Zotero collection and will update/overwrite the exported `.bib` file whenever it sees any changes. This is very handy, but may be quite a burden for you machine, use with caution.
+`Keep Updated` would monitor the exported Zotero collection and will update/overwrite the exported `.bib` file whenever it sees any changes. This is very handy, but may be quite a burden for your machine, use with caution.
 
 ![](show-bbt-options.png)
 
@@ -166,12 +166,12 @@ The nice feature of `Better BibTeX` is that it keeps the relative paths to PDFs 
 
 ![](show-bbt-bib.png)
 
-`Better BibTeX` takes care of citation keys, the option that we tuned first in this section. Citation keys are unique identifiers of papers (or other metadata entries) in the `.bib` collection. We use the later in Quarto (or LaTeX, rmarkdowm, etc) to actually cite papers. For further hints on using `.bib` files in authoring academic texts, I suggest checking out the [beautiful reference materials of Quarto][citing].
+`Better BibTeX` takes care of citation keys, the option that we tuned first in this section. Citation keys are unique identifiers of papers (or other metadata entries) in the `.bib` collection. We use the latter in Quarto (or LaTeX, rmarkdown, etc) to actually cite papers. For further hints on using `.bib` files in authoring academic texts, I suggest checking out the [beautiful reference materials of Quarto][citing].
 
 
 # Conclusions and a final remark on Zotero
 
-This tutorial offers a time-proven recipe for tuning a personal Zotero library so that everything is synced seamlessly across multiple devices. Once set up properly, you will enjoy an unlimited storage of PDFs via any side cloud solution of your chouce coupled with the highly reliable and free native sync of metadata form Zotero. As a free open-source project Zotero is not aimed at generating profits, yet subscription fees are essential for the development and sustainability of this amazing project. Personal tiers may feel a bit hefty for individuals, especially students, but if you can convince your institutions to use Zotero and get an institutional subscription, find more info [here][get-involved].
+This tutorial offers a time-proven recipe for tuning a personal Zotero library so that everything is synced seamlessly across multiple devices. Once set up properly, you will enjoy an unlimited storage of PDFs via any side cloud solution of your choice coupled with the highly reliable and free native sync of metadata from Zotero. As a free open-source project Zotero is not aimed at generating profits, yet subscription fees are essential for the development and sustainability of this amazing project. Personal tiers may feel a bit hefty for individuals, especially students, but if you can convince your institutions to use Zotero and get an institutional subscription, find more info [here][get-involved].
 
 ::: {.callout-tip}
 # Happy paper writing with Zotero and Quarto!

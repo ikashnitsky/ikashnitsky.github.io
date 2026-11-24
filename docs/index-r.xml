@@ -8,9 +8,9 @@
 <title>Ilya Kashnitsky</title>
 <link>https://ikashnitsky.phd/#category=r</link>
 <atom:link href="https://ikashnitsky.phd/index-r.xml" rel="self" type="application/rss+xml"/>
-<description>Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark.</description>
+<description>Ilya Kashnitsky&#39;s blog on demography, R programming, and data visualization.</description>
 <generator>quarto-1.11.9</generator>
-<lastBuildDate>Mon, 30 Mar 2026 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 31 Mar 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -21,7 +21,7 @@
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -44,7 +44,7 @@
 <h1>Flawed design of the analysis</h1>
 <p><strong>Firstly</strong>, period life expectancy for a certain year is a poor predictor of the future lifespan of a child born in the year. <sup>1</sup> Despite the seemingly straightforward name, period life expectancy is <strong>not</strong> designed to forecast longevity, despite this being a way too often misinterpretation of the indicator. It is just a summary measure of current age-specific death rates in a population. In other words, life expectancy gives the average length of life for a cohort of newborns only in the unlikely (i.e.&nbsp;not registered in the observed human history) case when death rates remain unchanged throughout their lives. Mortality, however, has <a href="https://doi.org/10.1073/pnas.2019536118">decreased substantially</a> over the past two centuries in all countries, including the UK, and the actual longevity of people born in a specific year is usually <a href="https://doi.org/10.1080/00324720600895876">much higher</a> than the period life expectancy that was observed when they were born.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Have a look at my <a href="https://ikashnitsky.github.io/2021/what-is-life-expectancy/">previous post</a> about common misinterpretations of life expectancy.</p></div></div><p>Why is this error so important? Because life expectancy at birth in historical populations was massively skewed by staggering infant and child mortality rates. When we hear that medieval peasants had a life expectancy of 35, it wasn’t because a hard life in the fields meant dropping dead at 36; it was because a huge fraction of the population died of disease during childhood. A peasant who reached adulthood actually had pretty good odds of reaching 60. And this leads us to the <strong>second</strong> massive flaw in the design of the initial analysis.</p>
-<p>A monarch, by definition, has already survived childhood to reach the age of their coronation. It makes little sense to compare the actual fulfilled lifespans of royal individuals who succeeded to become monarchs with life expectancy <strong>at birth</strong> in the year of their birth. What about all their siblings who were less lucky? <sup>2</sup> One simply cannot evaluate historical longevity without properly accounting for survival bias. It’s all about selection and the luck of surviving through the hazardous early years of life. Back in the days, infant, child and early-adult mortality <a href="https://ourworldindata.org/child-mortality-in-the-past">used to be so high</a> that it’s hard for us to imagine how society functioned when half of the lifeborn kids don’t reach teenage. For the purpose of this reanalysis, we need to factor in the – too obvious when you spell it out – truth: only those royalty who survived to the date of their coronation became monarchs. <sup>3</sup></p>
+<p>A monarch, by definition, has already survived childhood to reach the age of their coronation. It makes little sense to compare the actual fulfilled lifespans of royal individuals who succeeded to become monarchs with life expectancy <strong>at birth</strong> in the year of their birth. What about all their siblings who were less lucky? <sup>2</sup> One simply cannot evaluate historical longevity without properly accounting for survival bias. It’s all about selection and the luck of surviving through the hazardous early years of life. Back in the days, infant, child and early-adult mortality <a href="https://ourworldindata.org/child-mortality-in-the-past">used to be so high</a> that it’s hard for us to imagine how society functioned when half of the liveborn kids don’t reach teenage. For the purpose of this reanalysis, we need to factor in the – too obvious when you spell it out – truth: only those royalty who survived to the date of their coronation became monarchs. <sup>3</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In data analysis this common fallacy is known as <a href="https://xkcd.com/1827"><em>survivorship bias</em></a>.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Interestingly, the age of UK monarchs’ coronation varied widely, from 9 years for Queen Victoria to 59 years for King Edward VII.</p></div></div></section>
 <section id="a-demographically-correct-approach" class="level1 page-columns page-full">
 <h1>A demographically correct approach</h1>
@@ -89,7 +89,7 @@
   <category>demography</category>
   <category>dataviz</category>
   <guid>https://ikashnitsky.phd/2026/royal-longevity/</guid>
-  <pubDate>Mon, 30 Mar 2026 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -102,7 +102,7 @@
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let’s check the track record of three popular Russian football pundits.</p>
+<p>As football fans, we constantly hear pundits making bold predictions. But how often do they actually hit the targets? Let’s check the track record of three popular Russian football pundits.</p>
 <p><a href="https://t.me/lukomski">Vadim Lukomskiy</a>, <a href="https://t.me/alhasbro">Denis Alkhazov</a>, and <a href="https://t.me/barcafamilyyy">Vladimir Grabchak</a> air a fantastic <a href="https://youtube.com/playlist?list=PLZgJT1M3SJ9XVvZFlcJeCKUMzrMYCrCwc&amp;si=RVs-ryd-bKHXuOBB">La Liga Preview podcast on YouTube</a>. Each week they discuss the upcoming matchday and offer their bets, one per game. Next week, they start by reviewing the outcomes. For a long while I was wondering how do the weekly predictions add up in the long run –I wanted to see whether a thorough knowledge of the specific league and a deep involvement can allow the pundits to stay in the profitable zone while betting on all the games of the season.</p>
 <p>So I decided to check it. In the current 2025-2026 season we have data up to matchday 28, and matchdays 6 and 18 were played midweek, so the guys happened to skip predictions. In total, 26 rounds, 10 games in each – quite some data to play with.</p>
 <p>The data collection was a curious workflow in itself. I took screenshots of the predictions directly from the YouTube videos and used LLMs (Gemini and Claude) to parse the images and compile them into a clean dataset. Yet, there was a challenge along the way. LLMs struggled with team names that were represented with small logo images. Here’s how a typical screenshot looked like:</p>
@@ -156,7 +156,7 @@
   <category>dataviz</category>
   <category>llm</category>
   <guid>https://ikashnitsky.phd/2026/laliga-preview/</guid>
-  <pubDate>Fri, 20 Mar 2026 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2026/laliga-preview/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -169,16 +169,16 @@
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>Recently, a <a href="https://www.linkedin.com/posts/publishing-with-integrity_i-was-sent-a-google-scholar-profile-via-a-activity-7381133506355056640-TU2d">post on LinkedIn</a> highlighted a Google Scholar profile of an apparently just starting PhD researcher who suddenly started accumulating unbelievable counts of citations to his questionably numerous papers. Usually, such profiles are a clear indication of involvement into the worst publication practices, mostly paper mills. The post generated a predictable wave of comments along the lines of this common explanation. But this case is different, it is not the usual fraud per se. But this is a very curious and rather well known issue in public health / epidemiology / demography.</p>
-<p>There is a powerful group initially called the Global Burden of Diseases established by Chris Murray. Then, with outsized funding by Gates Foundation, this group morphed into an institute called IHME – Institute of Health Metrics Evaluation. They are known for existing outside the normal science practice. As part of this, they are churning out papers in The Lancet as if it’s their pocket preprint server. (The most beautiful party of the story is how IHME awarded the editor in chief of The Lancet with a <a href="https://www.healthdata.org/news-events/newsroom/news-releases/activist-editor-richard-horton-lancet-receives-100000-roux-prize">$100k award for his service to science</a> 🙃). And these papers routinely washout the definition of authorship, as some of them list more than a thousand authors. Any collaborator, however insignificant, who may have provided a data point in their global reviews, becomes a highly cited researcher by the conventional metrics.</p>
+<p>Recently, a <a href="https://www.linkedin.com/posts/publishing-with-integrity_i-was-sent-a-google-scholar-profile-via-a-activity-7381133506355056640-TU2d">post on LinkedIn</a> highlighted a Google Scholar profile of an apparently just starting PhD researcher who suddenly started accumulating unbelievable counts of citations to his questionably numerous papers. Usually, such profiles are a clear indication of involvement into the worst publication practices, mostly paper mills. The post generated a predictable wave of comments along the lines of this common explanation. But this case is different, it is not the usual fraud per se. But this is a very curious and rather well known issue in public health / epidemiology / demography.</p>
+<p>There is a powerful group initially called the Global Burden of Diseases established by Chris Murray. Then, with outsized funding by Gates Foundation, this group morphed into an institute called IHME – Institute of Health Metrics Evaluation. They are known for existing outside the normal science practice. As part of this, they are churning out papers in The Lancet as if it’s their pocket preprint server. (The most beautiful part of the story is how IHME awarded the editor in chief of The Lancet with a <a href="https://www.healthdata.org/news-events/newsroom/news-releases/activist-editor-richard-horton-lancet-receives-100000-roux-prize">$100k award for his service to science</a> 🙃). And these papers routinely washout the definition of authorship, as some of them list more than a thousand authors. Any collaborator, however insignificant, who may have provided a data point in their global reviews, becomes a highly cited researcher by the conventional metrics.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://ikashnitsky.phd/2025/ihme-bibl/1k-auth.jpg" class="img-fluid figure-img"></p>
 <figcaption class="margin-caption">An illustration of the collaborative work on one of the IHME manuscript, courtesy of Gemini/nanobanana</figcaption>
 </figure>
 </div>
-<p>IHME really screwed up the bibliometrics evaluation of several scientific fields. Thousands of researchers around the world claim unwarranted recognition for their blown-up citation metrics. And fractional counting (when incoming citations are shared by coauthors according to their contribution) is simply not yet there as the general-use go-to research evaluation tool. The net effect of this authorship-citation inflation is not innocent. I did a back-of-an-envelope <a href="https://x.com/ikashnitsky/status/1440960984341000193">calculation back in 2021</a>. Since I didn’t find back my old calculations, I re-did it today. In the world of bibliometrics without fractional counting (think of the most widely circulated numbers from Google Scholar, Scopus, WoS), when you cite a paper with many authors, each one of them receives a full citation point. Basically, papers with more co-authors inflate the currency of this market via generating more citation points once they get cited. Now, back to the IHME issue. Consider <a href="https://www.thelancet.com/journals/lancet/article/piis0140-6736(20)30752-2/fulltext">just one of the many GBD papers</a>. Yes, it lists 940 names as authors, and it’s cited 7550 times (<a href="https://openalex.org/works/w3092861045">OpenAlex, 2025-10-09</a>). This creates 7.1 million citation points. Just one paper, published in 2020. Now, my field’s leading journal Demography has published 3838 papers since its launch in 1964, and <a href="https://openalex.org/sources/s30543418">these papers were cited 258k times</a>. Accounting for multiple authorship of these papers, we get 572k citation points. So, just one fairly recent IHME paper generated 12 times more citation points than all of the papers ever published in Demography journal in it’s 6+ decades since 1964. <a href="https://gist.github.com/ikashnitsky/cc6d7ee2d9d0e5af78822e6a467820ad">Data and replication code here</a>.</p>
-<p>The whole IHME story is a fascinating one (covered in all details by Timothy Schwab: <a href="https://www.thenation.com/article/society/gates-covid-data-ihme">initial article in The Nation</a> and <a href="https://www.amazon.com/Bill-Gates-Problem-Reckoning-Billionaire/dp/1250850096">a dedicated book later</a>) I guess, at the core of it is a genuine scientific endeavor. Chris Murray was a visionary in his early career, and the creation of the Global Burden of Diseases was an important milestone, impossible without his enthusiasm and organizational talent. It was his burning fire and the talent of igniting others that brought him to the massive and exclusive funding by Bill and Melinda Gates, who were apparently genuinely impressed and saw this outsized funding as an opportunity to contribute largely to the development of global public health. Which it did. At the beginning. But then a curious side effect happened (akin the digression of absolute monarchs) — the generous finding placed IHME outside the normal feedback and evaluation loop of the normal scientific process. And with time the quality of their products declined dramatically. Not necessarily the GBD most. But their global population estimates <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01051-5/fulltext">were very problematic</a>, and also obsolete with <a href="https://doi.org/10.31235/osf.io/5syef">World Population Prospects</a>. Even more outrageous fuckup happened with their COVID spread model, losing in prediction accuracy to <em>every</em> other model, notably to the one created by one postdoc. Fun fact, they eventually quietly retired the COVID model <a href="https://x.com/phytools_liam/status/1449443388256923653">as if the embarrassment never happened</a>.</p>
+<p>IHME really screwed up the bibliometrics evaluation of several scientific fields. Thousands of researchers around the world claim unwarranted recognition for their blown-up citation metrics. And fractional counting (when incoming citations are shared by coauthors according to their contribution) is simply not yet there as the general-use go-to research evaluation tool. The net effect of this authorship-citation inflation is not innocent. I did a back-of-an-envelope <a href="https://x.com/ikashnitsky/status/1440960984341000193">calculation back in 2021</a>. Since I didn’t find back my old calculations, I re-did it today. In the world of bibliometrics without fractional counting (think of the most widely circulated numbers from Google Scholar, Scopus, WoS), when you cite a paper with many authors, each one of them receives a full citation point. Basically, papers with more co-authors inflate the currency of this market via generating more citation points once they get cited. Now, back to the IHME issue. Consider <a href="https://www.thelancet.com/journals/lancet/article/piis0140-6736(20)30752-2/fulltext">just one of the many GBD papers</a>. Yes, it lists 940 names as authors, and it’s cited 7550 times (<a href="https://openalex.org/works/w3092861045">OpenAlex, 2025-10-09</a>). This creates 7.1 million citation points. Just one paper, published in 2020. Now, my field’s leading journal Demography has published 3838 papers since its launch in 1964, and <a href="https://openalex.org/sources/s30543418">these papers were cited 258k times</a>. Accounting for multiple authorship of these papers, we get 572k citation points. So, just one fairly recent IHME paper generated 12 times more citation points than all of the papers ever published in Demography journal in its 6+ decades since 1964. <a href="https://gist.github.com/ikashnitsky/cc6d7ee2d9d0e5af78822e6a467820ad">Data and replication code here</a>.</p>
+<p>The whole IHME story is a fascinating one (covered in all details by Timothy Schwab: <a href="https://www.thenation.com/article/society/gates-covid-data-ihme">initial article in The Nation</a> and <a href="https://www.amazon.com/Bill-Gates-Problem-Reckoning-Billionaire/dp/1250850096">a dedicated book later</a>) I guess, at the core of it is a genuine scientific endeavor. Chris Murray was a visionary in his early career, and the creation of the Global Burden of Diseases was an important milestone, impossible without his enthusiasm and organizational talent. It was his burning fire and the talent of igniting others that brought him to the massive and exclusive funding by Bill and Melinda Gates, who were apparently genuinely impressed and saw this outsized funding as an opportunity to contribute largely to the development of global public health. Which it did. At the beginning. But then a curious side effect happened (akin the digression of absolute monarchs) — the generous funding placed IHME outside the normal feedback and evaluation loop of the normal scientific process. And with time the quality of their products declined dramatically. Not necessarily the GBD most. But their global population estimates <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01051-5/fulltext">were very problematic</a>, and also obsolete with <a href="https://doi.org/10.31235/osf.io/5syef">World Population Prospects</a>. Even more outrageous fuckup happened with their COVID spread model, losing in prediction accuracy to <em>every</em> other model, notably to the one created by one postdoc. Fun fact, they eventually quietly retired the COVID model <a href="https://x.com/phytools_liam/status/1449443388256923653">as if the embarrassment never happened</a>.</p>
 <p><strong>Scientific excellence is impossible without feedback!</strong></p>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -205,21 +205,21 @@
   <category>bibliometrics</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2025/ihme-bibl/</guid>
-  <pubDate>Sun, 12 Oct 2025 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2025/ihme-bibl/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>Rotate the damn plot</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2024/rotate-damn-plot/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>Several days ago I saw <a href="https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/">a post on LinkedIn by Jornt Mandemakers</a> with some very curious results from <a href="https://bsky.app/profile/ggp.bsky.social">Gender and Generations Programme</a> surveys. While representing interesting data, it was a perfect example of a way too common academic dataviz fallacy, and I decided to finally write this blog post.</p>
+  <description><![CDATA[ <p>Several days ago I saw <a href="https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/">a post on LinkedIn by Jornt Mandemakers</a> with some very curious results from <a href="https://bsky.app/profile/ggp.bsky.social">Gender and Generations Programme</a> surveys. While representing interesting data, it was a perfect example of a way too common academic dataviz fallacy, and I decided to finally write this blog post.</p>
 <p>Here is the original plot by Jornt.</p>
 <p><img src="https://ikashnitsky.phd/2024/rotate-damn-plot/plot-to-redo.jpg" class="img-fluid"></p>
 <p>We are going to replicate it and then redo – all in hope to illustrate how much it can be improved with very very simple alterations. In fact, this post revives the argument I made in an earlier post called <a href="https://ikashnitsky.phd/2019/dotplot/">Dotplot – the single most useful yet largely neglected dataviz type</a>. Despite the nice title and the same main message, I’m afraid the older post used a less indicative example. So I hope this time I’ll manage to illustrate the key message a bit clearer. But the message itself stays the same – <strong>forget multi-category bar/column plots and use dotplots instead</strong>. Or, put it the other way around: whenever you are visualizing a continuous measurement split into multiple categories, place the continuous variable on the horizontal (x) axis and the categorical variable on the vertical (y) axis. That’s it. Just a simple trick improves the readability of your plot <strong>a lot</strong>.</p>
 <p>Unfortunately, the use of crumpled multi-category bar plots is very widespread in academic papers. Have a look at a Google Lens search on the focal plot in this post. Google Lens browses the internet for similarly looking images, and they are plenty, most of them coming straight from academic papers.</p>
 <p><img src="https://ikashnitsky.phd/2024/rotate-damn-plot/google-lens.png" class="img-fluid"></p>
 <section id="rotate-the-damn-plot" class="level1"><h1>Rotate the damn plot</h1>
-<p>Over years of <a href="https://github.com/ikashnitsky/dataviz-art-skill">teaching dataviz</a> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational datatviz aimed at the general audience. Here it is.</p>
+<p>Over years of <a href="https://github.com/ikashnitsky/dataviz-art-skill">teaching dataviz</a> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational dataviz aimed at the general audience. Here it is.</p>
 <p><img src="https://ikashnitsky.phd/2024/rotate-damn-plot/04-magic.png" class="img-fluid"></p>
 <p>As you can see, much better readable text is what we immediately get via such a simple alteration of the dataviz, just <strong>Rotate the damn plot</strong>. There are several more equally simple dataviz rules/principles that I <a href="https://ikashnitsky.github.io/dataviz-art-skill/slides/slides-dataviz-bssd.html">keep teaching</a> and want to write-up better here in future. If you are interested, follow the dedicated BlueSky account @<a href="https://bsky.app/profile/damnplot.ikashnitsky.phd">damnplot.ikashnitsky.phd</a>, I have big plans for it.</p>
 <p>Okay. Enough with the lengthy intro. Let’s replicate the plot from the very beginning of the post and then improve it.</p>
@@ -569,7 +569,7 @@ font-style: inherit;">sysfonts</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">font_add_google</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -769,12 +769,12 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 </div>
 </div>
-<p>Note that the essential difference here is that I switched the axes effectively <strong>rotating the damn plot</strong>. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation ofthe data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <a href="https://clauswilke.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps">dataviz book</a>.</p>
+<p>Note that the essential difference here is that I switched the axes effectively <strong>rotating the damn plot</strong>. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation of the data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <a href="https://clauswilke.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps">dataviz book</a>.</p>
 <blockquote class="blockquote">
 <p>One important limitation of bars is that they need to start at zero, so that the bar length is proportional to the amount shown.</p>
 </blockquote>
 <p>And of course I added a title, subtitle, and legend caption. Note also a small handy trick that I use all the time – I moved x-axis labels to the top of the plot which allows me to use the subtitle as the axis label and not only save some space but also make the process of reading the plot more straightforward.</p>
-<p>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e.&nbsp;necessarily horizontal and large enough), preferable using some nice font. <strong>Pay attention to the text elements of you dataviz</strong>!</p>
+<p>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e.&nbsp;necessarily horizontal and large enough), preferably using some nice font. <strong>Pay attention to the text elements of your dataviz</strong>!</p>
 <hr>
 <div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -798,11 +798,11 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2024/rotate-damn-plot/</guid>
-  <pubDate>Tue, 17 Dec 2024 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 18 Dec 2024 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
-  <title>[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library</title>
+  <title>[UPD] Zotero hacks: reliably setup unlimited storage for your personal academic library</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2024/zotero7/</link>
   <description><![CDATA[ 
@@ -811,7 +811,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <section id="about-this-tutorial" class="level1 page-columns page-full">
 <h1>About this tutorial</h1>
 <p>In summer 2024, Zotero had a <a href="https://www.zotero.org/blog/zotero-7/">major update to version 7</a>. The update affected some of the setup routines that I outlined ages ago in the <a href="https://ikashnitsky.phd/2019/zotero">Zotero hacks post</a>. The recipe laid out in that old post helped me painlessly update, move, and maintain my Zotero library for more than a decade; and judging by feedback it did so for many dozens of my friends, colleagues, and just occasional people who found the tutorial useful. It became easily the most viewed post in my blog. Now, with the recent update of Zotero, I decided to update the tutorial as well, but I’m keeping the old post untouched in case someone needs the routine that worked reliably for ages.</p>
@@ -830,14 +830,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <section id="why-zotero" class="level1 page-columns page-full">
 <h1>Why Zotero?</h1>
 <p>There are dozens of bibliographic managers out there (<a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software">see a comparative table</a>). Some of them are free, the others require paid subscriptions. Probably, the most popular two are <a href="https://www.zotero.org">Zotero</a> <del>and <a href="https://www.mendeley.com/download-desktop/">Mendeley</a>. Both are free to use and make money by offering cloud storage to sync PDFs of the papers. Yet, both give some limited storage for free – Zotero gives 300MB, and Mendeley gives 2GB.</del><sup>2</sup></p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Mendeley, a bibliographic manager provided freely by Elsevier, used to be a very popular alternative to Zotero, and thus the previous version of tutorial used is for comparison. Yet, as if to illustrate the point I’m making here, the proprietary program was simply killed the program that was used daily by thousands of academics.</p></div></div><p>Why do I choose and recommend Zotero then? Because it’s fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one’s choice (I use Google Drive). <strong>It’s the main set-up hack that I’m showing in this blog post</strong>. <del>There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage.</del></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Mendeley, a bibliographic manager provided freely by Elsevier, used to be a very popular alternative to Zotero, and thus the previous version of tutorial used it for comparison. Yet, as if to illustrate the point I’m making here, the proprietary program was simply killed the program that was used daily by thousands of academics.</p></div></div><p>Why do I choose and recommend Zotero then? Because it’s fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one’s choice (I use Google Drive). <strong>It’s the main set-up hack that I’m showing in this blog post</strong>. <del>There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage.</del></p>
 <p>Another consideration in favor of Zotero is that it’s an open-source program with strong community and outspoken commitment to stay free forever, while Mendeley is an Elsevier for-profit product. Academic community knows a lot about Elsevier in particular <sup>3</sup> and for-profit products in general. Here the story of Academia.edu is very indicative – have a look at <a href="https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/">this Forbes piece</a>. As a career-long decision I’m confident in choosing Zotero. Free open-source software is a safe choice for your academic workflow for ages, even decades. Just my personal example: I started my academic journey in 2012 and was lucky enough to immediately adopt Zotero. In the 12 years since, I had 10 different primary machines running Windows, Linux, and MacOS. Throughout these years and across all these different environments, my library was safely and reliably synced and developed continuously and smoothly without a single collapse.</p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Unfortunately to many of those who chose to use Mendeley at some point and was reluctant to switch, Elsevier first discontinued support of the mobile apps for Mendeley, both Android and iOS, <a href="https://www.reddit.com/r/PhD/comments/m6uo8b">in 2021</a>; and <a href="https://www.reddit.com/r/academia/comments/15ezsxi">in 2023</a> the corporation decided to sunset the whole project. Just like that. Here is the best illustration why it’s so much more reasonable and safe choice to choose open-source community driven projects.</p></div></div><p>Finally, an example of how strong Zotero community is. Once I figured out there the style repository does not have a style for Demographic Research, one of the best journals in demography. I’ve opened <a href="https://forums.zotero.org/discussion/57130/style-request-demographic-research">a request on Zotero forum</a> and in two days the style was created.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Unfortunately to many of those who chose to use Mendeley at some point and was reluctant to switch, Elsevier first discontinued support of the mobile apps for Mendeley, both Android and iOS, <a href="https://www.reddit.com/r/PhD/comments/m6uo8b">in 2021</a>; and <a href="https://www.reddit.com/r/academia/comments/15ezsxi">in 2023</a> the corporation decided to sunset the whole project. Just like that. Here is the best illustration why it’s so much more reasonable and safe choice to choose open-source community driven projects.</p></div></div><p>Finally, an example of how strong Zotero community is. Once I figured out that the style repository does not have a style for Demographic Research, one of the best journals in demography. I’ve opened <a href="https://forums.zotero.org/discussion/57130/style-request-demographic-research">a request on Zotero forum</a> and in two days the style was created.</p>
 </section>
 <section id="prerequisites" class="level1 page-columns page-full">
 <h1>Prerequisites</h1>
 <ol type="1">
-<li><p><a href="https://www.zotero.org/download/">Download and install Zotero</a>. It’s cross-platform and works smoothly with various systems, even when the same database is sycned in parallel on machines with different operation systems. I’ve used <code>win+linux</code> and <code>win+mac</code> – no sync problems ever.</p></li>
+<li><p><a href="https://www.zotero.org/download/">Download and install Zotero</a>. It’s cross-platform and works smoothly with various systems, even when the same database is synced in parallel on machines with different operation systems. I’ve used <code>win+linux</code> and <code>win+mac</code> – no sync problems ever.</p></li>
 <li><p>From the same <a href="https://www.zotero.org/download/">download page</a> go to install Zotero Connector, a browser extension that helps to retrieve bibliographic metadata.</p></li>
 <li><p>Create an <a href="https://www.zotero.org/user/register/">account on Zotero website</a>. It will be used later on to sync the database of bibliographic metadata.</p></li>
 <li><p>Download and install the two plugins we’ll need – <a href="https://github.com/MuiseDestiny/zotero-attanger">Zotero Attanger</a><sup>4</sup> (organizes the database of PDFs) and <a href="https://retorque.re/zotero-better-bibtex/">Better BibTeX</a> (exports the collections of papers to <code>.bib</code> to later use with Quarto). The plugins for Zotero are <code>.xpi</code> archives. Direct link to just download the <code>.xpi</code> files: <a href="https://github.com/MuiseDestiny/zotero-attanger/releases/latest">Zotero Attanger</a> &amp; <a href="https://github.com/retorquere/zotero-better-bibtex/releases/latest">Better BibTeX</a>. To install the plugins open Zotero and click <code>Tools --&gt; Plugins</code>. A separate window for <code>Plugins manager</code> will pop-up.</p></li>
@@ -848,7 +848,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="zotero-preferences" class="level1 page-columns page-full">
 <h1>Zotero preferences</h1>
-<p>Let’s walk though Zotero Settings, one tab at a time. To see and edit them go to <code>Edit --&gt; Settings</code>. A separate window with several tabs pops up.</p>
+<p>Let’s walk through Zotero Settings, one tab at a time. To see and edit them go to <code>Edit --&gt; Settings</code>. A separate window with several tabs pops up.</p>
 <section id="general" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="general">General</h2>
 <p>I only uncheck the option to create automatic web page snapshots which I find not so useful compared with all the cluttering effect of all those multiple small files needed to replicate an html page locally. <sup>5</sup></p>
@@ -880,7 +880,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>Next we need to setup Zotero Attanger. This extension helps to rename PDFs according to pre-defined rules and store them in a hierarchical database with meaningful names of the sub-directories. There are 4 important steps here (annotated in the screenshot below).</p>
 <p>We need to define two paths. The <strong>first</strong> is the default location of the files downloaded by your browser. This option tells Attanger where to look for recently downloaded PDFs to process when you import a paper from the publisher’s website (recall that earlier we installed Zotero Connector). The <strong>second</strong> path leads to the local directory created for the full-text PDFs, the one that I named <code>zotero-library</code> and which is synced with an external cloud solution of our choice.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/pref-za.png" class="img-fluid"></p>
-<p>To navigate easier in this database of PDFs use the option <code>Subfolder</code>. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the <a href="https://www.zotero.org/support/file_renaming"><code>documentation</code> link to learn the naming options</a>. I choose to simply have a separate folder for each first author. In my case the option is <code>{{ authors max="1" case="lower" }}</code>. The advantage of this convention is that I only reed to remember the first author – and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds</p>
+<p>To navigate easier in this database of PDFs use the option <code>Subfolder</code>. Here again we have a wide choice of the ways to define the rules to name the sub-directories. Click the <a href="https://www.zotero.org/support/file_renaming"><code>documentation</code> link to learn the naming options</a>. I choose to simply have a separate folder for each first author. In my case the option is <code>{{ authors max="1" case="lower" }}</code>. The advantage of this convention is that I only need to remember the first author – and I can easily find all the PDFs in the same folder, synced securely to my Google Drive, I can easily find any paper in seconds</p>
 <!-- Some weird rendering issue with {{}} -- thus {{{ are to be rendered in {{ -->
 <p><img src="https://ikashnitsky.phd/2024/zotero7/show-gdrive.png" class="img-fluid"></p>
 <p>…and even from my phone on the go.</p>
@@ -894,24 +894,24 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </section>
 <section id="better-bibtex" class="level2">
 <h2 class="anchored" data-anchor-id="better-bibtex">Better BibTeX</h2>
-<p>This tab appears after we install the Better BibTeX extension. The plugin is needed to export the bibliographic library, in whole or some specific collections (aka folders), as plain <code>.bib</code> text files, which are later used while writing academic papers with LaTeX, rmarkdown, Quarto, or any other text based editor. `</p>
+<p>This tab appears after we install the Better BibTeX extension. The plugin is needed to export the bibliographic library, in whole or some specific collections (aka folders), as plain <code>.bib</code> text files, which are later used while writing academic papers with LaTeX, rmarkdown, Quarto, or any other text based editor.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/pref-bbt.png" class="img-fluid"></p>
 <p>The most important option here is to define the rules for creating citation keys. There are almost infinite number of ways one can define these keys (<a href="https://retorque.re/zotero-better-bibtex/citation-keys/">check the manual</a>). My personal choice is <code>[auth:lower][year][journal:lower:abbr]</code>, which means that a key consists of the first author’s name, publication year, and the first letters abbreviation of the journal’s title, everything in lower case. For example, the key for one of <a href="https://doi.org/10.1080/00324728.2020.1788130">my papers</a> published in <em>Population Studies</em> is <code>kashnitsky2021ps</code>.</p>
-<p>Once Better BibTeX is installed and fine-tuned, exporting to <code>.bib</code> is easily achieved via the context menu – right click on a collection (or the whole library, but this would be slow and take a long whole) and choose <code>Export Collection</code>.</p>
+<p>Once Better BibTeX is installed and fine-tuned, exporting to <code>.bib</code> is easily achieved via the context menu – right click on a collection (or the whole library, but this would be slow and take a long while) and choose <code>Export Collection</code>.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/show-bbt-export.png" class="img-fluid"></p>
-<p>In the next small window choose the parameters of the export. There are multiple formats to choose from, yet for our purposes the default <code>Better BibTeX</code> is prefect. Then there are several other options to choose.</p>
-<p><code>Keep Updated</code> would monitor the exported Zotero collection and will update/overwrite the exported <code>.bib</code> file whenever it sees any changes. This is very handy, but may be quite a burden for you machine, use with caution.</p>
+<p>In the next small window choose the parameters of the export. There are multiple formats to choose from, yet for our purposes the default <code>Better BibTeX</code> is perfect. Then there are several other options to choose.</p>
+<p><code>Keep Updated</code> would monitor the exported Zotero collection and will update/overwrite the exported <code>.bib</code> file whenever it sees any changes. This is very handy, but may be quite a burden for your machine, use with caution.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/show-bbt-options.png" class="img-fluid"></p>
 <p><code>Export Files</code> allows to export PDFs together with the metadata. This may come super handy if you want to quickly share a collection of articles with full texts. If this option is checked, the output will be a folder with a <code>.bib</code> text file with the papers’ metadata and an inset folder <code>files</code> with the actual PDFs.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/show-bbt-folders.png" class="img-fluid"></p>
 <p>The nice feature of <code>Better BibTeX</code> is that it keeps the relative paths to PDFs written down in the metadata itself. This allows importing the whole collection back to Zotero (or another bibliographic manager) with full texts carried along.</p>
 <p><img src="https://ikashnitsky.phd/2024/zotero7/show-bbt-bib.png" class="img-fluid"></p>
-<p><code>Better BibTeX</code> takes care of citation keys, the option that we tuned first in this section. Citation keys are unique identifiers of papers (or other metadata entries) in the <code>.bib</code> collection. We use the later in Quarto (or LaTeX, rmarkdowm, etc) to actually cite papers. For further hints on using <code>.bib</code> files in authoring academic texts, I suggest checking out the <a href="https://quarto.org/docs/authoring/citations.html">beautiful reference materials of Quarto</a>.</p>
+<p><code>Better BibTeX</code> takes care of citation keys, the option that we tuned first in this section. Citation keys are unique identifiers of papers (or other metadata entries) in the <code>.bib</code> collection. We use the latter in Quarto (or LaTeX, rmarkdown, etc) to actually cite papers. For further hints on using <code>.bib</code> files in authoring academic texts, I suggest checking out the <a href="https://quarto.org/docs/authoring/citations.html">beautiful reference materials of Quarto</a>.</p>
 </section>
 </section>
 <section id="conclusions-and-a-final-remark-on-zotero" class="level1">
 <h1>Conclusions and a final remark on Zotero</h1>
-<p>This tutorial offers a time-proven recipe for tuning a personal Zotero library so that everything is synced seamlessly across multiple devices. Once set up properly, you will enjoy an unlimited storage of PDFs via any side cloud solution of your chouce coupled with the highly reliable and free native sync of metadata form Zotero. As a free open-source project Zotero is not aimed at generating profits, yet subscription fees are essential for the development and sustainability of this amazing project. Personal tiers may feel a bit hefty for individuals, especially students, but if you can convince your institutions to use Zotero and get an institutional subscription, find more info <a href="https://www.zotero.org/getinvolved/">here</a>.</p>
+<p>This tutorial offers a time-proven recipe for tuning a personal Zotero library so that everything is synced seamlessly across multiple devices. Once set up properly, you will enjoy an unlimited storage of PDFs via any side cloud solution of your choice coupled with the highly reliable and free native sync of metadata from Zotero. As a free open-source project Zotero is not aimed at generating profits, yet subscription fees are essential for the development and sustainability of this amazing project. Personal tiers may feel a bit hefty for individuals, especially students, but if you can convince your institutions to use Zotero and get an institutional subscription, find more info <a href="https://www.zotero.org/getinvolved/">here</a>.</p>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -937,7 +937,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>r</category>
   <category>tutorial</category>
   <guid>https://ikashnitsky.phd/2024/zotero7/</guid>
-  <pubDate>Thu, 15 Aug 2024 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 16 Aug 2024 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2024/zotero7/zotero-teaser.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 <item>
@@ -950,8 +950,8 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>For four years I’ve been following <a href="https://30daymapchallenge.com">#30DayMapCallenge</a> with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities, and towards the end of a year it never felt possible to focus on producing them daily. This year I decided to cheat and re-publish many of my maps that accumulated over the years, and only produce new ones for a handful of days/topics. I mostly succeded with posting 25 out of 30. And out of these 25 submissions 6 are freshly coded, 2 are old educational materials turned into blog posts, and 5 more are new quick stuff done without coding. All the new code is available in the <a href="https://github.com/ikashnitsky/30DayMapChallenge">gihub repo</a>; and the blog posts (<a href="https://ikashnitsky.phd/2023/geocoding/">geocoding</a>, <a href="https://ikashnitsky.phd/2023/geocoding/">map-projections</a>) contain all the necessary <code>#rstats</code> code inline.</p>
-<p>Below I list all my contributions as Mastodon post embeds. I use Mastodon because it’s fully open, but the actual #30DayMapCallenge communication was mostly happening on Bluesky, which is still invite-only platform, closed to unregistered viewers. The bsky thread with my contributions is <a href="https://bsky.app/profile/ikashnitsky.phd/post/3kgzxxhdgbm24">here</a> (note that I’m linking the last post, scroll upwards). Enjoy exploring!</p>
+<p>For four years I’ve been following <a href="https://30daymapchallenge.com">#30DayMapChallenge</a> with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities, and towards the end of a year it never felt possible to focus on producing them daily. This year I decided to cheat and re-publish many of my maps that accumulated over the years, and only produce new ones for a handful of days/topics. I mostly succeeded with posting 25 out of 30. And out of these 25 submissions 6 are freshly coded, 2 are old educational materials turned into blog posts, and 5 more are new quick stuff done without coding. All the new code is available in the <a href="https://github.com/ikashnitsky/30DayMapChallenge">github repo</a>; and the blog posts (<a href="https://ikashnitsky.phd/2023/geocoding/">geocoding</a>, <a href="https://ikashnitsky.phd/2023/geocoding/">map-projections</a>) contain all the necessary <code>#rstats</code> code inline.</p>
+<p>Below I list all my contributions as Mastodon post embeds. I use Mastodon because it’s fully open, but the actual #30DayMapChallenge communication was mostly happening on Bluesky, which is still invite-only platform, closed to unregistered viewers. The bsky thread with my contributions is <a href="https://bsky.app/profile/ikashnitsky.phd/post/3kgzxxhdgbm24">here</a> (note that I’m linking the last post, scroll upwards). Enjoy exploring!</p>
 <p><img src="https://ikashnitsky.phd/2023/30-dmc/30dmc-2023.png" class="img-fluid"></p>
 <table class="caption-top table">
 <tbody>
@@ -1291,17 +1291,17 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/30-dmc/</guid>
-  <pubDate>Wed, 20 Dec 2023 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 21 Dec 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/30-dmc/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Improve your maps in one line of code changing map projections</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/map-proj/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>Did you ever think why we (okay, I’m clearly biased, maybe just many of us, humans) love maps so much? Why do they often work so much better than other types of dataviz?</p>
 <p>I think<sup>1</sup> what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That’s why it’s so annoying when these shapes get distorted – it hinders the smoothness of reading the map and kills the pleasure of the process. I’m sure this is the main reason why <a href="https://r-graph-gallery.com/cartogram.html">cartograms</a> exist forever as a cool idea but are rarely actually used – people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;And here I have to say that I’m not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I’m going to tell further is likely some digested version of what I’ve seen, read, and thought through over years of being into dataviz.</p></div></div><p>Geographic projections are a huge field of research in itself. There are infinite ways to project the spherical globe (geoid) to the surface. It’s a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;And here I have to say that I’m not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systematically. Strictly speaking, what I’m going to tell further is likely some digested version of what I’ve seen, read, and thought through over years of being into dataviz.</p></div></div><p>Geographic projections are a huge field of research in itself. There are infinite ways to project the spherical globe (geoid) to the surface. It’s a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.</p>
 <p>There is a brilliant 6-min video explainer of maps projections, I heartily recommend:</p>
 <iframe width="100%" height="650" src="https://www.youtube.com/embed/kIID5FDi2JQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
@@ -1364,7 +1364,7 @@ font-style: inherit;">janitor</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">clean_names</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1542,13 +1542,13 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change your the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
+<p>Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply <code>st_transform(crs = [EPSG code])</code> to change the projection of the geodata object OR fix it directly at the plotting stage via <code>coord_sf(crs = [EPSG code])</code>. I think it’s generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf()</a></code> when plotting in Mercator projection (panel A).</p>
 <div class="cell page-columns page-full">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1764,7 +1764,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/map-proj/</guid>
-  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 04 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/map-proj/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -1772,7 +1772,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/geocoding/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of <code>tidygeocoder</code> that queries the free Open Street Map.</p>
 <p>In this tiny example I’m using the birth places that students of my <a href="https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0">2022 BSSD dataviz course</a> kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields – city and country of birth. The resulting small dataset is <a href="https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58">here</a></p>
 <div class="cell">
@@ -1820,7 +1820,7 @@ font-style: inherit;">raw</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html">gsheet2tbl</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">gsheet2tbl</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
 <span>    <span class="st" style="color: #20794D;
@@ -1848,7 +1848,7 @@ font-style: inherit;">janitor</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">clean_names</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1888,7 +1888,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main unction in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.</p>
+<p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main function in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it returns the geographic coordinates.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1912,7 +1912,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://jessecambon.github.io/tidygeocoder/reference/geocode.html">geocode</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">geocode</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -1974,7 +1974,7 @@ font-style: inherit;">4326</span></span>
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Next are several steps to plot countries of the worlds as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
+<p>Next are several steps to plot countries of the world as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1989,7 +1989,7 @@ font-style: inherit;">spData</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;"><a href="https://jakubnowosad.com/spData/reference/world.html">world</a></span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">world</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>    <span class="fu" style="color: #4758AB;
@@ -2039,7 +2039,7 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2126,7 +2126,7 @@ font-style: inherit;">prismatic</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_lighten.html">clr_lighten</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">clr_lighten</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2162,7 +2162,7 @@ font-style: inherit;">prismatic</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_darken.html">clr_darken</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">clr_darken</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2340,15 +2340,15 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/geocoding/</guid>
-  <pubDate>Tue, 31 Oct 2023 23:00:00 GMT</pubDate>
+  <pubDate>Wed, 01 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/geocoding/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Save space in faceted plots</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/shrink-space/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
-<p>Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different is size – a common case yould be time series of varying length – this results in a lot of plot space wasted in the panels with little data to show. In this post I’m showing how to deal with this common issue.</p>
+  <description><![CDATA[ <hr>
+<p>Faceting<sup>1</sup> is probably the most distinctive feature that defined the early success and wide adoption of <code>ggplot2</code>. Small-multiples are often a great dataviz choice.<sup>2</sup> But one common problem is when your panels for the subsets of data require vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different in size – a common case would be time series of varying length – this results in a lot of plot space wasted in the panels with little data to show. In this post I’m showing how to deal with this common issue.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This is the term used for small-multiples in <code>ggplot2</code></p></div><div id="fn2"><p><sup>2</sup>&nbsp;See <a href="https://ikashnitsky.github.io/2020/background-data/">the post</a> in which I improve an overloaded line chart using small-multiples</p></div></div><p>Let me first show you the solution. The cornerstone source of data in demography is <a href="https://www.mortality.org">Human Mortality Database</a>. It provides demographic data of highest possible quality for a selection of available countries. The availability of data varies vastly across countries – from 270+ years in Sweden to a handful of decades in many other countries with less exceptional population data statistics. Here are two plots from my recent papers that use HMD.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/pnas.png" class="preview-image"><img src="https://ikashnitsky.phd/2023/shrink-space/pnas.png" class="img-fluid figure-img"></a></p>
@@ -2358,7 +2358,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/shrink-space/ije.png"><img src="https://ikashnitsky.phd/2023/shrink-space/ije.png" class="img-fluid figure-img"></a></p>
 <figcaption class="margin-caption">Figure 3 from <span class="citation" data-cites="aburto2022ije">Aburto <em>et al.</em> (2022)</span></figcaption></figure>
 </div>
-<p>The trick in these plots is that countries are arranged by the length of time series. The width of each panel is net to the longest time series observed omong the countries in the column of small multiples. This is easily achieved via the parameter <code>space = "free"</code> in the <code>facet_grid()</code> call.</p>
+<p>The trick in these plots is that countries are arranged by the length of time series. The width of each panel is set to the longest time series observed among the countries in the column of small multiples. This is easily achieved via the parameter <code>space = "free"</code> in the <code>facet_grid()</code> call.</p>
 <p>One slightly annoying nuance is that the <code>space = "free"</code> parameter is <em>only</em> available <code>facet_grid()</code>. That’s why we need to specify both column and row variables for the layout of small multiples. Yet, usually we have just one meaningful faceting variable in such a setup, country in the examples above. That’s why the steps of data preparation for these plots included the creation of variables <code>row</code> and <code>column</code> that explicitly located the position of each small multiple. You can find code that replicates both figures shown above <a href="https://github.com/ikashnitsky/sex-gap-e0-pnas">here</a> and <a href="https://github.com/OxfordDemSci/ex2020">here</a>. To illustrate the approach in this post we’ll use a minimal example with generated data.</p>
 <p>Consider a case when we have 6 countries, 3 of which have relatively long time series and 3 have relatively short period of observed data. To stay a bit closer to the examples above, let’s say that we have data for Sweden (271 years worth of data), Denmark (186 years), Netherlands (169), Portugal (81), Japan (74), and Estonia (60). Let’s generate some random data of the specified time series’ length.</p>
 <div class="cell">
@@ -3059,16 +3059,16 @@ Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd
   <category>trick</category>
   <category>faceting</category>
   <guid>https://ikashnitsky.phd/2023/shrink-space/</guid>
-  <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
   <title>Easily re-using self-written functions: the power of gist + code snippet duo</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/gist-snippet/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>Quite often data processing or analysis needs bring us to write own functions. Sometimes these self-defined functions are only meaningful and useful within a certain workflow or even a certain script. But other self-written functions may be more generic and reusable in other circumstances. For example, one may want to have a version of <code>ggsave()</code> that always enforces <code>bg = 'snow'</code>, or a <code>theme_own()</code> function with pre-saved preferences. Self-written functions live in <code>{.GlobalEnv}</code> and have to be re-defined in every new R session. Copying the same lines of code across projects can be boring. <strong>How to “bookmark” the useful little own functions and reuse them easier in other projects?</strong> This post offers an elegant solution.</p>
-<p>One obvious way to store self-written functions would be to write an own package and have a easy access to these function via <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> calls. While this may be quite comfortable for own coding purposes, the objective downside of this approach is replicability of the code – once the code leaves your specific machine, one would have to install your package in order to run the code. This seems an overkill to store a couple of occasional arbitrarily useful functions.</p>
+<p>One obvious way to store self-written functions would be to write an own package and have an easy access to these functions via <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> calls. While this may be quite comfortable for own coding purposes, the objective downside of this approach is replicability of the code – once the code leaves your specific machine, one would have to install your package in order to run the code. This seems an overkill to store a couple of occasional arbitrarily useful functions.</p>
 <p>I suggest a more convenient approach: store the functions as <a href="https://gist.github.com">GitHub gists</a> and call them using the handy <code><a href="https://devtools.r-lib.org/reference/source_gist.html">devtools::source_gist()</a></code>. This allows to load self-written functions from standalone R scripts. And to avoid copying manually the lines of code that source a certain gist we may use code snippets. Let me give you an example.</p>
 <p>I want to re-use a <code>ggplot2</code> theme with certain preferred parameters. Here are the lines of code that define my <code>theme_ik()</code> function.</p>
 <div class="cell">
@@ -3408,14 +3408,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rstudio</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2023/gist-snippet/</guid>
-  <pubDate>Mon, 02 Jan 2023 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/gist-snippet/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>The easiest way to radically improve map aesthetics</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/map-borders/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>Since R community developed brilliant tools to deal with spatial data, producing maps is no longer the privilege of a narrow group of people with very specific almost esoteric knowledge, skillset, and often super expensive software. With <code>#rspatial</code> packages, maps (at least the relatively simple ones) became just another type of dataviz.</p>
 <p><a href="https://ikashnitsky.github.io/2023/map-borders/rgg-maps.png"><img src="https://ikashnitsky.phd/2023/map-borders/rgg-maps.png" class="img-fluid"></a></p>
 <p>Just a few lines of code can reveal the eye-catching and visually pleasant spatial dimension of the data. Similarly, a few more lines of code can radically improve the pleasantness of a simple map – just <strong>add borders as lines in a separate spatial layer</strong>.</p>
@@ -3695,7 +3695,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Look at all the islands, especially the small ones – what are all these red outlines for? Insted, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines()</a></code> exactly for the task. <sup>1</sup></p>
+<p>Look at all the islands, especially the small ones – what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code>ms_innerlines()</code> exactly for the task. <sup>1</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Before I found <code>rmapshaper</code> the task seemed overly complicated, I even asked <a href="https://stackoverflow.com/questions/47760033">Stack Overflow</a></p></div></div><div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -3720,7 +3720,7 @@ font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3879,7 +3879,7 @@ font-style: inherit;">.</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4020,7 +4020,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2023/map-borders/</guid>
-  <pubDate>Sat, 31 Dec 2022 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/map-borders/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4033,10 +4033,10 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <p>FIFA World Cup 2022 in Qatar saw many surprising results. In fact, too many – some would argue. From the unbelievable loss of Argentina to Saudi Arabia at the very beginning of the group stage, via the loss of the magnificent Brazil to Cameroon at the end of the group stage, to the groundbreaking performance of Morocco who were competitive playing against all the usual grands.</p>
 <p>Somewhere towards the middle of the group stage I started wondering – is it ordinary to have so many surprises at the World Cup? What if this particular World Cup is really exceptional by the number of unlikely match outcomes? <sup>1</sup> If so, how should I measure it?</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Through discussions of <a href="https://www.reddit.com/r/dataisbeautiful/comments/zcm4r0">my earlier postings of this analysis</a> I figured out that the usual term to describe these unlikely outcomes is “upset”. I don’t like the term since it seems to suggest inherently that one always supports the favorite, which is definitely no my case, I tend to cheer for the underdogs. The term I used initially was “sensations”, which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I’ll use the term “unlikely outcome”.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;For now I only scraped and added several football tournaments and leagues. Please, feel free to add more results via <a href="https://github.com/ikashnitsky/oddor/pulls">GitHub pull requests</a>.</p></div></div><p>Just a bit of thinking yielded an answer that was really on the surface – <strong>bookmakers</strong>. They are the people who use all available knowledge to make money on the outcome expectations. Pretty soon I <a href="https://opendata.stackexchange.com/a/9010/7044">figured out</a> that there is one website [oddsportal.com][oddsportal] that offers long historical data series of betting odds and match outcomes. The real challenge came at the step of scraping the website. Stack Overflow and other similar places are <a href="https://stackoverflow.com/q/34785764">filled</a> with <a href="https://stackoverflow.com/q/23417638">questions</a> about <a href="https://stackoverflow.com/q/56984218">scraping</a> this specific tricky website. Having finally figured out how to do this (after countless trials and failures) I wrapped up the working solution into an R package <a href="https://github.com/ikashnitsky/oddor"><code>oddor</code></a>. The idea is that the package provides both scraping tools and the cleaned extracted datasets. <sup>2</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Through discussions of <a href="https://www.reddit.com/r/dataisbeautiful/comments/zcm4r0">my earlier postings of this analysis</a> I figured out that the usual term to describe these unlikely outcomes is “upset”. I don’t like the term since it seems to suggest inherently that one always supports the favorite, which is definitely not my case, I tend to cheer for the underdogs. The term I used initially was “sensations”, which apparently makes little sense in English and reveals the direct translation from Russian happening in my head in this case. Throughout this post I’ll use the term “unlikely outcome”.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;For now I only scraped and added several football tournaments and leagues. Please, feel free to add more results via <a href="https://github.com/ikashnitsky/oddor/pulls">GitHub pull requests</a>.</p></div></div><p>Just a bit of thinking yielded an answer that was really on the surface – <strong>bookmakers</strong>. They are the people who use all available knowledge to make money on the outcome expectations. Pretty soon I <a href="https://opendata.stackexchange.com/a/9010/7044">figured out</a> that there is one website [oddsportal.com][oddsportal] that offers long historical data series of betting odds and match outcomes. The real challenge came at the step of scraping the website. Stack Overflow and other similar places are <a href="https://stackoverflow.com/q/34785764">filled</a> with <a href="https://stackoverflow.com/q/23417638">questions</a> about <a href="https://stackoverflow.com/q/56984218">scraping</a> this specific tricky website. Having finally figured out how to do this (after countless trials and failures) I wrapped up the working solution into an R package <a href="https://github.com/ikashnitsky/oddor"><code>oddor</code></a>. The idea is that the package provides both scraping tools and the cleaned extracted datasets. <sup>2</sup></p>
 <p>Okay, so the data issue is solved. Now, it’s time for the experiment, a really simple one. I simulate the scenario where I consistently bet on the <strong>least likely outcome</strong> and track how my fictional balance changes over time. Out of the three possible outcomes of the games – (1) home team wins, (2) draw in main time, and (3) away team wins <sup>3</sup> – I always select the one that promises the highest odds, meaning that this outcome is considered the least likely of the three by the bookmakers.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Of course, “home” and “away” designation is very arbitrary at world cups, still I use the terms for consistency.</p></div></div><p>Here are the results for the latest World Cup 2022 (darkest line with all the unlikely outcomes annotated) in comparison with three previous World Cups, 2018, 2014, and 2010.</p>
 <p><img src="https://ikashnitsky.phd/2022/exceptional-world-cup/world-cup-odds-since-2010.png" class="preview-image img-fluid"></p>
@@ -4044,7 +4044,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>We can see that the 2022 World Cup was really exceptional – too often the outcomes that were considered the least likely happened. It’s also evident that surprises happen more often at the group stage, especially in the third round when many leaders apparently have already reached their group-stage goals (think of the recent game Brazil–Cameroon, where Brazilians literally played with the second team). I would say it’s <strong>really</strong> surprising – if one bets consistently against the odds at all the group-stage games, at least in the last 4 World Cups (for which we have odds and outcomes data) this dead-simple strategy turns out to be beneficial. My wild guess is that the World Cups see masses of inexperienced new betters who are placing bets on their national teams whatever, which at the global scale is disbalancing the whole system. Alternatively, maybe we are just slow and bad at recognizing how football is becoming more international, and now more underdogs are able to give a decent fight to the traditional grands.</p>
 <p>In contrast, Play-offs are apparently less chaotic and more predictable. Betting on the underdogs at the Play-offs stage would guarantee to lose money in all 4 recent World Cups.</p>
 <p>Of course, the surprising beneficial result of the betting-on-the-underdog experiment at the group-stage games at World Cups made me curious about other competitions. So I did a similar analysis for the <a href="https://www.reddit.com/r/dataisbeautiful/comments/zim8d6">Champions League (from season 2004–05)</a> and for <a href="https://www.reddit.com/r/dataisbeautiful/comments/ziojgj">English Premier League (from season 2003–04)</a>. Predictably, no miracle happened – betting consistently on the underdogs would almost always bring financial losses. So, either World Cups are just different, or all 4 last tournaments were exceptional with the latest being a crazy outlier. Would it be reasonable to try this no-brainer betting strategy at the group-stage of the next World Cup? I’m not sure. But let’s see in 4 years. <sup>4</sup></p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I guess I have to say that this is not a financial advise =)</p></div></div><hr>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I guess I have to say that this is not a financial advice =)</p></div></div><hr>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4069,7 +4069,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>football</category>
   <category>package</category>
   <guid>https://ikashnitsky.phd/2022/exceptional-world-cup/</guid>
-  <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 25 Dec 2022 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -4082,18 +4082,18 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <p>It really is a remarkable achievement and maybe a lot of luck that the world mundanely operates with such a complex indicator as life expectancy. Unlike many statistics and quantities of general use that are being monitored and reported regularly, life expectancy is not observed directly. It’s an output of a <strong>mathematical model</strong> called <strong>life table</strong>. And as any model it comes with a certain load of assumptions and limitations, which are easily forgotten and omitted in the everyday interpretations and misinterpretations of the indicator.</p>
 <p>So, why do we need any mathematical modelling in the first place? Consider a seemingly simple task: you want to know how long people live. What can be easier? Let’s just see how many years lived those who died recently. Why not? Such a metric would be massively driven by population age structure. For the most of the recent history human populations were rapidly growing, which means that each next generation was bigger than the previous one. Relative differences in the size of generations affect the age composition of those dying.</p>
 <p>Okay. Then why don’t we simply take a group of people born in the same year and see how long on average they live? We could (demographers call such groups cohorts). But it takes remarkably long to wait until the last person in the cohort dies. And we want to know what’s happening <strong>now</strong>.</p>
-<p>How can we learn what’s happening now? Well, for that we need a mathematical model. We cannot observe the unfulfilled lifespans directly but we can construct/imagine an artificial population to help us understand the current mortality. The idea is simple: let’s take those dying now and divide them by the size of their age groups. This yields age-specific death rates – the key input for the life table needed to calculate life expectancy. Now, let’s take an imaginary cohort and see how long would they live on average if they experience these observed age-specific death rates. The imaginary population is know as a <strong>synthetic cohort</strong>. And here comes the main assumption of the life table: The model assumes that the observed age-specific death rates stay unchanged throughout the hypothetical lives of the hypothetical people in the synthetic cohort.</p>
+<p>How can we learn what’s happening now? Well, for that we need a mathematical model. We cannot observe the unfulfilled lifespans directly but we can construct/imagine an artificial population to help us understand the current mortality. The idea is simple: let’s take those dying now and divide them by the size of their age groups. This yields age-specific death rates – the key input for the life table needed to calculate life expectancy. Now, let’s take an imaginary cohort and see how long would they live on average if they experience these observed age-specific death rates. The imaginary population is known as a <strong>synthetic cohort</strong>. And here comes the main assumption of the life table: The model assumes that the observed age-specific death rates stay unchanged throughout the hypothetical lives of the hypothetical people in the synthetic cohort.</p>
 <p>This big assumption of unchanging age profile of death rates almost never holds in real life. Mortality in human populations keeps improving beyond the most optimistic expectations. For decades the best demographers were systematically underestimating the progress in mortality reduction <span class="citation" data-cites="oeppen2002s">(Oeppen and Vaupel, 2002)</span>.</p>
 <p><img src="https://ikashnitsky.phd/2021/life-expectancy-101/oeppen-vaupel.jpg" class="img-fluid"></p>
 <p><strong>The horizontal lines are the limits of human population-level life expectancy as anticipated by renowned scholars; points are the actual data in the world leading countries. Source: (Oeppen and Vaupel, 2002)</strong></p>
 <p>Life expectancy is a snapshot of the current mortality and is not a projection/forecast of the actual experience of the newborn cohorts. The current nature of period life expectancy is nicely <a href="https://twitter.com/therealrchung/status/1365091610766155778">illustrated by Dr.&nbsp;Robert Chung</a>: “I have a car that can display “driving range” given its estimate of fuel level and how I’m driving. When climbing a steep hill, the range can decrease a lot; when descending, the range can increase. That’s what period e(x) is like.”</p>
-<p>But if life expectancy talk about now and not the future, why is it called “expectancy” in the first place? This rather unfortunate and confusing <a href="https://twitter.com/therealrchung/status/1365313760416526340">naming comes from statistics</a>, where “expected value” is a standard term for the mean of a distribution. The connotation crossing is rather unfortunate and as it strongly nudges the common future oriented misinterpretation of life expectancy.</p>
+<p>But if life expectancy talks about now and not the future, why is it called “expectancy” in the first place? This rather unfortunate and confusing <a href="https://twitter.com/therealrchung/status/1365313760416526340">naming comes from statistics</a>, where “expected value” is a standard term for the mean of a distribution. The connotation crossing is rather unfortunate and as it strongly nudges the common future oriented misinterpretation of life expectancy.</p>
 <p>The most popular error in public perception of period life expectancy forgets about the heavy assumption of the synthetic cohort (constant age-specific death rates throughout their hypothetic lives anchored in current year) and talks about the future of kids being born now. In normal years this large interpretation error is somewhat masked by the gradual and often close to linear improvements in mortality. A rule of thumb is to simply add ~6 years to period life expectancy to obtain a reasonable cohort estimate <span class="citation" data-cites="goldstein2006ps">(Goldstein and Wachter, 2006)</span>. Mortality shocks like 2020 are a different story though. Here the “forward looking” (mis)interpretation of period life expectancy projects the <strong>shock levels of mortality</strong> into the future. Of course this doesn’t happen. Shocks are called shocks because they are temporal.</p>
-<p>Another important detail that often misses public attention is that life expectancy is not a single value – it can be estimated for every age. Most often and by default life expectancy is reported “at birth”. But we can estimate remaining life expectancy for various ages. And here comes another popular misunderstanding of life expectancy. Too often we come across the references to human age and longevity in the past that sound something like: “She was 40, a very elderly lady by the standards of that time as people lived on average about 30 years back the”. True, there were times when life expectancy <strong>at birth</strong> was about 30 years even in the most developed now countries. This doesn’t mean though that those who outlived this threshold age were getting old at young (by our current standards) ages. Let me illustrate.</p>
+<p>Another important detail that often misses public attention is that life expectancy is not a single value – it can be estimated for every age. Most often and by default life expectancy is reported “at birth”. But we can estimate remaining life expectancy for various ages. And here comes another popular misunderstanding of life expectancy. Too often we come across the references to human age and longevity in the past that sound something like: “She was 40, a very elderly lady by the standards of that time as people lived on average about 30 years back then”. True, there were times when life expectancy <strong>at birth</strong> was about 30 years even in the most developed now countries. This doesn’t mean though that those who outlived this threshold age were getting old at young (by our current standards) ages. Let me illustrate.</p>
 <p>Let’s take Italian male population in 1872, the first available year in <a href="https://www.mortality.org/">Human Mortality Database</a>. Have a look at the survival of this synthetic cohort – the proportion of the initial cohort that is still alive by certain age. Half of the synthetic cohort died by age 15!</p>
 <p><img src="https://ikashnitsky.phd/2021/life-expectancy-101/ita-lx.png" class="img-fluid"></p>
 <p>And here is how remaining period life expectancy looked by age. Infant and child mortality was sooo high that those escaping early deaths had higher remaining life expectancy.</p>
@@ -4131,16 +4131,16 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
   <category>101</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2021/life-expectancy-101/</guid>
-  <pubDate>Thu, 04 Mar 2021 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 05 Mar 2021 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2021/life-expectancy-101/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Show all data in the background of your faceted ggplot</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2020/background-data/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>One of the game-changing features of <code>ggplot2</code> was the ease with which one can explore the dimensions of the data using <strong>small multiples</strong>.<sup>1</sup> There is a small trick that I was to share today – put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></div></div><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> stroke me as an ultimate case to showcase this background data trick. Here are the two plots:<sup>2</sup> <strong>the challenge one</strong> and <strong>my version</strong>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;At some point <a href="https://cran.r-project.org/web/packages/lattice"><code>lattice</code></a> became pretty popular for the task, but then <code>ggplot2</code> entered the scene.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Images are clickable</p></div></div><p>There is a weekly dataviz challenge organized by Cole Knaflic. <a href="https://twitter.com/storywithdata/status/1274019877779619841">One particular challenge</a> struck me as an ultimate case to showcase this background data trick. Here are the two plots:<sup>2</sup> <strong>the challenge one</strong> and <strong>my version</strong>.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full"><p><a href="https://ikashnitsky.github.io/2023/background-data/swd-challenge.png" width="70%"><img src="https://ikashnitsky.phd/2020/background-data/swd-challenge.png" class="img-fluid figure-img"></a></p>
 <figcaption class="margin-caption">Image to improve</figcaption></figure>
@@ -4247,7 +4247,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>ggplot2</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2020/background-data/</guid>
-  <pubDate>Thu, 18 Jun 2020 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 19 Jun 2020 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2020/background-data/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4260,7 +4260,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4271,7 +4271,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advise to every (ha-ha-ha) listening mind, I’d choose this: <strong>forget multi-category bar plots and use dotplots instead</strong>.</p>
+<p>I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advice to every (ha-ha-ha) listening mind, I’d choose this: <strong>forget multi-category bar plots and use dotplots instead</strong>.</p>
 </div>
 </div>
 <p>I was converted several years ago after reading <a href="http://www.b-eye-network.com/view/2468">this brilliant post</a>. Around the same time, as I figured out later, demographer Griffith Feeney wrote a <a href="http://demographer.com/dsitl/08-cleveland-dot-plots/">similar post</a>. From fresher examples, there are chapters discussing dotplot visualizations in <a href="https://serialmentor.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps">Claus Wilke’s book</a> and <a href="https://socviz.co/workgeoms.html#continuous-variables-by-group-or-category">Kieran Healy’s book</a>. So, what are dotplots and what’s so special about them?</p>
@@ -4296,7 +4296,7 @@ Important
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2019/dotplot/</guid>
-  <pubDate>Thu, 18 Jul 2019 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 19 Jul 2019 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/dotplot/teaser.jpeg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -4309,7 +4309,7 @@ Important
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4337,12 +4337,12 @@ Important
 <p>There are dozens of bibliographic managers out there (<a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software">see a comparative table</a>). Some of them are free, the others require paid subscriptions. Probably, the most popular two are <a href="https://www.zotero.org">Zotero</a> and <a href="https://www.mendeley.com/download-desktop/">Mendeley</a>. Both are free to use and make money by offering cloud storage to sync PDFs of the papers. Yet, both give some limited storage for free – Zotero gives 300MB, and Mendeley gives 2GB.</p>
 <p>Why do I choose and recommend Zotero then? Because it’s fairly easy to set-up Zotero so that the free 300MB are only used to sync metadata (which in practice means almost infinite storage), and the PDFs are synced separately using a cloud solution of one’s choice (I use Google Drive). <strong>It’s the main set-up hack that I’m showing in this blog post</strong>. There is no similar hack for Mendeley, and with them at some point one is bound to pay for extra storage.</p>
 <p>Another consideration in favor of Zotero is that it’s an open-source program with strong community and outspoken commitment to stay free forever, while Mendeley is an Elsevier for-profit product. Academic community knows a lot about Elsevier in particular and for-profit products in general. Here the story of Academia.edu is very indicative. Have a look at <a href="https://www.forbes.com/sites/drsarahbond/2017/01/23/dear-scholars-delete-your-account-at-academia-edu/">this Forbes piece</a>. As a career-long decision I’m confident in choosing Zotero. And the project keeps developing nicely – just look at the recent Zotero blog entries on the new features such as <a href="https://www.zotero.org/blog/google-docs-integration/">Google Docs integration</a>, <a href="https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/">Unpaywall integration</a> and <a href="https://www.zotero.org/blog/improved-pdf-retrieval-with-unpaywall-integration/">a new web service for quick citations</a>.</p>
-<p>Finally, an example of how strong Zotero community is. Once I figured out there the style repository does not have a style for Demographic Research, one of the best journals in demography. I’ve opened <a href="https://forums.zotero.org/discussion/57130/style-request-demographic-research">a request on Zotero forum</a> and in two days the style was created.</p>
+<p>Finally, an example of how strong Zotero community is. Once I figured out that the style repository does not have a style for Demographic Research, one of the best journals in demography. I’ve opened <a href="https://forums.zotero.org/discussion/57130/style-request-demographic-research">a request on Zotero forum</a> and in two days the style was created.</p>
 </section>
 <section id="prerequisites" class="level1">
 <h1>Prerequisites</h1>
 <ol type="1">
-<li><p><a href="https://www.zotero.org/download/">Download and install Zotero</a>. It’s cross-platform and works smoothly with various systems, even when the same database is sycned in parallel on machines with different operation systems. I’ve used win+linux and win+mac – no sync problems ever.</p></li>
+<li><p><a href="https://www.zotero.org/download/">Download and install Zotero</a>. It’s cross-platform and works smoothly with various systems, even when the same database is synced in parallel on machines with different operation systems. I’ve used win+linux and win+mac – no sync problems ever.</p></li>
 <li><p>From the same <a href="https://www.zotero.org/download/">download page</a> go to install Zotero Connector, a browser extension that helps to retrieve bibliographic metadata.</p></li>
 <li><p>Create an <a href="https://www.zotero.org/user/register/">account on Zotero website</a>. It will be used later on to sync the database of bibliographic metadata.</p></li>
 <li><p>Download and install the two plugins we’ll need – <a href="http://zotfile.com">ZotFile</a> (organizes the database of PDFs) and <a href="https://retorque.re/zotero-better-bibtex/">Better BibTeX</a> (exports the library to .bib, we’ll use it later with rmarkdown). The plugins for Zotero are .xpi archives. To install the plugins open Zotero and click <code>Tools --&gt; Add-ons</code>. A separate window for <code>Add-ons manager</code> will pop-up.</p></li>
@@ -4353,7 +4353,7 @@ Important
 </section>
 <section id="zotero-preferences" class="level1">
 <h1>Zotero preferences</h1>
-<p>First, let’s walk though Zotero Preferences. To edit them click <code>Edit --&gt; Preferences</code>. A window with several tabs pops up.</p>
+<p>First, let’s walk through Zotero Preferences. To edit them click <code>Edit --&gt; Preferences</code>. A window with several tabs pops up.</p>
 <p><strong>General</strong>. I only uncheck the option to create automatic web page snapshots which I find not so useful compared with all the cluttering effect of all those multiple small files needed to replicate an html page locally.</p>
 <p><img src="https://ikashnitsky.phd/2019/zotero/pref-general.png" class="img-fluid"></p>
 <p><strong>Sync</strong>. Here we need to specify the account details to sync our database. It is important to uncheck the option of full-text sync otherwise the 300MB storage will quickly get filled. We’ll have the solution for full text a bit later.</p>
@@ -4384,11 +4384,11 @@ Important
 <p><img src="https://ikashnitsky.phd/2019/zotero/att-pdf.png" class="img-fluid"></p>
 <p>… but rather should be a link to the renamed file.</p>
 <p><img src="https://ikashnitsky.phd/2019/zotero/att-link.png" class="img-fluid"></p>
-<p>In these screenshot I also show the location of the actual PDFs in both cases (right-click the metadata record <code>Show File</code>). As you can see, in the first case the PDF is located in a meaninglessly named folder somewhere in the <code>zotero-system</code> directory. In contrast, the renamed by ZotFile PDF is located in a properly named sub-directory in <code>zotero-library</code>. Thus, in the latter case the PDF is synced to my Google Drive and can be accessed from anywhere.</p>
+<p>In these screenshots I also show the location of the actual PDFs in both cases (right-click the metadata record <code>Show File</code>). As you can see, in the first case the PDF is located in a meaninglessly named folder somewhere in the <code>zotero-system</code> directory. In contrast, the renamed by ZotFile PDF is located in a properly named sub-directory in <code>zotero-library</code>. Thus, in the latter case the PDF is synced to my Google Drive and can be accessed from anywhere.</p>
 <p><img src="https://ikashnitsky.phd/2019/zotero/gdrive.png" class="img-fluid"></p>
 <p>More importantly, when I need to restore my whole database of academic papers on another machine, I just need to go through these steps. As long as the system metadata data base is synced by Zotero and I provide Zotero the link to a PDFs storage, it will recognize all the relative paths to the files, and the whole library is restored. This setup also makes it possible to have the same continuously synced library on multiple machines. The hack is in ZotFile which adds a <code>file</code> path line to the metadata of the papers.</p>
 <p><img src="https://ikashnitsky.phd/2019/zotero/zf-bib.png" class="img-fluid"></p>
-<p>As long as I keep the settings unchanged, everything will be synced fine across multiple devices. In the end, I enjoy the unlimited storage of my PDFs with the very nice and reliable native sync of metadata form Zotero.</p>
+<p>As long as I keep the settings unchanged, everything will be synced fine across multiple devices. In the end, I enjoy the unlimited storage of my PDFs with the very nice and reliable native sync of metadata from Zotero.</p>
 <p><strong>Final remark on Zotero</strong>. Feel free to clean from time to time all the clutter from <code>zotero-system/storage</code>.</p>
 </section>
 <section id="use-zotero-library-in-rstudio-with-rmarkdown" class="level1">
@@ -4404,7 +4404,7 @@ Important
 <p>Then, everything is ready to use the citation keys to generate citations throughout the text. For details on <code>rmarkdown</code> citation syntax, it’s better to refer to <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">RStudio’s manual</a> (see below) or <a href="https://bookdown.org/yihui/bookdown/citations.html">the relevant chapter</a> of <a href="https://github.com/yihui">xieyihui</a>’s book on <code>bookdown</code>.</p>
 <iframe width="100%" height="500px" style="background: #FFFFFF;" src="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">
 </iframe>
-<p>The final hint here is to use <code>citr</code> package, which brings an easy and interactive way to select citations from the .bib file. Once the package in installed, an RStudio addin <code>Insert citation</code> appears which executes the <code>citr:::insert_citation()</code> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <a href="https://github.com/crsh/citr">github repo</a>.</p>
+<p>The final hint here is to use <code>citr</code> package, which brings an easy and interactive way to select citations from the .bib file. Once the package is installed, an RStudio addin <code>Insert citation</code> appears which executes the <code>citr:::insert_citation()</code> command (you can assign a short-key to the addin). This function brings a shiny app to select a citation interactively. More details in the <a href="https://github.com/crsh/citr">github repo</a>.</p>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4429,7 +4429,7 @@ Important
   <category>r</category>
   <category>tutorial</category>
   <guid>https://ikashnitsky.phd/2019/zotero/</guid>
-  <pubDate>Wed, 13 Mar 2019 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 14 Mar 2019 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/zotero/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4442,12 +4442,12 @@ Important
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <p><img src="https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/tutors-bg.png" class="img-fluid"></p>
 <p>Have you been feeling lately that you are missing out the coolest skill-set in academia?</p>
 <iframe src="https://gifer.com/embed/fxTM" width="480" height="269.011" frameborder="0" allowfullscreen="">
 </iframe>
-<p>Here is you chance to cut in and dive into R.</p>
+<p>Here is your chance to cut in and dive into R.</p>
 <p>In July <a href="https://bit.ly/bssd2019">BaRacelona Summer School of Demography</a> welcomes dedicated scholars, aspiring or established, to help them migrate to the world of new oppoRtunities.</p>
 <p>The school consists of 4 modules. You can take them all or choose specific ones. The first, instructed by <a href="https://twitter.com/timriffe1">Tim Riffe</a>, introduces the basics of R. The second, instructed by <a href="https://twitter.com/ikashnitsky">myself</a>, focuses on visualizing data, very general with a slight tilt towards population data. The third, instructed by <a href="https://portal.findresearcher.sdu.dk/da/persons/mpbergeron">Marie-Pier Bergeron Boucher</a>, presents the foundations of demographic analysis with R. Even if you are not (yet) a demographer these methods are very general and are usable in a wide range of social science disciplines. Finally, the fourth course, instructed by <a href="https://twitter.com/CEDemografia">Juan Galeano</a>, teaches the powerful ways to unleash the spatial dimension of data analysis.</p>
 <p>There are still several places available, the call closes on March 31st.</p>
@@ -4463,14 +4463,14 @@ Important
   <category>dataviz</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/</guid>
-  <pubDate>Wed, 06 Mar 2019 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 07 Mar 2019 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2018/ddd-poster/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p>On 28 November 2018 I presented a poster at <a href="http://www.nvdemografie.nl/en/activities/dutch-demography-day/dutch-demography-day-2018">Dutch Demography Day</a> in Utrecht. Here it is:</p>
 <div class="cell page-columns page-full">
 <div class="cell-output-display page-columns page-full">
@@ -4496,7 +4496,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This time I layouted the poster in <a href="https://inkscape.org">Inkscape</a> rather than arranging everything with hundreds of R code lines. But all the elements of the posted are reproducible with code from <a href="https://github.com/ikashnitsky/compare-pop-eu-us">this github repo</a>.</p>
+<p>This time I layouted the poster in <a href="https://inkscape.org">Inkscape</a> rather than arranging everything with hundreds of R code lines. But all the elements of the poster are reproducible with code from <a href="https://github.com/ikashnitsky/compare-pop-eu-us">this github repo</a>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -4528,14 +4528,14 @@ Important
   <category>dataviz</category>
   <category>rspatial</category>
   <guid>https://ikashnitsky.phd/2018/ddd-poster/</guid>
-  <pubDate>Sun, 02 Dec 2018 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 03 Dec 2018 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/ddd-poster/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>sjrdata: all SCImago Journal &amp; Country Rank data, ready for R</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2018/sjrdata-package/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p><img src="https://ikashnitsky.phd/2018/sjrdata-package/sjrdata-logo.png" class="img-fluid"></p>
 <p>SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at <a href="https://www.scimagojr.com">the project website</a> and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled them together, ready to be used in R.</p>
 <p>Basically, all the package gives you three easily accessible data frames: <code>sjr_journals</code> (Journal Rank), <code>sjr_countries</code> (Country Rank, year-by-year), and <code>sjr_countries_1996_2017</code> (Country Rank, all years together).</p>
@@ -4572,7 +4572,7 @@ font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a><
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;"><a href="https://github.com/ikashnitsky/sjrdata">sjrdata</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span></span>
@@ -4609,7 +4609,7 @@ font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a><
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;"><a href="https://github.com/ikashnitsky/sjrdata">sjrdata</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
 <span></span>
@@ -4851,14 +4851,14 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>package</category>
   <category>bibliometrics</category>
   <guid>https://ikashnitsky.phd/2018/sjrdata-package/</guid>
-  <pubDate>Sat, 22 Sep 2018 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 23 Sep 2018 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/sjrdata-package/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
   <title>Regional population structures at a glance</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2018/the-lancet-paper/</link>
-  <description><![CDATA[ <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+  <description><![CDATA[ <hr>
 <p><img src="https://ikashnitsky.phd/2018/the-lancet-paper/full-text.png" class="img-fluid"></p>
 <p>I am happy to announce that our paper is <a href="https://doi.org/10.1016/S0140-6736(18)31194-2">published today in <em>The Lancet</em></a>.</p>
 <blockquote class="blockquote">
@@ -4893,7 +4893,7 @@ background-color: null;
 font-style: inherit;">)</span></span>
 <span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/pkg/tricolore/man/DemoTricolore.html">DemoTricolore</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">DemoTricolore</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4919,7 +4919,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Folow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, <a href="https://twitter.com/jschoeley">jschoeley</a>
+<span class="screen-reader-only">Important</span>Follow us on Twitter: <a href="https://twitter.com/ikashnitsky">ikashnitsky</a>, <a href="https://twitter.com/jschoeley">jschoeley</a>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4954,7 +4954,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>dataviz</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2018/the-lancet-paper/</guid>
-  <pubDate>Fri, 20 Jul 2018 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 21 Jul 2018 00:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/the-lancet-paper/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>

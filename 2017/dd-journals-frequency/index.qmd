@@ -11,7 +11,7 @@ This week, the 30-th issue of my Demographic Digest [was published](http://demos
 
 [Demographic Digest](/dd) is my project that started in November 2015. Twice a month I select fresh demographic papers and write brief summaries of them in Russian to be published in [Demoscope Weekly](http://demoscope.ru), the most popular Russian journal/website in social sciences. If you read Russian, you may want to browse [the archive](http://demoscope.ru/weekly/arc/arcdigest.php) or visit [the website](https://ikashnitsky.github.io/dem-digest/) of the project (which is still to be filled).  
 
-The project is in the transitional phase now. Since 2016 Demographic Digest welcomes contributions from from external authors. In February 2017 I launched the [first iteration of a project](https://www.hse.ru/org/hse/pfair/199751652.html) for the students of National Research University Higher School of Economics.  
+The project is in the transitional phase now. Since 2016 Demographic Digest welcomes contributions from external authors. In February 2017 I launched the [first iteration of a project](https://www.hse.ru/org/hse/pfair/199751652.html) for the students of National Research University Higher School of Economics.  
 
 To draw a line after the first phase of the project, I analysed what journals supplied Demographic Digest most frequently. Also, my desire was to try visualizing data with treemaps, which I mentioned in the bonus part[^1] of [the latest digest issue](http://demoscope.ru/weekly/2017/0715/digest03.php).  
 

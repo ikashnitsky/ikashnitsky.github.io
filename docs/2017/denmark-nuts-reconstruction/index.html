@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-03-16">
+<meta name="description" content="NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries…">
 <title>R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark – Ilya Kashnitsky</title>
 <style>
 /* Default styles provided by pandoc.
@@ -68,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -79,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0cdebc085995f4245ddb7992a50a77a0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,29 +114,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark",
-  "description": "",
-  "datePublished": "March 16, 2017",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><link rel="canonical" href="https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/">
+<meta property="og:url" content="https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-03-16">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="rspatial">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2017-03-16","datePublished":"2017-03-16","description":"NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries…","headline":"R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark","image":"https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/teaser.png","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","rspatial"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/"}</script>
 <meta property="og:title" content="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries…">
 <meta property="og:image" content="https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="NUTS stands for the Nomenclature of Territorial Units For Statistics. The history of NUTS dates back to the beginning of 1970s, when European countries…">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2017/denmark-nuts-reconstruction/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -250,16 +252,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><hr>
 <p>NUTS stands for the <a href="http://ec.europa.eu/eurostat/web/nuts/overview">Nomenclature of Territorial Units For Statistics</a>. The history of NUTS dates back to the beginning of 1970s, when European countries developed unified standards for systems of administrative geography. It was not until the beginning of this century when such a system finally became widely used. There are three main hierarchical levels of NUTS, and the most commonly used for regional analysis is NUTS-2.</p>
 <p><img src="fig-01-nuts.png" class="img-fluid" style="width:60.0%"></p>
 <p><strong>Figure 1. Illustration of the principle of NUTS hierarchical system</strong></p>
 <p>One of the objectives of NUTS was to provide more or less comparable administrative divisions for all countries of Europe. Nevertheless, in 2013, population figures for single NUTS-2 regions ranged from 28.5 thousands in <em>Aland island</em> (Finland) to almost 12 million in <em>Ile-de-France</em> (Paris and surroundings, France).</p>
 <section id="the-broken-time-series" class="level1"><h1>The broken time series</h1>
-<p>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat <a href="http://ec.europa.eu/eurostat/web/nuts/history">tracks all modifications</a> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2).</p>
+<p>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governments. Eurostat <a href="http://ec.europa.eu/eurostat/web/nuts/history">tracks all modifications</a> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2).</p>
 <p><img src="fig-02-nuts-changes.png" class="img-fluid"><strong>Figure 2. Changes in NUTS between versions 2006 and 2010</strong></p>
 <p>Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past.</p>
-<p>To make thing even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In <a href="http://nidi.nl/en/research/al/270rdc">my PhD project</a> I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection <a href="http://ec.europa.eu/eurostat/web/population-demography-migration-projections/population-projections-data">EUROPOP2013</a> is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on <a href="https://doi.org/10.6084/m9.figshare.3084394">population age structures</a> and <a href="https://doi.org/10.6084/m9.figshare.3084418">deaths</a>, as downloaded in 2015, to <a href="https://figshare.com/">figshare</a>.</p>
+<p>To make things even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In <a href="http://nidi.nl/en/research/al/270rdc">my PhD project</a> I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection <a href="http://ec.europa.eu/eurostat/web/population-demography-migration-projections/population-projections-data">EUROPOP2013</a> is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on <a href="https://doi.org/10.6084/m9.figshare.3084394">population age structures</a> and <a href="https://doi.org/10.6084/m9.figshare.3084418">deaths</a>, as downloaded in 2015, to <a href="https://figshare.com/">figshare</a>.</p>
 </section><section id="denmark" class="level1 page-columns page-full"><h1>Denmark</h1>
 <p>Some countries had to perform major changes in their systems of territorial division to fit the NUTS standards. <a href="http://www.tandfonline.com/doi/abs/10.1080/03003930903560562">The most significant reform happened in Denmark in 2007</a>, where the former 271 municipalities were transformed into the new 98 municipalities. At the same time, NUTS was introduced, so that 98 municipalities were allocated to 11 NUTS-3 regions, which aggregate to 5 NUTS-2 regions. Typically, for a small country, there is only one NUTS-1 region in Denmark, which is the whole country.</p>
 <p>As far as I know, there was no official attempt of Eurostat to reconstruct the time series for Denmark before 2007. The typical map of Eurostat for the pre-2007 period shows Denmark as “no data available” country (figure 3).</p>
@@ -269,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="data" class="level1 page-columns page-full"><h1>Data</h1>
 <p>The data on the population age structures for the old 271 municipalities of Denmark was downloaded from the <a href="www.statbank.dk/BEF1A">official website of Statistics Denmark</a>. The system only allows you to grab up to 10K cells for unregistered users and up to 100K for registered users. So the process of downloading the data involves some tedious manual manipulations. For the purpose of my phd project, I downloaded the data for the period 2001-2006; but, if needed, the data is available since 1979. The data, downloaded in 2015 and ‘tidied up’ can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/BEF1A.csv.gz">here</a>.</p>
 <p>I have spent a lot of time trying to find geodata with the boundaries of the old municipalities. Now, coming back to the topic more than 1.5 year later, I failed to identify the original source of the shapefile, though I am pretty sure that it came from <a href="http://www.geodatabiblioteket.dk/index.php">here</a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The copy of the shapefile that I used can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/kommune2006utf8.tgz">here</a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.</p></div></div><p>Finally, we need a shapefile of NUTS-3 regions. It can be easily downloaded from <a href="http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">Eurostat geodata repository</a>. The shapefile that I used is “NUTS_2010_20M_SH.zip”. The selection of the 11 Danish regions can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz">here</a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data acquisition. I failed to download the geodata on 2017-02-23.</p></div></div><p>Finally, we need a shapefile of NUTS-3 regions. It can be easily downloaded from <a href="http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts">Eurostat geodata repository</a>. The shapefile that I used is “NUTS_2010_20M_SH.zip”. The selection of the 11 Danish regions can be found <a href="https://ikashnitsky.github.io/share/1703-nuts2-denmark/denmark-nuts3-espg3044.tgz">here</a>.</p>
 <p>The projection used for both shapefiles is <a href="https://epsg.io/3044">ESPG-3044</a>, the one often used to map Denmark.</p>
 <p>Now, the code to prepare the R session and load the data.</p>
 <div class="cell">
@@ -345,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                     color <span class="op">=</span> <span class="va">brbg</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, fill <span class="op">=</span> <span class="st">"grey90"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mun_coord</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span><span class="op">)</span>, </span>
 <span>                   color <span class="op">=</span> <span class="va">brbg</span><span class="op">[</span><span class="fl">10</span><span class="op">]</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>        <span class="fu">theme_map</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="fig-04-ref-map.png" class="img-fluid"><strong>Figure 4. Reference map of the old municipalities and NUTS-3 regions of Denmark</strong></p>
 <p>We can easily see that the boundaries of the municipalities (light blue) are much more precise than that of the NUTS-3 regions (orange/brown). This is not a problem as long as all the centroids of the municipalities fall within the boundaries of the NUTS-3 regions, which seems to be true for all municipalities except for the easternmost one. A quick check reveals that this is <a href="https://en.wikipedia.org/wiki/Ertholmene">Christiansø</a>, a tiny fortified island, whose <a href="http://www.christiansoe.dk/historien">history</a> goes back to the Middle Ages. It has a special status and <a href="http://www.dst.dk/da/Statistik/dokumentation/Nomenklaturer/NUTS">is not included</a> into the NUTS system. For further manipulations, Christiansø can safely merge it with the close-by Bornholm.</p>
@@ -372,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">inter</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, color <span class="op">=</span> <span class="va">nuts3</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">inter</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">inter</span><span class="op">$</span><span class="va">nuts3</span><span class="op">)</span>,<span class="op">]</span>, </span>
 <span>                   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">7</span>, pch <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu">theme_map</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -411,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gd_nuts3</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>, </span>
 <span>                     color <span class="op">=</span> <span class="va">brbg</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, fill <span class="op">=</span> <span class="cn">NA</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">fixed</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, color <span class="op">=</span> <span class="va">nuts3</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu">theme_map</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -438,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s try fuzzy join.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># first attempt</span></span>
-<span><span class="va">fuz_joined_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fuzzyjoin/man/regex_join.html">regex_left_join</a></span><span class="op">(</span><span class="va">mun_geo</span>, <span class="va">mun_stat</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">fuz_joined_1</span> <span class="op">&lt;-</span> <span class="fu">regex_left_join</span><span class="op">(</span><span class="va">mun_geo</span>, <span class="va">mun_stat</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The resulting dataframe has 278 rows instead of 271. That means that for some municipalities in the spatial dataset there was more than one match. Let’s identify them.</p>
 <div class="cell">
@@ -490,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now the second attempt to match the datasets (spatial dataset is corrected).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># second attempt</span></span>
-<span><span class="va">fuz_joined_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fuzzyjoin/man/regex_join.html">regex_left_join</a></span><span class="op">(</span><span class="va">mun_geo_cor</span>, <span class="va">mun_stat</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span>
+<span><span class="va">fuz_joined_2</span> <span class="op">&lt;-</span> <span class="fu">regex_left_join</span><span class="op">(</span><span class="va">mun_geo_cor</span>, <span class="va">mun_stat</span>, by <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># drop non-perfect match</span></span>
 <span><span class="va">fuz_joined_2</span> <span class="op">&lt;-</span> <span class="va">fuz_joined_2</span> <span class="op">|&gt;</span> </span>
@@ -551,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">sw</span><span class="op">)</span>, </span>
 <span>                     color <span class="op">=</span> <span class="st">"grey50"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html">scale_fill_viridis</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>        <span class="fu"><a href="https://jrnold.github.io/ggthemes/reference/theme_map.html">theme_map</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
+<span>        <span class="fu">theme_map</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">+</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
 <span>              legend.justification <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1148,14 +1150,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># The broken time series</span></span>
 <span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat <span class="co">[</span><span class="ot">tracks all modifications</span><span class="co">][nuts-hist]</span> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2). </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governments. Eurostat <span class="co">[</span><span class="ot">tracks all modifications</span><span class="co">][nuts-hist]</span> providing detailed explanations of all the changes that happen between versions of NUTS (figure 2). </span>
 <span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="al">![](fig-02-nuts-changes.png)</span> </span>
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>**Figure 2. Changes in NUTS between versions 2006 and 2010**</span>
 <span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past. </span>
 <span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>To make thing even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In <span class="co">[</span><span class="ot">my PhD project</span><span class="co">][phd]</span> I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection <span class="co">[</span><span class="ot">EUROPOP2013</span><span class="co">][proj]</span> is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on <span class="co">[</span><span class="ot">population age structures</span><span class="co">][pop]</span> and <span class="co">[</span><span class="ot">deaths</span><span class="co">][deaths]</span>, as downloaded in 2015, to <span class="co">[</span><span class="ot">figshare</span><span class="co">][figshare]</span>.  </span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>To make things even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In <span class="co">[</span><span class="ot">my PhD project</span><span class="co">][phd]</span> I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection <span class="co">[</span><span class="ot">EUROPOP2013</span><span class="co">][proj]</span> is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on <span class="co">[</span><span class="ot">population age structures</span><span class="co">][pop]</span> and <span class="co">[</span><span class="ot">deaths</span><span class="co">][deaths]</span>, as downloaded in 2015, to <span class="co">[</span><span class="ot">figshare</span><span class="co">][figshare]</span>.  </span>
 <span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Denmark</span></span>
@@ -1582,7 +1584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-453"><a href="#cb23-453" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-454"><a href="#cb23-454" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>Vrangbæk, K. (2010). Structural Reform in Denmark, 2007–09: Central Reform Processes in a Decentralised Environment. Local Government Studies, 36(2), 205–221. https://doi.org/10.1080/03003930903560562</span>
 <span id="cb23-455"><a href="#cb23-455" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>I have spent quite some time searching if someone else did the job before me and failed to find.</span>
-<span id="cb23-456"><a href="#cb23-456" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.</span>
+<span id="cb23-456"><a href="#cb23-456" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data acquisition. I failed to download the geodata on 2017-02-23.</span>
 <span id="cb23-457"><a href="#cb23-457" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -20,7 +20,7 @@ So the questions arise. Are ice hockey players really taller than average people
 
 # Data
 
-IIHF, the organization that is in charge for the ice hockey world championships, publishes detailed information on the squads, including the data on player's height and weight. The raw data files are [here][raw]. I gathered the data of all players that participated in the 16 world championships between 2001 and 2016. The formatting of the data files changes from year to year complicating the data processing. So I did the data cleaning manually which took a bit more than 3 hours. The unifies dataset is [here][data]. Let's load the data and prepare the R session.
+IIHF, the organization that is in charge for the ice hockey world championships, publishes detailed information on the squads, including the data on player's height and weight. The raw data files are [here][raw]. I gathered the data of all players that participated in the 16 world championships between 2001 and 2016. The formatting of the data files changes from year to year complicating the data processing. So I did the data cleaning manually which took a bit more than 3 hours. The unified dataset is [here][data]. Let's load the data and prepare the R session.
 
 ```{r, eval=FALSE}
 # load required packages
@@ -42,7 +42,7 @@ brbg11 <- RColorBrewer::brewer.pal(11, "BrBG")
 
 # Do the players become taller? (a crude comparison)
 
-Let's first have a look at the pulled average height of all the players that participated.
+Let's first have a look at the pooled average height of all the players that participated.
 
 ```{r, eval=FALSE}
 # mean height by championship
@@ -79,7 +79,7 @@ The positive trend is evident. In the 15 years the average height of a player in
 
 # Cohort approach
 
-A more correct way to study the dynamics of players' height is to do the comparison between birth cohorts. Here we face an interesting data preparation issue -- some of the players participated in more that one championships. The question is: do we need to clean the duplicate records? If the goal is to see the average height of a player  at the certain championship (as in Figure 1), it is reasonable to keep all the records. Alternatively, if the aim is to analyze the dynamics of players' height itself, I argue, it would be wrong to assign bigger weight to those players that participated in more that one championship. Thus, for the further cohort analysis, I cleaned the dataset from the duplicates.
+A more correct way to study the dynamics of players' height is to do the comparison between birth cohorts. Here we face an interesting data preparation issue -- some of the players participated in more than one championships. The question is: do we need to clean the duplicate records? If the goal is to see the average height of a player  at the certain championship (as in Figure 1), it is reasonable to keep all the records. Alternatively, if the aim is to analyze the dynamics of players' height itself, I argue, it would be wrong to assign bigger weight to those players that participated in more than one championship. Thus, for the further cohort analysis, I cleaned the dataset from the duplicates.
 
 ```{r, eval=FALSE}
 dfu_h <- df |> select(year, name, country, position, birth, cohort, height) |>
@@ -102,7 +102,7 @@ dfu <- left_join(
     mutate(bmi = av.weight / (av.height / 100) ^ 2)
 ```
 
-The total number of observations decreased from 6292 to 3333. For those who participated in more that one championship, I averaged the data on height and weight as they can change during the life-course. How many times, on average, are ice hockey players honored to represent their countries in the world championships? A bit less than 2.
+The total number of observations decreased from 6292 to 3333. For those who participated in more than one championship, I averaged the data on height and weight as they can change during the life-course. How many times, on average, are ice hockey players honored to represent their countries in the world championships? A bit less than 2.
 
 ```{r, eval=FALSE}
 # frequencies of participation in world championships
@@ -310,7 +310,7 @@ print(xtable(leaders), type = "html", file = "table_leaders.html")
   </tr>
 </table>
 
-Alexander Ovechkin -- 11 times! But it has to be noted that not every player had a possibility to participate in all the 16 championships between 2001 and 2016. That depends on a numder of factors:  
+Alexander Ovechkin -- 11 times! But it has to be noted that not every player had a possibility to participate in all the 16 championships between 2001 and 2016. That depends on a number of factors:  
  - the birth cohort of the player; 
  - whether his national team regularly qualified for the championship (Figure 3); 
  - whether the player was good enough for the national team; 
@@ -349,7 +349,7 @@ gg_cnt_part <- ggplot(data = df_cnt_part, aes(x = year, y = country))+
 
 **Figure 3. Stats of the national teams participation in the world championships**
 
-# Do the ice hochey players become taller? (regression analysis)
+# Do the ice hockey players become taller? (regression analysis)
 
 The regression analysis allows to address the research question -- the association between player's height and birth cohort -- accounting for the cross-national differences and player's position. I use OLS regressions, that are quite sensitive to outliers. I removed the birth cohorts for which there are less than 10 players -- 1963, 1997, and 1998.
 
@@ -377,7 +377,7 @@ m3 <- lm(data = dfuc, av.height~cohort+position+country)
 htmlreg(list(m1, m2, m3), file = "models_height.html", single.row = T)
 ```
 
-**Table2. The models**  
+**Table 2. The models**  
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:3px 3px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -602,7 +602,7 @@ gg_av.h_country <- ggplot(dfuc , aes(x = factor(cohort), y = av.height))+
 
 **Figure 4. The height of ice hockey players by nations**
 
-The last model indicates that from one birth cohort cohort to the other the height of ice hockey players increases 0.08 cm. That means an increase of 0.8 cm in a decade or a growth of 2.56 cm in the 32 years between 1964 and 1996. It is worth mentioning that once we run the analysis in cohorts and controlling for positions and nations, the speed of the player's height increase becomes much humbler than in the crude pulled analysis (Figure 1): 0.8 cm per decade compared to 1.2 cm per decade.
+The last model indicates that from one birth cohort to the other the height of ice hockey players increases 0.08 cm. That means an increase of 0.8 cm in a decade or a growth of 2.56 cm in the 32 years between 1964 and 1996. It is worth mentioning that once we run the analysis in cohorts and controlling for positions and nations, the speed of the player's height increase becomes much humbler than in the crude pooled analysis (Figure 1): 0.8 cm per decade compared to 1.2 cm per decade.
 
 Before we go further and compare the growth in player's height to that of the population, let's do the modeling separately for defenders, goalkeepers, and forwards. The exploratory plot (Figure 5) suggests that the correlation is stronger for goalkeepers and weaker for defenders.
 
@@ -890,7 +890,7 @@ gg_hoc_vs_pop <- ggplot()+
 
 **Figure 6. The comparison of height dynamics in ice hockey players (brown) and the corresponding male populations (green)**
 
-In all the analyzed countries, ice hockey players are 2-5 cm higher that the nation's average. This is not very surprising since we expect some selection in sport. What is more interesting, in the developed countries the rapid increase in the height of males mostly leveled off in the birth cohorts of 1960s. Unlike the population trend, the height of ice hockey players continued to increase with roughly the same pace in all the analyzed countries except for Denmark.  
+In all the analyzed countries, ice hockey players are 2-5 cm higher than the nation's average. This is not very surprising since we expect some selection in sport. What is more interesting, in the developed countries the rapid increase in the height of males mostly leveled off in the birth cohorts of 1960s. Unlike the population trend, the height of ice hockey players continued to increase with roughly the same pace in all the analyzed countries except for Denmark.  
 
 For the cohorts of Europeans that were born in first half of 20-th century, the height of males increased by 1.18--1.74 cm per decade (Figure 7, middle panel). Starting from the birth cohorts of 1960s, the pace decreased to 0.15--0.80 per decade.
 

@@ -2,7 +2,7 @@
 title: "Who is old? Visualizing the concept of prospective ageing with animated population pyramids"
 date: "2017-03-31"
 image: teaser.png
-categories: [r, animaion]
+categories: [r, animation]
 ---
 
 
@@ -18,7 +18,7 @@ This post is about illustrating the concept of prospective ageing, a relatively 
 
 Over the past decades the alarmist views of the upcoming population ageing disaster became widely spread. True, with the growing number of countries approaching the ending of the Demographic Transition, the average/median age of their population increases rapidly, which is something unprecedented in the documented human history. But does that imply an unbearable burden of elderly population in the nearest future? Not necessarily.  
 
-The demographic prospects depend a lot on how we define ageing. Quite recently [Waren Sanderson][waren] and [Sergei Scherbov][sch] proposed [^1] [^2] a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple -- age is not static: a person aged 65 (the conventional border deliminating elderly population) today is in many aspects not the same as a person ages 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one the latest papers of Sanderson and Scherbov [^3] summarizes the phenomenon nicely: *Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging*.
+The demographic prospects depend a lot on how we define ageing. Quite recently [Warren Sanderson][waren] and [Sergei Scherbov][sch] proposed [^1] [^2] a new way to look at population ageing, they called it Prospective Ageing. The underlying idea is really simple -- age is not static: a person aged 65 (the conventional border delimiting elderly population) today is in many aspects not the same as a person aged 65 half a century ago. Health and lifespan improved a lot in the last decades, meaning that today people generally have much more remaining years of life at the moment of being recognized as elderly by the conventional standards. Thus, Sanderson and Scherbov proposed to define elderly population based on the estimation of the expected remaining length of life rather than years lived. Such a refined view of population ageing disqualifies the alarmist claims of the approaching demographic collapse. The would be paradoxical title of one of the latest papers of Sanderson and Scherbov [^3] summarizes the phenomenon nicely: *Faster Increases in Human Life Expectancy Could Lead to Slower Population Aging*.
 
 Of course, the choice of the new ageing threshold is a rather arbitrary question [^4]. It became usual to define this threshold at the remaining life expectancy of 15 years.
 

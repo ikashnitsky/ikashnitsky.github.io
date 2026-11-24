@@ -12,7 +12,8 @@
   },
   "preferred_language": "en",
   "content_license": "CC BY-SA 4.0",
-  "structured_data": ["WebSite", "Person", "Organization", "FAQPage", "BlogPosting"],
+  "structured_data": ["WebSite", "Blog", "Person", "ProfilePage", "FAQPage", "BlogPosting"],
+  "sitemap": "https://ikashnitsky.phd/sitemap.xml",
   "allowed_agents": [
     "GPTBot", "OAI-SearchBot", "ChatGPT-User",
     "anthropic-ai", "ClaudeBot", "Claude-SearchBot",

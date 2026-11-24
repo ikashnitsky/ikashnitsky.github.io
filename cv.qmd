@@ -1,5 +1,10 @@
 ---
 title: "Academic CV"
+description-meta: &desc "Academic CV of Ilya Kashnitsky, demographer at Statistics Denmark: publications, research projects, teaching, and academic service."
+open-graph:
+  description: *desc
+twitter-card:
+  description: *desc
 comments: false
 toc: false
 toc-location: right
@@ -37,13 +42,13 @@ engine: knitr
 
 ```{=html}
 <p class="text-center">
-  <a class="btn btn-primary btn-lg cv-download" href="https://ikashnitsky.github.io/x/cv/2026-03-cv-ilya-kashnitsky.pdf" target="_blank">
+  <a class="btn btn-primary btn-lg cv-download" href="https://ikashnitsky.phd/x/cv/2026-03-cv-ilya-kashnitsky.pdf" target="_blank">
     <i class="fa-solid fa-file-arrow-down"></i>&ensp;Download current CV
   </a>
 </p>
 
 <div class="embed-container">
-  <iframe src="https://ikashnitsky.github.io/x/cv/2026-03-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
+  <iframe title="Academic CV of Ilya Kashnitsky (PDF)" src="https://ikashnitsky.phd/x/cv/2026-03-cv-ilya-kashnitsky.pdf" style="border:5px solid #dfff00"></iframe>
 </div>
 ```
 
