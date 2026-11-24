@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2024-12-18">
+<meta name="description" content="Several days ago I saw a post on LinkedIn by Jornt Mandemakers with some very curious results from Gender and Generations Programme surveys. While…">
 <title>Rotate the damn plot – Ilya Kashnitsky</title>
 <style>
 /* Default styles provided by pandoc.
@@ -68,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -79,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0cdebc085995f4245ddb7992a50a77a0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,29 +114,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Rotate the damn plot",
-  "description": "",
-  "datePublished": "December 18, 2024",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><link rel="canonical" href="https://ikashnitsky.phd/2024/rotate-damn-plot/">
+<meta property="og:url" content="https://ikashnitsky.phd/2024/rotate-damn-plot/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-12-18">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="dataviz">
+<meta property="article:tag" content="trick">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2024-12-18","datePublished":"2024-12-18","description":"Several days ago I saw a post on LinkedIn by Jornt Mandemakers with some very curious results from Gender and Generations Programme surveys. While…","headline":"Rotate the damn plot","image":"https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","dataviz","trick"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2024/rotate-damn-plot/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2024/rotate-damn-plot/"}</script>
 <meta property="og:title" content="Rotate the damn plot – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="Several days ago I saw a post on LinkedIn by Jornt Mandemakers with some very curious results from Gender and Generations Programme surveys. While…">
 <meta property="og:image" content="https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="Rotate the damn plot – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="Several days ago I saw a post on LinkedIn by Jornt Mandemakers with some very curious results from Gender and Generations Programme surveys. While…">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -250,14 +253,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>Several days ago I saw <a href="https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/">a post on LinkedIn by Jornt Mandemakers</a> with some very curious results from <a href="https://bsky.app/profile/ggp.bsky.social">Gender and Generations Programme</a> surveys. While representing interesting data, it was a perfect example of a way too common academic dataviz fallacy, and I decided to finally write this blog post.</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1"><p>Several days ago I saw <a href="https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/">a post on LinkedIn by Jornt Mandemakers</a> with some very curious results from <a href="https://bsky.app/profile/ggp.bsky.social">Gender and Generations Programme</a> surveys. While representing interesting data, it was a perfect example of a way too common academic dataviz fallacy, and I decided to finally write this blog post.</p>
 <p>Here is the original plot by Jornt.</p>
 <p><img src="plot-to-redo.jpg" class="img-fluid"></p>
 <p>We are going to replicate it and then redo – all in hope to illustrate how much it can be improved with very very simple alterations. In fact, this post revives the argument I made in an earlier post called <a href="https://ikashnitsky.phd/2019/dotplot/">Dotplot – the single most useful yet largely neglected dataviz type</a>. Despite the nice title and the same main message, I’m afraid the older post used a less indicative example. So I hope this time I’ll manage to illustrate the key message a bit clearer. But the message itself stays the same – <strong>forget multi-category bar/column plots and use dotplots instead</strong>. Or, put it the other way around: whenever you are visualizing a continuous measurement split into multiple categories, place the continuous variable on the horizontal (x) axis and the categorical variable on the vertical (y) axis. That’s it. Just a simple trick improves the readability of your plot <strong>a lot</strong>.</p>
 <p>Unfortunately, the use of crumpled multi-category bar plots is very widespread in academic papers. Have a look at a Google Lens search on the focal plot in this post. Google Lens browses the internet for similarly looking images, and they are plenty, most of them coming straight from academic papers.</p>
 <p><img src="google-lens.png" class="img-fluid"></p>
 <section id="rotate-the-damn-plot" class="level1"><h1>Rotate the damn plot</h1>
-<p>Over years of <a href="https://github.com/ikashnitsky/dataviz-art-skill">teaching dataviz</a> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational datatviz aimed at the general audience. Here it is.</p>
+<p>Over years of <a href="https://github.com/ikashnitsky/dataviz-art-skill">teaching dataviz</a> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational dataviz aimed at the general audience. Here it is.</p>
 <p><img src="04-magic.png" class="img-fluid"></p>
 <p>As you can see, much better readable text is what we immediately get via such a simple alteration of the dataviz, just <strong>Rotate the damn plot</strong>. There are several more equally simple dataviz rules/principles that I <a href="https://ikashnitsky.github.io/dataviz-art-skill/slides/slides-dataviz-bssd.html">keep teaching</a> and want to write-up better here in future. If you are interested, follow the dedicated BlueSky account @<a href="https://bsky.app/profile/damnplot.ikashnitsky.phd">damnplot.ikashnitsky.phd</a>, I have big plans for it.</p>
 <p>Okay. Enough with the lengthy intro. Let’s replicate the plot from the very beginning of the post and then improve it.</p>
@@ -322,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># custom theming</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/source_gist.html">source_gist</a></span><span class="op">(</span><span class="st">"653e1040a07364ae82b1bb312501a184"</span><span class="op">)</span></span>
-<span><span class="fu">sysfonts</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op">(</span><span class="st">"Atkinson Hyperlegible"</span>, family <span class="op">=</span> <span class="st">"ah"</span><span class="op">)</span></span>
+<span><span class="fu">sysfonts</span><span class="fu">::</span><span class="fu">font_add_google</span><span class="op">(</span><span class="st">"Atkinson Hyperlegible"</span>, family <span class="op">=</span> <span class="st">"ah"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html">theme_set</a></span><span class="op">(</span><span class="fu">theme_ik</span><span class="op">(</span>base_family <span class="op">=</span> <span class="st">"ah"</span>, base_size <span class="op">=</span> <span class="fl">11</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And finally the improved version of the plot.</p>
@@ -352,12 +355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Note that the essential difference here is that I switched the axes effectively <strong>rotating the damn plot</strong>. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation ofthe data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <a href="https://clauswilke.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps">dataviz book</a>.</p>
+<p>Note that the essential difference here is that I switched the axes effectively <strong>rotating the damn plot</strong>. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation of the data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <a href="https://clauswilke.com/dataviz/visualizing-amounts.html#dot-plots-and-heatmaps">dataviz book</a>.</p>
 <blockquote class="blockquote">
 <p>One important limitation of bars is that they need to start at zero, so that the bar length is proportional to the amount shown.</p>
 </blockquote>
 <p>And of course I added a title, subtitle, and legend caption. Note also a small handy trick that I use all the time – I moved x-axis labels to the top of the plot which allows me to use the subtitle as the axis label and not only save some space but also make the process of reading the plot more straightforward.</p>
-<p>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e.&nbsp;necessarily horizontal and large enough), preferable using some nice font. <strong>Pay attention to the text elements of you dataviz</strong>!</p>
+<p>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e.&nbsp;necessarily horizontal and large enough), preferably using some nice font. <strong>Pay attention to the text elements of your dataviz</strong>!</p>
 <hr>
 <div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -951,7 +954,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># Rotate the damn plot</span></span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>Over years of <span class="co">[</span><span class="ot">teaching dataviz</span><span class="co">][artskill]</span> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational datatviz aimed at the general audience. Here it is.</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>Over years of <span class="co">[</span><span class="ot">teaching dataviz</span><span class="co">][artskill]</span> to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational dataviz aimed at the general audience. Here it is.</span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="al">![](04-magic.png)</span></span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
@@ -1060,13 +1063,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>Note that the essential difference here is that I switched the axes effectively **rotating the damn plot**. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation ofthe data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <span class="co">[</span><span class="ot">dataviz book</span><span class="co">][wilke]</span>. </span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a>Note that the essential difference here is that I switched the axes effectively **rotating the damn plot**. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation of the data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant <span class="co">[</span><span class="ot">dataviz book</span><span class="co">][wilke]</span>. </span>
 <span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; One important limitation of bars is that they need to start at zero, so that the bar length is proportional to the amount shown.</span></span>
 <span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>And of course I added a title, subtitle, and legend caption. Note also a small handy trick that I use all the time -- I moved x-axis labels to the top of the plot which allows me to use the subtitle as the axis label and not only save some space but also make the process of reading the plot more straightforward. </span>
 <span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e. necessarily horizontal and large enough), preferable using some nice font. **Pay attention to the text elements of you dataviz**!</span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a>Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e. necessarily horizontal and large enough), preferably using some nice font. **Pay attention to the text elements of your dataviz**!</span>
 <span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="ot">[orig]: https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/</span></span>

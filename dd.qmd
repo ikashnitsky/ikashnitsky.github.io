@@ -1,5 +1,13 @@
 ---
 title: "."
+pagetitle: "Demographic Digest"
+description-meta: &desc "Demographic Digest: a 2015–2017 column at Demoscope Weekly with brief Russian-language summaries of fresh papers from leading demographic journals."
+open-graph:
+  description: *desc
+  image: img/dd-banner.png
+twitter-card:
+  description: *desc
+  image: img/dd-banner.png
 comments: false
 title-block-banner: img/dd-banner.png
 code-tools: false
@@ -26,7 +34,7 @@ toc-location: right
 ### [[ARCHIVE]][1]
 
 [1]: http://demoscope.ru/weekly/arc/arcdigest.php
-[2]: https://ikashnitsky.github.io/dem-digest
+[2]: https://ikashnitsky.phd/dem-digest/
 
 ***
 

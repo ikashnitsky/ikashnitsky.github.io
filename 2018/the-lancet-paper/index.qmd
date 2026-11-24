@@ -40,7 +40,7 @@ DemoTricolore()
 :::
 
 ::: {.callout-important}
-# Folow us on Twitter: [ikashnitsky][ik], [jschoeley][js]
+# Follow us on Twitter: [ikashnitsky][ik], [jschoeley][js]
 :::
 
 

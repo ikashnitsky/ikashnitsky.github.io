@@ -19,7 +19,7 @@ This academic year I am participating in [European Doctoral School of Demography
 
 # The creative task
 
-Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), [Francisco Villavichencio][pancho] gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in [one of his PhD papers][paper], in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs their of parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:
+Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), [Francisco Villavicencio][pancho] gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in [one of his PhD papers][paper], in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs of their parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:
 
 > Villavicencio F, Jordà JP, Pujadas-Mora JM. 2015. Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In *Population Reconstruction*, 199–216. Springer.
 
@@ -38,19 +38,19 @@ So, let's dive into string distances and probabilistic string matching.
 
 ::: {.callout-important}
 # Reproducibility note
-For the sake of post's readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the [github repo][repo] that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the guthub repo only contains minimal indicative data sample -- 10 best matching records to each of the groupmate's name.  
+For the sake of post's readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the [github repo][repo] that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the github repo only contains minimal indicative data sample -- 10 best matching records to each of the groupmate's name.  
 :::
 
 
 # Exploring the methods
 
-There are multiple ways to calculate string distances. Most popular are implemented in `stringdist` R package. I'm not going to present the methods themselve, just check `stringdist` [documentation][doc] if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their "voting", it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible. 
+There are multiple ways to calculate string distances. Most popular are implemented in `stringdist` R package. I'm not going to present the methods themselves, just check `stringdist` [documentation][doc] if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their "voting", it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible. 
 
 So, first I decided to compare the speed of these methods and choose the fastest for the first step comparison. Here is what I got calculating the distance between words "demography" and "democracy". 
 
 ![](benchmarking.png)
 
-As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is "jw", Jaro-Winker distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure. 
+As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is "jw", Jaro-Winkler distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure. 
 
 
 # Finally, let's find our Catalan "ancestors" 

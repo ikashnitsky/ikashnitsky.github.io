@@ -38,7 +38,7 @@ The poster won [NVD][nvd] Poster Award via online voting of the conference parti
 
 ::: {.callout-tip}
 # Replication 
-This time I layouted the poster in [Inkscape][ink] rather than arranging everything with hundreds of R code lines. But all the elements of the posted are reproducible with code from [this github repo][repo].
+This time I layouted the poster in [Inkscape][ink] rather than arranging everything with hundreds of R code lines. But all the elements of the poster are reproducible with code from [this github repo][repo].
 :::
 
 

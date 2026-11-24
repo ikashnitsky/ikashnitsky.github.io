@@ -37,7 +37,7 @@ df <- raw |>
     mutate(text_to_geocode = paste(city_settlement, country, sep = ", "))
 ```
 
-Now we are ready to unleash the power of `tidygeocoder`. The way the main unction in the package works is very similar to `mutate` -- you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.  
+Now we are ready to unleash the power of `tidygeocoder`. The way the main function in the package works is very similar to `mutate` -- you just specify which column of the dataset contains the text string to geocode, and it returns the geographic coordinates.  
 
 ```{r}
 library(tidygeocoder)
@@ -58,7 +58,7 @@ df_plot <- df_geocoded |>
     )
 ```
 
-Next are several steps to plot countries of the worlds as the background map layer. Note that I'm using the trick of producing a separate lines layer for the country borders, there is a [separate post][borders] about this small dataviz trick.
+Next are several steps to plot countries of the world as the background map layer. Note that I'm using the trick of producing a separate lines layer for the country borders, there is a [separate post][borders] about this small dataviz trick.
 
 ```{r}
 # get world map outline (you might need to install the package)

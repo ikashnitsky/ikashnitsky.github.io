@@ -18,7 +18,8 @@ listing:
     sort: "date desc"
     template: html/listing-grid.ejs
     categories: true
-    feed: 
+    feed:
+      description: "Ilya Kashnitsky's blog on demography, R programming, and data visualization."
       categories: r
   - id: posts_2022
     contents: "2022/**/index.qmd"
@@ -62,9 +63,11 @@ margin-header: |
     <button class="btn btn-lg btn-secondary" type="button" aria-label="Subscribe for email updates" toolname="Subscribe" tooldescription="Sign up for email notifications when new blog posts are published">
     <a href="/subscribe.html"> {{< fa pen-to-square >}} <small>Subscribe</small></a>
     </button>  
-format:
-  html:
-    include-in-header: index-meta.html
+description-meta: &desc "demographeR's notes – Ilya Kashnitsky's blog on demography, R programming, data visualization, and academic life: tutorials, research notes, and reproducible code."
+open-graph:
+  description: *desc
+twitter-card:
+  description: *desc
 ---
 
 ### 2026

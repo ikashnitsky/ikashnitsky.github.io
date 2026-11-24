@@ -15,7 +15,7 @@ The example comes from my current work on a paper, in which I study the effect o
 
 ![](map.png)
 
-So, with this map I want to show the location of more and less urbanized NUTS-2 regions of Europe. But I also want to show -- with subplots -- how I defined the three subregions of Europe (Eastern, Southern, and Western) and what is the relative frequency of the three categories of regions (Predominantly Rural, Intermediate, and Predominantly Rural) within each of the subregions. The logic of actions is simple: first prepare all the components, then assemble them in a composite plot. Let's go!
+So, with this map I want to show the location of more and less urbanized NUTS-2 regions of Europe. But I also want to show -- with subplots -- how I defined the three subregions of Europe (Eastern, Southern, and Western) and what is the relative frequency of the three categories of regions (Predominantly Urban, Intermediate, and Predominantly Rural) within each of the subregions. The logic of actions is simple: first prepare all the components, then assemble them in a composite plot. Let's go!
 
 The code to prepare R session and load the data.
 

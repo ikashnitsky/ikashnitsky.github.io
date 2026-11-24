@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 One of the game-changing features of `ggplot2` was the ease with which one can explore the dimensions of the data using **small multiples**.[^1] There is a small trick that I was to share today -- put all the data in background of every panel. This can considerably improve comparability of the data across the dimension which splits the dataset into the subsets for the small multiples. Better to show right away what I mean and then explain in details. 
 
-There is a weekly dataviz challenge organized by Cole Knaflic. [One particular challenge][swd] stroke me as an ultimate case to showcase this background data trick. Here are the two plots:[^2] **the challenge one** and **my version**.
+There is a weekly dataviz challenge organized by Cole Knaflic. [One particular challenge][swd] struck me as an ultimate case to showcase this background data trick. Here are the two plots:[^2] **the challenge one** and **my version**.
 
 
 
