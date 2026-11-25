@@ -63,8 +63,7 @@ margin-header: |
     <a href="/subscribe.html"> {{< fa pen-to-square >}} <small>Subscribe</small></a>
     </button>  
 format:
-  html:
-    include-in-header: index-meta.html
+  html: {}
 ---
 
 ### 2026

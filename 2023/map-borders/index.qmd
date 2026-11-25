@@ -9,6 +9,8 @@ categories: [r, rspatial, dataviz, trick]
 knitr::opts_chunk$set(
   message = FALSE, warning = FALSE
 )
+Sys.setenv(OPENBLAS_NUM_THREADS = 1)
+Sys.setenv(OMP_NUM_THREADS = 1)
 ```
 
 ***
