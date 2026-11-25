@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  post-render:
+    - _scripts/seo-postrender.ts
 
   preview:
     port: 4444
@@ -23,8 +25,7 @@ csl: bib/population-space-and-place.csl
 
 website:
   title: "Ilya Kashnitsky"
-  description: "Dr. Ilya Kashnitsky is a demographer @ Statistics Denmark."
-  favicon: "/img/ikx-logo-500.png"
+  favicon: "img/favicon-64.png"
   site-url: "https://ikashnitsky.phd"
   repo-url: "https://github.com/ikashnitsky/ikashnitsky.github.io"
 
@@ -71,9 +72,6 @@ website:
         aria-label: rss
         href: "index.xml"
 
-  body-header: |
-    <script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
-
   page-footer:
     left: |
       <span class="faux-block">{{< fa brands creative-commons >}} {{< var years >}} Ilya Kashnitsky</span>
@@ -88,8 +86,9 @@ website:
 format:
   html:
     theme: html/ik.css
+    include-in-header: html/head.html
     filters:
-      - lua/json-ld.lua
+      - lua/seo.lua
     toc: false
     code-link: true
     anchor-sections: true

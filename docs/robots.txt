@@ -1,3 +1,6 @@
+User-agent: *
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -78,3 +81,5 @@ Allow: /
 
 User-agent: CCBot
 Allow: /
+
+Sitemap: https://ikashnitsky.phd/sitemap.xml

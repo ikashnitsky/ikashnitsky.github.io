@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="demographeR’s notes – Ilya Kashnitsky’s blog on demography, R programming, data visualization, and academic life: tutorials, research notes, and reproducible code.">
 
 <title>demographeR’s notes – Ilya Kashnitsky</title>
 <style>
@@ -35,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="./img/favicon-64.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -48,7 +49,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -88,9 +89,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-subtitle','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-fig-cap-location','listing-reference-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-bibliography','listing-csl','listing-website','listing-format','listing-engines','listing-_quarto-vars','listing-language','listing-author','listing-title-block-banner','listing-title','listing-fig-cap-location','listing-reference-location','listing-date','listing-image','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-subtitle","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-fig-cap-location","listing-reference-location"],
+      searchColumns: ["listing-project","listing-bibliography","listing-csl","listing-website","listing-format","listing-engines","listing-_quarto-vars","listing-language","listing-author","listing-title-block-banner","listing-title","listing-fig-cap-location","listing-reference-location","listing-date","listing-image","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -305,6 +306,18 @@ ul.task-list li input[type="checkbox"] {
         background: #002F2F;
       }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="./index.xml">
+<link rel="author" href="./me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+<link rel="canonical" href="https://ikashnitsky.phd/">
+<meta property="og:url" content="https://ikashnitsky.phd/">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://ikashnitsky.phd/#website","@type":"WebSite","alternateName":"Ilya Kashnitsky","inLanguage":"en","name":"demographeR's notes","publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/"},{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","author":{"@id":"https://ikashnitsky.phd/#person"},"description":"demographeR’s notes – Ilya Kashnitsky’s blog on demography, R programming, data visualization, and academic life: tutorials, research notes, and reproducible code.","inLanguage":"en","license":"https://creativecommons.org/licenses/by-sa/4.0/","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},{"@id":"https://ikashnitsky.phd/#person","@type":"Person","affiliation":{"@type":"Organization","name":"Leverhulme Centre for Demographic Science, University of Oxford","url":"https://www.demography.ox.ac.uk/"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Groningen"},{"@type":"CollegeOrUniversity","name":"National Research University Higher School of Economics"},{"@type":"CollegeOrUniversity","name":"Lomonosov Moscow State University"}],"description":"Demographer working on regional variations in ageing, mortality, population geography, and data visualization.","image":"https://ikashnitsky.phd/img/ik.png","jobTitle":"Senior Researcher","knowsAbout":["Demography","Population geography","Mortality","Population ageing","Data visualization","R programming","Spatial analysis"],"name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687","https://scholar.google.com/citations?user=tSQW1XYAAAAJ","https://www.wikidata.org/wiki/Q130311699","https://github.com/ikashnitsky","https://www.linkedin.com/in/ikashnitsky","https://bsky.app/profile/ikashnitsky.phd","https://fosstodon.org/@ikashnitsky"],"url":"https://ikashnitsky.phd/me.html","worksFor":{"@type":"Organization","name":"Statistics Denmark","url":"https://www.dst.dk/en/"}},{"@id":"https://ikashnitsky.phd/#faq","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"Ilya Kashnitsky is a demographer, currently a Senior Researcher at Statistics Denmark and an Associate Member at the Leverhulme Centre for Demographic Science, University of Oxford. His work focuses on regional variations in aging, population geography, spatial analysis, and data visualization."},"name":"Who is Ilya Kashnitsky?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"The blog covers topics related to demography, R programming, data visualization, spatial analysis, and open science."},"name":"What topics are covered on this blog?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"The Demographic Digest is a series of brief summaries of selected demographic papers, written in Russian, that Ilya Kashnitsky published between 2015 and 2017."},"name":"What is the Demographic Digest?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"You can contact Ilya Kashnitsky via email at ilya.kashnitsky@gmail.com, or through his social media profiles like BlueSky and Mastodon."},"name":"How can I contact Ilya Kashnitsky?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"The source code for the site is available on GitHub at https://github.com/ikashnitsky/ikashnitsky.github.io. The site is built using R and Quarto."},"name":"Where can I find the source code for this site?"}]}]}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -337,12 +350,14 @@ window.Quarto = {
 </script>
 
 <link rel="alternate" type="application/rss+xml" title="Ilya Kashnitsky" href="index.xml" data-external="1"><meta property="og:title" content="demographeR’s notes – Ilya Kashnitsky">
+<meta property="og:description" content="demographeR’s notes – Ilya Kashnitsky’s blog on demography, R programming, data visualization, and academic life: tutorials, research notes, and reproducible code.">
 <meta property="og:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="1000">
 <meta property="og:image:width" content="1910">
 <meta name="twitter:title" content="demographeR’s notes – Ilya Kashnitsky">
+<meta name="twitter:description" content="demographeR’s notes – Ilya Kashnitsky’s blog on demography, R programming, data visualization, and academic life: tutorials, research notes, and reproducible code.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/img/card-tw.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -466,72 +481,27 @@ window.Quarto = {
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">2017</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(42)</span></div><div class="category" data-category="MTAx">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YW5pbWFpb24=">animaion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y2FyZWVy">career <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFjcXVpc2l0aW9u">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(12)</span></div><div class="category" data-category="ZGVtb2dyYXBoeQ==">demography <span class="quarto-category-count">(15)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="aG1k">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="a2FzdA==">kast <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(41)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnNwYXRpYWw=">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="cnN0dWRpbw==">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3BvcnQ=">sport <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJpY2s=">trick <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(41)</span></div><div class="category" data-category="MTAx">101 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZGVtaWE=">academia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YW5pbWF0aW9u">animation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlibGlvbWV0cmljcw==">bibliometrics <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y2FyZWVy">career <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFjcXVpc2l0aW9u">data acquisition <span class="quarto-category-count">(3)</span></div><div class="category" data-category="ZGF0YXZpeg==">dataviz <span class="quarto-category-count">(11)</span></div><div class="category" data-category="ZGVtb2dyYXBoeQ==">demography <span class="quarto-category-count">(14)</span></div><div class="category" data-category="ZmFjZXRpbmc=">faceting <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Zm9vdGJhbGw=">football <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="aG1k">hmd <span class="quarto-category-count">(2)</span></div><div class="category" data-category="a2FzdA==">kast <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(40)</span></div><div class="category" data-category="cnNwYXRpYWw=">rspatial <span class="quarto-category-count">(9)</span></div><div class="category" data-category="cnN0dWRpbw==">rstudio <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3BvcnQ=">sport <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dHJpY2s=">trick <span class="quarto-category-count">(7)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(5)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content" tabindex="-1">
 
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">2026</h3>
 <div id="listing-posts_2026" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5JTJDUg==" data-listing-date-sort="1795561200000" data-listing-file-modified-sort="1795596376058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="572">
-
-        <div class="body">
-
-            <a href="./2026/half-empty/index.html">
-                
-                <div class="thumbnail">
-                    <img src="./2026/half-empty/teaser.jpg" alt="Is the Glass Half Filled or Almost Empty?" title="Is the Glass Half Filled or Almost Empty?">
-                </div>
-                
-            </a>
-
-            <p class="title listing-title"><a href="./2026/half-empty/index.html">Is the Glass Half Filled or Almost Empty?</a></p>
-
-            
-            <div class="post-categories listing-categories">
-                
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('r'); return false;">
-                    r
-                </div>
-                
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('dataviz'); return false;">
-                    dataviz
-                </div>
-                
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('demography'); return false;">
-                    demography
-                </div>
-                
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('R'); return false;">
-                    R
-                </div>
-                
-            </div>
-            
-
-            <div class="metadata">
-                <p class="date listing-date">November 25, 2026</p>
-            </div>
-
-            <p class="description listing-description">Today I saw a fascinating dataviz (mis)interpretation case that featured a plot from a recent Stripe data analysis that claims that agentic commerce is on the rise and is…</p>
-        </div>
-
-    </div>
-    
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ2thc3QlMkNkZW1vZ3JhcGh5JTJDZGF0YXZpeg==" data-listing-date-sort="1774908000000" data-listing-file-modified-sort="1774937722575" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1266">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2thc3QlMkNkZW1vZ3JhcGh5JTJDZGF0YXZpeg==" data-listing-date-sort="1774915200000" data-listing-file-modified-sort="1795506978216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1266">
 
         <div class="body">
 
             <a href="./2026/royal-longevity/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2026/royal-longevity/teaser.jpg" alt="UK monarchs' longevity against their people: a demographically correct reanalysis" title="UK monarchs' longevity against their people: a demographically correct reanalysis">
+                    <img src="./2026/royal-longevity/teaser.jpg" alt="UK monarchs' longevity against their people: a demographically correct reanalysis" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -569,14 +539,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ2Zvb3RiYWxsJTJDZGF0YXZpeiUyQ2xsbQ==" data-listing-date-sort="1774047600000" data-listing-file-modified-sort="1794815790161" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="793">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ2Zvb3RiYWxsJTJDZGF0YXZpeiUyQ2xsbQ==" data-listing-date-sort="1774051200000" data-listing-file-modified-sort="1795506321102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="793">
 
         <div class="body">
 
             <a href="./2026/laliga-preview/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2026/laliga-preview/teaser.jpg" alt="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits' La Liga predictions" title="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits' La Liga predictions">
+                    <img src="./2026/laliga-preview/teaser.jpg" alt="Can deep football knowledge guarantee betting success? Systematic evaluation of football pundits' La Liga predictions" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -623,14 +593,14 @@ window.Quarto = {
 <div id="listing-posts_2025" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2FjYWRlbWlhJTJDYmlibGlvbWV0cmljcyUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1760306400000" data-listing-file-modified-sort="1794818572345" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="735">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2FjYWRlbWlhJTJDYmlibGlvbWV0cmljcyUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1760313600000" data-listing-file-modified-sort="1795506978208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="735">
 
         <div class="body">
 
             <a href="./2025/ihme-bibl/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2025/ihme-bibl/teaser.jpg" alt="Beyond Fraud: How IHME Distorts Academic Metrics" title="Beyond Fraud: How IHME Distorts Academic Metrics">
+                    <img src="./2025/ihme-bibl/teaser.jpg" alt="Beyond Fraud: How IHME Distorts Academic Metrics" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -668,14 +638,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNkZW1vZ3JhcGh5" data-listing-date-sort="1753135200000" data-listing-file-modified-sort="1794815849859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="983">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="YWNhZGVtaWElMkNjYXJlZXIlMkNkZW1vZ3JhcGh5" data-listing-date-sort="1753142400000" data-listing-file-modified-sort="1795506978212" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="984">
 
         <div class="body">
 
             <a href="./2025/sidekick-papers/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2025/sidekick-papers/teaser.jpg" alt="Sidekick projects may be worthy distractions for an early academic" title="Sidekick projects may be worthy distractions for an early academic">
+                    <img src="./2025/sidekick-papers/teaser.jpg" alt="Sidekick projects may be worthy distractions for an early academic" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -718,14 +688,14 @@ window.Quarto = {
 <div id="listing-posts_2024" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RhdGF2aXolMkN0cmljaw==" data-listing-date-sort="1734476400000" data-listing-file-modified-sort="1774438314042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1469">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RhdGF2aXolMkN0cmljaw==" data-listing-date-sort="1734480000000" data-listing-file-modified-sort="1795506978200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1470">
 
         <div class="body">
 
             <a href="./2024/rotate-damn-plot/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2024/rotate-damn-plot/teaser.png" alt="Rotate the damn plot" title="Rotate the damn plot">
+                    <img src="./2024/rotate-damn-plot/teaser.png" alt="Rotate the damn plot" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -759,19 +729,19 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFs" data-listing-date-sort="1723759200000" data-listing-file-modified-sort="1774438314048" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2506">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFs" data-listing-date-sort="1723766400000" data-listing-file-modified-sort="1795507124552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2505">
 
         <div class="body">
 
             <a href="./2024/zotero7/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2024/zotero7/zotero-teaser.png" alt="[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library" title="[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library">
+                    <img src="./2024/zotero7/zotero-teaser.png" alt="[UPD] Zotero hacks: reliably setup unlimited storage for your personal academic library" loading="lazy" decoding="async">
                 </div>
                 
             </a>
 
-            <p class="title listing-title"><a href="./2024/zotero7/index.html">[UPD] Zotero hacks: reliably setup unlimited storage for you personal academic library</a></p>
+            <p class="title listing-title"><a href="./2024/zotero7/index.html">[UPD] Zotero hacks: reliably setup unlimited storage for your personal academic library</a></p>
 
             
             <div class="post-categories listing-categories">
@@ -805,14 +775,14 @@ window.Quarto = {
 <div id="listing-posts_2023" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1703113200000" data-listing-file-modified-sort="1774438314029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="689">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1703116800000" data-listing-file-modified-sort="1795507048378" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="689">
 
         <div class="body">
 
             <a href="./2023/30-dmc/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/30-dmc/teaser.png" alt="30DayMapChallenge my 25/30 contributions" title="30DayMapChallenge my 25/30 contributions">
+                    <img src="./2023/30-dmc/teaser.png" alt="30DayMapChallenge my 25/30 contributions" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -841,19 +811,19 @@ window.Quarto = {
                 <p class="date listing-date">December 21, 2023</p>
             </div>
 
-            <p class="description listing-description">For four years I’ve been following #30DayMapCallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities…<code></code></p>
+            <p class="description listing-description">For four years I’ve been following #30DayMapChallenge with admiration but not daring to commit to it. Producing maps was always an accompanying step in my main activities…<code></code></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1774438314038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1017">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1699056000000" data-listing-file-modified-sort="1795507053106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1016">
 
         <div class="body">
 
             <a href="./2023/map-proj/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/map-proj/teaser.png" alt="Improve your maps in one line of code changing map projections" title="Improve your maps in one line of code changing map projections">
+                    <img src="./2023/map-proj/teaser.png" alt="Improve your maps in one line of code changing map projections" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -887,14 +857,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1698793200000" data-listing-file-modified-sort="1774438314031" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="731">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3JzcGF0aWFsJTJDZ2dwbG90Mg==" data-listing-date-sort="1698796800000" data-listing-file-modified-sort="1795507049946" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="731">
 
         <div class="body">
 
             <a href="./2023/geocoding/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/geocoding/teaser.png" alt="Geocode address text strings using `tidygeocoder`" title="Geocode address text strings using `tidygeocoder`">
+                    <img src="./2023/geocoding/teaser.png" alt="Geocode address text strings using `tidygeocoder`" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -928,14 +898,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2RhdGF2aXolMkN0cmljayUyQ2ZhY2V0aW5n" data-listing-date-sort="1677452400000" data-listing-file-modified-sort="1774438314040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="998">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2RhdGF2aXolMkN0cmljayUyQ2ZhY2V0aW5n" data-listing-date-sort="1677456000000" data-listing-file-modified-sort="1795507055458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="998">
 
         <div class="body">
 
             <a href="./2023/shrink-space/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/shrink-space/teaser.jpg" alt="Save space in faceted plots" title="Save space in faceted plots">
+                    <img src="./2023/shrink-space/teaser.jpg" alt="Save space in faceted plots" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -973,14 +943,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ3JzdHVkaW8lMkN0cmljaw==" data-listing-date-sort="1672700400000" data-listing-file-modified-sort="1774438314032" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="896">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ3JzdHVkaW8lMkN0cmljaw==" data-listing-date-sort="1672704000000" data-listing-file-modified-sort="1795507050750" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="896">
 
         <div class="body">
 
             <a href="./2023/gist-snippet/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/gist-snippet/teaser.png" alt="Easily re-using self-written functions: the power of gist + code snippet duo" title="Easily re-using self-written functions: the power of gist + code snippet duo">
+                    <img src="./2023/gist-snippet/teaser.png" alt="Easily re-using self-written functions: the power of gist + code snippet duo" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1014,14 +984,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ3JzcGF0aWFsJTJDZGF0YXZpeiUyQ3RyaWNr" data-listing-date-sort="1672527600000" data-listing-file-modified-sort="1795602534355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="763">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ3JzcGF0aWFsJTJDZGF0YXZpeiUyQ3RyaWNr" data-listing-date-sort="1672531200000" data-listing-file-modified-sort="1795507051542" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="759">
 
         <div class="body">
 
             <a href="./2023/map-borders/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2023/map-borders/teaser.png" alt="The easiest way to radically improve map aesthetics" title="The easiest way to radically improve map aesthetics">
+                    <img src="./2023/map-borders/teaser.png" alt="The easiest way to radically improve map aesthetics" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1068,14 +1038,14 @@ window.Quarto = {
 <div id="listing-posts_2022" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2Zvb3RiYWxsJTJDcGFja2FnZQ==" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1774438314026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="894">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2Zvb3RiYWxsJTJDcGFja2FnZQ==" data-listing-date-sort="1671926400000" data-listing-file-modified-sort="1795507046022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="894">
 
         <div class="body">
 
             <a href="./2022/exceptional-world-cup/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2022/exceptional-world-cup/teaser.jpg" alt="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?" title="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?">
+                    <img src="./2022/exceptional-world-cup/teaser.jpg" alt="Were there too many unlikely results at the FIFA World Cup 2022 in Qatar?" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1118,14 +1088,14 @@ window.Quarto = {
 <div id="listing-posts_2021" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQzEwMSUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1614898800000" data-listing-file-modified-sort="1774438314023" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1006">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQzEwMSUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1614902400000" data-listing-file-modified-sort="1795507043955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1006">
 
         <div class="body">
 
             <a href="./2021/life-expectancy-101/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2021/life-expectancy-101/teaser.png" alt="What is life expectancy? And, even more important, what it isn't" title="What is life expectancy? And, even more important, what it isn't">
+                    <img src="./2021/life-expectancy-101/teaser.png" alt="What is life expectancy? And, even more important, what it isn't" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1168,14 +1138,14 @@ window.Quarto = {
 <div id="listing-posts_2020" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2ZhY2V0aW5nJTJDZGF0YXZpeiUyQ2dncGxvdDIlMkN0cmljaw==" data-listing-date-sort="1592517600000" data-listing-file-modified-sort="1774438314022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2ZhY2V0aW5nJTJDZGF0YXZpeiUyQ2dncGxvdDIlMkN0cmljaw==" data-listing-date-sort="1592524800000" data-listing-file-modified-sort="1795507011603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
 
         <div class="body">
 
             <a href="./2020/background-data/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2020/background-data/teaser.png" alt="Show all data in the background of your faceted ggplot" title="Show all data in the background of your faceted ggplot">
+                    <img src="./2020/background-data/teaser.png" alt="Show all data in the background of your faceted ggplot" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1226,14 +1196,14 @@ window.Quarto = {
 <div id="listing-posts_2019" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RhdGF2aXolMkN0cmljaw==" data-listing-date-sort="1563487200000" data-listing-file-modified-sort="1774438314017" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="431">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RhdGF2aXolMkN0cmljaw==" data-listing-date-sort="1563494400000" data-listing-file-modified-sort="1795507006116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="431">
 
         <div class="body">
 
             <a href="./2019/dotplot/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2019/dotplot/teaser.jpeg" alt="Dotplot – the single most useful yet largely neglected dataviz type" title="Dotplot – the single most useful yet largely neglected dataviz type">
+                    <img src="./2019/dotplot/teaser.jpeg" alt="Dotplot – the single most useful yet largely neglected dataviz type" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1262,19 +1232,19 @@ window.Quarto = {
                 <p class="date listing-date">July 19, 2019</p>
             </div>
 
-            <p class="description listing-description">I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advise to every (ha-ha-ha) listening…<strong></strong></p>
+            <p class="description listing-description">I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advice to every (ha-ha-ha) listening…<strong></strong></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFs" data-listing-date-sort="1552518000000" data-listing-file-modified-sort="1774438314021" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2097">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFs" data-listing-date-sort="1552521600000" data-listing-file-modified-sort="1795507010811" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2097">
 
         <div class="body">
 
             <a href="./2019/zotero/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2019/zotero/teaser.png" alt="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown" title="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown">
+                    <img src="./2019/zotero/teaser.png" alt="Zotero hacks: unlimited synced storage and its smooth use with rmarkdown" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1304,14 +1274,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1551913200000" data-listing-file-modified-sort="1774438314016" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1551916800000" data-listing-file-modified-sort="1795507005336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183">
 
         <div class="body">
 
             <a href="./2019/barcelona-summer-school-of-demography/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2019/barcelona-summer-school-of-demography/teaser.png" alt="See you in Barcelona this summer" title="See you in Barcelona this summer">
+                    <img src="./2019/barcelona-summer-school-of-demography/teaser.png" alt="See you in Barcelona this summer" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1354,14 +1324,14 @@ window.Quarto = {
 <div id="listing-posts_2018" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RlbW9ncmFwaHklMkNkYXRhdml6JTJDcnNwYXRpYWw=" data-listing-date-sort="1543791600000" data-listing-file-modified-sort="1774438313997" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ2RlbW9ncmFwaHklMkNkYXRhdml6JTJDcnNwYXRpYWw=" data-listing-date-sort="1543795200000" data-listing-file-modified-sort="1795506995968" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
 
         <div class="body">
 
             <a href="./2018/ddd-poster/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2018/ddd-poster/teaser.png" alt="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding" title="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding">
+                    <img src="./2018/ddd-poster/teaser.png" alt="Compare population age structures of Europe NUTS-3 regions and the US counties using ternary color-coding" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1399,14 +1369,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3BhY2thZ2UlMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1537653600000" data-listing-file-modified-sort="1774438314001" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="289">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3BhY2thZ2UlMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1537660800000" data-listing-file-modified-sort="1795506319646" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="289">
 
         <div class="body">
 
             <a href="./2018/sjrdata-package/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2018/sjrdata-package/teaser.png" alt="sjrdata: all SCImago Journal &amp; Country Rank data, ready for R" title="sjrdata: all SCImago Journal &amp; Country Rank data, ready for R">
+                    <img src="./2018/sjrdata-package/teaser.png" alt="sjrdata: all SCImago Journal &amp; Country Rank data, ready for R" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1440,14 +1410,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1532124000000" data-listing-file-modified-sort="1774438314014" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1532131200000" data-listing-file-modified-sort="1795507002240" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
 
         <div class="body">
 
             <a href="./2018/the-lancet-paper/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2018/the-lancet-paper/teaser.png" alt="Regional population structures at a glance" title="Regional population structures at a glance">
+                    <img src="./2018/the-lancet-paper/teaser.png" alt="Regional population structures at a glance" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1481,14 +1451,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1528063200000" data-listing-file-modified-sort="1774438313998" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="828">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1528070400000" data-listing-file-modified-sort="1795506999892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="828">
 
         <div class="body">
 
             <a href="./2018/deep-catalan-roots/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2018/deep-catalan-roots/teaser.jpg" alt="Deep Catalan roots: playing with stringdist" title="Deep Catalan roots: playing with stringdist">
+                    <img src="./2018/deep-catalan-roots/teaser.jpg" alt="Deep Catalan roots: playing with stringdist" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1518,14 +1488,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ3JzdHVkaW8lMkN0cmljaw==" data-listing-date-sort="1526940000000" data-listing-file-modified-sort="1774438314000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="214">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ3JzdHVkaW8lMkN0cmljaw==" data-listing-date-sort="1526947200000" data-listing-file-modified-sort="1795507001464" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="214">
 
         <div class="body">
 
             <a href="./2018/perfect-rstudio-layout/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2018/perfect-rstudio-layout/teaser.png" alt="A perfect RStudio layout" title="A perfect RStudio layout">
+                    <img src="./2018/perfect-rstudio-layout/teaser.png" alt="A perfect RStudio layout" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1568,14 +1538,14 @@ window.Quarto = {
 <div id="listing-posts_2017" class="quarto-listing quarto-listing-container-custom">
 <div class="list grid" style="column-gap: 20px;">
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1512860400000" data-listing-file-modified-sort="1774438313913" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2194">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="0" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1512864000000" data-listing-file-modified-sort="1795507110569" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2193">
 
         <div class="body">
 
             <a href="./2017/data-acquisition-three/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/data-acquisition-three/teaser.png" alt="Data acquisition in R (3/4)" title="Data acquisition in R (3/4)">
+                    <img src="./2017/data-acquisition-three/teaser.png" alt="Data acquisition in R (3/4)" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1609,14 +1579,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1510009200000" data-listing-file-modified-sort="1774438313917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1374">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="1" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1510012800000" data-listing-file-modified-sort="1795506318842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1374">
 
         <div class="body">
 
             <a href="./2017/data-acquisition-two/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/data-acquisition-two/teaser.png" alt="Data acquisition in R (2/4)" title="Data acquisition in R (2/4)">
+                    <img src="./2017/data-acquisition-two/teaser.png" alt="Data acquisition in R (2/4)" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1650,14 +1620,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1508191200000" data-listing-file-modified-sort="1774438313908" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1020">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="2" data-categories="ciUyQ3R1dG9yaWFsJTJDZGF0YSUyMGFjcXVpc2l0aW9u" data-listing-date-sort="1508198400000" data-listing-file-modified-sort="1795507109009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1020">
 
         <div class="body">
 
             <a href="./2017/data-acquisition-one/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/data-acquisition-one/teaser.png" alt="Data acquisition in R (1/4)" title="Data acquisition in R (1/4)">
+                    <img src="./2017/data-acquisition-one/teaser.png" alt="Data acquisition in R (1/4)" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1691,14 +1661,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2ZhY2V0aW5n" data-listing-date-sort="1500328800000" data-listing-file-modified-sort="1774438313984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="444">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="3" data-categories="ciUyQ2ZhY2V0aW5n" data-listing-date-sort="1500336000000" data-listing-file-modified-sort="1795506319334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="444">
 
         <div class="body">
 
             <a href="./2017/neet-in-europe/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/neet-in-europe/teaser.jpg" alt="Young people neither in employment nor in education and training in Europe, 2000-2016" title="Young people neither in employment nor in education and training in Europe, 2000-2016">
+                    <img src="./2017/neet-in-europe/teaser.jpg" alt="Young people neither in employment nor in education and training in Europe, 2000-2016" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1728,14 +1698,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1500242400000" data-listing-file-modified-sort="1774438313937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="85">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="4" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1500249600000" data-listing-file-modified-sort="1795506319090" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="85">
 
         <div class="body">
 
             <a href="./2017/global-male-life-expectancy-convergence/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/global-male-life-expectancy-convergence/teaser.png" alt="Global convergence in male life expectancy at birth" title="Global convergence in male life expectancy at birth">
+                    <img src="./2017/global-male-life-expectancy-convergence/teaser.png" alt="Global convergence in male life expectancy at birth" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1765,14 +1735,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1499119200000" data-listing-file-modified-sort="1774438313934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1792">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="5" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1499126400000" data-listing-file-modified-sort="1795506319066" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1792">
 
         <div class="body">
 
             <a href="./2017/ggplot2-microbenchmark/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/ggplot2-microbenchmark/teaser.png" alt="Accelerating ggplot2: use a canvas to speed up plots creation" title="Accelerating ggplot2: use a canvas to speed up plots creation">
+                    <img src="./2017/ggplot2-microbenchmark/teaser.png" alt="Accelerating ggplot2: use a canvas to speed up plots creation" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1802,14 +1772,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="6" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbCUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1498773600000" data-listing-file-modified-sort="1774438313903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="491">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="6" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbCUyQ2RhdGF2aXolMkNkZW1vZ3JhcGh5" data-listing-date-sort="1498780800000" data-listing-file-modified-sort="1795507105069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="491">
 
         <div class="body">
 
             <a href="./2017/colorcoded-map/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/colorcoded-map/teaser.png" alt="Colorcoded map: regional population structures at a glance" title="Colorcoded map: regional population structures at a glance">
+                    <img src="./2017/colorcoded-map/teaser.png" alt="Colorcoded map: regional population structures at a glance" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1851,14 +1821,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="7" data-categories="ciUyQ3Nwb3J0" data-listing-date-sort="1495836000000" data-listing-file-modified-sort="1774438313980" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6765">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="7" data-categories="ciUyQ3Nwb3J0" data-listing-date-sort="1495843200000" data-listing-file-modified-sort="1795507009943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="34" data-listing-word-count-sort="6765">
 
         <div class="body">
 
             <a href="./2017/ice-hockey-players-height/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/ice-hockey-players-height/teaser.png" alt="Evolution of ice hockey players' height: IIHF world championships 2001-2016" title="Evolution of ice hockey players' height: IIHF world championships 2001-2016">
+                    <img src="./2017/ice-hockey-players-height/teaser.png" alt="Evolution of ice hockey players' height: IIHF world championships 2001-2016" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1888,14 +1858,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1495663200000" data-listing-file-modified-sort="1774438313987" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2060">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="8" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1495670400000" data-listing-file-modified-sort="1795506992836" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2060">
 
         <div class="body">
 
             <a href="./2017/subplots-in-maps/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/subplots-in-maps/teaser.png" alt="Subplots in maps with ggplot2" title="Subplots in maps with ggplot2">
+                    <img src="./2017/subplots-in-maps/teaser.png" alt="Subplots in maps with ggplot2" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1929,14 +1899,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1495404000000" data-listing-file-modified-sort="1774438313902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1632">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="9" data-categories="ciUyQ2dncGxvdDI=" data-listing-date-sort="1495411200000" data-listing-file-modified-sort="1795506318646" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1632">
 
         <div class="body">
 
             <a href="./2017/align-six-maps/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/align-six-maps/teaser.png" alt="Arranging subplots with ggplot2" title="Arranging subplots with ggplot2">
+                    <img src="./2017/align-six-maps/teaser.png" alt="Arranging subplots with ggplot2" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -1966,14 +1936,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1492984800000" data-listing-file-modified-sort="1774438313982" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1256">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="10" data-categories="ciUyQ2dncGxvdDIlMkNyc3BhdGlhbA==" data-listing-date-sort="1492992000000" data-listing-file-modified-sort="1795506992052" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1256">
 
         <div class="body">
 
             <a href="./2017/map-hacking/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/map-hacking/teaser.png" alt="Hacking maps with ggplot2" title="Hacking maps with ggplot2">
+                    <img src="./2017/map-hacking/teaser.png" alt="Hacking maps with ggplot2" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2007,14 +1977,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="11" data-categories="ciUyQ2FuaW1haW9u" data-listing-date-sort="1490911200000" data-listing-file-modified-sort="1774438313995" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2666">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="11" data-categories="ciUyQ2FuaW1hdGlvbg==" data-listing-date-sort="1490918400000" data-listing-file-modified-sort="1795507057898" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2667">
 
         <div class="body">
 
             <a href="./2017/who-is-old/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/who-is-old/teaser.png" alt="Who is old? Visualizing the concept of prospective ageing with animated population pyramids" title="Who is old? Visualizing the concept of prospective ageing with animated population pyramids">
+                    <img src="./2017/who-is-old/teaser.png" alt="Who is old? Visualizing the concept of prospective ageing with animated population pyramids" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2028,8 +1998,8 @@ window.Quarto = {
                     r
                 </div>
                 
-                <div class="post-category listing-category" onclick="window.quartoListingCategory('animaion'); return false;">
-                    animaion
+                <div class="post-category listing-category" onclick="window.quartoListingCategory('animation'); return false;">
+                    animation
                 </div>
                 
             </div>
@@ -2044,14 +2014,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="12" data-categories="ciUyQ3JzcGF0aWFs" data-listing-date-sort="1489618800000" data-listing-file-modified-sort="1774438313929" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3621">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="12" data-categories="ciUyQ3JzcGF0aWFs" data-listing-date-sort="1489622400000" data-listing-file-modified-sort="1795507113697" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3621">
 
         <div class="body">
 
             <a href="./2017/denmark-nuts-reconstruction/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/denmark-nuts-reconstruction/teaser.png" alt="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark" title="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark">
+                    <img src="./2017/denmark-nuts-reconstruction/teaser.png" alt="R, GIS, and fuzzyjoin to reconstruct demographic data for NUTS regions of Denmark" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2081,14 +2051,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="13" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1487977200000" data-listing-file-modified-sort="1774438313931" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="13" data-categories="ciUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1487980800000" data-listing-file-modified-sort="1795506319010" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526">
 
         <div class="body">
 
             <a href="./2017/gender-gap-in-swedish-mortality/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/gender-gap-in-swedish-mortality/teaser.png" alt="Gender gap in Swedish mortality" title="Gender gap in Swedish mortality">
+                    <img src="./2017/gender-gap-in-swedish-mortality/teaser.png" alt="Gender gap in Swedish mortality" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2118,14 +2088,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="ciUyQ2RlbW9ncmFwaHklMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1487026800000" data-listing-file-modified-sort="1774438313920" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1075">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="14" data-categories="ciUyQ2RlbW9ncmFwaHklMkNiaWJsaW9tZXRyaWNz" data-listing-date-sort="1487030400000" data-listing-file-modified-sort="1795507111353" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1074">
 
         <div class="body">
 
             <a href="./2017/dd-journals-frequency/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/dd-journals-frequency/teaser.png" alt="30 issues of Demographic Digest - the most frequent journals" title="30 issues of Demographic Digest - the most frequent journals">
+                    <img src="./2017/dd-journals-frequency/teaser.png" alt="30 issues of Demographic Digest - the most frequent journals" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2159,14 +2129,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486335600000" data-listing-file-modified-sort="1774438313945" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="15" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486339200000" data-listing-file-modified-sort="1795507135264" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
 
         <div class="body">
 
             <a href="./2017/hmd-male-mortality-rus-jpn/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/hmd-male-mortality-rus-jpn/teaser.png" alt="Male mortality in Russia and Japan" title="Male mortality in Russia and Japan">
+                    <img src="./2017/hmd-male-mortality-rus-jpn/teaser.png" alt="Male mortality in Russia and Japan" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2195,19 +2165,19 @@ window.Quarto = {
                 <p class="date listing-date">February 6, 2017</p>
             </div>
 
-            <p class="description listing-description">Russia is sadly notorious for its ridiculously high adult male mortality. According to Human Mortality Database data (2010), the probability for a Russian men to survive…<sup></sup></p>
+            <p class="description listing-description">Russia is sadly notorious for its ridiculously high adult male mortality. According to Human Mortality Database data (2010), the probability for a Russian man to survive…<sup></sup></p>
         </div>
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486249200000" data-listing-file-modified-sort="1774438313943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="931">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="16" data-categories="ciUyQ2htZCUyQ2RlbW9ncmFwaHk=" data-listing-date-sort="1486252800000" data-listing-file-modified-sort="1795506319134" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="931">
 
         <div class="body">
 
             <a href="./2017/hmd-all-sex-ratio/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/hmd-all-sex-ratio/teaser.png" alt="Sex ratios in all countries from Human Mortality Database" title="Sex ratios in all countries from Human Mortality Database">
+                    <img src="./2017/hmd-all-sex-ratio/teaser.png" alt="Sex ratios in all countries from Human Mortality Database" loading="lazy" decoding="async">
                 </div>
                 
             </a>
@@ -2241,14 +2211,14 @@ window.Quarto = {
 
     </div>
     
-    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="17" data-categories="cg==" data-listing-date-sort="1485644400000" data-listing-file-modified-sort="1774438313940" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
+    <div class="blog-entry g-col-12 g-col-sm-6 g-col-md-4 mb-2" data-index="17" data-categories="cg==" data-listing-date-sort="1485648000000" data-listing-file-modified-sort="1795506319106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
 
         <div class="body">
 
             <a href="./2017/hello-r-world/index.html">
                 
                 <div class="thumbnail">
-                    <img src="./2017/hello-r-world/teaser.png" alt="Hello R world post" title="Hello R world post">
+                    <img src="./2017/hello-r-world/teaser.png" alt="Hello R world post" loading="lazy" decoding="async">
                 </div>
                 
             </a>

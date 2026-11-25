@@ -21,7 +21,7 @@ Unfortunately, the use of crumpled multi-category bar plots is very widespread i
 
 # Rotate the damn plot
 
-Over years of [teaching dataviz][artskill] to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational datatviz aimed at the general audience. Here it is.
+Over years of [teaching dataviz][artskill] to researchers I came to understanding that this particular mistreatment of data may be the most common and easily avoidable dataviz fallacy. Another dated attempt to spread this simple knowledge yielded an educational dataviz aimed at the general audience. Here it is.
 
 ![](04-magic.png)
 
@@ -130,13 +130,13 @@ df |>
 
 ```
 
-Note that the essential difference here is that I switched the axes effectively **rotating the damn plot**. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation ofthe data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant [dataviz book][wilke]. 
+Note that the essential difference here is that I switched the axes effectively **rotating the damn plot**. I also used dots instead of filled bars. There is a great advantage in doing this, which is nicely illustrated by this plot. Using dots allows to trim the continuous axis to zoom closer to the data. When you do the same to a bar plot, the visual representation of the data gets distorted via the disproportional changes to the areas of the filled bars. Claus Wilke points this out and explains more in his brilliant [dataviz book][wilke]. 
 
 > One important limitation of bars is that they need to start at zero, so that the bar length is proportional to the amount shown.
 
 And of course I added a title, subtitle, and legend caption. Note also a small handy trick that I use all the time -- I moved x-axis labels to the top of the plot which allows me to use the subtitle as the axis label and not only save some space but also make the process of reading the plot more straightforward. 
 
-Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e. necessarily horizontal and large enough), preferable using some nice font. **Pay attention to the text elements of you dataviz**!
+Let me conclude with just reiterating that it is hard to overestimate how important is text in dataviz. It should be meaningful and sufficiently detailed, easily readable (i.e. necessarily horizontal and large enough), preferably using some nice font. **Pay attention to the text elements of your dataviz**!
 
 
 [orig]: https://www.linkedin.com/feed/update/urn:li:activity:7271909125997924353/

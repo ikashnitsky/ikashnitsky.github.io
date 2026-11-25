@@ -15,7 +15,9 @@ Ilya Kashnitsky is a Senior Researcher at Statistics Denmark and an Associate Me
 ## Key Pages
 - [Homepage](https://ikashnitsky.phd/)
 - [About Ilya Kashnitsky](https://ikashnitsky.phd/me.html)
-- [CV (PDF)](https://ikashnitsky.github.io/x/cv/2024-06-cv-ilya-kashnitsky.pdf)
+- [CV (PDF)](https://ikashnitsky.phd/x/cv/2026-03-cv-ilya-kashnitsky.pdf)
+- [Projects](https://ikashnitsky.phd/projects.html)
+- [Tools I recommend](https://ikashnitsky.phd/tools.html)
 - [Demographic Digest](https://ikashnitsky.phd/dd.html)
 - [Subscribe for updates](https://ikashnitsky.phd/subscribe.html)
 
@@ -27,10 +29,15 @@ Ilya Kashnitsky is a Senior Researcher at Statistics Denmark and an Associate Me
 - [Rotate the damn plot](https://ikashnitsky.phd/2024/rotate-damn-plot/)
 - [Exceptional World Cup](https://ikashnitsky.phd/2022/exceptional-world-cup/)
 - [Royal longevity](https://ikashnitsky.phd/2026/royal-longevity/)
+- [La Liga pundits' predictions](https://ikashnitsky.phd/2026/laliga-preview/)
+- [How IHME distorts academic metrics](https://ikashnitsky.phd/2025/ihme-bibl/)
+- [Sidekick projects for early academics](https://ikashnitsky.phd/2025/sidekick-papers/)
+- [Dotplot – the most useful neglected dataviz](https://ikashnitsky.phd/2019/dotplot/)
 
 ## External Profiles
 - [ORCID](https://orcid.org/0000-0003-1835-8687)
 - [Google Scholar](https://scholar.google.com/citations?user=tSQW1XYAAAAJ&hl=en)
+- [Wikidata](https://www.wikidata.org/wiki/Q130311699)
 - [GitHub](https://github.com/ikashnitsky)
 - [LinkedIn](https://www.linkedin.com/in/ikashnitsky)
 - [BlueSky](https://bsky.app/profile/ikashnitsky.phd)
@@ -41,3 +48,4 @@ Ilya Kashnitsky is a Senior Researcher at Statistics Denmark and an Associate Me
 - [AI Summary](https://ikashnitsky.phd/ai/summary.json)
 - [AI Service](https://ikashnitsky.phd/ai/service.json)
 - [RSS Feed](https://ikashnitsky.phd/index.xml)
+- [Sitemap](https://ikashnitsky.phd/sitemap.xml)

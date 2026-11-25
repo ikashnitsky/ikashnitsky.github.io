@@ -10,7 +10,7 @@ categories: [r, dataviz, trick]
 
 
 ::: {.callout-important}
-I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advise to every (ha-ha-ha) listening mind, I'd choose this: **forget multi-category bar plots and use dotplots instead**. 
+I have to confess that the core message of this post is not really a fresh saying. But if I was given a chance to deliver one dataviz advice to every (ha-ha-ha) listening mind, I'd choose this: **forget multi-category bar plots and use dotplots instead**. 
 :::
 
 

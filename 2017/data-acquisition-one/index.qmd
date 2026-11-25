@@ -22,7 +22,7 @@ For each of the data acquisition options I provide a small visualization use cas
 
 For illustration purposes, many R packages include data samples. Base R comes with a `datasets` package that offers a wide range of simple, sometimes very famous, datasets. Quite a detailed list of built-in datasets from various packages is [maintained by Vincent Arel-Bundock][list]. 
 
-The nice feature of the datasets form `datasets` package is that they are "always there". The unique names of the datasets may be referred as the objects from Global Environment. Let's have a look at a beautiful small dataset calls `swiss` - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population. 
+The nice feature of the datasets from `datasets` package is that they are "always there". The unique names of the datasets may be referred as the objects from Global Environment. Let's have a look at a beautiful small dataset called `swiss` - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population. 
 
 ```{r, eval=FALSE}
 library(tidyverse)
@@ -79,7 +79,7 @@ galton |>
 
 # Download and unzip an archive
 
-Quite often datasets are stored in archived from. With R it is very simple to download and unzip the desired data archives. As an example, I will download [Historical New York City Crime Data][ny] provided by the Government of the Sate of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.
+Quite often datasets are stored in archived form. With R it is very simple to download and unzip the desired data archives. As an example, I will download [Historical New York City Crime Data][ny] provided by the Government of the State of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.
 
 ```{r, eval=FALSE}
 library(tidyverse)
@@ -133,7 +133,7 @@ murder |>
 
 # Figshare
 
-In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package `rfigshare` to access the datasets from this portal. As an example I will grab [the dataset on ice-hockey playes height][figshare] that I assembled manually for [my blog post][ice]. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. 
+In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package `rfigshare` to access the datasets from this portal. As an example I will grab [the dataset on ice-hockey players height][figshare] that I assembled manually for [my blog post][ice]. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. 
 
 There is a search function `fs_search`, though my experience shows that it is easier to search for a dataset in a browser and then use the id of a file to download it. The function `fs_download` turns an id number into a direct URL to download the file.
 

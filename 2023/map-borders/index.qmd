@@ -61,7 +61,7 @@ greece |>
 gg_outline <- last_plot()
 ```
 
-Look at all the islands, especially the small ones -- what are all these red outlines for? Insted, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package `rmapshaper` that has  a function `ms_innerlines()` exactly for the task. [^1] 
+Look at all the islands, especially the small ones -- what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package `rmapshaper` that has  a function `ms_innerlines()` exactly for the task. [^1] 
 
 ```{r}
 # produce border lines with rmapshaper::ms_innerlines()

@@ -19,14 +19,14 @@ One of the objectives of NUTS was to provide more or less comparable administrat
 
 # The broken time series
 
-Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governmenta. Eurostat [tracks all modifications][nuts-hist] providing detailed explanations of all the changes that happen between versions of NUTS (figure 2). 
+Quite arbitrary in its essence, territorial division tends to evolve. Changes in administrative boundaries can cause problems for regional analysis as they break the time series and therefore make it harder to analyze trends. Despite this inconvenience, the boundaries of regions actually change quite often based on the needs and interests of local or national governments. Eurostat [tracks all modifications][nuts-hist] providing detailed explanations of all the changes that happen between versions of NUTS (figure 2). 
 
 ![](fig-02-nuts-changes.png) 
 **Figure 2. Changes in NUTS between versions 2006 and 2010**
 
 Despite this, Eurostat does not recalculate historic demographic data to match the most recent NUTS version. This means that, for the most recent version of NUTS, there is missing data for all years before the latest administrative change. So researchers have to reconstruct historical data manually to obtain a long time series. Of course, crude assumptions often have to be accepted in order to approximate the population figures for the current regions that did not exist in the past. 
 
-To make thing even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In [my PhD project][phd] I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection [EUROPOP2013][proj] is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on [population age structures][pop] and [deaths][deaths], as downloaded in 2015, to [figshare][figshare].  
+To make things even more complex, Eurostat provides the data only for the latest version of NUTS (at least, I did not work out how to download previous versions). In [my PhD project][phd] I carry out regional analysis for the NUTS-2 regions of European Union. To have the longest possible time series, when I did the data preparation in 2015, I chose the 2010 version of NUTS, on which the regional demographic projection [EUROPOP2013][proj] is based. For reproducibility, I uploaded the precise versions of the Eurostat data at NUTS-2 level on [population age structures][pop] and [deaths][deaths], as downloaded in 2015, to [figshare][figshare].  
 
 
 # Denmark
@@ -453,6 +453,6 @@ The result (thankfully!) looks realistic, with higher shares of the working-age 
 
 [^1]: Vrangbæk, K. (2010). Structural Reform in Denmark, 2007–09: Central Reform Processes in a Decentralised Environment. Local Government Studies, 36(2), 205–221. https://doi.org/10.1080/03003930903560562
 [^2]: I have spent quite some time searching if someone else did the job before me and failed to find.
-[^3]: There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data accuisition. I failed to download the geodata on 2017-02-23.
+[^3]: There is a note on the website saying that, due to a planned change in the structure of the website, there might be some problems with data acquisition. I failed to download the geodata on 2017-02-23.
 
 

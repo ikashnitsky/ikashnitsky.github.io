@@ -22,7 +22,7 @@ theme_set(theme_ik(base_family = "ah"))
 
 ***
 
-Faceting[^1] is probably the most distinctive feature that defined the early success and wide adoption of `ggplot2`. Small-multiples are often a great dataviz choice.[^2] But one common problem is when your panels for the subsets of data requite vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different is size -- a common case yould be time series of varying length -- this results in a lot of plot space wasted in the panels with little data to show. In this post I'm showing how to deal with this common issue.
+Faceting[^1] is probably the most distinctive feature that defined the early success and wide adoption of `ggplot2`. Small-multiples are often a great dataviz choice.[^2] But one common problem is when your panels for the subsets of data require vastly different amount of space. By default the panels in faceted ggplots are all of the same size. If the data subsets are very different in size -- a common case would be time series of varying length -- this results in a lot of plot space wasted in the panels with little data to show. In this post I'm showing how to deal with this common issue.
 
 Let me first show you the solution. The cornerstone source of data in demography is [Human Mortality Database][hmd]. It provides demographic data of highest possible quality for a selection of available countries. The availability of data varies vastly across countries -- from 270+ years in Sweden to a handful of decades in many other countries with less exceptional population data statistics. Here are two plots from my recent papers that use HMD.
 
@@ -31,7 +31,7 @@ Let me first show you the solution. The cornerstone source of data in demography
 
 [![Figure 3 from @aburto2022ije](ije.png)](https://ikashnitsky.github.io/2023/shrink-space/ije.png)  
 
-The trick in these plots is that countries are arranged by the length of time series. The width of each panel is net to the longest time series observed omong the countries in the column of small multiples. This is easily achieved via the parameter `space = "free"` in the `facet_grid()` call. 
+The trick in these plots is that countries are arranged by the length of time series. The width of each panel is set to the longest time series observed among the countries in the column of small multiples. This is easily achieved via the parameter `space = "free"` in the `facet_grid()` call. 
 
 One slightly annoying nuance is that the `space = "free"` parameter is *only* available `facet_grid()`. That's why we need to specify both column and row variables for the layout of small multiples. Yet, usually we have just one meaningful faceting variable in such a setup, country in the examples above. That's why the steps of data preparation for these plots included the creation of variables `row` and `column` that explicitly located the position of each small multiple. You can find code that replicates both figures shown above [here][gh-pnas] and [here][gh-ije]. To illustrate the approach in this post we'll use a minimal example with generated data.
 

@@ -8,6 +8,7 @@
 
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-06-30">
+<meta name="description" content="Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my…">
 
 <title>Colorcoded map: regional population structures at a glance – Ilya Kashnitsky</title>
 <style>
@@ -72,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -83,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -119,31 +120,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Colorcoded map: regional population structures at a glance",
-  "description": "",
-  "datePublished": "June 30, 2017",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+<link rel="canonical" href="https://ikashnitsky.phd/2017/colorcoded-map/">
+<meta property="og:url" content="https://ikashnitsky.phd/2017/colorcoded-map/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-06-30">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="ggplot2">
+<meta property="article:tag" content="rspatial">
+<meta property="article:tag" content="dataviz">
+<meta property="article:tag" content="demography">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2017-06-30","datePublished":"2017-06-30","description":"Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my…","headline":"Colorcoded map: regional population structures at a glance","image":"https://ikashnitsky.phd/2017/colorcoded-map/teaser.png","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","ggplot2","rspatial","dataviz","demography"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2017/colorcoded-map/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2017/colorcoded-map/"}</script>
 
 
 <meta property="og:title" content="Colorcoded map: regional population structures at a glance – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my…">
 <meta property="og:image" content="https://ikashnitsky.phd/2017/colorcoded-map/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="Colorcoded map: regional population structures at a glance – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my…">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2017/colorcoded-map/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -273,15 +279,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <p>Data visualization is quite often a struggle to represent multiple relevant dimensions preserving the readability of the plot. In this post I will show my recent multidimensional dataviz prepared for <a href="https://twitter.com/RostockRetreat">Rostock Retreat Visualization</a>, an event that gathered demographers for an amazing “three days long coffebreak”.</p>
 <p>European population is rapidly ageing. But the process is not happening uniformly in all parts of Europe (see <a href="https://doi.org/10.1186/s41118-017-0018-2">my recent paper</a> for more info). Regions differ quite a lot: Eastern Europe still undergoes demographic dividend; Southern European regions form a cluster of lowest-low fertility; Western Europe experiences the greying of the baby boomers; urban regions attract young professionals and force out young parents; peripheral rural regions lose their youths forever… How can we grasp all the differences at a glance?</p>
-<p>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly populating (aged 65+), population at working ages (15-64), and kids (0-14).</p>
+<p>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly population (aged 65+), population at working ages (15-64), and kids (0-14).</p>
 <p><img src="fig-01.png" class="img-fluid"></p>
-<p>Each of the three variables mapped here is scaled between 0 and 1: otherwise, the map would be just green with slightly variations in tones because the share of working age population is ranged between 65-75% for modern European regions. Thus, it is important to note that this map is not meant to be able to inform the reader of the exact population structure in a specific region. Rather, it provides a snapshot of all the regional population structures, facilitating comparisons between them. So, by design, the colors are only meaningful in comparison only for the given set of regions in a given year, in this case 2015. If we want cross-year comparisons, the variables are to be scaled across the whole timeseries, meaning that each separate map would, most likely, become less contrast.</p>
+<p>Each of the three variables mapped here is scaled between 0 and 1: otherwise, the map would be just green with slight variations in tones because the share of working age population is ranged between 65-75% for modern European regions. Thus, it is important to note that this map is not meant to be able to inform the reader of the exact population structure in a specific region. Rather, it provides a snapshot of all the regional population structures, facilitating comparisons between them. So, by design, the colors are only meaningful in comparison only for the given set of regions in a given year, in this case 2015. If we want cross-year comparisons, the variables are to be scaled across the whole timeseries, meaning that each separate map would, most likely, become less contrast.</p>
 <p>In the map we can easily spot the major differences between subregions of Europe. Turkey is still having relatively high fertility, especially in the south-eastern Kurdish part, thus it has higher share of kids and it’s colored in blueish tones. The high-fertility Ireland is also evidently blue in the map. East-European regions are green due to the still lasting demographic dividend. Southern Europe is ageing fastest, thus the colors are reddish.</p>
 <p>We can also see most of the major capital regions that are bright-green as opposed to the depleted periphery. In some countries there are huge regional differences: Northern and Southern Italy, Eastern and Western Germany.</p>
-<p>It is striking how clearly can we see the borders between European countries: Poland and Germany, Czech Republic and Slovakia, Portugal and Spain, France and all the neighbors. The slowly evolving population structures bare imprints of unique populations’ histories, that largely correspond with state borders.</p>
+<p>It is striking how clearly can we see the borders between European countries: Poland and Germany, Czech Republic and Slovakia, Portugal and Spain, France and all the neighbors. The slowly evolving population structures bear imprints of unique populations’ histories, that largely correspond with state borders.</p>
 <p>The obvious drawback of the map is that it is not colorblind friendly, and there is no way to make it so because color is the main player in this dataviz.</p>
 <hr>
 <div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
@@ -873,17 +879,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>European population is rapidly ageing. But the process is not happening uniformly in all parts of Europe (see <span class="co">[</span><span class="ot">my recent paper</span><span class="co">][gen]</span> for more info). Regions differ quite a lot: Eastern Europe still undergoes demographic dividend; Southern European regions form a cluster of lowest-low fertility; Western Europe experiences the greying of the baby boomers; urban regions attract young professionals and force out young parents; peripheral rural regions lose their youths forever... How can we grasp all the differences at a glance? </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly populating (aged 65+), population at working ages (15-64), and kids (0-14). </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Here I want to present a colorcoded map. For each NUTS-3 region the unique color is produced by mixing red, green, and blue color spectrums in the proportions that reflect,correspondingly, relative shares of elderly population (aged 65+), population at working ages (15-64), and kids (0-14). </span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="al">![](fig-01.png)</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Each of the three variables mapped here is scaled between 0 and 1: otherwise, the map would be just green with slightly variations in tones because the share of working age population is ranged between 65-75% for modern European regions. Thus, it is important to note that this map is not meant to be able to inform the reader of the exact population structure in a specific region. Rather, it provides a snapshot of all the regional population structures, facilitating comparisons between them. So, by design, the colors are only meaningful in comparison only for the given set of regions in a given year, in this case 2015. If we want cross-year comparisons, the variables are to be scaled across the whole timeseries, meaning that each separate map would, most likely, become less contrast. </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Each of the three variables mapped here is scaled between 0 and 1: otherwise, the map would be just green with slight variations in tones because the share of working age population is ranged between 65-75% for modern European regions. Thus, it is important to note that this map is not meant to be able to inform the reader of the exact population structure in a specific region. Rather, it provides a snapshot of all the regional population structures, facilitating comparisons between them. So, by design, the colors are only meaningful in comparison only for the given set of regions in a given year, in this case 2015. If we want cross-year comparisons, the variables are to be scaled across the whole timeseries, meaning that each separate map would, most likely, become less contrast. </span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>In the map we can easily spot the major differences between subregions of Europe. Turkey is still having relatively high fertility, especially in the south-eastern Kurdish part, thus it has higher share of kids and it's colored in blueish tones. The high-fertility Ireland is also evidently blue in the map. East-European regions are green due to the still lasting demographic dividend. Southern Europe is ageing fastest, thus the colors are reddish. </span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>We can also see most of the major capital regions that are bright-green as opposed to the depleted periphery. In some countries there are huge regional differences: Northern and Southern Italy, Eastern and Western Germany. </span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>It is striking how clearly can we see the borders between European countries: Poland and Germany, Czech Republic and Slovakia, Portugal and Spain, France and all the neighbors. The slowly evolving population structures bare  imprints of unique populations' histories, that largely correspond with state borders. </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>It is striking how clearly can we see the borders between European countries: Poland and Germany, Czech Republic and Slovakia, Portugal and Spain, France and all the neighbors. The slowly evolving population structures bear  imprints of unique populations' histories, that largely correspond with state borders. </span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>The obvious drawback of the map is that it is not colorblind friendly, and there is no way to make it so because color is the main player in this dataviz. </span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>

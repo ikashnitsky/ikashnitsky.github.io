@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2023-11-01">
+<meta name="description" content="Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an…">
 <title>Geocode address text strings using tidygeocoder – Ilya Kashnitsky</title>
 <style>
 /* Default styles provided by pandoc.
@@ -68,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -79,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,29 +114,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Geocode address text strings using tidygeocoder",
-  "description": "",
-  "datePublished": "November 1, 2023",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><link rel="canonical" href="https://ikashnitsky.phd/2023/geocoding/">
+<meta property="og:url" content="https://ikashnitsky.phd/2023/geocoding/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-11-01">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="rspatial">
+<meta property="article:tag" content="ggplot2">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2023-11-01","datePublished":"2023-11-01","description":"Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an…","headline":"Geocode address text strings using tidygeocoder","image":"https://ikashnitsky.phd/2023/geocoding/teaser.png","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","rspatial","ggplot2"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2023/geocoding/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2023/geocoding/"}</script>
 <meta property="og:title" content="Geocode address text strings using tidygeocoder – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an…">
 <meta property="og:image" content="https://ikashnitsky.phd/2023/geocoding/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="Geocode address text strings using tidygeocoder – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an…">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2023/geocoding/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -251,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><hr>
 <p>Deriving coordinates from a string of text that represents a physical location on Earth is a common geo data processing task. A usual use case would be an address question in a survey. There is a way to automate queries to a special GIS service so that it takes a text string as an input and returns the geographic coordinates. This used to be quite a challenging task since it required obtaining an API access to the GIS service like Google Maps. Things changed radically with the appearance of <code>tidygeocoder</code> that queries the free Open Street Map.</p>
 <p>In this tiny example I’m using the birth places that students of my <a href="https://github.com/ikashnitsky/dataviz-bssd/releases/tag/v.3.0">2022 BSSD dataviz course</a> kindly contributed. In the class I asked students to fill a Google Form consisting of just two fields – city and country of birth. The resulting small dataset is <a href="https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58">here</a></p>
 <div class="cell">
@@ -262,22 +265,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># https://stackoverflow.com/a/28986107/4638884</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maxconway/gsheet">gsheet</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html">gsheet2tbl</a></span><span class="op">(</span></span>
+<span><span class="va">raw</span> <span class="op">&lt;-</span> <span class="fu">gsheet2tbl</span><span class="op">(</span></span>
 <span>    <span class="st">"https://docs.google.com/spreadsheets/d/1YlfLQc_aOOiTqaSGu5TI70OQy1ewTa_Ti0qAEOEcy58"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># clean a bit and join both fields in one text string </span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">raw</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu">janitor</span><span class="fu">::</span><span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>text_to_geocode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">city_settlement</span>, <span class="va">country</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main unction in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.</p>
+<p>Now we are ready to unleash the power of <code>tidygeocoder</code>. The way the main function in the package works is very similar to <code>mutate</code> – you just specify which column of the dataset contains the text string to geocode, and it returns the geographic coordinates.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jessecambon.github.io/tidygeocoder/">tidygeocoder</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df_geocoded</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu"><a href="https://jessecambon.github.io/tidygeocoder/reference/geocode.html">geocode</a></span><span class="op">(</span><span class="va">text_to_geocode</span>, method <span class="op">=</span> <span class="st">"osm"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>    <span class="fu">geocode</span><span class="op">(</span><span class="va">text_to_geocode</span>, method <span class="op">=</span> <span class="st">"osm"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The magic has already happened. The rest is just the routines to drop the points on the map. Yes, I am submitting this as my first 2023 entry to the <a href="https://30daymapchallenge.com"><code>#30DayMapChallenge</code></a> =)</p>
 <div class="cell">
@@ -289,10 +292,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>        crs <span class="op">=</span> <span class="fl">4326</span></span>
 <span>    <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Next are several steps to plot countries of the worlds as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
+<p>Next are several steps to plot countries of the world as the background map layer. Note that I’m using the trick of producing a separate lines layer for the country borders, there is a <a href="https://ikashnitsky.phd/2023/map-borders/">separate post</a> about this small dataviz trick.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># get world map outline (you might need to install the package)</span></span>
-<span><span class="va">world_outline</span> <span class="op">&lt;-</span> <span class="fu">spData</span><span class="fu">::</span><span class="va"><a href="https://jakubnowosad.com/spData/reference/world.html">world</a></span> <span class="op">|&gt;</span> </span>
+<span><span class="va">world_outline</span> <span class="op">&lt;-</span> <span class="fu">spData</span><span class="fu">::</span><span class="va">world</span> <span class="op">|&gt;</span> </span>
 <span>    <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># let's use a fancy projection</span></span>
@@ -300,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="st">"ESRI:54030"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">country_borders</span> <span class="op">&lt;-</span> <span class="va">world_outline_robinson</span> <span class="op">|&gt;</span> </span>
-<span>    <span class="fu">rmapshaper</span><span class="fu">::</span><span class="fu"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span>    <span class="fu">rmapshaper</span><span class="fu">::</span><span class="fu">ms_innerlines</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now everything is ready to map!</p>
 <div class="cell page-columns page-full">
@@ -311,11 +314,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#269999"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>        data <span class="op">=</span> <span class="va">country_borders</span>, size <span class="op">=</span> <span class="fl">.25</span>, </span>
-<span>        color <span class="op">=</span> <span class="st">"#269999"</span> <span class="op">|&gt;</span> <span class="fu">prismatic</span><span class="fu">::</span><span class="fu"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_lighten.html">clr_lighten</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>        color <span class="op">=</span> <span class="st">"#269999"</span> <span class="op">|&gt;</span> <span class="fu">prismatic</span><span class="fu">::</span><span class="fu">clr_lighten</span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span></span>
 <span>        data <span class="op">=</span> <span class="va">df_plot</span>, fill <span class="op">=</span> <span class="st">"#dafa26"</span>, </span>
-<span>        color <span class="op">=</span> <span class="st">"#dafa26"</span> <span class="op">|&gt;</span> <span class="fu">prismatic</span><span class="fu">::</span><span class="fu"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_darken.html">clr_darken</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        color <span class="op">=</span> <span class="st">"#dafa26"</span> <span class="op">|&gt;</span> <span class="fu">prismatic</span><span class="fu">::</span><span class="fu">clr_darken</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        size <span class="op">=</span> <span class="fl">1.5</span>, shape <span class="op">=</span> <span class="fl">21</span></span>
 <span>    <span class="op">)</span><span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span>datum <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">+</span></span>
@@ -955,7 +958,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">text_to_geocode =</span> <span class="fu">paste</span>(city_settlement, country, <span class="at">sep =</span> <span class="st">", "</span>))</span>
 <span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>Now we are ready to unleash the power of <span class="in">`tidygeocoder`</span>. The way the main unction in the package works is very similar to <span class="in">`mutate`</span> -- you just specify which column of the dataset contains the text string to geocode, and it return the geographic coordinates.  </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>Now we are ready to unleash the power of <span class="in">`tidygeocoder`</span>. The way the main function in the package works is very similar to <span class="in">`mutate`</span> -- you just specify which column of the dataset contains the text string to geocode, and it returns the geographic coordinates.  </span>
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygeocoder)</span>
@@ -976,7 +979,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>Next are several steps to plot countries of the worlds as the background map layer. Note that I'm using the trick of producing a separate lines layer for the country borders, there is a <span class="co">[</span><span class="ot">separate post</span><span class="co">][borders]</span> about this small dataviz trick.</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>Next are several steps to plot countries of the world as the background map layer. Note that I'm using the trick of producing a separate lines layer for the country borders, there is a <span class="co">[</span><span class="ot">separate post</span><span class="co">][borders]</span> about this small dataviz trick.</span>
 <span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co"># get world map outline (you might need to install the package)</span></span>

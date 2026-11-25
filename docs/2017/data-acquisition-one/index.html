@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2017-10-17">
+<meta name="description" content="For each of the data acquisition options I provide a small visualization use case.">
 <title>Data acquisition in R (1/4) – Ilya Kashnitsky</title>
 <style>
 /* Default styles provided by pandoc.
@@ -68,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -79,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,29 +114,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Data acquisition in R (1/4)",
-  "description": "",
-  "datePublished": "October 17, 2017",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><link rel="canonical" href="https://ikashnitsky.phd/2017/data-acquisition-one/">
+<meta property="og:url" content="https://ikashnitsky.phd/2017/data-acquisition-one/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-10-17">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="tutorial">
+<meta property="article:tag" content="data acquisition">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2017-10-17","datePublished":"2017-10-17","description":"For each of the data acquisition options I provide a small visualization use case.","headline":"Data acquisition in R (1/4)","image":"https://ikashnitsky.phd/2017/data-acquisition-one/teaser.png","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","tutorial","data acquisition"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2017/data-acquisition-one/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2017/data-acquisition-one/"}</script>
 <meta property="og:title" content="Data acquisition in R (1/4) – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="For each of the data acquisition options I provide a small visualization use case.">
 <meta property="og:image" content="https://ikashnitsky.phd/2017/data-acquisition-one/teaser.png">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="Data acquisition in R (1/4) – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="For each of the data acquisition options I provide a small visualization use case.">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2017/data-acquisition-one/teaser.png">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -250,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1"><hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -279,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For each of the data acquisition options I provide a small visualization use case.</p>
 <section id="built-in-datasets" class="level1"><h1>Built-in datasets</h1>
 <p>For illustration purposes, many R packages include data samples. Base R comes with a <code>datasets</code> package that offers a wide range of simple, sometimes very famous, datasets. Quite a detailed list of built-in datasets from various packages is <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">maintained by Vincent Arel-Bundock</a>.</p>
-<p>The nice feature of the datasets form <code>datasets</code> package is that they are “always there”. The unique names of the datasets may be referred as the objects from Global Environment. Let’s have a look at a beautiful small dataset calls <code>swiss</code> - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population.</p>
+<p>The nice feature of the datasets from <code>datasets</code> package is that they are “always there”. The unique names of the datasets may be referred as the objects from Global Environment. Let’s have a look at a beautiful small dataset called <code>swiss</code> - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span></span>
@@ -322,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><img src="galton.png" class="img-fluid"></p>
 </section><section id="download-and-unzip-an-archive" class="level1"><h1>Download and unzip an archive</h1>
-<p>Quite often datasets are stored in archived from. With R it is very simple to download and unzip the desired data archives. As an example, I will download <a href="https://catalog.data.gov/dataset/historical-new-york-city-crime-data-ad47e">Historical New York City Crime Data</a> provided by the Government of the Sate of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</p>
+<p>Quite often datasets are stored in archived form. With R it is very simple to download and unzip the desired data archives. As an example, I will download <a href="https://catalog.data.gov/dataset/historical-new-york-city-crime-data-ad47e">Historical New York City Crime Data</a> provided by the Government of the State of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
@@ -366,13 +369,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><img src="new-york.png" class="img-fluid"></p>
 </section><section id="figshare" class="level1"><h1>Figshare</h1>
-<p>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <code>rfigshare</code> to access the datasets from this portal. As an example I will grab <a href="https://dx.doi.org/10.6084/m9.figshare.3394735.v2">the dataset on ice-hockey playes height</a> that I assembled manually for <a href="https://ikashnitsky.github.io/2017/ice-hockey-players-height/">my blog post</a>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser.</p>
+<p>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <code>rfigshare</code> to access the datasets from this portal. As an example I will grab <a href="https://dx.doi.org/10.6084/m9.figshare.3394735.v2">the dataset on ice-hockey players height</a> that I assembled manually for <a href="https://ikashnitsky.github.io/2017/ice-hockey-players-height/">my blog post</a>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser.</p>
 <p>There is a search function <code>fs_search</code>, though my experience shows that it is easier to search for a dataset in a browser and then use the id of a file to download it. The function <code>fs_download</code> turns an id number into a direct URL to download the file.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ropensci-archive/rfigshare">rfigshare</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rfigshare</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rfigshare/man/fs_download.html">fs_download</a></span><span class="op">(</span>article_id <span class="op">=</span> <span class="st">"3394735"</span><span class="op">)</span></span>
+<span><span class="va">url</span> <span class="op">&lt;-</span> <span class="fu">fs_download</span><span class="op">(</span>article_id <span class="op">=</span> <span class="st">"3394735"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">hockey</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span></span>
@@ -982,7 +985,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>For illustration purposes, many R packages include data samples. Base R comes with a <span class="in">`datasets`</span> package that offers a wide range of simple, sometimes very famous, datasets. Quite a detailed list of built-in datasets from various packages is <span class="co">[</span><span class="ot">maintained by Vincent Arel-Bundock</span><span class="co">][list]</span>. </span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>The nice feature of the datasets form <span class="in">`datasets`</span> package is that they are "always there". The unique names of the datasets may be referred as the objects from Global Environment. Let's have a look at a beautiful small dataset calls <span class="in">`swiss`</span> - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population. </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>The nice feature of the datasets from <span class="in">`datasets`</span> package is that they are "always there". The unique names of the datasets may be referred as the objects from Global Environment. Let's have a look at a beautiful small dataset called <span class="in">`swiss`</span> - Swiss Fertility and Socioeconomic Indicators (1888) Data. I am going to check visually the difference in fertility based of rurality and domination of Catholic population. </span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -1039,7 +1042,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="fu"># Download and unzip an archive</span></span>
 <span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>Quite often datasets are stored in archived from. With R it is very simple to download and unzip the desired data archives. As an example, I will download <span class="co">[</span><span class="ot">Historical New York City Crime Data</span><span class="co">][ny]</span> provided by the Government of the Sate of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>Quite often datasets are stored in archived form. With R it is very simple to download and unzip the desired data archives. As an example, I will download <span class="co">[</span><span class="ot">Historical New York City Crime Data</span><span class="co">][ny]</span> provided by the Government of the State of New York and hosted at data.gov portal. The logic of the process is: first, we create a directory for the unzipped data; second, we download the archive; finally, unzip the archive and read the data.</span>
 <span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
 <span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -1093,7 +1096,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="fu"># Figshare</span></span>
 <span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <span class="in">`rfigshare`</span> to access the datasets from this portal. As an example I will grab <span class="co">[</span><span class="ot">the dataset on ice-hockey playes height</span><span class="co">][figshare]</span> that I assembled manually for <span class="co">[</span><span class="ot">my blog post</span><span class="co">][ice]</span>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. </span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>In Academia it is becoming more and more popular to store the datasets accompanying papers in the specialized repositories. Figshare is one of the most popular free repositories. There is an R package <span class="in">`rfigshare`</span> to access the datasets from this portal. As an example I will grab <span class="co">[</span><span class="ot">the dataset on ice-hockey players height</span><span class="co">][figshare]</span> that I assembled manually for <span class="co">[</span><span class="ot">my blog post</span><span class="co">][ice]</span>. Please note that at the first run the package will ask to enter your Figshare login details to access API - a web page will be opened in browser. </span>
 <span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>There is a search function <span class="in">`fs_search`</span>, though my experience shows that it is easier to search for a dataset in a browser and then use the id of a file to download it. The function <span class="in">`fs_download`</span> turns an id number into a direct URL to download the file.</span>
 <span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a></span>

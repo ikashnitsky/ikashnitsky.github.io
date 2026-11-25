@@ -19,7 +19,7 @@ Did you ever think why we (okay, I'm clearly biased, maybe just many of us, huma
 
 I think[^1] what makes the maps work is the speed with which we can recognize familiar shapes, most often countries. That's why it's so annoying when these shapes get distorted -- it hinders the smoothness of reading the map and kills the pleasure of the process. I'm sure this is the main reason why [cartograms][cart] exist forever as a cool idea but are rarely actually used -- people love the concept of them but hate actually looking at them. I deeply believe that immediate shape recognition is the kill feature of maps as a type of dataviz.
 
-[^1]: And here I have to say that I'm not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systemically. Strictly speaking, what I'm going to tell further is likely some digested version of what I've seen, read, and thought through over years of being into dataviz. 
+[^1]: And here I have to say that I'm not an expert in the area of visual perception or psychology of human processing of dataviz. I know this is a huge, thrilling area of research, I just never followed systematically. Strictly speaking, what I'm going to tell further is likely some digested version of what I've seen, read, and thought through over years of being into dataviz. 
 
 Geographic projections are a huge field of research in itself. There are infinite ways to project the  spherical globe (geoid) to the surface. It's a classical challenge with no single correct solution. Specific choice depends on the features we want to preserve/represent most correctly — distances, angles, shapes, or areas. In my experience, for most of our daily basic dataviz needs the most important is the shape — it helps recognizing objects and thus navigating through maps smoothly.
 
@@ -88,7 +88,7 @@ bord <- gd |>
 ```
 
 
-Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply `st_transform(crs = [EPSG code])` to change your the projection of the geodata object OR fix it directly at the plotting stage via `coord_sf(crs = [EPSG code])`. I think it's generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly `coord_sf()` when plotting in Mercator projection (panel A). 
+Now, back to reprojecting. There are two ways of changing the projections with {sf}: either apply `st_transform(crs = [EPSG code])` to change the projection of the geodata object OR fix it directly at the plotting stage via `coord_sf(crs = [EPSG code])`. I think it's generally easier to reproject the data once and work with it (panel B). But for completeness I will also show the on-the-fly `coord_sf()` when plotting in Mercator projection (panel A). 
 
 ```{r, warning=FALSE, fig.width=16, fig.height=8}
 #| column: screen-inset

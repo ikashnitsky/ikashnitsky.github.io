@@ -8,6 +8,7 @@
 
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2018-06-04">
+<meta name="description" content="This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It…">
 
 <title>Deep Catalan roots: playing with stringdist – Ilya Kashnitsky</title>
 <style>
@@ -72,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -83,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -119,31 +120,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Deep Catalan roots: playing with stringdist",
-  "description": "",
-  "datePublished": "June 4, 2018",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script>
+<link rel="canonical" href="https://ikashnitsky.phd/2018/deep-catalan-roots/">
+<meta property="og:url" content="https://ikashnitsky.phd/2018/deep-catalan-roots/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-06-04">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="demography">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2018-06-04","datePublished":"2018-06-04","description":"This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It…","headline":"Deep Catalan roots: playing with stringdist","image":"https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","demography"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2018/deep-catalan-roots/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2018/deep-catalan-roots/"}</script>
 
 
 <meta property="og:title" content="Deep Catalan roots: playing with stringdist – Ilya Kashnitsky">
-<meta property="og:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta property="og:description" content="This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It…">
 <meta property="og:image" content="https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg">
 <meta property="og:site_name" content="Ilya Kashnitsky">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="250">
 <meta property="og:image:width" content="400">
 <meta name="twitter:title" content="Deep Catalan roots: playing with stringdist – Ilya Kashnitsky">
-<meta name="twitter:description" content="Dr.&nbsp;Ilya Kashnitsky is a demographer @ Statistics Denmark.">
+<meta name="twitter:description" content="This academic year I am participating in European Doctoral School of Demography. It is a unique one-year-long training for PhD students in demography. It…">
 <meta name="twitter:image" content="https://ikashnitsky.phd/2018/deep-catalan-roots/teaser.jpg">
 <meta name="twitter:creator" content="ikashnitsky">
 <meta name="twitter:site" content="ikashnitsky">
@@ -270,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><hr>
+<hr>
 <section id="preambule" class="level1">
 <h1>Preambule</h1>
 <p>This academic year I am participating in <a href="https://www.demogr.mpg.de/en/education_career/european_doctoral_school_of_demography_1913/default.htm">European Doctoral School of Demography</a>. It is a unique one-year-long training for PhD students in demography. It keeps migrating across European research centers; this year Jim Vaupel’s research group in Odense hosts the program. Best demographers visit us to give us various one-week-long courses. Here we are, the EDSD cohort 2017/18:</p>
@@ -278,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-creative-task" class="level1">
 <h1>The creative task</h1>
-<p>Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), <a href="https://twitter.com/VillavicencioFG">Francisco Villavichencio</a> gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in <a href="https://link.springer.com/chapter/10.1007/978-3-319-19884-2_10">one of his PhD papers</a>, in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs their of parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:</p>
+<p>Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), <a href="https://twitter.com/VillavicencioFG">Francisco Villavicencio</a> gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in <a href="https://link.springer.com/chapter/10.1007/978-3-319-19884-2_10">one of his PhD papers</a>, in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs of their parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:</p>
 <blockquote class="blockquote">
 <p>Villavicencio F, Jordà JP, Pujadas-Mora JM. 2015. Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In <em>Population Reconstruction</em>, 199–216. Springer.</p>
 </blockquote>
@@ -299,16 +302,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For the sake of post’s readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the <a href="https://github.com/ikashnitsky/deep-catalan-roots">github repo</a> that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the guthub repo only contains minimal indicative data sample – 10 best matching records to each of the groupmate’s name.</p>
+<p>For the sake of post’s readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the <a href="https://github.com/ikashnitsky/deep-catalan-roots">github repo</a> that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the github repo only contains minimal indicative data sample – 10 best matching records to each of the groupmate’s name.</p>
 </div>
 </div>
 </section>
 <section id="exploring-the-methods" class="level1">
 <h1>Exploring the methods</h1>
-<p>There are multiple ways to calculate string distances. Most popular are implemented in <code>stringdist</code> R package. I’m not going to present the methods themselve, just check <code>stringdist</code> <a href="https://cran.r-project.org/web/packages/stringdist/stringdist.pdf">documentation</a> if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their “voting”, it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible.</p>
+<p>There are multiple ways to calculate string distances. Most popular are implemented in <code>stringdist</code> R package. I’m not going to present the methods themselves, just check <code>stringdist</code> <a href="https://cran.r-project.org/web/packages/stringdist/stringdist.pdf">documentation</a> if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their “voting”, it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible.</p>
 <p>So, first I decided to compare the speed of these methods and choose the fastest for the first step comparison. Here is what I got calculating the distance between words “demography” and “democracy”.</p>
 <p><img src="benchmarking.png" class="img-fluid"></p>
-<p>As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is “jw”, Jaro-Winker distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure.</p>
+<p>As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is “jw”, Jaro-Winkler distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure.</p>
 </section>
 <section id="finally-lets-find-our-catalan-ancestors" class="level1">
 <h1>Finally, let’s find our Catalan “ancestors”</h1>
@@ -925,7 +928,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># The creative task</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), <span class="co">[</span><span class="ot">Francisco Villavichencio</span><span class="co">][pancho]</span> gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in <span class="co">[</span><span class="ot">one of his PhD papers</span><span class="co">][paper]</span>, in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs their of parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Back in February (yes, I know, that was a quarter of a year ago, EDSD is quite dense), <span class="co">[</span><span class="ot">Francisco Villavicencio</span><span class="co">][pancho]</span> gave us a fascinating lecture on probabilistic string matching. Pancho used the approach in <span class="co">[</span><span class="ot">one of his PhD papers</span><span class="co">][paper]</span>, in which he squeezed some demographic knowledge from scarce Catalan data on marriages that happened back in 16-17 centuries. Each marriage record contains name of a bride, name and surname of a groom, and the same data for two pairs of their parents. Having data for period spanning several adjacent generations, Pancho linked kids to their parents, thus getting interval censored dataset on demographic events of Renaissance Catalans. From this data he managed to estimate life expectancy of that population! Just make sure you check the paper if you want more details:</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Villavicencio F, Jordà JP, Pujadas-Mora JM. 2015. Reconstructing lifespans through historical marriage records of Barcelona from the sixteenth and seventeenth centuries. In *Population Reconstruction*, 199–216. Springer.</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
@@ -944,19 +947,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reproducibility note</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>For the sake of post's readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the <span class="co">[</span><span class="ot">github repo</span><span class="co">][repo]</span> that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the guthub repo only contains minimal indicative data sample -- 10 best matching records to each of the groupmate's name.  </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>For the sake of post's readability, this time I chose not to insert code chunks in the post. Instead, you are welcome to explore the <span class="co">[</span><span class="ot">github repo</span><span class="co">][repo]</span> that replicates all the analyses presented here. Since I cannot publish openly a big chunk of The Barcelona Historical Marriage Database, the github repo only contains minimal indicative data sample -- 10 best matching records to each of the groupmate's name.  </span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exploring the methods</span></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>There are multiple ways to calculate string distances. Most popular are implemented in <span class="in">`stringdist`</span> R package. I'm not going to present the methods themselve, just check <span class="in">`stringdist`</span> <span class="co">[</span><span class="ot">documentation</span><span class="co">][doc]</span> if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their "voting", it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible. </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>There are multiple ways to calculate string distances. Most popular are implemented in <span class="in">`stringdist`</span> R package. I'm not going to present the methods themselves, just check <span class="in">`stringdist`</span> <span class="co">[</span><span class="ot">documentation</span><span class="co">][doc]</span> if interested. All of the methods are pretty costly computationally. Even when each particular comparison happens quite fast, the problem is that for each person, for whom a match is being searched, we need to run the comparison with each of the records in the other dataset. Of course, when you want to use several methods and average the result of their "voting", it takes even more time. Thus, a good idea is to narrow the list of candidates for matching as much as possible. </span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>So, first I decided to compare the speed of these methods and choose the fastest for the first step comparison. Here is what I got calculating the distance between words "demography" and "democracy". </span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="al">![](benchmarking.png)</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is "jw", Jaro-Winker distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure. </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>As we see, there is quite some variation in the speed of different methods, and sometimes an iteration takes much longer than usual. The fastest method is "jw", Jaro-Winkler distance. I use it for filtering out the pairs of candidate names that definitely have nothing in common. The choice of the cutting-off threshold is, of course, arbitrary and is based on empirical tests. The trade-off here is, on the one hand, to narrow down the list of candidates for match but, on the other hand, not to throw away the possible match based on just one distance measure. </span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Finally, let's find our Catalan "ancestors" </span></span>
