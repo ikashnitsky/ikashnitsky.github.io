@@ -3,7 +3,7 @@ title: "Is the Glass Half Filled or Almost Empty?"
 subtitle: "What happens when you turn a conditional probability curve into a cohort survival function"
 date: "2026-11-25"
 image: teaser.jpg
-categories: [r, dataviz, demography, R]
+categories: [r, dataviz, demography]
 format:
   html:
     code-fold: false
