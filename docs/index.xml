@@ -10,7 +10,1008 @@
 <atom:link href="https://ikashnitsky.phd/index.xml" rel="self" type="application/rss+xml"/>
 <description>Ilya Kashnitsky&#39;s blog on demography, R programming, and data visualization.</description>
 <generator>quarto-1.11.9</generator>
-<lastBuildDate>Tue, 31 Mar 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Nov 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Is the Glass Half Filled or Almost Empty?</title>
+  <dc:creator>Ilya Kashnitsky</dc:creator>
+  <link>https://ikashnitsky.phd/2026/half-empty/</link>
+  <description><![CDATA[ <p>Today I saw a <a href="https://lnkd.in/p/e7xdAvba">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href="https://substack.com/@ernietedeschi/note/c-392796478">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very “sticky”.</p>
+<p>A very compelling story, supported by a nice upward facing line… At least that’s the first impression. We are apparently seeing an emerging success story for AI-driven commerce.</p>
+<p><img src="https://ikashnitsky.phd/2026/half-empty/stripe-plot.jpg" class="img-fluid"></p>
+<p>Among customers who made one purchase, 56% made a second. Among those who reached nine purchases, 78% went on to make a tenth. The curve climbs steadily from 56% to 78%, subtly nudging the reader toward the impression that customer retention strengthens as people get hooked on agentic shopping.</p>
+<p>Except…Those who ever saw markovian processes immediately spot the issue here. A very common example of such a process is is a sequence of <strong>birth parity progression probabilities</strong>, the metric demographers use to measure the proportion of women with a specific number children who go on to have the next one.</p>
+<p>Plotting conditional probabilities creates a classic selection illusion because the reader (being just a human) cannot immediately see how each successive step along the probability line is shrinking the pool of the remaining people who are subject to experiencing the next transition probability.</p>
+<p>How can we better represent the data? One way is to turn it into a survival curve showing explicitly the process of dropping out of the initial pool.</p>
+<p>Let’s run the numbers in R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;"><a href="https://gt.rstudio.com">gt</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span></span>
+<span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">df_survival</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>  order <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>,</span>
+<span>  p_continue <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.56</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.63</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.67</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.70</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.73</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.74</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.75</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.77</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.78</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>    survival <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/base/cumsum.html">cumprod</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">p_continue</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>, default <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>,</span>
+<span>    drop_off <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">survival</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">survival</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span>  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">df_survival</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gt</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gt</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://gt.rstudio.com/reference/fmt_percent.html">fmt_percent</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>columns <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">p_continue</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">survival</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">drop_off</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>, decimals <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gt</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://gt.rstudio.com/reference/sub_missing.html">sub_missing</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>missing_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"—"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gt</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://gt.rstudio.com/reference/cols_label.html">cols_label</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>    order <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Order"</span>,</span>
+<span>    p_continue <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Conditional P(next)"</span>,</span>
+<span>    survival <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Cohort surviving"</span>,</span>
+<span>    drop_off <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Drop-off"</span></span>
+<span>  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div></div>
+<div class="cell-output-display">
+<div id="ujxsbsfwhr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ujxsbsfwhr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ujxsbsfwhr thead, #ujxsbsfwhr tbody, #ujxsbsfwhr tfoot, #ujxsbsfwhr tr, #ujxsbsfwhr td, #ujxsbsfwhr th {
+  border-style: none;
+}
+
+#ujxsbsfwhr p {
+  margin: 0;
+  padding: 0;
+}
+
+#ujxsbsfwhr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ujxsbsfwhr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ujxsbsfwhr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ujxsbsfwhr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ujxsbsfwhr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ujxsbsfwhr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ujxsbsfwhr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ujxsbsfwhr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ujxsbsfwhr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ujxsbsfwhr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ujxsbsfwhr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ujxsbsfwhr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ujxsbsfwhr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ujxsbsfwhr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ujxsbsfwhr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ujxsbsfwhr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ujxsbsfwhr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ujxsbsfwhr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ujxsbsfwhr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ujxsbsfwhr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ujxsbsfwhr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ujxsbsfwhr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ujxsbsfwhr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ujxsbsfwhr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ujxsbsfwhr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ujxsbsfwhr .gt_left {
+  text-align: left;
+}
+
+#ujxsbsfwhr .gt_center {
+  text-align: center;
+}
+
+#ujxsbsfwhr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ujxsbsfwhr .gt_font_normal {
+  font-weight: normal;
+}
+
+#ujxsbsfwhr .gt_font_bold {
+  font-weight: bold;
+}
+
+#ujxsbsfwhr .gt_font_italic {
+  font-style: italic;
+}
+
+#ujxsbsfwhr .gt_super {
+  font-size: 65%;
+}
+
+#ujxsbsfwhr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ujxsbsfwhr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ujxsbsfwhr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ujxsbsfwhr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ujxsbsfwhr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ujxsbsfwhr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ujxsbsfwhr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ujxsbsfwhr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ujxsbsfwhr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="order" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Order</th>
+<th id="p_continue" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Conditional P(next)</th>
+<th id="survival" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cohort surviving</th>
+<th id="drop_off" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Drop-off</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="order">1</td>
+<td class="gt_row gt_right" headers="p_continue">56.0%</td>
+<td class="gt_row gt_right" headers="survival">100.0%</td>
+<td class="gt_row gt_right" headers="drop_off">44.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="order">2</td>
+<td class="gt_row gt_right" headers="p_continue">63.0%</td>
+<td class="gt_row gt_right" headers="survival">56.0%</td>
+<td class="gt_row gt_right" headers="drop_off">20.7%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="order">3</td>
+<td class="gt_row gt_right" headers="p_continue">67.0%</td>
+<td class="gt_row gt_right" headers="survival">35.3%</td>
+<td class="gt_row gt_right" headers="drop_off">11.6%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="order">4</td>
+<td class="gt_row gt_right" headers="p_continue">70.0%</td>
+<td class="gt_row gt_right" headers="survival">23.6%</td>
+<td class="gt_row gt_right" headers="drop_off">7.1%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="order">5</td>
+<td class="gt_row gt_right" headers="p_continue">73.0%</td>
+<td class="gt_row gt_right" headers="survival">16.5%</td>
+<td class="gt_row gt_right" headers="drop_off">4.5%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="order">6</td>
+<td class="gt_row gt_right" headers="p_continue">74.0%</td>
+<td class="gt_row gt_right" headers="survival">12.1%</td>
+<td class="gt_row gt_right" headers="drop_off">3.1%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="order">7</td>
+<td class="gt_row gt_right" headers="p_continue">75.0%</td>
+<td class="gt_row gt_right" headers="survival">8.9%</td>
+<td class="gt_row gt_right" headers="drop_off">2.2%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="order">8</td>
+<td class="gt_row gt_right" headers="p_continue">77.0%</td>
+<td class="gt_row gt_right" headers="survival">6.7%</td>
+<td class="gt_row gt_right" headers="drop_off">1.5%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="order">9</td>
+<td class="gt_row gt_right" headers="p_continue">78.0%</td>
+<td class="gt_row gt_right" headers="survival">5.2%</td>
+<td class="gt_row gt_right" headers="drop_off">1.1%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="order">10</td>
+<td class="gt_row gt_right" headers="p_continue">—</td>
+<td class="gt_row gt_right" headers="survival">4.0%</td>
+<td class="gt_row gt_right" headers="drop_off">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Already here, in the table representation of the data, we can see the main point. Of those who tried agentic shopping, half never bothered again, and so on. When you represent the progression as a survival line, only 4% of the initial pool reached 10th order.</p>
+<p>Let’s plot it:</p>
+<div class="cell page-columns page-full">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">df_survival</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">order</span>, y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">survival</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_step</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>linewidth <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#269292"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, color <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#269292"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>label <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scales</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">survival</span>, accuracy <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>,</span>
+<span>    vjust <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>,</span>
+<span>    hjust <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.1</span>,</span>
+<span>    size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span></span>
+<span>  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>breaks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>    labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scales</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://scales.r-lib.org/reference/percent_format.html">percent_format</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>accuracy <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>,</span>
+<span>    limits <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.08</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span>,</span>
+<span>    expand <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span>  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span>    title <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Only 4% of initial buyers\nreach a 10th agentic order"</span>,</span>
+<span>    subtitle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Share of first-time buyers surviving to at least the n-th purchase"</span>,</span>
+<span>    x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Order number (n)"</span>,</span>
+<span>    y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Initial cohort surviving"</span>,</span>
+<span>    caption <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Data: Stripe analysis (Nov 2026) | Graphic: @ikashnitsky.phd"</span></span>
+<span>  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> </span></code></pre></div></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-survival" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full"><div aria-describedby="fig-survival-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://ikashnitsky.phd/2026/half-empty/index_files/figure-html/fig-survival-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-survival-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Cohort survival across repeat agentic purchases (recalculated from Stripe data)
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>So, is the glass half filled or almost empty? 🙃</p>
+
+
+<!-- -->
+
+
+ ]]></description>
+  <category>r</category>
+  <category>dataviz</category>
+  <category>demography</category>
+  <category>R</category>
+  <guid>https://ikashnitsky.phd/2026/half-empty/</guid>
+  <pubDate>Tue, 24 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://ikashnitsky.phd/2026/half-empty/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
+</item>
 <item>
   <title>UK monarchs’ longevity against their people: a demographically correct reanalysis</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
@@ -89,7 +1090,7 @@
   <category>demography</category>
   <category>dataviz</category>
   <guid>https://ikashnitsky.phd/2026/royal-longevity/</guid>
-  <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 30 Mar 2026 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2026/royal-longevity/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -156,7 +1157,7 @@
   <category>dataviz</category>
   <category>llm</category>
   <guid>https://ikashnitsky.phd/2026/laliga-preview/</guid>
-  <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 20 Mar 2026 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2026/laliga-preview/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -205,7 +1206,7 @@
   <category>bibliometrics</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2025/ihme-bibl/</guid>
-  <pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 12 Oct 2025 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2025/ihme-bibl/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -258,7 +1259,7 @@ Kashnitsky I, Gunko M. 2016. Spatial variation of in-migration to <span>Moscow</
   <category>career</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2025/sidekick-papers/</guid>
-  <pubDate>Tue, 22 Jul 2025 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 21 Jul 2025 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2025/sidekick-papers/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -622,7 +1623,7 @@ font-style: inherit;">sysfonts</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">font_add_google</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/sysfonts/man/font_add_google.html">font_add_google</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -851,7 +1852,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2024/rotate-damn-plot/</guid>
-  <pubDate>Wed, 18 Dec 2024 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 17 Dec 2024 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2024/rotate-damn-plot/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -990,7 +1991,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>r</category>
   <category>tutorial</category>
   <guid>https://ikashnitsky.phd/2024/zotero7/</guid>
-  <pubDate>Fri, 16 Aug 2024 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 15 Aug 2024 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2024/zotero7/zotero-teaser.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 <item>
@@ -1344,7 +2345,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/30-dmc/</guid>
-  <pubDate>Thu, 21 Dec 2023 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 20 Dec 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/30-dmc/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -1417,7 +2418,7 @@ font-style: inherit;">janitor</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">clean_names</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1595,7 +2596,7 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1817,7 +2818,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/map-proj/</guid>
-  <pubDate>Sat, 04 Nov 2023 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/map-proj/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -1873,7 +2874,7 @@ font-style: inherit;">raw</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">gsheet2tbl</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://rdrr.io/pkg/gsheet/man/gsheet2tbl.html">gsheet2tbl</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
 <span>    <span class="st" style="color: #20794D;
@@ -1901,7 +2902,7 @@ font-style: inherit;">janitor</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">clean_names</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1965,7 +2966,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">geocode</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://jessecambon.github.io/tidygeocoder/reference/geocode.html">geocode</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="va" style="color: #111111;
 background-color: null;
@@ -2042,7 +3043,7 @@ font-style: inherit;">spData</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">world</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://jakubnowosad.com/spData/reference/world.html">world</a></span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span>    <span class="fu" style="color: #4758AB;
@@ -2092,7 +3093,7 @@ font-style: inherit;">rmapshaper</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2179,7 +3180,7 @@ font-style: inherit;">prismatic</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">clr_lighten</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_lighten.html">clr_lighten</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2215,7 +3216,7 @@ font-style: inherit;">prismatic</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">clr_darken</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="https://emilhvitfeldt.github.io/prismatic/reference/clr_darken.html">clr_darken</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2393,7 +3394,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rspatial</category>
   <category>ggplot2</category>
   <guid>https://ikashnitsky.phd/2023/geocoding/</guid>
-  <pubDate>Wed, 01 Nov 2023 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 31 Oct 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/geocoding/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -3112,7 +4113,7 @@ Aburto JM, Schöley J, Kashnitsky I, Zhang L, Rahal C, Missov TI, Mills MC, Dowd
   <category>trick</category>
   <category>faceting</category>
   <guid>https://ikashnitsky.phd/2023/shrink-space/</guid>
-  <pubDate>Mon, 27 Feb 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 26 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/shrink-space/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -3461,7 +4462,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>rstudio</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2023/gist-snippet/</guid>
-  <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 02 Jan 2023 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/gist-snippet/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -3748,7 +4749,7 @@ font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
-<p>Look at all the islands, especially the small ones – what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code>ms_innerlines()</code> exactly for the task. <sup>1</sup></p>
+<p>Look at all the islands, especially the small ones – what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines()</a></code> exactly for the task. <sup>1</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Before I found <code>rmapshaper</code> the task seemed overly complicated, I even asked <a href="https://stackoverflow.com/questions/47760033">Stack Overflow</a></p></div></div><div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -3773,7 +4774,7 @@ font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3932,7 +4933,7 @@ font-style: inherit;">.</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">ms_innerlines</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4073,7 +5074,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2023/map-borders/</guid>
-  <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 31 Dec 2022 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2023/map-borders/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4122,7 +5123,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>football</category>
   <category>package</category>
   <guid>https://ikashnitsky.phd/2022/exceptional-world-cup/</guid>
-  <pubDate>Sun, 25 Dec 2022 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2022/exceptional-world-cup/teaser.jpg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -4184,7 +5185,7 @@ Oeppen J, Vaupel JW. 2002. Broken limits to life expectancy. <em>Science</em> <s
   <category>101</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2021/life-expectancy-101/</guid>
-  <pubDate>Fri, 05 Mar 2021 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 04 Mar 2021 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2021/life-expectancy-101/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4300,7 +5301,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <category>ggplot2</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2020/background-data/</guid>
-  <pubDate>Fri, 19 Jun 2020 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 18 Jun 2020 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2020/background-data/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4349,7 +5350,7 @@ Important
   <category>dataviz</category>
   <category>trick</category>
   <guid>https://ikashnitsky.phd/2019/dotplot/</guid>
-  <pubDate>Fri, 19 Jul 2019 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 18 Jul 2019 22:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/dotplot/teaser.jpeg" medium="image" type="image/jpeg" height="90" width="144"/>
 </item>
 <item>
@@ -4482,7 +5483,7 @@ Important
   <category>r</category>
   <category>tutorial</category>
   <guid>https://ikashnitsky.phd/2019/zotero/</guid>
-  <pubDate>Thu, 14 Mar 2019 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 13 Mar 2019 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/zotero/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4516,7 +5517,7 @@ Important
   <category>dataviz</category>
   <category>demography</category>
   <guid>https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/</guid>
-  <pubDate>Thu, 07 Mar 2019 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 06 Mar 2019 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2019/barcelona-summer-school-of-demography/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 <item>
@@ -4581,331 +5582,8 @@ Important
   <category>dataviz</category>
   <category>rspatial</category>
   <guid>https://ikashnitsky.phd/2018/ddd-poster/</guid>
-  <pubDate>Mon, 03 Dec 2018 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 02 Dec 2018 23:00:00 GMT</pubDate>
   <media:content url="https://ikashnitsky.phd/2018/ddd-poster/teaser.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title>sjrdata: all SCImago Journal &amp; Country Rank data, ready for R</title>
-  <dc:creator>Ilya Kashnitsky</dc:creator>
-  <link>https://ikashnitsky.phd/2018/sjrdata-package/</link>
-  <description><![CDATA[ <hr>
-<p><img src="https://ikashnitsky.phd/2018/sjrdata-package/sjrdata-logo.png" class="img-fluid"></p>
-<p>SCImago Journal &amp; Country Rank provides valuable estimates of academic journals’ prestige. The data is freely available at <a href="https://www.scimagojr.com">the project website</a> and is distributed for deeper analysis in forms of .csv and .xlsx files. I downloaded all the files and pooled them together, ready to be used in R.</p>
-<p>Basically, all the package gives you three easily accessible data frames: <code>sjr_journals</code> (Journal Rank), <code>sjr_countries</code> (Country Rank, year-by-year), and <code>sjr_countries_1996_2017</code> (Country Rank, all years together).</p>
-<p>The whole process of data acquisition can be found in the <a href="https://github.com/ikashnitsky/sjrdata">github repo</a> (<code>dev</code> directory) or this <a href="https://gist.github.com/ikashnitsky/3133422ef85ff3f3d65be9926d6bd990">gist</a>.</p>
-<section id="how-to-use-sjrdata" class="level1"><h1>How to use <code>sjrdata</code>
-</h1>
-<p>Install the package from github, load it and use the data.</p>
-<p>The installation will take a while since the main dataset <code>sjr_journals</code> is pretty heavy (15.7MB compressed).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># install</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">devtools</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://devtools.r-lib.org/reference/install-deprecated.html">install_github</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ikashnitsky/sjrdata"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># load</span></span>
-<span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># use</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjr_countries</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</div>
-</section><section id="a-couple-of-examples" class="level1"><h1>A couple of examples</h1>
-<p>Let’s compare <em>Nature</em> and <em>Science</em>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjrdata</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjr_journals</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">title</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Nature"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Science"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">cites_doc_2years</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjr</span>, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, alpha <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.5</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>label <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">year</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>              size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, label.padding <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.15</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"line"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</div>
-<p><img src="https://ikashnitsky.phd/2018/sjrdata-package/nature-science.png" class="img-fluid"></p>
-<p>Several demographic journals.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjr_journals</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">title</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Demography"</span>,</span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Population and Development Review"</span>,</span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"European Journal of Population"</span>,</span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Population Studies"</span>,</span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Demographic Research"</span>,</span>
-<span>        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Genus"</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">cites_doc_2years</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">sjr</span>, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/stat_ellipse.html">stat_ellipse</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>palette <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Dark2"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>expand <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">F</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</div>
-<p><img src="https://ikashnitsky.phd/2018/sjrdata-package/demographic-journals.png" class="img-fluid"></p>
-<hr>
-
-
-<!-- -->
-
-</section> ]]></description>
-  <category>r</category>
-  <category>package</category>
-  <category>bibliometrics</category>
-  <guid>https://ikashnitsky.phd/2018/sjrdata-package/</guid>
-  <pubDate>Sun, 23 Sep 2018 00:00:00 GMT</pubDate>
-  <media:content url="https://ikashnitsky.phd/2018/sjrdata-package/teaser.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>

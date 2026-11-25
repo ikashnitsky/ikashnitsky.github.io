@@ -289,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/">eurostat</a></span><span class="op">)</span> </span>
 <span></span>
 <span><span class="co"># download the selected dataset</span></span>
-<span><span class="va">e0</span> <span class="op">&lt;-</span> <span class="fu">get_eurostat</span><span class="op">(</span><span class="st">"demo_mlexpec"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">e0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_mlexpec"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It can take a while because the dataset is quite big (0.4m obs). If the automated procedure does not work, one can download the data manually via the <a href="http://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadListing">Bulk Download Service</a> of Eurostat.</p>
 <p>Let’s have a look at the remaining life expectancy at age 65, the most common conventional age at retirement, in some European countries, separately for males, females, and total population. Some data preparation steps are needed. First, we only need the life expectancy estimates for those aged 65. Next, we don’t need total population, only males and females separately. Finally, let’s select just a bunch of countries: Germany, France, Italy, Russia, Spain, the UK.</p>
@@ -414,16 +414,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span></span>
 <span><span class="co">#install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html">install_github</a></span><span class="op">(</span><span class="st">"WIDworld/wid-r-tool"</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/world-inequality-database/wid-r-tool">wid</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">wid</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The function to acquire data is <code>download_wid()</code>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</p>
+<p>The function to acquire data is <code><a href="https://rdrr.io/pkg/wid/man/download_wid.html">download_wid()</a></code>. To specify the arguments, one would have to consult help pages of the package and select desired datasets.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">wid_series_type</span></span>
 <span><span class="op">?</span><span class="va">wid_concepts</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The following nice example is adapted from <a href="https://github.com/WIDworld/wid-r-tool/raw/master/inst/doc/wid-demo.pdf">the package vignette</a>. It shows the share of wealth that was owned by the richest 1% and 10% of population in France and Great Britain.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_wid</span> <span class="op">&lt;-</span> <span class="fu">download_wid</span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_wid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/wid/man/download_wid.html">download_wid</a></span><span class="op">(</span></span>
 <span>        indicators <span class="op">=</span> <span class="st">"shweal"</span>, <span class="co"># Shares of personal wealth</span></span>
 <span>        areas <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"FR"</span>, <span class="st">"GB"</span><span class="op">)</span>, <span class="co"># In France an Italy</span></span>
 <span>        perc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"p90p100"</span>, <span class="st">"p99p100"</span><span class="op">)</span> <span class="co"># Top 1% and top 10%</span></span>

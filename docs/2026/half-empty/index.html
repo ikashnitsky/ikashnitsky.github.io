@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Ilya Kashnitsky">
 <meta name="dcterms.date" content="2026-11-25">
+<meta name="description" content="Today I saw a fascinating dataviz (mis)interpretation case that featured a plot from a recent Stripe data analysis that claims that agentic commerce is on…">
 <title>Is the Glass Half Filled or Almost Empty? – Ilya Kashnitsky</title>
 <style>
 /* Default styles provided by pandoc.
@@ -68,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../..//img/ikx-logo-500.png" rel="icon" type="image/png">
+<link href="../../img/favicon-64.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
@@ -79,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-6ea4d42a730a7095210866ee00c62874.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-7308fc711ff929e09fed47ab5b24a496.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2ef5d8e02a9ac4b3029594264a83179f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -113,20 +114,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         background: #025757;
       }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Is the Glass Half Filled or Almost Empty?",
-  "description": "",
-  "datePublished": "November 25, 2026",
-  "author": {
-    "@type": "Person",
-    "name": "Ilya Kashnitsky",
-    "url": "https://ikashnitsky.phd"
-  }
-}
-</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Archivo+Narrow:wght@400;700&amp;family=Fira+Code:wght@700&amp;family=Outfit:wght@900&amp;family=Syne+Mono&amp;display=swap">
+<link rel="apple-touch-icon" href="../../img/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="demographeR's notes" href="../../index.xml">
+<link rel="author" href="../../me.html">
+<meta name="author" content="Ilya Kashnitsky">
+<script defer="" src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><link rel="canonical" href="https://ikashnitsky.phd/2026/half-empty/">
+<meta property="og:url" content="https://ikashnitsky.phd/2026/half-empty/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-25">
+<meta property="article:author" content="https://ikashnitsky.phd/me.html">
+<meta property="article:tag" content="r">
+<meta property="article:tag" content="dataviz">
+<meta property="article:tag" content="demography">
+<meta property="article:tag" content="R">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@id":"https://ikashnitsky.phd/#person","@type":"Person","name":"Ilya Kashnitsky","sameAs":["https://orcid.org/0000-0003-1835-8687"],"url":"https://ikashnitsky.phd/me.html"},"dateModified":"2026-11-25","datePublished":"2026-11-25","description":"Today I saw a fascinating dataviz (mis)interpretation case that featured a plot from a recent Stripe data analysis that claims that agentic commerce is on…","headline":"Is the Glass Half Filled or Almost Empty?","image":"https://ikashnitsky.phd/2026/half-empty/teaser.jpg","inLanguage":"en","isPartOf":{"@id":"https://ikashnitsky.phd/#blog","@type":"Blog","name":"demographeR's notes","url":"https://ikashnitsky.phd/"},"keywords":["r","dataviz","demography","R"],"license":"https://creativecommons.org/licenses/by-sa/4.0/","mainEntityOfPage":{"@id":"https://ikashnitsky.phd/2026/half-empty/","@type":"WebPage"},"publisher":{"@id":"https://ikashnitsky.phd/#person"},"url":"https://ikashnitsky.phd/2026/half-empty/"}</script>
 <meta property="og:title" content="Is the Glass Half Filled or Almost Empty? – Ilya Kashnitsky">
 <meta property="og:description" content="What happens when you turn a conditional probability curve into a cohort survival function">
 <meta property="og:image" content="https://ikashnitsky.phd/2026/half-empty/teaser.jpg">
@@ -253,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><script src="https://cdn.counter.dev/script.js" data-id="daa70324-89c3-4b1c-8ea0-3588f29f41f5" data-utcoffset="1"></script><p>Today I saw a <a href="https://lnkd.in/p/e7xdAvba">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href="https://substack.com/@ernietedeschi/note/c-392796478">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very “sticky”.</p>
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content" tabindex="-1"><p>Today I saw a <a href="https://lnkd.in/p/e7xdAvba">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href="https://substack.com/@ernietedeschi/note/c-392796478">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very “sticky”.</p>
 <p>A very compelling story, supported by a nice upward facing line… At least that’s the first impression. We are apparently seeing an emerging success story for AI-driven commerce.</p>
 <p><img src="stripe-plot.jpg" class="img-fluid"></p>
 <p>Among customers who made one purchase, 56% made a second. Among those who reached nine purchases, 78% went on to make a tenth. The curve climbs steadily from 56% to 78%, subtly nudging the reader toward the impression that customer retention strengthens as people get hooked on agentic shopping.</p>
