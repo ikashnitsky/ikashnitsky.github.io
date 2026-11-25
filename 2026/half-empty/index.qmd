@@ -10,6 +10,20 @@ format:
     toc: false
 ---
 
+```{r, include=FALSE}
+#| label: setup
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, 
+  out.width = "100%", out.height = "100%"
+)
+devtools::source_gist("653e1040a07364ae82b1bb312501a184")
+sysfonts::font_add_google("Atkinson Hyperlegible", family = "ah")
+showtext::showtext_auto()
+theme_set(theme_ik(base_family = "ah", base_size = 16))
+```
+
+***
+
 Today I saw a [fascinating dataviz (mis)interpretation case](https://lnkd.in/p/e7xdAvba) that featured a plot from a recent [Stripe data analysis](https://substack.com/@ernietedeschi/note/c-392796478) that claims that agentic commerce is on the rise and is very "sticky". 
 
 A very compelling story, supported by a nice upward facing line... At least that's the first impression. We are apparently seeing an emerging success story for AI-driven commerce. 
@@ -61,23 +75,13 @@ Already here, in the table representation of the data, we can see the main point
 Let's plot it:
 
 
-```{r, include=FALSE}
-#| label: custom-theme
-devtools::source_gist("653e1040a07364ae82b1bb312501a184")
-sysfonts::font_add_google("Atkinson Hyperlegible", family = "ah")
-showtext::showtext_auto()
-theme_set(theme_ik(base_family = "ah", base_size = 16))
-```
-
-
-
 ```{r}
 #| label: fig-survival
 #| message: false
 #| warning: false
 #| fig-cap: "Cohort survival across repeat agentic purchases (recalculated from Stripe data)"
-#| fig-width: 5
-#| fig-height: 4
+#| fig-width: 7
+#| fig-height: 5
 
 df_survival |>
   ggplot(aes(x = order, y = survival)) +
@@ -96,7 +100,7 @@ df_survival |>
     expand = c(0, 0)
   ) +
   labs(
-    title = "Only 4% of initial buyers\nreach a 10th agentic order",
+    title = "Only 4% of initial buyers reach a 10th agentic order",
     subtitle = "Share of first-time buyers surviving to at least the n-th purchase",
     x = "Order number (n)",
     y = "Initial cohort surviving",

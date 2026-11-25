@@ -15,7 +15,8 @@
   <title>Is the Glass Half Filled or Almost Empty?</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2026/half-empty/</link>
-  <description><![CDATA[ <p>Today I saw a <a href="https://lnkd.in/p/e7xdAvba">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href="https://substack.com/@ernietedeschi/note/c-392796478">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very “sticky”.</p>
+  <description><![CDATA[ <hr>
+<p>Today I saw a <a href="https://lnkd.in/p/e7xdAvba">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href="https://substack.com/@ernietedeschi/note/c-392796478">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very “sticky”.</p>
 <p>A very compelling story, supported by a nice upward facing line… At least that’s the first impression. We are apparently seeing an emerging success story for AI-driven commerce.</p>
 <p><img src="https://ikashnitsky.phd/2026/half-empty/stripe-plot.jpg" class="img-fluid"></p>
 <p>Among customers who made one purchase, 56% made a second. Among those who reached nine purchases, 78% went on to make a tenth. The curve climbs steadily from 56% to 78%, subtly nudging the reader toward the impression that customer retention strengthens as people get hooked on agentic shopping.</p>
@@ -242,23 +243,23 @@ font-style: inherit;">"Drop-off"</span></span>
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output-display">
-<div id="qkzkkoeiqi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qkzkkoeiqi table {
+<div id="ghuzslrzor" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ghuzslrzor table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qkzkkoeiqi thead, #qkzkkoeiqi tbody, #qkzkkoeiqi tfoot, #qkzkkoeiqi tr, #qkzkkoeiqi td, #qkzkkoeiqi th {
+#ghuzslrzor thead, #ghuzslrzor tbody, #ghuzslrzor tfoot, #ghuzslrzor tr, #ghuzslrzor td, #ghuzslrzor th {
   border-style: none;
 }
 
-#qkzkkoeiqi p {
+#ghuzslrzor p {
   margin: 0;
   padding: 0;
 }
 
-#qkzkkoeiqi .gt_table {
+#ghuzslrzor .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -284,12 +285,12 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-left-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_caption {
+#ghuzslrzor .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qkzkkoeiqi .gt_title {
+#ghuzslrzor .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -301,7 +302,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-bottom-width: 0;
 }
 
-#qkzkkoeiqi .gt_subtitle {
+#ghuzslrzor .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -313,7 +314,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-top-width: 0;
 }
 
-#qkzkkoeiqi .gt_heading {
+#ghuzslrzor .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -325,13 +326,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-right-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_bottom_border {
+#ghuzslrzor .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_col_headings {
+#ghuzslrzor .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -346,7 +347,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-right-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_col_heading {
+#ghuzslrzor .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -366,7 +367,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   overflow-x: hidden;
 }
 
-#qkzkkoeiqi .gt_column_spanner_outer {
+#ghuzslrzor .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -378,15 +379,15 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 4px;
 }
 
-#qkzkkoeiqi .gt_column_spanner_outer:first-child {
+#ghuzslrzor .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qkzkkoeiqi .gt_column_spanner_outer:last-child {
+#ghuzslrzor .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qkzkkoeiqi .gt_column_spanner {
+#ghuzslrzor .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -398,11 +399,11 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   width: 100%;
 }
 
-#qkzkkoeiqi .gt_spanner_row {
+#ghuzslrzor .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qkzkkoeiqi .gt_group_heading {
+#ghuzslrzor .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -428,7 +429,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   text-align: left;
 }
 
-#qkzkkoeiqi .gt_empty_group_heading {
+#ghuzslrzor .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -443,15 +444,15 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   vertical-align: middle;
 }
 
-#qkzkkoeiqi .gt_from_md > :first-child {
+#ghuzslrzor .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qkzkkoeiqi .gt_from_md > :last-child {
+#ghuzslrzor .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qkzkkoeiqi .gt_row {
+#ghuzslrzor .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +471,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   overflow-x: hidden;
 }
 
-#qkzkkoeiqi .gt_stub {
+#ghuzslrzor .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -483,7 +484,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 5px;
 }
 
-#qkzkkoeiqi .gt_stub_row_group {
+#ghuzslrzor .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,15 +498,15 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   vertical-align: top;
 }
 
-#qkzkkoeiqi .gt_row_group_first td {
+#ghuzslrzor .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qkzkkoeiqi .gt_row_group_first th {
+#ghuzslrzor .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qkzkkoeiqi .gt_summary_row {
+#ghuzslrzor .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -515,16 +516,16 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 5px;
 }
 
-#qkzkkoeiqi .gt_first_summary_row {
+#ghuzslrzor .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_first_summary_row.thick {
+#ghuzslrzor .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qkzkkoeiqi .gt_last_summary_row {
+#ghuzslrzor .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -534,7 +535,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-bottom-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_grand_summary_row {
+#ghuzslrzor .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -544,7 +545,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 5px;
 }
 
-#qkzkkoeiqi .gt_first_grand_summary_row {
+#ghuzslrzor .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -554,7 +555,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-top-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_last_grand_summary_row_top {
+#ghuzslrzor .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -564,11 +565,11 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-bottom-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_striped {
+#ghuzslrzor .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qkzkkoeiqi .gt_table_body {
+#ghuzslrzor .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -577,7 +578,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-bottom-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_footnotes {
+#ghuzslrzor .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -591,7 +592,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-right-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_footnote {
+#ghuzslrzor .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -600,7 +601,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 5px;
 }
 
-#qkzkkoeiqi .gt_sourcenotes {
+#ghuzslrzor .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -614,7 +615,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   border-right-color: #D3D3D3;
 }
 
-#qkzkkoeiqi .gt_sourcenote {
+#ghuzslrzor .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -622,72 +623,72 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   padding-right: 5px;
 }
 
-#qkzkkoeiqi .gt_left {
+#ghuzslrzor .gt_left {
   text-align: left;
 }
 
-#qkzkkoeiqi .gt_center {
+#ghuzslrzor .gt_center {
   text-align: center;
 }
 
-#qkzkkoeiqi .gt_right {
+#ghuzslrzor .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qkzkkoeiqi .gt_font_normal {
+#ghuzslrzor .gt_font_normal {
   font-weight: normal;
 }
 
-#qkzkkoeiqi .gt_font_bold {
+#ghuzslrzor .gt_font_bold {
   font-weight: bold;
 }
 
-#qkzkkoeiqi .gt_font_italic {
+#ghuzslrzor .gt_font_italic {
   font-style: italic;
 }
 
-#qkzkkoeiqi .gt_super {
+#ghuzslrzor .gt_super {
   font-size: 65%;
 }
 
-#qkzkkoeiqi .gt_footnote_marks {
+#ghuzslrzor .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qkzkkoeiqi .gt_asterisk {
+#ghuzslrzor .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qkzkkoeiqi .gt_indent_1 {
+#ghuzslrzor .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qkzkkoeiqi .gt_indent_2 {
+#ghuzslrzor .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qkzkkoeiqi .gt_indent_3 {
+#ghuzslrzor .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qkzkkoeiqi .gt_indent_4 {
+#ghuzslrzor .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qkzkkoeiqi .gt_indent_5 {
+#ghuzslrzor .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qkzkkoeiqi .katex-display {
+#ghuzslrzor .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qkzkkoeiqi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ghuzslrzor div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -962,7 +963,7 @@ font-style: inherit;">(</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Only 4% of initial buyers\nreach a 10th agentic order"</span>,</span>
+font-style: inherit;">"Only 4% of initial buyers reach a 10th agentic order"</span>,</span>
 <span>    subtitle <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -989,7 +990,7 @@ font-style: inherit;">)</span> </span></code></pre></div></div>
 <div class="cell-output-display page-columns page-full">
 <div id="fig-survival" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full"><div aria-describedby="fig-survival-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://ikashnitsky.phd/2026/half-empty/index_files/figure-html/fig-survival-1.png" class="img-fluid figure-img" width="480">
+<img src="https://ikashnitsky.phd/2026/half-empty/index_files/figure-html/fig-survival-1.png" style="width:100.0%;height:100.0%" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-survival-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Cohort survival across repeat agentic purchases (recalculated from Stripe data)
