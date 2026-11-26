@@ -4469,7 +4469,13 @@ font-style: inherit;">)</span></span></code></pre></div></div>
   <title>The easiest way to radically improve map aesthetics</title>
   <dc:creator>Ilya Kashnitsky</dc:creator>
   <link>https://ikashnitsky.phd/2023/map-borders/</link>
-  <description><![CDATA[ <hr>
+  <description><![CDATA[ 
+
+
+
+
+
+<hr>
 <p>Since R community developed brilliant tools to deal with spatial data, producing maps is no longer the privilege of a narrow group of people with very specific almost esoteric knowledge, skillset, and often super expensive software. With <code>#rspatial</code> packages, maps (at least the relatively simple ones) became just another type of dataviz.</p>
 <p><a href="https://ikashnitsky.github.io/2023/map-borders/rgg-maps.png"><img src="https://ikashnitsky.phd/2023/map-borders/rgg-maps.png" class="img-fluid"></a></p>
 <p>Just a few lines of code can reveal the eye-catching and visually pleasant spatial dimension of the data. Similarly, a few more lines of code can radically improve the pleasantness of a simple map – just <strong>add borders as lines in a separate spatial layer</strong>.</p>
@@ -4477,562 +4483,343 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>An often “quick and dirty” solution when composing a simple choropleth map is to use polygons outline as the borders. While this works okay to distinguish the polygons, the map quickly becomes unnecessarily overloaded. All the non-bordering outlines – complicated coastal lines and islands’ outlines – look ugly and add nothing to the map.</p>
 <p>Let’s illustrate the ease of this trick mapping Greece with its numerous small islands. We’ll use the beautiful <code>eurostat</code> package that has a built in spatial dataset with NUTS-3 regions of Europe.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">library</span>(cowplot)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="kw" style="color: #003B4F;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://wilkelab.org/cowplot/">cowplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">911</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="co" style="color: #5E5E5E;
+font-style: inherit;">911</span>)</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># subset Greence, NUTS-3 regions</span></span>
-<span><span class="kw" style="color: #003B4F;
+<span id="cb1-8"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">library</span>(eurostat)</span>
+<span id="cb1-9">greece <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://ropengov.github.io/eurostat/">eurostat</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">eurostat_geodata_60_2016</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> eurostat_geodata_60_2016 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb1-10">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">filter</span>(LEVL_CODE<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">LEVL_CODE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span><span class="fl" style="color: #AD0000;
+font-style: inherit;">==</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>,</span>
-<span>           <span class="fu" style="color: #4758AB;
+<span id="cb1-11">           <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://stringr.tidyverse.org/reference/str_sub.html">str_sub</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">str_sub</span>(geo, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">geo</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"EL"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">"EL"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="co" style="color: #5E5E5E;
+<span id="cb1-12">    <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># create random values for filling the polygons</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb1-13">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>random <span class="op" style="color: #5E5E5E;
+font-style: inherit;">random =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">runif</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">id</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">length</span>(id))) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb1-14">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">id</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">geometry</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">random</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">select</span>(id, geometry, random) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb1-15">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">st_transform</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>crs <span class="op" style="color: #5E5E5E;
+font-style: inherit;">crs =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3035</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">3035</span>)</span></code></pre></div></div>
 </div>
 <p>First, here’s the typical lazy (or rather no-brainer) way of using the polygons’ outlines to show the borders between our spatial units.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># plot with polygon outlines</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
+<span id="cb2-2">greece <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-4">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">geom_sf</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">fill =</span> random), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>fill <span class="op" style="color: #5E5E5E;
+font-style: inherit;">color =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">random</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">)</span>, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-5">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>title <span class="op" style="color: #5E5E5E;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Polygons outlined"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">"Polygons outlined"</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-6">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">scale_fill_viridis_c</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>begin <span class="op" style="color: #5E5E5E;
+font-style: inherit;">begin =</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.5</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">5</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-7">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://wilkelab.org/cowplot/reference/theme_map.html">theme_map</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">theme_map</span>()<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb2-8">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>plot.background <span class="op" style="color: #5E5E5E;
+font-style: inherit;">plot.background =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">(</span>color <span class="op" style="color: #5E5E5E;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">NA</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#eeffff"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">"#eeffff"</span>))</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gg_outline</span> <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">gg_outline <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">last_plot</span>()</span></code></pre></div></div>
 </div>
-<p>Look at all the islands, especially the small ones – what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines()</a></code> exactly for the task. <sup>1</sup></p>
+<p>Look at all the islands, especially the small ones – what are all these red outlines for? Instead, we can add only the borders between the polygons as lines. For this we need to add another geospatial layer with lines. Where do we get it? This is extremely easy to produce thanks to the marvelous little package <code>rmapshaper</code> that has a function <code>ms_innerlines()</code> exactly for the task. <sup>1</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Before I found <code>rmapshaper</code> the task seemed overly complicated, I even asked <a href="https://stackoverflow.com/questions/47760033">Stack Overflow</a></p></div></div><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># produce border lines with rmapshaper::ms_innerlines()</span></span>
-<span><span class="kw" style="color: #003B4F;
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">library</span>(rmapshaper)</span>
+<span id="cb4-3">bord <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://github.com/ateucher/rmapshaper">rmapshaper</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">bord</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">&lt;-</span> greece <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">ms_innerlines</span>()</span></code></pre></div></div>
 </div>
-<p>Now, let’s plot the same map with proper borders between the polygons. Note that for the <code>sf</code> layer with polygons I set <code>color = NA</code> to get rid of the polygons outline. Then with the next call to <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf()</a></code> I draw the line borders as a separate layer.</p>
+<p>Now, let’s plot the same map with proper borders between the polygons. Note that for the <code>sf</code> layer with polygons I set <code>color = NA</code> to get rid of the polygons outline. Then with the next call to <code>geom_sf()</code> I draw the line borders as a separate layer.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># now plot without polygon outlines and with borders as lines</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">greece</span> <span class="op" style="color: #5E5E5E;
+<span id="cb5-2">greece <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">ggplot</span>()<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-4">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">geom_sf</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">(</span><span class="fu" style="color: #4758AB;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">fill =</span> random), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>fill <span class="op" style="color: #5E5E5E;
+font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">random</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NA</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">NA</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-5">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>data <span class="op" style="color: #5E5E5E;
+font-style: inherit;">data =</span> bord, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
+font-style: inherit;">color =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">bord</span>, color <span class="op" style="color: #5E5E5E;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">2</span>, size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-6">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>title <span class="op" style="color: #5E5E5E;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Borders as lines"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">"Borders as lines"</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-7">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">scale_fill_viridis_c</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>begin <span class="op" style="color: #5E5E5E;
+font-style: inherit;">begin =</span> .<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.5</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">5</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-8">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://wilkelab.org/cowplot/reference/theme_map.html">theme_map</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">theme_map</span>()<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb5-9">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>plot.background <span class="op" style="color: #5E5E5E;
+font-style: inherit;">plot.background =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">(</span>color <span class="op" style="color: #5E5E5E;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">NA</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#eeffff"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">"#eeffff"</span>))</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gg_bord</span> <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">gg_bord <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/get_last_plot.html">last_plot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">last_plot</span>()</span></code></pre></div></div>
 </div>
 <p>That’s it! This is the simplest dataviz trick I know that can radically improve the outlook of simple choropleth maps. It’s only one additional line of code. You can even create the borders <code>sf</code> object on the fly within the <code>ggplot</code> map creation code specifying the <code>data</code> parameter as <code>. %&gt;% ms_innerlines()</code> <sup>2</sup>, like this:</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;This is one specific case where the base R pipe <code>|&gt;</code> cannot simply replace the {magrittr} pipe <code>%&gt;%</code>; see more <a href="https://bsky.app/profile/ikashnitsky.phd/post/3kilahv45c52n">here</a>.</p></div></div><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">geom_sf</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>data <span class="op" style="color: #5E5E5E;
+font-style: inherit;">data =</span> . <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
+font-style: inherit;">%&gt;%</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">.</span> <span class="op" style="color: #5E5E5E;
+font-style: inherit;">ms_innerlines</span>(), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">color =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;"><a href="http://andyteucher.ca/rmapshaper/reference/ms_innerlines.html">ms_innerlines</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">)</span>, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">1</span>)</span></code></pre></div></div>
 </div>
 <p>Finally, let’s put the two maps side by side.</p>
 <div class="cell page-columns page-full">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># put side by side</span></span>
-<span><span class="kw" style="color: #003B4F;
+<span id="cb8-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">library</span>(patchwork)</span>
+<span id="cb8-3">(</span>
+<span id="cb8-4">    gg_outline <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gg_outline</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gg_bord</span> </span>
-<span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>  <span class="op" style="color: #5E5E5E;
+font-style: inherit;">+</span> gg_bord </span>
+<span id="cb8-5">)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb8-6">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://patchwork.data-imaginist.com/reference/plot_layout.html">plot_layout</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">plot_layout</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>guides <span class="op" style="color: #5E5E5E;
+font-style: inherit;">guides =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"collect"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">"collect"</span>)<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span>    <span class="fu" style="color: #4758AB;
+<span id="cb8-7">    <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://patchwork.data-imaginist.com/reference/plot_annotation.html">plot_annotation</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">plot_annotation</span>(</span>
+<span id="cb8-8">        <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span></span>
-<span>        caption <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"! Look at the islands"</span>, </span>
-<span>        theme <span class="op" style="color: #5E5E5E;
+<span id="cb8-9">        <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">theme =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">(</span>plot.background <span class="op" style="color: #5E5E5E;
+font-style: inherit;">plot.background =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">element_rect</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">(</span>color <span class="op" style="color: #5E5E5E;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">NA</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#eeffff"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
+font-style: inherit;">"#eeffff"</span>))</span>
+<span id="cb8-10">    )</span></code></pre></div></div>
 <div class="cell-output-display page-columns page-full">
 <div class="page-columns page-full">
-<figure class="figure page-columns page-full"><p class="page-columns page-full"><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img column-screen-inset" style="width:100.0%"></p>
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="https://ikashnitsky.phd/2023/map-borders/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img column-screen-inset" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -5067,6 +4854,8 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 <!-- -->
+
+
 
  ]]></description>
   <category>r</category>

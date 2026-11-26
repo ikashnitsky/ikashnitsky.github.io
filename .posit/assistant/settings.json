@@ -2,7 +2,14 @@
   "permission": {
     "bash": {
       "quarto render *": "allow",
-      "head *": "allow"
+      "head *": "allow",
+      "echo *": "allow"
+    },
+    "external_directory": {
+      "c:/Users/DstMove/AppData/Roaming/Positron/User/*": "allow"
+    },
+    "executeCode": {
+      "*": "allow"
     }
   }
 }
