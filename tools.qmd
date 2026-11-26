@@ -10,27 +10,27 @@ code-tools: false
 
 A curated selection of software, services, and utilities that I find exceptionally useful, use in my daily workflows, and warmly recommend.
 
-## Coding, Terminal & Environments
+## nerdy
 
 ::: {.tool-list}
 <div class="tool-row">
+  <div class="tool-name"><a href="https://fedoraproject.org/" target="_blank" rel="noopener noreferrer">Fedora</a></div>
+  <div class="tool-desc">Linux distribution that just works, not for distro-hoppers. Modern looks, cutting-edge packages, and with rock-solid stability for daily work. Linus uses Fedora.</div>
+  <span class="badge bg-light text-dark border tool-badge">Linux OS</span>
+</div>
+<div class="tool-row">
   <div class="tool-name"><a href="https://positron.posit.co/" target="_blank" rel="noopener noreferrer">Positron</a></div>
-  <div class="tool-desc">Next-generation data science IDE by Posit; combines VS Code extensibility with first-class interactive R and Python data exploration.</div>
+  <div class="tool-desc">VS Code retouched for data science, by Posit -- the main hero devs in R world.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://wezfurlong.org/wezterm/" target="_blank" rel="noopener noreferrer">WezTerm</a></div>
-  <div class="tool-desc">GPU-accelerated terminal emulator and multiplexer in Rust; fast, cross-platform, and cleanly configurable via Lua.</div>
+  <div class="tool-desc">GPU-accelerated terminal emulator written in Rust; fast, cross-platform, and cleanly configurable via Lua.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://quarto.org/" target="_blank" rel="noopener noreferrer">Quarto</a></div>
-  <div class="tool-desc">Open-source scientific publishing system for reproducible papers, slides, books, and websites (powers this site).</div>
-  <span class="badge bg-light text-dark border tool-badge">CLI</span>
-</div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://bun.sh/" target="_blank" rel="noopener noreferrer">bun</a></div>
-  <div class="tool-desc">All-in-one JavaScript runtime, bundler, and package manager that replaces slow Node tooling with near-instant execution.</div>
+  <div class="tool-desc">One publishing engine to rule them all: papers, slides, books, and websites (powers this site).</div>
   <span class="badge bg-light text-dark border tool-badge">CLI</span>
 </div>
 <div class="tool-row">
@@ -39,8 +39,13 @@ A curated selection of software, services, and utilities that I find exceptional
   <span class="badge bg-light text-dark border tool-badge">CLI</span>
 </div>
 <div class="tool-row">
+  <div class="tool-name"><a href="https://bun.sh/" target="_blank" rel="noopener noreferrer">bun</a></div>
+  <div class="tool-desc">Sort of uv for JavaScript; forget npm.</div>
+  <span class="badge bg-light text-dark border tool-badge">CLI</span>
+</div>
+<div class="tool-row">
   <div class="tool-name"><a href="https://yazi-rs.github.io/" target="_blank" rel="noopener noreferrer">yazi</a></div>
-  <div class="tool-desc">Blazing-fast terminal file manager in Rust with async I/O, inline image previews, and effortless Vim-like navigation.</div>
+  <div class="tool-desc">Terminal file manager the way it should be, and even a bit better. Rust with async I/O, inline image previews, and nice interactive TUI.</div>
   <span class="badge bg-light text-dark border tool-badge">CLI</span>
 </div>
 <div class="tool-row">
@@ -49,58 +54,43 @@ A curated selection of software, services, and utilities that I find exceptional
   <span class="badge bg-light text-dark border tool-badge">CLI</span>
 </div>
 <div class="tool-row">
-  <div class="tool-name"><a href="https://fedoraproject.org/" target="_blank" rel="noopener noreferrer">Fedora</a></div>
-  <div class="tool-desc">Polished, up-to-date Linux distribution that balances modern packages with rock-solid stability for daily work.</div>
-  <span class="badge bg-light text-dark border tool-badge">Linux OS</span>
-</div>
-<div class="tool-row">
   <div class="tool-name"><a href="https://github.com/coatless-rpkg/livelink" target="_blank" rel="noopener noreferrer">livelink</a></div>
   <div class="tool-desc">R package that turns local R scripts and Shiny apps into shareable URLs running directly in the browser via webR.</div>
   <span class="badge bg-light text-dark border tool-badge">R</span>
 </div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer">llama.cpp</a></div>
-  <div class="tool-desc">Lightweight C/C++ inference engine for running open-weight LLMs locally with minimal overhead and full privacy.</div>
-  <span class="badge bg-light text-dark border tool-badge">Desktop</span>
-</div>
 :::
 
-## AI & Voice
+## mAIndblowers
 
 ::: {.tool-list}
 <div class="tool-row">
   <div class="tool-name"><a href="https://antigravity.google/" target="_blank" rel="noopener noreferrer">Antigravity (AI Pro)</a></div>
-  <div class="tool-desc">Agentic AI development environment that dramatically accelerates coding, refactoring, and research workflows (with AI Pro).</div>
+  <div class="tool-desc">My first experience with true agentic AI development. Pretty crazy what is unlocked with a regular AI Pro subscription.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://skillsmanager.dev/" target="_blank" rel="noopener noreferrer">Skills Manager</a></div>
-  <div class="tool-desc">Clean utility to organize, sync, and reuse AI coding assistant skills consistently across tools and projects.</div>
+  <div class="tool-desc">Skills, solved. With a beautiful GUI. </div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Perplexity</a></div>
-  <div class="tool-desc">AI search engine that synthesizes live web sources with inline citations—my go-to for quick fact-checking and exploration.</div>
+  <div class="tool-desc">Best phone app with AI chats. This is probably less and less of a deal. I'm using Gemini more often now.</div>
   <span class="badge bg-light text-dark border tool-badge">Web</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://github.com/cjpais/Handy" target="_blank" rel="noopener noreferrer">Handy</a></div>
-  <div class="tool-desc">Free, open-source offline speech-to-text app; push-to-talk local dictation into any text field with zero cloud lock-in.</div>
+  <div class="tool-desc">Offline speech-to-text app with push-to-talk local dictation into any text field with zero cloud lock-in.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
-  <div class="tool-name"><a href="https://elevenlabs.io/text-reader" target="_blank" rel="noopener noreferrer">Eleven Reader</a></div>
-  <div class="tool-desc">Natural-sounding AI text-to-speech reader that turns long articles, PDFs, and e-books into effortless listening.</div>
-  <span class="badge bg-light text-dark border tool-badge">Android</span>
-</div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://www.newsoveraudio.com/" target="_blank" rel="noopener noreferrer">Noa</a></div>
-  <div class="tool-desc">Audio journalism app with human-narrated deep-dive articles from top publications for screen-free commuting.</div>
-  <span class="badge bg-light text-dark border tool-badge">Android</span>
+  <div class="tool-name"><a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer">llama.cpp</a></div>
+  <div class="tool-desc">**The** runtime local models. [Friends Don't Let Friends Use Ollama](https://sleepingrobots.com/dreams/stop-using-ollama).</div>
+  <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 :::
 
-## Data, Web & File Conversion
+## data
 
 ::: {.tool-list}
 <div class="tool-row">
@@ -115,7 +105,7 @@ A curated selection of software, services, and utilities that I find exceptional
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://ziptbl.com/" target="_blank" rel="noopener noreferrer">Ziptable</a></div>
-  <div class="tool-desc">Shares small CSV/JSON datasets as a single URL compressed directly in the link fragment—no server or account needed.</div>
+  <div class="tool-desc">Pretty mindblowing. Share small CSV/JSON datasets as a single URL compressed directly in the link fragment -- no server or account needed.</div>
   <span class="badge bg-light text-dark border tool-badge">Web</span>
 </div>
 <div class="tool-row">
@@ -123,49 +113,39 @@ A curated selection of software, services, and utilities that I find exceptional
   <div class="tool-desc">Private, ad-free in-browser file converter powered by WebAssembly; converts files locally without uploading them.</div>
   <span class="badge bg-light text-dark border tool-badge">Web</span>
 </div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://yhsure.github.io/qr-dancer/" target="_blank" rel="noopener noreferrer">qr-dancer</a></div>
-  <div class="tool-desc">Turns pixel art into functional, locally verified custom QR codes—great for distinctive slides and handouts.</div>
-  <span class="badge bg-light text-dark border tool-badge">Web</span>
-</div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://www.star-history.com/" target="_blank" rel="noopener noreferrer">Star-history</a></div>
-  <div class="tool-desc">Simple, clean way to plot and compare GitHub repository star growth over time when evaluating open-source tools.</div>
-  <span class="badge bg-light text-dark border tool-badge">Web</span>
-</div>
 :::
 
-## Reading, Notes & References
+## curating
 
 ::: {.tool-list}
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer">Zotero</a></div>
-  <div class="tool-desc">Indispensable open-source reference manager for collecting, annotating, organizing, and citing academic literature.</div>
+  <div class="tool-desc">**The** way of dealing with academic articles. See also my [blog post on setting up Zotero](https://ikashnitsky.phd/2024/zotero7).</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.pdfgear.com/" target="_blank" rel="noopener noreferrer">PdfGear</a></div>
-  <div class="tool-desc">Free, fast PDF reader, editor, annotator, and converter that handles everything without Adobe subscriptions.</div>
+  <div class="tool-desc">FOSS solution for all you PDF needs, and the nicest thing -- forget about Adobe bloated apps.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://calibre-ebook.com/" target="_blank" rel="noopener noreferrer">Calibre</a></div>
-  <div class="tool-desc">Comprehensive open-source e-book library manager and format converter for keeping digital books organized.</div>
+  <div class="tool-desc">E-book library manager and format converter. The best thing about Calibre -- it just works, probably the only tool that I use consistently since 2010.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://getferrite.dev/" target="_blank" rel="noopener noreferrer">Ferrite</a></div>
-  <div class="tool-desc">Fast, native Markdown and structured text editor in Rust—lightweight and crisp without Electron bloat.</div>
+  <div class="tool-desc">Rust speed for Markdown and other texts, crisp without Electron bloat.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://remarkable.com/" target="_blank" rel="noopener noreferrer">reMarkable</a></div>
-  <div class="tool-desc">Desktop companion app for syncing and organizing handwritten paper-tablet notes and annotated PDFs.</div>
+  <div class="tool-desc">Desktop companion app for syncing and organizing handwritten paper-tablet notes and annotated PDFs. I'm privileged to have lifelong free subscription as I bought at Kickstarter stage.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://raindrop.io/" target="_blank" rel="noopener noreferrer">Raindrop (with AI)</a></div>
-  <div class="tool-desc">Polished bookmark manager with full-text search, nested collections, and AI auto-tagging that keeps links retrievable.</div>
+  <div class="tool-desc">Nice bookmark manager. Free tier was serving me reliably for two years. But the built in AI helper that the 30 euro per year subscription unlocks is a game changer.</div>
   <span class="badge bg-light text-dark border tool-badge">Web / App</span>
 </div>
 <div class="tool-row">
@@ -175,14 +155,9 @@ A curated selection of software, services, and utilities that I find exceptional
 </div>
 :::
 
-## Files, Backups & Security
+## files
 
 ::: {.tool-list}
-<div class="tool-row">
-  <div class="tool-name"><a href="https://filepilot.tech/" target="_blank" rel="noopener noreferrer">FilePilot</a></div>
-  <div class="tool-desc">Ultra-fast, lightweight alternative file explorer for Windows; instant startup and navigation where Explorer lags.</div>
-  <span class="badge bg-light text-dark border tool-badge">Windows</span>
-</div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://localsend.org/" target="_blank" rel="noopener noreferrer">LocalSend</a></div>
   <div class="tool-desc">Open-source AirDrop alternative for effortless, encrypted file sharing across devices on local Wi-Fi.</div>
@@ -213,6 +188,11 @@ A curated selection of software, services, and utilities that I find exceptional
   <div class="tool-desc">Open-source screenshot tool with fast in-place arrows, highlights, and redaction—ideal for tutorials and bug reports.</div>
   <span class="badge bg-light text-dark border tool-badge">Desktop</span>
 </div>
+:::
+
+## security
+
+::: {.tool-list}
 <div class="tool-row">
   <div class="tool-name"><a href="https://bitwarden.com/" target="_blank" rel="noopener noreferrer">Bitwarden</a></div>
   <div class="tool-desc">Trustworthy, open-source password manager with seamless encrypted vault syncing across desktop, browser, and phone.</div>
@@ -225,7 +205,7 @@ A curated selection of software, services, and utilities that I find exceptional
 </div>
 :::
 
-## Browsing, Links & Social
+## web
 
 ::: {.tool-list}
 <div class="tool-row">
@@ -240,87 +220,134 @@ A curated selection of software, services, and utilities that I find exceptional
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://short.io/" target="_blank" rel="noopener noreferrer">Short.io</a></div>
-  <div class="tool-desc">Branded URL shortener with custom domains and link analytics—great for clean, memorable links in talks and papers.</div>
+  <div class="tool-desc">Branded URL shortener with custom domains and link analytics—great for clean, memorable links in talks and papers. Generous free tier.</div>
   <span class="badge bg-light text-dark border tool-badge">Web</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://bsky.app/" target="_blank" rel="noopener noreferrer">Bluesky</a></div>
-  <div class="tool-desc">Open AT-Protocol social network that has become the liveliest home for demography, R, and dataviz communities.</div>
+  <div class="tool-desc">Open AT-Protocol social network that somewhat replaces the good old academic Twitter.</div>
   <span class="badge bg-light text-dark border tool-badge">Web / App</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Linkedin</a></div>
-  <div class="tool-desc">Essential professional network for keeping up with colleagues, institutions, and sharing research milestones.</div>
+  <div class="tool-desc">De-facto, the palace where text-based social networking is happening these days. Essential for keeping up with colleagues, institutions, and sharing ides. Yes, I'd prefer such a networking tool to be out of Microsoft's hands.</div>
   <span class="badge bg-light text-dark border tool-badge">Web / App</span>
 </div>
 <div class="tool-row">
-  <div class="tool-name"><a href="https://antennapod.org/" target="_blank" rel="noopener noreferrer">AntennaPod</a></div>
-  <div class="tool-desc">Open-source, ad-free Android podcast player with great queue management and zero algorithmic clutter.</div>
+  <div class="tool-name"><a href="https://www.strava.com/" target="_blank" rel="noopener noreferrer">Strava</a></div>
+  <div class="tool-desc">The only alive social network for runners. Free tier is more than enough.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 :::
 
-## Productivity & Focus
+## listen
 
 ::: {.tool-list}
 <div class="tool-row">
-  <div class="tool-name"><a href="https://super-productivity.com/" target="_blank" rel="noopener noreferrer">SuperProductivity</a></div>
-  <div class="tool-desc">Free, open-source task manager and time tracker with Pomodoro support and GitHub/Jira integration, stored locally.</div>
-  <span class="badge bg-light text-dark border tool-badge">Desktop</span>
-</div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://www.when2meet.com/" target="_blank" rel="noopener noreferrer">When2Meet</a></div>
-  <div class="tool-desc">Zero-friction group scheduling grid—no logins, no bloat, just fast overlapping availability.</div>
-  <span class="badge bg-light text-dark border tool-badge">Web</span>
-</div>
-<div class="tool-row">
-  <div class="tool-name"><a href="https://github.com/tanujnotes/Olauncher" target="_blank" rel="noopener noreferrer">Olauncher</a></div>
-  <div class="tool-desc">Minimal, text-based Android home screen launcher that cuts visual noise and curbs mindless phone scrolling.</div>
+  <div class="tool-name"><a href="https://antennapod.org/" target="_blank" rel="noopener noreferrer">AntennaPod</a></div>
+  <div class="tool-desc">The FOSS boss of podcasting apps.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 <div class="tool-row">
-  <div class="tool-name"><a href="https://loophabits.org/" target="_blank" rel="noopener noreferrer">Habits</a></div>
-  <div class="tool-desc">Open-source, ad-free habit tracker (Loop) with clean streak charts and zero nagware or subscriptions.</div>
+  <div class="tool-name"><a href="https://elevenlabs.io/text-reader" target="_blank" rel="noopener noreferrer">Eleven Reader</a></div>
+  <div class="tool-desc">Natural-sounding AI text-to-speech reader that turns long articles into effortless listening. Free tier is generous enough.</div>
+  <span class="badge bg-light text-dark border tool-badge">Android</span>
+</div>
+<div class="tool-row">
+  <div class="tool-name"><a href="https://www.newsoveraudio.com/" target="_blank" rel="noopener noreferrer">Noa</a></div>
+  <div class="tool-desc">Human- and ai-narrated deep-dive articles from top publications like The Atlantic. Subscription 40 euro per year.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://meditofoundation.org/" target="_blank" rel="noopener noreferrer">Medito</a></div>
-  <div class="tool-desc">Completely free, non-profit, open-source meditation app with thoughtful guided sessions and no paywalls.</div>
+  <div class="tool-desc">FOSS meditation app, beautiful and no paywalls.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 :::
 
-## Travel, Fitness & Everyday
+## productivity
 
 ::: {.tool-list}
 <div class="tool-row">
-  <div class="tool-name"><a href="https://www.strava.com/" target="_blank" rel="noopener noreferrer">Strava</a></div>
-  <div class="tool-desc">Motivating GPS activity tracker and social fitness log for keeping track of runs, rides, and outdoor routes.</div>
+  <div class="tool-name"><a href="https://super-productivity.com/" target="_blank" rel="noopener noreferrer">SuperProductivity</a></div>
+  <div class="tool-desc">The main finding of 2026 for me. Ignore the impulse to skip based on the scammy sounding name. It's the best suite I've seen for filling the gap between calendar, notes, and tasks list. FOSS, cross-platform, extremely well designed both for mobile and desktop apps.</div>
+  <span class="badge bg-light text-dark border tool-badge">Desktop</span>
+</div>
+<div class="tool-row">
+  <div class="tool-name"><a href="https://www.when2meet.com/" target="_blank" rel="noopener noreferrer">When2Meet</a></div>
+  <div class="tool-desc">Zero-friction group scheduling grid -- no logins, no bloat, just fast overlapping availability.</div>
+  <span class="badge bg-light text-dark border tool-badge">Web</span>
+</div>
+<div class="tool-row">
+  <div class="tool-name"><a href="https://github.com/tanujnotes/Olauncher" target="_blank" rel="noopener noreferrer">Olauncher</a></div>
+  <div class="tool-desc">Revolutionized my phone usage. Somehow the screen feels less addictive without all the icons. Really thoughtfully designed and easy to navigate.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 <div class="tool-row">
+  <div class="tool-name"><a href="https://loophabits.org/" target="_blank" rel="noopener noreferrer">Habits</a></div>
+  <div class="tool-desc">Simple FOSS habit tracker with clean streak charts and zero nagware or subscriptions.</div>
+  <span class="badge bg-light text-dark border tool-badge">Android</span>
+</div>
+:::
+
+## travel
+
+::: {.tool-list}
+<div class="tool-row">
   <div class="tool-name"><a href="https://maps.me/" target="_blank" rel="noopener noreferrer">Maps.me</a></div>
-  <div class="tool-desc">Reliable offline maps and hiking trails powered by OpenStreetMap—invaluable when traveling without data.</div>
+  <div class="tool-desc">Reliable offline maps and hiking trails powered by OpenStreetMap -- invaluable when traveling without data. And granularity of the maps outside the most crowded places is unmatched.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.discovercars.com/" target="_blank" rel="noopener noreferrer">DiscoverCars</a></div>
-  <div class="tool-desc">Clear car rental comparison platform that consistently surfaces transparent pricing when traveling.</div>
+  <div class="tool-desc">The single place where I rent cars. Consistently competitive prices and less nudging to add some costly crap.</div>
   <span class="badge bg-light text-dark border tool-badge">Android / Web</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://www.revolut.com/" target="_blank" rel="noopener noreferrer">Revolut</a></div>
-  <div class="tool-desc">Multi-currency digital banking app with great exchange rates and virtual cards for hassle-free travel spending.</div>
+  <div class="tool-desc">Digital bank that managed.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
+:::
+
+## handy
+
+::: {.tool-list}
+<div class="tool-row">
+  <div class="tool-name"><a href="https://yhsure.github.io/qr-dancer/" target="_blank" rel="noopener noreferrer">qr-dancer</a></div>
+  <div class="tool-desc">Turns pixel art into functional, locally verified custom QR codes—great for distinctive slides and handouts.</div>
+  <span class="badge bg-light text-dark border tool-badge">Web</span>
+</div>
+<div class="tool-row">
+  <div class="tool-name"><a href="https://www.star-history.com/" target="_blank" rel="noopener noreferrer">Star-history</a></div>
+  <div class="tool-desc">Great tool to explore github repo popularity.</div>
+  <span class="badge bg-light text-dark border tool-badge">Web</span>
+</div>
+:::
+
+## fun
+
+::: {.tool-list}
 <div class="tool-row">
   <div class="tool-name"><a href="https://forzafootball.com/" target="_blank" rel="noopener noreferrer">Forza</a></div>
-  <div class="tool-desc">Clean, fast live football scores, lineups, and match notifications without ad-heavy clutter.</div>
+  <div class="tool-desc">My favorite scores app.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
 </div>
 <div class="tool-row">
   <div class="tool-name"><a href="https://play.google.com/store/apps/details?id=io.github.vinceglb.molkky" target="_blank" rel="noopener noreferrer">Mölkky</a></div>
-  <div class="tool-desc">Open-source scorekeeper app that cleanly tracks turns, points, and elimination rules for Mölkky games.</div>
+  <div class="tool-desc">Simple and beautiful scorekeeper app for Mölkky.</div>
   <span class="badge bg-light text-dark border tool-badge">Android</span>
+</div>
+:::
+
+## /archive
+
+Tools that I no longer use because I found a better alternative.
+
+::: {.tool-list}
+<div class="tool-row">
+  <div class="tool-name"><a href="https://filepilot.tech/" target="_blank" rel="noopener noreferrer">FilePilot</a></div>
+  <div class="tool-desc">Nice file explorer for Windows. I use now Swift Explorer which is easier on RAM.</div>
+  <span class="badge bg-light text-dark border tool-badge">Windows</span>
 </div>
 :::
