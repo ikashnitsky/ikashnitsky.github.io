@@ -83,6 +83,10 @@ website:
       <span class="faux-block">Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
       <span class="faux-block">[View the source at {{< fa brands github >}} GitHub]({{< var github-url >}})</span>
 
+execute:
+  freeze: auto
+  cache: false
+
 format:
   html:
     theme: html/ik.css
